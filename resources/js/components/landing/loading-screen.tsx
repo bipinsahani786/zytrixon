@@ -42,7 +42,7 @@ export default function LoadingScreen() {
 
         // Flash accent color on all dots
         tl.to(dotsRef.current, {
-            backgroundColor: '#00F5D4',
+            backgroundColor: 'var(--zy-white)',
             duration: 0.15,
             stagger: { each: 0.02, from: 'center' },
             ease: 'power2.inOut',
@@ -98,7 +98,7 @@ export default function LoadingScreen() {
                                 width: 12,
                                 height: 12,
                                 borderRadius: '50%',
-                                backgroundColor: '#FFFFFF',
+                                backgroundColor: 'var(--zy-white)',
                             }}
                         />
                     );

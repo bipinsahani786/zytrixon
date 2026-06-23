@@ -24,7 +24,7 @@ export default function MarqueeStrip() {
                 display: 'inline-block',
                 width: '6px',
                 height: '6px',
-                backgroundColor: '#00F5D4',
+                backgroundColor: 'var(--zy-white)',
                 borderRadius: '50%',
                 margin: '0 32px',
                 flexShrink: 0,
@@ -41,11 +41,11 @@ export default function MarqueeStrip() {
                     fontWeight: 600,
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
-                    color: '#666',
+                    color: 'var(--zy-gray-text)',
                     whiteSpace: 'nowrap',
                     transition: 'color 0.3s',
                 }}
-                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#00F5D4'; }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#FFFFFF'; }}
                 onMouseLeave={(e) => { (e.target as HTMLElement).style.color = '#666'; }}
             >
                 {kw}
@@ -59,10 +59,10 @@ export default function MarqueeStrip() {
             style={{
                 width: '100%',
                 overflow: 'hidden',
-                borderTop: '1px solid #1a1a1a',
+                borderTop: '1px solid var(--zy-gray-border)',
                 borderBottom: '1px solid #1a1a1a',
                 padding: '20px 0',
-                background: '#000',
+                background: 'var(--zy-black)',
             }}
         >
             <div className="marquee-track">

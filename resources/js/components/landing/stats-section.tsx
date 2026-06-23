@@ -5,10 +5,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-    { value: 120, suffix: '+', label: 'Projects Delivered' },
-    { value: 8, suffix: '+', label: 'Years Experience' },
-    { value: 40, suffix: '+', label: 'Happy Clients' },
-    { value: 15, suffix: '+', label: 'Team Members' },
+    { value: 50, suffix: '+', label: 'Projects Done' },
+    { value: 98, suffix: '%', label: 'Success Rate' },
+    { value: 20, suffix: '+', label: 'Expert Engineers' },
+    { value: 5, suffix: '+', label: 'Countries Served' },
 ];
 
 export default function StatsSection() {
@@ -69,7 +69,7 @@ export default function StatsSection() {
             ref={sectionRef}
             className="zy-section"
             style={{
-                background: '#000',
+                background: 'var(--zy-black)',
             }}
         >
             <div

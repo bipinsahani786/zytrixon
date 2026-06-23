@@ -1,304 +1,303 @@
-import { useEffect, useRef, useState, useCallback, Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { useEffect, useRef, useCallback, useState, Suspense } from 'react';
 import gsap from 'gsap';
-import { useIsLowPower } from '@/hooks/use-media-query';
-import IoTDeviceMesh from './iot-device-mesh';
+import { useMousePosition } from '@/hooks/use-mouse-position';
+import { useMediaQuery } from '@/hooks/use-media-query';
 
-// ---- Magnetic Button Component ----
-function MagneticButton({ children, href }: { children: React.ReactNode; href: string }) {
-    const btnRef = useRef<HTMLAnchorElement>(null);
+const IoTDeviceMesh = await import('@/components/landing/iot-device-mesh').then(m => m.default).catch(() => null);
+let Canvas: any = null;
+try {
+    const fiber = await import('@react-three/fiber');
+    Canvas = fiber.Canvas;
+} catch {}
 
-    const handleMouseMove = useCallback((e: React.MouseEvent) => {
-        if (!btnRef.current) return;
-        const rect = btnRef.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const distX = e.clientX - centerX;
-        const distY = e.clientY - centerY;
-
-        gsap.to(btnRef.current, {
-            x: distX * 0.3,
-            y: distY * 0.3,
-            duration: 0.3,
-            ease: 'power2.out',
-        });
-    }, []);
-
-    const handleMouseLeave = useCallback(() => {
-        if (!btnRef.current) return;
-        gsap.to(btnRef.current, {
-            x: 0,
-            y: 0,
-            duration: 0.5,
-            ease: 'elastic.out(1, 0.4)',
-        });
-    }, []);
-
-    return (
-        <a
-            ref={btnRef}
-            href={href}
-            className="magnetic-btn"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-        >
-            {children}
-        </a>
-    );
-}
-
-// ---- Split Text Animation ----
-function AnimatedHeadline({ text, delay = 0 }: { text: string; delay?: number }) {
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (!containerRef.current) return;
-        const chars = containerRef.current.querySelectorAll('.split-char');
-
-        gsap.set(chars, { opacity: 0, filter: 'blur(12px)', y: 20 });
-
-        gsap.to(chars, {
-            opacity: 1,
-            filter: 'blur(0px)',
-            y: 0,
-            duration: 0.8,
-            stagger: 0.03,
-            ease: 'power3.out',
-            delay: delay + 1.3, // Wait for loading screen
-        });
-    }, [delay]);
-
-    // Split text into words, then characters
-    const words = text.split(' ');
-
-    return (
-        <div ref={containerRef} aria-label={text}>
-            {words.map((word, wi) => (
-                <span key={wi} style={{ display: 'inline-block', whiteSpace: 'pre' }}>
-                    {word.split('').map((char, ci) => (
-                        <span
-                            key={ci}
-                            className="split-char"
-                            style={{
-                                display: 'inline-block',
-                                willChange: 'transform, opacity, filter',
-                            }}
-                        >
-                            {char}
-                        </span>
-                    ))}
-                    {wi < words.length - 1 && (
-                        <span className="split-char" style={{ display: 'inline-block' }}>
-                            &nbsp;
-                        </span>
-                    )}
-                </span>
-            ))}
-        </div>
-    );
-}
-
-// ---- Mobile Fallback (CSS-only) ----
-function HeroFallback() {
-    return (
-        <div
-            style={{
-                position: 'absolute',
-                inset: 0,
-                overflow: 'hidden',
-            }}
-        >
-            {/* Animated gradient orb */}
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    width: '500px',
-                    height: '500px',
-                    transform: 'translate(-50%, -50%)',
-                    borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(0,245,212,0.12) 0%, transparent 70%)',
-                    animation: 'pulse-glow 4s ease-in-out infinite alternate',
-                }}
-            />
-            {/* Grid pattern */}
-            <div
-                style={{
-                    position: 'absolute',
-                    inset: 0,
-                    backgroundImage: `
-                        linear-gradient(rgba(0,245,212,0.05) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(0,245,212,0.05) 1px, transparent 1px)
-                    `,
-                    backgroundSize: '60px 60px',
-                    maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)',
-                    WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)',
-                }}
-            />
-            <style>{`
-                @keyframes pulse-glow {
-                    0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); }
-                    100% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
-                }
-            `}</style>
-        </div>
-    );
-}
-
-// ---- Main Hero Section ----
 export default function HeroSection() {
-    const isLowPower = useIsLowPower();
-    const [mouseNorm, setMouseNorm] = useState({ x: 0, y: 0 });
     const sectionRef = useRef<HTMLElement>(null);
+    const headlineRef = useRef<HTMLHeadingElement>(null);
     const subRef = useRef<HTMLParagraphElement>(null);
+    const ctaRef = useRef<HTMLDivElement>(null);
+    const badgeRef = useRef<HTMLDivElement>(null);
+    const btnRef = useRef<HTMLAnchorElement>(null);
+    const { x: mouseX, y: mouseY } = useMousePosition();
+    const isLowPower = useMediaQuery('(max-width: 768px)');
+    const [show3D, setShow3D] = useState(false);
+
+    // Typewriter state
+    const PHRASES = ["Digital Dominance", "Global Solutions", "Smart Platforms", "Future Technologies"];
+    const [typedText, setTypedText] = useState('');
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [loopNum, setLoopNum] = useState(0);
+    const [typingSpeed, setTypingSpeed] = useState(120);
 
     useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            setMouseNorm({
-                x: (e.clientX / window.innerWidth) * 2 - 1,
-                y: -(e.clientY / window.innerHeight) * 2 + 1,
-            });
+        const handleTyping = () => {
+            const i = loopNum % PHRASES.length;
+            const fullText = PHRASES[i];
+
+            setTypedText(isDeleting ? fullText.substring(0, typedText.length - 1) : fullText.substring(0, typedText.length + 1));
+            setTypingSpeed(isDeleting ? 40 : 100);
+
+            if (!isDeleting && typedText === fullText) {
+                setTimeout(() => setIsDeleting(true), 2500);
+            } else if (isDeleting && typedText === '') {
+                setIsDeleting(false);
+                setLoopNum(loopNum + 1);
+            }
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        const timer = setTimeout(handleTyping, typingSpeed);
+        return () => clearTimeout(timer);
+    }, [typedText, isDeleting, loopNum, typingSpeed]);
+
+    useEffect(() => {
+        if (!isLowPower && Canvas) setShow3D(true);
+    }, [isLowPower]);
+
+    useEffect(() => {
+        if (!sectionRef.current) return;
+
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({ delay: 1.4 });
+
+            // Badge
+            tl.fromTo(badgeRef.current,
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+                0
+            );
+
+            // Headline characters
+            if (headlineRef.current) {
+                const words = headlineRef.current.querySelectorAll('.hero-word');
+                tl.fromTo(words,
+                    { opacity: 0, y: 40, filter: 'blur(8px)' },
+                    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, stagger: 0.08, ease: 'power3.out' },
+                    0.1
+                );
+            }
+
+            // Subtitle
+            tl.fromTo(subRef.current,
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+                0.5
+            );
+
+            // CTAs
+            tl.fromTo(ctaRef.current,
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+                0.7
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
     }, []);
 
-    // Subheadline fade-in
-    useEffect(() => {
-        if (!subRef.current) return;
-        gsap.fromTo(
-            subRef.current,
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 2.2 }
-        );
+    const handleBtnMouseMove = useCallback((e: React.MouseEvent) => {
+        if (!btnRef.current) return;
+        const rect = btnRef.current.getBoundingClientRect();
+        const distX = e.clientX - (rect.left + rect.width / 2);
+        const distY = e.clientY - (rect.top + rect.height / 2);
+        gsap.to(btnRef.current, { x: distX * 0.3, y: distY * 0.3, duration: 0.3, ease: 'power2.out' });
+    }, []);
+
+    const handleBtnMouseLeave = useCallback(() => {
+        if (!btnRef.current) return;
+        gsap.to(btnRef.current, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
     }, []);
 
     return (
-        <section
-            ref={sectionRef}
-            id="hero"
-            style={{
-                position: 'relative',
+        <section ref={sectionRef} style={{
+            position: 'relative',
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            overflow: 'hidden',
+            background: 'var(--zy-black)',
+            padding: '120px var(--zy-section-pad-x) 80px',
+        }}>
+            {/* Background effects */}
+            <div style={{
+                position: 'absolute', inset: 0,
+                backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+                backgroundSize: '40px 40px',
+                maskImage: 'linear-gradient(to bottom, transparent, 10%, black, 90%, transparent)',
+            }} />
+            <div style={{
+                position: 'absolute',
+                width: 600, height: 600,
+                background: 'radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%)',
+                top: '20%', left: '10%',
+                pointerEvents: 'none',
+            }} />
+
+            {/* Content grid */}
+            <div style={{
+                maxWidth: 1200,
+                margin: '0 auto',
                 width: '100%',
-                height: '100vh',
-                minHeight: '600px',
-                background: '#000',
-                display: 'flex',
+                display: 'grid',
+                gridTemplateColumns: '1.1fr 0.9fr',
+                gap: 60,
                 alignItems: 'center',
-                justifyContent: 'center',
-                overflow: 'hidden',
-            }}
-        >
-            {/* 3D Scene or Fallback */}
-            <div
-                style={{
-                    position: 'absolute',
-                    inset: 0,
-                    zIndex: 0,
-                }}
-            >
-                {isLowPower ? (
-                    <HeroFallback />
-                ) : (
-                    <Suspense fallback={<HeroFallback />}>
-                        <Canvas
-                            camera={{ position: [0, 0, 5], fov: 45 }}
-                            style={{ background: 'transparent' }}
-                            gl={{ antialias: true, alpha: true }}
-                        >
-                            <ambientLight intensity={0.3} />
-                            <pointLight position={[5, 5, 5]} intensity={0.8} color="#ffffff" />
-                            <pointLight position={[-3, -2, 3]} intensity={0.5} color="#00F5D4" />
-                            <pointLight position={[0, 0, 4]} intensity={0.3} color="#00F5D4" />
-                            <IoTDeviceMesh mouseX={mouseNorm.x} mouseY={mouseNorm.y} />
-                        </Canvas>
-                    </Suspense>
-                )}
-            </div>
-
-            {/* Content */}
-            <div
-                style={{
-                    position: 'relative',
-                    zIndex: 1,
-                    textAlign: 'center',
-                    maxWidth: '900px',
-                    padding: '0 24px',
-                }}
-            >
-                <AnimatedHeadline text="We Build the Future of Connected Technology" />
-
-                <p
-                    ref={subRef}
-                    style={{
-                        fontSize: 'clamp(16px, 2.2vw, 20px)',
-                        color: '#888',
-                        marginTop: '24px',
-                        lineHeight: 1.7,
-                        maxWidth: '600px',
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
+                position: 'relative',
+                zIndex: 1,
+            }}>
+                {/* Left: Text */}
+                <div>
+                    <div ref={badgeRef} style={{
+                        display: 'inline-flex', alignItems: 'center', gap: 8,
+                        padding: '6px 16px',
+                        border: '1px solid rgba(255,255,255,0.2)',
+                        background: 'rgba(255,255,255,0.05)',
+                        marginBottom: 28,
                         opacity: 0,
-                    }}
-                >
-                    IoT solutions, web platforms & digital products crafted with precision
-                    from Patna, India — for the world.
-                </p>
+                    }}>
+                        <span style={{
+                            width: 6, height: 6, borderRadius: '50%',
+                            background: '#FFFFFF',
+                            animation: 'pulse 2s infinite',
+                        }} />
+                        <span style={{
+                            fontSize: 11, fontWeight: 600,
+                            letterSpacing: '0.12em', textTransform: 'uppercase',
+                            color: 'var(--zy-white)',
+                        }}>
+                            Top Rated Software Company in Patna
+                        </span>
+                    </div>
 
-                <div style={{ marginTop: '48px', opacity: 0 }} ref={(el) => {
-                    if (el) {
-                        gsap.to(el, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 2.5 });
-                        gsap.set(el, { y: 20 });
-                    }
-                }}>
-                    <MagneticButton href="/contact">
-                        Start a Project
-                        <svg className="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </MagneticButton>
+                    <h1 ref={headlineRef} style={{
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: 'clamp(40px, 5.5vw, 78px)',
+                        fontWeight: 800,
+                        lineHeight: 1.05,
+                        letterSpacing: '-0.03em',
+                        color: 'var(--zy-white)',
+                        marginBottom: 24,
+                    }}>
+                        <span className="hero-word" style={{ display: 'inline-block', marginRight: '0.25em' }}>We</span>
+                        <span className="hero-word" style={{ display: 'inline-block', marginRight: '0.25em' }}>Engineer</span>
+                        <br />
+                        <span className="hero-word" style={{ display: 'inline-block', color: 'var(--zy-white)', whiteSpace: 'nowrap' }}>
+                            {typedText}
+                            <span style={{
+                                display: 'inline-block',
+                                width: '4px',
+                                height: '0.8em',
+                                backgroundColor: 'var(--zy-white)',
+                                verticalAlign: 'middle',
+                                marginLeft: '4px',
+                                animation: 'cursorBlink 1s step-end infinite'
+                            }} />
+                        </span>
+                    </h1>
+
+                    <p ref={subRef} style={{
+                        fontSize: 18,
+                        lineHeight: 1.7,
+                        color: 'var(--zy-gray-text)',
+                        maxWidth: 500,
+                        marginBottom: 36,
+                        opacity: 0,
+                    }}>
+                        From <strong style={{ color: 'var(--zy-white)' }}>Patna to the World</strong> — Zytrixon Tech
+                        builds enterprise-grade Web, Mobile, and IoT solutions that transform businesses into global brands.
+                    </p>
+
+                    <div ref={ctaRef} style={{ display: 'flex', gap: 16, opacity: 0, flexWrap: 'wrap' }}>
+                        <div onMouseMove={handleBtnMouseMove} onMouseLeave={handleBtnMouseLeave}>
+                            <a
+                                ref={btnRef}
+                                href="/contact"
+                                className="magnetic-btn"
+                                style={{ padding: '18px 40px', fontSize: 14 }}
+                            >
+                                Start Your Project
+                                <svg className="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                        <a href="/work" style={{
+                            padding: '18px 32px',
+                            border: '1px solid #333',
+                            color: 'var(--zy-white)',
+                            fontFamily: 'var(--font-heading)',
+                            fontSize: 13,
+                            fontWeight: 600,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.05em',
+                            textDecoration: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 10,
+                            transition: 'all 0.3s var(--zy-ease)',
+                        }}
+                        onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLElement).style.borderColor = '#FFFFFF';
+                            (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
+                        }}
+                        onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLElement).style.borderColor = '#333';
+                            (e.currentTarget as HTMLElement).style.background = 'transparent';
+                        }}
+                        >
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                            See Our Work
+                        </a>
+                    </div>
+                </div>
+
+                {/* Right: 3D or Fallback */}
+                <div style={{ height: 500, position: 'relative' }}>
+                    {show3D && Canvas && IoTDeviceMesh ? (
+                        <Suspense fallback={<HeroFallback />}>
+                            <Canvas camera={{ position: [0, 0, 5], fov: 45 }} style={{ borderRadius: 0 }}>
+                                <ambientLight intensity={0.3} />
+                                <pointLight position={[5, 5, 5]} intensity={0.8} color="#FFFFFF" />
+                                <pointLight position={[-5, -5, 3]} intensity={0.4} color="#ffffff" />
+                                <IoTDeviceMesh mouseX={(mouseX / window.innerWidth) * 2 - 1} mouseY={(mouseY / window.innerHeight) * 2 - 1} />
+                            </Canvas>
+                        </Suspense>
+                    ) : (
+                        <HeroFallback />
+                    )}
                 </div>
             </div>
 
-            {/* Scroll indicator */}
-            <div
-                style={{
-                    position: 'absolute',
-                    bottom: '40px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '8px',
-                    opacity: 0,
-                }}
-                ref={(el) => {
-                    if (el) {
-                        gsap.to(el, { opacity: 0.5, duration: 0.6, delay: 3.0 });
-                    }
-                }}
-            >
-                <span style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#666' }}>
-                    Scroll
-                </span>
-                <div
-                    style={{
-                        width: '1px',
-                        height: '40px',
-                        background: 'linear-gradient(to bottom, #00F5D4, transparent)',
-                        animation: 'scroll-pulse 2s ease-in-out infinite',
-                    }}
-                />
-                <style>{`
-                    @keyframes scroll-pulse {
-                        0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
-                        50% { opacity: 1; transform: scaleY(1); }
-                    }
-                `}</style>
-            </div>
+            <style>{`
+                @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+                @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+                @media (max-width: 768px) {
+                    section > div:nth-child(3) { grid-template-columns: 1fr !important; }
+                    section > div:nth-child(3) > div:last-child { height: 300px !important; }
+                }
+            `}</style>
         </section>
+    );
+}
+
+function HeroFallback() {
+    return (
+        <div style={{
+            width: '100%', height: '100%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: 'radial-gradient(circle at center, #0a0a0a, #000)',
+            position: 'relative', overflow: 'hidden',
+        }}>
+            <div style={{
+                position: 'absolute', inset: 0,
+                backgroundImage: 'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)',
+                backgroundSize: '20px 20px',
+            }} />
+            <div style={{
+                fontFamily: 'var(--font-heading)', fontSize: 180,
+                fontWeight: 800, color: 'rgba(255,255,255,0.04)',
+                lineHeight: 1, userSelect: 'none',
+            }}>Z</div>
+        </div>
     );
 }

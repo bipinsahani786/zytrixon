@@ -1,102 +1,160 @@
-import { useEffect, useRef, useState } from 'react';
-import { useIsMobile } from '@/hooks/use-media-query';
+import { useEffect, useRef, useCallback } from 'react';
+import gsap from 'gsap';
+
+interface Particle {
+    x: number;
+    y: number;
+    alpha: number;
+    size: number;
+}
 
 export default function CustomCursor() {
     const dotRef = useRef<HTMLDivElement>(null);
     const ringRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
-    const isMobile = useIsMobile();
-    const [isHovering, setIsHovering] = useState(false);
-    const [cursorLabel, setCursorLabel] = useState('');
-    const mousePos = useRef({ x: 0, y: 0 });
-    const dotPos = useRef({ x: 0, y: 0 });
-    const ringPos = useRef({ x: 0, y: 0 });
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const particles = useRef<Particle[]>([]);
+    const mousePos = useRef({ x: -100, y: -100 });
+    const animFrame = useRef<number>(0);
 
-    useEffect(() => {
-        if (isMobile) {
-            document.body.classList.remove('custom-cursor-active');
-            return;
+    const onMouseMove = useCallback((e: MouseEvent) => {
+        mousePos.current = { x: e.clientX, y: e.clientY };
+
+        if (dotRef.current) {
+            gsap.to(dotRef.current, { x: e.clientX, y: e.clientY, duration: 0.1, ease: 'power2.out' });
+        }
+        if (ringRef.current) {
+            gsap.to(ringRef.current, { x: e.clientX, y: e.clientY, duration: 0.35, ease: 'power2.out' });
         }
 
-        document.body.classList.add('custom-cursor-active');
+        // Add particle
+        particles.current.push({
+            x: e.clientX,
+            y: e.clientY,
+            alpha: 0.8,
+            size: Math.random() * 4 + 2,
+        });
+        if (particles.current.length > 40) {
+            particles.current.shift();
+        }
+    }, []);
 
-        const handleMouseMove = (e: MouseEvent) => {
-            mousePos.current = { x: e.clientX, y: e.clientY };
+    const onMouseEnterInteractive = useCallback((e: Event) => {
+        const target = e.currentTarget as HTMLElement;
+        ringRef.current?.classList.add('hovering');
+        dotRef.current?.classList.add('hovering');
+
+        const label = target.getAttribute('data-cursor');
+        if (label && labelRef.current) {
+            labelRef.current.textContent = label;
+            labelRef.current.classList.add('visible');
+        }
+    }, []);
+
+    const onMouseLeaveInteractive = useCallback(() => {
+        ringRef.current?.classList.remove('hovering');
+        dotRef.current?.classList.remove('hovering');
+        if (labelRef.current) {
+            labelRef.current.classList.remove('visible');
+        }
+    }, []);
+
+    // Canvas particle animation loop
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         };
+        resize();
+        window.addEventListener('resize', resize);
 
-        const handleMouseOver = (e: MouseEvent) => {
-            const target = e.target as HTMLElement;
-            const interactive = target.closest('a, button, [role="button"], input, textarea, select, [data-cursor]');
+        const loop = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            if (interactive) {
-                setIsHovering(true);
-                const label = interactive.getAttribute('data-cursor');
-                setCursorLabel(label || '');
-            } else {
-                setIsHovering(false);
-                setCursorLabel('');
-            }
+            const isLight = document.body.classList.contains('light');
+
+            particles.current.forEach((p, i) => {
+                p.alpha -= 0.015;
+                p.size *= 0.98;
+
+                if (p.alpha <= 0) {
+                    particles.current.splice(i, 1);
+                    return;
+                }
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = isLight
+                    ? `rgba(0, 0, 0, ${p.alpha * 0.3})`
+                    : `rgba(255, 255, 255, ${p.alpha * 0.3})`;
+                ctx.fill();
+            });
+
+            animFrame.current = requestAnimationFrame(loop);
         };
-
-        let rafId: number;
-
-        const animate = () => {
-            // Dot follows immediately
-            dotPos.current.x += (mousePos.current.x - dotPos.current.x) * 0.8;
-            dotPos.current.y += (mousePos.current.y - dotPos.current.y) * 0.8;
-
-            // Ring follows with lag
-            ringPos.current.x += (mousePos.current.x - ringPos.current.x) * 0.15;
-            ringPos.current.y += (mousePos.current.y - ringPos.current.y) * 0.15;
-
-            if (dotRef.current) {
-                dotRef.current.style.left = `${dotPos.current.x}px`;
-                dotRef.current.style.top = `${dotPos.current.y}px`;
-            }
-
-            if (ringRef.current) {
-                ringRef.current.style.left = `${ringPos.current.x}px`;
-                ringRef.current.style.top = `${ringPos.current.y}px`;
-            }
-
-            if (labelRef.current) {
-                labelRef.current.style.left = `${ringPos.current.x}px`;
-                labelRef.current.style.top = `${ringPos.current.y + 40}px`;
-            }
-
-            rafId = requestAnimationFrame(animate);
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('mouseover', handleMouseOver);
-        rafId = requestAnimationFrame(animate);
+        loop();
 
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-            document.removeEventListener('mouseover', handleMouseOver);
-            cancelAnimationFrame(rafId);
-            document.body.classList.remove('custom-cursor-active');
+            cancelAnimationFrame(animFrame.current);
+            window.removeEventListener('resize', resize);
         };
-    }, [isMobile]);
+    }, []);
 
-    if (isMobile) return null;
+    useEffect(() => {
+        document.body.classList.add('custom-cursor-active');
+        window.addEventListener('mousemove', onMouseMove);
+
+        const interactives = document.querySelectorAll('a, button, [role="button"], input, textarea, select, [data-cursor]');
+        interactives.forEach((el) => {
+            el.addEventListener('mouseenter', onMouseEnterInteractive);
+            el.addEventListener('mouseleave', onMouseLeaveInteractive);
+        });
+
+        // Re-register on DOM changes
+        const observer = new MutationObserver(() => {
+            const newInteractives = document.querySelectorAll('a, button, [role="button"], input, textarea, select, [data-cursor]');
+            newInteractives.forEach((el) => {
+                el.addEventListener('mouseenter', onMouseEnterInteractive);
+                el.addEventListener('mouseleave', onMouseLeaveInteractive);
+            });
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        return () => {
+            document.body.classList.remove('custom-cursor-active');
+            window.removeEventListener('mousemove', onMouseMove);
+            observer.disconnect();
+            interactives.forEach((el) => {
+                el.removeEventListener('mouseenter', onMouseEnterInteractive);
+                el.removeEventListener('mouseleave', onMouseLeaveInteractive);
+            });
+        };
+    }, [onMouseMove, onMouseEnterInteractive, onMouseLeaveInteractive]);
+
+    // Detect touch device
+    if (typeof window !== 'undefined' && 'ontouchstart' in window) {
+        return null;
+    }
 
     return (
         <>
-            <div
-                ref={dotRef}
-                className={`cursor-dot ${isHovering ? 'hovering' : ''}`}
+            <canvas
+                ref={canvasRef}
+                style={{
+                    position: 'fixed',
+                    inset: 0,
+                    zIndex: 9999,
+                    pointerEvents: 'none',
+                }}
             />
-            <div
-                ref={ringRef}
-                className={`cursor-ring ${isHovering ? 'hovering' : ''}`}
-            />
-            <div
-                ref={labelRef}
-                className={`cursor-label ${cursorLabel ? 'visible' : ''}`}
-            >
-                {cursorLabel}
-            </div>
+            <div ref={dotRef} className="cursor-dot" />
+            <div ref={ringRef} className="cursor-ring" />
+            <div ref={labelRef} className="cursor-label" />
         </>
     );
 }

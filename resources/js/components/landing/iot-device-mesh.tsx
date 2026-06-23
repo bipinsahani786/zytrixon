@@ -1,5 +1,6 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
+import { Line } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface IoTDeviceMeshProps {
@@ -11,41 +12,39 @@ export default function IoTDeviceMesh({ mouseX, mouseY }: IoTDeviceMeshProps) {
     const groupRef = useRef<THREE.Group>(null);
     const targetRotation = useRef({ x: 0, y: 0 });
 
-    // Create circuit board geometry
+    // Create circuit board line data
     const circuitLines = useMemo(() => {
-        const points: THREE.Vector3[][] = [];
+        const lines: { points: [number, number, number][]; opacity: number }[] = [];
 
         // Horizontal traces
         for (let i = -2; i <= 2; i++) {
             const y = i * 0.5;
-            const line = [
-                new THREE.Vector3(-1.8, y, 0.02),
-                new THREE.Vector3(1.8, y, 0.02),
-            ];
-            points.push(line);
+            lines.push({
+                points: [[-1.8, y, 0.02], [1.8, y, 0.02]],
+                opacity: 0.15 + (lines.length % 3) * 0.08,
+            });
         }
 
         // Vertical traces
         for (let i = -3; i <= 3; i++) {
             const x = i * 0.6;
-            const line = [
-                new THREE.Vector3(x, -1.2, 0.02),
-                new THREE.Vector3(x, 1.2, 0.02),
-            ];
-            points.push(line);
+            lines.push({
+                points: [[x, -1.2, 0.02], [x, 1.2, 0.02]],
+                opacity: 0.15 + (lines.length % 3) * 0.08,
+            });
         }
 
-        // Diagonal traces for visual interest
-        points.push([
-            new THREE.Vector3(-1.5, -0.8, 0.02),
-            new THREE.Vector3(-0.5, 0.2, 0.02),
-        ]);
-        points.push([
-            new THREE.Vector3(0.5, -0.2, 0.02),
-            new THREE.Vector3(1.5, 0.8, 0.02),
-        ]);
+        // Diagonal traces
+        lines.push({
+            points: [[-1.5, -0.8, 0.02], [-0.5, 0.2, 0.02]],
+            opacity: 0.25,
+        });
+        lines.push({
+            points: [[0.5, -0.2, 0.02], [1.5, 0.8, 0.02]],
+            opacity: 0.25,
+        });
 
-        return points;
+        return lines;
     }, []);
 
     // Create chip positions
@@ -72,7 +71,10 @@ export default function IoTDeviceMesh({ mouseX, mouseY }: IoTDeviceMeshProps) {
         return nodes;
     }, []);
 
-    useFrame((_, delta) => {
+    const ballRef = useRef<THREE.Mesh>(null);
+    const materialRef = useRef<THREE.MeshStandardMaterial>(null);
+
+    useFrame((state, delta) => {
         if (!groupRef.current) return;
 
         // Mouse parallax tilt — subtle, not full rotation
@@ -84,6 +86,16 @@ export default function IoTDeviceMesh({ mouseX, mouseY }: IoTDeviceMeshProps) {
 
         // Slow auto-rotation
         groupRef.current.rotation.z += delta * 0.05;
+
+        // Animate central ball
+        if (ballRef.current) {
+            // Move up and down smoothly
+            ballRef.current.position.z = 0.12 + Math.sin(state.clock.elapsedTime * 2) * 0.1;
+        }
+        if (materialRef.current) {
+            // Pulse glow intensity
+            materialRef.current.emissiveIntensity = 2.5 + Math.sin(state.clock.elapsedTime * 4) * 1.5;
+        }
     });
 
     return (
@@ -101,26 +113,19 @@ export default function IoTDeviceMesh({ mouseX, mouseY }: IoTDeviceMeshProps) {
             {/* PCB edge highlight */}
             <lineSegments>
                 <edgesGeometry args={[new THREE.BoxGeometry(4, 2.8, 0.04)]} />
-                <lineBasicMaterial color="#00F5D4" transparent opacity={0.4} />
+                <lineBasicMaterial color="#FFFFFF" transparent opacity={0.4} />
             </lineSegments>
 
             {/* Circuit traces */}
-            {circuitLines.map((points, i) => (
-                <line key={`trace-${i}`}>
-                    <bufferGeometry>
-                        <bufferAttribute
-                            attach="attributes-position"
-                            array={new Float32Array(points.flatMap(p => [p.x, p.y, p.z]))}
-                            count={points.length}
-                            itemSize={3}
-                        />
-                    </bufferGeometry>
-                    <lineBasicMaterial
-                        color="#00F5D4"
-                        transparent
-                        opacity={0.15 + (i % 3) * 0.08}
-                    />
-                </line>
+            {circuitLines.map((line, i) => (
+                <Line
+                    key={`trace-${i}`}
+                    points={line.points}
+                    color="#FFFFFF"
+                    transparent
+                    opacity={line.opacity}
+                    lineWidth={1}
+                />
             ))}
 
             {/* IC Chips */}
@@ -136,7 +141,7 @@ export default function IoTDeviceMesh({ mouseX, mouseY }: IoTDeviceMeshProps) {
                     </mesh>
                     <lineSegments>
                         <edgesGeometry args={[new THREE.BoxGeometry(...chip.size)]} />
-                        <lineBasicMaterial color="#00F5D4" transparent opacity={i === 0 ? 0.6 : 0.25} />
+                        <lineBasicMaterial color="#FFFFFF" transparent opacity={i === 0 ? 0.6 : 0.25} />
                     </lineSegments>
                 </group>
             ))}
@@ -146,19 +151,20 @@ export default function IoTDeviceMesh({ mouseX, mouseY }: IoTDeviceMeshProps) {
                 <mesh key={`node-${i}`} position={pos}>
                     <sphereGeometry args={[0.04, 8, 8]} />
                     <meshStandardMaterial
-                        color="#00F5D4"
-                        emissive="#00F5D4"
+                        color="#FFFFFF"
+                        emissive="#FFFFFF"
                         emissiveIntensity={0.6}
                     />
                 </mesh>
             ))}
 
-            {/* Central LED glow */}
-            <mesh position={[0, 0, 0.12]}>
-                <sphereGeometry args={[0.08, 16, 16]} />
+            {/* Central LED glow ball */}
+            <mesh ref={ballRef} position={[0, 0, 0.12]}>
+                <sphereGeometry args={[0.1, 32, 32]} />
                 <meshStandardMaterial
-                    color="#00F5D4"
-                    emissive="#00F5D4"
+                    ref={materialRef}
+                    color="#FFFFFF"
+                    emissive="#FFFFFF"
                     emissiveIntensity={2}
                     transparent
                     opacity={0.9}
@@ -177,8 +183,8 @@ export default function IoTDeviceMesh({ mouseX, mouseY }: IoTDeviceMeshProps) {
             <mesh position={[1.8, 1.45, 0.2]}>
                 <sphereGeometry args={[0.04, 8, 8]} />
                 <meshStandardMaterial
-                    color="#00F5D4"
-                    emissive="#00F5D4"
+                    color="#FFFFFF"
+                    emissive="#FFFFFF"
                     emissiveIntensity={1.5}
                 />
             </mesh>

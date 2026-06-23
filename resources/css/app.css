@@ -9,7 +9,7 @@
 
 /* ============================================
    ZYTRIXON DESIGN SYSTEM
-   B&W + Electric Cyan (#00F5D4)
+   Pure B&W Monochrome — Dot Pattern + Z Watermark
    ============================================ */
 
 @theme {
@@ -70,17 +70,17 @@
 
 /* ---- Zytrixon Core Tokens ---- */
 :root {
-    /* Core palette */
+    /* Core palette — Pure B&W Monochrome */
     --zy-black: #000000;
     --zy-white: #FFFFFF;
-    --zy-accent: #00F5D4;
-    --zy-accent-dim: #00C4A8;
-    --zy-accent-glow: rgba(0, 245, 212, 0.15);
-    --zy-accent-glow-strong: rgba(0, 245, 212, 0.3);
+    --zy-accent: #FFFFFF;
+    --zy-accent-dim: #CCCCCC;
+    --zy-accent-glow: rgba(255, 255, 255, 0.1);
+    --zy-accent-glow-strong: rgba(255, 255, 255, 0.2);
     --zy-gray-text: #888888;
     --zy-gray-dark: #1A1A1A;
     --zy-gray-border: #222222;
-    --zy-gray-card: #111111;
+    --zy-gray-card: #0C0C0C;
     --zy-gray-light: #AAAAAA;
 
     /* Spacing */
@@ -93,14 +93,14 @@
     --zy-duration: 0.6s;
     --zy-duration-fast: 0.3s;
 
-    /* shadcn overrides for admin/auth pages */
+    /* shadcn overrides */
     --background: #000000;
     --foreground: #FFFFFF;
-    --card: #111111;
+    --card: #0C0C0C;
     --card-foreground: #FFFFFF;
-    --popover: #111111;
+    --popover: #0C0C0C;
     --popover-foreground: #FFFFFF;
-    --primary: #00F5D4;
+    --primary: #FFFFFF;
     --primary-foreground: #000000;
     --secondary: #1A1A1A;
     --secondary-foreground: #FFFFFF;
@@ -110,33 +110,33 @@
     --accent-foreground: #FFFFFF;
     --destructive: oklch(0.577 0.245 27.325);
     --destructive-foreground: oklch(0.577 0.245 27.325);
-    --border: #222222;
-    --input: #222222;
-    --ring: #00F5D4;
-    --chart-1: #00F5D4;
-    --chart-2: #00C4A8;
+    --border: #1A1A1A;
+    --input: #1A1A1A;
+    --ring: #FFFFFF;
+    --chart-1: #FFFFFF;
+    --chart-2: #CCCCCC;
     --chart-3: #888888;
-    --chart-4: #FFFFFF;
-    --chart-5: #444444;
+    --chart-4: #555555;
+    --chart-5: #333333;
     --radius: 0.5rem;
     --sidebar: #0A0A0A;
     --sidebar-foreground: #FFFFFF;
-    --sidebar-primary: #00F5D4;
+    --sidebar-primary: #FFFFFF;
     --sidebar-primary-foreground: #000000;
     --sidebar-accent: #1A1A1A;
     --sidebar-accent-foreground: #FFFFFF;
-    --sidebar-border: #222222;
-    --sidebar-ring: #00F5D4;
+    --sidebar-border: #1A1A1A;
+    --sidebar-ring: #FFFFFF;
 }
 
 .dark {
     --background: #000000;
     --foreground: #FFFFFF;
-    --card: #111111;
+    --card: #0C0C0C;
     --card-foreground: #FFFFFF;
-    --popover: #111111;
+    --popover: #0C0C0C;
     --popover-foreground: #FFFFFF;
-    --primary: #00F5D4;
+    --primary: #FFFFFF;
     --primary-foreground: #000000;
     --secondary: #1A1A1A;
     --secondary-foreground: #FFFFFF;
@@ -146,22 +146,22 @@
     --accent-foreground: #FFFFFF;
     --destructive: oklch(0.396 0.141 25.723);
     --destructive-foreground: oklch(0.637 0.237 25.331);
-    --border: #222222;
-    --input: #222222;
-    --ring: #00F5D4;
-    --chart-1: #00F5D4;
-    --chart-2: #00C4A8;
+    --border: #1A1A1A;
+    --input: #1A1A1A;
+    --ring: #FFFFFF;
+    --chart-1: #FFFFFF;
+    --chart-2: #CCCCCC;
     --chart-3: #888888;
-    --chart-4: #FFFFFF;
-    --chart-5: #444444;
+    --chart-4: #555555;
+    --chart-5: #333333;
     --sidebar: #0A0A0A;
     --sidebar-foreground: #FFFFFF;
-    --sidebar-primary: #00F5D4;
+    --sidebar-primary: #FFFFFF;
     --sidebar-primary-foreground: #000000;
     --sidebar-accent: #1A1A1A;
     --sidebar-accent-foreground: #FFFFFF;
-    --sidebar-border: #222222;
-    --sidebar-ring: #00F5D4;
+    --sidebar-border: #1A1A1A;
+    --sidebar-ring: #FFFFFF;
 }
 
 /* ============================================
@@ -206,8 +206,8 @@
     }
 
     ::selection {
-        background-color: var(--zy-accent);
-        color: var(--zy-black);
+        background-color: #fff;
+        color: #000;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -257,7 +257,7 @@
     left: 0;
     width: 8px;
     height: 8px;
-    background-color: var(--zy-accent);
+    background-color: #fff;
     border-radius: 50%;
     pointer-events: none;
     z-index: 10001;
@@ -288,8 +288,8 @@
 .cursor-ring.hovering {
     width: 60px;
     height: 60px;
-    border-color: var(--zy-accent);
-    background-color: rgba(0, 245, 212, 0.05);
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.04);
 }
 
 .cursor-dot.hovering {
@@ -301,7 +301,7 @@
     position: fixed;
     pointer-events: none;
     z-index: 10002;
-    color: var(--zy-accent);
+    color: #fff;
     font-family: var(--font-heading);
     font-size: 11px;
     font-weight: 600;
@@ -346,8 +346,8 @@
     justify-content: center;
     gap: 8px;
     padding: 16px 40px;
-    background-color: var(--zy-accent);
-    color: var(--zy-black);
+    background-color: #fff;
+    color: #000;
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 14px;
@@ -357,13 +357,15 @@
     border: none;
     border-radius: 0;
     transition: transform 0.3s var(--zy-ease),
-                box-shadow 0.3s var(--zy-ease);
+                box-shadow 0.3s var(--zy-ease),
+                background-color 0.3s var(--zy-ease);
     will-change: transform;
 }
 
 .magnetic-btn:hover {
-    box-shadow: 0 0 40px var(--zy-accent-glow-strong),
-                0 0 80px var(--zy-accent-glow);
+    background-color: #e0e0e0;
+    box-shadow: 0 0 40px rgba(255,255,255,0.15),
+                0 0 80px rgba(255,255,255,0.05);
 }
 
 .magnetic-btn .btn-arrow {
@@ -381,6 +383,82 @@
 .zy-section {
     padding: var(--zy-section-pad-y) var(--zy-section-pad-x);
     position: relative;
+    overflow: hidden;
+}
+
+/* ZYTRIXON Full Watermark — dynamic alignment and glow */
+.zy-section::before {
+    content: 'ZYTRIXON';
+    position: absolute;
+    font-family: var(--font-heading);
+    font-size: clamp(100px, 15vw, 220px);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 0;
+    letter-spacing: 0.05em;
+    --w-rot: -5deg;
+    animation: watermarkGlow 6s ease-in-out infinite alternate;
+}
+
+.zy-section:nth-of-type(1n)::before {
+    right: -5%;
+    bottom: 5%;
+    --w-rot: -8deg;
+}
+
+.zy-section:nth-of-type(2n)::before {
+    left: -5%;
+    top: 10%;
+    --w-rot: 6deg;
+}
+
+.zy-section:nth-of-type(3n)::before {
+    right: 15%;
+    top: 25%;
+    --w-rot: -3deg;
+}
+
+.zy-section:nth-of-type(4n)::before {
+    left: 10%;
+    bottom: 15%;
+    --w-rot: 4deg;
+}
+
+@keyframes watermarkGlow {
+    0% {
+        opacity: 0.2;
+        transform: rotate(var(--w-rot)) scale(0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(var(--w-rot)) scale(1.03);
+    }
+}
+
+/* Dot Vortex Pattern — radial concentric dots like the cover image */
+.zy-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(255,255,255,0.04) 1px, transparent 1px),
+        radial-gradient(circle at 15% 50%, rgba(255,255,255,0.025) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 15% 50%, rgba(255,255,255,0.015) 2px, transparent 2px);
+    background-size: 18px 18px, 30px 30px, 50px 50px;
+    background-position: 0 0, 5px 5px, 10px 10px;
+    mask-image: radial-gradient(ellipse 60% 80% at 10% 50%, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 80% at 10% 50%, black 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.zy-section > * {
+    position: relative;
+    z-index: 1;
 }
 
 .zy-section-header {
@@ -393,9 +471,10 @@
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--zy-accent);
+    color: var(--zy-white);
     margin-bottom: 16px;
     display: block;
+    opacity: 0.5;
 }
 
 .zy-section-title {
@@ -414,22 +493,204 @@
 }
 
 /* ============================================
+   LIGHT MODE
+   ============================================ */
+
+body.light {
+    --zy-black: #FFFFFF;
+    --zy-white: #0a0a0a;
+    --zy-accent: #0a0a0a;
+    --zy-accent-dim: #333333;
+    --zy-accent-glow: rgba(0, 0, 0, 0.08);
+    --zy-accent-glow-strong: rgba(0, 0, 0, 0.15);
+    --zy-gray-text: #666666;
+    --zy-gray-dark: #f0f0f0;
+    --zy-gray-border: #e0e0e0;
+    --zy-gray-card: #f7f7f7;
+    --zy-gray-light: #555555;
+
+    --background: #FFFFFF;
+    --foreground: #0a0a0a;
+    --card: #f7f7f7;
+    --card-foreground: #0a0a0a;
+    --border: #e0e0e0;
+    --input: #e0e0e0;
+    --primary: #0a0a0a;
+    --primary-foreground: #FFFFFF;
+
+    background-color: #fff;
+    color: #0a0a0a;
+}
+
+/* Base Light Mode Text & Background Overrides */
+body.light .zy-section-title,
+body.light .zy-section-label,
+body.light .navbar-link {
+    color: var(--zy-white);
+}
+
+body.light .zy-section {
+    background-color: #ffffff !important;
+}
+
+body.light ::selection {
+    background-color: #0a0a0a;
+    color: #fff;
+}
+
+body.light .navbar {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+body.light .navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+body.light .magnetic-btn {
+    background-color: #0a0a0a;
+    color: #fff;
+}
+
+body.light .magnetic-btn:hover {
+    background-color: #333;
+}
+
+body.light .cursor-dot {
+    background-color: #0a0a0a;
+}
+
+body.light .cursor-ring {
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+body.light .cursor-ring.hovering {
+    border-color: #0a0a0a;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+body.light .zy-section::before {
+    color: rgba(0, 0, 0, 0.05);
+}
+
+body.light .zy-section::after {
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(0,0,0,0.04) 1px, transparent 1px),
+        radial-gradient(circle at 15% 50%, rgba(0,0,0,0.025) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 15% 50%, rgba(0,0,0,0.015) 2px, transparent 2px);
+}
+
+body.light .zy-card::after {
+    background-color: #f7f7f7;
+}
+
+body.light .zy-card:hover::after {
+    background-color: #ffffff;
+}
+
+body.light .zy-card:hover {
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+
+body.light .grain-overlay {
+    mix-blend-mode: multiply;
+}
+
+body.light .loading-screen {
+    background-color: #fff;
+}
+
+body.light .whatsapp-float {
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.2);
+}
+
+body.light .stat-number,
+body.light .stat-suffix {
+    color: #0a0a0a;
+}
+
+body.light .testimonial-card {
+    background-color: #f7f7f7;
+    border-color: #e0e0e0;
+}
+
+body.light .process-card {
+    background-color: #f7f7f7;
+    border-color: #e0e0e0;
+}
+
+body.light .site-footer {
+    background-color: #f0f0f0;
+    border-color: #e0e0e0;
+}
+
+body.light .top-bar {
+    background-color: #f7f7f7 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    color: #333 !important;
+}
+
+body.light .top-bar svg,
+body.light .top-bar a {
+    color: #333 !important;
+}
+
+/* Scrollbar for light mode */
+body.light::-webkit-scrollbar-track { background: #f0f0f0; }
+body.light::-webkit-scrollbar-thumb { background: #ccc; }
+body.light::-webkit-scrollbar-thumb:hover { background: #999; }
+
+/* ============================================
    CARD STYLES
    ============================================ */
 
 .zy-card {
-    background-color: var(--zy-gray-card);
-    border: 1px solid var(--zy-gray-border);
+    position: relative;
     padding: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 1;
     transition: transform 0.4s var(--zy-ease),
-                border-color 0.4s var(--zy-ease),
                 box-shadow 0.4s var(--zy-ease);
+}
+
+.zy-card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background-color: var(--zy-gray-card);
+    border-radius: 11px;
+    z-index: -1;
+    transition: background-color 0.4s var(--zy-ease);
+}
+
+.zy-card::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250%;
+    height: 250%;
+    background: conic-gradient(from 0deg, transparent 75%, rgba(255,255,255,0.4) 95%, #ffffff 100%);
+    animation: spinGradientCentered 4s linear infinite;
+    z-index: -2;
+}
+
+body.light .zy-card::before {
+    opacity: 0.5;
+}
+
+@keyframes spinGradientCentered {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .zy-card:hover {
     transform: translateY(-4px);
-    border-color: var(--zy-accent);
-    box-shadow: 0 0 30px var(--zy-accent-glow);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+.zy-card:hover::after {
+    background-color: var(--zy-gray-dark);
 }
 
 /* ============================================
@@ -484,7 +745,7 @@
    ============================================ */
 
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -613,7 +874,7 @@
 }
 
 .mobile-nav-panel a:hover {
-    color: var(--zy-accent);
+    color: var(--zy-gray-text);
 }
 
 /* ============================================
@@ -660,7 +921,7 @@
 }
 
 .process-card:hover {
-    border-color: var(--zy-accent);
+    border-color: rgba(255,255,255,0.3);
 }
 
 .process-number {
@@ -674,7 +935,7 @@
 }
 
 .process-card:hover .process-number {
-    color: var(--zy-accent);
+    color: #fff;
 }
 
 /* ============================================
@@ -782,7 +1043,7 @@
 }
 
 .footer-link:hover {
-    color: var(--zy-accent);
+    color: #fff;
 }
 
 .footer-bottom {
