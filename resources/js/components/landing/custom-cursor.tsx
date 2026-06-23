@@ -1,41 +1,21 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 
-interface Particle {
-    x: number;
-    y: number;
-    alpha: number;
-    size: number;
-}
-
 export default function CustomCursor() {
+    const [mounted, setMounted] = useState(false);
     const dotRef = useRef<HTMLDivElement>(null);
     const ringRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const particles = useRef<Particle[]>([]);
     const mousePos = useRef({ x: -100, y: -100 });
-    const animFrame = useRef<number>(0);
 
     const onMouseMove = useCallback((e: MouseEvent) => {
         mousePos.current = { x: e.clientX, y: e.clientY };
 
         if (dotRef.current) {
-            gsap.to(dotRef.current, { x: e.clientX, y: e.clientY, duration: 0.1, ease: 'power2.out' });
+            gsap.to(dotRef.current, { x: e.clientX, y: e.clientY, duration: 0.1, ease: 'power2.out', force3D: true });
         }
         if (ringRef.current) {
-            gsap.to(ringRef.current, { x: e.clientX, y: e.clientY, duration: 0.35, ease: 'power2.out' });
-        }
-
-        // Add particle
-        particles.current.push({
-            x: e.clientX,
-            y: e.clientY,
-            alpha: 0.8,
-            size: Math.random() * 4 + 2,
-        });
-        if (particles.current.length > 40) {
-            particles.current.shift();
+            gsap.to(ringRef.current, { x: e.clientX, y: e.clientY, duration: 0.35, ease: 'power2.out', force3D: true });
         }
     }, []);
 
@@ -59,53 +39,13 @@ export default function CustomCursor() {
         }
     }, []);
 
-    // Canvas particle animation loop
     useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-        resize();
-        window.addEventListener('resize', resize);
-
-        const loop = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            const isLight = document.body.classList.contains('light');
-
-            particles.current.forEach((p, i) => {
-                p.alpha -= 0.015;
-                p.size *= 0.98;
-
-                if (p.alpha <= 0) {
-                    particles.current.splice(i, 1);
-                    return;
-                }
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = isLight
-                    ? `rgba(0, 0, 0, ${p.alpha * 0.3})`
-                    : `rgba(255, 255, 255, ${p.alpha * 0.3})`;
-                ctx.fill();
-            });
-
-            animFrame.current = requestAnimationFrame(loop);
-        };
-        loop();
-
-        return () => {
-            cancelAnimationFrame(animFrame.current);
-            window.removeEventListener('resize', resize);
-        };
+        setMounted(true);
     }, []);
 
     useEffect(() => {
+        if (!mounted) return;
+
         document.body.classList.add('custom-cursor-active');
         window.addEventListener('mousemove', onMouseMove);
 
@@ -115,7 +55,6 @@ export default function CustomCursor() {
             el.addEventListener('mouseleave', onMouseLeaveInteractive);
         });
 
-        // Re-register on DOM changes
         const observer = new MutationObserver(() => {
             const newInteractives = document.querySelectorAll('a, button, [role="button"], input, textarea, select, [data-cursor]');
             newInteractives.forEach((el) => {
@@ -134,27 +73,95 @@ export default function CustomCursor() {
                 el.removeEventListener('mouseleave', onMouseLeaveInteractive);
             });
         };
-    }, [onMouseMove, onMouseEnterInteractive, onMouseLeaveInteractive]);
+    }, [mounted, onMouseMove, onMouseEnterInteractive, onMouseLeaveInteractive]);
 
-    // Detect touch device
+    if (!mounted) {
+        return null;
+    }
+
     if (typeof window !== 'undefined' && 'ontouchstart' in window) {
         return null;
     }
 
     return (
         <>
-            <canvas
-                ref={canvasRef}
+            <div
+                ref={dotRef}
+                className="cursor-dot"
                 style={{
                     position: 'fixed',
-                    inset: 0,
-                    zIndex: 9999,
+                    top: 0,
+                    left: 0,
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: 'white',
                     pointerEvents: 'none',
+                    zIndex: 9999,
+                    marginTop: '-4px',
+                    marginLeft: '-4px',
                 }}
             />
-            <div ref={dotRef} className="cursor-dot" />
-            <div ref={ringRef} className="cursor-ring" />
-            <div ref={labelRef} className="cursor-label" />
+            <div
+                ref={ringRef}
+                className="cursor-ring"
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '32px',
+                    height: '32px',
+                    border: '1px solid rgba(255, 255, 255, 0.4)',
+                    borderRadius: '50%',
+                    marginTop: '-16px',
+                    marginLeft: '-16px',
+                    pointerEvents: 'none',
+                    transition: 'transform 0.2s ease, background 0.2s ease',
+                    willChange: 'transform',
+                    zIndex: 9998,
+                }}
+            >
+                <div
+                    ref={labelRef}
+                    className="cursor-label"
+                    style={{
+                        position: 'absolute',
+                        top: '-30px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        background: 'white',
+                        color: 'black',
+                        padding: '4px 10px',
+                        borderRadius: '20px',
+                        fontSize: '11px',
+                        fontWeight: 600,
+                        letterSpacing: '0.05em',
+                        textTransform: 'uppercase',
+                        whiteSpace: 'nowrap',
+                        opacity: 0,
+                        transition: 'opacity 0.2s ease, transform 0.2s ease',
+                        pointerEvents: 'none',
+                    }}
+                />
+            </div>
+            
+            <style>{`
+                body {
+                    cursor: none;
+                }
+                a, button, input, textarea, select, [role="button"], [data-cursor] {
+                    cursor: none;
+                }
+                .hovering {
+                    transform: translate(-50%, -50%) scale(1.5) !important;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-color: white !important;
+                }
+                .cursor-label.visible {
+                    opacity: 1 !important;
+                    transform: translateX(-50%) translateY(-5px) !important;
+                }
+            `}</style>
         </>
     );
 }

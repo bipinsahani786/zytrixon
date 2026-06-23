@@ -1,26 +1,27 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const TECH = [
-    { name: 'React', color: '#61DAFB' },
-    { name: 'Next.js', color: 'var(--zy-white)' },
-    { name: 'Laravel', color: '#FF2D20' },
-    { name: 'Node.js', color: '#68A063' },
-    { name: 'React Native', color: '#61DAFB' },
-    { name: 'Flutter', color: '#02569B' },
-    { name: 'Python', color: '#3776AB' },
-    { name: 'AWS', color: '#FF9900' },
-    { name: 'Docker', color: '#2496ED' },
-    { name: 'MongoDB', color: '#47A248' },
-    { name: 'PostgreSQL', color: '#4169E1' },
-    { name: 'TypeScript', color: '#3178C6' },
-    { name: 'Tailwind', color: '#06B6D4' },
-    { name: 'Redis', color: '#DC382D' },
-    { name: 'GraphQL', color: '#E10098' },
-    { name: 'Kubernetes', color: '#326CE5' },
+    { name: 'React', slug: 'react', color: '#61DAFB', category: 'Frontend' },
+    { name: 'Next.js', slug: 'nextdotjs', color: '#FFFFFF', category: 'Frontend' },
+    { name: 'Vue.js', slug: 'vuedotjs', color: '#4FC08D', category: 'Frontend' },
+    { name: 'Laravel', slug: 'laravel', color: '#FF2D20', category: 'Backend' },
+    { name: 'Node.js', slug: 'nodedotjs', color: '#68A063', category: 'Backend' },
+    { name: 'Python', slug: 'python', color: '#3776AB', category: 'Backend' },
+    { name: 'React Native', slug: 'react', color: '#61DAFB', category: 'Mobile' },
+    { name: 'Flutter', slug: 'flutter', color: '#02569B', category: 'Mobile' },
+    { name: 'AWS', slug: 'amazonwebservices', color: '#FF9900', category: 'Cloud' },
+    { name: 'Docker', slug: 'docker', color: '#2496ED', category: 'Cloud' },
+    { name: 'Kubernetes', slug: 'kubernetes', color: '#326CE5', category: 'Cloud' },
+    { name: 'MongoDB', slug: 'mongodb', color: '#47A248', category: 'Database' },
+    { name: 'PostgreSQL', slug: 'postgresql', color: '#4169E1', category: 'Database' },
+    { name: 'Redis', slug: 'redis', color: '#DC382D', category: 'Database' },
+    { name: 'TypeScript', slug: 'typescript', color: '#3178C6', category: 'Language' },
+    { name: 'GraphQL', slug: 'graphql', color: '#E10098', category: 'API' },
+    { name: 'Tailwind CSS', slug: 'tailwindcss', color: '#06B6D4', category: 'Styling' },
 ];
 
 export default function TechStackSection() {
@@ -33,10 +34,10 @@ export default function TechStackSection() {
         const ctx = gsap.context(() => {
             gsap.fromTo(
                 itemsRef.current.filter(Boolean),
-                { opacity: 0, y: 20 },
+                { opacity: 0, scale: 0.8, y: 30 },
                 {
-                    opacity: 1, y: 0,
-                    duration: 0.4, stagger: 0.04, ease: 'power3.out',
+                    opacity: 1, scale: 1, y: 0,
+                    duration: 0.8, stagger: 0.05, ease: 'back.out(1.7)',
                     scrollTrigger: { trigger: sectionRef.current, start: 'top 75%', once: true },
                 }
             );
@@ -46,63 +47,140 @@ export default function TechStackSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="zy-section" style={{ background: 'var(--zy-black)', borderTop: '1px solid var(--zy-gray-border)' }}>
-            <div className="zy-section-header" style={{ textAlign: 'center' }}>
+        <section ref={sectionRef} className="zy-section" style={{ position: 'relative', background: 'var(--zy-black)', overflow: 'hidden' }}>
+            {/* Background Ambient Glow */}
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '60vw',
+                    height: '60vw',
+                    background: 'radial-gradient(circle, rgba(78,205,196,0.05) 0%, rgba(0,0,0,0) 70%)',
+                    zIndex: 0,
+                    pointerEvents: 'none',
+                }}
+            />
+
+            {/* Grid Pattern */}
+            <div
+                style={{
+                    position: 'absolute',
+                    inset: 0,
+                    backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)
+                    `,
+                    backgroundSize: '40px 40px',
+                    zIndex: 0,
+                    pointerEvents: 'none',
+                }}
+            />
+
+            <div className="zy-section-header" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
                 <span className="zy-section-label">Technology</span>
                 <h2 className="zy-section-title">Our Tech Stack</h2>
                 <p className="zy-section-subtitle" style={{ margin: '20px auto 0' }}>
-                    We use modern, battle-tested technologies. No shortcuts, no legacy bloat.
+                    We build with modern, battle-tested technologies to deliver scale, speed, and security.
                 </p>
             </div>
 
             <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-                gap: 12,
-                maxWidth: 1000,
-                margin: '0 auto',
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: '16px',
+                maxWidth: '900px',
+                margin: '40px auto 0',
+                position: 'relative',
+                zIndex: 1,
             }}>
-                {TECH.map((tech, i) => (
-                    <div
-                        key={i}
-                        ref={(el) => { itemsRef.current[i] = el; }}
-                        style={{
-                            padding: '20px 16px',
-                            background: '#111',
-                            border: '1px solid var(--zy-gray-border)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            gap: 10,
-                            transition: 'all 0.3s var(--zy-ease)',
-                            opacity: 0,
-                        }}
-                        onMouseEnter={(e) => {
-                            const el = e.currentTarget as HTMLElement;
-                            el.style.borderColor = tech.color;
-                            el.style.transform = 'translateY(-4px)';
-                            el.style.boxShadow = `0 8px 24px ${tech.color}15`;
-                        }}
-                        onMouseLeave={(e) => {
-                            const el = e.currentTarget as HTMLElement;
-                            el.style.borderColor = '#1a1a1a';
-                            el.style.transform = 'translateY(0)';
-                            el.style.boxShadow = 'none';
-                        }}
-                    >
-                        <div style={{
-                            width: 40, height: 40, borderRadius: '50%',
-                            background: `${tech.color}15`,
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontSize: 18, fontWeight: 700, color: tech.color,
-                            fontFamily: 'var(--font-heading)',
-                        }}>
-                            {tech.name.charAt(0)}
+                {TECH.map((tech, i) => {
+                    // Randomize float animation duration and delay
+                    const floatDuration = 3 + Math.random() * 2;
+                    const floatDelay = Math.random() * 2;
+                    
+                    return (
+                        <div
+                            key={i}
+                            ref={(el) => { itemsRef.current[i] = el; }}
+                            className="tech-pill"
+                            style={{
+                                padding: '12px 24px',
+                                background: 'rgba(255, 255, 255, 0.03)',
+                                border: '1px solid rgba(255, 255, 255, 0.08)',
+                                borderRadius: '50px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '12px',
+                                backdropFilter: 'blur(10px)',
+                                WebkitBackdropFilter: 'blur(10px)',
+                                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                                cursor: 'default',
+                                opacity: 0,
+                                animation: `floating ${floatDuration}s ease-in-out infinite alternate`,
+                                animationDelay: `${floatDelay}s`,
+                                // Using CSS variables to pass color to the hover state
+                                '--tech-color': tech.color,
+                            } as React.CSSProperties}
+                        >
+                            {/* Colored Logo */}
+                            <img
+                                src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color.replace('#', '')}`}
+                                alt={tech.name}
+                                className="tech-logo"
+                                loading="lazy"
+                                style={{
+                                    width: '18px',
+                                    height: '18px',
+                                    filter: `drop-shadow(0 0 8px ${tech.color}66)`,
+                                    transition: 'all 0.4s ease',
+                                }}
+                            />
+                            
+                            <span 
+                                className="tech-name"
+                                style={{ 
+                                    fontSize: '15px', 
+                                    color: 'var(--zy-gray-light)', 
+                                    fontWeight: 600,
+                                    letterSpacing: '0.02em',
+                                    transition: 'color 0.3s ease',
+                                }}
+                            >
+                                {tech.name}
+                            </span>
                         </div>
-                        <span style={{ fontSize: 12, color: 'var(--zy-gray-light)', fontWeight: 500 }}>{tech.name}</span>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
+
+            <style>{`
+                @keyframes floating {
+                    0% { transform: translateY(0px); }
+                    100% { transform: translateY(-8px); }
+                }
+                
+                .tech-pill:hover {
+                    background: rgba(255, 255, 255, 0.08) !important;
+                    border-color: var(--tech-color) !important;
+                    box-shadow: 0 10px 30px -10px var(--tech-color) !important;
+                    transform: translateY(-5px) scale(1.05) !important;
+                    z-index: 10;
+                    /* Pause floating animation on hover so it doesn't glitch */
+                    animation-play-state: paused !important;
+                }
+                
+                .tech-pill:hover .tech-name {
+                    color: #fff !important;
+                }
+                
+                .tech-pill:hover .tech-logo {
+                    transform: scale(1.2);
+                    filter: drop-shadow(0 0 15px var(--tech-color)) drop-shadow(0 0 25px var(--tech-color)) !important;
+                }
+            `}</style>
         </section>
     );
 }

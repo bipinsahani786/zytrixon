@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const VALUES = [
     {
         icon: (
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--zy-white)" strokeWidth="1.5">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
         ),
@@ -16,7 +16,7 @@ const VALUES = [
     },
     {
         icon: (
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--zy-white)" strokeWidth="1.5">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
             </svg>
         ),
@@ -25,7 +25,7 @@ const VALUES = [
     },
     {
         icon: (
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--zy-white)" strokeWidth="1.5">
                 <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
                 <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
@@ -74,6 +74,7 @@ export default function CoreValuesSection() {
                     <div
                         key={i}
                         ref={(el) => { cardsRef.current[i] = el; }}
+                        className="value-card"
                         style={{
                             padding: 40,
                             border: '1px solid var(--zy-gray-border)',
@@ -83,16 +84,16 @@ export default function CoreValuesSection() {
                             transition: 'border-color 0.3s var(--zy-ease)',
                         }}
                         onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLElement).style.borderColor = '#FFFFFF';
+                            (e.currentTarget as HTMLElement).style.borderColor = 'var(--zy-white)';
                         }}
                         onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLElement).style.borderColor = '#1a1a1a';
+                            (e.currentTarget as HTMLElement).style.borderColor = 'var(--zy-gray-border)';
                         }}
                     >
                         {/* Background hover reveal */}
                         <div style={{
                             position: 'absolute', inset: 0,
-                            background: 'rgba(255,255,255,0.03)',
+                            background: 'var(--zy-accent-glow)',
                             transform: 'translateY(100%)',
                             transition: 'transform 0.5s var(--zy-ease)',
                         }}
@@ -112,6 +113,12 @@ export default function CoreValuesSection() {
                     </div>
                 ))}
             </div>
+
+            <style>{`
+                .value-card:hover .value-bg {
+                    transform: translateY(0) !important;
+                }
+            `}</style>
         </section>
     );
 }

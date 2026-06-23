@@ -1,6 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTheme } from '@/components/landing/theme-provider';
+import Logo from '@/components/ui/logo';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -8,8 +10,12 @@ export default function AboutSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLDivElement>(null);
+    const { theme } = useTheme();
+    const isLight = theme === 'light';
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         if (!sectionRef.current) return;
 
         const ctx = gsap.context(() => {
@@ -36,9 +42,11 @@ export default function AboutSection() {
         return () => ctx.revert();
     }, []);
 
+    const activeIsLight = mounted && isLight;
+
     return (
         <section ref={sectionRef} id="about" className="zy-section" style={{ background: 'var(--zy-black)' }}>
-            <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+            <div className="about-grid" style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
                 {/* Image side */}
                 <div ref={imageRef} style={{ position: 'relative', opacity: 0 }}>
                     <div style={{
@@ -48,8 +56,8 @@ export default function AboutSection() {
                     }} />
                     <div style={{
                         position: 'relative',
-                        border: '1px solid #222',
-                        background: '#111',
+                        border: activeIsLight ? '1px solid var(--zy-gray-border)' : '1px solid #222',
+                        background: activeIsLight ? '#fdfdfd' : '#111',
                         padding: 8,
                         borderRadius: 16,
                         transform: 'rotate(2deg)',
@@ -61,39 +69,38 @@ export default function AboutSection() {
                     >
                         <div style={{
                             width: '100%', height: 380, borderRadius: 12,
-                            background: 'linear-gradient(135deg, #111 0%, #0a0a0a 50%, #111 100%)',
+                            background: activeIsLight ? 'linear-gradient(135deg, #f5f5f5 0%, #ffffff 50%, #f5f5f5 100%)' : 'linear-gradient(135deg, #111 0%, #0a0a0a 50%, #111 100%)',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                             position: 'relative', overflow: 'hidden',
                         }}>
                             {/* Grid pattern overlay */}
                             <div style={{
                                 position: 'absolute', inset: 0,
-                                backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+                                backgroundImage: activeIsLight ? 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)' : 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
                                 backgroundSize: '30px 30px',
                             }} />
-                            {/* Z Logo */}
+                            {/* Z Logo Watermark */}
                             <div style={{
-                                fontFamily: 'var(--font-heading)', fontSize: 120, fontWeight: 700,
-                                color: 'var(--zy-white)', opacity: 0.08, position: 'absolute',
-                            }}>Z</div>
+                                position: 'absolute', opacity: activeIsLight ? 0.03 : 0.06,
+                                width: 400, display: 'flex', justifyContent: 'center'
+                            }}>
+                                <Logo />
+                            </div>
                             {/* Content */}
                             <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: 40 }}>
                                 <div style={{
-                                    width: 64, height: 64, border: '2px solid #FFFFFF',
+                                    width: '100%', maxWidth: 280, height: 'auto', margin: '0 auto 10px',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 28,
-                                    color: 'var(--zy-white)', margin: '0 auto 20px',
-                                }}>Z</div>
-                                <div style={{ fontFamily: 'var(--font-heading)', fontSize: 22, fontWeight: 700, color: 'var(--zy-white)', letterSpacing: '0.05em' }}>
-                                    ZYTRIXON TECH
+                                    }}>
+                                    <Logo />
                                 </div>
-                                <div style={{ fontSize: 12, color: 'var(--zy-gray-text)', letterSpacing: '0.2em', textTransform: 'uppercase', marginTop: 8 }}>
+                                <div style={{ fontSize: 13, color: 'var(--zy-gray-text)', letterSpacing: '0.2em', textTransform: 'uppercase', marginTop: 16 }}>
                                     Engineering Digital Dominance
                                 </div>
                                 <div style={{ marginTop: 24, display: 'flex', justifyContent: 'center', gap: 16 }}>
-                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#FFFFFF', animation: 'pulse 2s infinite' }} />
-                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#FFFFFF', animation: 'pulse 2s infinite 0.3s' }} />
-                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#FFFFFF', animation: 'pulse 2s infinite 0.6s' }} />
+                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: activeIsLight ? '#000' : '#FFFFFF', animation: 'pulse 2s infinite' }} />
+                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: activeIsLight ? '#000' : '#FFFFFF', animation: 'pulse 2s infinite 0.3s' }} />
+                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: activeIsLight ? '#000' : '#FFFFFF', animation: 'pulse 2s infinite 0.6s' }} />
                                 </div>
                             </div>
                         </div>
@@ -119,7 +126,7 @@ export default function AboutSection() {
                         to every project — delivering enterprise-grade solutions that transform businesses into digital powerhouses.
                     </p>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32 }}>
+                    <div className="about-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32 }}>
                         <div style={{ borderLeft: '2px solid #FFFFFF', paddingLeft: 16 }}>
                             <div style={{ fontFamily: 'var(--font-heading)', fontSize: 28, fontWeight: 700, color: 'var(--zy-white)' }}>100%</div>
                             <div style={{ fontSize: 11, color: 'var(--zy-gray-text)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>On-Time Delivery</div>
@@ -150,7 +157,8 @@ export default function AboutSection() {
             {/* Responsive override */}
             <style>{`
                 @media (max-width: 768px) {
-                    section > div:first-child { grid-template-columns: 1fr !important; }
+                    .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+                    .about-stats-grid { gap: 16px !important; }
                 }
             `}</style>
         </section>

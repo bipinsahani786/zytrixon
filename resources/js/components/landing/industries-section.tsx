@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTheme } from '@/components/landing/theme-provider';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,8 @@ export default function IndustriesSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
     const [isMobile, setIsMobile] = useState(false);
+    const { theme } = useTheme();
+    const isLight = theme === 'light';
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -88,18 +91,6 @@ export default function IndustriesSection() {
                     </div>
                 ))}
             </div>
-
-            <style>{`
-                .industry-card {
-                    background-color: #0c0c0c !important;
-                }
-                .industry-card::after {
-                    background-color: #0c0c0c !important;
-                }
-                .industry-card:hover::after {
-                    background-color: #1a1a1a !important;
-                }
-            `}</style>
         </section>
     );
 }

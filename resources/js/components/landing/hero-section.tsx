@@ -2,6 +2,7 @@ import { useEffect, useRef, useCallback, useState, Suspense } from 'react';
 import gsap from 'gsap';
 import { useMousePosition } from '@/hooks/use-mouse-position';
 import { useMediaQuery } from '@/hooks/use-media-query';
+import { useTheme } from '@/components/landing/theme-provider';
 
 const IoTDeviceMesh = await import('@/components/landing/iot-device-mesh').then(m => m.default).catch(() => null);
 let Canvas: any = null;
@@ -20,6 +21,15 @@ export default function HeroSection() {
     const { x: mouseX, y: mouseY } = useMousePosition();
     const isLowPower = useMediaQuery('(max-width: 768px)');
     const [show3D, setShow3D] = useState(false);
+    const { theme } = useTheme();
+    const isLight = theme === 'light';
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const activeIsLight = mounted && isLight;
 
     // Typewriter state
     const PHRASES = ["Digital Dominance", "Global Solutions", "Smart Platforms", "Future Technologies"];
@@ -113,26 +123,20 @@ export default function HeroSection() {
             display: 'flex',
             alignItems: 'center',
             overflow: 'hidden',
-            background: 'var(--zy-black)',
+            background: activeIsLight ? '#FFFFFF' : 'var(--zy-black)',
             padding: '120px var(--zy-section-pad-x) 80px',
         }}>
-            {/* Background effects */}
-            <div style={{
-                position: 'absolute', inset: 0,
-                backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
-                backgroundSize: '40px 40px',
-                maskImage: 'linear-gradient(to bottom, transparent, 10%, black, 90%, transparent)',
-            }} />
+            {/* Background effects - Matrix removed as requested */}
             <div style={{
                 position: 'absolute',
                 width: 600, height: 600,
-                background: 'radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%)',
+                background: activeIsLight ? 'radial-gradient(circle, rgba(0,0,0,0.05), transparent 60%)' : 'radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%)',
                 top: '20%', left: '10%',
                 pointerEvents: 'none',
             }} />
 
             {/* Content grid */}
-            <div style={{
+            <div className="hero-content-grid" style={{
                 maxWidth: 1200,
                 margin: '0 auto',
                 width: '100%',
@@ -148,20 +152,20 @@ export default function HeroSection() {
                     <div ref={badgeRef} style={{
                         display: 'inline-flex', alignItems: 'center', gap: 8,
                         padding: '6px 16px',
-                        border: '1px solid rgba(255,255,255,0.2)',
-                        background: 'rgba(255,255,255,0.05)',
+                        border: activeIsLight ? '1px solid rgba(0,0,0,0.1)' : '1px solid rgba(255,255,255,0.2)',
+                        background: activeIsLight ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.05)',
                         marginBottom: 28,
                         opacity: 0,
                     }}>
                         <span style={{
                             width: 6, height: 6, borderRadius: '50%',
-                            background: '#FFFFFF',
+                            background: activeIsLight ? '#000000' : '#FFFFFF',
                             animation: 'pulse 2s infinite',
                         }} />
                         <span style={{
                             fontSize: 11, fontWeight: 600,
                             letterSpacing: '0.12em', textTransform: 'uppercase',
-                            color: 'var(--zy-white)',
+                            color: activeIsLight ? '#000' : 'var(--zy-white)',
                         }}>
                             Top Rated Software Company in Patna
                         </span>
@@ -169,23 +173,23 @@ export default function HeroSection() {
 
                     <h1 ref={headlineRef} style={{
                         fontFamily: 'var(--font-heading)',
-                        fontSize: 'clamp(40px, 5.5vw, 78px)',
+                        fontSize: 'clamp(36px, 10vw, 78px)',
                         fontWeight: 800,
                         lineHeight: 1.05,
                         letterSpacing: '-0.03em',
-                        color: 'var(--zy-white)',
+                        color: activeIsLight ? '#000' : 'var(--zy-white)',
                         marginBottom: 24,
                     }}>
                         <span className="hero-word" style={{ display: 'inline-block', marginRight: '0.25em' }}>We</span>
                         <span className="hero-word" style={{ display: 'inline-block', marginRight: '0.25em' }}>Engineer</span>
                         <br />
-                        <span className="hero-word" style={{ display: 'inline-block', color: 'var(--zy-white)', whiteSpace: 'nowrap' }}>
+                        <span className="hero-word" style={{ display: 'inline-block', color: activeIsLight ? '#000' : 'var(--zy-white)' }}>
                             {typedText}
                             <span style={{
                                 display: 'inline-block',
                                 width: '4px',
                                 height: '0.8em',
-                                backgroundColor: 'var(--zy-white)',
+                                backgroundColor: activeIsLight ? '#000' : 'var(--zy-white)',
                                 verticalAlign: 'middle',
                                 marginLeft: '4px',
                                 animation: 'cursorBlink 1s step-end infinite'
@@ -196,12 +200,12 @@ export default function HeroSection() {
                     <p ref={subRef} style={{
                         fontSize: 18,
                         lineHeight: 1.7,
-                        color: 'var(--zy-gray-text)',
+                        color: activeIsLight ? '#666' : 'var(--zy-gray-text)',
                         maxWidth: 500,
                         marginBottom: 36,
                         opacity: 0,
                     }}>
-                        From <strong style={{ color: 'var(--zy-white)' }}>Patna to the World</strong> — Zytrixon Tech
+                        From <strong style={{ color: activeIsLight ? '#000' : 'var(--zy-white)' }}>Patna to the World</strong> — Zytrixon Tech
                         builds enterprise-grade Web, Mobile, and IoT solutions that transform businesses into global brands.
                     </p>
 
@@ -222,7 +226,7 @@ export default function HeroSection() {
                         <a href="/work" style={{
                             padding: '18px 32px',
                             border: '1px solid #333',
-                            color: 'var(--zy-white)',
+                            color: activeIsLight ? '#000' : 'var(--zy-white)',
                             fontFamily: 'var(--font-heading)',
                             fontSize: 13,
                             fontWeight: 600,
@@ -235,8 +239,8 @@ export default function HeroSection() {
                             transition: 'all 0.3s var(--zy-ease)',
                         }}
                         onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLElement).style.borderColor = '#FFFFFF';
-                            (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
+                            (e.currentTarget as HTMLElement).style.borderColor = activeIsLight ? '#000' : '#FFFFFF';
+                            (e.currentTarget as HTMLElement).style.background = 'rgba(128,128,128,0.1)';
                         }}
                         onMouseLeave={(e) => {
                             (e.currentTarget as HTMLElement).style.borderColor = '#333';
@@ -256,9 +260,9 @@ export default function HeroSection() {
                     {show3D && Canvas && IoTDeviceMesh ? (
                         <Suspense fallback={<HeroFallback />}>
                             <Canvas camera={{ position: [0, 0, 5], fov: 45 }} style={{ borderRadius: 0 }}>
-                                <ambientLight intensity={0.3} />
-                                <pointLight position={[5, 5, 5]} intensity={0.8} color="#FFFFFF" />
-                                <pointLight position={[-5, -5, 3]} intensity={0.4} color="#ffffff" />
+                                <ambientLight intensity={activeIsLight ? 0.8 : 0.3} />
+                                <pointLight position={[5, 5, 5]} intensity={activeIsLight ? 0.8 : 0.8} color="#FFFFFF" />
+                                <pointLight position={[-5, -5, 3]} intensity={activeIsLight ? 0.4 : 0.4} color="#ffffff" />
                                 <IoTDeviceMesh mouseX={(mouseX / window.innerWidth) * 2 - 1} mouseY={(mouseY / window.innerHeight) * 2 - 1} />
                             </Canvas>
                         </Suspense>
@@ -272,8 +276,8 @@ export default function HeroSection() {
                 @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
                 @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
                 @media (max-width: 768px) {
-                    section > div:nth-child(3) { grid-template-columns: 1fr !important; }
-                    section > div:nth-child(3) > div:last-child { height: 300px !important; }
+                    .hero-content-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+                    .hero-content-grid > div:last-child { height: 300px !important; }
                 }
             `}</style>
         </section>

@@ -62,11 +62,12 @@ export default function FAQSection() {
                     {FAQS.map((faq, i) => (
                         <div
                             key={i}
+                            className="zy-card"
                             style={{
-                                background: '#111',
-                                border: `1px solid ${openIndex === i ? '#FFFFFF' : '#1a1a1a'}`,
-                                transition: 'border-color 0.3s var(--zy-ease)',
+                                padding: 2,
+                                transition: 'all 0.3s var(--zy-ease)',
                                 overflow: 'hidden',
+                                background: 'transparent',
                             }}
                         >
                             <button
@@ -84,7 +85,7 @@ export default function FAQSection() {
                                     fontFamily: 'var(--font-heading)',
                                     fontSize: 15,
                                     fontWeight: 600,
-                                    color: openIndex === i ? '#FFFFFF' : '#fff',
+                                    color: 'var(--zy-white)',
                                     transition: 'color 0.3s',
                                 }}
                             >

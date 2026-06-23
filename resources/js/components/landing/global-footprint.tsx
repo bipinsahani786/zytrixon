@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTheme } from '@/components/landing/theme-provider';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,8 @@ const COUNTRIES = [
 
 export default function GlobalFootprint() {
     const sectionRef = useRef<HTMLElement>(null);
+    const { theme } = useTheme();
+    const isLight = theme === 'light';
 
     useEffect(() => {
         if (!sectionRef.current) return;
@@ -35,7 +38,9 @@ export default function GlobalFootprint() {
 
     return (
         <section ref={sectionRef} className="zy-section" style={{
-            background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, #000 70%)',
+            background: isLight 
+                ? 'radial-gradient(ellipse at center, rgba(0,0,0,0.02) 0%, #ffffff 70%)'
+                : 'radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, #000 70%)',
             position: 'relative', overflow: 'hidden',
         }}>
             <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
@@ -57,22 +62,22 @@ export default function GlobalFootprint() {
                             key={i}
                             style={{
                                 padding: '10px 20px',
-                                border: '1px solid #222',
-                                background: '#111',
+                                border: isLight ? '1px solid #e0e0e0' : '1px solid #222',
+                                background: isLight ? '#f7f7f7' : '#111',
                                 fontSize: 14,
-                                color: '#ccc',
+                                color: 'var(--zy-white)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: 8,
                                 transition: 'all 0.3s var(--zy-ease)',
                             }}
                             onMouseEnter={(e) => {
-                                (e.currentTarget as HTMLElement).style.borderColor = '#FFFFFF';
-                                (e.currentTarget as HTMLElement).style.background = '#1a1a1a';
+                                (e.currentTarget as HTMLElement).style.borderColor = 'var(--zy-white)';
+                                (e.currentTarget as HTMLElement).style.background = isLight ? '#ffffff' : '#1a1a1a';
                             }}
                             onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLElement).style.borderColor = '#222';
-                                (e.currentTarget as HTMLElement).style.background = '#111';
+                                (e.currentTarget as HTMLElement).style.borderColor = isLight ? '#e0e0e0' : '#222';
+                                (e.currentTarget as HTMLElement).style.background = isLight ? '#f7f7f7' : '#111';
                             }}
                         >
                             <span style={{ fontSize: 20 }}>{c.flag}</span> {c.name}
@@ -83,7 +88,9 @@ export default function GlobalFootprint() {
                 {/* Decorative glow */}
                 <div style={{
                     width: 300, height: 300,
-                    background: 'radial-gradient(circle, rgba(255,255,255,0.08), transparent)',
+                    background: isLight 
+                        ? 'radial-gradient(circle, rgba(0,0,0,0.03), transparent)'
+                        : 'radial-gradient(circle, rgba(255,255,255,0.08), transparent)',
                     position: 'absolute', top: '50%', left: '50%',
                     transform: 'translate(-50%, -50%)',
                     pointerEvents: 'none',

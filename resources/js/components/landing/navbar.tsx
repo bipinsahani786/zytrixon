@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useTheme } from './theme-provider';
+import Logo from '@/components/ui/logo';
 
 const NAV_LINKS = [
+    { label: 'Home', href: '/' },
     { label: 'Services', href: '#services' },
     { label: 'Work', href: '#work' },
     { label: 'About', href: '#about' },
@@ -13,10 +15,12 @@ const NAV_LINKS = [
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const navRef = useRef<HTMLElement>(null);
     const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => {
             setScrolled(window.scrollY > 60);
         };
@@ -32,42 +36,28 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Lock background scroll when mobile menu is open
+    useEffect(() => {
+        if (mobileOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [mobileOpen]);
+
     return (
         <>
             <nav
                 ref={navRef}
-                className={`navbar ${scrolled ? 'scrolled' : ''}`}
+                className={`navbar ${scrolled ? 'scrolled' : ''} ${mobileOpen ? 'menu-open' : ''}`}
                 style={{ opacity: 0 }}
             >
                 {/* Logo */}
-                <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <div
-                        style={{
-                            width: 36,
-                            height: 36,
-                            border: '2px solid var(--zy-white)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontFamily: 'var(--font-heading)',
-                            fontWeight: 700,
-                            fontSize: 18,
-                            color: 'var(--zy-white)',
-                        }}
-                    >
-                        Z
-                    </div>
-                    <span
-                        style={{
-                            fontFamily: 'var(--font-heading)',
-                            fontWeight: 700,
-                            fontSize: 18,
-                            color: 'var(--zy-white)',
-                            letterSpacing: '-0.02em',
-                        }}
-                    >
-                        ZYTRIXON
-                    </span>
+                <a href="/" className="navbar-logo" aria-label="Zytrixon Home" style={{ display: 'flex', alignItems: 'center' }}>
+                    <Logo style={{ height: '56px', width: 'auto', color: 'var(--zy-white)' }} />
                 </a>
 
                 {/* Desktop Links */}
@@ -82,11 +72,12 @@ export default function Navbar() {
                 </ul>
 
                 {/* Right side: theme toggle + CTA */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                     {/* Dark/Light Toggle */}
                     <button
                         onClick={toggleTheme}
                         aria-label="Toggle theme"
+                        className="theme-toggle-btn"
                         style={{
                             background: 'none',
                             border: '1px solid var(--zy-gray-border)',
@@ -100,7 +91,7 @@ export default function Navbar() {
                             transition: 'all 0.3s var(--zy-ease)',
                         }}
                     >
-                        {theme === 'dark' ? (
+                        {!mounted || theme === 'dark' ? (
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <circle cx="12" cy="12" r="5" />
                                 <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
@@ -119,6 +110,7 @@ export default function Navbar() {
                     <a
                         href="tel:+917049711475"
                         aria-label="Call us"
+                        className="call-btn"
                         style={{
                             width: 38,
                             height: 38,
@@ -158,34 +150,59 @@ export default function Navbar() {
             </nav>
 
             {/* Mobile Panel */}
-            <div className={`mobile-nav-panel ${mobileOpen ? 'open' : ''}`}>
-                {NAV_LINKS.map((link) => (
-                    <a key={link.href} href={link.href} onClick={() => setMobileOpen(false)}>
-                        {link.label}
+            <div className={`mobile-nav-panel ${mobileOpen ? 'open' : ''}`} data-lenis-prevent="true">
+                <div className="mobile-links-container">
+                    {NAV_LINKS.map((link, idx) => (
+                        <a 
+                            key={link.href} 
+                            href={link.href} 
+                            className="mobile-nav-link"
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            <span className="link-num">0{idx + 1}.</span>
+                            {link.label}
+                        </a>
+                    ))}
+                </div>
+
+                <div className="mobile-nav-footer">
+                    <button
+                        onClick={() => { toggleTheme(); }}
+                        style={{
+                            background: 'none',
+                            border: '1px solid var(--zy-gray-border)',
+                            padding: '10px 24px',
+                            borderRadius: '30px',
+                            color: 'var(--zy-white)',
+                            fontFamily: 'var(--font-heading)',
+                            fontSize: 12,
+                            fontWeight: 600,
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 8,
+                            transition: 'all 0.3s var(--zy-ease)',
+                        }}
+                    >
+                        {!mounted || theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+                    </button>
+
+                    <a
+                        href="#contact"
+                        className="magnetic-btn"
+                        style={{ borderRadius: '30px', padding: '14px 40px', fontSize: 13 }}
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        Get a Quote
                     </a>
-                ))}
-                <button
-                    onClick={() => { toggleTheme(); }}
-                    style={{
-                        background: 'none',
-                        border: '1px solid var(--zy-gray-border)',
-                        padding: '12px 24px',
-                        color: 'var(--zy-white)',
-                        fontFamily: 'var(--font-heading)',
-                        fontSize: 16,
-                        cursor: 'pointer',
-                    }}
-                >
-                    {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
-                </button>
-                <a
-                    href="#contact"
-                    className="magnetic-btn"
-                    style={{ marginTop: 24 }}
-                    onClick={() => setMobileOpen(false)}
-                >
-                    Get a Quote
-                </a>
+
+                    <div className="mobile-footer-contacts">
+                        <a href="mailto:zytrixon@gmail.com">zytrixon@gmail.com</a>
+                        <a href="tel:+917049711475">+91 70497 11475</a>
+                    </div>
+                </div>
             </div>
         </>
     );

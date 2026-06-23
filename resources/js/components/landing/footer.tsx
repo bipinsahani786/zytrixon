@@ -1,3 +1,5 @@
+import Logo from '@/components/ui/logo';
+
 const FOOTER_LINKS = {
     services: [
         { label: 'Web Development', href: '/services/web-development' },
@@ -65,33 +67,8 @@ export default function Footer() {
             <div className="footer-grid">
                 {/* Company Info */}
                 <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-                        <div
-                            style={{
-                                width: 32,
-                                height: 32,
-                                border: '2px solid #FFFFFF',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                fontFamily: 'var(--font-heading)',
-                                fontWeight: 700,
-                                fontSize: 16,
-                                color: 'var(--zy-white)',
-                            }}
-                        >
-                            Z
-                        </div>
-                        <span
-                            style={{
-                                fontFamily: 'var(--font-heading)',
-                                fontWeight: 700,
-                                fontSize: 16,
-                                color: 'var(--zy-white)',
-                            }}
-                        >
-                            ZYTRIXON
-                        </span>
+                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
+                        <Logo style={{ height: '64px', width: 'auto', color: 'var(--zy-white)' }} />
                     </div>
                     <p
                         style={{

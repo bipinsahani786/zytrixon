@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTheme } from '@/components/landing/theme-provider';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,6 +25,8 @@ const BUDGET_OPTIONS = [
 
 export default function ContactSection() {
     const sectionRef = useRef<HTMLElement>(null);
+    const { theme } = useTheme();
+    const isLight = theme === 'light';
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -56,16 +59,23 @@ export default function ContactSection() {
 
     const inputStyle: React.CSSProperties = {
         width: '100%',
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid var(--zy-gray-border)',
+        background: 'transparent',
+        border: 'none',
         padding: '12px 16px',
         color: 'var(--zy-white)',
-        fontSize: 13,
+        fontSize: 14,
         fontFamily: 'var(--font-sans)',
         outline: 'none',
-        transition: 'border-color 0.3s ease',
         boxSizing: 'border-box',
     };
+
+    const FieldWrapper = ({ children }: { children: React.ReactNode }) => (
+        <div className="zy-card" style={{ padding: '2px', borderRadius: '8px' }}>
+            <div style={{ background: isLight ? '#ffffff' : '#111', borderRadius: '6px' }}>
+                {children}
+            </div>
+        </div>
+    );
 
     return (
         <section ref={sectionRef} id="contact" className="zy-section" style={{ background: 'var(--zy-black)' }}>
@@ -77,7 +87,7 @@ export default function ContactSection() {
                 </p>
             </div>
 
-            <div style={{
+            <div className="contact-grid" style={{
                 maxWidth: 1100,
                 margin: '0 auto',
                 display: 'grid',
@@ -90,15 +100,13 @@ export default function ContactSection() {
                     {/* Contact cards */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 32 }}>
                         {/* Phone */}
-                        <a href="tel:+917049711475" style={{
+                        <a href="tel:+917049711475" className="zy-card" style={{
                             display: 'flex', alignItems: 'center', gap: 16,
-                            background: 'var(--zy-gray-card)', border: '1px solid var(--zy-gray-border)',
                             padding: '16px 20px', textDecoration: 'none', color: 'var(--zy-white)',
-                            transition: 'border-color 0.3s ease',
                         }}>
                             <div style={{
                                 width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                background: 'rgba(255,255,255,0.05)', flexShrink: 0,
+                                background: isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)', flexShrink: 0, borderRadius: '8px'
                             }}>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
@@ -111,15 +119,13 @@ export default function ContactSection() {
                         </a>
 
                         {/* Email */}
-                        <a href="mailto:zytrixon@gmail.com" style={{
+                        <a href="mailto:zytrixon@gmail.com" className="zy-card" style={{
                             display: 'flex', alignItems: 'center', gap: 16,
-                            background: 'var(--zy-gray-card)', border: '1px solid var(--zy-gray-border)',
                             padding: '16px 20px', textDecoration: 'none', color: 'var(--zy-white)',
-                            transition: 'border-color 0.3s ease',
                         }}>
                             <div style={{
                                 width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                background: 'rgba(255,255,255,0.05)', flexShrink: 0,
+                                background: isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)', flexShrink: 0, borderRadius: '8px'
                             }}>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                     <rect x="2" y="4" width="20" height="16" rx="2" /><path d="M22 7l-10 7L2 7" />
@@ -132,14 +138,13 @@ export default function ContactSection() {
                         </a>
 
                         {/* Address */}
-                        <div style={{
+                        <div className="zy-card" style={{
                             display: 'flex', alignItems: 'center', gap: 16,
-                            background: 'var(--zy-gray-card)', border: '1px solid var(--zy-gray-border)',
                             padding: '16px 20px',
                         }}>
                             <div style={{
                                 width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                background: 'rgba(255,255,255,0.05)', flexShrink: 0,
+                                background: isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)', flexShrink: 0, borderRadius: '8px'
                             }}>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
@@ -153,12 +158,11 @@ export default function ContactSection() {
                     </div>
 
                     {/* Google Maps */}
-                    <div style={{
-                        border: '1px solid var(--zy-gray-border)',
-                        overflow: 'hidden',
+                    <div className="zy-card" style={{
                         height: 220,
                         filter: 'grayscale(100%)',
                         transition: 'filter 0.5s ease',
+                        padding: 0,
                     }}
                     onMouseEnter={e => { (e.currentTarget).style.filter = 'grayscale(0%)'; }}
                     onMouseLeave={e => { (e.currentTarget).style.filter = 'grayscale(100%)'; }}
@@ -193,11 +197,7 @@ export default function ContactSection() {
                 </div>
 
                 {/* Right — Form */}
-                <div style={{
-                    background: 'var(--zy-gray-card)',
-                    border: '1px solid var(--zy-gray-border)',
-                    padding: 32,
-                }}>
+                <div className="zy-card" style={{ padding: 32 }}>
                     {submitted ? (
                         <div style={{
                             textAlign: 'center',
@@ -214,36 +214,36 @@ export default function ContactSection() {
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit}>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+                            <div className="contact-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
                                 <div>
                                     <label style={{ display: 'block', fontSize: 11, color: 'var(--zy-gray-text)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                                         Full Name *
                                     </label>
-                                    <input
-                                        type="text"
-                                        required
-                                        value={formData.name}
-                                        onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                                        placeholder="Your Name"
-                                        style={inputStyle}
-                                        onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)'; }}
-                                        onBlur={e => { e.target.style.borderColor = 'var(--zy-gray-border)'; }}
-                                    />
+                                    <FieldWrapper>
+                                        <input
+                                            type="text"
+                                            required
+                                            value={formData.name}
+                                            onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
+                                            placeholder="Your Name"
+                                            style={inputStyle}
+                                        />
+                                    </FieldWrapper>
                                 </div>
                                 <div>
                                     <label style={{ display: 'block', fontSize: 11, color: 'var(--zy-gray-text)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                                         Phone *
                                     </label>
-                                    <input
-                                        type="tel"
-                                        required
-                                        value={formData.phone}
-                                        onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
-                                        placeholder="+91 XXXXX XXXXX"
-                                        style={inputStyle}
-                                        onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)'; }}
-                                        onBlur={e => { e.target.style.borderColor = 'var(--zy-gray-border)'; }}
-                                    />
+                                    <FieldWrapper>
+                                        <input
+                                            type="tel"
+                                            required
+                                            value={formData.phone}
+                                            onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
+                                            placeholder="+91 XXXXX XXXXX"
+                                            style={inputStyle}
+                                        />
+                                    </FieldWrapper>
                                 </div>
                             </div>
 
@@ -251,44 +251,48 @@ export default function ContactSection() {
                                 <label style={{ display: 'block', fontSize: 11, color: 'var(--zy-gray-text)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                                     Email *
                                 </label>
-                                <input
-                                    type="email"
-                                    required
-                                    value={formData.email}
-                                    onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                                    placeholder="you@company.com"
-                                    style={inputStyle}
-                                    onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)'; }}
-                                    onBlur={e => { e.target.style.borderColor = 'var(--zy-gray-border)'; }}
-                                />
+                                <FieldWrapper>
+                                    <input
+                                        type="email"
+                                        required
+                                        value={formData.email}
+                                        onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
+                                        placeholder="you@company.com"
+                                        style={inputStyle}
+                                    />
+                                </FieldWrapper>
                             </div>
 
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+                            <div className="contact-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
                                 <div>
                                     <label style={{ display: 'block', fontSize: 11, color: 'var(--zy-gray-text)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                                         Service Needed
                                     </label>
-                                    <select
-                                        value={formData.service}
-                                        onChange={e => setFormData(p => ({ ...p, service: e.target.value }))}
-                                        style={{ ...inputStyle, appearance: 'none', cursor: 'pointer' }}
-                                    >
-                                        <option value="">Select Service</option>
-                                        {SERVICE_OPTIONS.map(s => <option key={s} value={s}>{s}</option>)}
-                                    </select>
+                                    <FieldWrapper>
+                                        <select
+                                            value={formData.service}
+                                            onChange={e => setFormData(p => ({ ...p, service: e.target.value }))}
+                                            style={{ ...inputStyle, appearance: 'none', cursor: 'pointer' }}
+                                        >
+                                            <option value="">Select Service</option>
+                                            {SERVICE_OPTIONS.map(s => <option key={s} value={s}>{s}</option>)}
+                                        </select>
+                                    </FieldWrapper>
                                 </div>
                                 <div>
                                     <label style={{ display: 'block', fontSize: 11, color: 'var(--zy-gray-text)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                                         Budget Range
                                     </label>
-                                    <select
-                                        value={formData.budget}
-                                        onChange={e => setFormData(p => ({ ...p, budget: e.target.value }))}
-                                        style={{ ...inputStyle, appearance: 'none', cursor: 'pointer' }}
-                                    >
-                                        <option value="">Select Budget</option>
-                                        {BUDGET_OPTIONS.map(b => <option key={b} value={b}>{b}</option>)}
-                                    </select>
+                                    <FieldWrapper>
+                                        <select
+                                            value={formData.budget}
+                                            onChange={e => setFormData(p => ({ ...p, budget: e.target.value }))}
+                                            style={{ ...inputStyle, appearance: 'none', cursor: 'pointer' }}
+                                        >
+                                            <option value="">Select Budget</option>
+                                            {BUDGET_OPTIONS.map(b => <option key={b} value={b}>{b}</option>)}
+                                        </select>
+                                    </FieldWrapper>
                                 </div>
                             </div>
 
@@ -296,15 +300,15 @@ export default function ContactSection() {
                                 <label style={{ display: 'block', fontSize: 11, color: 'var(--zy-gray-text)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                                     Project Details
                                 </label>
-                                <textarea
-                                    value={formData.message}
-                                    onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                                    placeholder="Tell us about your project requirements..."
-                                    rows={4}
-                                    style={{ ...inputStyle, resize: 'vertical', minHeight: 80 }}
-                                    onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)'; }}
-                                    onBlur={e => { e.target.style.borderColor = 'var(--zy-gray-border)'; }}
-                                />
+                                <FieldWrapper>
+                                    <textarea
+                                        value={formData.message}
+                                        onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
+                                        placeholder="Tell us about your project requirements..."
+                                        rows={4}
+                                        style={{ ...inputStyle, resize: 'vertical', minHeight: 80 }}
+                                    />
+                                </FieldWrapper>
                             </div>
 
                             <button
@@ -324,7 +328,10 @@ export default function ContactSection() {
 
             <style>{`
                 @media (max-width: 768px) {
-                    #contact > div:last-child {
+                    .contact-grid {
+                        grid-template-columns: 1fr !important;
+                    }
+                    .contact-form-row {
                         grid-template-columns: 1fr !important;
                     }
                 }

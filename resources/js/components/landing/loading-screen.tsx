@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import Logo from '@/components/ui/logo';
 
 export default function LoadingScreen() {
     const [visible, setVisible] = useState(true);
     const containerRef = useRef<HTMLDivElement>(null);
-    const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const zRef = useRef<HTMLDivElement>(null);
+    const lettersRef = useRef<(HTMLSpanElement | null)[]>([]);
 
     useEffect(() => {
         document.body.classList.add('loading');
@@ -16,37 +18,57 @@ export default function LoadingScreen() {
             },
         });
 
-        // Dots scatter from random positions → converge to grid
-        dotsRef.current.forEach((dot, i) => {
-            if (!dot) return;
-            gsap.set(dot, {
-                x: (Math.random() - 0.5) * 200,
-                y: (Math.random() - 0.5) * 200,
+        // Setup scatter positions for letters
+        lettersRef.current.forEach((letter) => {
+            if (!letter) return;
+            gsap.set(letter, {
+                x: () => (Math.random() - 0.5) * window.innerWidth * 0.8,
+                y: () => (Math.random() - 0.5) * window.innerHeight * 0.8,
                 opacity: 0,
-                scale: 0,
+                scale: Math.random() * 2 + 1,
+                rotationZ: (Math.random() - 0.5) * 180,
+                force3D: true,
             });
         });
 
-        tl.to(dotsRef.current, {
+        // Setup and animate the Z logo
+        if (zRef.current) {
+            gsap.set(zRef.current, {
+                opacity: 0,
+                scale: 0.5,
+                y: 50,
+            });
+
+            tl.to(zRef.current, {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power4.out',
+            });
+        }
+
+        // Animate letters flying in to form the word
+        tl.to(lettersRef.current, {
             x: 0,
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.5,
-            stagger: { each: 0.03, from: 'random' },
-            ease: 'power3.out',
-        });
+            rotationZ: 0,
+            duration: 1.2,
+            stagger: { each: 0.05, from: 'random' },
+            ease: 'expo.out',
+            force3D: true,
+        }, "-=0.6");
 
-        // Brief hold
-        tl.to({}, { duration: 0.2 });
-
-        // Flash accent color on all dots
-        tl.to(dotsRef.current, {
-            backgroundColor: 'var(--zy-white)',
-            duration: 0.15,
-            stagger: { each: 0.02, from: 'center' },
-            ease: 'power2.inOut',
-        });
+        // Brief hold and pulse both together
+        tl.to([zRef.current, ...lettersRef.current], {
+            scale: 1.03,
+            duration: 0.3,
+            ease: 'power1.inOut',
+            yoyo: true,
+            repeat: 1,
+        }, "+=0.2");
 
         // Fade out the entire screen
         tl.to(containerRef.current, {
@@ -71,38 +93,32 @@ export default function LoadingScreen() {
 
     if (!visible) return null;
 
-    // Create a "Z" shape from a 5x5 dot grid
-    const zPattern = [
-        [1, 1, 1, 1, 1],
-        [0, 0, 0, 1, 0],
-        [0, 0, 1, 0, 0],
-        [0, 1, 0, 0, 0],
-        [1, 1, 1, 1, 1],
-    ];
-
-    let dotIndex = 0;
+    const word = "ZYTRIXON".split('');
 
     return (
-        <div ref={containerRef} className="loading-screen">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 12px)', gap: '8px' }}>
-                {zPattern.flat().map((active, i) => {
-                    if (!active) {
-                        return <div key={i} style={{ width: 12, height: 12 }} />;
-                    }
-                    const idx = dotIndex++;
-                    return (
-                        <div
-                            key={i}
-                            ref={(el) => { dotsRef.current[idx] = el; }}
-                            style={{
-                                width: 12,
-                                height: 12,
-                                borderRadius: '50%',
-                                backgroundColor: 'var(--zy-white)',
-                            }}
-                        />
-                    );
-                })}
+        <div ref={containerRef} className="loading-screen" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <div ref={zRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '-16px' }}>
+                <Logo style={{ height: '90px', width: 'auto', color: 'var(--zy-white)', clipPath: 'inset(0 0 16% 0)', transform: 'translateY(8%)' }} />
+            </div>
+            <div style={{ display: 'flex', gap: '4px', zIndex: 2 }}>
+                {word.map((char, i) => (
+                    <span
+                        key={i}
+                        ref={(el) => { lettersRef.current[i] = el; }}
+                        style={{
+                            fontFamily: 'var(--font-heading)',
+                            fontSize: '26px',
+                            fontWeight: 800,
+                            letterSpacing: '0.1em',
+                            color: 'var(--zy-white)',
+                            display: 'inline-block',
+                            textTransform: 'uppercase',
+                            willChange: 'transform, opacity',
+                        }}
+                    >
+                        {char}
+                    </span>
+                ))}
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -46,7 +46,6 @@ const STEPS = [
 export default function ProcessSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
-    const progressRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!sectionRef.current || !trackRef.current) return;
@@ -56,10 +55,15 @@ export default function ProcessSection() {
             const totalWidth = trackRef.current!.scrollWidth;
             const viewWidth = window.innerWidth;
             const scrollDistance = totalWidth - viewWidth + 100;
+            
+            // Vertical offset for diagonal pan
+            const staggerY = 100;
+            const verticalScroll = (STEPS.length - 1) * staggerY;
 
-            // Pin section and drive horizontal scroll
+            // Pin section and drive diagonal scroll
             gsap.to(trackRef.current, {
                 x: -scrollDistance,
+                y: `-=${verticalScroll}`, // Pan up as we pan left to follow the staircase
                 ease: 'none',
                 scrollTrigger: {
                     trigger: sectionRef.current,
@@ -71,24 +75,12 @@ export default function ProcessSection() {
                     invalidateOnRefresh: true,
                 },
             });
-
-            // Progress line
-            if (progressRef.current) {
-                gsap.to(progressRef.current, {
-                    scaleX: 1,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top top',
-                        end: () => `+=${scrollDistance}`,
-                        scrub: 1,
-                    },
-                });
-            }
         }, sectionRef);
 
         return () => ctx.revert();
     }, []);
+
+    const staggerY = 100;
 
     return (
         <section
@@ -119,30 +111,6 @@ export default function ProcessSection() {
                 </h2>
             </div>
 
-            {/* Progress line */}
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '0',
-                    width: '100%',
-                    height: '1px',
-                    background: '#1a1a1a',
-                    zIndex: 1,
-                }}
-            >
-                <div
-                    ref={progressRef}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        background: '#FFFFFF',
-                        transformOrigin: 'left',
-                        transform: 'scaleX(0)',
-                    }}
-                />
-            </div>
-
             {/* Horizontal track */}
             <div
                 ref={trackRef}
@@ -153,32 +121,54 @@ export default function ProcessSection() {
                     left: 'var(--zy-section-pad-x)',
                     transform: 'translateY(-50%)',
                     paddingTop: '40px',
+                    alignItems: 'center',
                 }}
             >
                 {STEPS.map((step, i) => (
-                    <div key={i} className="process-card">
-                        <div className="process-number">{step.number}</div>
-                        <h3
-                            style={{
-                                fontFamily: 'var(--font-heading)',
-                                fontSize: '24px',
-                                fontWeight: 700,
-                                color: 'var(--zy-white)',
-                                marginBottom: '16px',
-                            }}
+                    <React.Fragment key={i}>
+                        <div 
+                            className="zy-card process-card"
+                            style={{ transform: `translateY(${i * staggerY}px)` }}
                         >
-                            {step.title}
-                        </h3>
-                        <p
-                            style={{
-                                fontSize: '15px',
-                                lineHeight: 1.7,
-                                color: 'var(--zy-gray-text)',
-                            }}
-                        >
-                            {step.description}
-                        </p>
-                    </div>
+                            <div className="process-number">{step.number}</div>
+                            <h3
+                                style={{
+                                    fontFamily: 'var(--font-heading)',
+                                    fontSize: '24px',
+                                    fontWeight: 700,
+                                    color: 'var(--zy-white)',
+                                    marginBottom: '16px',
+                                }}
+                            >
+                                {step.title}
+                            </h3>
+                            <p
+                                style={{
+                                    fontSize: '15px',
+                                    lineHeight: 1.7,
+                                    color: 'var(--zy-gray-text)',
+                                }}
+                            >
+                                {step.description}
+                            </p>
+                        </div>
+
+                        {i < STEPS.length - 1 && (
+                            <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: '40px',
+                                transform: `translateY(${(i + 0.5) * staggerY}px)`,
+                                opacity: 0.3,
+                            }}>
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'rotate(15deg)' }}>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        )}
+                    </React.Fragment>
                 ))}
             </div>
         </section>

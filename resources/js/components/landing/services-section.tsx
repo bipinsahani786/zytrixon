@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTheme } from '@/components/landing/theme-provider';
 import PlaygroundIoT from './playground-iot';
 import PlaygroundWebApp from './playground-webapp';
 import PlaygroundMobile from './playground-mobile';
@@ -93,8 +94,12 @@ const SERVICES = [
 export default function ServicesSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const [activeService, setActiveService] = useState<string | null>(null);
+    const { theme } = useTheme();
+    const isLight = theme === 'light';
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         if (!sectionRef.current) return;
 
         const ctx = gsap.context(() => {
@@ -116,6 +121,8 @@ export default function ServicesSection() {
 
         return () => ctx.revert();
     }, []);
+
+    const activeIsLight = mounted && isLight;
 
     return (
         <section ref={sectionRef} id="services" className="zy-section" style={{ background: 'var(--zy-black)' }}>
@@ -153,7 +160,9 @@ export default function ServicesSection() {
                             <div style={{
                                 position: 'absolute',
                                 top: '50%', left: '50%', width: '250%', height: '250%',
-                                background: 'conic-gradient(from 0deg, transparent 75%, rgba(255,255,255,0.4) 95%, #ffffff 100%)',
+                                background: activeIsLight 
+                                    ? 'conic-gradient(from 0deg, transparent 75%, rgba(0,0,0,0.4) 95%, #000000 100%)'
+                                    : 'conic-gradient(from 0deg, transparent 75%, rgba(255,255,255,0.4) 95%, #ffffff 100%)',
                                 animation: 'spinGradientCentered 4s linear infinite',
                                 zIndex: 0,
                                 opacity: activeService === service.id ? 1 : 0.4,
@@ -211,7 +220,7 @@ export default function ServicesSection() {
                                             boxShadow: activeService === service.id ? 'none' : '0 0 10px #fff',
                                             animation: activeService === service.id ? 'none' : 'pulseScale 1.5s infinite'
                                         }} />
-                                        <span style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>
+                                        <span style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--zy-gray-text)', fontWeight: 600 }}>
                                             {activeService === service.id ? 'Close Demo' : 'Interactive Demo'}
                                         </span>
                                     </div>

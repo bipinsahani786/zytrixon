@@ -88,30 +88,28 @@ export default function TeamSection() {
 
             <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-                gap: 20,
-                maxWidth: 1000,
+                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                gap: 40,
+                maxWidth: 1200,
                 margin: '0 auto',
             }}>
                 {TEAM.map((member) => (
                     <div
                         key={member.name}
-                        className="team-card"
+                        className="team-card zy-card"
                         style={{
-                            background: 'var(--zy-gray-card)',
-                            border: '1px solid var(--zy-gray-border)',
-                            padding: 28,
+                            padding: 32,
                             textAlign: 'center',
                             transition: 'all 0.4s var(--zy-ease)',
                             cursor: 'default',
                             opacity: 0,
+                            display: 'flex',
+                            flexDirection: 'column',
                         }}
                         onMouseEnter={e => {
-                            (e.currentTarget).style.borderColor = 'rgba(255,255,255,0.2)';
-                            (e.currentTarget).style.transform = 'translateY(-6px)';
+                            (e.currentTarget).style.transform = 'translateY(-10px)';
                         }}
                         onMouseLeave={e => {
-                            (e.currentTarget).style.borderColor = 'var(--zy-gray-border)';
                             (e.currentTarget).style.transform = 'translateY(0)';
                         }}
                     >
@@ -119,15 +117,16 @@ export default function TeamSection() {
                         <div style={{
                             width: '100%',
                             aspectRatio: '1',
-                            borderRadius: '8px',
-                            margin: '0 auto 20px',
+                            borderRadius: '12px',
+                            margin: '0 auto 24px',
                             overflow: 'hidden',
                             position: 'relative',
                             background: 'var(--zy-gray-dark)',
                         }}>
                             <img
-                                src={`https://i.pravatar.cc/300?u=${member.name}`}
+                                src={member.image}
                                 alt={member.name}
+                                loading="lazy"
                                 style={{
                                     width: '100%',
                                     height: '100%',
@@ -157,29 +156,28 @@ export default function TeamSection() {
 
                         <h4 style={{
                             fontFamily: 'var(--font-heading)',
-                            fontSize: 15,
+                            fontSize: 22,
                             fontWeight: 700,
                             color: 'var(--zy-white)',
-                            marginBottom: 4,
+                            marginBottom: 8,
                         }}>
                             {member.name}
                         </h4>
-
                         <div style={{
-                            fontSize: 11,
+                            fontSize: 14,
                             fontWeight: 600,
-                            letterSpacing: '0.05em',
                             textTransform: 'uppercase',
+                            letterSpacing: '0.05em',
                             color: member.color,
-                            marginBottom: 10,
+                            marginBottom: 16,
                         }}>
                             {member.role}
                         </div>
-
                         <p style={{
-                            fontSize: 12,
+                            fontSize: 15,
                             color: 'var(--zy-gray-text)',
-                            lineHeight: 1.5,
+                            lineHeight: 1.6,
+                            margin: 0,
                         }}>
                             {member.bio}
                         </p>
