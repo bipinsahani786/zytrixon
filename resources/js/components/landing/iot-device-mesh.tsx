@@ -12,6 +12,9 @@ interface IoTDeviceMeshProps {
 export default function IoTDeviceMesh({ mouseX, mouseY }: IoTDeviceMeshProps) {
     const groupRef = useRef<THREE.Group>(null);
     const targetRotation = useRef({ x: 0, y: 0 });
+    const tempP1 = useMemo(() => new THREE.Vector3(), []);
+    const tempP2 = useMemo(() => new THREE.Vector3(), []);
+    const tempP3 = useMemo(() => new THREE.Vector3(), []);
     const { theme } = useTheme();
     const isLight = theme === 'light';
     
@@ -130,19 +133,18 @@ export default function IoTDeviceMesh({ mouseX, mouseY }: IoTDeviceMeshProps) {
                 if (data.progress > 1) data.progress = 0;
                 
                 // Simple interpolation along the 3 points (A -> B -> C)
-                const p1 = new THREE.Vector3(...data.points[0]);
-                const p2 = new THREE.Vector3(...data.points[1]);
-                const p3 = new THREE.Vector3(...data.points[2]);
+                // Simple interpolation along the 3 points without object allocation
+                tempP1.set(...data.points[0]);
+                tempP2.set(...data.points[1]);
+                tempP3.set(...data.points[2]);
                 
-                let currentPos;
                 if (data.progress < 0.5) {
                     const t = data.progress * 2;
-                    currentPos = p1.lerp(p2, t);
+                    packet.position.copy(tempP1).lerp(tempP2, t);
                 } else {
                     const t = (data.progress - 0.5) * 2;
-                    currentPos = p2.lerp(p3, t);
+                    packet.position.copy(tempP2).lerp(tempP3, t);
                 }
-                packet.position.copy(currentPos);
             });
         }
     });

@@ -1,15 +1,10 @@
-import { useEffect, useRef, useCallback, useState, Suspense } from 'react';
+import { useEffect, useRef, useCallback, useState, Suspense, lazy } from 'react';
 import gsap from 'gsap';
 import { useMousePosition } from '@/hooks/use-mouse-position';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useTheme } from '@/components/landing/theme-provider';
 
-const IoTDeviceMesh = await import('@/components/landing/iot-device-mesh').then(m => m.default).catch(() => null);
-let Canvas: any = null;
-try {
-    const fiber = await import('@react-three/fiber');
-    Canvas = fiber.Canvas;
-} catch {}
+
 
 export default function HeroSection() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -21,6 +16,8 @@ export default function HeroSection() {
     const { x: mouseX, y: mouseY } = useMousePosition();
     const isLowPower = useMediaQuery('(max-width: 768px)');
     const [show3D, setShow3D] = useState(false);
+    const [CanvasComponent, setCanvasComponent] = useState<any>(null);
+    const [IoTDeviceMeshComponent, setIoTDeviceMeshComponent] = useState<any>(null);
     const { theme } = useTheme();
     const isLight = theme === 'light';
     const [mounted, setMounted] = useState(false);
@@ -59,7 +56,17 @@ export default function HeroSection() {
     }, [typedText, isDeleting, loopNum, typingSpeed]);
 
     useEffect(() => {
-        if (!isLowPower && Canvas) setShow3D(true);
+        if (!isLowPower) {
+            import('@react-three/fiber').then(fiber => {
+                setCanvasComponent(() => fiber.Canvas);
+                return import('@/components/landing/iot-device-mesh');
+            }).then(meshModule => {
+                setIoTDeviceMeshComponent(() => meshModule.default);
+                setShow3D(true);
+            }).catch(err => {
+                console.error("Failed to load 3D components:", err);
+            });
+        }
     }, [isLowPower]);
 
     useEffect(() => {
@@ -257,14 +264,20 @@ export default function HeroSection() {
 
                 {/* Right: 3D or Fallback */}
                 <div style={{ height: 500, position: 'relative' }}>
-                    {show3D && Canvas && IoTDeviceMesh ? (
+                    {show3D && CanvasComponent && IoTDeviceMeshComponent ? (
                         <Suspense fallback={<HeroFallback />}>
-                            <Canvas camera={{ position: [0, 0, 5], fov: 45 }} style={{ borderRadius: 0 }}>
+                            <CanvasComponent 
+                                camera={{ position: [0, 0, 5], fov: 45 }} 
+                                style={{ borderRadius: 0 }}
+                                dpr={[1, 1.5]}
+                                performance={{ min: 0.5 }}
+                                gl={{ powerPreference: "high-performance", antialias: false }}
+                            >
                                 <ambientLight intensity={activeIsLight ? 0.8 : 0.3} />
                                 <pointLight position={[5, 5, 5]} intensity={activeIsLight ? 0.8 : 0.8} color="#FFFFFF" />
                                 <pointLight position={[-5, -5, 3]} intensity={activeIsLight ? 0.4 : 0.4} color="#ffffff" />
-                                <IoTDeviceMesh mouseX={(mouseX / window.innerWidth) * 2 - 1} mouseY={(mouseY / window.innerHeight) * 2 - 1} />
-                            </Canvas>
+                                <IoTDeviceMeshComponent mouseX={(mouseX / window.innerWidth) * 2 - 1} mouseY={(mouseY / window.innerHeight) * 2 - 1} />
+                            </CanvasComponent>
                         </Suspense>
                     ) : (
                         <HeroFallback />

@@ -23,6 +23,10 @@ export default function CustomCursor() {
         const target = e.currentTarget as HTMLElement;
         ringRef.current?.classList.add('hovering');
         dotRef.current?.classList.add('hovering');
+        
+        if (ringRef.current) {
+            gsap.to(ringRef.current, { scale: 1.5, duration: 0.2, ease: 'power2.out' });
+        }
 
         const label = target.getAttribute('data-cursor');
         if (label && labelRef.current) {
@@ -34,12 +38,20 @@ export default function CustomCursor() {
     const onMouseLeaveInteractive = useCallback(() => {
         ringRef.current?.classList.remove('hovering');
         dotRef.current?.classList.remove('hovering');
+        
+        if (ringRef.current) {
+            gsap.to(ringRef.current, { scale: 1, duration: 0.2, ease: 'power2.out' });
+        }
+
         if (labelRef.current) {
             labelRef.current.classList.remove('visible');
         }
     }, []);
 
     useEffect(() => {
+        if (typeof window !== 'undefined' && ('ontouchstart' in window || window.innerWidth < 1024)) {
+            return;
+        }
         setMounted(true);
     }, []);
 
@@ -79,10 +91,6 @@ export default function CustomCursor() {
         return null;
     }
 
-    if (typeof window !== 'undefined' && 'ontouchstart' in window) {
-        return null;
-    }
-
     return (
         <>
             <div
@@ -116,7 +124,8 @@ export default function CustomCursor() {
                     marginTop: '-16px',
                     marginLeft: '-16px',
                     pointerEvents: 'none',
-                    transition: 'transform 0.2s ease, background 0.2s ease',
+                    // Removed 'transform' from transition since GSAP handles it
+                    transition: 'background 0.2s ease, border-color 0.2s ease',
                     willChange: 'transform',
                     zIndex: 9998,
                 }}
@@ -153,9 +162,12 @@ export default function CustomCursor() {
                     cursor: none;
                 }
                 .hovering {
-                    transform: translate(-50%, -50%) scale(1.5) !important;
-                    background: rgba(255, 255, 255, 0.1);
+                    background: rgba(255, 255, 255, 0.1) !important;
                     border-color: white !important;
+                }
+                html.light .hovering {
+                    background: rgba(0, 0, 0, 0.05) !important;
+                    border-color: black !important;
                 }
                 .cursor-label.visible {
                     opacity: 1 !important;

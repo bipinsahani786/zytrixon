@@ -18,64 +18,54 @@ export default function LoadingScreen() {
             },
         });
 
-        // Setup scatter positions for letters
-        lettersRef.current.forEach((letter) => {
-            if (!letter) return;
-            gsap.set(letter, {
-                x: () => (Math.random() - 0.5) * window.innerWidth * 0.8,
-                y: () => (Math.random() - 0.5) * window.innerHeight * 0.8,
-                opacity: 0,
-                scale: Math.random() * 2 + 1,
-                rotationZ: (Math.random() - 0.5) * 180,
-                force3D: true,
-            });
-        });
-
-        // Setup and animate the Z logo
+        // Setup and animate the Z logo smoothly
         if (zRef.current) {
-            gsap.set(zRef.current, {
-                opacity: 0,
-                scale: 0.5,
-                y: 50,
-            });
-
-            tl.to(zRef.current, {
-                opacity: 1,
-                scale: 1,
-                y: 0,
-                duration: 1,
-                ease: 'power4.out',
-            });
+            tl.fromTo(zRef.current,
+                { opacity: 0, scale: 0.5, y: 50 },
+                { opacity: 1, scale: 1, y: 0, duration: 1.4, ease: 'expo.out' }
+            );
         }
 
-        // Animate letters flying in to form the word
-        tl.to(lettersRef.current, {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            rotationZ: 0,
-            duration: 1.2,
-            stagger: { each: 0.05, from: 'random' },
-            ease: 'expo.out',
-            force3D: true,
-        }, "-=0.6");
+        // Smooth scattered flying letters
+        tl.fromTo(lettersRef.current,
+            {
+                x: () => (Math.random() - 0.5) * window.innerWidth * 0.7,
+                y: () => (Math.random() - 0.5) * window.innerHeight * 0.7,
+                opacity: 0,
+                scale: () => Math.random() * 2 + 1,
+                rotationZ: () => (Math.random() - 0.5) * 90,
+                filter: 'blur(12px)',
+            },
+            {
+                x: 0,
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                rotationZ: 0,
+                filter: 'blur(0px)',
+                duration: 1.8,
+                stagger: { each: 0.04, from: 'random' },
+                ease: 'expo.out',
+                force3D: true,
+            },
+            "-=1.0" // Start while logo is still animating
+        );
 
         // Brief hold and pulse both together
         tl.to([zRef.current, ...lettersRef.current], {
-            scale: 1.03,
-            duration: 0.3,
-            ease: 'power1.inOut',
+            scale: 1.05,
+            duration: 0.8,
+            ease: 'power2.inOut',
             yoyo: true,
             repeat: 1,
         }, "+=0.2");
 
-        // Fade out the entire screen
+        // Fade out the entire screen smoothly
         tl.to(containerRef.current, {
             opacity: 0,
-            duration: 0.3,
+            duration: 0.5,
             ease: 'power2.inOut',
-        });
+        }, "-=0.3");
 
         // Allow skip on click
         const handleClick = () => {
@@ -97,23 +87,24 @@ export default function LoadingScreen() {
 
     return (
         <div ref={containerRef} className="loading-screen" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <div ref={zRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '-16px' }}>
-                <Logo style={{ height: '90px', width: 'auto', color: 'var(--zy-white)', clipPath: 'inset(0 0 16% 0)', transform: 'translateY(8%)' }} />
+            <div ref={zRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '-24px' }}>
+                <Logo style={{ height: '140px', width: 'auto', color: 'var(--zy-white)', clipPath: 'inset(0 0 16% 0)', transform: 'translateY(8%)' }} />
             </div>
-            <div style={{ display: 'flex', gap: '4px', zIndex: 2 }}>
+            <div style={{ display: 'flex', gap: '6px', zIndex: 2 }}>
                 {word.map((char, i) => (
                     <span
                         key={i}
                         ref={(el) => { lettersRef.current[i] = el; }}
                         style={{
                             fontFamily: 'var(--font-heading)',
-                            fontSize: '26px',
+                            fontSize: '42px',
                             fontWeight: 800,
-                            letterSpacing: '0.1em',
+                            letterSpacing: '0.12em',
                             color: 'var(--zy-white)',
                             display: 'inline-block',
                             textTransform: 'uppercase',
-                            willChange: 'transform, opacity',
+                            opacity: 0, // Prevents the initial glitchy flash
+                            willChange: 'transform, opacity, filter',
                         }}
                     >
                         {char}

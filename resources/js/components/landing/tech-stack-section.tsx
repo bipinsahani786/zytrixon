@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useTheme } from '@/components/landing/theme-provider';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,7 +14,7 @@ const TECH = [
     { name: 'Python', slug: 'python', color: '#3776AB', category: 'Backend' },
     { name: 'React Native', slug: 'react', color: '#61DAFB', category: 'Mobile' },
     { name: 'Flutter', slug: 'flutter', color: '#02569B', category: 'Mobile' },
-    { name: 'AWS', slug: 'amazonwebservices', color: '#FF9900', category: 'Cloud' },
+    { name: 'AWS', slug: 'amazonaws', color: '#FF9900', category: 'Cloud' },
     { name: 'Docker', slug: 'docker', color: '#2496ED', category: 'Cloud' },
     { name: 'Kubernetes', slug: 'kubernetes', color: '#326CE5', category: 'Cloud' },
     { name: 'MongoDB', slug: 'mongodb', color: '#47A248', category: 'Database' },
@@ -27,8 +28,12 @@ const TECH = [
 export default function TechStackSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const { theme } = useTheme();
+    const isLight = theme === 'light';
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         if (!sectionRef.current) return;
 
         const ctx = gsap.context(() => {
@@ -45,6 +50,8 @@ export default function TechStackSection() {
 
         return () => ctx.revert();
     }, []);
+
+    const activeIsLight = mounted && isLight;
 
     return (
         <section ref={sectionRef} className="zy-section" style={{ position: 'relative', background: 'var(--zy-black)', overflow: 'hidden' }}>
@@ -108,8 +115,8 @@ export default function TechStackSection() {
                             className="tech-pill"
                             style={{
                                 padding: '12px 24px',
-                                background: 'rgba(255, 255, 255, 0.03)',
-                                border: '1px solid rgba(255, 255, 255, 0.08)',
+                                background: activeIsLight ? 'rgba(0, 0, 0, 0.02)' : 'rgba(255, 255, 255, 0.03)',
+                                border: activeIsLight ? '1px solid rgba(0, 0, 0, 0.06)' : '1px solid rgba(255, 255, 255, 0.08)',
                                 borderRadius: '50px',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -127,7 +134,7 @@ export default function TechStackSection() {
                         >
                             {/* Colored Logo */}
                             <img
-                                src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color.replace('#', '')}`}
+                                src={tech.slug === 'amazonaws' ? '/assets/aws.svg' : `https://cdn.simpleicons.org/${tech.slug}/${tech.color.replace('#', '')}`}
                                 alt={tech.name}
                                 className="tech-logo"
                                 loading="lazy"
@@ -163,7 +170,7 @@ export default function TechStackSection() {
                 }
                 
                 .tech-pill:hover {
-                    background: rgba(255, 255, 255, 0.08) !important;
+                    background: ${activeIsLight ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.08)'} !important;
                     border-color: var(--tech-color) !important;
                     box-shadow: 0 10px 30px -10px var(--tech-color) !important;
                     transform: translateY(-5px) scale(1.05) !important;
@@ -173,7 +180,7 @@ export default function TechStackSection() {
                 }
                 
                 .tech-pill:hover .tech-name {
-                    color: #fff !important;
+                    color: ${activeIsLight ? '#000000' : '#ffffff'} !important;
                 }
                 
                 .tech-pill:hover .tech-logo {
