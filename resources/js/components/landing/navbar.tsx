@@ -61,12 +61,12 @@ export default function Navbar() {
                 </a>
 
                 {/* Desktop Links */}
-                <ul className="navbar-links" style={{ display: 'flex', gap: 32, listStyle: 'none', margin: 0, padding: 0, alignItems: 'center' }}>
+                <ul className="navbar-links">
                     {NAV_LINKS.map((link) => {
                         if (link.label === 'SERVICES') {
                             return (
                                 <li key={link.href} className="nav-dropdown-wrapper" style={{ position: 'relative' }}>
-                                    <a href={link.href} className="navbar-link" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                                    <a href={link.href} className="navbar-link" style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                                         {link.label}
                                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                             <polyline points="6 9 12 15 18 9"></polyline>
