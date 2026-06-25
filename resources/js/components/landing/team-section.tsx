@@ -17,7 +17,7 @@ const TEAM = [
         name: 'Saurav Shandilya',
         role: 'Co-founder & COO',
         bio: 'Driving operations and business strategy to scale our solutions globally.',
-        image: '/assets/team/saurav.jpeg',
+        image: '/assets/team/saurav.png',
         color: '#ec4899',
     },
     {

@@ -4,12 +4,12 @@ import { useTheme } from './theme-provider';
 import Logo from '@/components/ui/logo';
 
 const NAV_LINKS = [
-    { label: 'Home', href: '/' },
-    { label: 'Services', href: '#services' },
-    { label: 'Work', href: '#work' },
-    { label: 'About', href: '#about' },
-    { label: 'Team', href: '#team' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'HOME', href: '/' },
+    { label: 'SERVICES', href: '/services' },
+    { label: 'WORK', href: '/#portfolio' },
+    { label: 'ABOUT', href: '/#about' },
+    { label: 'TEAM', href: '/#team' },
+    { label: 'CONTACT', href: '/#contact' },
 ];
 
 export default function Navbar() {
@@ -30,7 +30,7 @@ export default function Navbar() {
         gsap.fromTo(
             navRef.current,
             { y: -80, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.3 }
+            { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
         );
 
         return () => window.removeEventListener('scroll', handleScroll);
@@ -61,14 +61,63 @@ export default function Navbar() {
                 </a>
 
                 {/* Desktop Links */}
-                <ul className="navbar-links">
-                    {NAV_LINKS.map((link) => (
-                        <li key={link.href}>
-                            <a href={link.href} className="navbar-link">
-                                {link.label}
-                            </a>
-                        </li>
-                    ))}
+                <ul className="navbar-links" style={{ display: 'flex', gap: 32, listStyle: 'none', margin: 0, padding: 0, alignItems: 'center' }}>
+                    {NAV_LINKS.map((link) => {
+                        if (link.label === 'SERVICES') {
+                            return (
+                                <li key={link.href} className="nav-dropdown-wrapper" style={{ position: 'relative' }}>
+                                    <a href={link.href} className="navbar-link" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                                        {link.label}
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </a>
+                                    
+                                    {/* Dropdown Menu */}
+                                    <div className="nav-dropdown-content" style={{
+                                        position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)',
+                                        width: 260, background: 'var(--zy-gray-card)', borderRadius: 12, border: '1px solid var(--zy-gray-border)',
+                                        padding: 16, display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16,
+                                        opacity: 0, visibility: 'hidden', transition: 'all 0.3s ease', boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
+                                    }}>
+                                        {[
+                                            { title: 'Web Development', slug: 'web-development' },
+                                            { title: 'App Development', slug: 'app-development' },
+                                            { title: 'IoT Solutions', slug: 'iot-solutions' },
+                                            { title: 'AI & Automation', slug: 'ai-automation' },
+                                            { title: 'Custom Software', slug: 'custom-software' },
+                                            { title: 'Digital Marketing', slug: 'digital-marketing' }
+                                        ].map(svc => (
+                                            <a key={svc.slug} href={`/services/${svc.slug}`} style={{
+                                                padding: '12px 16px', borderRadius: 8, color: 'var(--zy-white)', textDecoration: 'none',
+                                                fontSize: 14, fontWeight: 600, transition: 'all 0.2s', background: 'transparent'
+                                            }}
+                                            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--zy-gray-dark)'; e.currentTarget.style.color = 'var(--zy-blue)'; }}
+                                            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--zy-white)'; }}
+                                            >
+                                                {svc.title}
+                                            </a>
+                                        ))}
+                                    </div>
+                                    <style>{`
+                                        .nav-dropdown-wrapper:hover .nav-dropdown-content {
+                                            opacity: 1 !important;
+                                            visibility: visible !important;
+                                            margin-top: 8px !important;
+                                        }
+                                    `}</style>
+                                </li>
+                            );
+                        }
+                        
+                        return (
+                            <li key={link.href}>
+                                <a href={link.href} className="navbar-link">
+                                    {link.label}
+                                </a>
+                            </li>
+                        );
+                    })}
                 </ul>
 
                 {/* Right side: theme toggle + CTA */}

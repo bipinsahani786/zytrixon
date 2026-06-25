@@ -5,9 +5,9 @@ const FOOTER_LINKS = {
         { label: 'Web Development', href: '/services/web-development' },
         { label: 'App Development', href: '/services/app-development' },
         { label: 'IoT Solutions', href: '/services/iot-solutions' },
+        { label: 'AI & Automation', href: '/services/ai-automation' },
+        { label: 'Custom Software', href: '/services/custom-software' },
         { label: 'Digital Marketing', href: '/services/digital-marketing' },
-        { label: 'Cloud & DevOps', href: '/services/cloud-devops' },
-        { label: 'UI/UX Design', href: '/services/ui-ux-design' },
     ],
     company: [
         { label: 'About Us', href: '/about' },

@@ -1,0 +1,20 @@
+# Zytrixon Tech
+Zytrixon Tech is an enterprise-grade software development, AI, and IoT solutions company based in India. We specialize in building high-performance, scalable, and secure digital infrastructure for businesses worldwide.
+
+## Core Services
+1. Web Development: Full-stack web apps with React, Next.js, and Laravel. We guarantee blazing fast performance and enterprise security.
+2. App Development: Native and cross-platform mobile apps for iOS and Android using React Native and Flutter.
+3. IoT Solutions: Connecting the physical and digital world. Smart devices, sensor networks, and real-time dashboards.
+4. AI & Automation: Custom artificial intelligence models, workflow automation, and smart analytics to streamline business operations.
+5. Custom Software: Tailor-made enterprise software, CRM, and ERP systems designed precisely for specific needs.
+6. Digital Marketing: Data-driven strategies including SEO, PPC, and Social Media Marketing to dominate your industry.
+
+## Why Choose Zytrixon
+- Unmatched Quality: We prioritize scalable architecture, security, and lightning-fast speed (scoring 99+ on Lighthouse).
+- Global & Local Reach: We service clients worldwide and maintain a strong presence across all major districts of India.
+- Transparent Pricing: We offer Fixed Price, Dedicated Team, and Time & Material models with zero hidden fees.
+
+## Contact Information
+- Website: https://zytrixontech.com
+- Main Contact Page: https://zytrixontech.com/contact
+- Target Audience: Enterprises, Startups, B2B Companies.
