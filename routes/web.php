@@ -50,3 +50,26 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__.'/settings.php';
+
+// Shared Hosting Fallback for Vite Assets
+Route::get('/build/assets/{file}', function ($file) {
+    $path = public_path('build/assets/' . $file);
+    if (file_exists($path)) {
+        $extension = pathinfo($path, PATHINFO_EXTENSION);
+        $mime = match($extension) {
+            'js' => 'application/javascript',
+            'css' => 'text/css',
+            'svg' => 'image/svg+xml',
+            'png' => 'image/png',
+            'jpg', 'jpeg' => 'image/jpeg',
+            'woff' => 'font/woff',
+            'woff2' => 'font/woff2',
+            default => mime_content_type($path) ?: 'application/octet-stream',
+        };
+        return response()->file($path, [
+            'Content-Type' => $mime, 
+            'Cache-Control' => 'public, max-age=31536000, immutable'
+        ]);
+    }
+    abort(404);
+})->where('file', '.*');
