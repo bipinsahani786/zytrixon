@@ -32,7 +32,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         <link rel="icon" href="/favicon.ico?v=2" sizes="any">
-        <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+        <link rel="icon" href="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('favicon.svg'))) }}" type="image/svg+xml">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 
         @viteReactRefresh
