@@ -26,7 +26,6 @@ const LazyGlobalFootprint = lazy(() => import('@/components/landing/global-footp
 const LazyContactSection = lazy(() => import('@/components/landing/contact-section'));
 const LazyFooterCTA = lazy(() => import('@/components/landing/footer-cta'));
 const LazyFooter = lazy(() => import('@/components/landing/footer'));
-const LazyFloatingButtons = lazy(() => import('@/components/landing/whatsapp-float'));
 
 export default function Welcome() {
     const [mounted, setMounted] = useState(false);
@@ -81,7 +80,6 @@ export default function Welcome() {
             {mounted && (
                 <Suspense fallback={null}>
                     <LazyFooter />
-                    <LazyFloatingButtons />
                 </Suspense>
             )}
         </ThemeProvider>

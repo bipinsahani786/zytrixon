@@ -14,7 +14,6 @@ const LazyClientsSection = lazy(() => import('@/components/landing/clients-secti
 const LazyFooterCTA = lazy(() => import('@/components/landing/footer-cta'));
 const LazyCoreValuesSection = lazy(() => import('@/components/landing/core-values-section'));
 const LazyFooter = lazy(() => import('@/components/landing/footer'));
-const LazyFloatingButtons = lazy(() => import('@/components/landing/whatsapp-float'));
 
 export default function Contact() {
     const [mounted, setMounted] = useState(false);
@@ -58,7 +57,6 @@ export default function Contact() {
             {mounted && (
                 <Suspense fallback={null}>
                     <LazyFooter />
-                    <LazyFloatingButtons />
                 </Suspense>
             )}
         </ThemeProvider>

@@ -1,5 +1,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import GlobalWatermark from './global-watermark';
+import { Suspense, lazy } from 'react';
+
+const LazyFloatingButtons = lazy(() => import('@/components/landing/whatsapp-float'));
 
 type Theme = 'dark' | 'light';
 
@@ -32,6 +35,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
             <GlobalWatermark />
+            <Suspense fallback={null}>
+                <LazyFloatingButtons />
+            </Suspense>
             {children}
         </ThemeContext.Provider>
     );
