@@ -9,32 +9,44 @@ export default function LoadingScreen() {
     const lettersRef = useRef<(HTMLSpanElement | null)[]>([]);
 
     useEffect(() => {
+        // Check session storage on client mount to avoid hydration mismatch
+        const hasLoaded = typeof window !== 'undefined' ? sessionStorage.getItem('zytrixon_loaded') : null;
+        
+        if (hasLoaded) {
+            setVisible(false);
+            document.body.classList.remove('loading');
+            return; // Prevent GSAP execution if already loaded
+        }
+        
         document.body.classList.add('loading');
 
         const tl = gsap.timeline({
             onComplete: () => {
                 setVisible(false);
                 document.body.classList.remove('loading');
+                if (typeof window !== 'undefined') {
+                    sessionStorage.setItem('zytrixon_loaded', 'true');
+                }
             },
         });
 
         // Setup and animate the Z logo smoothly
         if (zRef.current) {
             tl.fromTo(zRef.current,
-                { opacity: 0, scale: 0.5, y: 50 },
-                { opacity: 1, scale: 1, y: 0, duration: 1.4, ease: 'expo.out' }
+                { opacity: 0, scale: 0.8, y: 20 },
+                { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: 'power2.out' }
             );
         }
 
         // Smooth scattered flying letters
         tl.fromTo(lettersRef.current,
             {
-                x: () => (Math.random() - 0.5) * window.innerWidth * 0.7,
-                y: () => (Math.random() - 0.5) * window.innerHeight * 0.7,
+                x: () => (Math.random() - 0.5) * window.innerWidth * 0.3,
+                y: () => (Math.random() - 0.5) * window.innerHeight * 0.3,
                 opacity: 0,
-                scale: () => Math.random() * 2 + 1,
-                rotationZ: () => (Math.random() - 0.5) * 90,
-                filter: 'blur(12px)',
+                scale: () => Math.random() * 1.5 + 1,
+                rotationZ: () => (Math.random() - 0.5) * 45,
+                filter: 'blur(8px)',
             },
             {
                 x: 0,
@@ -43,29 +55,21 @@ export default function LoadingScreen() {
                 scale: 1,
                 rotationZ: 0,
                 filter: 'blur(0px)',
-                duration: 1.8,
-                stagger: { each: 0.04, from: 'random' },
-                ease: 'expo.out',
+                duration: 0.6,
+                stagger: { each: 0.02, from: 'random' },
+                ease: 'power2.out',
                 force3D: true,
             },
-            "-=1.0" // Start while logo is still animating
+            "-=0.3" // Start while logo is still animating
         );
-
-        // Brief hold and pulse both together
-        tl.to([zRef.current, ...lettersRef.current], {
-            scale: 1.05,
-            duration: 0.8,
-            ease: 'power2.inOut',
-            yoyo: true,
-            repeat: 1,
-        }, "+=0.2");
 
         // Fade out the entire screen smoothly
         tl.to(containerRef.current, {
             opacity: 0,
-            duration: 0.5,
+            duration: 0.3,
             ease: 'power2.inOut',
-        }, "-=0.3");
+            delay: 0.1
+        });
 
         // Allow skip on click
         const handleClick = () => {
@@ -76,10 +80,10 @@ export default function LoadingScreen() {
 
         return () => {
             containerRef.current?.removeEventListener('click', handleClick);
-            tl.kill();
+            if (tl) tl.kill();
             document.body.classList.remove('loading');
         };
-    }, []);
+    }, [visible]);
 
     if (!visible) return null;
 

@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { useMousePosition } from '@/hooks/use-mouse-position';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useTheme } from '@/components/landing/theme-provider';
+import { Link } from '@inertiajs/react';
 
 
 
@@ -57,15 +58,20 @@ export default function HeroSection() {
 
     useEffect(() => {
         if (!isLowPower) {
-            import('@react-three/fiber').then(fiber => {
-                setCanvasComponent(() => fiber.Canvas);
-                return import('@/components/landing/iot-device-mesh');
-            }).then(meshModule => {
-                setIoTDeviceMeshComponent(() => meshModule.default);
-                setShow3D(true);
-            }).catch(err => {
-                console.error("Failed to load 3D components:", err);
-            });
+            // Defer 3D loading by a significant margin to allow immediate text/UI rendering and lower TBT
+            const timer = setTimeout(() => {
+                import('@react-three/fiber').then(fiber => {
+                    setCanvasComponent(() => fiber.Canvas);
+                    return import('@/components/landing/iot-device-mesh');
+                }).then(meshModule => {
+                    setIoTDeviceMeshComponent(() => meshModule.default);
+                    setShow3D(true);
+                }).catch(err => {
+                    console.error("Failed to load 3D components:", err);
+                });
+            }, 1000); // Wait 1 second before fetching 800kB of 3D assets
+
+            return () => clearTimeout(timer);
         }
     }, [isLowPower]);
 
@@ -218,7 +224,7 @@ export default function HeroSection() {
 
                     <div ref={ctaRef} style={{ display: 'flex', gap: 16, opacity: 0, flexWrap: 'wrap' }}>
                         <div onMouseMove={handleBtnMouseMove} onMouseLeave={handleBtnMouseLeave}>
-                            <a
+                            <Link
                                 ref={btnRef}
                                 href="/contact"
                                 className="magnetic-btn"
@@ -228,9 +234,9 @@ export default function HeroSection() {
                                 <svg className="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                                     <path d="M5 12h14M12 5l7 7-7 7" />
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
-                        <a href="/work" style={{
+                        <Link href="/work" style={{
                             padding: '18px 32px',
                             border: '1px solid #333',
                             color: activeIsLight ? '#000' : 'var(--zy-white)',
@@ -258,7 +264,7 @@ export default function HeroSection() {
                                 <polygon points="5 3 19 12 5 21 5 3" />
                             </svg>
                             See Our Work
-                        </a>
+                        </Link>
                     </div>
                 </div>
 

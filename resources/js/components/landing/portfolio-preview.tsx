@@ -31,7 +31,7 @@ const PROJECTS = [
     },
 ];
 
-export default function PortfolioPreview() {
+export default function PortfolioPreview({ hideHeader = false }: { hideHeader?: boolean }) {
     const sectionRef = useRef<HTMLElement>(null);
     const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
     const [isMobile, setIsMobile] = useState(false);
@@ -72,13 +72,15 @@ export default function PortfolioPreview() {
 
     return (
         <section ref={sectionRef} id="work" className="zy-section" style={{ background: 'var(--zy-black)', overflow: 'hidden' }}>
-            <div className="zy-section-header" style={{ textAlign: 'center', marginBottom: '80px' }}>
-                <span className="zy-section-label">Selected Work</span>
-                <h2 className="zy-section-title">Projects We're Proud Of</h2>
-                <p className="zy-section-subtitle" style={{ margin: '20px auto 0' }}>
-                    Real results for real businesses — from concept to launch and beyond.
-                </p>
-            </div>
+            {!hideHeader && (
+                <div className="zy-section-header" style={{ textAlign: 'center', marginBottom: '80px' }}>
+                    <span className="zy-section-label">Selected Work</span>
+                    <h2 className="zy-section-title">Projects We're Proud Of</h2>
+                    <p className="zy-section-subtitle" style={{ margin: '20px auto 0' }}>
+                        Real results for real businesses — from concept to launch and beyond.
+                    </p>
+                </div>
+            )}
 
             <div
                 style={{

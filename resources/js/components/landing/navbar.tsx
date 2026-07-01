@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link, usePage } from '@inertiajs/react';
 import gsap from 'gsap';
 import { useTheme } from './theme-provider';
 import Logo from '@/components/ui/logo';
@@ -6,10 +7,11 @@ import Logo from '@/components/ui/logo';
 const NAV_LINKS = [
     { label: 'HOME', href: '/' },
     { label: 'SERVICES', href: '/services' },
-    { label: 'WORK', href: '/#portfolio' },
-    { label: 'ABOUT', href: '/#about' },
-    { label: 'TEAM', href: '/#team' },
-    { label: 'CONTACT', href: '/#contact' },
+    { label: 'WORK', href: '/portfolio' },
+    { label: 'ABOUT', href: '/about' },
+    { label: 'TEAM', href: '/team' },
+    { label: 'BLOG', href: '/blog' },
+    { label: 'CONTACT', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -18,6 +20,7 @@ export default function Navbar() {
     const [mounted, setMounted] = useState(false);
     const navRef = useRef<HTMLElement>(null);
     const { theme, toggleTheme } = useTheme();
+    const { url } = usePage();
 
     useEffect(() => {
         setMounted(true);
@@ -56,22 +59,23 @@ export default function Navbar() {
                 style={{ opacity: 0 }}
             >
                 {/* Logo */}
-                <a href="/" className="navbar-logo" aria-label="Zytrixon Home" style={{ display: 'flex', alignItems: 'center' }}>
+                <Link href="/" className="navbar-logo" aria-label="Zytrixon Home" style={{ display: 'flex', alignItems: 'center' }}>
                     <Logo style={{ height: '56px', width: 'auto', color: 'var(--zy-white)' }} />
-                </a>
+                </Link>
 
                 {/* Desktop Links */}
                 <ul className="navbar-links">
                     {NAV_LINKS.map((link) => {
                         if (link.label === 'SERVICES') {
+                            const isServicesActive = url.startsWith('/services');
                             return (
                                 <li key={link.href} className="nav-dropdown-wrapper" style={{ position: 'relative' }}>
-                                    <a href={link.href} className="navbar-link" style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                                    <Link href={link.href} className={`navbar-link ${isServicesActive ? 'active' : ''}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: isServicesActive ? 'var(--zy-blue)' : undefined }}>
                                         {link.label}
                                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                             <polyline points="6 9 12 15 18 9"></polyline>
                                         </svg>
-                                    </a>
+                                    </Link>
                                     
                                     {/* Dropdown Menu */}
                                     <div className="nav-dropdown-content" style={{
@@ -88,7 +92,7 @@ export default function Navbar() {
                                             { title: 'Custom Software', slug: 'custom-software' },
                                             { title: 'Digital Marketing', slug: 'digital-marketing' }
                                         ].map(svc => (
-                                            <a key={svc.slug} href={`/services/${svc.slug}`} style={{
+                                            <Link key={svc.slug} href={`/services/${svc.slug}`} style={{
                                                 padding: '12px 16px', borderRadius: 8, color: 'var(--zy-white)', textDecoration: 'none',
                                                 fontSize: 14, fontWeight: 600, transition: 'all 0.2s', background: 'transparent'
                                             }}
@@ -96,7 +100,7 @@ export default function Navbar() {
                                             onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--zy-white)'; }}
                                             >
                                                 {svc.title}
-                                            </a>
+                                            </Link>
                                         ))}
                                     </div>
                                     <style>{`
@@ -110,11 +114,16 @@ export default function Navbar() {
                             );
                         }
                         
+                        const isActive = url === link.href || (link.href !== '/' && url.startsWith(link.href));
                         return (
                             <li key={link.href}>
-                                <a href={link.href} className="navbar-link">
+                                <Link 
+                                    href={link.href} 
+                                    className={`navbar-link ${isActive ? 'active' : ''}`}
+                                    style={isActive ? { color: 'var(--zy-blue)' } : {}}
+                                >
                                     {link.label}
-                                </a>
+                                </Link>
                             </li>
                         );
                     })}
@@ -178,12 +187,12 @@ export default function Navbar() {
                     </a>
 
                     {/* Desktop CTA */}
-                    <a href="#contact" className="magnetic-btn" style={{ padding: '10px 24px', fontSize: 12 }}>
+                    <Link href="/contact" className="magnetic-btn" style={{ padding: '10px 24px', fontSize: 12 }}>
                         Get a Quote
                         <svg className="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -201,17 +210,20 @@ export default function Navbar() {
             {/* Mobile Panel */}
             <div className={`mobile-nav-panel ${mobileOpen ? 'open' : ''}`} data-lenis-prevent="true">
                 <div className="mobile-links-container">
-                    {NAV_LINKS.map((link, idx) => (
-                        <a 
+                    {NAV_LINKS.map((link, idx) => {
+                        const isActive = url === link.href || (link.href !== '/' && url.startsWith(link.href));
+                        return (
+                        <Link 
                             key={link.href} 
                             href={link.href} 
-                            className="mobile-nav-link"
+                            className={`mobile-nav-link ${isActive ? 'active' : ''}`}
+                            style={isActive ? { color: 'var(--zy-blue)' } : {}}
                             onClick={() => setMobileOpen(false)}
                         >
                             <span className="link-num">0{idx + 1}.</span>
                             {link.label}
-                        </a>
-                    ))}
+                        </Link>
+                    )})}
                 </div>
 
                 <div className="mobile-nav-footer">
@@ -238,14 +250,14 @@ export default function Navbar() {
                         {!mounted || theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
                     </button>
 
-                    <a
-                        href="#contact"
+                    <Link
+                        href="/contact"
                         className="magnetic-btn"
                         style={{ borderRadius: '30px', padding: '14px 40px', fontSize: 13 }}
                         onClick={() => setMobileOpen(false)}
                     >
                         Get a Quote
-                    </a>
+                    </Link>
 
                     <div className="mobile-footer-contacts">
                         <a href="mailto:zytrixon@gmail.com">zytrixon@gmail.com</a>

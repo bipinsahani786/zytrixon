@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import GlobalWatermark from './global-watermark';
 
 type Theme = 'dark' | 'light';
 
@@ -30,6 +31,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <GlobalWatermark />
             {children}
         </ThemeContext.Provider>
     );

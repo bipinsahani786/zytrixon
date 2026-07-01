@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react';
+import { Link } from '@inertiajs/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -103,7 +104,7 @@ export default function FooterCTA() {
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
             >
-                <a
+                <Link
                     ref={btnRef}
                     href="/contact"
                     className="magnetic-btn"
@@ -116,7 +117,7 @@ export default function FooterCTA() {
                     <svg className="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
-                </a>
+                </Link>
             </div>
         </section>
     );

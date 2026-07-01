@@ -1,4 +1,5 @@
 import Logo from '@/components/ui/logo';
+import { Link } from '@inertiajs/react';
 
 const FOOTER_LINKS = {
     services: [
@@ -17,8 +18,9 @@ const FOOTER_LINKS = {
         { label: 'Careers', href: '/careers' },
     ],
     legal: [
-        { label: 'Privacy Policy', href: '/privacy' },
-        { label: 'Terms of Service', href: '/terms' },
+        { label: 'Privacy Policy', href: '/privacy-policy' },
+        { label: 'Terms of Service', href: '/terms-and-conditions' },
+        { label: 'Sitemap', href: '/sitemap.xml' },
     ],
 };
 
@@ -121,9 +123,9 @@ export default function Footer() {
                 <div>
                     <h4 className="footer-heading">Services</h4>
                     {FOOTER_LINKS.services.map((link) => (
-                        <a key={link.href} href={link.href} className="footer-link">
+                        <Link key={link.href} href={link.href} className="footer-link">
                             {link.label}
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
@@ -131,9 +133,9 @@ export default function Footer() {
                 <div>
                     <h4 className="footer-heading">Company</h4>
                     {FOOTER_LINKS.company.map((link) => (
-                        <a key={link.href} href={link.href} className="footer-link">
+                        <Link key={link.href} href={link.href} className="footer-link">
                             {link.label}
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
@@ -164,9 +166,15 @@ export default function Footer() {
                 <span>© {new Date().getFullYear()} Zytrixon Tech. All rights reserved. Made with ❤️ in Patna.</span>
                 <div style={{ display: 'flex', gap: '24px' }}>
                     {FOOTER_LINKS.legal.map((link) => (
-                        <a key={link.href} href={link.href} className="footer-link" style={{ marginBottom: 0 }}>
-                            {link.label}
-                        </a>
+                        link.href.endsWith('.xml') ? (
+                            <a key={link.href} href={link.href} className="footer-link" style={{ marginBottom: 0 }} target="_blank" rel="noopener noreferrer">
+                                {link.label}
+                            </a>
+                        ) : (
+                            <Link key={link.href} href={link.href} className="footer-link" style={{ marginBottom: 0 }}>
+                                {link.label}
+                            </Link>
+                        )
                     ))}
                 </div>
             </div>

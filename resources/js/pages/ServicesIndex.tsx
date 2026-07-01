@@ -4,6 +4,13 @@ import { ThemeProvider } from '@/components/landing/theme-provider';
 import Navbar from '@/components/landing/navbar';
 import Footer from '@/components/landing/footer';
 import CustomCursor from '@/components/landing/custom-cursor';
+import InnerPageHero from '@/components/landing/inner-page-hero';
+import TestimonialsSection from '@/components/landing/testimonials-section';
+import TechStackSection from '@/components/landing/tech-stack-section';
+import ClientsSection from '@/components/landing/clients-section';
+import CoreValuesSection from '@/components/landing/core-values-section';
+import FooterCTA from '@/components/landing/footer-cta';
+import ContactSection from '@/components/landing/contact-section';
 
 export default function ServicesIndex({ services }: { services: any[] }) {
     return (
@@ -15,15 +22,13 @@ export default function ServicesIndex({ services }: { services: any[] }) {
             <CustomCursor />
             <Navbar />
 
-            <main style={{ paddingTop: '120px', minHeight: '100vh', background: 'var(--zy-black)', color: 'var(--zy-white)' }}>
-                <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', textAlign: 'center', marginBottom: 60 }}>
-                    <h1 style={{ fontSize: 'clamp(40px, 6vw, 64px)', fontWeight: 800, marginBottom: 24, fontFamily: 'var(--font-heading)' }}>What We Build</h1>
-                    <p style={{ fontSize: 20, color: 'var(--zy-gray-text)', maxWidth: 600, margin: '0 auto' }}>
-                        Enterprise-grade digital solutions designed to scale and dominate the market.
-                    </p>
-                </div>
+            <main style={{ minHeight: '100vh', background: 'var(--zy-black)', color: 'var(--zy-white)' }}>
+                <InnerPageHero 
+                    title="What We Build"
+                    subtitle="Enterprise-grade digital solutions designed to scale and dominate the market."
+                />
 
-                <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 32 }}>
+                <div style={{ maxWidth: 1200, margin: '0 auto', padding: '60px 24px 100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 32 }}>
                     {services.map((service) => (
                         <Link 
                             key={service.id} 
@@ -64,6 +69,13 @@ export default function ServicesIndex({ services }: { services: any[] }) {
                         </Link>
                     ))}
                 </div>
+
+                <TechStackSection />
+                <ClientsSection />
+                <CoreValuesSection />
+                <TestimonialsSection />
+                <FooterCTA />
+                <ContactSection />
             </main>
 
             <Footer />

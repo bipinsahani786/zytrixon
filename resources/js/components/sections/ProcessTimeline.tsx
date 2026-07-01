@@ -10,7 +10,7 @@ export default function ProcessTimeline({ service }: any) {
             <div style={{ maxWidth: 1000, margin: '0 auto' }}>
                 <div style={{ textAlign: 'center', marginBottom: 60 }}>
                     <h2 className="zy-section-title">
-                        How We Deliver {service.title}
+                        How We Deliver {service?.title || 'Excellence'}
                     </h2>
                     <p style={{ color: 'var(--zy-gray-text)', marginTop: 16 }}>A transparent, agile process guaranteed to yield results.</p>
                 </div>
