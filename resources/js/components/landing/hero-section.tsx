@@ -81,24 +81,48 @@ export default function HeroSection() {
         return () => clearTimeout(timer);
     }, [typedText, isDeleting, loopNum, typingSpeed, typingStarted]);
 
-    useEffect(() => {
-        if (!isLowPower) {
-            // Defer 3D loading by a significant margin to allow immediate text/UI rendering and lower TBT
-            const timer = setTimeout(() => {
-                import('@react-three/fiber').then(fiber => {
-                    setCanvasComponent(() => fiber.Canvas);
-                    return import('@/components/landing/iot-device-mesh');
-                }).then(meshModule => {
-                    setIoTDeviceMeshComponent(() => meshModule.default);
-                    setShow3D(true);
-                }).catch(err => {
-                    console.error("Failed to load 3D components:", err);
-                });
-            }, 1000); // Wait 1 second before fetching 800kB of 3D assets
+    const [load3D, setLoad3D] = useState(false);
 
-            return () => clearTimeout(timer);
-        }
-    }, [isLowPower]);
+    useEffect(() => {
+        if (isLowPower || isBot) return;
+
+        let interactionLoaded = false;
+        const trigger3DLoad = () => {
+            if (interactionLoaded) return;
+            interactionLoaded = true;
+            setLoad3D(true);
+        };
+
+        window.addEventListener('mousemove', trigger3DLoad, { once: true });
+        window.addEventListener('scroll', trigger3DLoad, { once: true });
+        window.addEventListener('click', trigger3DLoad, { once: true });
+        window.addEventListener('touchstart', trigger3DLoad, { once: true });
+
+        // Fallback: load anyway after 4.5s if user does nothing
+        const fallbackTimer = setTimeout(trigger3DLoad, 4500);
+
+        return () => {
+            window.removeEventListener('mousemove', trigger3DLoad);
+            window.removeEventListener('scroll', trigger3DLoad);
+            window.removeEventListener('click', trigger3DLoad);
+            window.removeEventListener('touchstart', trigger3DLoad);
+            clearTimeout(fallbackTimer);
+        };
+    }, [isLowPower, isBot]);
+
+    useEffect(() => {
+        if (!load3D) return;
+
+        import('@react-three/fiber').then(fiber => {
+            setCanvasComponent(() => fiber.Canvas);
+            return import('@/components/landing/iot-device-mesh');
+        }).then(meshModule => {
+            setIoTDeviceMeshComponent(() => meshModule.default);
+            setShow3D(true);
+        }).catch(err => {
+            console.error("Failed to load 3D components:", err);
+        });
+    }, [load3D]);
 
     useEffect(() => {
         if (!sectionRef.current || isBot) return;
