@@ -4,14 +4,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZVZQPPQ27"></script>
+        <!-- Google Analytics (Delayed for PageSpeed) -->
         <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+          setTimeout(function() {
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YZVZQPPQ27';
+            script.async = true;
+            document.head.appendChild(script);
 
-          gtag('config', 'G-YZVZQPPQ27');
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YZVZQPPQ27');
+          }, 3500);
         </script>
 
         {{-- Inline script to detect system dark mode preference and apply it immediately --}}
