@@ -117,7 +117,7 @@ export default function HeroSection() {
             if (headlineRef.current) {
                 const words = headlineRef.current.querySelectorAll('.hero-word');
                 tl.fromTo(words,
-                    { opacity: 0, y: 40, filter: 'blur(8px)' },
+                    { opacity: 0, y: 40, filter: isLowPower ? 'none' : 'blur(8px)' },
                     { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, stagger: 0.08, ease: 'power3.out' },
                     0.1
                 );
