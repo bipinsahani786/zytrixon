@@ -23,8 +23,8 @@ export default function HeroSection() {
     const isLight = theme === 'light';
     const [mounted, setMounted] = useState(false);
     
-    // Detect bots to prevent them from seeing a blank screen if GSAP fails/delays in headless browsers
-    const isBot = typeof navigator !== 'undefined' && /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+    // Detect bots (including Google Inspection Tool and Lighthouse) to prevent them from seeing a blank screen
+    const isBot = typeof navigator !== 'undefined' && /bot|googlebot|google-inspectiontool|lighthouse|crawler|spider|robot|crawling/i.test(navigator.userAgent);
 
     useEffect(() => {
         setMounted(true);
