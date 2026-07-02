@@ -7,12 +7,12 @@ import TopBar from '@/components/landing/top-bar';
 import Navbar from '@/components/landing/navbar';
 import LazySection from '@/components/landing/lazy-section';
 import HeroSection from '@/components/landing/hero-section';
-import MarqueeStrip from '@/components/landing/marquee-strip';
-import AboutSection from '@/components/landing/about-section';
-import StatsSection from '@/components/landing/stats-section';
-import ServicesSection from '@/components/landing/services-section';
-import IndustriesSection from '@/components/landing/industries-section';
-import ProcessSection from '@/components/landing/process-section';
+const LazyMarqueeStrip = lazy(() => import('@/components/landing/marquee-strip'));
+const LazyAboutSection = lazy(() => import('@/components/landing/about-section'));
+const LazyStatsSection = lazy(() => import('@/components/landing/stats-section'));
+const LazyServicesSection = lazy(() => import('@/components/landing/services-section'));
+const LazyIndustriesSection = lazy(() => import('@/components/landing/industries-section'));
+const LazyProcessSection = lazy(() => import('@/components/landing/process-section'));
 
 const LazyPortfolioPreview = lazy(() => import('@/components/landing/portfolio-preview'));
 const LazyTechStackSection = lazy(() => import('@/components/landing/tech-stack-section'));
@@ -51,14 +51,14 @@ export default function Welcome() {
 
             <main>
                 <HeroSection />
-                <MarqueeStrip />
-                <AboutSection />
-                <StatsSection />
-                <ServicesSection />
-                <IndustriesSection />
-                <ProcessSection />
                 {mounted ? (
                     <>
+                        <LazySection><Suspense fallback={<div style={{ minHeight: '10vh' }} />}><LazyMarqueeStrip /></Suspense></LazySection>
+                        <LazySection><Suspense fallback={<div style={{ minHeight: '50vh' }} />}><LazyAboutSection /></Suspense></LazySection>
+                        <LazySection><Suspense fallback={<div style={{ minHeight: '50vh' }} />}><LazyStatsSection /></Suspense></LazySection>
+                        <LazySection><Suspense fallback={<div style={{ minHeight: '50vh' }} />}><LazyServicesSection /></Suspense></LazySection>
+                        <LazySection><Suspense fallback={<div style={{ minHeight: '50vh' }} />}><LazyIndustriesSection /></Suspense></LazySection>
+                        <LazySection><Suspense fallback={<div style={{ minHeight: '50vh' }} />}><LazyProcessSection /></Suspense></LazySection>
                         <LazySection><Suspense fallback={<div style={{ minHeight: '50vh' }} />}><LazyPortfolioPreview /></Suspense></LazySection>
                         <LazySection><Suspense fallback={<div style={{ minHeight: '50vh' }} />}><LazyTechStackSection /></Suspense></LazySection>
                         <LazySection><Suspense fallback={<div style={{ minHeight: '50vh' }} />}><LazyTeamSection /></Suspense></LazySection>

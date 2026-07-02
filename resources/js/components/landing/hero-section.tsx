@@ -36,7 +36,16 @@ export default function HeroSection() {
     const [loopNum, setLoopNum] = useState(0);
     const [typingSpeed, setTypingSpeed] = useState(120);
 
+    // Delay the initial typing effect by 1200ms to allow FCP/LCP to render instantly without main-thread blocking
+    const [typingStarted, setTypingStarted] = useState(false);
     useEffect(() => {
+        const timer = setTimeout(() => setTypingStarted(true), 1200);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (!typingStarted) return;
+        
         const handleTyping = () => {
             const i = loopNum % PHRASES.length;
             const fullText = PHRASES[i];
@@ -54,7 +63,7 @@ export default function HeroSection() {
 
         const timer = setTimeout(handleTyping, typingSpeed);
         return () => clearTimeout(timer);
-    }, [typedText, isDeleting, loopNum, typingSpeed]);
+    }, [typedText, isDeleting, loopNum, typingSpeed, typingStarted]);
 
     useEffect(() => {
         if (!isLowPower) {
