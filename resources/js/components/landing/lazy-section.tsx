@@ -11,7 +11,7 @@ export default function LazySection({
     children, 
     minHeight = '50vh',
     threshold = 0,
-    rootMargin = '100px 0px' 
+    rootMargin = '800px 0px' 
 }: LazySectionProps) {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
