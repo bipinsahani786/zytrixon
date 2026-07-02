@@ -335,11 +335,6 @@ function HeroFallback() {
                 backgroundImage: 'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)',
                 backgroundSize: '20px 20px',
             }} />
-            <div style={{
-                fontFamily: 'var(--font-heading)', fontSize: 180,
-                fontWeight: 800, color: 'rgba(255,255,255,0.04)',
-                lineHeight: 1, userSelect: 'none',
-            }}>Z</div>
         </div>
     );
 }
