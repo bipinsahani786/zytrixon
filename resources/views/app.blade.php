@@ -108,6 +108,14 @@
         <x-inertia::head />
     </head>
     <body class="font-sans antialiased">
+        <!-- Instant LCP Skeleton -->
+        <div id="ssr-fallback" style="position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh; background: #000000; padding: 120px 20px; z-index: 9999; box-sizing: border-box; display: flex; align-items: center;">
+            <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
+                <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 10vw, 78px); font-weight: 800; color: #FFFFFF; line-height: 1.05; letter-spacing: -0.03em; margin: 0;">
+                    We Engineer<br/>Digital Dominance
+                </h1>
+            </div>
+        </div>
         <x-inertia::app />
     </body>
 </html>

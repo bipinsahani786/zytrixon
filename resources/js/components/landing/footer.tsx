@@ -121,7 +121,7 @@ export default function Footer() {
 
                 {/* Services */}
                 <div>
-                    <h4 className="footer-heading">Services</h4>
+                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Services</div>
                     {FOOTER_LINKS.services.map((link) => (
                         <Link key={link.href} href={link.href} className="footer-link">
                             {link.label}
@@ -131,7 +131,7 @@ export default function Footer() {
 
                 {/* Company */}
                 <div>
-                    <h4 className="footer-heading">Company</h4>
+                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Company</div>
                     {FOOTER_LINKS.company.map((link) => (
                         <Link key={link.href} href={link.href} className="footer-link">
                             {link.label}
@@ -141,7 +141,7 @@ export default function Footer() {
 
                 {/* Contact */}
                 <div>
-                    <h4 className="footer-heading">Get in Touch</h4>
+                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Get in Touch</div>
                     <a href="mailto:zytrixon@gmail.com" className="footer-link">
                         zytrixon@gmail.com
                     </a>

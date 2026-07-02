@@ -28,6 +28,12 @@ export default function HeroSection() {
 
     useEffect(() => {
         setMounted(true);
+        const ssrFallback = document.getElementById('ssr-fallback');
+        if (ssrFallback) {
+            ssrFallback.style.opacity = '0';
+            ssrFallback.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => ssrFallback.remove(), 500);
+        }
     }, []);
 
     const activeIsLight = mounted && isLight;

@@ -5,7 +5,7 @@ export default function GlobalWatermark() {
     const isLight = theme === 'light';
 
     return (
-        <div style={{
+        <div aria-hidden="true" style={{
             position: 'fixed',
             inset: 0,
             pointerEvents: 'none',
@@ -15,20 +15,6 @@ export default function GlobalWatermark() {
             alignItems: 'center',
             justifyContent: 'center'
         }}>
-            {/* The giant Z watermark */}
-            <div style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(200px, 40vw, 800px)',
-                fontWeight: 900,
-                color: isLight ? 'rgba(0,0,0,0.02)' : 'rgba(255,255,255,0.02)',
-                lineHeight: 1,
-                userSelect: 'none',
-                transform: 'rotate(-5deg) scale(1.2)',
-                whiteSpace: 'nowrap',
-                position: 'absolute'
-            }}>
-                Z
-            </div>
             {/* ZYTRIXON text watermark */}
             <div style={{
                 position: 'absolute',
