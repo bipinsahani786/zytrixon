@@ -28,6 +28,20 @@ Route::get('/sitemap.xml', function () {
     $urls = [
         '/', '/services', '/work', '/team', '/about', '/blog', '/contact', '/process', '/careers', '/privacy-policy', '/terms-and-conditions'
     ];
+
+    try {
+        $services = \App\Models\Service::all();
+        $locations = \App\Models\Location::all();
+        
+        foreach ($services as $service) {
+            $urls[] = '/services/' . $service->slug;
+            foreach ($locations as $location) {
+                $urls[] = '/services/' . $service->slug . '/in/' . $location->slug;
+            }
+        }
+    } catch (\Exception $e) {
+        // Fallback if db isn't migrated yet
+    }
     
     $xml = '<?xml version="1.0" encoding="UTF-8"?>';
     $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
