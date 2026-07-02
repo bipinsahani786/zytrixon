@@ -22,4 +22,20 @@ export default defineConfig({
             formVariants: true,
         }),
     ],
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        if (id.includes('react/') || id.includes('react-dom/')) return 'vendor-react';
+                        if (id.includes('gsap')) return 'vendor-gsap';
+                        if (id.includes('framer-motion')) return 'vendor-framer';
+                        if (id.includes('lucide-react')) return 'vendor-lucide';
+                        if (id.includes('@radix-ui')) return 'vendor-radix';
+                        if (id.includes('three') || id.includes('@react-three')) return 'vendor-three';
+                    }
+                }
+            }
+        }
+    }
 });

@@ -1,7 +1,6 @@
 import SeoHead from '@/components/seo/SeoHead';
 import { useEffect, useState, lazy, Suspense } from 'react';
 import { ThemeProvider } from '@/components/landing/theme-provider';
-import LoadingScreen from '@/components/landing/loading-screen';
 import CustomCursor from '@/components/landing/custom-cursor';
 import GrainOverlay from '@/components/landing/grain-overlay';
 import TopBar from '@/components/landing/top-bar';
@@ -45,7 +44,6 @@ export default function Welcome() {
         <ThemeProvider>
             <SeoHead />
 
-            <LoadingScreen />
             <CustomCursor />
             <GrainOverlay />
             <TopBar />

@@ -79,7 +79,7 @@ export default function HeroSection() {
         if (!sectionRef.current) return;
 
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline({ delay: 1.4 });
+            const tl = gsap.timeline({ delay: 0.1 });
 
             // Badge
             tl.fromTo(badgeRef.current,
