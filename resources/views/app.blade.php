@@ -39,7 +39,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
         @php
             $seo = $page['props']['seo'] ?? null;
-            $title = $seo['title'] ?? config('app.name', 'Zytrixon Tech | Top Web Development Agency in Patna');
+            $title = $seo['title'] ?? 'Zytrixon Tech | Top Web Development Agency in Patna';
             $description = $seo['description'] ?? 'Zytrixon Tech provides premium web development, app development, and SEO services in Patna, Bihar and across India. We deliver scalable and high-performance digital solutions.';
             $keywords = $seo['keywords'] ?? 'web development patna, software company in patna, app development bihar, zytrixon tech, best it company patna';
             $canonical = $seo['canonical'] ?? url()->current();
