@@ -22,6 +22,9 @@ export default function HeroSection() {
     const { theme } = useTheme();
     const isLight = theme === 'light';
     const [mounted, setMounted] = useState(false);
+    
+    // Detect bots to prevent them from seeing a blank screen if GSAP fails/delays in headless browsers
+    const isBot = typeof navigator !== 'undefined' && /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
 
     useEffect(() => {
         setMounted(true);
@@ -36,6 +39,13 @@ export default function HeroSection() {
     const [loopNum, setLoopNum] = useState(0);
     const [typingSpeed, setTypingSpeed] = useState(120);
 
+    // If bot, just show the full text immediately
+    useEffect(() => {
+        if (isBot) {
+            setTypedText("Digital Dominance");
+        }
+    }, [isBot]);
+
     // Delay the initial typing effect by 1200ms to allow FCP/LCP to render instantly without main-thread blocking
     const [typingStarted, setTypingStarted] = useState(false);
     useEffect(() => {
@@ -44,7 +54,7 @@ export default function HeroSection() {
     }, []);
 
     useEffect(() => {
-        if (!typingStarted) return;
+        if (!typingStarted || isBot) return;
         
         const handleTyping = () => {
             const i = loopNum % PHRASES.length;
@@ -85,7 +95,7 @@ export default function HeroSection() {
     }, [isLowPower]);
 
     useEffect(() => {
-        if (!sectionRef.current) return;
+        if (!sectionRef.current || isBot) return;
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({ delay: 0.1 });
@@ -177,7 +187,7 @@ export default function HeroSection() {
                         border: activeIsLight ? '1px solid rgba(0,0,0,0.1)' : '1px solid rgba(255,255,255,0.2)',
                         background: activeIsLight ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.05)',
                         marginBottom: 28,
-                        opacity: 0,
+                        opacity: isBot ? 1 : 0,
                     }}>
                         <span style={{
                             width: 6, height: 6, borderRadius: '50%',
@@ -225,13 +235,13 @@ export default function HeroSection() {
                         color: activeIsLight ? '#666' : 'var(--zy-gray-text)',
                         maxWidth: 500,
                         marginBottom: 36,
-                        opacity: 0,
+                        opacity: isBot ? 1 : 0,
                     }}>
                         From <strong style={{ color: activeIsLight ? '#000' : 'var(--zy-white)' }}>Patna to the World</strong> — Zytrixon Tech
                         builds enterprise-grade Web, Mobile, and IoT solutions that transform businesses into global brands.
                     </p>
 
-                    <div ref={ctaRef} style={{ display: 'flex', gap: 16, opacity: 0, flexWrap: 'wrap' }}>
+                    <div ref={ctaRef} style={{ display: 'flex', gap: 16, opacity: isBot ? 1 : 0, flexWrap: 'wrap' }}>
                         <div onMouseMove={handleBtnMouseMove} onMouseLeave={handleBtnMouseLeave}>
                             <Link
                                 ref={btnRef}
