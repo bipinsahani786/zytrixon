@@ -40,11 +40,28 @@
         @php
             $seo = $page['props']['seo'] ?? null;
             $title = $seo['title'] ?? 'Zytrixon Tech | Top Web Development Agency in Patna';
-            $description = $seo['description'] ?? 'Zytrixon Tech provides premium web development, app development, and SEO services in Patna, Bihar and across India. We deliver scalable and high-performance digital solutions.';
+            $description = $seo['description'] ?? 'Zytrixon Tech offers premium web & app development, and SEO services in Patna & across India. We deliver scalable, high-performance digital solutions.';
             $keywords = $seo['keywords'] ?? 'web development patna, software company in patna, app development bihar, zytrixon tech, best it company patna';
             $canonical = $seo['canonical'] ?? url()->current();
             $image = $seo['image'] ?? url('/favicon.svg');
-            $schema = $seo['schema'] ?? null;
+            $schema = $seo['schema'] ?? [
+                '@context' => 'https://schema.org',
+                '@type' => 'LocalBusiness',
+                'name' => 'Zytrixon Tech',
+                'image' => url('/favicon.svg'),
+                'url' => url('/'),
+                'description' => $description,
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'streetAddress' => 'Kankarbagh',
+                    'addressLocality' => 'Patna',
+                    'addressRegion' => 'Bihar',
+                    'postalCode' => '800020',
+                    'addressCountry' => 'IN'
+                ],
+                'priceRange' => '$$',
+                'telephone' => '+91-7049711475'
+            ];
         @endphp
 
         <title>{{ $title }}</title>
@@ -58,6 +75,7 @@
         <meta property="og:title" content="{{ $title }}">
         <meta property="og:description" content="{{ $description }}">
         <meta property="og:image" content="{{ $image }}">
+        <meta property="og:updated_time" content="{{ now()->toIso8601String() }}">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
