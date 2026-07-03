@@ -84,7 +84,7 @@ export default function HeroSection() {
     const [load3D, setLoad3D] = useState(false);
 
     useEffect(() => {
-        if (isLowPower || isBot) return;
+        if (isBot) return;
 
         let interactionLoaded = false;
         const trigger3DLoad = () => {
@@ -324,7 +324,7 @@ export default function HeroSection() {
                             <CanvasComponent 
                                 camera={{ position: [0, 0, 5], fov: 45 }} 
                                 style={{ borderRadius: 0 }}
-                                dpr={[1, 1.5]}
+                                dpr={isLowPower ? [0.5, 1] : [1, 1.5]}
                                 performance={{ min: 0.5 }}
                                 gl={{ powerPreference: "high-performance", antialias: false }}
                             >
