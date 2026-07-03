@@ -63,7 +63,7 @@ export default function ProcessSection() {
                 <h2 className="zy-section-title">How We Work</h2>
             </div>
             
-            <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: isMobile ? 32 : 60, padding: '0 20px' }}>
+            <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: isMobile ? 48 : 120, padding: '0 20px' }}>
                 {isMobile ? (
                     // Mobile: standard vertical stack
                     STEPS.map((step, i) => (
@@ -95,10 +95,10 @@ export default function ProcessSection() {
                             </GradientCard>
                             {/* Down arrow for mobile */}
                             {i < STEPS.length - 1 && (
-                                <div style={{ position: 'absolute', bottom: -28, left: '50%', transform: 'translateX(-50%)', color: step.color, opacity: 0.6, zIndex: 10 }}>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <polyline points="19 12 12 19 5 12"></polyline>
+                                <div style={{ position: 'absolute', bottom: -36, left: '50%', transform: 'translateX(-50%)', color: step.color, opacity: 0.6, zIndex: 10 }}>
+                                    <svg width="24" height="32" viewBox="0 0 24 32" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="4 4">
+                                        <line x1="12" y1="2" x2="12" y2="28"></line>
+                                        <polyline points="19 21 12 28 5 21"></polyline>
                                     </svg>
                                 </div>
                             )}
@@ -111,13 +111,13 @@ export default function ProcessSection() {
                             <div style={{ 
                                 display: 'flex', 
                                 flexDirection: rowIndex % 2 === 0 ? 'row' : 'row-reverse',
-                                gap: 60,
+                                gap: 100,
                                 position: 'relative'
                             }}>
                                 {row.map((step, colIndex) => (
                                     <div key={step.number} style={{ flex: 1, position: 'relative' }}>
                                         <GradientCard themeColor={step.color} style={{ height: '100%' }}>
-                                            <div style={{ padding: 40, height: '100%', position: 'relative', zIndex: 2, overflow: 'hidden' }}>
+                                            <div style={{ padding: 48, height: '100%', position: 'relative', zIndex: 2, overflow: 'hidden' }}>
                                                 {/* Watermark Number */}
                                                 <div style={{ 
                                                     position: 'absolute', top: -10, right: -10, 
@@ -149,14 +149,14 @@ export default function ProcessSection() {
                                             <div style={{
                                                 position: 'absolute',
                                                 top: '50%',
-                                                [rowIndex % 2 === 0 ? 'right' : 'left']: -42,
+                                                [rowIndex % 2 === 0 ? 'right' : 'left']: -80,
                                                 transform: `translateY(-50%) ${rowIndex % 2 !== 0 ? 'scaleX(-1)' : ''}`,
                                                 zIndex: 1,
-                                                width: 30,
+                                                width: 60,
                                                 overflow: 'hidden'
                                             }}>
-                                                <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M0 12h24M16 4l8 8-8 8" stroke={step.color} strokeWidth="2" strokeDasharray="4 4" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }} />
+                                                <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0 12h54M46 4l8 8-8 8" stroke={step.color} strokeWidth="2" strokeDasharray="6 6" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }} />
                                                 </svg>
                                             </div>
                                         )}
@@ -168,12 +168,12 @@ export default function ProcessSection() {
                             {rowIndex < rows.length - 1 && (
                                 <div style={{ 
                                     position: 'absolute', 
-                                    bottom: -46, 
+                                    bottom: -100, 
                                     [rowIndex % 2 === 0 ? 'right' : 'left']: '16%', 
                                     zIndex: 1
                                 }}>
-                                    <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 0v36M4 28l8 8 8-8" stroke={row[row.length - 1].color} strokeWidth="2" strokeDasharray="4 4" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }} />
+                                    <svg width="24" height="80" viewBox="0 0 24 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 0v76M4 68l8 8 8-8" stroke={row[row.length - 1].color} strokeWidth="2" strokeDasharray="6 6" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }} />
                                     </svg>
                                 </div>
                             )}
