@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '@/components/landing/theme-provider';
 import GradientCard from '@/components/ui/GradientCard';
+import { getServiceConfig } from '@/lib/service-data';
 
 export default function QAAndTesting({ service }: any) {
     const { theme } = useTheme();
@@ -14,12 +15,14 @@ export default function QAAndTesting({ service }: any) {
         return () => clearInterval(interval);
     }, []);
 
-    const tests = [
-        { name: 'Unit Testing: 95% Coverage', time: '1.2s' },
-        { name: 'End-to-End Cypress Tests', time: '4.5s' },
-        { name: 'Load Testing (JMeter)', time: '12.0s' },
-        { name: 'Manual Exploratory Testing', time: 'Passed' }
-    ];
+    const config = getServiceConfig(service?.slug);
+    const themeColor = config.themeColor;
+    const qa = config.qa;
+
+    const tests = qa.items.map((item, idx) => ({
+        name: item,
+        time: idx === 3 ? 'Passed' : `${(Math.random() * 5 + 1).toFixed(1)}s`
+    }));
 
     return (
         <section className="zy-section" style={{ background: isLight ? '#FFFFFF' : 'var(--zy-black)', overflow: 'hidden' }}>
@@ -27,7 +30,7 @@ export default function QAAndTesting({ service }: any) {
                 
                 {/* Premium Animated Terminal / Runner UI */}
                 <div style={{ flex: '1 1 450px', position: 'relative' }}>
-                    <GradientCard themeColor="#10b981">
+                    <GradientCard themeColor={themeColor}>
                         <div style={{ 
                             background: isLight ? '#f7f7f7' : '#0C0C0C', 
                             borderRadius: 16, 
@@ -68,9 +71,9 @@ export default function QAAndTesting({ service }: any) {
                                             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                                                 <div style={{ 
                                                     width: 28, height: 28, borderRadius: '50%', 
-                                                    background: isPassed ? '#10b98120' : 'transparent',
-                                                    border: `1px solid ${isPassed ? '#10b981' : isLight ? '#ccc' : '#444'}`,
-                                                    color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                    background: isPassed ? `color-mix(in srgb, ${themeColor} 20%, transparent)` : 'transparent',
+                                                    border: `1px solid ${isPassed ? themeColor : isLight ? '#ccc' : '#444'}`,
+                                                    color: themeColor, display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                     transition: 'all 0.3s ease'
                                                 }}>
                                                     {isPassed ? (
@@ -90,7 +93,7 @@ export default function QAAndTesting({ service }: any) {
                                                 </span>
                                             </div>
                                             <span style={{ 
-                                                color: isPassed ? '#10b981' : (isLight ? '#999' : '#555'), 
+                                                color: isPassed ? themeColor : (isLight ? '#999' : '#555'), 
                                                 fontSize: 13, fontFamily: 'monospace', fontWeight: 600
                                             }}>
                                                 {isPassed ? test.time : 'Waiting...'}
@@ -107,8 +110,8 @@ export default function QAAndTesting({ service }: any) {
                                     </div>
                                     <div style={{ height: 6, background: isLight ? '#e0e0e0' : '#222', borderRadius: 3, overflow: 'hidden' }}>
                                         <div style={{ 
-                                            height: '100%', width: `${progress}%`, background: '#10b981', borderRadius: 3,
-                                            boxShadow: '0 0 10px rgba(16, 185, 129, 0.5)'
+                                            height: '100%', width: `${progress}%`, background: themeColor, borderRadius: 3,
+                                            boxShadow: `0 0 10px ${themeColor}80`
                                         }} />
                                     </div>
                                 </div>
@@ -119,13 +122,13 @@ export default function QAAndTesting({ service }: any) {
                     {/* Decorative glowing orb behind */}
                     <div style={{
                         position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-                        width: '120%', height: '120%', background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)',
+                        width: '120%', height: '120%', background: `radial-gradient(circle, color-mix(in srgb, ${themeColor} 10%, transparent) 0%, transparent 70%)`,
                         filter: 'blur(40px)', zIndex: -1, pointerEvents: 'none'
                     }} />
                 </div>
 
                 <div style={{ flex: '1 1 400px' }}>
-                    <span className="zy-section-label" style={{ color: '#10b981', opacity: 1 }}>Zero Bugs</span>
+                    <span className="zy-section-label" style={{ color: themeColor, opacity: 1 }}>{qa.title}</span>
                     <h2 className="zy-section-title" style={{ fontSize: 'clamp(36px, 5vw, 48px)', color: isLight ? '#000' : 'var(--zy-white)' }}>Rigorous QA & Testing</h2>
                     <p style={{ color: isLight ? '#555' : 'var(--zy-gray-text)', lineHeight: 1.8, fontSize: 18, marginTop: 24 }}>
                         A single bug in production can cost millions. Our QA engineers work in parallel with developers to ensure that every release is bulletproof. Automated CI/CD pipelines run thousands of tests before any code hits the live server.

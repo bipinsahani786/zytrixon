@@ -18,7 +18,7 @@ export default function CaseStudiesList({ service, caseStudies = [] }: any) {
                             <GradientCard style={{ textAlign: 'left', height: '100%' }}>
                                 <div style={{ height: 220, background: 'var(--zy-gray-dark)', overflow: 'hidden' }}>
                                     {study.image && (
-                                        <img src={study.image} alt={study.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+                                        <img src={study.image} alt={study.title} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
                                     )}
                                 </div>
                                 <div style={{ padding: 32, flex: 1, display: 'flex', flexDirection: 'column' }}>

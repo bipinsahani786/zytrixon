@@ -119,7 +119,7 @@ export default function BlogDetails() {
                                 { title: 'How to Implement Zero-Trust Security in SaaS', category: 'Cybersecurity', date: 'May 12, 2026' },
                                 { title: 'Why Next.js 15 is a Game Changer for SEO', category: 'Engineering', date: 'Apr 28, 2026' }
                             ].map((post, index) => (
-                                <Link href="/blog/mastering-gsap" key={index} style={{
+                                <Link href="/blog/mastering-gsap" aria-label={`Read article: ${post.title}`} key={index} style={{
                                     background: 'var(--zy-gray-card)',
                                     borderRadius: 16,
                                     overflow: 'hidden',

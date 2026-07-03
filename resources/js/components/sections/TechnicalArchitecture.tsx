@@ -1,6 +1,7 @@
 import React from 'react';
 import GradientCard from '@/components/ui/GradientCard';
 import { useTheme } from '@/components/landing/theme-provider';
+import { getServiceConfig } from '@/lib/service-data';
 
 const TIERS = [
     {
@@ -33,14 +34,18 @@ export default function TechnicalArchitecture({ service }: any) {
     const { theme } = useTheme();
     const isLight = theme === 'light';
 
+    const config = getServiceConfig(service?.slug);
+    const themeColor = config.themeColor;
+    const dynamicSteps = config.architecture.steps;
+
     return (
         <section className="zy-section" style={{ background: isLight ? '#FFFFFF' : 'var(--zy-black)', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: 1, background: `linear-gradient(90deg, transparent, ${isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)'}, transparent)`, zIndex: 0 }} />
             
             <div style={{ maxWidth: 1200, margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
-                <span className="zy-section-label" style={{ color: '#8b5cf6', opacity: 1 }}>Infrastructure</span>
+                <span className="zy-section-label" style={{ color: themeColor, opacity: 1 }}>{config.architecture.title}</span>
                 <h2 className="zy-section-title" style={{ color: isLight ? '#000' : 'var(--zy-white)' }}>Technical Architecture Flow</h2>
-                <p style={{ color: isLight ? '#555' : 'var(--zy-gray-text)', marginBottom: 80, fontSize: 18 }}>Our cloud-native approach ensures infinite scalability and absolute resilience.</p>
+                <p style={{ color: isLight ? '#555' : 'var(--zy-gray-text)', marginBottom: 80, fontSize: 18 }}>Our highly optimized pipeline ensures infinite scalability and absolute resilience.</p>
                 
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
                     {TIERS.map((tier, i) => (
@@ -58,8 +63,8 @@ export default function TechnicalArchitecture({ service }: any) {
                                         }}>
                                             {tier.icon}
                                         </div>
-                                        <h3 style={{ fontSize: 20, color: isLight ? '#000' : 'var(--zy-white)', fontWeight: 700, fontFamily: 'var(--font-heading)', marginBottom: 12 }}>
-                                            {tier.name}
+                                        <h3 style={{ fontSize: 18, color: isLight ? '#000' : 'var(--zy-white)', fontWeight: 700, fontFamily: 'var(--font-heading)', marginBottom: 12 }}>
+                                            {dynamicSteps[i] || tier.name}
                                         </h3>
                                         <p style={{ fontSize: 13, color: isLight ? '#666' : 'var(--zy-gray-text)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>
                                             {tier.desc}

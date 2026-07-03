@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /dashboard
+
 Allow: /
 
 Sitemap: https://zytrixontech.com/sitemap.xml

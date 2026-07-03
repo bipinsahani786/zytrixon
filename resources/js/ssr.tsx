@@ -28,6 +28,8 @@ createServer(
                         case name === 'welcome' || 
                              name === 'ServiceSeoPage' || 
                              name === 'ServicesIndex' || 
+                             name === 'LocationsIndex' || 
+                             name === 'LocationDetails' || 
                              name === 'About' || 
                              name === 'Portfolio' || 
                              name === 'Contact' || 

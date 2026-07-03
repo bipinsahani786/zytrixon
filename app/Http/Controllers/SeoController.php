@@ -19,6 +19,25 @@ class SeoController extends Controller
         ]);
     }
 
+    public function locationsIndex()
+    {
+        $locations = Location::orderBy('name')->get();
+        return Inertia::render('LocationsIndex', [
+            'locations' => $locations
+        ]);
+    }
+
+    public function showLocation($location_slug)
+    {
+        $location = Location::where('slug', $location_slug)->firstOrFail();
+        $services = Service::all();
+        
+        return Inertia::render('LocationDetails', [
+            'location' => $location,
+            'services' => $services
+        ]);
+    }
+
     public function showServiceLocation($service_slug, $location_slug = null)
     {
         $service = Service::where('slug', $service_slug)->firstOrFail();

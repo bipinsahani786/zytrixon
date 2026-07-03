@@ -45,14 +45,14 @@ export default function ServiceSeoPage({ service, location, seo, content_overrid
 
             <main style={{ paddingTop: '80px', background: 'var(--zy-black)' }}>
                 {/* 1. Dynamic Hero Section */}
-                <HeroDynamic service={service} location={location} h1={seo.h1} />
+                <HeroDynamic service={service} location={location} h1={seo.h1} contentOverrides={content_overrides} />
 
                 {/* Conditional Layout Ordering */}
                 {isSEO ? (
                     // SEO Layout: Stats first, then uses cases
                     <>
-                        <ServiceStats location={location} />
-                        <ValueProposition service={service} location={location} />
+                        <ServiceStats service={service} location={location} contentOverrides={content_overrides} />
+                        <ValueProposition service={service} location={location} contentOverrides={content_overrides} />
                         <CaseStudiesList service={service} caseStudies={caseStudies} />
                         <IndustryUseCases service={service} />
                         <TechStackSection />
@@ -61,16 +61,16 @@ export default function ServiceSeoPage({ service, location, seo, content_overrid
                     // App Layout: Tech stack and playground first
                     <>
                         <TechStackSection />
-                        <ValueProposition service={service} location={location} />
-                        <ServiceStats location={location} />
+                        <ValueProposition service={service} location={location} contentOverrides={content_overrides} />
+                        <ServiceStats service={service} location={location} contentOverrides={content_overrides} />
                         <CaseStudiesList service={service} caseStudies={caseStudies} />
                     </>
                 ) : (
                     // Default / Web Dev Layout
                     <>
                         <ServicePlayground serviceSlug={service?.slug} />
-                        <ValueProposition service={service} location={location} />
-                        <ServiceStats location={location} />
+                        <ValueProposition service={service} location={location} contentOverrides={content_overrides} />
+                        <ServiceStats service={service} location={location} contentOverrides={content_overrides} />
                         <TechnicalArchitecture service={service} />
                         <TechStackSection />
                         <CaseStudiesList service={service} caseStudies={caseStudies} />

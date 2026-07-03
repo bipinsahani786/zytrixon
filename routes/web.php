@@ -9,28 +9,69 @@ Route::inertia('/', 'welcome')->name('home');
 
 // Programmatic SEO Routes
 Route::get('/services', [SeoController::class, 'index'])->name('services.index');
+Route::get('/locations', [SeoController::class, 'locationsIndex'])->name('locations.index');
+Route::get('/locations/{location_slug}', [SeoController::class, 'showLocation'])->name('locations.show');
 Route::get('/services/{service_slug}', [SeoController::class, 'showServiceLocation'])->name('service.show');
 Route::get('/services/{service_slug}/in/{location_slug}', [SeoController::class, 'showServiceLocation'])->name('service.location.show');
 
 // New Static Pages
-Route::inertia('/about', 'About')->name('about');
-Route::inertia('/portfolio', 'Portfolio')->name('portfolio');
-Route::inertia('/contact', 'Contact')->name('contact');
-Route::inertia('/work', 'Portfolio'); // alias
-Route::inertia('/team', 'Team')->name('team');
-Route::inertia('/blog', 'Blog')->name('blog');
-Route::inertia('/blog/{slug}', 'BlogDetails')->name('blog.details');
-Route::inertia('/careers', 'Careers')->name('careers');
-Route::inertia('/process', 'Process')->name('process');
-Route::inertia('/privacy-policy', 'PrivacyPolicy')->name('privacy');
-Route::inertia('/terms-and-conditions', 'TermsConditions')->name('terms');
+Route::inertia('/about', 'About', [
+    'seo' => ['title' => 'About Us | Zytrixon Tech', 'description' => 'Learn about Zytrixon Tech, our mission, vision, and the team driving digital innovation in web and app development.']
+])->name('about');
+
+Route::inertia('/portfolio', 'Portfolio', [
+    'seo' => ['title' => 'Our Portfolio & Case Studies | Zytrixon Tech', 'description' => 'Explore our portfolio of successful web development, app development, and SEO projects at Zytrixon Tech.']
+])->name('portfolio');
+
+Route::inertia('/contact', 'Contact', [
+    'seo' => ['title' => 'Contact Us | Zytrixon Tech', 'description' => 'Get in touch with Zytrixon Tech for premium web development, app development, and digital marketing services.']
+])->name('contact');
+
+Route::get('/work', function () {
+    return redirect()->route('portfolio');
+});
+
+Route::inertia('/team', 'Team', [
+    'seo' => ['title' => 'Our Team | Zytrixon Tech', 'description' => 'Meet the expert team of developers, designers, and strategists at Zytrixon Tech.']
+])->name('team');
+
+Route::inertia('/blog', 'Blog', [
+    'seo' => ['title' => 'Blog & Insights | Zytrixon Tech', 'description' => 'Read the latest insights on web development, software engineering, and digital marketing from Zytrixon Tech.']
+])->name('blog');
+
+Route::get('/blog/{slug}', function ($slug) {
+    $title = ucwords(str_replace('-', ' ', $slug));
+    return inertia('BlogDetails', [
+        'slug' => $slug,
+        'seo' => [
+            'title' => $title . ' | Zytrixon Tech Blog',
+            'description' => 'Read our latest blog post about ' . $title . ' at Zytrixon Tech.'
+        ]
+    ]);
+})->name('blog.details');
+
+Route::inertia('/careers', 'Careers', [
+    'seo' => ['title' => 'Careers | Zytrixon Tech', 'description' => 'Join the Zytrixon Tech team. We are looking for passionate developers, designers, and marketers.']
+])->name('careers');
+
+Route::inertia('/process', 'Process', [
+    'seo' => ['title' => 'Our Development Process | Zytrixon Tech', 'description' => 'Discover our agile and results-driven development process for building scalable web and mobile applications.']
+])->name('process');
+
+Route::inertia('/privacy-policy', 'PrivacyPolicy', [
+    'seo' => ['title' => 'Privacy Policy | Zytrixon Tech', 'description' => 'Read the privacy policy of Zytrixon Tech to understand how we handle and protect your data.']
+])->name('privacy');
+
+Route::inertia('/terms-and-conditions', 'TermsConditions', [
+    'seo' => ['title' => 'Terms and Conditions | Zytrixon Tech', 'description' => 'Read our terms and conditions for using Zytrixon Tech services and website.']
+])->name('terms');
 
 Route::get('/case-studies', [CaseStudyController::class, 'index'])->name('case-studies.index');
 Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('case-studies.show');
 
 Route::get('/sitemap.xml', function () {
     $urls = [
-        '/', '/services', '/work', '/team', '/about', '/blog', '/contact', '/process', '/careers', '/privacy-policy', '/terms-and-conditions'
+        '/', '/services', '/portfolio', '/team', '/about', '/blog', '/contact', '/process', '/careers', '/privacy-policy', '/terms-and-conditions', '/case-studies'
     ];
 
     try {
@@ -42,6 +83,11 @@ Route::get('/sitemap.xml', function () {
             foreach ($locations as $location) {
                 $urls[] = '/services/' . $service->slug . '/in/' . $location->slug;
             }
+        }
+        
+        $caseStudies = \App\Models\CaseStudy::all();
+        foreach ($caseStudies as $cs) {
+            $urls[] = '/case-studies/' . $cs->slug;
         }
     } catch (\Exception $e) {
         // Fallback if db isn't migrated yet

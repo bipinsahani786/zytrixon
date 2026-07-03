@@ -2348,18 +2348,21 @@ var renderPage = (page) => createInertiaApp({
 	title: (title) => title ? `${title} - ${appName}` : appName,
 	resolve: async (name) => {
 		const pageModule = await resolvePageComponent(`./pages/${name}.tsx`, /* #__PURE__ */ Object.assign({
-			"./pages/About.tsx": () => import("./assets/About-DL7bflDT.js"),
-			"./pages/Blog.tsx": () => import("./assets/Blog-wB38UZyW.js"),
-			"./pages/BlogDetails.tsx": () => import("./assets/BlogDetails-DIEPpO_f.js"),
-			"./pages/Careers.tsx": () => import("./assets/Careers-B_9G2ZQe.js"),
-			"./pages/Contact.tsx": () => import("./assets/Contact-BOVGoMHl.js"),
-			"./pages/Portfolio.tsx": () => import("./assets/Portfolio-BkVX_qA9.js"),
-			"./pages/PrivacyPolicy.tsx": () => import("./assets/PrivacyPolicy-BTp51m_v.js"),
-			"./pages/Process.tsx": () => import("./assets/Process-D-pWTLPY.js"),
-			"./pages/ServiceSeoPage.tsx": () => import("./assets/ServiceSeoPage-DLAlL93B.js"),
-			"./pages/ServicesIndex.tsx": () => import("./assets/ServicesIndex-DDAiTlVR.js"),
-			"./pages/Team.tsx": () => import("./assets/Team-BkZwTeio.js"),
-			"./pages/TermsConditions.tsx": () => import("./assets/TermsConditions-Sh1HMMdR.js"),
+			"./pages/About.tsx": () => import("./assets/About-D09GbEkj.js"),
+			"./pages/Blog.tsx": () => import("./assets/Blog-DR5mqaEp.js"),
+			"./pages/BlogDetails.tsx": () => import("./assets/BlogDetails-CaBzUiYC.js"),
+			"./pages/Careers.tsx": () => import("./assets/Careers-D_9ZIKOj.js"),
+			"./pages/Contact.tsx": () => import("./assets/Contact-CkorpaYe.js"),
+			"./pages/Error.tsx": () => import("./assets/Error-Dqm-feFm.js"),
+			"./pages/LocationDetails.tsx": () => import("./assets/LocationDetails-BPxqj3ia.js"),
+			"./pages/LocationsIndex.tsx": () => import("./assets/LocationsIndex-Cz9wXXnd.js"),
+			"./pages/Portfolio.tsx": () => import("./assets/Portfolio-BtAhM9vn.js"),
+			"./pages/PrivacyPolicy.tsx": () => import("./assets/PrivacyPolicy-BRgTG746.js"),
+			"./pages/Process.tsx": () => import("./assets/Process-CVNTKJEQ.js"),
+			"./pages/ServiceSeoPage.tsx": () => import("./assets/ServiceSeoPage-C5Jw9I4o.js"),
+			"./pages/ServicesIndex.tsx": () => import("./assets/ServicesIndex-YEKGYl53.js"),
+			"./pages/Team.tsx": () => import("./assets/Team-_2Z23Tzs.js"),
+			"./pages/TermsConditions.tsx": () => import("./assets/TermsConditions-BUH4-Kqx.js"),
 			"./pages/auth/confirm-password.tsx": () => import("./assets/confirm-password-D7Iwok1j.js"),
 			"./pages/auth/forgot-password.tsx": () => import("./assets/forgot-password-B4GwspS5.js"),
 			"./pages/auth/login.tsx": () => import("./assets/login-CTwpim-Q.js"),
@@ -2371,11 +2374,11 @@ var renderPage = (page) => createInertiaApp({
 			"./pages/settings/appearance.tsx": () => import("./assets/appearance-BjKuk9Fp.js"),
 			"./pages/settings/profile.tsx": () => import("./assets/profile-5wsAMLq3.js"),
 			"./pages/settings/security.tsx": () => import("./assets/security-Dhlp1mM0.js"),
-			"./pages/welcome.tsx": () => import("./assets/welcome-8OdxqeNV.js")
+			"./pages/welcome.tsx": () => import("./assets/welcome-DWI0ETra.js")
 		}));
 		const defaultExport = pageModule.default;
 		if (defaultExport && defaultExport.layout === void 0) switch (true) {
-			case name === "welcome" || name === "ServiceSeoPage" || name === "ServicesIndex" || name === "About" || name === "Portfolio" || name === "Contact" || name === "Team" || name === "Blog" || name === "Careers" || name === "Process" || name === "BlogDetails" || name === "PrivacyPolicy" || name === "TermsConditions":
+			case name === "welcome" || name === "ServiceSeoPage" || name === "ServicesIndex" || name === "LocationsIndex" || name === "LocationDetails" || name === "About" || name === "Portfolio" || name === "Contact" || name === "Team" || name === "Blog" || name === "Careers" || name === "Process" || name === "BlogDetails" || name === "PrivacyPolicy" || name === "TermsConditions":
 				defaultExport.layout = null;
 				break;
 			case name.startsWith("auth/"):

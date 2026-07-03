@@ -8,7 +8,14 @@ const FOOTER_LINKS = {
         { label: 'IoT Solutions', href: '/services/iot-solutions' },
         { label: 'AI & Automation', href: '/services/ai-automation' },
         { label: 'Custom Software', href: '/services/custom-software' },
-        { label: 'Digital Marketing', href: '/services/digital-marketing' },
+        { label: 'Digital Marketing', href: '/services/seo-digital-marketing' },
+    ],
+    locations: [
+        { label: 'Web Development in Patna', href: '/services/web-development/in/patna' },
+        { label: 'App Development in Patna', href: '/services/app-development/in/patna' },
+        { label: 'AI & Automation in Patna', href: '/services/ai-automation/in/patna' },
+        { label: 'Digital Marketing in Patna', href: '/services/seo-digital-marketing/in/patna' },
+        { label: 'Custom Software in Bihar', href: '/services/custom-software/in/bihar' },
     ],
     company: [
         { label: 'About Us', href: '/about' },
@@ -127,6 +134,19 @@ export default function Footer() {
                             {link.label}
                         </Link>
                     ))}
+                </div>
+
+                {/* Locations */}
+                <div>
+                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Services in Patna</div>
+                    {FOOTER_LINKS.locations.map((link) => (
+                        <Link key={link.href} href={link.href} className="footer-link">
+                            {link.label}
+                        </Link>
+                    ))}
+                    <Link href="/locations" className="footer-link" style={{ color: '#3b82f6', marginTop: '8px', fontWeight: 600 }}>
+                        View All Locations &rarr;
+                    </Link>
                 </div>
 
                 {/* Company */}

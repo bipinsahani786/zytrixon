@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useTheme } from '@/components/landing/theme-provider';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { getServiceConfig } from '@/lib/service-data';
 
 function Abstract3D({ color }: { color: string }) {
     const meshRef = useRef<any>(null);
@@ -25,14 +26,12 @@ function Abstract3D({ color }: { color: string }) {
     );
 }
 
-export default function HeroDynamic({ service, location, h1 }: any) {
+export default function HeroDynamic({ service, location, h1, contentOverrides }: any) {
     const { theme } = useTheme();
     const isLight = theme === 'light';
     
-    // Service specific color theme
-    const themeColor = service?.slug === 'app-development' ? '#22c55e' 
-                     : service?.slug === 'seo-digital-marketing' ? '#eab308' 
-                     : '#6366f1'; // Default blueish
+    const config = getServiceConfig(service?.slug);
+    const themeColor = config.themeColor;
 
     return (
         <section style={{ 
@@ -71,7 +70,7 @@ export default function HeroDynamic({ service, location, h1 }: any) {
                         borderRadius: 50, fontSize: 13, fontWeight: 700, letterSpacing: '0.05em',
                         border: `1px solid ${themeColor}33`, backdropFilter: 'blur(5px)'
                     }}>
-                        {service?.title ? service.title.toUpperCase() : 'ENTERPRISE GRADE'}
+                        {config.hero.badge.toUpperCase()}
                     </span>
                     {location && (
                         <span style={{ 
@@ -97,7 +96,7 @@ export default function HeroDynamic({ service, location, h1 }: any) {
                     fontSize: 'clamp(18px, 2vw, 24px)', color: isLight ? '#555' : 'var(--zy-gray-text)', 
                     maxWidth: 800, margin: '0 auto 48px', lineHeight: 1.6
                 }}>
-                    {service.description} We build high-performance systems designed to scale and dominate the market.
+                    {contentOverrides?.hero_description || `${service.description} We build high-performance systems designed to scale and dominate the market.`}
                 </p>
                 
                 <div style={{ display: 'flex', gap: 16, justifyContent: 'center', pointerEvents: 'auto', flexWrap: 'wrap' }}>

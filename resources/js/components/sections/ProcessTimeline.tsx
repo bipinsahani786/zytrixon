@@ -1,9 +1,14 @@
 import React from 'react';
 import { useTheme } from '@/components/landing/theme-provider';
+import { getServiceConfig } from '@/lib/service-data';
 
 export default function ProcessTimeline({ service }: any) {
     const { theme } = useTheme();
     const isLight = theme === 'light';
+
+    const config = getServiceConfig(service?.slug);
+    const themeColor = config.themeColor;
+    const processSteps = config.process;
 
     return (
         <section className="zy-section" style={{ background: isLight ? '#FFFFFF' : 'var(--zy-black)' }}>
@@ -18,22 +23,16 @@ export default function ProcessTimeline({ service }: any) {
                 <div style={{ position: 'relative' }}>
                     <div style={{ position: 'absolute', top: 0, bottom: 0, left: 32, width: 2, background: isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.05)' }} />
                     
-                    {[
-                        { step: '01', title: 'Discovery & Strategy', desc: 'We dive deep into your business goals and technical requirements to formulate a bulletproof plan.' },
-                        { step: '02', title: 'Design & Prototyping', desc: 'Crafting high-fidelity wireframes and interactive prototypes for your approval.' },
-                        { step: '03', title: 'Agile Development', desc: 'Our engineering team builds your product in transparent, two-week sprints.' },
-                        { step: '04', title: 'Testing & QA', desc: 'Rigorous automated and manual testing to ensure zero critical bugs.' },
-                        { step: '05', title: 'Launch & Scale', desc: 'Seamless deployment with 24/7 monitoring and scalable infrastructure.' }
-                    ].map((item, i) => (
+                    {processSteps.map((item, i) => (
                         <div key={i} style={{ display: 'flex', gap: 32, marginBottom: 40, position: 'relative' }}>
                             <div style={{ 
                                 width: 64, height: 64, borderRadius: '50%', 
-                                background: '#3b82f6', 
+                                background: themeColor, 
                                 display: 'flex', alignItems: 'center', justifyContent: 'center', 
                                 color: '#ffffff', fontSize: 24, fontWeight: 800, zIndex: 1, flexShrink: 0, 
-                                boxShadow: isLight ? '0 10px 25px rgba(59, 130, 246, 0.4)' : '0 0 25px rgba(59, 130, 246, 0.3)' 
+                                boxShadow: isLight ? `0 10px 25px color-mix(in srgb, ${themeColor} 40%, transparent)` : `0 0 25px color-mix(in srgb, ${themeColor} 30%, transparent)` 
                             }}>
-                                {item.step}
+                                {`0${i + 1}`}
                             </div>
                             <div style={{ paddingTop: 12 }}>
                                 <h3 style={{ color: isLight ? '#000' : 'var(--zy-white)', fontSize: 24, fontWeight: 700, marginBottom: 8, fontFamily: 'var(--font-heading)' }}>{item.title}</h3>

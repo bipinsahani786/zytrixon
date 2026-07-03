@@ -63,7 +63,7 @@ export default function Blog() {
                                 Discover how modern enterprises are leveraging edge computing and serverless architectures to reduce latency, cut costs, and scale globally without breaking a sweat.
                             </p>
                             <div>
-                                <a href="#" style={{ color: 'var(--zy-white)', textDecoration: 'none', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8, borderBottom: '1px solid var(--zy-white)', paddingBottom: 4 }}>
+                                <a href="#" aria-label="Read Full Article: The Future of Enterprise Architecture" style={{ color: 'var(--zy-white)', textDecoration: 'none', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8, borderBottom: '1px solid var(--zy-white)', paddingBottom: 4 }}>
                                     Read Full Article
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                                         <path d="M5 12h14M12 5l7 7-7 7" />
@@ -126,7 +126,7 @@ export default function Blog() {
                                     <h3 style={{ fontSize: 22, fontFamily: 'var(--font-heading)', fontWeight: 700, color: 'var(--zy-white)', marginBottom: 20, lineHeight: 1.4 }}>
                                         {post.title}
                                     </h3>
-                                    <a href="#" style={{ color: 'var(--zy-gray-light)', textDecoration: 'none', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                                    <a href="#" aria-label={`Read article: ${post.title}`} style={{ color: 'var(--zy-gray-light)', textDecoration: 'none', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                                         Read Article →
                                     </a>
                                 </div>

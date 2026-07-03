@@ -38,7 +38,7 @@ export default function BlogPreviewSection({ service }: any) {
                     {dummyBlogs.map((blog, i) => (
                         <GradientCard key={i} style={{ textAlign: 'left', height: '100%' }}>
                             <div style={{ height: 200, overflow: 'hidden' }}>
-                                <img src={blog.image} alt={blog.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+                                <img src={blog.image} alt={blog.title} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
                             </div>
                             <div style={{ padding: '24px 32px 32px' }}>
                                 <div style={{ color: 'var(--zy-blue)', fontSize: 13, fontWeight: 700, marginBottom: 12 }}>{blog.date}</div>
@@ -48,7 +48,7 @@ export default function BlogPreviewSection({ service }: any) {
                                 <p style={{ color: 'var(--zy-gray-text)', fontSize: 14, lineHeight: 1.6, marginBottom: 24 }}>
                                     {blog.excerpt}
                                 </p>
-                                <Link href="#" style={{ color: 'var(--zy-white)', fontWeight: 700, fontSize: 14, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                                <Link href="#" aria-label={`Read article: ${blog.title}`} style={{ color: 'var(--zy-white)', fontWeight: 700, fontSize: 14, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                                     Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                                 </Link>
                             </div>
