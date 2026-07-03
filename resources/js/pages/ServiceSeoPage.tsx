@@ -29,12 +29,14 @@ import MigrationStrategy from '@/components/sections/MigrationStrategy';
 import LearningExperience from '@/components/sections/LearningExperience';
 import ServiceEstimator from '@/components/sections/ServiceEstimator';
 import CaseStudiesList from '@/components/sections/CaseStudiesList';
-import ExpertTeamProfile from '@/components/sections/ExpertTeamProfile';
 import PricingMatrix from '@/components/sections/PricingMatrix';
 import PostLaunchSupport from '@/components/sections/PostLaunchSupport';
 import FaqAccordion from '@/components/sections/FaqAccordion';
+import BlogPreviewSection from '@/components/sections/BlogPreviewSection';
 
-export default function ServiceSeoPage({ service, location, seo, content_overrides }: any) {
+export default function ServiceSeoPage({ service, location, seo, content_overrides, caseStudies }: any) {
+    const isSEO = service?.slug === 'seo-digital-marketing';
+    const isApp = service?.slug === 'app-development';
     return (
         <ThemeProvider>
             <SeoHead seo={seo} service={service} location={location} />
@@ -45,23 +47,35 @@ export default function ServiceSeoPage({ service, location, seo, content_overrid
                 {/* 1. Dynamic Hero Section */}
                 <HeroDynamic service={service} location={location} h1={seo.h1} />
 
-                {/* 2. Interactive Playground (Realistic Feel) */}
-                <ServicePlayground serviceSlug={service.slug} />
-
-                {/* 3. Geo-Specific Stats & Trust Badges */}
-                <ServiceStats location={location} />
-
-                {/* 4. Value Proposition */}
-                <ValueProposition service={service} location={location} />
-
-                {/* 5. Industry Use Cases */}
-                <IndustryUseCases service={service} />
-
-                {/* 6. Technical Architecture Flow */}
-                <TechnicalArchitecture service={service} />
-
-                {/* 7. Tech Stack (Reused from landing) */}
-                <TechStackSection />
+                {/* Conditional Layout Ordering */}
+                {isSEO ? (
+                    // SEO Layout: Stats first, then uses cases
+                    <>
+                        <ServiceStats location={location} />
+                        <ValueProposition service={service} location={location} />
+                        <CaseStudiesList service={service} caseStudies={caseStudies} />
+                        <IndustryUseCases service={service} />
+                        <TechStackSection />
+                    </>
+                ) : isApp ? (
+                    // App Layout: Tech stack and playground first
+                    <>
+                        <TechStackSection />
+                        <ValueProposition service={service} location={location} />
+                        <ServiceStats location={location} />
+                        <CaseStudiesList service={service} caseStudies={caseStudies} />
+                    </>
+                ) : (
+                    // Default / Web Dev Layout
+                    <>
+                        <ServicePlayground serviceSlug={service?.slug} />
+                        <ValueProposition service={service} location={location} />
+                        <ServiceStats location={location} />
+                        <TechnicalArchitecture service={service} />
+                        <TechStackSection />
+                        <CaseStudiesList service={service} caseStudies={caseStudies} />
+                    </>
+                )}
 
                 {/* 8. Development Methodology */}
                 <DevelopmentMethodology service={service} />
@@ -87,14 +101,8 @@ export default function ServiceSeoPage({ service, location, seo, content_overrid
                 {/* 15. Interactive Project Estimator */}
                 <ServiceEstimator service={service} />
 
-                {/* 16. Case Studies / Past Work */}
-                <CaseStudiesList service={service} />
-
                 {/* 17. Client Testimonials (Reused from landing) */}
                 <TestimonialsSection />
-
-                {/* 18. Expert Team Profile */}
-                <ExpertTeamProfile service={service} />
 
                 {/* 19. Global Footprint (Reused from landing) */}
                 <GlobalFootprint />
@@ -110,6 +118,9 @@ export default function ServiceSeoPage({ service, location, seo, content_overrid
 
                 {/* 23. FAQ Schema Section */}
                 <FaqAccordion service={service} location={location} />
+
+                {/* NEW: Blog Previews */}
+                <BlogPreviewSection service={service} />
 
                 {/* 24. Footer CTA (Reused from landing) */}
                 <FooterCTA />

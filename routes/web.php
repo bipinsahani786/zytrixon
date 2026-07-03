@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SeoController;
+use App\Http\Controllers\CaseStudyController;
 
 Route::inertia('/', 'welcome')->name('home');
 
@@ -23,6 +24,9 @@ Route::inertia('/careers', 'Careers')->name('careers');
 Route::inertia('/process', 'Process')->name('process');
 Route::inertia('/privacy-policy', 'PrivacyPolicy')->name('privacy');
 Route::inertia('/terms-and-conditions', 'TermsConditions')->name('terms');
+
+Route::get('/case-studies', [CaseStudyController::class, 'index'])->name('case-studies.index');
+Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('case-studies.show');
 
 Route::get('/sitemap.xml', function () {
     $urls = [

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use App\Models\Location;
 use App\Models\SeoPage;
+use App\Models\CaseStudy;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,8 @@ class SeoController extends Controller
         $metaTitle = $seoOverride->meta_title ?? ("Best " . $service->title . " Company " . ($location ? 'in ' . $location->name : '') . " | Zytrixon Tech");
         $metaDescription = $seoOverride->meta_description ?? ("Looking for top-tier " . $service->title . " services " . ($location ? 'in ' . $location->name : '') . "? Zytrixon Tech delivers scalable, enterprise-grade solutions.");
 
+        $caseStudies = CaseStudy::latest()->take(3)->get();
+
         return Inertia::render('ServiceSeoPage', [
             'service' => $service,
             'location' => $location,
@@ -49,6 +52,7 @@ class SeoController extends Controller
                 'description' => $metaDescription,
             ],
             'content_overrides' => $seoOverride->content_json ?? null,
+            'caseStudies' => $caseStudies,
         ]);
     }
 }
