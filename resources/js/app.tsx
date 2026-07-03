@@ -38,3 +38,13 @@ createInertiaApp({
 
 // This will set light / dark mode on load...
 initializeTheme();
+
+// Remove SSR fallback globally after React hydrates
+setTimeout(() => {
+    const ssrFallback = document.getElementById('ssr-fallback');
+    if (ssrFallback) {
+        ssrFallback.style.opacity = '0';
+        ssrFallback.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => ssrFallback.remove(), 500);
+    }
+}, 100);
