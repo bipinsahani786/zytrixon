@@ -1,24 +1,88 @@
 import React from 'react';
+import GradientCard from '@/components/ui/GradientCard';
+
+const TIERS = [
+    {
+        name: 'Client Tier',
+        desc: 'Web & Mobile Apps',
+        icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
+        color: 'var(--zy-blue)'
+    },
+    {
+        name: 'API Gateway',
+        desc: 'Routing & Security',
+        icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+        color: '#8b5cf6'
+    },
+    {
+        name: 'Microservices',
+        desc: 'Business Logic',
+        icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
+        color: '#ec4899'
+    },
+    {
+        name: 'Data Layer',
+        desc: 'Storage & Caching',
+        icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>,
+        color: '#10b981'
+    }
+];
 
 export default function TechnicalArchitecture({ service }: any) {
     return (
-        <section className="zy-section" style={{ background: 'var(--zy-black)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-            <div style={{ maxWidth: 1000, margin: '0 auto', textAlign: 'center' }}>
+        <section className="zy-section" style={{ background: 'var(--zy-black)', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)', zIndex: 0 }} />
+            
+            <div style={{ maxWidth: 1200, margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
                 <span className="zy-section-label">Infrastructure</span>
                 <h2 className="zy-section-title">Technical Architecture Flow</h2>
-                <p style={{ color: 'var(--zy-gray-text)', marginBottom: 60 }}>Our cloud-native approach ensures infinite scalability and absolute resilience.</p>
+                <p style={{ color: 'var(--zy-gray-text)', marginBottom: 80 }}>Our cloud-native approach ensures infinite scalability and absolute resilience.</p>
                 
-                <div style={{ padding: 60, background: 'var(--zy-gray-card)', borderRadius: 12, border: '1px solid rgba(255,255,255,0.05)' }}>
-                    {/* Placeholder for an actual diagram or complex CSS grid */}
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
-                        {['Client Tier', 'API Gateway', 'Microservices', 'Data Layer'].map((tier, i) => (
-                            <div key={i} style={{ padding: '20px 40px', background: 'var(--zy-gray-dark)', borderRadius: 8, border: '1px solid var(--zy-blue)', color: 'var(--zy-white)', fontWeight: 600 }}>
-                                {tier}
-                            </div>
-                        ))}
-                    </div>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+                    {TIERS.map((tier, i) => (
+                        <React.Fragment key={i}>
+                            <GradientCard themeColor={tier.color} style={{ width: 220 }}>
+                                <div style={{ padding: '32px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                                    <div style={{ width: 60, height: 60, borderRadius: '50%', background: `color-mix(in srgb, ${tier.color} 15%, transparent)`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: tier.color, marginBottom: 20 }}>
+                                        {tier.icon}
+                                    </div>
+                                    <h3 style={{ fontSize: 18, color: 'var(--zy-white)', fontWeight: 700, fontFamily: 'var(--font-heading)', marginBottom: 8 }}>
+                                        {tier.name}
+                                    </h3>
+                                    <p style={{ fontSize: 13, color: 'var(--zy-gray-text)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
+                                        {tier.desc}
+                                    </p>
+                                </div>
+                            </GradientCard>
+
+                            {i < TIERS.length - 1 && (
+                                <div className="arch-connector" style={{ display: 'flex', alignItems: 'center', color: 'rgba(255,255,255,0.2)' }}>
+                                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                                        <line x1="0" y1="12" x2="38" y2="12" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" className="flow-line" />
+                                        <polyline points="32 6 38 12 32 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </div>
+                            )}
+                        </React.Fragment>
+                    ))}
                 </div>
             </div>
+
+            <style>{`
+                @keyframes flowRight {
+                    0% { stroke-dashoffset: 8; }
+                    100% { stroke-dashoffset: 0; }
+                }
+                .flow-line {
+                    animation: flowRight 0.5s linear infinite;
+                }
+                @media (max-width: 900px) {
+                    .arch-connector {
+                        transform: rotate(90deg);
+                        margin: 10px 0;
+                    }
+                }
+            `}</style>
         </section>
     );
 }
