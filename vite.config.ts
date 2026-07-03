@@ -19,7 +19,7 @@ export default defineConfig({
             },
         }),
         tailwindcss(),
-        wayfinder({
+        !process.env.RENDER && wayfinder({
             formVariants: true,
         }),
     ],
