@@ -104,9 +104,9 @@ export default function TechStackSection() {
                 zIndex: 1,
             }}>
                 {TECH.map((tech, i) => {
-                    // Randomize float animation duration and delay
-                    const floatDuration = 3 + Math.random() * 2;
-                    const floatDelay = Math.random() * 2;
+                    // Use deterministic values based on index to prevent React hydration mismatch
+                    const floatDuration = 3 + ((i * 1.7) % 2);
+                    const floatDelay = (i * 0.3) % 2;
                     
                     return (
                         <div

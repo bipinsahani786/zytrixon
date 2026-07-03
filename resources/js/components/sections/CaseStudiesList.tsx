@@ -33,12 +33,20 @@ export default function CaseStudiesList({ service, caseStudies = [] }: any) {
                                     </p>
                                     
                                     <div style={{ marginTop: 'auto', paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', gap: 16 }}>
-                                        {study.results && study.results.slice(0, 2).map((res: string, i: number) => (
-                                            <div key={i}>
-                                                <div style={{ fontSize: 16, color: 'var(--zy-white)', fontWeight: 700 }}>{res.split(' ')[0]}</div>
-                                                <div style={{ fontSize: 11, color: 'var(--zy-gray-text)', textTransform: 'uppercase' }}>{res.split(' ').slice(1).join(' ')}</div>
-                                            </div>
-                                        ))}
+                                        {(() => {
+                                            let resultsArray = [];
+                                            try {
+                                                resultsArray = typeof study.results === 'string' ? JSON.parse(study.results) : (study.results || []);
+                                            } catch (e) {
+                                                resultsArray = [];
+                                            }
+                                            return resultsArray.slice(0, 2).map((res: string, i: number) => (
+                                                <div key={i}>
+                                                    <div style={{ fontSize: 16, color: 'var(--zy-white)', fontWeight: 700 }}>{res.split(' ')[0]}</div>
+                                                    <div style={{ fontSize: 11, color: 'var(--zy-gray-text)', textTransform: 'uppercase' }}>{res.split(' ').slice(1).join(' ')}</div>
+                                                </div>
+                                            ));
+                                        })()}
                                     </div>
                                 </div>
                             </GradientCard>
