@@ -13,7 +13,8 @@ export default function LazySection({
     threshold = 0,
     rootMargin = '800px 0px' 
 }: LazySectionProps) {
-    const [isVisible, setIsVisible] = useState(false);
+    const isSSR = typeof window === 'undefined';
+    const [isVisible, setIsVisible] = useState(isSSR); // true on server, false on client
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
