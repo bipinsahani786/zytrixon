@@ -110,55 +110,69 @@ export default function ServicesIndex({ services }: { services: any[] }) {
                     subtitle="Enterprise-grade digital solutions designed to scale and dominate the market."
                 />
 
-                <div style={{ maxWidth: 1200, margin: '0 auto', padding: '60px 24px 100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 32 }}>
-                    {services.map((service) => {
+                <div style={{ maxWidth: 1200, margin: '0 auto', padding: '60px 24px 100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 32 }} className="bento-container">
+                    {services.map((service, index) => {
                         const meta = getServiceMeta(service.slug);
+                        
+                        // Bento Box Logic:
+                        // On desktop, 3 columns total.
+                        // 0: span 2, 1: span 1
+                        // 2: span 1, 3: span 2
+                        // 4: span 2, 5: span 1
+                        const isWide = index === 0 || index === 3 || index === 4;
+
                         return (
                             <Link 
                                 key={service.id} 
                                 href={`/services/${service.slug}`}
                                 style={{ textDecoration: 'none', display: 'block' }}
-                                className="group"
+                                className={`group bento-item ${isWide ? 'bento-wide' : ''}`}
                             >
                                 <GradientCard themeColor={meta.color} style={{ height: '100%' }}>
                                     <div style={{ 
                                         padding: 48, 
                                         height: '100%', 
                                         display: 'flex', 
-                                        flexDirection: 'column',
+                                        flexDirection: isWide ? 'row' : 'column',
+                                        alignItems: isWide ? 'center' : 'flex-start',
+                                        gap: isWide ? 48 : 0,
                                         position: 'relative',
                                         overflow: 'hidden'
-                                    }}>
+                                    }} className="bento-inner">
                                         {/* Faint Background Icon Watermark */}
                                         <div style={{
                                             position: 'absolute',
-                                            top: -20,
-                                            right: -20,
+                                            top: isWide ? '50%' : -20,
+                                            right: isWide ? 40 : -20,
+                                            transform: isWide ? 'translateY(-50%) scale(8)' : 'scale(5)',
                                             color: meta.color,
-                                            opacity: 0.05,
-                                            transform: 'scale(5)'
-                                        }}>
+                                            opacity: 0.03,
+                                            pointerEvents: 'none'
+                                        }} className="bento-watermark">
                                             {meta.icon}
                                         </div>
 
-                                        <div style={{ 
-                                            width: 60, height: 60, borderRadius: 16, background: `${meta.color}20`,
-                                            color: meta.color, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                            marginBottom: 32, border: `1px solid ${meta.color}40`,
-                                            transition: 'all 0.3s var(--zy-ease)',
-                                            position: 'relative', zIndex: 1
-                                        }} className="icon-container">
-                                            {meta.icon}
-                                        </div>
+                                        <div style={{ flex: 1, position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                            {!isWide && (
+                                                <div style={{ 
+                                                    width: 60, height: 60, borderRadius: 16, background: `${meta.color}20`,
+                                                    color: meta.color, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                    marginBottom: 32, border: `1px solid ${meta.color}40`,
+                                                    transition: 'all 0.3s var(--zy-ease)',
+                                                    position: 'relative', zIndex: 1
+                                                }} className="icon-container">
+                                                    {meta.icon}
+                                                </div>
+                                            )}
                                         
-                                        <h3 style={{ fontSize: 26, fontWeight: 700, color: 'var(--zy-white)', marginBottom: 16, fontFamily: 'var(--font-heading)', position: 'relative', zIndex: 1 }}>
+                                        <h3 style={{ fontSize: isWide ? 32 : 26, fontWeight: 700, color: 'var(--zy-white)', marginBottom: 16, fontFamily: 'var(--font-heading)', position: 'relative', zIndex: 1 }}>
                                             {service.title}
                                         </h3>
-                                        <p style={{ color: 'var(--zy-gray-text)', lineHeight: 1.6, marginBottom: 40, fontSize: 15, flex: 1, position: 'relative', zIndex: 1 }}>
+                                        <p style={{ color: 'var(--zy-gray-text)', lineHeight: 1.6, marginBottom: 40, fontSize: isWide ? 16 : 15, flex: 1, position: 'relative', zIndex: 1, maxWidth: isWide ? '80%' : '100%' }}>
                                             {service.description}
                                         </p>
                                         
-                                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, color: meta.color, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: 13, position: 'relative', zIndex: 1 }}>
+                                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, color: meta.color, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: 13, position: 'relative', zIndex: 1, marginTop: 'auto' }}>
                                             Explore Service
                                             <div style={{
                                                 width: 32, height: 32, borderRadius: '50%', background: `${meta.color}20`,
@@ -171,6 +185,21 @@ export default function ServicesIndex({ services }: { services: any[] }) {
                                                 </svg>
                                             </div>
                                         </div>
+                                        </div>
+
+                                        {isWide && (
+                                            <div style={{ 
+                                                width: 120, height: 120, borderRadius: 24, background: `${meta.color}10`,
+                                                color: meta.color, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                border: `1px solid ${meta.color}30`, position: 'relative', zIndex: 1,
+                                                boxShadow: `0 0 40px ${meta.color}20`,
+                                                transition: 'all 0.3s var(--zy-ease)'
+                                            }} className="icon-container-large hide-on-mobile">
+                                                <div style={{ transform: 'scale(1.8)' }}>
+                                                    {meta.icon}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </GradientCard>
                             </Link>
@@ -179,9 +208,33 @@ export default function ServicesIndex({ services }: { services: any[] }) {
                 </div>
                 
                 <style>{`
-                    .group:hover .icon-container {
-                        transform: scale(1.1) translateY(-5px);
-                        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                    @media (min-width: 992px) {
+                        .bento-container {
+                            grid-template-columns: repeat(3, 1fr) !important;
+                        }
+                        .bento-wide {
+                            grid-column: span 2;
+                        }
+                    }
+                    @media (max-width: 991px) {
+                        .bento-inner {
+                            flex-direction: column !important;
+                            align-items: flex-start !important;
+                            gap: 0 !important;
+                        }
+                        .hide-on-mobile {
+                            display: none !important;
+                        }
+                        .bento-watermark {
+                            top: -20px !important;
+                            right: -20px !important;
+                            transform: scale(5) !important;
+                        }
+                    }
+
+                    .group:hover .icon-container, .group:hover .icon-container-large {
+                        transform: scale(1.05) translateY(-5px);
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
                     }
                     .group:hover .arrow-container {
                         transform: translateX(10px);
