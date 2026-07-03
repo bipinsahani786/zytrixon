@@ -5,6 +5,10 @@ import { initializeTheme } from '@/hooks/use-appearance';
 import AppLayout from '@/layouts/app-layout';
 import AuthLayout from '@/layouts/auth-layout';
 import SettingsLayout from '@/layouts/settings/layout';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const appName = import.meta.env.VITE_APP_NAME || 'Zytrixon Tech';
 
@@ -48,3 +52,15 @@ setTimeout(() => {
         setTimeout(() => ssrFallback.remove(), 500);
     }
 }, 100);
+
+// Global ResizeObserver to refresh GSAP ScrollTrigger on dynamic height changes (fixes overlapping sections on lazy load)
+if (typeof window !== 'undefined') {
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const observer = new ResizeObserver(() => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 100);
+    });
+    observer.observe(document.body);
+}
