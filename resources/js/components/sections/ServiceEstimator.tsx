@@ -29,13 +29,13 @@ export default function ServiceEstimator({ service }: any) {
     };
 
     return (
-        <section className="zy-section" style={{ background: 'var(--zy-black)', position: 'relative' }}>
+        <section className="zy-section" style={{ background: isLight ? '#FFFFFF' : 'var(--zy-black)', position: 'relative' }}>
             <div style={{ maxWidth: 1000, margin: '0 auto', textAlign: 'center' }}>
-                <span className="zy-section-label">Transparent Pricing</span>
-                <h2 className="zy-section-title">
+                <span className="zy-section-label" style={{ color: '#6366f1', opacity: 1 }}>Transparent Pricing</span>
+                <h2 className="zy-section-title" style={{ color: isLight ? '#000' : 'var(--zy-white)' }}>
                     Interactive Project Estimator
                 </h2>
-                <p style={{ color: 'var(--zy-gray-text)', marginBottom: 60, fontSize: 18 }}>
+                <p style={{ color: isLight ? '#555' : 'var(--zy-gray-text)', marginBottom: 60, fontSize: 18 }}>
                     Tell us about your requirements and get an instant ballpark estimate for your {service?.title || 'project'}. No emails required.
                 </p>
 
@@ -49,7 +49,7 @@ export default function ServiceEstimator({ service }: any) {
                     flexDirection: 'column',
                     maxWidth: 800,
                     margin: '0 auto',
-                    boxShadow: isLight ? '0 20px 40px rgba(0,0,0,0.05)' : '0 20px 40px rgba(0,0,0,0.4)'
+                    boxShadow: isLight ? '0 20px 50px rgba(0,0,0,0.08)' : '0 20px 40px rgba(0,0,0,0.4)'
                 }}>
                     {/* Animated Electric Border */}
                     <div style={{
@@ -66,20 +66,27 @@ export default function ServiceEstimator({ service }: any) {
                     <div style={{
                         position: 'relative',
                         borderRadius: 15,
-                        background: 'var(--zy-gray-dark)',
+                        background: isLight ? '#fdfdfd' : 'var(--zy-gray-dark)',
                         padding: '40px',
                         zIndex: 1,
                         textAlign: 'left'
                     }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32 }}>
                             {/* Controls */}
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
                                 <div>
-                                    <label style={{ display: 'block', color: 'var(--zy-white)', fontWeight: 600, marginBottom: 12 }}>Project Scope</label>
+                                    <label style={{ display: 'block', color: isLight ? '#000' : 'var(--zy-white)', fontWeight: 600, marginBottom: 12 }}>Project Scope</label>
                                     <select 
                                         value={projectSize} 
                                         onChange={(e) => setProjectSize(e.target.value)}
-                                        style={{ width: '100%', padding: '12px 16px', borderRadius: 8, background: 'var(--zy-black)', border: '1px solid rgba(255, 255, 255, 0.1)', color: 'var(--zy-white)', outline: 'none' }}
+                                        style={{ 
+                                            width: '100%', padding: '14px 16px', borderRadius: 8, 
+                                            background: isLight ? '#fff' : 'var(--zy-black)', 
+                                            border: `1px solid ${isLight ? '#ddd' : 'rgba(255, 255, 255, 0.1)'}`, 
+                                            color: isLight ? '#000' : 'var(--zy-white)', 
+                                            outline: 'none', fontSize: 16, cursor: 'pointer',
+                                            boxShadow: isLight ? '0 2px 10px rgba(0,0,0,0.02)' : 'none'
+                                        }}
                                     >
                                         <option value="small">Small MVP / Prototype</option>
                                         <option value="medium">Medium Scale Application</option>
@@ -88,11 +95,18 @@ export default function ServiceEstimator({ service }: any) {
                                     </select>
                                 </div>
                                 <div>
-                                    <label style={{ display: 'block', color: 'var(--zy-white)', fontWeight: 600, marginBottom: 12 }}>Technical Complexity</label>
+                                    <label style={{ display: 'block', color: isLight ? '#000' : 'var(--zy-white)', fontWeight: 600, marginBottom: 12 }}>Technical Complexity</label>
                                     <select 
                                         value={complexity} 
                                         onChange={(e) => setComplexity(e.target.value)}
-                                        style={{ width: '100%', padding: '12px 16px', borderRadius: 8, background: 'var(--zy-black)', border: '1px solid rgba(255, 255, 255, 0.1)', color: 'var(--zy-white)', outline: 'none' }}
+                                        style={{ 
+                                            width: '100%', padding: '14px 16px', borderRadius: 8, 
+                                            background: isLight ? '#fff' : 'var(--zy-black)', 
+                                            border: `1px solid ${isLight ? '#ddd' : 'rgba(255, 255, 255, 0.1)'}`, 
+                                            color: isLight ? '#000' : 'var(--zy-white)', 
+                                            outline: 'none', fontSize: 16, cursor: 'pointer',
+                                            boxShadow: isLight ? '0 2px 10px rgba(0,0,0,0.02)' : 'none'
+                                        }}
                                     >
                                         <option value="standard">Standard Integrations</option>
                                         <option value="high">High (Machine Learning, Real-time)</option>
@@ -100,11 +114,18 @@ export default function ServiceEstimator({ service }: any) {
                                     </select>
                                 </div>
                                 <div>
-                                    <label style={{ display: 'block', color: 'var(--zy-white)', fontWeight: 600, marginBottom: 12 }}>Timeline Required</label>
+                                    <label style={{ display: 'block', color: isLight ? '#000' : 'var(--zy-white)', fontWeight: 600, marginBottom: 12 }}>Timeline Required</label>
                                     <select 
                                         value={timeline} 
                                         onChange={(e) => setTimeline(e.target.value)}
-                                        style={{ width: '100%', padding: '12px 16px', borderRadius: 8, background: 'var(--zy-black)', border: '1px solid rgba(255, 255, 255, 0.1)', color: 'var(--zy-white)', outline: 'none' }}
+                                        style={{ 
+                                            width: '100%', padding: '14px 16px', borderRadius: 8, 
+                                            background: isLight ? '#fff' : 'var(--zy-black)', 
+                                            border: `1px solid ${isLight ? '#ddd' : 'rgba(255, 255, 255, 0.1)'}`, 
+                                            color: isLight ? '#000' : 'var(--zy-white)', 
+                                            outline: 'none', fontSize: 16, cursor: 'pointer',
+                                            boxShadow: isLight ? '0 2px 10px rgba(0,0,0,0.02)' : 'none'
+                                        }}
                                     >
                                         <option value="flexible">Flexible (3-6 Months)</option>
                                         <option value="rush">Rush (1-2 Months)</option>
@@ -113,13 +134,18 @@ export default function ServiceEstimator({ service }: any) {
                             </div>
 
                             {/* Result */}
-                            <div style={{ background: 'var(--zy-black)', borderRadius: 16, padding: 32, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
-                                <div style={{ color: 'var(--zy-gray-text)', fontSize: 14, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, marginBottom: 16 }}>Estimated Budget</div>
-                                <div style={{ fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 900, color: 'var(--zy-blue)', marginBottom: 24, fontFamily: 'var(--font-heading)' }}>
+                            <div style={{ 
+                                background: isLight ? '#f0f4f8' : 'var(--zy-black)', 
+                                borderRadius: 12, padding: 32, display: 'flex', flexDirection: 'column', 
+                                justifyContent: 'center', alignItems: 'center', 
+                                border: `1px solid ${isLight ? '#e0e7ff' : 'rgba(99, 102, 241, 0.2)'}` 
+                            }}>
+                                <div style={{ color: isLight ? '#6366f1' : 'var(--zy-gray-text)', fontSize: 14, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 800, marginBottom: 16 }}>Estimated Budget</div>
+                                <div style={{ fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 900, color: '#6366f1', marginBottom: 24, fontFamily: 'var(--font-heading)' }}>
                                     {calculateEstimate()}
                                 </div>
-                                <button className="zy-btn-primary" style={{ width: '100%', padding: '16px', fontSize: 16 }}>Lock This Estimate</button>
-                                <p style={{ color: 'var(--zy-gray-text)', fontSize: 12, marginTop: 16, textAlign: 'center' }}>
+                                <button className="zy-btn-primary" style={{ width: '100%', padding: '16px', fontSize: 16, background: '#6366f1', borderColor: '#6366f1', color: '#fff', boxShadow: '0 10px 20px rgba(99, 102, 241, 0.3)' }}>Lock This Estimate</button>
+                                <p style={{ color: isLight ? '#888' : 'var(--zy-gray-text)', fontSize: 12, marginTop: 16, textAlign: 'center' }}>
                                     *This is a ballpark estimate. Final cost will be determined after discovery phase.
                                 </p>
                             </div>
