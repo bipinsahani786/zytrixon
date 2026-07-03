@@ -23,37 +23,42 @@ export default function PricingMatrix({ service }: any) {
                     ].map((plan, i) => (
                         <div key={i} style={{ 
                             position: 'relative',
-                            borderRadius: 12,
-                            overflow: 'hidden',
-                            padding: plan.highlighted ? 1 : 0, // 1px for the animated border
                             transform: plan.highlighted ? 'scale(1.05)' : 'none',
-                            zIndex: plan.highlighted ? 2 : 1
+                            zIndex: plan.highlighted ? 2 : 1,
+                            height: '100%'
                         }}>
-                            {/* Animated Electric Border for highlighted plan */}
-                            {plan.highlighted && (
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '50%', left: '50%', width: '250%', height: '250%',
-                                    background: 'conic-gradient(from 0deg, transparent 75%, rgba(255,255,255,0.4) 95%, #ffffff 100%)',
-                                    animation: 'spinGradientCentered 4s linear infinite',
-                                    zIndex: 0,
-                                    opacity: 0.8
-                                }} />
-                            )}
+                            {plan.highlighted && <div style={{ position: 'absolute', top: -16, left: '50%', transform: 'translateX(-50%)', background: 'var(--zy-blue)', color: '#fff', padding: '4px 16px', borderRadius: 50, fontSize: 12, fontWeight: 700, letterSpacing: '0.05em', zIndex: 10 }}>MOST POPULAR</div>}
                             <div style={{ 
                                 position: 'relative',
-                                background: plan.highlighted ? 'var(--zy-gray-dark)' : 'var(--zy-gray-card)', 
-                                padding: 40,
-                                borderRadius: 11, 
-                                border: plan.highlighted ? 'none' : '1px solid rgba(255,255,255,0.05)',
-                                color: 'var(--zy-white)',
-                                zIndex: 1,
-                                height: '100%',
-                                display: 'flex',
-                                flexDirection: 'column'
+                                borderRadius: 12,
+                                overflow: 'hidden',
+                                padding: plan.highlighted ? 1 : 0, // 1px for the animated border
+                                height: '100%'
                             }}>
-                                {plan.highlighted && <div style={{ position: 'absolute', top: -16, left: '50%', transform: 'translateX(-50%)', background: 'var(--zy-blue)', color: '#fff', padding: '4px 16px', borderRadius: 50, fontSize: 12, fontWeight: 700, letterSpacing: '0.05em' }}>MOST POPULAR</div>}
-                                <h3 style={{ fontSize: 24, fontWeight: 700, marginBottom: 16, fontFamily: 'var(--font-heading)' }}>{plan.name}</h3>
+                                {/* Animated Electric Border for highlighted plan */}
+                                {plan.highlighted && (
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: '50%', left: '50%', width: '250%', height: '250%',
+                                        background: 'conic-gradient(from 0deg, transparent 75%, rgba(255,255,255,0.4) 95%, #ffffff 100%)',
+                                        animation: 'spinGradientCentered 4s linear infinite',
+                                        zIndex: 0,
+                                        opacity: 0.8
+                                    }} />
+                                )}
+                                <div style={{ 
+                                    position: 'relative',
+                                    background: plan.highlighted ? 'var(--zy-gray-dark)' : 'var(--zy-gray-card)', 
+                                    padding: 40,
+                                    borderRadius: 11, 
+                                    border: plan.highlighted ? 'none' : '1px solid rgba(255,255,255,0.05)',
+                                    color: 'var(--zy-white)',
+                                    zIndex: 1,
+                                    height: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                }}>
+                                    <h3 style={{ fontSize: 24, fontWeight: 700, marginBottom: 16, fontFamily: 'var(--font-heading)' }}>{plan.name}</h3>
                                 <div style={{ fontSize: 32, fontWeight: 900, marginBottom: 16, color: plan.highlighted ? 'var(--zy-white)' : 'var(--zy-blue)' }}>{plan.price}</div>
                                 <p style={{ color: 'var(--zy-gray-text)', marginBottom: 32 }}>{plan.desc}</p>
                                 
@@ -69,6 +74,7 @@ export default function PricingMatrix({ service }: any) {
                                 <button className={plan.highlighted ? "zy-btn-primary" : "zy-btn-outline"} style={{ width: '100%', marginTop: 'auto' }}>
                                     Discuss Requirements
                                 </button>
+                                </div>
                             </div>
                         </div>
                     ))}

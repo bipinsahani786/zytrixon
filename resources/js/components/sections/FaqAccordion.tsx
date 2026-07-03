@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from '@/components/landing/theme-provider';
+import GradientCard from '@/components/ui/GradientCard';
 
 export default function FaqAccordion({ service, location }: any) {
     const { theme } = useTheme();
@@ -41,12 +42,7 @@ export default function FaqAccordion({ service, location }: any) {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                     {faqs.map((faq, i) => (
-                        <div key={i} style={{ 
-                            background: 'var(--zy-gray-card)', 
-                            borderRadius: 12, 
-                            border: '1px solid rgba(255,255,255,0.05)',
-                            overflow: 'hidden'
-                        }}>
+                        <GradientCard key={i}>
                             <button 
                                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                                 style={{ 
@@ -73,7 +69,7 @@ export default function FaqAccordion({ service, location }: any) {
                             }}>
                                 {faq.a}
                             </div>
-                        </div>
+                        </GradientCard>
                     ))}
                 </div>
             </div>
