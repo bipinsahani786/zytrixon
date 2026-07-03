@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useTheme } from '@/components/landing/theme-provider';
+import { Canvas, useFrame } from '@react-three/fiber';
+
+function Abstract3D({ color }: { color: string }) {
+    const meshRef = useRef<any>(null);
+    
+    useFrame((state) => {
+        if (meshRef.current) {
+            meshRef.current.rotation.x = state.clock.elapsedTime * 0.2;
+            meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
+        }
+    });
+
+    return (
+        <mesh ref={meshRef} scale={1.8}>
+            <torusKnotGeometry args={[1, 0.3, 128, 32]} />
+            <meshStandardMaterial 
+                color={color} 
+                wireframe={true} 
+                transparent={true} 
+                opacity={0.15} 
+            />
+        </mesh>
+    );
+}
 
 export default function HeroDynamic({ service, location, h1 }: any) {
     const { theme } = useTheme();
     const isLight = theme === 'light';
+    
+    // Service specific color theme
+    const themeColor = service?.slug === 'app-development' ? '#22c55e' 
+                     : service?.slug === 'seo-digital-marketing' ? '#eab308' 
+                     : '#6366f1'; // Default blueish
 
     return (
         <section style={{ 
@@ -12,18 +41,33 @@ export default function HeroDynamic({ service, location, h1 }: any) {
             borderBottom: '1px solid rgba(255,255,255,0.05)',
             textAlign: 'center',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            minHeight: '70vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
         }}>
-            {/* Background Glow */}
+            {/* 3D Background */}
+            <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: isLight ? 0.4 : 1 }}>
+                <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 1.5]}>
+                    <ambientLight intensity={1} />
+                    <Abstract3D color={themeColor} />
+                </Canvas>
+            </div>
+            
+            {/* Overlay Gradient for Readability */}
             <div style={{
-                position: 'absolute', top: -100, left: '50%', transform: 'translateX(-50%)',
-                width: 600, height: 600, background: 'var(--zy-blue)', filter: 'blur(150px)', opacity: 0.15, zIndex: 0
+                position: 'absolute', inset: 0,
+                background: isLight 
+                    ? 'radial-gradient(circle at center, transparent 0%, #FFFFFF 80%)'
+                    : 'radial-gradient(circle at center, transparent 0%, var(--zy-black) 80%)',
+                zIndex: 0
             }} />
             
-            <div style={{ maxWidth: 1000, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            <div style={{ maxWidth: 1000, margin: '0 auto', position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginBottom: 24 }}>
-                    <span style={{ padding: '6px 16px', background: 'rgba(99, 102, 241, 0.1)', color: '#6366f1', borderRadius: 50, fontSize: 13, fontWeight: 700, letterSpacing: '0.05em' }}>
-                        ENTERPRISE GRADE
+                    <span style={{ padding: '6px 16px', background: `${themeColor}1a`, color: themeColor, borderRadius: 50, fontSize: 13, fontWeight: 700, letterSpacing: '0.05em' }}>
+                        {service?.title ? service.title.toUpperCase() : 'ENTERPRISE GRADE'}
                     </span>
                     {location && (
                         <span style={{ padding: '6px 16px', background: 'rgba(34, 197, 94, 0.1)', color: '#22c55e', borderRadius: 50, fontSize: 13, fontWeight: 700, letterSpacing: '0.05em' }}>
@@ -40,9 +84,9 @@ export default function HeroDynamic({ service, location, h1 }: any) {
                     {service.description} We build high-performance systems designed to scale and dominate the market.
                 </p>
                 
-                <div style={{ display: 'flex', gap: 16, justifyContent: 'center' }}>
-                    <button className="zy-btn-primary">Start a Project</button>
-                    <button className="zy-btn-outline" style={{ borderColor: 'rgba(255,255,255,0.2)', color: 'var(--zy-white)' }}>
+                <div style={{ display: 'flex', gap: 16, justifyContent: 'center', pointerEvents: 'auto' }}>
+                    <button className="zy-btn-primary" style={{ background: themeColor, borderColor: themeColor }}>Start a Project</button>
+                    <button className="zy-btn-outline" style={{ borderColor: isLight ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)', color: isLight ? '#000' : 'var(--zy-white)' }}>
                         View Case Studies
                     </button>
                 </div>
