@@ -1,35 +1,42 @@
 import React, { useEffect, useState } from 'react';
+import GradientCard from '@/components/ui/GradientCard';
 
 const STEPS = [
     {
         number: '01',
         title: 'Discovery',
         description: 'We dive deep into your business, industry, and goals. Through workshops and research, we map the landscape and uncover opportunities others miss.',
+        color: '#3b82f6' // zy-blue
     },
     {
         number: '02',
         title: 'Design',
         description: 'Wireframes evolve into high-fidelity prototypes. Every pixel is intentional — balancing aesthetics with usability to create interfaces that convert.',
+        color: '#a855f7' // zy-purple
     },
     {
         number: '03',
         title: 'Architecture',
         description: 'Before writing a line of code, we design scalable system architectures, design robust database schemas, and select the perfect tech stack.',
+        color: '#ec4899' // zy-pink
     },
     {
         number: '04',
         title: 'Develop',
         description: 'Clean, modular code built for scale. Agile sprints with transparent progress updates. We ship fast without cutting corners.',
+        color: '#10b981' // emerald
     },
     {
         number: '05',
         title: 'QA & Testing',
         description: 'Rigorous automated and manual testing. We hunt for bugs, optimize performance bottlenecks, and ensure military-grade security before launch.',
+        color: '#f59e0b' // amber
     },
     {
         number: '06',
         title: 'Deploy',
         description: 'Smooth deployment to production. Post-launch monitoring and iterative improvements ensure your software delivers lasting success.',
+        color: '#6366f1' // indigo
     },
 ];
 
@@ -60,20 +67,36 @@ export default function ProcessSection() {
                 {isMobile ? (
                     // Mobile: standard vertical stack
                     STEPS.map((step, i) => (
-                        <div key={i} className="zy-card process-card" style={{ padding: 32, position: 'relative' }}>
-                            <div className="process-number" style={{ fontSize: 48, fontWeight: 900, color: 'var(--zy-blue)', opacity: 0.2, marginBottom: -20 }}>
-                                {step.number}
-                            </div>
-                            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 700, color: 'var(--zy-white)', marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                                {step.title}
-                            </h3>
-                            <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--zy-gray-text)' }}>
-                                {step.description}
-                            </p>
+                        <div key={i} style={{ position: 'relative' }}>
+                            <GradientCard themeColor={step.color} style={{ height: '100%' }}>
+                                <div style={{ padding: 40, position: 'relative', overflow: 'hidden', height: '100%' }}>
+                                    {/* Watermark Number */}
+                                    <div style={{ 
+                                        position: 'absolute', top: -10, right: -10, 
+                                        fontSize: 120, fontWeight: 900, lineHeight: 0.8,
+                                        color: step.color, opacity: 0.05, userSelect: 'none'
+                                    }}>
+                                        {step.number}
+                                    </div>
+                                    <div style={{ 
+                                        width: 48, height: 48, borderRadius: 12, background: `${step.color}20`,
+                                        color: step.color, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        fontSize: 20, fontWeight: 800, marginBottom: 24, border: `1px solid ${step.color}40`
+                                    }}>
+                                        {step.number}
+                                    </div>
+                                    <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 700, color: 'var(--zy-white)', marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                                        {step.title}
+                                    </h3>
+                                    <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--zy-gray-text)' }}>
+                                        {step.description}
+                                    </p>
+                                </div>
+                            </GradientCard>
                             {/* Down arrow for mobile */}
                             {i < STEPS.length - 1 && (
-                                <div style={{ position: 'absolute', bottom: -24, left: '50%', transform: 'translateX(-50%)', color: 'rgba(255,255,255,0.2)' }}>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <div style={{ position: 'absolute', bottom: -28, left: '50%', transform: 'translateX(-50%)', color: step.color, opacity: 0.6, zIndex: 10 }}>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <line x1="12" y1="5" x2="12" y2="19"></line>
                                         <polyline points="19 12 12 19 5 12"></polyline>
                                     </svg>
@@ -88,37 +111,52 @@ export default function ProcessSection() {
                             <div style={{ 
                                 display: 'flex', 
                                 flexDirection: rowIndex % 2 === 0 ? 'row' : 'row-reverse',
-                                gap: 40,
+                                gap: 60,
                                 position: 'relative'
                             }}>
                                 {row.map((step, colIndex) => (
                                     <div key={step.number} style={{ flex: 1, position: 'relative' }}>
-                                        <div className="zy-card process-card" style={{ padding: 40, height: '100%', position: 'relative', zIndex: 2 }}>
-                                            <div className="process-number" style={{ fontSize: 48, fontWeight: 900, color: 'var(--zy-blue)', opacity: 0.2, marginBottom: -20 }}>
-                                                {step.number}
+                                        <GradientCard themeColor={step.color} style={{ height: '100%' }}>
+                                            <div style={{ padding: 40, height: '100%', position: 'relative', zIndex: 2, overflow: 'hidden' }}>
+                                                {/* Watermark Number */}
+                                                <div style={{ 
+                                                    position: 'absolute', top: -10, right: -10, 
+                                                    fontSize: 140, fontWeight: 900, lineHeight: 0.8,
+                                                    color: step.color, opacity: 0.05, userSelect: 'none'
+                                                }}>
+                                                    {step.number}
+                                                </div>
+                                                
+                                                <div style={{ 
+                                                    width: 48, height: 48, borderRadius: 12, background: `${step.color}20`,
+                                                    color: step.color, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                    fontSize: 20, fontWeight: 800, marginBottom: 24, border: `1px solid ${step.color}40`,
+                                                    position: 'relative', zIndex: 2
+                                                }}>
+                                                    {step.number}
+                                                </div>
+                                                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 700, color: 'var(--zy-white)', marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                                                    {step.title}
+                                                </h3>
+                                                <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--zy-gray-text)', position: 'relative', zIndex: 1 }}>
+                                                    {step.description}
+                                                </p>
                                             </div>
-                                            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 700, color: 'var(--zy-white)', marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                                                {step.title}
-                                            </h3>
-                                            <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--zy-gray-text)' }}>
-                                                {step.description}
-                                            </p>
-                                        </div>
+                                        </GradientCard>
                                         
                                         {/* Horizontal Arrow between cards in the same row */}
                                         {colIndex < row.length - 1 && (
                                             <div style={{
                                                 position: 'absolute',
                                                 top: '50%',
-                                                [rowIndex % 2 === 0 ? 'right' : 'left']: -32,
+                                                [rowIndex % 2 === 0 ? 'right' : 'left']: -42,
                                                 transform: `translateY(-50%) ${rowIndex % 2 !== 0 ? 'scaleX(-1)' : ''}`,
                                                 zIndex: 1,
-                                                color: 'var(--zy-blue)',
-                                                opacity: 0.5
+                                                width: 30,
+                                                overflow: 'hidden'
                                             }}>
-                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                                <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0 12h24M16 4l8 8-8 8" stroke={step.color} strokeWidth="2" strokeDasharray="4 4" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }} />
                                                 </svg>
                                             </div>
                                         )}
@@ -130,15 +168,12 @@ export default function ProcessSection() {
                             {rowIndex < rows.length - 1 && (
                                 <div style={{ 
                                     position: 'absolute', 
-                                    bottom: -42, 
+                                    bottom: -46, 
                                     [rowIndex % 2 === 0 ? 'right' : 'left']: '16%', 
-                                    color: 'var(--zy-blue)',
-                                    opacity: 0.5,
                                     zIndex: 1
                                 }}>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <polyline points="19 12 12 19 5 12"></polyline>
+                                    <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 0v36M4 28l8 8 8-8" stroke={row[row.length - 1].color} strokeWidth="2" strokeDasharray="4 4" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }} />
                                     </svg>
                                 </div>
                             )}
