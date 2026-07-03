@@ -1,4 +1,5 @@
 import React from 'react';
+import GradientCard from '@/components/ui/GradientCard';
 
 export default function SecurityStandards({ service }: any) {
     return (
@@ -19,12 +20,37 @@ export default function SecurityStandards({ service }: any) {
                         ))}
                     </ul>
                 </div>
-                <div style={{ flex: '1 1 400px', background: 'var(--zy-gray-card)', borderRadius: 12, padding: 40, border: '1px solid rgba(255,255,255,0.05)', position: 'relative' }}>
-                    {/* Security Shield Icon Graphic */}
-                    <div style={{ width: 120, height: 120, margin: '0 auto', background: 'rgba(99, 102, 241, 0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--zy-blue)" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <GradientCard themeColor="var(--zy-blue)" style={{ flex: '1 1 400px', minHeight: 350 }}>
+                    <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden', padding: 40 }}>
+                        {/* Background Rings */}
+                        <div style={{ position: 'absolute', width: 250, height: 250, borderRadius: '50%', border: '1px dashed rgba(255,255,255,0.1)', animation: 'spin 10s linear infinite' }} />
+                        <div style={{ position: 'absolute', width: 350, height: 350, borderRadius: '50%', border: '1px dashed rgba(255,255,255,0.05)', animation: 'spin 15s linear infinite reverse' }} />
+                        
+                        {/* Glowing Center */}
+                        <div style={{ position: 'absolute', width: 100, height: 100, background: 'var(--zy-blue)', filter: 'blur(60px)', opacity: 0.3 }} />
+
+                        {/* Security Shield Icon Graphic */}
+                        <div style={{ width: 120, height: 120, margin: '0 auto', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 2, backdropFilter: 'blur(10px)' }}>
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="var(--zy-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M12 8v4" />
+                                <path d="M12 16h.01" />
+                            </svg>
+                        </div>
+                        
+                        {/* Floating elements */}
+                        <div style={{ position: 'absolute', top: 50, right: 60, padding: '8px 16px', background: 'rgba(255,255,255,0.05)', borderRadius: 20, border: '1px solid rgba(255,255,255,0.1)', fontSize: 12, fontWeight: 700, color: '#22c55e', backdropFilter: 'blur(5px)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', animation: 'pulse 2s infinite' }} /> SECURE
+                        </div>
+                        <div style={{ position: 'absolute', bottom: 50, left: 60, padding: '8px 16px', background: 'rgba(255,255,255,0.05)', borderRadius: 20, border: '1px solid rgba(255,255,255,0.1)', fontSize: 12, fontWeight: 700, color: 'var(--zy-blue)', backdropFilter: 'blur(5px)' }}>
+                            AES-256
+                        </div>
                     </div>
-                </div>
+                    <style>{`
+                        @keyframes spin { 100% { transform: rotate(360deg); } }
+                        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+                    `}</style>
+                </GradientCard>
             </div>
         </section>
     );
