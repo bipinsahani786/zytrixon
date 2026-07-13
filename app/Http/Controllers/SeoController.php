@@ -56,9 +56,9 @@ class SeoController extends Controller
         }
 
         // Construct dynamic H1 and Meta Data
-        $h1 = $seoOverride->h1 ?? ($service->title . ($location ? ' in ' . $location->name : ''));
-        $metaTitle = $seoOverride->meta_title ?? ("Best " . $service->title . " Company " . ($location ? 'in ' . $location->name : '') . " | Zytrixon Tech");
-        $metaDescription = $seoOverride->meta_description ?? ("Looking for top-tier " . $service->title . " services " . ($location ? 'in ' . $location->name : '') . "? Zytrixon Tech delivers scalable, enterprise-grade solutions.");
+        $h1 = $seoOverride?->h1 ?? ($service->title . ($location ? ' in ' . $location->name : ''));
+        $metaTitle = $seoOverride?->meta_title ?? ("Best " . $service->title . " Company " . ($location ? 'in ' . $location->name : '') . " | Zytrixon Tech");
+        $metaDescription = $seoOverride?->meta_description ?? ("Looking for top-tier " . $service->title . " services " . ($location ? 'in ' . $location->name : '') . "? Zytrixon Tech delivers scalable, enterprise-grade solutions.");
 
         $caseStudies = CaseStudy::latest()->take(3)->get();
 
@@ -70,7 +70,7 @@ class SeoController extends Controller
                 'title' => $metaTitle,
                 'description' => $metaDescription,
             ],
-            'content_overrides' => $seoOverride->content_json ?? null,
+            'content_overrides' => $seoOverride?->content_json ?? null,
             'caseStudies' => $caseStudies,
         ]);
     }

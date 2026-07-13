@@ -47,12 +47,12 @@ export default function TechnicalArchitecture({ service }: any) {
                 <h2 className="zy-section-title" style={{ color: isLight ? '#000' : 'var(--zy-white)' }}>Technical Architecture Flow</h2>
                 <p style={{ color: isLight ? '#555' : 'var(--zy-gray-text)', marginBottom: 80, fontSize: 18 }}>Our highly optimized pipeline ensures infinite scalability and absolute resilience.</p>
                 
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
+                <div className="arch-flow-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
                     {TIERS.map((tier, i) => (
                         <React.Fragment key={i}>
                             <div className="arch-card-wrapper" style={{ transition: 'transform 0.3s' }}>
                                 <GradientCard themeColor={tier.color} style={{ width: 240, background: isLight ? '#fdfdfd' : 'var(--zy-gray-card)', boxShadow: isLight ? '0 15px 35px rgba(0,0,0,0.05)' : '0 15px 35px rgba(0,0,0,0.4)' }}>
-                                    <div style={{ padding: '40px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                                    <div style={{ padding: '40px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', background: isLight ? '#fdfdfd' : 'var(--zy-gray-card)', borderRadius: 15, height: '100%' }}>
                                         <div style={{ 
                                             width: 72, height: 72, borderRadius: '50%', 
                                             background: `color-mix(in srgb, ${tier.color} 15%, transparent)`, 
@@ -98,9 +98,12 @@ export default function TechnicalArchitecture({ service }: any) {
                     transform: translateY(-10px);
                 }
                 @media (max-width: 1000px) {
+                    .arch-flow-container {
+                        flex-direction: column !important;
+                    }
                     .arch-connector {
                         transform: rotate(90deg);
-                        margin: 20px 0;
+                        margin: 10px 0;
                     }
                 }
             `}</style>

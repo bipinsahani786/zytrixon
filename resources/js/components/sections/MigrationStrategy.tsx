@@ -40,26 +40,28 @@ export default function MigrationStrategy({ service }: any) {
                     <div className="migration-flow" style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: 32, flexWrap: 'wrap' }}>
                         {steps.map((step, i) => (
                             <React.Fragment key={i}>
-                                <div style={{ flex: '1 1 300px', maxWidth: 400, position: 'relative' }}>
+                                <div style={{ flex: '1 1 300px', maxWidth: 400, position: 'relative', marginTop: 15 }}>
+                                    <div style={{ 
+                                        position: 'absolute', top: -15, left: '50%', transform: 'translateX(-50%)',
+                                        width: 30, height: 30, borderRadius: '50%', background: step.color,
+                                        color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        fontWeight: 800, fontSize: 14, boxShadow: `0 4px 10px ${step.color}60`,
+                                        zIndex: 10
+                                    }}>
+                                        {i + 1}
+                                    </div>
                                     <GradientCard themeColor={step.color} style={{ height: '100%', background: isLight ? '#fff' : 'var(--zy-gray-card)', boxShadow: isLight ? '0 10px 30px rgba(0,0,0,0.05)' : '0 10px 30px rgba(0,0,0,0.3)' }}>
-                                        <div style={{ padding: '32px 24px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%' }}>
+                                        <div style={{ padding: '32px 24px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%', background: isLight ? '#fff' : 'var(--zy-gray-card)', borderRadius: 15 }}>
                                             <div style={{ 
                                                 width: 64, height: 64, borderRadius: '50%', 
                                                 background: `color-mix(in srgb, ${step.color} 15%, transparent)`, 
                                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                 color: step.color, marginBottom: 24,
                                                 border: `1px solid ${step.color}40`,
-                                                boxShadow: `0 0 20px ${step.color}20`
+                                                boxShadow: `0 0 20px ${step.color}20`,
+                                                marginTop: 8
                                             }}>
                                                 {step.icon}
-                                            </div>
-                                            <div style={{ 
-                                                position: 'absolute', top: -15, left: '50%', transform: 'translateX(-50%)',
-                                                width: 30, height: 30, borderRadius: '50%', background: step.color,
-                                                color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                fontWeight: 800, fontSize: 14, boxShadow: `0 4px 10px ${step.color}60`
-                                            }}>
-                                                {i + 1}
                                             </div>
                                             <h3 style={{ fontSize: 20, fontWeight: 700, color: isLight ? '#000' : 'var(--zy-white)', marginBottom: 12, fontFamily: 'var(--font-heading)' }}>
                                                 {step.title}

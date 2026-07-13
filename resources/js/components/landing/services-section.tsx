@@ -145,19 +145,20 @@ export default function ServicesSection() {
                     {SERVICES.map((service) => (
                         <div
                             key={service.id}
-                            className="service-card-new"
+                            className={`service-card-new ${activeService === service.id ? 'active' : ''}`}
                             style={{
                                 position: 'relative',
                                 borderRadius: 8,
                                 overflow: 'hidden',
-                                opacity: 0,
                                 padding: 1, // acts as border width
                                 display: 'flex',
                                 flexDirection: 'column'
                             }}
                         >
                             {/* Animated Electric Border */}
-                            <div style={{
+                            <div 
+                                className="animated-border"
+                                style={{
                                 position: 'absolute',
                                 top: '50%', left: '50%', width: '250%', height: '250%',
                                 background: activeIsLight 
@@ -165,7 +166,6 @@ export default function ServicesSection() {
                                     : 'conic-gradient(from 0deg, transparent 75%, rgba(255,255,255,0.4) 95%, #ffffff 100%)',
                                 animation: 'spinGradientCentered 4s linear infinite',
                                 zIndex: 0,
-                                opacity: activeService === service.id ? 1 : 0.4,
                                 transition: 'opacity 0.3s'
                             }} />
 
@@ -242,6 +242,17 @@ export default function ServicesSection() {
                 @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
                 @keyframes spinGradientCentered { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
                 @keyframes pulseScale { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } }
+                
+                .service-card-new .animated-border {
+                    opacity: 0.1;
+                    animation-play-state: paused;
+                    will-change: transform;
+                }
+                .service-card-new:hover .animated-border,
+                .service-card-new.active .animated-border {
+                    opacity: 1;
+                    animation-play-state: running;
+                }
             `}</style>
         </section>
     );

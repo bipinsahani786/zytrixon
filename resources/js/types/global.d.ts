@@ -8,12 +8,9 @@ declare module 'react' {
 }
 
 declare module '@inertiajs/core' {
-    export interface InertiaConfig {
-        sharedPageProps: {
-            name: string;
-            auth: Auth;
-            sidebarOpen: boolean;
-            [key: string]: unknown;
-        };
+    export interface PageProps extends Record<string, unknown> {
+        name: string;
+        auth: Auth;
+        sidebarOpen: boolean;
     }
 }

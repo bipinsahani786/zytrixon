@@ -23,7 +23,7 @@ export default function InnerPageHero({ title, subtitle }: InnerPageHeroProps) {
             { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, stagger: 0.1, ease: 'power3.out' }
         );
 
-        return () => tl.kill();
+        return () => { tl.kill(); };
     }, []);
 
     return (

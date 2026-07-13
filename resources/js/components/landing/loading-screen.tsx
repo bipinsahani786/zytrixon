@@ -92,7 +92,7 @@ export default function LoadingScreen() {
     return (
         <div ref={containerRef} className="loading-screen" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <div ref={zRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '-24px' }}>
-                <Logo style={{ height: '140px', width: 'auto', color: 'var(--zy-white)', clipPath: 'inset(0 0 16% 0)', transform: 'translateY(8%)' }} />
+                <Logo className="h-[140px] w-auto text-[var(--zy-white)]" style={{ clipPath: 'inset(0 0 16% 0)', transform: 'translateY(8%)' }} />
             </div>
             <div style={{ display: 'flex', gap: '6px', zIndex: 2 }}>
                 {word.map((char, i) => (

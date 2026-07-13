@@ -62,5 +62,5 @@ createServer(
                 </TooltipProvider>
             ),
         }),
-    process.env.PORT || 13714
+    process.env.PORT ? parseInt(process.env.PORT) : 13714
 );

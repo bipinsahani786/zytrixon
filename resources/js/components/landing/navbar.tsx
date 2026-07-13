@@ -22,6 +22,8 @@ export default function Navbar() {
     const { theme, toggleTheme } = useTheme();
     const { url } = usePage();
 
+    const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+
     useEffect(() => {
         setMounted(true);
         const handleScroll = () => {
@@ -51,6 +53,17 @@ export default function Navbar() {
         };
     }, [mobileOpen]);
 
+    // Close dropdown on click outside for touch devices
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+            if (servicesDropdownOpen && navRef.current && !navRef.current.contains(e.target as Node)) {
+                setServicesDropdownOpen(false);
+            }
+        };
+        document.addEventListener('touchstart', handleClickOutside);
+        return () => document.removeEventListener('touchstart', handleClickOutside);
+    }, [servicesDropdownOpen]);
+
     return (
         <>
             <nav
@@ -60,7 +73,7 @@ export default function Navbar() {
             >
                 {/* Logo */}
                 <Link href="/" className="navbar-logo" aria-label="Zytrixon Home" style={{ display: 'flex', alignItems: 'center' }}>
-                    <Logo style={{ height: '56px', width: 'auto', color: 'var(--zy-white)' }} />
+                    <Logo className="h-[56px] w-auto text-[var(--zy-white)]" />
                 </Link>
 
                 {/* Desktop Links */}
@@ -69,10 +82,29 @@ export default function Navbar() {
                         if (link.label === 'SERVICES') {
                             const isServicesActive = url.startsWith('/services');
                             return (
-                                <li key={link.href} className="nav-dropdown-wrapper" style={{ position: 'relative' }}>
-                                    <Link href={link.href} className={`navbar-link ${isServicesActive ? 'active' : ''}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: isServicesActive ? 'var(--zy-blue)' : undefined }}>
+                                <li 
+                                    key={link.href} 
+                                    className="nav-dropdown-wrapper" 
+                                    style={{ position: 'relative' }}
+                                    onMouseEnter={() => setServicesDropdownOpen(true)}
+                                    onMouseLeave={() => setServicesDropdownOpen(false)}
+                                >
+                                    <Link 
+                                        href={link.href} 
+                                        className={`navbar-link ${isServicesActive ? 'active' : ''}`} 
+                                        style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: isServicesActive ? 'var(--zy-blue)' : undefined }}
+                                        onClick={(e) => {
+                                            // On touch devices, first tap opens dropdown instead of navigating
+                                            if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+                                                if (!servicesDropdownOpen) {
+                                                    e.preventDefault();
+                                                    setServicesDropdownOpen(true);
+                                                }
+                                            }
+                                        }}
+                                    >
                                         {link.label}
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: servicesDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}>
                                             <polyline points="6 9 12 15 18 9"></polyline>
                                         </svg>
                                     </Link>
@@ -81,8 +113,8 @@ export default function Navbar() {
                                     <div className="nav-dropdown-content" style={{
                                         position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)',
                                         width: 260, background: 'var(--zy-gray-card)', borderRadius: 12, border: '1px solid var(--zy-gray-border)',
-                                        padding: 16, display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16,
-                                        opacity: 0, visibility: 'hidden', transition: 'all 0.3s ease', boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
+                                        padding: 16, display: 'flex', flexDirection: 'column', gap: 8, marginTop: servicesDropdownOpen ? 8 : 16,
+                                        opacity: servicesDropdownOpen ? 1 : 0, visibility: servicesDropdownOpen ? 'visible' : 'hidden', transition: 'all 0.3s ease', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', zIndex: 100
                                     }}>
                                         {[
                                             { title: 'Web Development', slug: 'web-development' },
@@ -92,22 +124,31 @@ export default function Navbar() {
                                             { title: 'Custom Software', slug: 'custom-software' },
                                             { title: 'Digital Marketing', slug: 'digital-marketing' }
                                         ].map(svc => (
-                                            <Link key={svc.slug} href={`/services/${svc.slug}`} style={{
-                                                padding: '12px 16px', borderRadius: 8, color: 'var(--zy-white)', textDecoration: 'none',
-                                                fontSize: 14, fontWeight: 600, transition: 'all 0.2s', background: 'transparent'
-                                            }}
-                                            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--zy-gray-dark)'; e.currentTarget.style.color = 'var(--zy-blue)'; }}
-                                            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--zy-white)'; }}
+                                            <Link 
+                                                key={svc.slug} 
+                                                href={`/services/${svc.slug}`} 
+                                                style={{
+                                                    padding: '12px 16px', borderRadius: 8, color: 'var(--zy-white)', textDecoration: 'none',
+                                                    fontSize: 14, fontWeight: 600, transition: 'all 0.2s', background: 'transparent'
+                                                }}
+                                                onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--zy-gray-dark)'; e.currentTarget.style.color = 'var(--zy-blue)'; }}
+                                                onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--zy-white)'; }}
+                                                onClick={() => setServicesDropdownOpen(false)}
                                             >
                                                 {svc.title}
                                             </Link>
                                         ))}
                                     </div>
                                     <style>{`
-                                        .nav-dropdown-wrapper:hover .nav-dropdown-content {
-                                            opacity: 1 !important;
-                                            visibility: visible !important;
-                                            margin-top: 8px !important;
+                                        @media (hover: hover) and (pointer: fine) {
+                                            .nav-dropdown-wrapper:hover .nav-dropdown-content {
+                                                opacity: 1 !important;
+                                                visibility: visible !important;
+                                                margin-top: 8px !important;
+                                            }
+                                            .nav-dropdown-wrapper:hover svg {
+                                                transform: rotate(180deg) !important;
+                                            }
                                         }
                                     `}</style>
                                 </li>

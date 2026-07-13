@@ -76,9 +76,9 @@ export default function Footer() {
             <div className="footer-grid">
                 {/* Company Info */}
                 <div>
-                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
-                        <Logo style={{ height: '64px', width: 'auto', color: 'var(--zy-white)' }} />
-                    </div>
+                    <Link href="/" aria-label="Zytrixon Home" className="mb-6 flex items-center">
+                        <Logo className="h-[64px] w-auto text-[var(--zy-white)]" />
+                    </Link>
                     <p
                         style={{
                             fontSize: '14px',
