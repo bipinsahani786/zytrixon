@@ -2,46 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Service;
+use App\Models\CaseStudy;
 use App\Models\Location;
 use App\Models\SeoPage;
-use App\Models\CaseStudy;
+use App\Models\Service;
 use Inertia\Inertia;
-use Illuminate\Http\Request;
+use Inertia\Response;
 
 class SeoController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $services = Service::all();
+
         return Inertia::render('ServicesIndex', [
-            'services' => $services
+            'services' => $services,
         ]);
     }
 
-    public function locationsIndex()
+    public function locationsIndex(): Response
     {
         $locations = Location::orderBy('name')->get();
+
         return Inertia::render('LocationsIndex', [
-            'locations' => $locations
+            'locations' => $locations,
         ]);
     }
 
-    public function showLocation($location_slug)
+    public function showLocation(string $location_slug): Response
     {
         $location = Location::where('slug', $location_slug)->firstOrFail();
         $services = Service::all();
-        
+
         return Inertia::render('LocationDetails', [
             'location' => $location,
-            'services' => $services
+            'services' => $services,
         ]);
     }
 
-    public function showServiceLocation($service_slug, $location_slug = null)
+    public function showServiceLocation(string $service_slug, ?string $location_slug = null): Response
     {
         $service = Service::where('slug', $service_slug)->firstOrFail();
-        
+
         $location = null;
         if ($location_slug) {
             $location = Location::where('slug', $location_slug)->firstOrFail();
@@ -56,9 +58,9 @@ class SeoController extends Controller
         }
 
         // Construct dynamic H1 and Meta Data
-        $h1 = $seoOverride?->h1 ?? ($service->title . ($location ? ' in ' . $location->name : ''));
-        $metaTitle = $seoOverride?->meta_title ?? ("Best " . $service->title . " Company " . ($location ? 'in ' . $location->name : '') . " | Zytrixon Tech");
-        $metaDescription = $seoOverride?->meta_description ?? ("Looking for top-tier " . $service->title . " services " . ($location ? 'in ' . $location->name : '') . "? Zytrixon Tech delivers scalable, enterprise-grade solutions.");
+        $h1 = $seoOverride ? $seoOverride->h1 : ($service->title.($location ? ' in '.$location->name : ''));
+        $metaTitle = $seoOverride ? $seoOverride->meta_title : ('Best '.$service->title.' Company '.($location ? 'in '.$location->name : '').' | Zytrixon Tech');
+        $metaDescription = $seoOverride ? $seoOverride->meta_description : ('Looking for top-tier '.$service->title.' services '.($location ? 'in '.$location->name : '').'? Zytrixon Tech delivers scalable, enterprise-grade solutions.');
 
         $caseStudies = CaseStudy::latest()->take(3)->get();
 
@@ -70,7 +72,7 @@ class SeoController extends Controller
                 'title' => $metaTitle,
                 'description' => $metaDescription,
             ],
-            'content_overrides' => $seoOverride?->content_json ?? null,
+            'content_overrides' => $seoOverride ? $seoOverride->content_json : null,
             'caseStudies' => $caseStudies,
         ]);
     }

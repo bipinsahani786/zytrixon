@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,13 +16,18 @@ export default function StatsSection() {
     const numbersRef = useRef<(HTMLSpanElement | null)[]>([]);
 
     useEffect(() => {
-        if (!sectionRef.current) return;
+        if (!sectionRef.current) {
+            return;
+        }
 
         const ctx = gsap.context(() => {
             // Count up animation
             STATS.forEach((stat, i) => {
                 const el = numbersRef.current[i];
-                if (!el) return;
+
+                if (!el) {
+                    return;
+                }
 
                 const obj = { val: 0 };
 
@@ -57,7 +62,7 @@ export default function StatsSection() {
                         start: 'top 85%',
                         once: true,
                     },
-                }
+                },
             );
         }, sectionRef);
 
@@ -85,7 +90,13 @@ export default function StatsSection() {
                 {STATS.map((stat, i) => (
                     <div key={i}>
                         <div className="stat-number">
-                            <span ref={(el) => { numbersRef.current[i] = el; }}>0</span>
+                            <span
+                                ref={(el) => {
+                                    numbersRef.current[i] = el;
+                                }}
+                            >
+                                0
+                            </span>
                             <span className="stat-suffix">{stat.suffix}</span>
                         </div>
                         <div className="stat-label">{stat.label}</div>

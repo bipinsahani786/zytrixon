@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef, useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,29 +36,51 @@ export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     useEffect(() => {
-        if (!sectionRef.current) return;
+        if (!sectionRef.current) {
+            return;
+        }
+
         const ctx = gsap.context(() => {
             gsap.fromTo(
                 sectionRef.current,
                 { opacity: 0, y: 40 },
                 {
-                    opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-                    scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', once: true },
-                }
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 80%',
+                        once: true,
+                    },
+                },
             );
         }, sectionRef);
+
         return () => ctx.revert();
     }, []);
 
     return (
-        <section ref={sectionRef} className="zy-section" style={{ background: 'var(--zy-black)' }}>
+        <section
+            ref={sectionRef}
+            className="zy-section"
+            style={{ background: 'var(--zy-black)' }}
+        >
             <div style={{ maxWidth: 800, margin: '0 auto' }}>
-                <div className="zy-section-header" style={{ textAlign: 'center' }}>
+                <div
+                    className="zy-section-header"
+                    style={{ textAlign: 'center' }}
+                >
                     <span className="zy-section-label">FAQ</span>
-                    <h2 className="zy-section-title">Frequently Asked Questions</h2>
+                    <h2 className="zy-section-title">
+                        Frequently Asked Questions
+                    </h2>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <div
+                    style={{ display: 'flex', flexDirection: 'column', gap: 8 }}
+                >
                     {FAQS.map((faq, i) => (
                         <div
                             key={i}
@@ -71,7 +93,9 @@ export default function FAQSection() {
                             }}
                         >
                             <button
-                                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                                onClick={() =>
+                                    setOpenIndex(openIndex === i ? null : i)
+                                }
                                 style={{
                                     width: '100%',
                                     padding: '20px 24px',
@@ -91,11 +115,19 @@ export default function FAQSection() {
                             >
                                 {faq.q}
                                 <svg
-                                    width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" strokeWidth="2"
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
                                     style={{
-                                        transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)',
-                                        transition: 'transform 0.3s var(--zy-ease)',
+                                        transform:
+                                            openIndex === i
+                                                ? 'rotate(180deg)'
+                                                : 'rotate(0deg)',
+                                        transition:
+                                            'transform 0.3s var(--zy-ease)',
                                         flexShrink: 0,
                                     }}
                                 >
@@ -103,14 +135,27 @@ export default function FAQSection() {
                                 </svg>
                             </button>
 
-                            <div style={{
-                                maxHeight: openIndex === i ? 200 : 0,
-                                opacity: openIndex === i ? 1 : 0,
-                                padding: openIndex === i ? '0 24px 20px' : '0 24px',
-                                transition: 'all 0.3s var(--zy-ease)',
-                                overflow: 'hidden',
-                            }}>
-                                <p style={{ fontSize: 14, color: 'var(--zy-gray-text)', lineHeight: 1.7 }}>{faq.a}</p>
+                            <div
+                                style={{
+                                    maxHeight: openIndex === i ? 200 : 0,
+                                    opacity: openIndex === i ? 1 : 0,
+                                    padding:
+                                        openIndex === i
+                                            ? '0 24px 20px'
+                                            : '0 24px',
+                                    transition: 'all 0.3s var(--zy-ease)',
+                                    overflow: 'hidden',
+                                }}
+                            >
+                                <p
+                                    style={{
+                                        fontSize: 14,
+                                        color: 'var(--zy-gray-text)',
+                                        lineHeight: 1.7,
+                                    }}
+                                >
+                                    {faq.a}
+                                </p>
                             </div>
                         </div>
                     ))}

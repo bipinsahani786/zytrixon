@@ -1,28 +1,73 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useTheme } from '@/components/landing/theme-provider';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef, useState } from 'react';
+import { useTheme } from '@/components/landing/theme-provider';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const TECH = [
     { name: 'React', slug: 'react', color: '#61DAFB', category: 'Frontend' },
-    { name: 'Next.js', slug: 'nextdotjs', color: '#FFFFFF', category: 'Frontend' },
-    { name: 'Vue.js', slug: 'vuedotjs', color: '#4FC08D', category: 'Frontend' },
+    {
+        name: 'Next.js',
+        slug: 'nextdotjs',
+        color: '#FFFFFF',
+        category: 'Frontend',
+    },
+    {
+        name: 'Vue.js',
+        slug: 'vuedotjs',
+        color: '#4FC08D',
+        category: 'Frontend',
+    },
     { name: 'Laravel', slug: 'laravel', color: '#FF2D20', category: 'Backend' },
-    { name: 'Node.js', slug: 'nodedotjs', color: '#68A063', category: 'Backend' },
+    {
+        name: 'Node.js',
+        slug: 'nodedotjs',
+        color: '#68A063',
+        category: 'Backend',
+    },
     { name: 'Python', slug: 'python', color: '#3776AB', category: 'Backend' },
-    { name: 'React Native', slug: 'react', color: '#61DAFB', category: 'Mobile' },
+    {
+        name: 'React Native',
+        slug: 'react',
+        color: '#61DAFB',
+        category: 'Mobile',
+    },
     { name: 'Flutter', slug: 'flutter', color: '#02569B', category: 'Mobile' },
     { name: 'AWS', slug: 'amazonaws', color: '#FF9900', category: 'Cloud' },
     { name: 'Docker', slug: 'docker', color: '#2496ED', category: 'Cloud' },
-    { name: 'Kubernetes', slug: 'kubernetes', color: '#326CE5', category: 'Cloud' },
-    { name: 'MongoDB', slug: 'mongodb', color: '#47A248', category: 'Database' },
-    { name: 'PostgreSQL', slug: 'postgresql', color: '#4169E1', category: 'Database' },
+    {
+        name: 'Kubernetes',
+        slug: 'kubernetes',
+        color: '#326CE5',
+        category: 'Cloud',
+    },
+    {
+        name: 'MongoDB',
+        slug: 'mongodb',
+        color: '#47A248',
+        category: 'Database',
+    },
+    {
+        name: 'PostgreSQL',
+        slug: 'postgresql',
+        color: '#4169E1',
+        category: 'Database',
+    },
     { name: 'Redis', slug: 'redis', color: '#DC382D', category: 'Database' },
-    { name: 'TypeScript', slug: 'typescript', color: '#3178C6', category: 'Language' },
+    {
+        name: 'TypeScript',
+        slug: 'typescript',
+        color: '#3178C6',
+        category: 'Language',
+    },
     { name: 'GraphQL', slug: 'graphql', color: '#E10098', category: 'API' },
-    { name: 'Tailwind CSS', slug: 'tailwindcss', color: '#06B6D4', category: 'Styling' },
+    {
+        name: 'Tailwind CSS',
+        slug: 'tailwindcss',
+        color: '#06B6D4',
+        category: 'Styling',
+    },
 ];
 
 export default function TechStackSection() {
@@ -34,17 +79,28 @@ export default function TechStackSection() {
 
     useEffect(() => {
         setMounted(true);
-        if (!sectionRef.current) return;
+
+        if (!sectionRef.current) {
+            return;
+        }
 
         const ctx = gsap.context(() => {
             gsap.fromTo(
                 itemsRef.current.filter(Boolean),
                 { opacity: 0, scale: 0.8, y: 30 },
                 {
-                    opacity: 1, scale: 1, y: 0,
-                    duration: 0.8, stagger: 0.05, ease: 'back.out(1.7)',
-                    scrollTrigger: { trigger: sectionRef.current, start: 'top 75%', once: true },
-                }
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.05,
+                    ease: 'back.out(1.7)',
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 75%',
+                        once: true,
+                    },
+                },
             );
         }, sectionRef);
 
@@ -54,7 +110,15 @@ export default function TechStackSection() {
     const activeIsLight = mounted && isLight;
 
     return (
-        <section ref={sectionRef} className="zy-section" style={{ position: 'relative', background: 'var(--zy-black)', overflow: 'hidden' }}>
+        <section
+            ref={sectionRef}
+            className="zy-section"
+            style={{
+                position: 'relative',
+                background: 'var(--zy-black)',
+                overflow: 'hidden',
+            }}
+        >
             {/* Background Ambient Glow */}
             <div
                 style={{
@@ -64,7 +128,8 @@ export default function TechStackSection() {
                     transform: 'translate(-50%, -50%)',
                     width: '60vw',
                     height: '60vw',
-                    background: 'radial-gradient(circle, rgba(78,205,196,0.05) 0%, rgba(0,0,0,0) 70%)',
+                    background:
+                        'radial-gradient(circle, rgba(78,205,196,0.05) 0%, rgba(0,0,0,0) 70%)',
                     zIndex: 0,
                     pointerEvents: 'none',
                 }}
@@ -85,56 +150,78 @@ export default function TechStackSection() {
                 }}
             />
 
-            <div className="zy-section-header" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
+            <div
+                className="zy-section-header"
+                style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}
+            >
                 <span className="zy-section-label">Technology</span>
                 <h2 className="zy-section-title">Our Tech Stack</h2>
-                <p className="zy-section-subtitle" style={{ margin: '20px auto 0' }}>
-                    We build with modern, battle-tested technologies to deliver scale, speed, and security.
+                <p
+                    className="zy-section-subtitle"
+                    style={{ margin: '20px auto 0' }}
+                >
+                    We build with modern, battle-tested technologies to deliver
+                    scale, speed, and security.
                 </p>
             </div>
 
-            <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                gap: '16px',
-                maxWidth: '900px',
-                margin: '40px auto 0',
-                position: 'relative',
-                zIndex: 1,
-            }}>
+            <div
+                style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: '16px',
+                    maxWidth: '900px',
+                    margin: '40px auto 0',
+                    position: 'relative',
+                    zIndex: 1,
+                }}
+            >
                 {TECH.map((tech, i) => {
                     // Use deterministic values based on index to prevent React hydration mismatch
                     const floatDuration = 3 + ((i * 1.7) % 2);
                     const floatDelay = (i * 0.3) % 2;
-                    
+
                     return (
                         <div
                             key={i}
-                            ref={(el) => { itemsRef.current[i] = el; }}
+                            ref={(el) => {
+                                itemsRef.current[i] = el;
+                            }}
                             className="tech-pill"
-                            style={{
-                                padding: '12px 24px',
-                                background: activeIsLight ? 'rgba(0, 0, 0, 0.02)' : 'rgba(255, 255, 255, 0.03)',
-                                border: activeIsLight ? '1px solid rgba(0, 0, 0, 0.06)' : '1px solid rgba(255, 255, 255, 0.08)',
-                                borderRadius: '50px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '12px',
-                                backdropFilter: 'blur(10px)',
-                                WebkitBackdropFilter: 'blur(10px)',
-                                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                                cursor: 'default',
-                                opacity: 0,
-                                animation: `floating ${floatDuration}s ease-in-out infinite alternate`,
-                                animationDelay: `${floatDelay}s`,
-                                // Using CSS variables to pass color to the hover state
-                                '--tech-color': tech.color,
-                            } as React.CSSProperties}
+                            style={
+                                {
+                                    padding: '12px 24px',
+                                    background: activeIsLight
+                                        ? 'rgba(0, 0, 0, 0.02)'
+                                        : 'rgba(255, 255, 255, 0.03)',
+                                    border: activeIsLight
+                                        ? '1px solid rgba(0, 0, 0, 0.06)'
+                                        : '1px solid rgba(255, 255, 255, 0.08)',
+                                    borderRadius: '50px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '12px',
+                                    backdropFilter: 'blur(10px)',
+                                    WebkitBackdropFilter: 'blur(10px)',
+                                    transition:
+                                        'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                                    cursor: 'default',
+                                    opacity: 0,
+                                    animation: `floating ${floatDuration}s ease-in-out infinite alternate`,
+                                    animationDelay: `${floatDelay}s`,
+                                    // Using CSS variables to pass color to the hover state
+                                    '--tech-color': tech.color,
+                                } as React.CSSProperties
+                            }
                         >
                             {/* Colored Logo */}
                             <img
-                                src={tech.slug === 'amazonaws' ? '/assets/aws.svg' : `https://cdn.simpleicons.org/${tech.slug}/${tech.color.replace('#', '')}`}
+                                src={
+                                    tech.slug === 'amazonaws'
+                                        ? '/assets/aws.svg'
+                                        : `https://cdn.simpleicons.org/${tech.slug}/${tech.color.replace('#', '')}`
+                                }
                                 alt={tech.name}
                                 className="tech-logo"
                                 loading="lazy"
@@ -145,12 +232,12 @@ export default function TechStackSection() {
                                     transition: 'all 0.4s ease',
                                 }}
                             />
-                            
-                            <span 
+
+                            <span
                                 className="tech-name"
-                                style={{ 
-                                    fontSize: '15px', 
-                                    color: 'var(--zy-gray-light)', 
+                                style={{
+                                    fontSize: '15px',
+                                    color: 'var(--zy-gray-light)',
                                     fontWeight: 600,
                                     letterSpacing: '0.02em',
                                     transition: 'color 0.3s ease',

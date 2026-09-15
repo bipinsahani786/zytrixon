@@ -9,6 +9,7 @@ export function useMediaQuery(query: string): boolean {
 
         const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
         media.addEventListener('change', listener);
+
         return () => media.removeEventListener('change', listener);
     }, [query]);
 
@@ -24,13 +25,14 @@ export function useIsTablet(): boolean {
 }
 
 export function useIsLowPower(): boolean {
-    const [isLowPower, setIsLowPower] = useState(false);
-
-    useEffect(() => {
+    const [isLowPower] = useState(() => {
+        if (typeof window === 'undefined') {
+            return false;
+        }
         const cores = navigator.hardwareConcurrency || 2;
         const isMobile = window.innerWidth < 768;
-        setIsLowPower(cores <= 4 || isMobile);
-    }, []);
+        return cores <= 4 || isMobile;
+    });
 
     return isLowPower;
 }

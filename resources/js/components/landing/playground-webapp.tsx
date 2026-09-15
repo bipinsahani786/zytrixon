@@ -38,32 +38,70 @@ export default function PlaygroundWebApp() {
     }, [html, css]);
 
     return (
-        <div style={{
-            background: 'var(--zy-gray-card)',
-            border: '1px solid var(--zy-gray-border)',
-            padding: 0,
-            overflow: 'hidden',
-        }}>
-            <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--zy-gray-text)', padding: '12px 16px', borderBottom: '1px solid var(--zy-gray-border)' }}>
+        <div
+            style={{
+                background: 'var(--zy-gray-card)',
+                border: '1px solid var(--zy-gray-border)',
+                padding: 0,
+                overflow: 'hidden',
+            }}
+        >
+            <div
+                style={{
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'var(--zy-gray-text)',
+                    padding: '12px 16px',
+                    borderBottom: '1px solid var(--zy-gray-border)',
+                }}
+            >
                 💻 LIVE CODE EDITOR — Edit and see changes instantly
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 280 }}>
+            <div
+                style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    minHeight: 280,
+                }}
+            >
                 {/* Editor */}
-                <div style={{ borderRight: '1px solid var(--zy-gray-border)', display: 'flex', flexDirection: 'column' }}>
+                <div
+                    style={{
+                        borderRight: '1px solid var(--zy-gray-border)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                    }}
+                >
                     {/* Tabs */}
-                    <div style={{ display: 'flex', borderBottom: '1px solid var(--zy-gray-border)' }}>
-                        {(['html', 'css'] as const).map(tab => (
+                    <div
+                        style={{
+                            display: 'flex',
+                            borderBottom: '1px solid var(--zy-gray-border)',
+                        }}
+                    >
+                        {(['html', 'css'] as const).map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
                                 style={{
                                     flex: 1,
                                     padding: '8px 0',
-                                    background: activeTab === tab ? 'rgba(255,255,255,0.04)' : 'transparent',
+                                    background:
+                                        activeTab === tab
+                                            ? 'rgba(255,255,255,0.04)'
+                                            : 'transparent',
                                     border: 'none',
-                                    borderBottom: activeTab === tab ? '2px solid var(--zy-white)' : '2px solid transparent',
-                                    color: activeTab === tab ? 'var(--zy-white)' : 'var(--zy-gray-text)',
+                                    borderBottom:
+                                        activeTab === tab
+                                            ? '2px solid var(--zy-white)'
+                                            : '2px solid transparent',
+                                    color:
+                                        activeTab === tab
+                                            ? 'var(--zy-white)'
+                                            : 'var(--zy-gray-text)',
                                     fontSize: 11,
                                     fontWeight: 600,
                                     textTransform: 'uppercase',
@@ -79,7 +117,11 @@ export default function PlaygroundWebApp() {
 
                     <textarea
                         value={activeTab === 'html' ? html : css}
-                        onChange={(e) => activeTab === 'html' ? setHtml(e.target.value) : setCss(e.target.value)}
+                        onChange={(e) =>
+                            activeTab === 'html'
+                                ? setHtml(e.target.value)
+                                : setCss(e.target.value)
+                        }
                         spellCheck={false}
                         style={{
                             flex: 1,
@@ -98,12 +140,24 @@ export default function PlaygroundWebApp() {
                 </div>
 
                 {/* Preview */}
-                <div style={{ position: 'relative', background: 'var(--zy-black)' }}>
-                    <div style={{
-                        position: 'absolute', top: 8, right: 8,
-                        fontSize: 9, color: '#555', fontFamily: 'monospace',
-                        textTransform: 'uppercase', letterSpacing: '0.1em',
-                    }}>
+                <div
+                    style={{
+                        position: 'relative',
+                        background: 'var(--zy-black)',
+                    }}
+                >
+                    <div
+                        style={{
+                            position: 'absolute',
+                            top: 8,
+                            right: 8,
+                            fontSize: 9,
+                            color: '#555',
+                            fontFamily: 'monospace',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.1em',
+                        }}
+                    >
                         PREVIEW
                     </div>
                     <iframe

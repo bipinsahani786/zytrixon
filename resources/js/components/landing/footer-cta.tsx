@@ -1,7 +1,7 @@
-import { useEffect, useRef, useCallback } from 'react';
 import { Link } from '@inertiajs/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef, useCallback } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,7 +11,10 @@ export default function FooterCTA() {
     const btnRef = useRef<HTMLAnchorElement>(null);
 
     const handleMouseMove = useCallback((e: React.MouseEvent) => {
-        if (!btnRef.current) return;
+        if (!btnRef.current) {
+            return;
+        }
+
         const rect = btnRef.current.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
@@ -27,7 +30,10 @@ export default function FooterCTA() {
     }, []);
 
     const handleMouseLeave = useCallback(() => {
-        if (!btnRef.current) return;
+        if (!btnRef.current) {
+            return;
+        }
+
         gsap.to(btnRef.current, {
             x: 0,
             y: 0,
@@ -37,7 +43,9 @@ export default function FooterCTA() {
     }, []);
 
     useEffect(() => {
-        if (!sectionRef.current) return;
+        if (!sectionRef.current) {
+            return;
+        }
 
         const ctx = gsap.context(() => {
             gsap.fromTo(
@@ -53,7 +61,7 @@ export default function FooterCTA() {
                         start: 'top 75%',
                         once: true,
                     },
-                }
+                },
             );
         }, sectionRef);
 
@@ -96,7 +104,8 @@ export default function FooterCTA() {
                     lineHeight: 1.6,
                 }}
             >
-                Ready to transform your idea into reality? Let's start the conversation.
+                Ready to transform your idea into reality? Let's start the
+                conversation.
             </p>
 
             <div
@@ -114,7 +123,15 @@ export default function FooterCTA() {
                     }}
                 >
                     Start a Project
-                    <svg className="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <svg
+                        className="btn-arrow"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                    >
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                 </Link>

@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\SeoController::show
- * @see app/Http/Controllers/SeoController.php:41
+ * @see app/Http/Controllers/SeoController.php:43
  * @route '/services/{service_slug}/in/{location_slug}'
  */
 export const show = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\SeoController::show
- * @see app/Http/Controllers/SeoController.php:41
+ * @see app/Http/Controllers/SeoController.php:43
  * @route '/services/{service_slug}/in/{location_slug}'
  */
 show.url = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions) => {
@@ -42,7 +42,7 @@ show.url = (args: { service_slug: string | number, location_slug: string | numbe
 
 /**
 * @see \App\Http\Controllers\SeoController::show
- * @see app/Http/Controllers/SeoController.php:41
+ * @see app/Http/Controllers/SeoController.php:43
  * @route '/services/{service_slug}/in/{location_slug}'
  */
 show.get = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -51,7 +51,7 @@ show.get = (args: { service_slug: string | number, location_slug: string | numbe
 })
 /**
 * @see \App\Http\Controllers\SeoController::show
- * @see app/Http/Controllers/SeoController.php:41
+ * @see app/Http/Controllers/SeoController.php:43
  * @route '/services/{service_slug}/in/{location_slug}'
  */
 show.head = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -61,7 +61,7 @@ show.head = (args: { service_slug: string | number, location_slug: string | numb
 
     /**
 * @see \App\Http\Controllers\SeoController::show
- * @see app/Http/Controllers/SeoController.php:41
+ * @see app/Http/Controllers/SeoController.php:43
  * @route '/services/{service_slug}/in/{location_slug}'
  */
     const showForm = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -71,7 +71,7 @@ show.head = (args: { service_slug: string | number, location_slug: string | numb
 
             /**
 * @see \App\Http\Controllers\SeoController::show
- * @see app/Http/Controllers/SeoController.php:41
+ * @see app/Http/Controllers/SeoController.php:43
  * @route '/services/{service_slug}/in/{location_slug}'
  */
         showForm.get = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -80,7 +80,7 @@ show.head = (args: { service_slug: string | number, location_slug: string | numb
         })
             /**
 * @see \App\Http\Controllers\SeoController::show
- * @see app/Http/Controllers/SeoController.php:41
+ * @see app/Http/Controllers/SeoController.php:43
  * @route '/services/{service_slug}/in/{location_slug}'
  */
         showForm.head = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

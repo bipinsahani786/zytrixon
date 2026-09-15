@@ -1,8 +1,11 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import GlobalWatermark from './global-watermark';
+import type { ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { Suspense, lazy } from 'react';
+import GlobalWatermark from './global-watermark';
 
-const LazyFloatingButtons = lazy(() => import('@/components/landing/whatsapp-float'));
+const LazyFloatingButtons = lazy(
+    () => import('@/components/landing/whatsapp-float'),
+);
 
 type Theme = 'dark' | 'light';
 
@@ -11,7 +14,10 @@ interface ThemeContextType {
     toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextType>({ theme: 'dark', toggleTheme: () => {} });
+const ThemeContext = createContext<ThemeContextType>({
+    theme: 'dark',
+    toggleTheme: () => {},
+});
 
 export function useTheme() {
     return useContext(ThemeContext);
@@ -22,6 +28,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         if (typeof window !== 'undefined') {
             return (localStorage.getItem('zy-theme') as Theme) || 'dark';
         }
+
         return 'dark';
     });
 
@@ -30,7 +37,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         localStorage.setItem('zy-theme', theme);
     }, [theme]);
 
-    const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+    const toggleTheme = () =>
+        setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>

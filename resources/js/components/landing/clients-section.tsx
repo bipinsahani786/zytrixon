@@ -20,39 +20,61 @@ export default function ClientsSection() {
     const iconColor = isLight ? '000000' : 'ffffff';
 
     return (
-        <section className="zy-section" style={{ background: isLight ? '#f9f9f9' : 'var(--zy-black)', paddingBottom: '20px' }}>
-            <div className="zy-section-header" style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <section
+            className="zy-section"
+            style={{
+                background: isLight ? '#f9f9f9' : 'var(--zy-black)',
+                paddingBottom: '20px',
+            }}
+        >
+            <div
+                className="zy-section-header"
+                style={{ textAlign: 'center', marginBottom: '40px' }}
+            >
                 <span className="zy-section-label">Our Partners</span>
-                <h2 className="zy-section-title" style={{ fontSize: '28px' }}>Trusted By Innovative Companies</h2>
+                <h2 className="zy-section-title" style={{ fontSize: '28px' }}>
+                    Trusted By Innovative Companies
+                </h2>
             </div>
 
-            <div style={{
-                position: 'relative',
-                width: '100%',
-                overflow: 'hidden',
-                padding: '30px 0',
-                display: 'flex',
-                background: 'rgba(255, 255, 255, 0.02)',
-                borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
-            }}>
+            <div
+                style={{
+                    position: 'relative',
+                    width: '100%',
+                    overflow: 'hidden',
+                    padding: '30px 0',
+                    display: 'flex',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                }}
+            >
                 {/* Left gradient fade */}
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '150px',
-                    height: '100%',
-                    background: isLight 
-                        ? 'linear-gradient(to right, #f9f9f9 0%, transparent 100%)' 
-                        : 'linear-gradient(to right, var(--zy-black) 0%, transparent 100%)',
-                    zIndex: 2,
-                    pointerEvents: 'none',
-                }} />
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '150px',
+                        height: '100%',
+                        background: isLight
+                            ? 'linear-gradient(to right, #f9f9f9 0%, transparent 100%)'
+                            : 'linear-gradient(to right, var(--zy-black) 0%, transparent 100%)',
+                        zIndex: 2,
+                        pointerEvents: 'none',
+                    }}
+                />
 
                 {/* Marquee Track */}
                 <div className="marquee-track" style={{ padding: '10px 0' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '80px', paddingRight: '80px' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '80px',
+                            paddingRight: '80px',
+                        }}
+                    >
                         {CLIENTS.map((client, i) => (
                             <a
                                 key={`a-${i}`}
@@ -70,14 +92,26 @@ export default function ClientsSection() {
                                 <img
                                     src={`https://cdn.simpleicons.org/${client.icon}/${iconColor}`}
                                     alt={client.name}
-                                    style={{ height: '36px', width: 'auto', maxWidth: '140px', objectFit: 'contain' }}
+                                    style={{
+                                        height: '36px',
+                                        width: 'auto',
+                                        maxWidth: '140px',
+                                        objectFit: 'contain',
+                                    }}
                                     loading="lazy"
                                 />
                             </a>
                         ))}
                     </div>
                     {/* Duplicate for seamless loop */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '80px', paddingRight: '80px' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '80px',
+                            paddingRight: '80px',
+                        }}
+                    >
                         {CLIENTS.map((client, i) => (
                             <a
                                 key={`b-${i}`}
@@ -95,7 +129,12 @@ export default function ClientsSection() {
                                 <img
                                     src={`https://cdn.simpleicons.org/${client.icon}/${iconColor}`}
                                     alt={client.name}
-                                    style={{ height: '36px', width: 'auto', maxWidth: '140px', objectFit: 'contain' }}
+                                    style={{
+                                        height: '36px',
+                                        width: 'auto',
+                                        maxWidth: '140px',
+                                        objectFit: 'contain',
+                                    }}
                                     loading="lazy"
                                 />
                             </a>
@@ -104,18 +143,20 @@ export default function ClientsSection() {
                 </div>
 
                 {/* Right gradient fade */}
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: '150px',
-                    height: '100%',
-                    background: isLight 
-                        ? 'linear-gradient(to left, #f9f9f9 0%, transparent 100%)'
-                        : 'linear-gradient(to left, var(--zy-black) 0%, transparent 100%)',
-                    zIndex: 2,
-                    pointerEvents: 'none',
-                }} />
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        width: '150px',
+                        height: '100%',
+                        background: isLight
+                            ? 'linear-gradient(to left, #f9f9f9 0%, transparent 100%)'
+                            : 'linear-gradient(to left, var(--zy-black) 0%, transparent 100%)',
+                        zIndex: 2,
+                        pointerEvents: 'none',
+                    }}
+                />
             </div>
 
             <style>{`

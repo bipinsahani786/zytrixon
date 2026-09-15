@@ -1,5 +1,5 @@
-import Logo from '@/components/ui/logo';
 import { Link } from '@inertiajs/react';
+import Logo from '@/components/ui/logo';
 
 const FOOTER_LINKS = {
     services: [
@@ -11,11 +11,26 @@ const FOOTER_LINKS = {
         { label: 'Digital Marketing', href: '/services/seo-digital-marketing' },
     ],
     locations: [
-        { label: 'Web Development in Samastipur', href: '/services/web-development/in/samastipur' },
-        { label: 'App Development in Samastipur', href: '/services/app-development/in/samastipur' },
-        { label: 'AI & Automation in Samastipur', href: '/services/ai-automation/in/samastipur' },
-        { label: 'Digital Marketing in Samastipur', href: '/services/seo-digital-marketing/in/samastipur' },
-        { label: 'Custom Software in Bihar', href: '/services/custom-software/in/bihar' },
+        {
+            label: 'Web Development in Samastipur',
+            href: '/services/web-development/in/samastipur',
+        },
+        {
+            label: 'App Development in Samastipur',
+            href: '/services/app-development/in/samastipur',
+        },
+        {
+            label: 'AI & Automation in Samastipur',
+            href: '/services/ai-automation/in/samastipur',
+        },
+        {
+            label: 'Digital Marketing in Samastipur',
+            href: '/services/seo-digital-marketing/in/samastipur',
+        },
+        {
+            label: 'Custom Software in Bihar',
+            href: '/services/custom-software/in/bihar',
+        },
     ],
     company: [
         { label: 'About Us', href: '/about' },
@@ -76,7 +91,11 @@ export default function Footer() {
             <div className="footer-grid">
                 {/* Company Info */}
                 <div>
-                    <Link href="/" aria-label="Zytrixon Home" className="mb-6 flex items-center">
+                    <Link
+                        href="/"
+                        aria-label="Zytrixon Home"
+                        className="mb-6 flex items-center"
+                    >
                         <Logo className="h-[64px] w-auto text-[var(--zy-white)]" />
                     </Link>
                     <p
@@ -88,8 +107,9 @@ export default function Footer() {
                             marginBottom: '24px',
                         }}
                     >
-                        Building robust software solutions for tomorrow's challenges.
-                        Enterprise-grade Web, Mobile, and IoT solutions from Samastipur, Bihar.
+                        Building robust software solutions for tomorrow's
+                        challenges. Enterprise-grade Web, Mobile, and IoT
+                        solutions from Samastipur, Bihar.
                     </p>
 
                     {/* Social icons */}
@@ -112,12 +132,20 @@ export default function Footer() {
                                     transition: 'all 0.3s var(--zy-ease)',
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#FFFFFF';
-                                    (e.currentTarget as HTMLElement).style.color = '#FFFFFF';
+                                    (
+                                        e.currentTarget as HTMLElement
+                                    ).style.borderColor = '#FFFFFF';
+                                    (
+                                        e.currentTarget as HTMLElement
+                                    ).style.color = '#FFFFFF';
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#333';
-                                    (e.currentTarget as HTMLElement).style.color = '#888';
+                                    (
+                                        e.currentTarget as HTMLElement
+                                    ).style.borderColor = '#333';
+                                    (
+                                        e.currentTarget as HTMLElement
+                                    ).style.color = '#888';
                                 }}
                             >
                                 {social.icon}
@@ -128,9 +156,23 @@ export default function Footer() {
 
                 {/* Services */}
                 <div>
-                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Services</div>
+                    <div
+                        className="footer-heading"
+                        style={{
+                            fontWeight: 600,
+                            fontSize: 14,
+                            marginBottom: 16,
+                            color: 'var(--zy-white)',
+                        }}
+                    >
+                        Services
+                    </div>
                     {FOOTER_LINKS.services.map((link) => (
-                        <Link key={link.href} href={link.href} className="footer-link">
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className="footer-link"
+                        >
                             {link.label}
                         </Link>
                     ))}
@@ -138,22 +180,58 @@ export default function Footer() {
 
                 {/* Locations */}
                 <div>
-                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Services in Bihar</div>
+                    <div
+                        className="footer-heading"
+                        style={{
+                            fontWeight: 600,
+                            fontSize: 14,
+                            marginBottom: 16,
+                            color: 'var(--zy-white)',
+                        }}
+                    >
+                        Services in Bihar
+                    </div>
                     {FOOTER_LINKS.locations.map((link) => (
-                        <Link key={link.href} href={link.href} className="footer-link">
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className="footer-link"
+                        >
                             {link.label}
                         </Link>
                     ))}
-                    <Link href="/locations" className="footer-link" style={{ color: '#3b82f6', marginTop: '8px', fontWeight: 600 }}>
+                    <Link
+                        href="/locations"
+                        className="footer-link"
+                        style={{
+                            color: '#3b82f6',
+                            marginTop: '8px',
+                            fontWeight: 600,
+                        }}
+                    >
                         View All Locations &rarr;
                     </Link>
                 </div>
 
                 {/* Company */}
                 <div>
-                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Company</div>
+                    <div
+                        className="footer-heading"
+                        style={{
+                            fontWeight: 600,
+                            fontSize: 14,
+                            marginBottom: 16,
+                            color: 'var(--zy-white)',
+                        }}
+                    >
+                        Company
+                    </div>
                     {FOOTER_LINKS.company.map((link) => (
-                        <Link key={link.href} href={link.href} className="footer-link">
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className="footer-link"
+                        >
                             {link.label}
                         </Link>
                     ))}
@@ -161,7 +239,17 @@ export default function Footer() {
 
                 {/* Contact */}
                 <div>
-                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Get in Touch</div>
+                    <div
+                        className="footer-heading"
+                        style={{
+                            fontWeight: 600,
+                            fontSize: 14,
+                            marginBottom: 16,
+                            color: 'var(--zy-white)',
+                        }}
+                    >
+                        Get in Touch
+                    </div>
                     <a href="mailto:zytrixon@gmail.com" className="footer-link">
                         zytrixon@gmail.com
                     </a>
@@ -176,26 +264,42 @@ export default function Footer() {
                             marginTop: '12px',
                         }}
                     >
-                        Samastipur, Bihar<br />
+                        Samastipur, Bihar
+                        <br />
                         India 848101
                     </p>
                 </div>
             </div>
 
             <div className="footer-bottom">
-                <span>© {new Date().getFullYear()} Zytrixon Tech. All rights reserved. Made with ❤️ in Samastipur.</span>
+                <span>
+                    © {new Date().getFullYear()} Zytrixon Tech. All rights
+                    reserved. Made with ❤️ in Samastipur.
+                </span>
                 <div style={{ display: 'flex', gap: '24px' }}>
-                    {FOOTER_LINKS.legal.map((link) => (
+                    {FOOTER_LINKS.legal.map((link) =>
                         link.href.endsWith('.xml') ? (
-                            <a key={link.href} href={link.href} className="footer-link" style={{ marginBottom: 0 }} target="_blank" rel="noopener noreferrer">
+                            <a
+                                key={link.href}
+                                href={link.href}
+                                className="footer-link"
+                                style={{ marginBottom: 0 }}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 {link.label}
                             </a>
                         ) : (
-                            <Link key={link.href} href={link.href} className="footer-link" style={{ marginBottom: 0 }}>
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="footer-link"
+                                style={{ marginBottom: 0 }}
+                            >
                                 {link.label}
                             </Link>
-                        )
-                    ))}
+                        ),
+                    )}
                 </div>
             </div>
         </footer>
