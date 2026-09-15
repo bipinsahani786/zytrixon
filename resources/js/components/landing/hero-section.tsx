@@ -223,7 +223,7 @@ export default function HeroSection() {
                             letterSpacing: '0.12em', textTransform: 'uppercase',
                             color: activeIsLight ? '#000' : 'var(--zy-white)',
                         }}>
-                            Top Rated Software Company in Patna
+                            Top Rated Software Company in Bihar
                         </span>
                     </div>
 
@@ -261,7 +261,7 @@ export default function HeroSection() {
                         marginBottom: 36,
                         opacity: isBot ? 1 : 0,
                     }}>
-                        From <strong style={{ color: activeIsLight ? '#000' : 'var(--zy-white)' }}>Patna to the World</strong> — Zytrixon Tech
+                        From <strong style={{ color: activeIsLight ? '#000' : 'var(--zy-white)' }}>Samastipur to the World</strong> — Zytrixon Tech
                         builds enterprise-grade Web, Mobile, and IoT solutions that transform businesses into global brands.
                     </p>
 

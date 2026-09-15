@@ -17,9 +17,9 @@ import ContactSection from '@/components/landing/contact-section';
 
 export default function Careers() {
     const jobs = [
-        { id: 1, title: 'Senior React Engineer', department: 'Engineering', location: 'Patna, IN (Hybrid)', type: 'Full-time' },
+        { id: 1, title: 'Senior React Engineer', department: 'Engineering', location: 'Samastipur, IN (Hybrid)', type: 'Full-time' },
         { id: 2, title: 'Backend Lead (Laravel)', department: 'Engineering', location: 'Remote', type: 'Full-time' },
-        { id: 3, title: 'UI/UX Designer', department: 'Design', location: 'Patna, IN (On-site)', type: 'Full-time' },
+        { id: 3, title: 'UI/UX Designer', department: 'Design', location: 'Samastipur, IN (On-site)', type: 'Full-time' },
         { id: 4, title: 'AI & Automation Specialist', department: 'Data & AI', location: 'Remote', type: 'Contract' },
     ];
 
@@ -27,7 +27,7 @@ export default function Careers() {
         <ThemeProvider>
             <SeoHead seo={{ 
                 title: 'Careers | Zytrixon Tech', 
-                description: 'Join our team at Zytrixon Tech and build the future of software development in Patna.'
+                description: 'Join our team at Zytrixon Tech and build the future of software development in Samastipur, Bihar.'
             }} />
 
             <CustomCursor />

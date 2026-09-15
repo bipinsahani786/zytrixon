@@ -52,12 +52,12 @@
         <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 
         @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
+        @vite(['resources/css/app.css', 'resources/js/app.tsx'])
         @php
             $seo = $page['props']['seo'] ?? null;
-            $title = $seo['title'] ?? 'Zytrixon Tech | Top Web Development Agency in Patna';
-            $description = $seo['description'] ?? 'Zytrixon Tech offers premium web & app development, and SEO services in Patna & across India. We deliver scalable, high-performance digital solutions.';
-            $keywords = $seo['keywords'] ?? 'web development patna, software company in patna, app development bihar, zytrixon tech, best it company patna';
+            $title = $seo['title'] ?? 'Zytrixon Tech | Top Web Development Agency in Samastipur, Bihar';
+            $description = $seo['description'] ?? 'Zytrixon Tech offers premium web & app development, and SEO services in Samastipur, Bihar & across India. We deliver scalable, high-performance digital solutions.';
+            $keywords = $seo['keywords'] ?? 'web development samastipur, software company in samastipur, app development bihar, zytrixon tech, best it company bihar';
             $canonical = $seo['canonical'] ?? url()->current();
             $image = $seo['image'] ?? url('/favicon.svg');
             $schema = $seo['schema'] ?? [
@@ -73,10 +73,10 @@
                     'foundingDate' => '2024',
                     'address' => [
                         '@type' => 'PostalAddress',
-                        'streetAddress' => 'Kankarbagh',
-                        'addressLocality' => 'Patna',
+                        'streetAddress' => 'Samastipur',
+                        'addressLocality' => 'Samastipur',
                         'addressRegion' => 'Bihar',
-                        'postalCode' => '800020',
+                        'postalCode' => '848101',
                         'addressCountry' => 'IN'
                     ],
                     'contactPoint' => [
@@ -115,10 +115,10 @@
                     'description' => $description,
                     'address' => [
                         '@type' => 'PostalAddress',
-                        'streetAddress' => 'Kankarbagh',
-                        'addressLocality' => 'Patna',
+                        'streetAddress' => 'Samastipur',
+                        'addressLocality' => 'Samastipur',
                         'addressRegion' => 'Bihar',
-                        'postalCode' => '800020',
+                        'postalCode' => '848101',
                         'addressCountry' => 'IN'
                     ],
                     'priceRange' => '$$',
@@ -168,14 +168,6 @@
         <x-inertia::head />
     </head>
     <body class="font-sans antialiased">
-        <!-- Instant LCP Skeleton -->
-        <div id="ssr-fallback" style="position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh; background: #000000; padding: 120px 20px; z-index: 9999; box-sizing: border-box; display: flex; align-items: center;">
-            <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
-                <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 10vw, 78px); font-weight: 800; color: #FFFFFF; line-height: 1.05; letter-spacing: -0.03em; margin: 0;">
-                    We Engineer<br/>Digital Dominance
-                </h1>
-            </div>
-        </div>
         <x-inertia::app />
     </body>
 </html>

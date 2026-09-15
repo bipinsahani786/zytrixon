@@ -4,9 +4,9 @@ export default function SeoHead({ seo, service, location }: any) {
     const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://zytrixontech.com';
 
     // Default SEO Fallbacks
-    const title = seo?.title || 'Zytrixon Tech | Best Software Company in Patna & Global IT Solutions';
-    const description = seo?.description || 'Zytrixon Tech is a top-rated software company in Patna delivering enterprise Web Development, Mobile Apps, AI, and IoT solutions globally.';
-    const locName = location?.name || 'Patna';
+    const title = seo?.title || 'Zytrixon Tech | Best Software Company in Samastipur, Bihar & Global IT Solutions';
+    const description = seo?.description || 'Zytrixon Tech is a top-rated software company in Samastipur, Bihar delivering enterprise Web Development, Mobile Apps, AI, and IoT solutions globally.';
+    const locName = location?.name || 'Samastipur';
     const locState = location?.state || 'Bihar';
     
     // Geo-friendly schema for local business targeting
@@ -20,14 +20,14 @@ export default function SeoHead({ seo, service, location }: any) {
             'description': description,
             'address': {
                 '@type': 'PostalAddress',
-                'streetAddress': 'Kankarbagh',
+                'streetAddress': 'Samastipur',
                 'addressLocality': locName,
                 'addressRegion': locState,
-                'postalCode': '800020',
+                'postalCode': '848101',
                 'addressCountry': 'IN'
             },
             'areaServed': [
-                { '@type': 'City', 'name': 'Patna' },
+                { '@type': 'City', 'name': 'Samastipur' },
                 { '@type': 'Country', 'name': 'India' },
                 { '@type': 'Continent', 'name': 'Worldwide' }
             ],

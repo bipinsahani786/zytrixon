@@ -11,10 +11,10 @@ const FOOTER_LINKS = {
         { label: 'Digital Marketing', href: '/services/seo-digital-marketing' },
     ],
     locations: [
-        { label: 'Web Development in Patna', href: '/services/web-development/in/patna' },
-        { label: 'App Development in Patna', href: '/services/app-development/in/patna' },
-        { label: 'AI & Automation in Patna', href: '/services/ai-automation/in/patna' },
-        { label: 'Digital Marketing in Patna', href: '/services/seo-digital-marketing/in/patna' },
+        { label: 'Web Development in Samastipur', href: '/services/web-development/in/samastipur' },
+        { label: 'App Development in Samastipur', href: '/services/app-development/in/samastipur' },
+        { label: 'AI & Automation in Samastipur', href: '/services/ai-automation/in/samastipur' },
+        { label: 'Digital Marketing in Samastipur', href: '/services/seo-digital-marketing/in/samastipur' },
         { label: 'Custom Software in Bihar', href: '/services/custom-software/in/bihar' },
     ],
     company: [
@@ -89,7 +89,7 @@ export default function Footer() {
                         }}
                     >
                         Building robust software solutions for tomorrow's challenges.
-                        Enterprise-grade Web, Mobile, and IoT solutions from Patna, India.
+                        Enterprise-grade Web, Mobile, and IoT solutions from Samastipur, Bihar.
                     </p>
 
                     {/* Social icons */}
@@ -138,7 +138,7 @@ export default function Footer() {
 
                 {/* Locations */}
                 <div>
-                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Services in Patna</div>
+                    <div className="footer-heading" style={{ fontWeight: 600, fontSize: 14, marginBottom: 16, color: 'var(--zy-white)' }}>Services in Bihar</div>
                     {FOOTER_LINKS.locations.map((link) => (
                         <Link key={link.href} href={link.href} className="footer-link">
                             {link.label}
@@ -176,14 +176,14 @@ export default function Footer() {
                             marginTop: '12px',
                         }}
                     >
-                        Kankarbagh, Patna, Bihar<br />
-                        India 800020
+                        Samastipur, Bihar<br />
+                        India 848101
                     </p>
                 </div>
             </div>
 
             <div className="footer-bottom">
-                <span>© {new Date().getFullYear()} Zytrixon Tech. All rights reserved. Made with ❤️ in Patna.</span>
+                <span>© {new Date().getFullYear()} Zytrixon Tech. All rights reserved. Made with ❤️ in Samastipur.</span>
                 <div style={{ display: 'flex', gap: '24px' }}>
                     {FOOTER_LINKS.legal.map((link) => (
                         link.href.endsWith('.xml') ? (
