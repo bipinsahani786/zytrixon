@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
                         <br /><br />
                         <strong>Email:</strong> zytrixon@gmail.com<br />
                         <strong>Phone:</strong> +91 70497 11475<br />
-                        <strong>Address:</strong> Kankarbagh, Patna
+                        <strong>Address:</strong> Samastipur, Bihar - 848101
                     </p>
                 </div>
             </main>

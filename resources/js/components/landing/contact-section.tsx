@@ -152,7 +152,7 @@ export default function ContactSection() {
                             </div>
                             <div>
                                 <div style={{ fontSize: 10, color: 'var(--zy-gray-text)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 2 }}>Office</div>
-                                <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 600 }}>Kankarbagh, Patna, Bihar - 800020</div>
+                                <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 600 }}>Samastipur, Bihar - 848101</div>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,7 @@ export default function ContactSection() {
                     onMouseLeave={e => { (e.currentTarget).style.filter = 'grayscale(100%)'; }}
                     >
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.123456789!2d85.1!3d25.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58!2sKankarbagh%2C+Patna!5e0!3m2!1sen!2sin!4v1"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57434.6934448557!2d85.7423985!3d25.8634125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed90dd8423235d%3A0x6b41cb91eb44d8b9!2sSamastipur%2C%20Bihar!5e0!3m2!1sen!2sin!4v1"
                             width="100%"
                             height="220"
                             style={{ border: 0 }}

@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const FAQS = [
     {
         q: 'Do you work with international clients?',
-        a: 'Yes! While we are headquartered in Patna, 60% of our clients are from USA, UK, and UAE. We operate across time zones with seamless communication via Slack, Jira, and regular video calls.',
+        a: 'Yes! While we are headquartered in Samastipur, Bihar, 60% of our clients are from USA, UK, and UAE. We operate across time zones with seamless communication via Slack, Jira, and regular video calls.',
     },
     {
         q: 'What technologies do you use?',

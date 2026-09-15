@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TESTIMONIALS = [
     {
-        quote: 'Zytrixon understands business logic, not just code. The best software team in Patna. They delivered our School Management System ahead of schedule.',
+        quote: 'Zytrixon understands business logic, not just code. The best software team in Bihar. They delivered our School Management System ahead of schedule.',
         author: 'Rahul Kumar',
         role: 'CEO, TechEdu',
     },

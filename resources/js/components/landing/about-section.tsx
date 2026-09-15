@@ -119,7 +119,7 @@ export default function AboutSection() {
                     </h2>
                     <p style={{ fontSize: 17, lineHeight: 1.8, color: 'var(--zy-gray-light)', marginBottom: 24 }}>
                         Zytrixon Tech isn't just another software company — we are a <strong style={{ color: 'var(--zy-white)' }}>technology partner for visionaries</strong>.
-                        Based in Patna, Bihar, our dedicated team of engineers, designers, and strategists bridge the gap between complex engineering and user-friendly design.
+                        Based in Samastipur, Bihar, our dedicated team of engineers, designers, and strategists bridge the gap between complex engineering and user-friendly design.
                     </p>
                     <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--zy-gray-text)', marginBottom: 32 }}>
                         With 60% of our clients spanning USA, UK, and UAE, we bring global engineering standards
