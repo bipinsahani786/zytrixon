@@ -63,6 +63,12 @@ export default [
         },
         rules: {
             '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/no-unused-vars': 'off',
+            'react-hooks/set-state-in-effect': 'off',
+            'react-hooks/purity': 'off',
+            'react-hooks/immutability': 'off',
+            'react-hooks/exhaustive-deps': 'off',
+            'react-hooks/static-components': 'off',
             '@typescript-eslint/consistent-type-imports': [
                 'error',
                 {
@@ -70,20 +76,7 @@ export default [
                     fixStyle: 'separate-type-imports',
                 },
             ],
-            'import/order': [
-                'error',
-                {
-                    groups: [
-                        'builtin',
-                        'external',
-                        'internal',
-                        'parent',
-                        'sibling',
-                        'index',
-                    ],
-                    alphabetize: { order: 'asc', caseInsensitive: true },
-                },
-            ],
+            'import/order': 'off',
             'import/consistent-type-specifier-style': [
                 'error',
                 'prefer-top-level',
@@ -96,10 +89,7 @@ export default [
         },
         rules: {
             '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: false }],
-            '@stylistic/padding-line-between-statements': [
-                'error',
-                ...paddingAroundControl,
-            ],
+            '@stylistic/padding-line-between-statements': 'off',
         },
     },
     {

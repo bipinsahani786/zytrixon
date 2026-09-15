@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Location;
+use App\Models\Service;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
-use App\Models\Service;
-use App\Models\Location;
 
 class SeoDataSeeder extends Seeder
 {
@@ -43,7 +42,7 @@ class SeoDataSeeder extends Seeder
             'Darbhanga', 'East Champaran', 'Gaya', 'Gopalganj', 'Jamui', 'Jehanabad', 'Kaimur', 'Katihar',
             'Khagaria', 'Kishanganj', 'Lakhisarai', 'Madhepura', 'Madhubani', 'Munger', 'Muzaffarpur', 'Nalanda',
             'Nawada', 'Patna', 'Purnia', 'Rohtas', 'Saharsa', 'Samastipur', 'Saran', 'Sheikhpura',
-            'Sheohar', 'Sitamarhi', 'Siwan', 'Supaul', 'Vaishali', 'West Champaran'
+            'Sheohar', 'Sitamarhi', 'Siwan', 'Supaul', 'Vaishali', 'West Champaran',
         ];
 
         foreach ($biharDistricts as $district) {
@@ -52,7 +51,7 @@ class SeoDataSeeder extends Seeder
                 'slug' => Str::slug($district),
                 'type' => 'district',
                 'state' => 'Bihar',
-                'country' => 'India'
+                'country' => 'India',
             ];
         }
 
@@ -61,7 +60,7 @@ class SeoDataSeeder extends Seeder
             'Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Ahmedabad', 'Chennai', 'Kolkata', 'Surat',
             'Pune', 'Jaipur', 'Lucknow', 'Kanpur', 'Nagpur', 'Indore', 'Bhopal', 'Visakhapatnam',
             'Vadodara', 'Ghaziabad', 'Ludhiana', 'Agra', 'Nashik', 'Faridabad', 'Meerut', 'Rajkot', 'Varanasi',
-            'Noida', 'Gurugram', 'Chandigarh'
+            'Noida', 'Gurugram', 'Chandigarh',
         ];
 
         foreach ($indianCities as $city) {
@@ -70,14 +69,14 @@ class SeoDataSeeder extends Seeder
                 'slug' => Str::slug($city),
                 'type' => 'city',
                 'state' => null, // Can map exactly if needed, but generic is fine for SEO
-                'country' => 'India'
+                'country' => 'India',
             ];
         }
 
         // Major Global Cities for Global SEO
         $globalCities = [
             'New York', 'London', 'Dubai', 'Singapore', 'Sydney', 'Toronto', 'Berlin', 'Tokyo',
-            'San Francisco', 'Chicago', 'Melbourne', 'Amsterdam', 'Paris'
+            'San Francisco', 'Chicago', 'Melbourne', 'Amsterdam', 'Paris',
         ];
 
         foreach ($globalCities as $city) {
@@ -86,7 +85,7 @@ class SeoDataSeeder extends Seeder
                 'slug' => Str::slug($city),
                 'type' => 'city',
                 'state' => null,
-                'country' => 'Global' // Just generic string for global tracking
+                'country' => 'Global', // Just generic string for global tracking
             ];
         }
 

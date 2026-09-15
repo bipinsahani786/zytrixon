@@ -2,24 +2,29 @@
 
 namespace App\Models;
 
+use Database\Factories\CaseStudyFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CaseStudy extends Model
 {
-    /** @use HasFactory<\Database\Factories\CaseStudyFactory> */
+    /** @use HasFactory<CaseStudyFactory> */
     use HasFactory;
 
     protected $fillable = [
-        'title', 'slug', 'client_name', 'industry', 'challenge', 
-        'solution', 'results', 'image', 'service_id'
+        'title', 'slug', 'client_name', 'industry', 'challenge',
+        'solution', 'results', 'image', 'service_id',
     ];
 
     protected $casts = [
         'results' => 'array',
     ];
 
-    public function service()
+    /**
+     * @return BelongsTo<Service, $this>
+     */
+    public function service(): BelongsTo
     {
         return $this->belongsTo(Service::class);
     }

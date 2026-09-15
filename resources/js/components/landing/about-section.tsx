@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@/components/landing/theme-provider';
 import Logo from '@/components/ui/logo';
 
@@ -16,26 +16,43 @@ export default function AboutSection() {
 
     useEffect(() => {
         setMounted(true);
-        if (!sectionRef.current) return;
+
+        if (!sectionRef.current) {
+            return;
+        }
 
         const ctx = gsap.context(() => {
             gsap.fromTo(
                 imageRef.current,
                 { opacity: 0, x: -60, rotate: 3 },
                 {
-                    opacity: 1, x: 0, rotate: 2,
-                    duration: 0.9, ease: 'power3.out',
-                    scrollTrigger: { trigger: sectionRef.current, start: 'top 75%', once: true },
-                }
+                    opacity: 1,
+                    x: 0,
+                    rotate: 2,
+                    duration: 0.9,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 75%',
+                        once: true,
+                    },
+                },
             );
             gsap.fromTo(
                 contentRef.current,
                 { opacity: 0, x: 60 },
                 {
-                    opacity: 1, x: 0,
-                    duration: 0.9, ease: 'power3.out', delay: 0.15,
-                    scrollTrigger: { trigger: sectionRef.current, start: 'top 75%', once: true },
-                }
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.9,
+                    ease: 'power3.out',
+                    delay: 0.15,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 75%',
+                        once: true,
+                    },
+                },
             );
         }, sectionRef);
 
@@ -45,62 +62,172 @@ export default function AboutSection() {
     const activeIsLight = mounted && isLight;
 
     return (
-        <section ref={sectionRef} id="about" className="zy-section" style={{ background: 'var(--zy-black)' }}>
-            <div className="about-grid" style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+        <section
+            ref={sectionRef}
+            id="about"
+            className="zy-section"
+            style={{ background: 'var(--zy-black)' }}
+        >
+            <div
+                className="about-grid"
+                style={{
+                    maxWidth: 1200,
+                    margin: '0 auto',
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: 64,
+                    alignItems: 'center',
+                }}
+            >
                 {/* Image side */}
-                <div ref={imageRef} style={{ position: 'relative', opacity: 0 }}>
-                    <div style={{
-                        position: 'absolute', inset: -16,
-                        background: 'linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))',
-                        filter: 'blur(40px)', borderRadius: '50%',
-                    }} />
-                    <div style={{
-                        position: 'relative',
-                        border: activeIsLight ? '1px solid var(--zy-gray-border)' : '1px solid #222',
-                        background: activeIsLight ? '#fdfdfd' : '#111',
-                        padding: 8,
-                        borderRadius: 16,
-                        transform: 'rotate(2deg)',
-                        transition: 'transform 0.5s var(--zy-ease)',
-                        overflow: 'hidden',
-                    }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = 'rotate(0deg)'; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = 'rotate(2deg)'; }}
+                <div
+                    ref={imageRef}
+                    style={{ position: 'relative', opacity: 0 }}
+                >
+                    <div
+                        style={{
+                            position: 'absolute',
+                            inset: -16,
+                            background:
+                                'linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))',
+                            filter: 'blur(40px)',
+                            borderRadius: '50%',
+                        }}
+                    />
+                    <div
+                        style={{
+                            position: 'relative',
+                            border: activeIsLight
+                                ? '1px solid var(--zy-gray-border)'
+                                : '1px solid #222',
+                            background: activeIsLight ? '#fdfdfd' : '#111',
+                            padding: 8,
+                            borderRadius: 16,
+                            transform: 'rotate(2deg)',
+                            transition: 'transform 0.5s var(--zy-ease)',
+                            overflow: 'hidden',
+                        }}
+                        onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLElement).style.transform =
+                                'rotate(0deg)';
+                        }}
+                        onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLElement).style.transform =
+                                'rotate(2deg)';
+                        }}
                     >
-                        <div style={{
-                            width: '100%', height: 380, borderRadius: 12,
-                            background: activeIsLight ? 'linear-gradient(135deg, #f5f5f5 0%, #ffffff 50%, #f5f5f5 100%)' : 'linear-gradient(135deg, #111 0%, #0a0a0a 50%, #111 100%)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            position: 'relative', overflow: 'hidden',
-                        }}>
+                        <div
+                            style={{
+                                width: '100%',
+                                height: 380,
+                                borderRadius: 12,
+                                background: activeIsLight
+                                    ? 'linear-gradient(135deg, #f5f5f5 0%, #ffffff 50%, #f5f5f5 100%)'
+                                    : 'linear-gradient(135deg, #111 0%, #0a0a0a 50%, #111 100%)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                position: 'relative',
+                                overflow: 'hidden',
+                            }}
+                        >
                             {/* Grid pattern overlay */}
-                            <div style={{
-                                position: 'absolute', inset: 0,
-                                backgroundImage: activeIsLight ? 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)' : 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
-                                backgroundSize: '30px 30px',
-                            }} />
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    backgroundImage: activeIsLight
+                                        ? 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)'
+                                        : 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+                                    backgroundSize: '30px 30px',
+                                }}
+                            />
                             {/* Z Logo Watermark */}
-                            <div style={{
-                                position: 'absolute', opacity: activeIsLight ? 0.03 : 0.06,
-                                width: 400, display: 'flex', justifyContent: 'center'
-                            }}>
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    opacity: activeIsLight ? 0.03 : 0.06,
+                                    width: 400,
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                }}
+                            >
                                 <Logo />
                             </div>
                             {/* Content */}
-                            <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: 40 }}>
-                                <div style={{
-                                    width: '100%', maxWidth: 280, height: 'auto', margin: '0 auto 10px',
-                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    }}>
+                            <div
+                                style={{
+                                    position: 'relative',
+                                    zIndex: 1,
+                                    textAlign: 'center',
+                                    padding: 40,
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        width: '100%',
+                                        maxWidth: 280,
+                                        height: 'auto',
+                                        margin: '0 auto 10px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                    }}
+                                >
                                     <Logo />
                                 </div>
-                                <div style={{ fontSize: 13, color: 'var(--zy-gray-text)', letterSpacing: '0.2em', textTransform: 'uppercase', marginTop: 16 }}>
+                                <div
+                                    style={{
+                                        fontSize: 13,
+                                        color: 'var(--zy-gray-text)',
+                                        letterSpacing: '0.2em',
+                                        textTransform: 'uppercase',
+                                        marginTop: 16,
+                                    }}
+                                >
                                     Engineering Digital Dominance
                                 </div>
-                                <div style={{ marginTop: 24, display: 'flex', justifyContent: 'center', gap: 16 }}>
-                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: activeIsLight ? '#000' : '#FFFFFF', animation: 'pulse 2s infinite' }} />
-                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: activeIsLight ? '#000' : '#FFFFFF', animation: 'pulse 2s infinite 0.3s' }} />
-                                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: activeIsLight ? '#000' : '#FFFFFF', animation: 'pulse 2s infinite 0.6s' }} />
+                                <div
+                                    style={{
+                                        marginTop: 24,
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        gap: 16,
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            width: 8,
+                                            height: 8,
+                                            borderRadius: '50%',
+                                            background: activeIsLight
+                                                ? '#000'
+                                                : '#FFFFFF',
+                                            animation: 'pulse 2s infinite',
+                                        }}
+                                    />
+                                    <div
+                                        style={{
+                                            width: 8,
+                                            height: 8,
+                                            borderRadius: '50%',
+                                            background: activeIsLight
+                                                ? '#000'
+                                                : '#FFFFFF',
+                                            animation: 'pulse 2s infinite 0.3s',
+                                        }}
+                                    />
+                                    <div
+                                        style={{
+                                            width: 8,
+                                            height: 8,
+                                            borderRadius: '50%',
+                                            background: activeIsLight
+                                                ? '#000'
+                                                : '#FFFFFF',
+                                            animation: 'pulse 2s infinite 0.6s',
+                                        }}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -113,42 +240,178 @@ export default function AboutSection() {
                 {/* Content side */}
                 <div ref={contentRef} style={{ opacity: 0 }}>
                     <span className="zy-section-label">About Zytrixon</span>
-                    <h2 className="zy-section-title" style={{ marginBottom: 24 }}>
+                    <h2
+                        className="zy-section-title"
+                        style={{ marginBottom: 24 }}
+                    >
                         Local Roots,{' '}
-                        <span style={{ color: 'var(--zy-white)' }}>Global Standards.</span>
+                        <span style={{ color: 'var(--zy-white)' }}>
+                            Global Standards.
+                        </span>
                     </h2>
-                    <p style={{ fontSize: 17, lineHeight: 1.8, color: 'var(--zy-gray-light)', marginBottom: 24 }}>
-                        Zytrixon Tech isn't just another software company — we are a <strong style={{ color: 'var(--zy-white)' }}>technology partner for visionaries</strong>.
-                        Based in Samastipur, Bihar, our dedicated team of engineers, designers, and strategists bridge the gap between complex engineering and user-friendly design.
+                    <p
+                        style={{
+                            fontSize: 17,
+                            lineHeight: 1.8,
+                            color: 'var(--zy-gray-light)',
+                            marginBottom: 24,
+                        }}
+                    >
+                        Zytrixon Tech isn't just another software company — we
+                        are a{' '}
+                        <strong style={{ color: 'var(--zy-white)' }}>
+                            technology partner for visionaries
+                        </strong>
+                        . Based in Samastipur, Bihar, our dedicated team of
+                        engineers, designers, and strategists bridge the gap
+                        between complex engineering and user-friendly design.
                     </p>
-                    <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--zy-gray-text)', marginBottom: 32 }}>
-                        With 60% of our clients spanning USA, UK, and UAE, we bring global engineering standards
-                        to every project — delivering enterprise-grade solutions that transform businesses into digital powerhouses.
+                    <p
+                        style={{
+                            fontSize: 15,
+                            lineHeight: 1.7,
+                            color: 'var(--zy-gray-text)',
+                            marginBottom: 32,
+                        }}
+                    >
+                        With 60% of our clients spanning USA, UK, and UAE, we
+                        bring global engineering standards to every project —
+                        delivering enterprise-grade solutions that transform
+                        businesses into digital powerhouses.
                     </p>
 
-                    <div className="about-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32 }}>
-                        <div style={{ borderLeft: '2px solid #FFFFFF', paddingLeft: 16 }}>
-                            <div style={{ fontFamily: 'var(--font-heading)', fontSize: 28, fontWeight: 700, color: 'var(--zy-white)' }}>100%</div>
-                            <div style={{ fontSize: 11, color: 'var(--zy-gray-text)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>On-Time Delivery</div>
+                    <div
+                        className="about-stats-grid"
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            gap: 24,
+                            marginBottom: 32,
+                        }}
+                    >
+                        <div
+                            style={{
+                                borderLeft: '2px solid #FFFFFF',
+                                paddingLeft: 16,
+                            }}
+                        >
+                            <div
+                                style={{
+                                    fontFamily: 'var(--font-heading)',
+                                    fontSize: 28,
+                                    fontWeight: 700,
+                                    color: 'var(--zy-white)',
+                                }}
+                            >
+                                100%
+                            </div>
+                            <div
+                                style={{
+                                    fontSize: 11,
+                                    color: 'var(--zy-gray-text)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                }}
+                            >
+                                On-Time Delivery
+                            </div>
                         </div>
-                        <div style={{ borderLeft: '2px solid #FFFFFF', paddingLeft: 16 }}>
-                            <div style={{ fontFamily: 'var(--font-heading)', fontSize: 28, fontWeight: 700, color: 'var(--zy-white)' }}>24/7</div>
-                            <div style={{ fontSize: 11, color: 'var(--zy-gray-text)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Global Support</div>
+                        <div
+                            style={{
+                                borderLeft: '2px solid #FFFFFF',
+                                paddingLeft: 16,
+                            }}
+                        >
+                            <div
+                                style={{
+                                    fontFamily: 'var(--font-heading)',
+                                    fontSize: 28,
+                                    fontWeight: 700,
+                                    color: 'var(--zy-white)',
+                                }}
+                            >
+                                24/7
+                            </div>
+                            <div
+                                style={{
+                                    fontSize: 11,
+                                    color: 'var(--zy-gray-text)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                }}
+                            >
+                                Global Support
+                            </div>
                         </div>
-                        <div style={{ borderLeft: '2px solid #FFFFFF', paddingLeft: 16 }}>
-                            <div style={{ fontFamily: 'var(--font-heading)', fontSize: 28, fontWeight: 700, color: 'var(--zy-white)' }}>98%</div>
-                            <div style={{ fontSize: 11, color: 'var(--zy-gray-text)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Success Rate</div>
+                        <div
+                            style={{
+                                borderLeft: '2px solid #FFFFFF',
+                                paddingLeft: 16,
+                            }}
+                        >
+                            <div
+                                style={{
+                                    fontFamily: 'var(--font-heading)',
+                                    fontSize: 28,
+                                    fontWeight: 700,
+                                    color: 'var(--zy-white)',
+                                }}
+                            >
+                                98%
+                            </div>
+                            <div
+                                style={{
+                                    fontSize: 11,
+                                    color: 'var(--zy-gray-text)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                }}
+                            >
+                                Success Rate
+                            </div>
                         </div>
-                        <div style={{ borderLeft: '2px solid #FFFFFF', paddingLeft: 16 }}>
-                            <div style={{ fontFamily: 'var(--font-heading)', fontSize: 28, fontWeight: 700, color: 'var(--zy-white)' }}>5+</div>
-                            <div style={{ fontSize: 11, color: 'var(--zy-gray-text)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Countries Served</div>
+                        <div
+                            style={{
+                                borderLeft: '2px solid #FFFFFF',
+                                paddingLeft: 16,
+                            }}
+                        >
+                            <div
+                                style={{
+                                    fontFamily: 'var(--font-heading)',
+                                    fontSize: 28,
+                                    fontWeight: 700,
+                                    color: 'var(--zy-white)',
+                                }}
+                            >
+                                5+
+                            </div>
+                            <div
+                                style={{
+                                    fontSize: 11,
+                                    color: 'var(--zy-gray-text)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                }}
+                            >
+                                Countries Served
+                            </div>
                         </div>
                     </div>
 
-                    <a href="/about" className="svg-underline" style={{
-                        fontFamily: 'var(--font-heading)', fontSize: 14, fontWeight: 600,
-                        color: 'var(--zy-white)', textDecoration: 'none', letterSpacing: '0.05em', textTransform: 'uppercase',
-                    }}>
+                    <a
+                        href="/about"
+                        className="svg-underline"
+                        style={{
+                            fontFamily: 'var(--font-heading)',
+                            fontSize: 14,
+                            fontWeight: 600,
+                            color: 'var(--zy-white)',
+                            textDecoration: 'none',
+                            letterSpacing: '0.05em',
+                            textTransform: 'uppercase',
+                        }}
+                    >
                         Meet the Team →
                     </a>
                 </div>

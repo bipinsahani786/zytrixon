@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CaseStudy;
 use Illuminate\Database\Seeder;
 
 class CaseStudySeeder extends Seeder
@@ -96,7 +96,7 @@ class CaseStudySeeder extends Seeder
         ];
 
         foreach ($caseStudies as $study) {
-            \App\Models\CaseStudy::create($study);
+            CaseStudy::create($study);
         }
     }
 }

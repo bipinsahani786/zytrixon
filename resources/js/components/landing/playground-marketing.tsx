@@ -28,10 +28,19 @@ function generateScore(): ScoreResult {
     ];
 
     const tips = allTips.sort(() => Math.random() - 0.5).slice(0, 5);
+
     return { overall, speed, seo, accessibility, tips };
 }
 
-function ScoreCircle({ value, label, size = 60 }: { value: number; label: string; size?: number }) {
+function ScoreCircle({
+    value,
+    label,
+    size = 60,
+}: {
+    value: number;
+    label: string;
+    size?: number;
+}) {
     const circumference = 2 * Math.PI * 22;
     const offset = circumference - (value / 100) * circumference;
     const color = value >= 80 ? '#4ecdc4' : value >= 60 ? '#ffe66d' : '#ff6b6b';
@@ -39,21 +48,49 @@ function ScoreCircle({ value, label, size = 60 }: { value: number; label: string
     return (
         <div style={{ textAlign: 'center' }}>
             <svg width={size} height={size} viewBox="0 0 50 50">
-                <circle cx="25" cy="25" r="22" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="3" />
                 <circle
-                    cx="25" cy="25" r="22" fill="none"
-                    stroke={color} strokeWidth="3"
+                    cx="25"
+                    cy="25"
+                    r="22"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.06)"
+                    strokeWidth="3"
+                />
+                <circle
+                    cx="25"
+                    cy="25"
+                    r="22"
+                    fill="none"
+                    stroke={color}
+                    strokeWidth="3"
                     strokeDasharray={circumference}
                     strokeDashoffset={offset}
                     strokeLinecap="round"
                     transform="rotate(-90 25 25)"
                     style={{ transition: 'stroke-dashoffset 1s ease' }}
                 />
-                <text x="25" y="28" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>
+                <text
+                    x="25"
+                    y="28"
+                    textAnchor="middle"
+                    fontSize="12"
+                    fontWeight="700"
+                    fill={color}
+                >
                     {value}
                 </text>
             </svg>
-            <div style={{ fontSize: 9, color: 'var(--zy-gray-text)', marginTop: 4, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</div>
+            <div
+                style={{
+                    fontSize: 9,
+                    color: 'var(--zy-gray-text)',
+                    marginTop: 4,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                }}
+            >
+                {label}
+            </div>
         </div>
     );
 }
@@ -64,7 +101,10 @@ export default function PlaygroundMarketing() {
     const [result, setResult] = useState<ScoreResult | null>(null);
 
     const analyze = () => {
-        if (!url.trim()) return;
+        if (!url.trim()) {
+            return;
+        }
+
         setLoading(true);
         setResult(null);
         // Simulated analysis
@@ -75,13 +115,25 @@ export default function PlaygroundMarketing() {
     };
 
     return (
-        <div style={{
-            background: 'var(--zy-gray-card)',
-            border: '1px solid var(--zy-gray-border)',
-            padding: 0,
-            overflow: 'hidden',
-        }}>
-            <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--zy-gray-text)', padding: '12px 16px', borderBottom: '1px solid var(--zy-gray-border)' }}>
+        <div
+            style={{
+                background: 'var(--zy-gray-card)',
+                border: '1px solid var(--zy-gray-border)',
+                padding: 0,
+                overflow: 'hidden',
+            }}
+        >
+            <div
+                style={{
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'var(--zy-gray-text)',
+                    padding: '12px 16px',
+                    borderBottom: '1px solid var(--zy-gray-border)',
+                }}
+            >
                 📊 SEO SCORE ANALYZER — Enter any website URL
             </div>
 
@@ -91,9 +143,9 @@ export default function PlaygroundMarketing() {
                     <input
                         type="text"
                         value={url}
-                        onChange={e => setUrl(e.target.value)}
+                        onChange={(e) => setUrl(e.target.value)}
                         placeholder="example.com"
-                        onKeyDown={e => e.key === 'Enter' && analyze()}
+                        onKeyDown={(e) => e.key === 'Enter' && analyze()}
                         style={{
                             flex: 1,
                             background: 'rgba(255,255,255,0.03)',
@@ -128,13 +180,21 @@ export default function PlaygroundMarketing() {
 
                 {/* Loading bar */}
                 {loading && (
-                    <div style={{ height: 2, background: 'var(--zy-gray-border)', marginBottom: 16 }}>
-                        <div style={{
-                            height: '100%',
-                            background: '#fff',
-                            animation: 'loading-bar 1.5s ease-in-out',
-                            width: '100%',
-                        }} />
+                    <div
+                        style={{
+                            height: 2,
+                            background: 'var(--zy-gray-border)',
+                            marginBottom: 16,
+                        }}
+                    >
+                        <div
+                            style={{
+                                height: '100%',
+                                background: '#fff',
+                                animation: 'loading-bar 1.5s ease-in-out',
+                                width: '100%',
+                            }}
+                        />
                         <style>{`@keyframes loading-bar { from { width: 0; } to { width: 100%; } }`}</style>
                     </div>
                 )}
@@ -145,38 +205,96 @@ export default function PlaygroundMarketing() {
                         <style>{`@keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
 
                         {/* Score circles */}
-                        <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: 20 }}>
-                            <ScoreCircle value={result.overall} label="Overall" size={70} />
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-around',
+                                marginBottom: 20,
+                            }}
+                        >
+                            <ScoreCircle
+                                value={result.overall}
+                                label="Overall"
+                                size={70}
+                            />
                             <ScoreCircle value={result.speed} label="Speed" />
                             <ScoreCircle value={result.seo} label="SEO" />
-                            <ScoreCircle value={result.accessibility} label="A11y" />
+                            <ScoreCircle
+                                value={result.accessibility}
+                                label="A11y"
+                            />
                         </div>
 
                         {/* Tips */}
-                        <div style={{ borderTop: '1px solid var(--zy-gray-border)', paddingTop: 12 }}>
-                            <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--zy-gray-text)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>FINDINGS</div>
+                        <div
+                            style={{
+                                borderTop: '1px solid var(--zy-gray-border)',
+                                paddingTop: 12,
+                            }}
+                        >
+                            <div
+                                style={{
+                                    fontSize: 10,
+                                    fontWeight: 600,
+                                    color: 'var(--zy-gray-text)',
+                                    marginBottom: 8,
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.05em',
+                                }}
+                            >
+                                FINDINGS
+                            </div>
                             {result.tips.map((tip, i) => (
-                                <div key={i} style={{
-                                    fontSize: 11,
-                                    color: 'var(--zy-gray-light)',
-                                    padding: '6px 0',
-                                    borderBottom: '1px solid rgba(255,255,255,0.03)',
-                                    lineHeight: 1.4,
-                                }}>
+                                <div
+                                    key={i}
+                                    style={{
+                                        fontSize: 11,
+                                        color: 'var(--zy-gray-light)',
+                                        padding: '6px 0',
+                                        borderBottom:
+                                            '1px solid rgba(255,255,255,0.03)',
+                                        lineHeight: 1.4,
+                                    }}
+                                >
                                     {tip}
                                 </div>
                             ))}
                         </div>
 
-                        <div style={{ marginTop: 12, fontSize: 10, color: 'var(--zy-gray-text)', fontStyle: 'italic' }}>
-                            💡 Want a real audit? <a href="#contact" style={{ color: 'var(--zy-white)', textDecoration: 'underline' }}>Contact us</a> for a free detailed report.
+                        <div
+                            style={{
+                                marginTop: 12,
+                                fontSize: 10,
+                                color: 'var(--zy-gray-text)',
+                                fontStyle: 'italic',
+                            }}
+                        >
+                            💡 Want a real audit?{' '}
+                            <a
+                                href="#contact"
+                                style={{
+                                    color: 'var(--zy-white)',
+                                    textDecoration: 'underline',
+                                }}
+                            >
+                                Contact us
+                            </a>{' '}
+                            for a free detailed report.
                         </div>
                     </div>
                 )}
 
                 {!result && !loading && (
-                    <div style={{ textAlign: 'center', color: '#333', fontSize: 11, padding: '30px 0' }}>
-                        Enter a website URL and click Analyze to get an instant score
+                    <div
+                        style={{
+                            textAlign: 'center',
+                            color: '#333',
+                            fontSize: 11,
+                            padding: '30px 0',
+                        }}
+                    >
+                        Enter a website URL and click Analyze to get an instant
+                        score
                     </div>
                 )}
             </div>

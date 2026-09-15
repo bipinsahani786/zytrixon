@@ -45,8 +45,12 @@ export default function MarqueeStrip() {
                     whiteSpace: 'nowrap',
                     transition: 'color 0.3s',
                 }}
-                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#FFFFFF'; }}
-                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = '#666'; }}
+                onMouseEnter={(e) => {
+                    (e.target as HTMLElement).style.color = '#FFFFFF';
+                }}
+                onMouseLeave={(e) => {
+                    (e.target as HTMLElement).style.color = '#666';
+                }}
             >
                 {kw}
             </span>
