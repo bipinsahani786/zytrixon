@@ -38,6 +38,9 @@ createInertiaApp({
                     name === 'Careers' ||
                     name === 'Process' ||
                     name === 'BlogDetails' ||
+                    name === 'CaseStudiesIndex' ||
+                    name === 'CaseStudyDetails' ||
+                    name === 'Error' ||
                     name === 'PrivacyPolicy' ||
                     name === 'TermsConditions':
                     defaultExport.layout = null;
@@ -81,14 +84,41 @@ createInertiaApp({
 // This will set light / dark mode on load...
 initializeTheme();
 
-// Global ResizeObserver to refresh GSAP ScrollTrigger on dynamic height changes (fixes overlapping sections on lazy load)
+// Auto-recovery for Vite dynamic chunk errors (e.g. after new deployment)
+if (typeof window !== 'undefined') {
+    window.addEventListener('vite:preloadError', (event) => {
+        event.preventDefault();
+        window.location.reload();
+    });
+
+    window.addEventListener('error', (event) => {
+        const msg = event?.message || '';
+        if (
+            msg.includes('Failed to fetch dynamically imported module') ||
+            msg.includes('Loading chunk') ||
+            msg.includes('Importing a module script failed')
+        ) {
+            const lastReload = sessionStorage.getItem('vite_chunk_reload');
+            const now = Date.now();
+            if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
+                sessionStorage.setItem('vite_chunk_reload', now.toString());
+                window.location.reload();
+            }
+        }
+    });
+}
+
+// Refresh GSAP ScrollTrigger on window resize (avoid observing document.body to eliminate scroll jank)
 if (typeof window !== 'undefined') {
     let resizeTimer: ReturnType<typeof setTimeout>;
-    const observer = new ResizeObserver(() => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            ScrollTrigger.refresh();
-        }, 100);
-    });
-    observer.observe(document.body);
+    window.addEventListener(
+        'resize',
+        () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 250);
+        },
+        { passive: true },
+    );
 }

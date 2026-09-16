@@ -1,31 +1,24 @@
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect } from 'react';
 
-// Direct imports for SSR (so Google sees all content in HTML)
+// Landing Sections
 import AboutSection from '@/components/landing/about-section';
-import ServicesSection from '@/components/landing/services-section';
-import IndustriesSection from '@/components/landing/industries-section';
-import ProcessSection from '@/components/landing/process-section';
-import PortfolioPreview from '@/components/landing/portfolio-preview';
-import TechStackSection from '@/components/landing/tech-stack-section';
-import TeamSection from '@/components/landing/team-section';
 import ClientsSection from '@/components/landing/clients-section';
-import TestimonialsSection from '@/components/landing/testimonials-section';
+import ContactSection from '@/components/landing/contact-section';
 import CoreValuesSection from '@/components/landing/core-values-section';
 import FAQSection from '@/components/landing/faq-section';
 import GlobalFootprint from '@/components/landing/global-footprint';
-import ContactSection from '@/components/landing/contact-section';
-import CustomCursor from '@/components/landing/custom-cursor';
-import FooterCTA from '@/components/landing/footer-cta';
-import Footer from '@/components/landing/footer';
-import GrainOverlay from '@/components/landing/grain-overlay';
 import HeroSection from '@/components/landing/hero-section';
+import IndustriesSection from '@/components/landing/industries-section';
 import LazySection from '@/components/landing/lazy-section';
 import MarqueeStrip from '@/components/landing/marquee-strip';
-import Navbar from '@/components/landing/navbar';
+import PortfolioPreview from '@/components/landing/portfolio-preview';
+import ProcessSection from '@/components/landing/process-section';
+import ServicesSection from '@/components/landing/services-section';
 import StatsSection from '@/components/landing/stats-section';
-import { ThemeProvider } from '@/components/landing/theme-provider';
-import TopBar from '@/components/landing/top-bar';
-import SeoHead from '@/components/seo/SeoHead';
+import TeamSection from '@/components/landing/team-section';
+import TechStackSection from '@/components/landing/tech-stack-section';
+import TestimonialsSection from '@/components/landing/testimonials-section';
+import PublicLayout from '@/components/layouts/PublicLayout';
 
 export default function Welcome() {
     // Tab blur title animation
@@ -46,67 +39,53 @@ export default function Welcome() {
     }, []);
 
     return (
-        <ThemeProvider>
-            <SeoHead />
-
-            <CustomCursor />
-            <GrainOverlay />
-            <TopBar />
-            <Navbar />
-
-            <main>
-                <HeroSection />
-                <LazySection>
-                    <MarqueeStrip />
-                </LazySection>
-                <LazySection>
-                    <AboutSection />
-                </LazySection>
-                <LazySection>
-                    <StatsSection />
-                </LazySection>
-                <LazySection>
-                    <ServicesSection />
-                </LazySection>
-                <LazySection>
-                    <IndustriesSection />
-                </LazySection>
-                <LazySection>
-                    <ProcessSection />
-                </LazySection>
-                <LazySection>
-                    <PortfolioPreview />
-                </LazySection>
-                <LazySection>
-                    <TechStackSection />
-                </LazySection>
-                <LazySection>
-                    <TeamSection />
-                </LazySection>
-                <LazySection>
-                    <ClientsSection />
-                </LazySection>
-                <LazySection>
-                    <TestimonialsSection />
-                </LazySection>
-                <LazySection>
-                    <CoreValuesSection />
-                </LazySection>
-                <LazySection>
-                    <FAQSection />
-                </LazySection>
-                <LazySection>
-                    <GlobalFootprint />
-                </LazySection>
-                <LazySection>
-                    <ContactSection />
-                </LazySection>
-                <LazySection>
-                    <FooterCTA />
-                </LazySection>
-            </main>
-
-            <Footer />
-        </ThemeProvider>
+        <PublicLayout>
+            <HeroSection />
+            <LazySection>
+                <MarqueeStrip />
+            </LazySection>
+            <LazySection>
+                <AboutSection />
+            </LazySection>
+            <LazySection>
+                <StatsSection />
+            </LazySection>
+            <LazySection>
+                <ServicesSection />
+            </LazySection>
+            <LazySection>
+                <IndustriesSection />
+            </LazySection>
+            <LazySection>
+                <ProcessSection />
+            </LazySection>
+            <LazySection>
+                <PortfolioPreview />
+            </LazySection>
+            <LazySection>
+                <TechStackSection />
+            </LazySection>
+            <LazySection>
+                <TeamSection />
+            </LazySection>
+            <LazySection>
+                <ClientsSection />
+            </LazySection>
+            <LazySection>
+                <TestimonialsSection />
+            </LazySection>
+            <LazySection>
+                <CoreValuesSection />
+            </LazySection>
+            <LazySection>
+                <FAQSection />
+            </LazySection>
+            <LazySection>
+                <GlobalFootprint />
+            </LazySection>
+            <LazySection>
+                <ContactSection />
+            </LazySection>
+        </PublicLayout>
     );
 }

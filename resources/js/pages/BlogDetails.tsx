@@ -6,17 +6,52 @@ import Navbar from '@/components/landing/navbar';
 import { ThemeProvider } from '@/components/landing/theme-provider';
 import TopBar from '@/components/landing/top-bar';
 
-export default function BlogDetails() {
+interface BlogDetailsProps {
+    slug?: string;
+    seo?: {
+        title?: string;
+        description?: string;
+    };
+}
+
+export default function BlogDetails({ slug, seo }: BlogDetailsProps) {
+    const articleTitle =
+        seo?.title?.split(' | ')[0] ||
+        (slug
+            ? slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())
+            : 'The Future of Enterprise Architecture: Serverless Meets Edge Computing');
+
+    const metaDescription =
+        seo?.description ||
+        'Discover how modern enterprises are leveraging edge computing and serverless architectures to reduce latency and cut costs.';
+
+    const pageTitle = `${articleTitle} | Zytrixon Tech Blog`;
+
+    const schemaData = {
+        '@context': 'https://schema.org',
+        '@type': 'TechArticle',
+        headline: articleTitle,
+        description: metaDescription,
+        author: {
+            '@type': 'Organization',
+            name: 'Zytrixon Tech',
+            url: 'https://zytrixon.com',
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'Zytrixon Tech',
+            url: 'https://zytrixon.com',
+        },
+    };
+
     return (
         <ThemeProvider>
             <Head>
-                <title>
-                    The Future of Enterprise Architecture - Zytrixon Blog
-                </title>
-                <meta
-                    name="description"
-                    content="Discover how modern enterprises are leveraging edge computing and serverless architectures to reduce latency and cut costs."
-                />
+                <title>{pageTitle}</title>
+                <meta name="description" content={metaDescription} />
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
             </Head>
 
             <CustomCursor />
@@ -40,6 +75,43 @@ export default function BlogDetails() {
                         textAlign: 'center',
                     }}
                 >
+                    {/* Breadcrumbs */}
+                    <nav
+                        aria-label="Breadcrumb"
+                        style={{
+                            display: 'flex',
+                            gap: 8,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: 13,
+                            color: 'var(--zy-gray-text)',
+                            marginBottom: 24,
+                            flexWrap: 'wrap',
+                        }}
+                    >
+                        <Link
+                            href="/"
+                            style={{
+                                color: 'var(--zy-gray-text)',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            Home
+                        </Link>
+                        <span>/</span>
+                        <Link
+                            href="/blog"
+                            style={{
+                                color: 'var(--zy-gray-text)',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            Blog
+                        </Link>
+                        <span>/</span>
+                        <span style={{ color: 'var(--zy-blue)' }}>Article</span>
+                    </nav>
+
                     <div
                         style={{
                             display: 'inline-block',
@@ -58,7 +130,7 @@ export default function BlogDetails() {
                     </div>
                     <h1
                         style={{
-                            fontSize: 'clamp(36px, 6vw, 64px)',
+                            fontSize: 'clamp(32px, 5vw, 56px)',
                             fontFamily: 'var(--font-heading)',
                             fontWeight: 800,
                             color: 'var(--zy-white)',
@@ -66,8 +138,7 @@ export default function BlogDetails() {
                             marginBottom: 32,
                         }}
                     >
-                        The Future of Enterprise Architecture: Serverless Meets
-                        Edge Computing
+                        {articleTitle}
                     </h1>
                     <div
                         style={{

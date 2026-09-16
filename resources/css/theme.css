@@ -1,0 +1,191 @@
+/* ==========================================================================
+   ZYTRIXON THEME SYSTEM
+   Single Source of Truth for all Website Colors & Themes.
+   Modify colors here to change the entire site's palette instantly!
+   ========================================================================== */
+
+:root,
+.dark {
+    /* --- Base Surfaces & Text (Dark Mode Default) --- */
+    --background: #05070c;
+    --foreground: #f8fafc;
+    --card: #0c101a;
+    --card-foreground: #f8fafc;
+    --popover: #0c101a;
+    --popover-foreground: #f8fafc;
+    --sidebar: #090d16;
+    --sidebar-foreground: #f8fafc;
+    --sidebar-primary: #00f0ff;
+    --sidebar-primary-foreground: #05070c;
+    --sidebar-accent: #111624;
+    --sidebar-accent-foreground: #00f0ff;
+    --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-ring: #00f0ff;
+
+    /* --- Primary & Brand Accent Colors --- */
+    --primary: #00f0ff;
+    --primary-foreground: #05070c;
+    --ring: #00f0ff;
+
+    /* --- Secondary & Muted Elements --- */
+    --secondary: #111624;
+    --secondary-foreground: #e2e8f0;
+    --muted: #151b2c;
+    --muted-foreground: #94a3b8;
+    --accent: #1e293b;
+    --accent-foreground: #00f0ff;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+
+    /* --- Borders & Inputs --- */
+    --border: rgba(255, 255, 255, 0.1);
+    --input: rgba(255, 255, 255, 0.1);
+
+    /* --- Accent Spectrum Tokens --- */
+    --accent-cyan: #00f0ff;
+    --accent-cyan-dim: rgba(0, 240, 255, 0.2);
+    --accent-cyan-glow: rgba(0, 240, 255, 0.4);
+    --accent-purple: #8b5cf6;
+    --accent-emerald: #25d366;
+    --accent-amber: #f59e0b;
+    --accent-pink: #ec4899;
+    --accent-blue: #3b82f6;
+
+    /* --- Futuristic Glassmorphism & Overlays --- */
+    --glass-bg: rgba(12, 16, 26, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-glow: rgba(0, 240, 255, 0.15);
+
+    /* --- Scrollbar & Navigation --- */
+    --track-bg: #07070a;
+    --thumb-bg-start: rgba(255, 255, 255, 0.22);
+    --thumb-bg-mid: rgba(0, 240, 255, 0.45);
+    --thumb-bg-end: rgba(168, 85, 247, 0.35);
+
+    /* --- Background Watermark & Dot Vortex --- */
+    --watermark-color: rgba(255, 255, 255, 0.035);
+    --dot-color-1: rgba(255, 255, 255, 0.04);
+    --dot-color-2: rgba(255, 255, 255, 0.025);
+    --dot-color-3: rgba(255, 255, 255, 0.015);
+
+    /* --- Spacing & Animation --- */
+    --zy-section-pad-y: 120px;
+    --zy-section-pad-x: clamp(24px, 5vw, 120px);
+    --zy-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --zy-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --zy-duration: 0.6s;
+    --zy-duration-fast: 0.3s;
+
+    /* --- Charts --- */
+    --chart-1: #00f0ff;
+    --chart-2: #8b5cf6;
+    --chart-3: #3b82f6;
+    --chart-4: #25d366;
+    --chart-5: #f59e0b;
+
+    /* --- Border Radius --- */
+    --radius: 0.75rem;
+
+    /* --- Backward Compatibility Aliases for legacy --zy-* tokens --- */
+    --zy-black: var(--background);
+    --zy-white: var(--foreground);
+    --zy-accent: var(--primary);
+    --zy-accent-dim: var(--accent-cyan-dim);
+    --zy-accent-glow: var(--accent-cyan-glow);
+    --zy-accent-glow-strong: rgba(0, 240, 255, 0.25);
+    --zy-gray-text: var(--muted-foreground);
+    --zy-gray-dark: var(--secondary);
+    --zy-gray-border: var(--border);
+    --zy-gray-card: var(--card);
+    --zy-gray-light: #94a3b8;
+}
+
+/* ==========================================================================
+   LIGHT THEME PALETTE
+   Active when <body> has class "light" or <html> has class "light"
+   ========================================================================== */
+
+body.light,
+html.light {
+    /* --- Base Surfaces & Text (Light Mode) --- */
+    --background: #f8fafc;
+    --foreground: #09090b;
+    --card: #ffffff;
+    --card-foreground: #09090b;
+    --popover: #ffffff;
+    --popover-foreground: #09090b;
+    --sidebar: #ffffff;
+    --sidebar-foreground: #09090b;
+    --sidebar-primary: #0284c7;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #f1f5f9;
+    --sidebar-accent-foreground: #0284c7;
+    --sidebar-border: rgba(0, 0, 0, 0.08);
+    --sidebar-ring: #0284c7;
+
+    /* --- Primary & Brand Accent Colors --- */
+    --primary: #0284c7;
+    --primary-foreground: #ffffff;
+    --ring: #0284c7;
+
+    /* --- Secondary & Muted Elements --- */
+    --secondary: #f1f5f9;
+    --secondary-foreground: #1e293b;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --accent: #e2e8f0;
+    --accent-foreground: #0284c7;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+
+    /* --- Borders & Inputs --- */
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+
+    /* --- Accent Spectrum Tokens --- */
+    --accent-cyan: #0284c7;
+    --accent-cyan-dim: rgba(2, 132, 199, 0.15);
+    --accent-cyan-glow: rgba(2, 132, 199, 0.3);
+    --accent-purple: #7c3aed;
+    --accent-emerald: #16a34a;
+    --accent-amber: #d97706;
+    --accent-pink: #db2777;
+    --accent-blue: #2563eb;
+
+    /* --- Glassmorphism & Overlays --- */
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-glow: rgba(2, 132, 199, 0.12);
+
+    /* --- Scrollbar & Navigation --- */
+    --track-bg: #f8fafc;
+    --thumb-bg-start: rgba(148, 163, 184, 0.8);
+    --thumb-bg-mid: rgba(2, 132, 199, 0.7);
+    --thumb-bg-end: rgba(124, 58, 237, 0.6);
+
+    /* --- Background Watermark & Dot Vortex --- */
+    --watermark-color: rgba(0, 0, 0, 0.04);
+    --dot-color-1: rgba(0, 0, 0, 0.04);
+    --dot-color-2: rgba(0, 0, 0, 0.025);
+    --dot-color-3: rgba(0, 0, 0, 0.015);
+
+    /* --- Charts --- */
+    --chart-1: #0284c7;
+    --chart-2: #7c3aed;
+    --chart-3: #2563eb;
+    --chart-4: #16a34a;
+    --chart-5: #d97706;
+
+    /* --- Backward Compatibility Aliases for legacy --zy-* tokens --- */
+    --zy-black: var(--background);
+    --zy-white: var(--foreground);
+    --zy-accent: var(--primary);
+    --zy-accent-dim: var(--accent-cyan-dim);
+    --zy-accent-glow: var(--accent-cyan-glow);
+    --zy-accent-glow-strong: rgba(2, 132, 199, 0.2);
+    --zy-gray-text: var(--muted-foreground);
+    --zy-gray-dark: var(--secondary);
+    --zy-gray-border: var(--border);
+    --zy-gray-card: var(--card);
+    --zy-gray-light: #64748b;
+}

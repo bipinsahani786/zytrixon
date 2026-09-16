@@ -23,7 +23,11 @@ const BUDGET_OPTIONS = [
     'Not Sure',
 ];
 
-export default function ContactSection() {
+export default function ContactSection({
+    hideHeader = false,
+}: {
+    hideHeader?: boolean;
+} = {}) {
     const sectionRef = useRef<HTMLElement>(null);
     const { theme } = useTheme();
     const isLight = theme === 'light';
@@ -110,16 +114,21 @@ export default function ContactSection() {
             className="zy-section"
             style={{ background: 'var(--zy-black)' }}
         >
-            <div className="zy-section-header" style={{ textAlign: 'center' }}>
-                <span className="zy-section-label">Let's Talk</span>
-                <h2 className="zy-section-title">Get a Free Quote</h2>
-                <p
-                    className="zy-section-subtitle"
-                    style={{ margin: '20px auto 0' }}
+            {!hideHeader && (
+                <div
+                    className="zy-section-header"
+                    style={{ textAlign: 'center' }}
                 >
-                    Tell us about your project. We reply within 2 hours.
-                </p>
-            </div>
+                    <span className="zy-section-label">Let's Talk</span>
+                    <h2 className="zy-section-title">Get a Free Quote</h2>
+                    <p
+                        className="zy-section-subtitle"
+                        style={{ margin: '20px auto 0' }}
+                    >
+                        Tell us about your project. We reply within 2 hours.
+                    </p>
+                </div>
+            )}
 
             <div
                 className="contact-grid"

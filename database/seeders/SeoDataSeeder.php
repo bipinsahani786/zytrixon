@@ -36,6 +36,15 @@ class SeoDataSeeder extends Seeder
         // 2. Seed Locations
         $locations = [];
 
+        // State of Bihar
+        $locations[] = [
+            'name' => 'Bihar',
+            'slug' => 'bihar',
+            'type' => 'state',
+            'state' => 'Bihar',
+            'country' => 'India',
+        ];
+
         // All 38 Districts of Bihar
         $biharDistricts = [
             'Araria', 'Arwal', 'Aurangabad', 'Banka', 'Begusarai', 'Bhagalpur', 'Bhojpur', 'Buxar',

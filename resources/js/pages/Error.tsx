@@ -1,9 +1,5 @@
-import { Head, Link } from '@inertiajs/react';
-import CustomCursor from '@/components/landing/custom-cursor';
-import Footer from '@/components/landing/footer';
-import Navbar from '@/components/landing/navbar';
-import { ThemeProvider } from '@/components/landing/theme-provider';
-import TopBar from '@/components/landing/top-bar';
+import { Link } from '@inertiajs/react';
+import PublicLayout from '@/components/layouts/PublicLayout';
 
 export default function Error({ status }: { status: number }) {
     const title =
@@ -23,88 +19,32 @@ export default function Error({ status }: { status: number }) {
         }[status] || 'An unexpected error occurred.';
 
     return (
-        <ThemeProvider>
-            <Head>
-                <title>{title} | Zytrixon Tech</title>
-                <meta name="description" content={description} />
-            </Head>
-
-            <CustomCursor />
-            <TopBar />
-            <Navbar />
-
-            <main
-                style={{
-                    minHeight: '80vh',
-                    padding: '160px var(--zy-section-pad-x) 80px',
-                    background: 'var(--zy-black)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
-                <div
-                    style={{
-                        textAlign: 'center',
-                        maxWidth: '600px',
-                        margin: '0 auto',
-                    }}
-                >
-                    <div
-                        style={{
-                            fontSize: 'clamp(80px, 15vw, 120px)',
-                            fontWeight: 900,
-                            fontFamily: 'var(--font-heading)',
-                            color: 'var(--zy-white)',
-                            lineHeight: 1,
-                            opacity: 0.1,
-                            marginBottom: '-40px',
-                            letterSpacing: '-0.05em',
-                        }}
-                    >
+        <PublicLayout
+            seo={{
+                title: `${title} | Zytrixon Tech`,
+                description,
+            }}
+            hideFooterCTA={true}
+        >
+            <div className="min-h-[75vh] flex items-center justify-center px-6 py-24 text-center">
+                <div className="max-w-md mx-auto">
+                    <div className="font-heading text-8xl sm:text-9xl font-black text-foreground/10 select-none -mb-8 sm:-mb-10 leading-none">
                         {status}
                     </div>
-                    <h1
-                        style={{
-                            fontFamily: 'var(--font-heading)',
-                            fontSize: 'clamp(32px, 5vw, 48px)',
-                            color: 'var(--zy-white)',
-                            marginBottom: '16px',
-                            position: 'relative',
-                        }}
-                    >
+                    <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground mb-4">
                         {title}
                     </h1>
-                    <p
-                        style={{
-                            color: 'var(--zy-gray-text)',
-                            fontSize: '18px',
-                            marginBottom: '40px',
-                            lineHeight: 1.6,
-                        }}
-                    >
+                    <p className="text-muted-foreground text-base mb-8 leading-relaxed">
                         {description}
                     </p>
                     <Link
                         href="/"
-                        className="zy-btn-primary"
-                        style={{
-                            display: 'inline-flex',
-                            padding: '16px 32px',
-                            fontSize: '14px',
-                            fontWeight: 600,
-                            color: '#000',
-                            backgroundColor: '#FFF',
-                            textDecoration: 'none',
-                            borderRadius: '4px',
-                        }}
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider shadow-[0_0_20px_var(--accent-cyan-glow)] hover:scale-105 active:scale-95 transition-all duration-200"
                     >
                         Return Home
                     </Link>
                 </div>
-            </main>
-
-            <Footer />
-        </ThemeProvider>
+            </div>
+        </PublicLayout>
     );
 }

@@ -42,6 +42,11 @@ class SeoController extends Controller
 
     public function showServiceLocation(string $service_slug, ?string $location_slug = null): Response
     {
+        // Support legacy/alias slug seamlessly so no SEO ranking or external links break
+        if ($service_slug === 'seo-digital-marketing') {
+            $service_slug = 'digital-marketing';
+        }
+
         $service = Service::where('slug', $service_slug)->firstOrFail();
 
         $location = null;

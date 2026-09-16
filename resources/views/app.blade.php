@@ -3,6 +3,27 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+
+        <!-- Purge Stale Service Workers & Browser Cache Storage -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                    for (var reg of registrations) {
+                        reg.unregister();
+                    }
+                });
+            }
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    for (var name of names) {
+                        caches.delete(name);
+                    }
+                });
+            }
+        </script>
 
         <!-- Google Analytics (Delayed for PageSpeed) -->
         <script>

@@ -38,6 +38,9 @@ createServer(
                             name === 'Careers' ||
                             name === 'Process' ||
                             name === 'BlogDetails' ||
+                            name === 'CaseStudiesIndex' ||
+                            name === 'CaseStudyDetails' ||
+                            name === 'Error' ||
                             name === 'PrivacyPolicy' ||
                             name === 'TermsConditions':
                             defaultExport.layout = null;

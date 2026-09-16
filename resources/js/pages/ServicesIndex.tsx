@@ -118,6 +118,7 @@ const getServiceMeta = (slug: string) => {
                     </svg>
                 ),
             };
+        case 'digital-marketing':
         case 'seo-digital-marketing':
             return {
                 color: '#6366f1', // indigo

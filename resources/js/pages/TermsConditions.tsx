@@ -1,151 +1,83 @@
-import { Head } from '@inertiajs/react';
-import CustomCursor from '@/components/landing/custom-cursor';
-import Footer from '@/components/landing/footer';
-import Navbar from '@/components/landing/navbar';
-import { ThemeProvider } from '@/components/landing/theme-provider';
-import TopBar from '@/components/landing/top-bar';
+import PublicLayout from '@/components/layouts/PublicLayout';
 
 export default function TermsConditions() {
     return (
-        <ThemeProvider>
-            <Head>
-                <title>Terms & Conditions | Zytrixon Tech</title>
-                <meta
-                    name="description"
-                    content="Terms and Conditions of using Zytrixon Tech services."
-                />
-            </Head>
+        <PublicLayout
+            seo={{
+                title: 'Terms & Conditions | Zytrixon Tech',
+                description:
+                    'Terms and Conditions of using Zytrixon Tech services.',
+            }}
+            hideFooterCTA={true}
+        >
+            <div className="max-w-3xl mx-auto px-6 sm:px-10 py-24 sm:py-32 leading-relaxed text-muted-foreground">
+                <h1 className="font-heading text-3xl sm:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
+                    Terms & Conditions
+                </h1>
+                <p className="text-sm text-primary font-semibold mb-12">
+                    Last Updated: {new Date().toLocaleDateString()}
+                </p>
 
-            <CustomCursor />
-            <TopBar />
-            <Navbar />
+                <div className="space-y-10 text-sm sm:text-base leading-relaxed">
+                    <section>
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">
+                            1. Agreement to Terms
+                        </h2>
+                        <p>
+                            By accessing or using the website and software development services provided by Zytrixon Tech ("we", "our", or "us"), you agree to be bound by these Terms and Conditions. If you do not agree to all of these terms, please do not use our services.
+                        </p>
+                    </section>
 
-            <main
-                style={{
-                    padding: '160px var(--zy-section-pad-x) 80px',
-                    background: 'var(--zy-black)',
-                }}
-            >
-                <div
-                    style={{
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        color: 'var(--zy-gray-text)',
-                        lineHeight: 1.8,
-                    }}
-                >
-                    <h1
-                        style={{
-                            fontFamily: 'var(--font-heading)',
-                            fontSize: 'clamp(32px, 5vw, 48px)',
-                            color: 'var(--zy-white)',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        Terms & Conditions
-                    </h1>
-                    <p style={{ marginBottom: '48px' }}>
-                        Last Updated: {new Date().toLocaleDateString()}
-                    </p>
+                    <section>
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">
+                            2. Intellectual Property & Ownership
+                        </h2>
+                        <p className="mb-3">
+                            Unless otherwise specified in a custom Master Services Agreement (MSA) or Statement of Work (SOW):
+                        </p>
+                        <ul className="list-disc pl-6 space-y-2">
+                            <li>
+                                <strong>Client Deliverables:</strong> Upon full project payment, custom client code, brand assets, and proprietary application data transfer fully to the client.
+                            </li>
+                            <li>
+                                <strong>Zytrixon Core IP:</strong> Pre-existing frameworks, proprietary utility libraries, and generalized software modules remain the intellectual property of Zytrixon Tech.
+                            </li>
+                        </ul>
+                    </section>
 
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        1. Acceptance of Terms
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        By accessing and using the website and services of
-                        Zytrixon Tech, you accept and agree to be bound by the
-                        terms and provision of this agreement. In addition, when
-                        using these particular services, you shall be subject to
-                        any posted guidelines or rules applicable to such
-                        services.
-                    </p>
+                    <section>
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">
+                            3. Professional Services & Warranties
+                        </h2>
+                        <p>
+                            We provide web development, mobile app engineering, AI automation, and IoT solutions with rigorous engineering standards. All project phases undergo thorough QA, testing, and security verification before production handover.
+                        </p>
+                    </section>
 
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        2. Provision of Services
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        Zytrixon Tech provides software development, IT
-                        consulting, and digital marketing services. We reserve
-                        the right to modify, suspend, or discontinue any service
-                        with or without notice at any time.
-                    </p>
+                    <section>
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">
+                            4. Limitation of Liability
+                        </h2>
+                        <p>
+                            To the maximum extent permitted by applicable law, Zytrixon Tech shall not be liable for any indirect, incidental, or consequential damages resulting from third-party hosting failures, upstream API outages, or unauthorized client access.
+                        </p>
+                    </section>
 
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        3. Intellectual Property Rights
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        Unless otherwise stated, Zytrixon Tech and/or its
-                        licensors own the intellectual property rights for all
-                        material on this website. All intellectual property
-                        rights are reserved. You may access this from Zytrixon
-                        Tech for your own personal use subjected to restrictions
-                        set in these terms and conditions.
-                    </p>
-
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        4. Limitation of Liability
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        In no event shall Zytrixon Tech, nor any of its
-                        officers, directors and employees, be held liable for
-                        anything arising out of or in any way connected with
-                        your use of this website or our services, whether such
-                        liability is under contract. Zytrixon Tech, including
-                        its officers, directors and employees shall not be held
-                        liable for any indirect, consequential or special
-                        liability arising out of or in any way related to your
-                        use of this website.
-                    </p>
-
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        5. Governing Law
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        These Terms will be governed by and interpreted in
-                        accordance with the laws of India, and you submit to the
-                        non-exclusive jurisdiction of the state and federal
-                        courts located in India for the resolution of any
-                        disputes.
-                    </p>
+                    <section className="bg-card border border-border rounded-2xl p-6 sm:p-8">
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-3">
+                            5. Questions & Legal Inquiries
+                        </h2>
+                        <p className="mb-4">
+                            For any inquiries regarding our contractual terms or legal documentation, please contact our legal team:
+                        </p>
+                        <div className="space-y-1.5 text-sm">
+                            <p><strong>Email:</strong> zytrixon@gmail.com</p>
+                            <p><strong>Phone:</strong> +91 70497 11475</p>
+                            <p><strong>Address:</strong> Samastipur, Bihar - 848101, India</p>
+                        </div>
+                    </section>
                 </div>
-            </main>
-
-            <Footer />
-        </ThemeProvider>
+            </div>
+        </PublicLayout>
     );
 }
