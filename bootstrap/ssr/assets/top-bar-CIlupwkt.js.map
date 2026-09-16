@@ -1,0 +1,1 @@
+{"version":3,"file":"top-bar-CIlupwkt.js","names":[],"sources":["../../../resources/js/components/landing/top-bar.tsx"],"sourcesContent":["export default function TopBar() {\n    return null;\n}\n"],"mappings":";AAAA,SAAwB,SAAS;CAC7B,OAAO;AACX"}

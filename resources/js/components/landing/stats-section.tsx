@@ -72,24 +72,12 @@ export default function StatsSection() {
     return (
         <section
             ref={sectionRef}
-            className="zy-section"
-            style={{
-                background: 'var(--zy-black)',
-            }}
+            className="zy-section bg-background transition-colors duration-300"
         >
-            <div
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '48px',
-                    maxWidth: '1000px',
-                    margin: '0 auto',
-                    textAlign: 'center',
-                }}
-            >
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 max-w-5xl mx-auto text-center">
                 {STATS.map((stat, i) => (
-                    <div key={i}>
-                        <div className="stat-number">
+                    <div key={i} className="flex flex-col items-center">
+                        <div className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground flex items-baseline justify-center">
                             <span
                                 ref={(el) => {
                                     numbersRef.current[i] = el;
@@ -97,9 +85,11 @@ export default function StatsSection() {
                             >
                                 0
                             </span>
-                            <span className="stat-suffix">{stat.suffix}</span>
+                            <span className="text-primary ml-1">{stat.suffix}</span>
                         </div>
-                        <div className="stat-label">{stat.label}</div>
+                        <div className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-muted-foreground mt-3">
+                            {stat.label}
+                        </div>
                     </div>
                 ))}
             </div>

@@ -1,179 +1,91 @@
-import { Head } from '@inertiajs/react';
-import CustomCursor from '@/components/landing/custom-cursor';
-import Footer from '@/components/landing/footer';
-import Navbar from '@/components/landing/navbar';
-import { ThemeProvider } from '@/components/landing/theme-provider';
-import TopBar from '@/components/landing/top-bar';
+import PublicLayout from '@/components/layouts/PublicLayout';
 
 export default function PrivacyPolicy() {
     return (
-        <ThemeProvider>
-            <Head>
-                <title>Privacy Policy | Zytrixon Tech</title>
-                <meta
-                    name="description"
-                    content="Privacy Policy and data protection guidelines for Zytrixon Tech."
-                />
-            </Head>
+        <PublicLayout
+            seo={{
+                title: 'Privacy Policy | Zytrixon Tech',
+                description:
+                    'Privacy Policy and data protection guidelines for Zytrixon Tech.',
+            }}
+            hideFooterCTA={true}
+        >
+            <div className="max-w-3xl mx-auto px-6 sm:px-10 py-24 sm:py-32 leading-relaxed text-muted-foreground">
+                <h1 className="font-heading text-3xl sm:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
+                    Privacy Policy
+                </h1>
+                <p className="text-sm text-primary font-semibold mb-12">
+                    Last Updated: {new Date().toLocaleDateString()}
+                </p>
 
-            <CustomCursor />
-            <TopBar />
-            <Navbar />
+                <div className="space-y-10 text-sm sm:text-base leading-relaxed">
+                    <section>
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">
+                            1. Introduction
+                        </h2>
+                        <p>
+                            At Zytrixon Tech ("we", "our", or "us"), we respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our software engineering, web development, mobile app, and IoT services.
+                        </p>
+                    </section>
 
-            <main
-                style={{
-                    padding: '160px var(--zy-section-pad-x) 80px',
-                    background: 'var(--zy-black)',
-                }}
-            >
-                <div
-                    style={{
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        color: 'var(--zy-gray-text)',
-                        lineHeight: 1.8,
-                    }}
-                >
-                    <h1
-                        style={{
-                            fontFamily: 'var(--font-heading)',
-                            fontSize: 'clamp(32px, 5vw, 48px)',
-                            color: 'var(--zy-white)',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        Privacy Policy
-                    </h1>
-                    <p style={{ marginBottom: '48px' }}>
-                        Last Updated: {new Date().toLocaleDateString()}
-                    </p>
+                    <section>
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">
+                            2. Information We Collect
+                        </h2>
+                        <p className="mb-3">
+                            We may collect several types of information from and about users of our services, including:
+                        </p>
+                        <ul className="list-disc pl-6 space-y-2">
+                            <li>
+                                <strong>Contact Information:</strong> Name, email address, phone number, and physical billing or mailing address.
+                            </li>
+                            <li>
+                                <strong>Project Information:</strong> Specifications, requirements, wireframes, and digital assets shared for quotation and development.
+                            </li>
+                            <li>
+                                <strong>Technical Data:</strong> IP address, browser type, operating system, and interaction logs collected automatically via secure telemetry.
+                            </li>
+                        </ul>
+                    </section>
 
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        1. Introduction
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        At Zytrixon Tech, we respect your privacy and are
-                        committed to protecting your personal data. This privacy
-                        policy will inform you as to how we look after your
-                        personal data when you visit our website and tell you
-                        about your privacy rights.
-                    </p>
+                    <section>
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">
+                            3. How We Use Your Information
+                        </h2>
+                        <p className="mb-3">
+                            We use collected data strictly for legitimate business purposes:
+                        </p>
+                        <ul className="list-disc pl-6 space-y-2">
+                            <li>To fulfill software development contracts and provide ongoing technical support.</li>
+                            <li>To respond to service inquiries, provide accurate proposals, and schedule architecture discovery calls.</li>
+                            <li>To analyze website performance and ensure optimal security and uptime standards.</li>
+                        </ul>
+                    </section>
 
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        2. Data We Collect
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        We may collect, use, store and transfer different kinds
-                        of personal data about you which we have grouped
-                        together as follows:
-                    </p>
-                    <ul style={{ paddingLeft: '24px', marginBottom: '24px' }}>
-                        <li>
-                            <strong>Identity Data:</strong> includes first name,
-                            last name, username or similar identifier.
-                        </li>
-                        <li>
-                            <strong>Contact Data:</strong> includes email
-                            address and telephone numbers.
-                        </li>
-                        <li>
-                            <strong>Technical Data:</strong> includes internet
-                            protocol (IP) address, your login data, browser type
-                            and version.
-                        </li>
-                        <li>
-                            <strong>Usage Data:</strong> includes information
-                            about how you use our website, products and
-                            services.
-                        </li>
-                    </ul>
+                    <section>
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">
+                            4. Data Security & Confidentiality
+                        </h2>
+                        <p>
+                            We implement industry-standard cryptographic encryption, secure SSL/TLS channels, and enterprise access restrictions. We never sell, rent, or trade your personal or project data to third-party advertisers.
+                        </p>
+                    </section>
 
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        3. How We Use Your Data
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        We will only use your personal data when the law allows
-                        us to. Most commonly, we will use your personal data in
-                        the following circumstances:
-                    </p>
-                    <ul style={{ paddingLeft: '24px', marginBottom: '24px' }}>
-                        <li>
-                            Where we need to perform the contract we are about
-                            to enter into or have entered into with you.
-                        </li>
-                        <li>
-                            Where it is necessary for our legitimate interests
-                            (or those of a third party) and your interests and
-                            fundamental rights do not override those interests.
-                        </li>
-                        <li>
-                            Where we need to comply with a legal obligation.
-                        </li>
-                    </ul>
-
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        4. Data Security
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        We have put in place appropriate security measures to
-                        prevent your personal data from being accidentally lost,
-                        used or accessed in an unauthorized way, altered or
-                        disclosed.
-                    </p>
-
-                    <h2
-                        style={{
-                            color: 'var(--zy-white)',
-                            fontSize: '24px',
-                            marginTop: '40px',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        5. Contact Us
-                    </h2>
-                    <p style={{ marginBottom: '24px' }}>
-                        If you have any questions about this privacy policy or
-                        our privacy practices, please contact us at:
-                        <br />
-                        <br />
-                        <strong>Email:</strong> zytrixon@gmail.com
-                        <br />
-                        <strong>Phone:</strong> +91 70497 11475
-                        <br />
-                        <strong>Address:</strong> Samastipur, Bihar - 848101
-                    </p>
+                    <section className="bg-card border border-border rounded-2xl p-6 sm:p-8">
+                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-3">
+                            5. Contact Us
+                        </h2>
+                        <p className="mb-4">
+                            If you have questions regarding this privacy policy or our data governance practices, please reach out directly:
+                        </p>
+                        <div className="space-y-1.5 text-sm">
+                            <p><strong>Email:</strong> zytrixon@gmail.com</p>
+                            <p><strong>Phone:</strong> +91 70497 11475</p>
+                            <p><strong>Address:</strong> Samastipur, Bihar - 848101, India</p>
+                        </div>
+                    </section>
                 </div>
-            </main>
-
-            <Footer />
-        </ThemeProvider>
+            </div>
+        </PublicLayout>
     );
 }

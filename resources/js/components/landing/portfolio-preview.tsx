@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { useEffect, useRef, useState } from 'react';
@@ -298,8 +299,8 @@ export default function PortfolioPreview({
 
             {/* View All Button */}
             <div style={{ textAlign: 'center', marginTop: '100px' }}>
-                <a
-                    href="/work"
+                <Link
+                    href="/case-studies"
                     className="svg-underline"
                     style={{
                         fontFamily: 'var(--font-heading)',
@@ -312,7 +313,7 @@ export default function PortfolioPreview({
                     }}
                 >
                     View All Case Studies
-                </a>
+                </Link>
             </div>
 
             <style>{`

@@ -1,64 +1,45 @@
-import TestimonialsSection from '@/components/landing/testimonials-section';
 import ClientsSection from '@/components/landing/clients-section';
 import ContactSection from '@/components/landing/contact-section';
-import FooterCTA from '@/components/landing/footer-cta';
 import CoreValuesSection from '@/components/landing/core-values-section';
-import CustomCursor from '@/components/landing/custom-cursor';
 import FAQSection from '@/components/landing/faq-section';
-import Footer from '@/components/landing/footer';
 import GlobalFootprint from '@/components/landing/global-footprint';
 import InnerPageHero from '@/components/landing/inner-page-hero';
 import LazySection from '@/components/landing/lazy-section';
-import Navbar from '@/components/landing/navbar';
-import { ThemeProvider } from '@/components/landing/theme-provider';
-import TopBar from '@/components/landing/top-bar';
-import SeoHead from '@/components/seo/SeoHead';
+import TestimonialsSection from '@/components/landing/testimonials-section';
+import PublicLayout from '@/components/layouts/PublicLayout';
 
 export default function Contact() {
     return (
-        <ThemeProvider>
-            <SeoHead
-                seo={{
-                    title: 'Contact Us | Zytrixon Tech',
-                    description:
-                        'Get in touch with Zytrixon Tech for Web Development, Mobile Apps, and Enterprise IT solutions.',
-                }}
+        <PublicLayout
+            seo={{
+                title: 'Contact Us | Zytrixon Tech',
+                description:
+                    'Get in touch with Zytrixon Tech for Web Development, Mobile Apps, and Enterprise IT solutions.',
+            }}
+        >
+            <InnerPageHero
+                title="Let's Talk"
+                subtitle="Have a project in mind? Reach out and let's build something amazing together."
             />
 
-            <CustomCursor />
-            <TopBar />
-            <Navbar />
-
-            <main>
-                <InnerPageHero
-                    title="Let's Talk"
-                    subtitle="Have a project in mind? Reach out and let's build something amazing together."
-                />
-
-                <LazySection>
-                    <ContactSection />
-                </LazySection>
-                <LazySection>
-                    <GlobalFootprint />
-                </LazySection>
-                <LazySection>
-                    <FAQSection />
-                </LazySection>
-                <LazySection>
-                    <TestimonialsSection />
-                </LazySection>
-                <LazySection>
-                    <ClientsSection />
-                </LazySection>
-                <LazySection>
-                    <CoreValuesSection />
-                </LazySection>
-                <LazySection>
-                    <FooterCTA />
-                </LazySection>
-            </main>
-
-            <Footer />
-        </ThemeProvider>
+            <LazySection>
+                <ContactSection hideHeader={true} />
+            </LazySection>
+            <LazySection>
+                <GlobalFootprint />
+            </LazySection>
+            <LazySection>
+                <FAQSection />
+            </LazySection>
+            <LazySection>
+                <TestimonialsSection />
+            </LazySection>
+            <LazySection>
+                <ClientsSection />
+            </LazySection>
+            <LazySection>
+                <CoreValuesSection />
+            </LazySection>
+        </PublicLayout>
     );
 }

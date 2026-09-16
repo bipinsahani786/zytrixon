@@ -71,62 +71,34 @@ export default function FooterCTA() {
     return (
         <section
             ref={sectionRef}
-            style={{
-                background: 'var(--zy-black)',
-                padding: '160px var(--zy-section-pad-x)',
-                textAlign: 'center',
-                borderTop: '1px solid var(--zy-gray-border)',
-            }}
+            className="bg-background text-foreground py-28 sm:py-36 px-6 sm:px-12 text-center border-t border-border transition-colors duration-300"
         >
             <h2
                 ref={headlineRef}
-                style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: 'clamp(36px, 6vw, 72px)',
-                    fontWeight: 700,
-                    lineHeight: 1.1,
-                    color: 'var(--zy-white)',
-                    maxWidth: '800px',
-                    margin: '0 auto',
-                    letterSpacing: '-0.03em',
-                }}
+                className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground max-w-3xl mx-auto leading-tight"
             >
                 Let's Build Something{' '}
-                <span style={{ color: 'var(--zy-white)' }}>Extraordinary</span>
+                <span className="text-primary">Extraordinary</span>
             </h2>
 
-            <p
-                style={{
-                    fontSize: '18px',
-                    color: 'var(--zy-gray-text)',
-                    maxWidth: '500px',
-                    margin: '28px auto 0',
-                    lineHeight: 1.6,
-                }}
-            >
+            <p className="text-base sm:text-lg text-muted-foreground max-w-lg mx-auto mt-6 leading-relaxed">
                 Ready to transform your idea into reality? Let's start the
                 conversation.
             </p>
 
             <div
-                style={{ marginTop: '48px' }}
+                className="mt-10 inline-block"
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
             >
                 <Link
                     ref={btnRef}
                     href="/contact"
-                    className="magnetic-btn"
-                    style={{
-                        padding: '20px 56px',
-                        fontSize: '15px',
-                    }}
+                    className="group inline-flex items-center gap-3 px-8 sm:px-12 py-4 sm:py-5 rounded-full bg-primary text-primary-foreground font-heading font-bold text-sm sm:text-base uppercase tracking-wider shadow-[0_0_30px_var(--accent-cyan-glow)] hover:shadow-[0_0_50px_var(--accent-cyan-glow)] hover:scale-105 active:scale-95 transition-all duration-300"
                 >
-                    Start a Project
+                    <span>Start a Project</span>
                     <svg
-                        className="btn-arrow"
-                        width="18"
-                        height="18"
+                        className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"

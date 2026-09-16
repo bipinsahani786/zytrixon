@@ -1,3 +1,26 @@
+DirectoryIndex index.php index.html
+
+# Disable LiteSpeed Server Cache for dynamic Laravel pages
+<IfModule LiteSpeed>
+    CacheLookup off
+</IfModule>
+
+# Cache-Control Headers
+<IfModule mod_headers.c>
+    # 1. Never cache dynamic HTML / PHP / Inertia responses
+    <FilesMatch "\.(php|html)$">
+        Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+        Header set X-LiteSpeed-Cache-Control "no-cache, no-store"
+    </FilesMatch>
+
+    # 2. Cache hashed static assets (Vite builds) for 1 year immutable
+    <FilesMatch "\.(js|css|woff|woff2|ttf|eot|png|jpg|jpeg|gif|svg|ico|webp|avif)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes

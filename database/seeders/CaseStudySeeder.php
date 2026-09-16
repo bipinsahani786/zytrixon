@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CaseStudy;
+use App\Models\Service;
 use Illuminate\Database\Seeder;
 
 class CaseStudySeeder extends Seeder
@@ -95,8 +96,30 @@ class CaseStudySeeder extends Seeder
             ],
         ];
 
+        $serviceMap = [
+            'ecommerce-platform-scaling' => 'web-development',
+            'healthcare-crm-development' => 'custom-software',
+            'ai-logistics-routing-app' => 'ai-automation',
+            'edtech-learning-management-system' => 'web-development',
+            'real-estate-seo-overhaul' => 'digital-marketing',
+            'fintech-crypto-wallet-app' => 'app-development',
+            'restaurant-online-ordering-system' => 'app-development',
+            'manufacturing-iot-dashboard' => 'iot-solutions',
+        ];
+
         foreach ($caseStudies as $study) {
-            CaseStudy::create($study);
+            $serviceSlug = $serviceMap[$study['slug']] ?? null;
+            if ($serviceSlug) {
+                $service = Service::where('slug', $serviceSlug)->first();
+                if ($service) {
+                    $study['service_id'] = $service->id;
+                }
+            }
+
+            CaseStudy::updateOrCreate(
+                ['slug' => $study['slug']],
+                $study
+            );
         }
     }
 }

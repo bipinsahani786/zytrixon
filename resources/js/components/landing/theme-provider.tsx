@@ -34,6 +34,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
         document.body.classList.toggle('light', theme === 'light');
+        document.documentElement.classList.toggle('dark', theme === 'dark');
         localStorage.setItem('zy-theme', theme);
     }, [theme]);
 
