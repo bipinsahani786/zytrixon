@@ -4,16 +4,16 @@ export default function FloatingButtons() {
     const [expanded, setExpanded] = useState(false);
 
     return (
-        <div className="fixed bottom-7 right-7 z-[9998] flex flex-col items-end gap-3 pointer-events-auto">
+        <div className="pointer-events-auto fixed right-7 bottom-7 z-[9998] flex flex-col items-end gap-3">
             {/* Expanded action options */}
             {expanded && (
-                <div className="flex flex-col gap-2.5 animate-in fade-in slide-in-from-bottom-2 duration-200">
+                <div className="flex animate-in flex-col gap-2.5 duration-200 fade-in slide-in-from-bottom-2">
                     {/* Call Option */}
                     <a
                         href="tel:+917049711475"
-                        className="group flex items-center gap-2.5 bg-card/95 text-foreground border border-border px-3.5 py-2 rounded-full text-xs font-heading font-semibold shadow-xl backdrop-blur-md hover:scale-105 hover:border-primary/50 transition-all duration-200"
+                        className="group flex items-center gap-2.5 rounded-full border border-border bg-card/95 px-3.5 py-2 font-heading text-xs font-semibold text-foreground shadow-xl backdrop-blur-md transition-all duration-200 hover:scale-105 hover:border-primary/50"
                     >
-                        <div className="w-8 h-8 rounded-full bg-primary/15 text-primary flex items-center justify-center transition-transform group-hover:scale-110">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-primary transition-transform group-hover:scale-110">
                             <svg
                                 width="16"
                                 height="16"
@@ -33,9 +33,9 @@ export default function FloatingButtons() {
                         href="https://wa.me/917049711475"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-2.5 bg-[#25d366] text-white px-3.5 py-2 rounded-full text-xs font-heading font-semibold shadow-xl shadow-emerald-500/25 hover:scale-105 hover:shadow-emerald-500/40 transition-all duration-200"
+                        className="group flex items-center gap-2.5 rounded-full bg-[#25d366] px-3.5 py-2 font-heading text-xs font-semibold text-white shadow-xl shadow-emerald-500/25 transition-all duration-200 hover:scale-105 hover:shadow-emerald-500/40"
                     >
-                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:scale-110">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:scale-110">
                             <svg
                                 width="18"
                                 height="18"
@@ -54,9 +54,9 @@ export default function FloatingButtons() {
             <button
                 onClick={() => setExpanded(!expanded)}
                 aria-label="Contact options"
-                className={`w-14 h-14 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 shadow-xl ${
+                className={`flex h-14 w-14 cursor-pointer items-center justify-center rounded-full shadow-xl transition-all duration-300 ${
                     expanded
-                        ? 'bg-card text-foreground border border-border rotate-45 scale-95 hover:bg-muted'
+                        ? 'scale-95 rotate-45 border border-border bg-card text-foreground hover:bg-muted'
                         : 'bg-[#25d366] text-white shadow-emerald-500/30 hover:scale-105 hover:shadow-emerald-500/50'
                 }`}
             >

@@ -3,6 +3,7 @@
 use App\Models\CaseStudy;
 use App\Models\Location;
 use App\Models\Service;
+use Database\Seeders\SeoDataSeeder;
 
 test('public pages return a successful 200 response', function () {
     $routes = [
@@ -30,7 +31,7 @@ test('public pages return a successful 200 response', function () {
 });
 
 test('programmatic seo services and locations return 200 response', function () {
-    $this->seed(\Database\Seeders\SeoDataSeeder::class);
+    $this->seed(SeoDataSeeder::class);
 
     // Test core service
     $this->get('/services/web-development')->assertOk();

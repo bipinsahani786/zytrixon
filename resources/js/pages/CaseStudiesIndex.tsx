@@ -1,7 +1,8 @@
 import { Head } from '@inertiajs/react';
 import { useState, useMemo } from 'react';
 import { Search, X } from 'lucide-react';
-import CaseStudyCard, { type CaseStudyItem } from '@/components/common/CaseStudyCard';
+import CaseStudyCard from '@/components/common/CaseStudyCard';
+import type {CaseStudyItem} from '@/components/common/CaseStudyCard';
 import FilterTabs from '@/components/common/FilterTabs';
 import MetricGrid from '@/components/common/MetricGrid';
 import InnerPageHero from '@/components/landing/inner-page-hero';
@@ -33,7 +34,9 @@ export default function CaseStudiesIndex({
     const industries = useMemo(() => {
         const set = new Set<string>();
         caseStudies.forEach((cs) => {
-            if (cs.industry) set.add(cs.industry);
+            if (cs.industry) {
+set.add(cs.industry);
+}
         });
         return ['All', ...Array.from(set)];
     }, [caseStudies]);
@@ -47,15 +50,18 @@ export default function CaseStudiesIndex({
             const matchesSearch =
                 !query ||
                 cs.title.toLowerCase().includes(query) ||
-                (cs.client_name && cs.client_name.toLowerCase().includes(query)) ||
+                (cs.client_name &&
+                    cs.client_name.toLowerCase().includes(query)) ||
                 (cs.challenge && cs.challenge.toLowerCase().includes(query)) ||
-                (cs.service?.title && cs.service.title.toLowerCase().includes(query));
+                (cs.service?.title &&
+                    cs.service.title.toLowerCase().includes(query));
             return matchesIndustry && matchesSearch;
         });
     }, [caseStudies, selectedIndustry, searchQuery]);
 
     const pageSeo = {
-        title: seo?.title || 'Case Studies & Enterprise Results | Zytrixon Tech',
+        title:
+            seo?.title || 'Case Studies & Enterprise Results | Zytrixon Tech',
         description:
             seo?.description ||
             'Explore proven case studies in web development, mobile apps, IoT, and AI automation delivered by Zytrixon Tech.',
@@ -99,30 +105,30 @@ export default function CaseStudiesIndex({
             />
 
             {/* 2. Highlight Metrics Strip */}
-            <section className="max-w-7xl mx-auto px-6 sm:px-10 -mt-8 sm:-mt-12 relative z-20 mb-12">
+            <section className="relative z-20 mx-auto -mt-8 mb-12 max-w-7xl px-6 sm:-mt-12 sm:px-10">
                 <MetricGrid metrics={HIGHLIGHT_METRICS} columns={4} />
             </section>
 
             {/* 3. Controls: Search + Industry Filters */}
-            <section className="max-w-7xl mx-auto px-6 sm:px-10 mb-10 flex flex-col items-center gap-6">
+            <section className="mx-auto mb-10 flex max-w-7xl flex-col items-center gap-6 px-6 sm:px-10">
                 {/* Search Bar */}
                 <div className="relative w-full max-w-md">
-                    <Search className="w-4 h-4 text-muted-foreground absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    <Search className="pointer-events-none absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <input
                         type="text"
                         placeholder="Search by keyword, client, or industry..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-11 pr-10 py-3 rounded-full bg-card border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 shadow-xs"
+                        className="w-full rounded-full border border-border bg-card py-3 pr-10 pl-11 text-sm text-foreground shadow-xs transition-all duration-200 placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
                     />
                     {searchQuery && (
                         <button
                             type="button"
                             onClick={() => setSearchQuery('')}
                             aria-label="Clear search"
-                            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground cursor-pointer"
+                            className="absolute top-1/2 right-3.5 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-foreground"
                         >
-                            <X className="w-4 h-4" />
+                            <X className="h-4 w-4" />
                         </button>
                     )}
                 </div>
@@ -136,14 +142,15 @@ export default function CaseStudiesIndex({
             </section>
 
             {/* 4. Case Studies Grid */}
-            <section className="max-w-7xl mx-auto px-6 sm:px-10 pb-24">
+            <section className="mx-auto max-w-7xl px-6 pb-24 sm:px-10">
                 {filteredStudies.length === 0 ? (
-                    <div className="text-center py-20 px-6 bg-card/40 border border-border rounded-3xl max-w-lg mx-auto">
-                        <p className="text-lg font-heading font-semibold text-foreground mb-2">
+                    <div className="mx-auto max-w-lg rounded-3xl border border-border bg-card/40 px-6 py-20 text-center">
+                        <p className="mb-2 font-heading text-lg font-semibold text-foreground">
                             No case studies found
                         </p>
-                        <p className="text-sm text-muted-foreground mb-6">
-                            Try searching for another keyword or select a different industry filter.
+                        <p className="mb-6 text-sm text-muted-foreground">
+                            Try searching for another keyword or select a
+                            different industry filter.
                         </p>
                         <button
                             type="button"
@@ -151,13 +158,13 @@ export default function CaseStudiesIndex({
                                 setSearchQuery('');
                                 setSelectedIndustry('All');
                             }}
-                            className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-opacity"
+                            className="rounded-full bg-primary px-5 py-2.5 font-heading text-xs font-bold tracking-wider text-primary-foreground uppercase transition-opacity hover:opacity-90"
                         >
                             Reset Filters
                         </button>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                         {filteredStudies.map((study) => (
                             <CaseStudyCard
                                 key={study.id || study.slug}

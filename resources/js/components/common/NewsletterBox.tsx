@@ -30,30 +30,30 @@ export default function NewsletterBox({
 
     return (
         <div
-            className={`bg-card text-card-foreground border border-border rounded-3xl p-8 sm:p-12 text-center max-w-3xl mx-auto shadow-lg relative overflow-hidden ${className}`}
+            className={`relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-border bg-card p-8 text-center text-card-foreground shadow-lg sm:p-12 ${className}`}
         >
             <div className="relative z-10">
-                <span className="inline-block font-heading text-xs font-bold uppercase tracking-widest text-primary mb-3 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+                <span className="mb-3 inline-block rounded-full border border-primary/20 bg-primary/10 px-3 py-1 font-heading text-xs font-bold tracking-widest text-primary uppercase">
                     INSIGHTS & NEWSLETTER
                 </span>
 
-                <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-3 tracking-tight">
+                <h3 className="mb-3 font-heading text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl md:text-4xl">
                     {title}
                 </h3>
 
-                <p className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto mb-8 leading-relaxed">
+                <p className="mx-auto mb-8 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {subtitle}
                 </p>
 
                 {subscribed ? (
-                    <div className="inline-flex items-center gap-2 text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-6 py-3 rounded-full text-sm font-semibold">
-                        <CheckCircle2 className="w-4 h-4" />
+                    <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-6 py-3 text-sm font-semibold text-emerald-400">
+                        <CheckCircle2 className="h-4 w-4" />
                         <span>Thank you! You're now on our insider list.</span>
                     </div>
                 ) : (
                     <form
                         onSubmit={handleSubmit}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto"
+                        className="mx-auto flex max-w-md flex-col items-center justify-center gap-3 sm:flex-row"
                     >
                         <input
                             type="email"
@@ -61,19 +61,19 @@ export default function NewsletterBox({
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your work email"
                             required
-                            className="w-full px-5 py-3.5 rounded-full bg-background border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200"
+                            className="w-full rounded-full border border-border bg-background px-5 py-3.5 text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
                         />
                         <button
                             type="submit"
-                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-heading font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_var(--accent-cyan-glow)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shrink-0"
+                            className="inline-flex w-full shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-heading text-xs font-bold tracking-wider text-primary-foreground uppercase shadow-[0_0_20px_var(--accent-cyan-glow)] transition-all duration-200 hover:scale-105 active:scale-95 sm:w-auto sm:text-sm"
                         >
                             <span>{buttonText}</span>
-                            <Send className="w-3.5 h-3.5" />
+                            <Send className="h-3.5 w-3.5" />
                         </button>
                     </form>
                 )}
 
-                <p className="text-muted-foreground text-xs mt-4">
+                <p className="mt-4 text-xs text-muted-foreground">
                     Zero spam. Unsubscribe anytime with one click.
                 </p>
             </div>

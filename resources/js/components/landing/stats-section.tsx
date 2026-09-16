@@ -74,10 +74,10 @@ export default function StatsSection() {
             ref={sectionRef}
             className="zy-section bg-background transition-colors duration-300"
         >
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 max-w-5xl mx-auto text-center">
+            <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 text-center sm:gap-12 lg:grid-cols-4">
                 {STATS.map((stat, i) => (
                     <div key={i} className="flex flex-col items-center">
-                        <div className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground flex items-baseline justify-center">
+                        <div className="flex items-baseline justify-center font-heading text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
                             <span
                                 ref={(el) => {
                                     numbersRef.current[i] = el;
@@ -85,9 +85,11 @@ export default function StatsSection() {
                             >
                                 0
                             </span>
-                            <span className="text-primary ml-1">{stat.suffix}</span>
+                            <span className="ml-1 text-primary">
+                                {stat.suffix}
+                            </span>
                         </div>
-                        <div className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-muted-foreground mt-3">
+                        <div className="mt-3 text-xs font-semibold tracking-widest text-muted-foreground uppercase sm:text-sm">
                             {stat.label}
                         </div>
                     </div>

@@ -26,20 +26,20 @@ export default function Error({ status }: { status: number }) {
             }}
             hideFooterCTA={true}
         >
-            <div className="min-h-[75vh] flex items-center justify-center px-6 py-24 text-center">
-                <div className="max-w-md mx-auto">
-                    <div className="font-heading text-8xl sm:text-9xl font-black text-foreground/10 select-none -mb-8 sm:-mb-10 leading-none">
+            <div className="flex min-h-[75vh] items-center justify-center px-6 py-24 text-center">
+                <div className="mx-auto max-w-md">
+                    <div className="-mb-8 font-heading text-8xl leading-none font-black text-foreground/10 select-none sm:-mb-10 sm:text-9xl">
                         {status}
                     </div>
-                    <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground mb-4">
+                    <h1 className="mb-4 font-heading text-3xl font-extrabold text-foreground sm:text-4xl">
                         {title}
                     </h1>
-                    <p className="text-muted-foreground text-base mb-8 leading-relaxed">
+                    <p className="mb-8 text-base leading-relaxed text-muted-foreground">
                         {description}
                     </p>
                     <Link
                         href="/"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider shadow-[0_0_20px_var(--accent-cyan-glow)] hover:scale-105 active:scale-95 transition-all duration-200"
+                        className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-heading text-sm font-bold tracking-wider text-primary-foreground uppercase shadow-[0_0_20px_var(--accent-cyan-glow)] transition-all duration-200 hover:scale-105 active:scale-95"
                     >
                         Return Home
                     </Link>

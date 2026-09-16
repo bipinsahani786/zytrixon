@@ -26,19 +26,21 @@ export default function SectionHeader({
     }[align];
 
     return (
-        <div className={`flex flex-col mb-12 sm:mb-16 ${alignmentClasses} ${className}`}>
+        <div
+            className={`mb-12 flex flex-col sm:mb-16 ${alignmentClasses} ${className}`}
+        >
             {badge && (
-                <span className="inline-block font-heading text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+                <span className="mb-3.5 inline-block w-fit rounded-full border border-primary/20 bg-primary/10 px-3 py-1 font-heading text-xs font-bold tracking-[0.2em] text-primary uppercase">
                     {badge}
                 </span>
             )}
 
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1] max-w-3xl">
+            <h2 className="max-w-3xl font-heading text-3xl leading-[1.1] font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
                 {title}
             </h2>
 
             {subtitle && (
-                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mt-4 leading-relaxed font-normal">
+                <p className="mt-4 max-w-2xl text-base leading-relaxed font-normal text-muted-foreground sm:text-lg">
                     {subtitle}
                 </p>
             )}

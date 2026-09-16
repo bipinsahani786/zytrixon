@@ -88,8 +88,8 @@ const SOCIALS = [
 
 export default function Footer() {
     return (
-        <footer className="bg-background text-foreground border-t border-border pt-20 pb-12 px-6 sm:px-10 md:px-16 lg:px-20 transition-colors duration-300">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-16">
+        <footer className="border-t border-border bg-background px-6 pt-20 pb-12 text-foreground transition-colors duration-300 sm:px-10 md:px-16 lg:px-20">
+            <div className="mx-auto mb-16 grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
                 {/* Company Info */}
                 <div className="lg:col-span-1">
                     <Link
@@ -99,7 +99,7 @@ export default function Footer() {
                     >
                         <Logo className="h-12 w-auto text-foreground" />
                     </Link>
-                    <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mb-6">
+                    <p className="mb-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
                         Building robust software solutions for tomorrow's
                         challenges. Enterprise-grade Web, Mobile, and IoT
                         solutions from Samastipur, Bihar.
@@ -112,7 +112,7 @@ export default function Footer() {
                                 key={social.label}
                                 href={social.href}
                                 aria-label={social.label}
-                                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/50 hover:bg-accent/40 transition-all duration-200"
+                                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-200 hover:border-foreground/50 hover:bg-accent/40 hover:text-foreground"
                             >
                                 {social.icon}
                             </a>
@@ -122,14 +122,14 @@ export default function Footer() {
 
                 {/* Services */}
                 <div>
-                    <div className="font-heading font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
+                    <div className="mb-4 font-heading text-sm font-semibold tracking-wider text-foreground uppercase">
                         Services
                     </div>
                     {FOOTER_LINKS.services.map((link) => (
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-150 mb-2.5"
+                            className="mb-2.5 block text-sm text-muted-foreground transition-colors duration-150 hover:text-primary"
                         >
                             {link.label}
                         </Link>
@@ -138,21 +138,21 @@ export default function Footer() {
 
                 {/* Locations */}
                 <div>
-                    <div className="font-heading font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
+                    <div className="mb-4 font-heading text-sm font-semibold tracking-wider text-foreground uppercase">
                         Services in Bihar
                     </div>
                     {FOOTER_LINKS.locations.map((link) => (
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-150 mb-2.5"
+                            className="mb-2.5 block text-sm text-muted-foreground transition-colors duration-150 hover:text-primary"
                         >
                             {link.label}
                         </Link>
                     ))}
                     <Link
                         href="/locations"
-                        className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline mt-2 transition-colors duration-150"
+                        className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors duration-150 hover:underline"
                     >
                         View All Locations &rarr;
                     </Link>
@@ -160,14 +160,14 @@ export default function Footer() {
 
                 {/* Company */}
                 <div>
-                    <div className="font-heading font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
+                    <div className="mb-4 font-heading text-sm font-semibold tracking-wider text-foreground uppercase">
                         Company
                     </div>
                     {FOOTER_LINKS.company.map((link) => (
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-150 mb-2.5"
+                            className="mb-2.5 block text-sm text-muted-foreground transition-colors duration-150 hover:text-primary"
                         >
                             {link.label}
                         </Link>
@@ -176,22 +176,22 @@ export default function Footer() {
 
                 {/* Contact */}
                 <div>
-                    <div className="font-heading font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
+                    <div className="mb-4 font-heading text-sm font-semibold tracking-wider text-foreground uppercase">
                         Get in Touch
                     </div>
                     <a
                         href="mailto:zytrixon@gmail.com"
-                        className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-150 mb-2"
+                        className="mb-2 block text-sm text-muted-foreground transition-colors duration-150 hover:text-primary"
                     >
                         zytrixon@gmail.com
                     </a>
                     <a
                         href="tel:+917049711475"
-                        className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-150 mb-4"
+                        className="mb-4 block text-sm text-muted-foreground transition-colors duration-150 hover:text-primary"
                     >
                         +91 70497 11475
                     </a>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                         Samastipur, Bihar
                         <br />
                         India 848101
@@ -199,7 +199,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-muted-foreground">
+            <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:text-sm md:flex-row">
                 <span>
                     © {new Date().getFullYear()} Zytrixon Tech. All rights
                     reserved. Made with ❤️ in Samastipur.
@@ -210,7 +210,7 @@ export default function Footer() {
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="text-muted-foreground hover:text-primary transition-colors duration-150"
+                                className="text-muted-foreground transition-colors duration-150 hover:text-primary"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -220,7 +220,7 @@ export default function Footer() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-muted-foreground hover:text-primary transition-colors duration-150"
+                                className="text-muted-foreground transition-colors duration-150 hover:text-primary"
                             >
                                 {link.label}
                             </Link>

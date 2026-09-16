@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import gsap from 'gsap';
 import {
-    type LucideIcon,
+    
     Globe,
     Smartphone,
     Sparkles,
@@ -17,8 +17,9 @@ import {
     X,
     CheckCircle2,
     Shield,
-    Mail,
+    Mail
 } from 'lucide-react';
+import type {LucideIcon} from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Logo from '@/components/ui/logo';
 import { useTheme } from './theme-provider';
@@ -101,7 +102,9 @@ export default function Navbar() {
     const [mounted, setMounted] = useState(false);
     const navRef = useRef<HTMLElement>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
-    const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+        null,
+    );
 
     const { theme, toggleTheme } = useTheme();
     const { url } = usePage();
@@ -116,11 +119,17 @@ export default function Navbar() {
                     const y = window.scrollY;
                     setScrolled(y > 40);
 
-                    const progressBar = document.getElementById('zy-scroll-progress');
+                    const progressBar =
+                        document.getElementById('zy-scroll-progress');
                     if (progressBar) {
-                        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                        const docHeight =
+                            document.documentElement.scrollHeight -
+                            window.innerHeight;
                         if (docHeight > 0) {
-                            const ratio = Math.min(Math.max(y / docHeight, 0), 1);
+                            const ratio = Math.min(
+                                Math.max(y / docHeight, 0),
+                                1,
+                            );
                             progressBar.style.transform = `scaleX(${ratio})`;
                         }
                     }
@@ -137,7 +146,13 @@ export default function Navbar() {
             gsap.fromTo(
                 navRef.current,
                 { y: -60, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.9, ease: 'power4.out', delay: 0.1 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.9,
+                    ease: 'power4.out',
+                    delay: 0.1,
+                },
             );
         }
 
@@ -184,19 +199,19 @@ export default function Navbar() {
             {/* Top Floating Navbar Shell */}
             <header
                 ref={navRef}
-                className={`sticky top-0 left-0 right-0 z-50 w-full flex justify-center pointer-events-none transition-all duration-500 ease-out ${
-                    scrolled ? 'pt-3.5 px-4' : 'pt-0 px-0'
+                className={`pointer-events-none sticky top-0 right-0 left-0 z-50 flex w-full justify-center transition-all duration-500 ease-out ${
+                    scrolled ? 'px-4 pt-3.5' : 'px-0 pt-0'
                 }`}
             >
                 <div
-                    className={`pointer-events-auto w-full flex items-center justify-between transition-all duration-500 ease-out ${
+                    className={`pointer-events-auto flex w-full items-center justify-between transition-all duration-500 ease-out ${
                         scrolled
                             ? isDark
-                                ? 'max-w-[1240px] h-[58px] px-5 rounded-full bg-[#080b13]/90 border border-cyan-400/25 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.75),0_0_35px_-10px_rgba(0,240,255,0.18)] backdrop-blur-xl'
-                                : 'max-w-[1240px] h-[58px] px-5 rounded-full bg-white/95 border border-sky-400/25 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] backdrop-blur-xl'
+                                ? 'h-[58px] max-w-[1240px] rounded-full border border-cyan-400/25 bg-[#080b13]/90 px-5 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.75),0_0_35px_-10px_rgba(0,240,255,0.18)] backdrop-blur-xl'
+                                : 'h-[58px] max-w-[1240px] rounded-full border border-sky-400/25 bg-white/95 px-5 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] backdrop-blur-xl'
                             : isDark
-                                ? 'max-w-full h-[76px] px-6 md:px-12 lg:px-16 rounded-none bg-[#0a0e17]/80 border-b border-white/10 shadow-sm backdrop-blur-xl'
-                                : 'max-w-full h-[76px] px-6 md:px-12 lg:px-16 rounded-none bg-white/90 border-b border-zinc-200 shadow-sm backdrop-blur-xl'
+                              ? 'h-[76px] max-w-full rounded-none border-b border-white/10 bg-[#0a0e17]/80 px-6 shadow-sm backdrop-blur-xl md:px-12 lg:px-16'
+                              : 'h-[76px] max-w-full rounded-none border-b border-zinc-200 bg-white/90 px-6 shadow-sm backdrop-blur-xl md:px-12 lg:px-16'
                     }`}
                 >
                     {/* Left: Brand Logo */}
@@ -216,31 +231,34 @@ export default function Navbar() {
                     </div>
 
                     {/* Center: Gliding Capsule Navigation Links (Desktop) */}
-                    <nav className="hidden lg:flex items-center justify-center" aria-label="Main Navigation">
+                    <nav
+                        className="hidden items-center justify-center lg:flex"
+                        aria-label="Main Navigation"
+                    >
                         <ul
-                            className={`flex items-center gap-1 p-1 rounded-full border transition-colors duration-300 ${
+                            className={`flex items-center gap-1 rounded-full border p-1 transition-colors duration-300 ${
                                 isDark
-                                    ? 'bg-white/[0.03] border-white/[0.06]'
-                                    : 'bg-zinc-100/90 border-zinc-200'
+                                    ? 'border-white/[0.06] bg-white/[0.03]'
+                                    : 'border-zinc-200 bg-zinc-100/90'
                             }`}
                         >
                             {/* Home */}
                             <li>
                                 <Link
                                     href="/"
-                                    className={`relative inline-flex items-center px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold uppercase tracking-wider transition-all duration-200 whitespace-nowrap ${
+                                    className={`relative inline-flex items-center rounded-full px-3.5 py-1.5 text-[11.5px] font-semibold tracking-wider whitespace-nowrap uppercase transition-all duration-200 ${
                                         url === '/'
                                             ? isDark
-                                                ? 'text-white bg-cyan-400/15 shadow-[inset_0_0_12px_rgba(0,240,255,0.2)]'
-                                                : 'text-sky-700 bg-sky-100'
+                                                ? 'bg-cyan-400/15 text-white shadow-[inset_0_0_12px_rgba(0,240,255,0.2)]'
+                                                : 'bg-sky-100 text-sky-700'
                                             : isDark
-                                                ? 'text-zinc-400 hover:text-white hover:bg-white/10'
-                                                : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/60'
+                                              ? 'text-zinc-400 hover:bg-white/10 hover:text-white'
+                                              : 'text-zinc-600 hover:bg-zinc-200/60 hover:text-zinc-900'
                                     }`}
                                 >
                                     <span>HOME</span>
                                     {url === '/' && (
-                                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-400 shadow-[0_0_8px_#00f0ff]" />
+                                        <span className="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-cyan-400 shadow-[0_0_8px_#00f0ff]" />
                                     )}
                                 </Link>
                             </li>
@@ -253,18 +271,21 @@ export default function Navbar() {
                             >
                                 <Link
                                     href="/services"
-                                    className={`relative group inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold uppercase tracking-wider transition-all duration-200 whitespace-nowrap ${
+                                    className={`group relative inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[11.5px] font-semibold tracking-wider whitespace-nowrap uppercase transition-all duration-200 ${
                                         isServicesActive
                                             ? isDark
-                                                ? 'text-white bg-cyan-400/15 shadow-[inset_0_0_12px_rgba(0,240,255,0.2)]'
-                                                : 'text-sky-700 bg-sky-100'
+                                                ? 'bg-cyan-400/15 text-white shadow-[inset_0_0_12px_rgba(0,240,255,0.2)]'
+                                                : 'bg-sky-100 text-sky-700'
                                             : isDark
-                                                ? 'text-zinc-400 hover:text-white hover:bg-white/10'
-                                                : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/60'
+                                              ? 'text-zinc-400 hover:bg-white/10 hover:text-white'
+                                              : 'text-zinc-600 hover:bg-zinc-200/60 hover:text-zinc-900'
                                     }`}
                                     aria-expanded={servicesDropdownOpen}
                                     onClick={(e) => {
-                                        if (window.matchMedia('(hover: none)').matches) {
+                                        if (
+                                            window.matchMedia('(hover: none)')
+                                                .matches
+                                        ) {
                                             if (!servicesDropdownOpen) {
                                                 e.preventDefault();
                                                 setServicesDropdownOpen(true);
@@ -281,49 +302,54 @@ export default function Navbar() {
                                         }`}
                                     />
                                     {isServicesActive && (
-                                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-400 shadow-[0_0_8px_#00f0ff]" />
+                                        <span className="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-cyan-400 shadow-[0_0_8px_#00f0ff]" />
                                     )}
                                 </Link>
 
                                 {/* Bento-Grid Mega Dropdown */}
                                 <div
                                     ref={dropdownRef}
-                                    className={`absolute top-[calc(100%+14px)] left-1/2 -translate-x-1/2 w-[630px] p-4 rounded-2xl border transition-all duration-300 z-50 backdrop-blur-2xl ${
+                                    className={`absolute top-[calc(100%+14px)] left-1/2 z-50 w-[630px] -translate-x-1/2 rounded-2xl border p-4 backdrop-blur-2xl transition-all duration-300 ${
                                         isDark
-                                            ? 'bg-[#0c101a]/95 border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_-10px_rgba(0,240,255,0.15)]'
-                                            : 'bg-white/98 border-zinc-200 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)]'
+                                            ? 'border-white/10 bg-[#0c101a]/95 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_-10px_rgba(0,240,255,0.15)]'
+                                            : 'border-zinc-200 bg-white/98 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)]'
                                     } ${
                                         servicesDropdownOpen
-                                            ? 'opacity-100 visible translate-y-0 scale-100 pointer-events-auto'
-                                            : 'opacity-0 invisible translate-y-2 scale-95 pointer-events-none'
+                                            ? 'pointer-events-auto visible translate-y-0 scale-100 opacity-100'
+                                            : 'pointer-events-none invisible translate-y-2 scale-95 opacity-0'
                                     }`}
                                 >
                                     <div className="grid grid-cols-2 gap-2">
                                         {SERVICES.map((svc) => {
                                             const Icon = svc.icon;
-                                            const isActiveService = url === `/services/${svc.slug}`;
+                                            const isActiveService =
+                                                url === `/services/${svc.slug}`;
 
                                             return (
                                                 <Link
                                                     key={svc.slug}
                                                     href={`/services/${svc.slug}`}
-                                                    className={`group flex items-start gap-3 p-2.5 rounded-xl border transition-all duration-200 ${
+                                                    className={`group flex items-start gap-3 rounded-xl border p-2.5 transition-all duration-200 ${
                                                         isActiveService
                                                             ? isDark
-                                                                ? 'bg-cyan-500/10 border-cyan-500/30'
-                                                                : 'bg-sky-50 border-sky-200'
+                                                                ? 'border-cyan-500/30 bg-cyan-500/10'
+                                                                : 'border-sky-200 bg-sky-50'
                                                             : isDark
-                                                                ? 'bg-white/[0.02] border-transparent hover:bg-white/[0.06] hover:border-cyan-500/25 hover:-translate-y-0.5'
-                                                                : 'bg-zinc-50 border-transparent hover:bg-zinc-100 hover:border-sky-300 hover:-translate-y-0.5'
+                                                              ? 'border-transparent bg-white/[0.02] hover:-translate-y-0.5 hover:border-cyan-500/25 hover:bg-white/[0.06]'
+                                                              : 'border-transparent bg-zinc-50 hover:-translate-y-0.5 hover:border-sky-300 hover:bg-zinc-100'
                                                     }`}
-                                                    onClick={() => setServicesDropdownOpen(false)}
+                                                    onClick={() =>
+                                                        setServicesDropdownOpen(
+                                                            false,
+                                                        )
+                                                    }
                                                 >
                                                     <div
-                                                        className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 border border-white/10 bg-gradient-to-br ${svc.gradient}`}
+                                                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-gradient-to-br ${svc.gradient}`}
                                                     >
                                                         <Icon className="h-4 w-4 text-cyan-400 transition-transform duration-300 group-hover:scale-110" />
                                                     </div>
-                                                    <div className="flex flex-col min-w-0">
+                                                    <div className="flex min-w-0 flex-col">
                                                         <div className="flex items-center gap-1.5">
                                                             <span
                                                                 className={`text-[13px] font-semibold transition-colors ${
@@ -335,13 +361,13 @@ export default function Navbar() {
                                                                 {svc.title}
                                                             </span>
                                                             {svc.badge && (
-                                                                <span className="text-[8.5px] font-bold px-1.5 py-0.5 rounded bg-cyan-400/15 text-cyan-400 border border-cyan-400/25 tracking-wide">
+                                                                <span className="rounded border border-cyan-400/25 bg-cyan-400/15 px-1.5 py-0.5 text-[8.5px] font-bold tracking-wide text-cyan-400">
                                                                     {svc.badge}
                                                                 </span>
                                                             )}
                                                         </div>
                                                         <p
-                                                            className={`text-[11px] leading-tight mt-0.5 ${
+                                                            className={`mt-0.5 text-[11px] leading-tight ${
                                                                 isDark
                                                                     ? 'text-zinc-400'
                                                                     : 'text-zinc-500'
@@ -357,7 +383,7 @@ export default function Navbar() {
 
                                     {/* Mega Dropdown Footer Banner */}
                                     <div
-                                        className={`mt-3 pt-3 flex items-center justify-between border-t text-[11.5px] ${
+                                        className={`mt-3 flex items-center justify-between border-t pt-3 text-[11.5px] ${
                                             isDark
                                                 ? 'border-white/10 text-zinc-400'
                                                 : 'border-zinc-200 text-zinc-600'
@@ -365,12 +391,17 @@ export default function Navbar() {
                                     >
                                         <div className="flex items-center gap-2">
                                             <Shield className="h-4 w-4 text-cyan-400" />
-                                            <span>Need tailored enterprise architecture or NDA?</span>
+                                            <span>
+                                                Need tailored enterprise
+                                                architecture or NDA?
+                                            </span>
                                         </div>
                                         <Link
                                             href="/contact"
-                                            className="inline-flex items-center gap-1 font-semibold text-cyan-400 hover:text-cyan-300 hover:translate-x-0.5 transition-all"
-                                            onClick={() => setServicesDropdownOpen(false)}
+                                            className="inline-flex items-center gap-1 font-semibold text-cyan-400 transition-all hover:translate-x-0.5 hover:text-cyan-300"
+                                            onClick={() =>
+                                                setServicesDropdownOpen(false)
+                                            }
                                         >
                                             <span>Consult with CTO</span>
                                             <ArrowUpRight className="h-3.5 w-3.5" />
@@ -383,30 +414,31 @@ export default function Navbar() {
                             {MAIN_LINKS.slice(1).map((link) => {
                                 const isActive =
                                     url === link.href ||
-                                    (link.href !== '/' && url.startsWith(link.href));
+                                    (link.href !== '/' &&
+                                        url.startsWith(link.href));
 
                                 return (
                                     <li key={link.href}>
                                         <Link
                                             href={link.href}
-                                            className={`relative inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold uppercase tracking-wider transition-all duration-200 whitespace-nowrap ${
+                                            className={`relative inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 text-[11.5px] font-semibold tracking-wider whitespace-nowrap uppercase transition-all duration-200 ${
                                                 isActive
                                                     ? isDark
-                                                        ? 'text-white bg-cyan-400/15 shadow-[inset_0_0_12px_rgba(0,240,255,0.2)]'
-                                                        : 'text-sky-700 bg-sky-100'
+                                                        ? 'bg-cyan-400/15 text-white shadow-[inset_0_0_12px_rgba(0,240,255,0.2)]'
+                                                        : 'bg-sky-100 text-sky-700'
                                                     : isDark
-                                                        ? 'text-zinc-400 hover:text-white hover:bg-white/10'
-                                                        : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/60'
+                                                      ? 'text-zinc-400 hover:bg-white/10 hover:text-white'
+                                                      : 'text-zinc-600 hover:bg-zinc-200/60 hover:text-zinc-900'
                                             }`}
                                         >
                                             <span>{link.label}</span>
                                             {link.badge && (
-                                                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white">
+                                                <span className="rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-1.5 py-0.5 text-[8px] font-bold text-white">
                                                     {link.badge}
                                                 </span>
                                             )}
                                             {isActive && (
-                                                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-400 shadow-[0_0_8px_#00f0ff]" />
+                                                <span className="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-cyan-400 shadow-[0_0_8px_#00f0ff]" />
                                             )}
                                         </Link>
                                     </li>
@@ -421,10 +453,10 @@ export default function Navbar() {
                         <button
                             onClick={toggleTheme}
                             aria-label="Switch visual mode"
-                            className={`w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:scale-105 cursor-pointer ${
+                            className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border transition-all duration-200 hover:scale-105 ${
                                 isDark
-                                    ? 'bg-white/[0.04] border-white/10 text-white hover:bg-white/10 hover:border-cyan-400/30'
-                                    : 'bg-zinc-100 border-zinc-300 text-zinc-900 hover:bg-zinc-200 hover:border-sky-400/30'
+                                    ? 'border-white/10 bg-white/[0.04] text-white hover:border-cyan-400/30 hover:bg-white/10'
+                                    : 'border-zinc-300 bg-zinc-100 text-zinc-900 hover:border-sky-400/30 hover:bg-zinc-200'
                             }`}
                             title="Toggle Light / Dark Mode"
                         >
@@ -438,10 +470,10 @@ export default function Navbar() {
                         {/* Mail Icon Button */}
                         <a
                             href="mailto:zytrixon@gmail.com"
-                            className={`hidden sm:inline-flex w-9 h-9 rounded-full items-center justify-center border transition-all duration-200 hover:scale-105 ${
+                            className={`hidden h-9 w-9 items-center justify-center rounded-full border transition-all duration-200 hover:scale-105 sm:inline-flex ${
                                 isDark
-                                    ? 'bg-white/[0.04] border-white/10 hover:bg-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_15px_rgba(0,240,255,0.25)]'
-                                    : 'bg-zinc-100 border-zinc-300 hover:bg-zinc-200 hover:border-sky-400/40'
+                                    ? 'border-white/10 bg-white/[0.04] hover:border-cyan-400/40 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.25)]'
+                                    : 'border-zinc-300 bg-zinc-100 hover:border-sky-400/40 hover:bg-zinc-200'
                             }`}
                             aria-label="Send email"
                             title="Email: zytrixon@gmail.com"
@@ -454,10 +486,10 @@ export default function Navbar() {
                             href="https://wa.me/917049711475"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`hidden sm:inline-flex w-9 h-9 rounded-full items-center justify-center border transition-all duration-200 hover:scale-105 ${
+                            className={`hidden h-9 w-9 items-center justify-center rounded-full border transition-all duration-200 hover:scale-105 sm:inline-flex ${
                                 isDark
-                                    ? 'bg-white/[0.04] border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:shadow-[0_0_16px_rgba(37,211,102,0.3)]'
-                                    : 'bg-zinc-100 border-zinc-300 hover:bg-emerald-50 hover:border-emerald-500/40'
+                                    ? 'border-white/10 bg-white/[0.04] hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:shadow-[0_0_16px_rgba(37,211,102,0.3)]'
+                                    : 'border-zinc-300 bg-zinc-100 hover:border-emerald-500/40 hover:bg-emerald-50'
                             }`}
                             aria-label="Chat on WhatsApp"
                             title="WhatsApp: +91 70497 11475"
@@ -474,10 +506,10 @@ export default function Navbar() {
 
                         {/* Mobile Menu Trigger (strictly lg:hidden) */}
                         <button
-                            className={`lg:hidden w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-200 cursor-pointer ${
+                            className={`flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border transition-all duration-200 lg:hidden ${
                                 isDark
-                                    ? 'bg-white/[0.06] border-white/10 text-white'
-                                    : 'bg-zinc-100 border-zinc-300 text-zinc-900'
+                                    ? 'border-white/10 bg-white/[0.06] text-white'
+                                    : 'border-zinc-300 bg-zinc-100 text-zinc-900'
                             }`}
                             onClick={() => setMobileOpen(!mobileOpen)}
                             aria-label="Toggle navigation drawer"
@@ -494,10 +526,10 @@ export default function Navbar() {
 
             {/* Futuristic Fullscreen Mobile Navigation Drawer (strictly lg:hidden) */}
             <div
-                className={`fixed inset-0 z-[1005] lg:hidden flex transition-opacity duration-300 ${
+                className={`fixed inset-0 z-[1005] flex transition-opacity duration-300 lg:hidden ${
                     mobileOpen
-                        ? 'opacity-100 pointer-events-auto'
-                        : 'opacity-0 pointer-events-none'
+                        ? 'pointer-events-auto opacity-100'
+                        : 'pointer-events-none opacity-0'
                 }`}
                 aria-hidden={!mobileOpen}
             >
@@ -509,15 +541,15 @@ export default function Navbar() {
 
                 {/* Drawer Content */}
                 <div
-                    className={`relative ml-auto w-full max-w-[380px] h-full h-dvh flex flex-col p-6 overflow-y-auto border-l transition-transform duration-300 ease-out ${
+                    className={`relative ml-auto flex h-dvh h-full w-full max-w-[380px] flex-col overflow-y-auto border-l p-6 transition-transform duration-300 ease-out ${
                         isDark
-                            ? 'bg-[#0a0e17] border-white/10 text-white'
-                            : 'bg-white border-zinc-200 text-zinc-900'
+                            ? 'border-white/10 bg-[#0a0e17] text-white'
+                            : 'border-zinc-200 bg-white text-zinc-900'
                     } ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
                 >
                     {/* Drawer Header with Logo & Close */}
                     <div
-                        className={`flex items-center justify-between pb-4 border-b ${
+                        className={`flex items-center justify-between border-b pb-4 ${
                             isDark ? 'border-white/10' : 'border-zinc-200'
                         }`}
                     >
@@ -531,10 +563,10 @@ export default function Navbar() {
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={toggleTheme}
-                                className={`w-9 h-9 rounded-full flex items-center justify-center border cursor-pointer ${
+                                className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border ${
                                     isDark
-                                        ? 'bg-white/[0.04] border-white/10 text-white'
-                                        : 'bg-zinc-100 border-zinc-300 text-zinc-900'
+                                        ? 'border-white/10 bg-white/[0.04] text-white'
+                                        : 'border-zinc-300 bg-zinc-100 text-zinc-900'
                                 }`}
                                 aria-label="Toggle Theme"
                             >
@@ -546,10 +578,10 @@ export default function Navbar() {
                             </button>
                             <button
                                 onClick={() => setMobileOpen(false)}
-                                className={`w-9 h-9 rounded-full flex items-center justify-center border cursor-pointer ${
+                                className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border ${
                                     isDark
-                                        ? 'bg-white/[0.04] border-white/10 text-white'
-                                        : 'bg-zinc-100 border-zinc-300 text-zinc-900'
+                                        ? 'border-white/10 bg-white/[0.04] text-white'
+                                        : 'border-zinc-300 bg-zinc-100 text-zinc-900'
                                 }`}
                                 aria-label="Close menu"
                             >
@@ -562,34 +594,38 @@ export default function Navbar() {
                     <div className="flex flex-col gap-1.5 py-5">
                         <Link
                             href="/"
-                            className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-heading text-base font-bold transition-all ${
+                            className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 font-heading text-base font-bold transition-all ${
                                 url === '/'
                                     ? isDark
                                         ? 'bg-white/[0.06] text-cyan-400'
                                         : 'bg-zinc-100 text-sky-600'
                                     : isDark
-                                        ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
-                                        : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
+                                      ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
+                                      : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
                             }`}
                             onClick={() => setMobileOpen(false)}
                         >
-                            <span className="font-mono text-xs text-zinc-500">01</span>
+                            <span className="font-mono text-xs text-zinc-500">
+                                01
+                            </span>
                             <span>Home</span>
                         </Link>
 
                         {/* Expandable Services Accordion */}
                         <div className="flex flex-col">
                             <button
-                                className={`flex items-center justify-between w-full px-3.5 py-2.5 rounded-xl font-heading text-base font-bold transition-all cursor-pointer ${
+                                className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-3.5 py-2.5 font-heading text-base font-bold transition-all ${
                                     isServicesActive
                                         ? isDark
                                             ? 'bg-white/[0.06] text-cyan-400'
                                             : 'bg-zinc-100 text-sky-600'
                                         : isDark
-                                            ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
-                                            : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
+                                          ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
+                                          : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
                                 }`}
-                                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                                onClick={() =>
+                                    setMobileServicesOpen(!mobileServicesOpen)
+                                }
                             >
                                 <div className="flex items-center gap-3">
                                     <span className="font-mono text-xs text-zinc-500">
@@ -611,7 +647,7 @@ export default function Navbar() {
                                 <div className="flex flex-col gap-1.5 py-2 pl-7">
                                     <Link
                                         href="/services"
-                                        className="flex items-center gap-2.5 p-2 rounded-lg border border-dashed border-cyan-400/40 text-cyan-400 font-semibold text-xs transition-colors hover:bg-cyan-400/10"
+                                        className="flex items-center gap-2.5 rounded-lg border border-dashed border-cyan-400/40 p-2 text-xs font-semibold text-cyan-400 transition-colors hover:bg-cyan-400/10"
                                         onClick={() => setMobileOpen(false)}
                                     >
                                         <Layers className="h-4 w-4" />
@@ -623,15 +659,17 @@ export default function Navbar() {
                                             <Link
                                                 key={svc.slug}
                                                 href={`/services/${svc.slug}`}
-                                                className={`flex items-start gap-2.5 p-2 rounded-lg transition-colors ${
+                                                className={`flex items-start gap-2.5 rounded-lg p-2 transition-colors ${
                                                     isDark
                                                         ? 'bg-white/[0.02] hover:bg-cyan-400/10'
                                                         : 'bg-zinc-50 hover:bg-sky-50'
                                                 }`}
-                                                onClick={() => setMobileOpen(false)}
+                                                onClick={() =>
+                                                    setMobileOpen(false)
+                                                }
                                             >
-                                                <Icon className="h-4 w-4 text-cyan-400 mt-0.5 shrink-0" />
-                                                <div className="flex flex-col min-w-0">
+                                                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400" />
+                                                <div className="flex min-w-0 flex-col">
                                                     <span
                                                         className={`text-xs font-semibold ${
                                                             isDark
@@ -641,7 +679,7 @@ export default function Navbar() {
                                                     >
                                                         {svc.title}
                                                     </span>
-                                                    <span className="text-[11px] text-zinc-400 leading-tight">
+                                                    <span className="text-[11px] leading-tight text-zinc-400">
                                                         {svc.desc}
                                                     </span>
                                                 </div>
@@ -654,121 +692,133 @@ export default function Navbar() {
 
                         <Link
                             href="/portfolio"
-                            className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-heading text-base font-bold transition-all ${
+                            className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 font-heading text-base font-bold transition-all ${
                                 url.startsWith('/portfolio')
                                     ? isDark
                                         ? 'bg-white/[0.06] text-cyan-400'
                                         : 'bg-zinc-100 text-sky-600'
                                     : isDark
-                                        ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
-                                        : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
+                                      ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
+                                      : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
                             }`}
                             onClick={() => setMobileOpen(false)}
                         >
-                            <span className="font-mono text-xs text-zinc-500">03</span>
+                            <span className="font-mono text-xs text-zinc-500">
+                                03
+                            </span>
                             <span>Work</span>
                         </Link>
 
                         <Link
                             href="/case-studies"
-                            className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-base font-bold transition-all ${
+                            className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 font-heading text-base font-bold transition-all ${
                                 url.startsWith('/case-studies')
                                     ? isDark
                                         ? 'bg-white/[0.06] text-cyan-400'
                                         : 'bg-zinc-100 text-sky-600'
                                     : isDark
-                                        ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
-                                        : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
+                                      ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
+                                      : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
                             }`}
                             onClick={() => setMobileOpen(false)}
                         >
                             <div className="flex items-center gap-3">
-                                <span className="font-mono text-xs text-zinc-500">04</span>
+                                <span className="font-mono text-xs text-zinc-500">
+                                    04
+                                </span>
                                 <span>Case Studies</span>
                             </div>
-                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-cyan-400/15 text-cyan-400 border border-cyan-400/25">
+                            <span className="rounded border border-cyan-400/25 bg-cyan-400/15 px-1.5 py-0.5 text-[9px] font-bold text-cyan-400">
                                 NEW
                             </span>
                         </Link>
 
                         <Link
                             href="/about"
-                            className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-heading text-base font-bold transition-all ${
+                            className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 font-heading text-base font-bold transition-all ${
                                 url.startsWith('/about')
                                     ? isDark
                                         ? 'bg-white/[0.06] text-cyan-400'
                                         : 'bg-zinc-100 text-sky-600'
                                     : isDark
-                                        ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
-                                        : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
+                                      ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
+                                      : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
                             }`}
                             onClick={() => setMobileOpen(false)}
                         >
-                            <span className="font-mono text-xs text-zinc-500">05</span>
+                            <span className="font-mono text-xs text-zinc-500">
+                                05
+                            </span>
                             <span>About</span>
                         </Link>
 
                         <Link
                             href="/team"
-                            className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-heading text-base font-bold transition-all ${
+                            className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 font-heading text-base font-bold transition-all ${
                                 url.startsWith('/team')
                                     ? isDark
                                         ? 'bg-white/[0.06] text-cyan-400'
                                         : 'bg-zinc-100 text-sky-600'
                                     : isDark
-                                        ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
-                                        : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
+                                      ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
+                                      : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
                             }`}
                             onClick={() => setMobileOpen(false)}
                         >
-                            <span className="font-mono text-xs text-zinc-500">06</span>
+                            <span className="font-mono text-xs text-zinc-500">
+                                06
+                            </span>
                             <span>Team</span>
                         </Link>
 
                         <Link
                             href="/blog"
-                            className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-heading text-base font-bold transition-all ${
+                            className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 font-heading text-base font-bold transition-all ${
                                 url.startsWith('/blog')
                                     ? isDark
                                         ? 'bg-white/[0.06] text-cyan-400'
                                         : 'bg-zinc-100 text-sky-600'
                                     : isDark
-                                        ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
-                                        : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
+                                      ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
+                                      : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
                             }`}
                             onClick={() => setMobileOpen(false)}
                         >
-                            <span className="font-mono text-xs text-zinc-500">07</span>
+                            <span className="font-mono text-xs text-zinc-500">
+                                07
+                            </span>
                             <span>Blog</span>
                         </Link>
 
                         <Link
                             href="/contact"
-                            className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-heading text-base font-bold transition-all ${
+                            className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 font-heading text-base font-bold transition-all ${
                                 url.startsWith('/contact')
                                     ? isDark
                                         ? 'bg-white/[0.06] text-cyan-400'
                                         : 'bg-zinc-100 text-sky-600'
                                     : isDark
-                                        ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
-                                        : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
+                                      ? 'text-zinc-200 hover:bg-white/[0.04] hover:text-cyan-400'
+                                      : 'text-zinc-800 hover:bg-zinc-100 hover:text-sky-600'
                             }`}
                             onClick={() => setMobileOpen(false)}
                         >
-                            <span className="font-mono text-xs text-zinc-500">08</span>
+                            <span className="font-mono text-xs text-zinc-500">
+                                08
+                            </span>
                             <span>Contact</span>
                         </Link>
                     </div>
 
                     {/* Mobile Drawer Bottom Actions */}
                     <div
-                        className={`mt-auto flex flex-col gap-3 pt-4 border-t ${
+                        className={`mt-auto flex flex-col gap-3 border-t pt-4 ${
                             isDark ? 'border-white/10' : 'border-zinc-200'
                         }`}
                     >
                         <Link
                             href="/contact"
-                            className="flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-bold uppercase tracking-wider shadow-[0_10px_25px_-5px_rgba(0,240,255,0.3)] hover:opacity-95 transition-opacity"
+                            className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 px-5 py-3 text-xs font-bold tracking-wider text-white uppercase shadow-[0_10px_25px_-5px_rgba(0,240,255,0.3)] transition-opacity hover:opacity-95"
                             onClick={() => setMobileOpen(false)}
                         >
                             <span>Start a Project</span>
@@ -778,10 +828,10 @@ export default function Navbar() {
                         <div className="grid grid-cols-2 gap-2.5">
                             <a
                                 href="tel:+917049711475"
-                                className={`flex items-center justify-center gap-1.5 p-2.5 rounded-xl border text-xs font-semibold ${
+                                className={`flex items-center justify-center gap-1.5 rounded-xl border p-2.5 text-xs font-semibold ${
                                     isDark
-                                        ? 'bg-white/[0.04] border-white/10 text-white'
-                                        : 'bg-zinc-100 border-zinc-200 text-zinc-900'
+                                        ? 'border-white/10 bg-white/[0.04] text-white'
+                                        : 'border-zinc-200 bg-zinc-100 text-zinc-900'
                                 }`}
                             >
                                 <Phone className="h-4 w-4 text-cyan-400" />
@@ -791,10 +841,10 @@ export default function Navbar() {
                                 href="https://wa.me/917049711475"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`flex items-center justify-center gap-1.5 p-2.5 rounded-xl border text-xs font-semibold ${
+                                className={`flex items-center justify-center gap-1.5 rounded-xl border p-2.5 text-xs font-semibold ${
                                     isDark
-                                        ? 'bg-white/[0.04] border-white/10 text-white'
-                                        : 'bg-zinc-100 border-zinc-200 text-zinc-900'
+                                        ? 'border-white/10 bg-white/[0.04] text-white'
+                                        : 'border-zinc-200 bg-zinc-100 text-zinc-900'
                                 }`}
                             >
                                 <svg
@@ -813,7 +863,7 @@ export default function Navbar() {
                             <span>•</span>
                             <a
                                 href="mailto:zytrixon@gmail.com"
-                                className="hover:text-cyan-400 transition-colors"
+                                className="transition-colors hover:text-cyan-400"
                             >
                                 zytrixon@gmail.com
                             </a>

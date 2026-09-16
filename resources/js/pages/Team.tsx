@@ -37,23 +37,25 @@ export default function Team() {
             <GlobalFootprint />
 
             {/* 5. Custom Hiring Section */}
-            <section className="py-24 px-6 sm:px-10 text-center">
-                <div className="max-w-3xl mx-auto bg-card border border-border rounded-3xl p-10 sm:p-14 shadow-lg">
-                    <span className="inline-block font-heading text-xs font-bold uppercase tracking-widest text-primary mb-3 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+            <section className="px-6 py-24 text-center sm:px-10">
+                <div className="mx-auto max-w-3xl rounded-3xl border border-border bg-card p-10 shadow-lg sm:p-14">
+                    <span className="mb-3 inline-block rounded-full border border-primary/20 bg-primary/10 px-3 py-1 font-heading text-xs font-bold tracking-widest text-primary uppercase">
                         WE ARE HIRING
                     </span>
-                    <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
+                    <h2 className="mb-4 font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl">
                         Join Our Mission
                     </h2>
-                    <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
-                        We are always looking for exceptional talent. If you are passionate about building world-class software, we want to hear from you.
+                    <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                        We are always looking for exceptional talent. If you are
+                        passionate about building world-class software, we want
+                        to hear from you.
                     </p>
                     <Link
                         href="/careers"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-heading font-bold text-sm uppercase tracking-wider shadow-[0_0_25px_var(--accent-cyan-glow)] hover:scale-105 active:scale-95 transition-all duration-200"
+                        className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-heading text-sm font-bold tracking-wider text-primary-foreground uppercase shadow-[0_0_25px_var(--accent-cyan-glow)] transition-all duration-200 hover:scale-105 active:scale-95"
                     >
                         <span>View Open Positions</span>
-                        <ArrowUpRight className="w-4 h-4" />
+                        <ArrowUpRight className="h-4 w-4" />
                     </Link>
                 </div>
             </section>

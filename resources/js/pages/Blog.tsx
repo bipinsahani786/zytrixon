@@ -110,12 +110,12 @@ export default function Blog() {
             />
 
             {/* Featured Article */}
-            <section className="max-w-7xl mx-auto px-6 sm:px-10 py-12">
+            <section className="mx-auto max-w-7xl px-6 py-12 sm:px-10">
                 <BlogCard post={FEATURED_POST} featured={true} />
             </section>
 
             {/* Interactive Category Filter Pills */}
-            <section className="max-w-7xl mx-auto px-6 sm:px-10 py-4">
+            <section className="mx-auto max-w-7xl px-6 py-4 sm:px-10">
                 <FilterTabs
                     tabs={CATEGORIES}
                     activeTab={activeCategory}
@@ -124,8 +124,8 @@ export default function Blog() {
             </section>
 
             {/* Blog Post Grid */}
-            <section className="max-w-7xl mx-auto px-6 sm:px-10 py-12 pb-24">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <section className="mx-auto max-w-7xl px-6 py-12 pb-24 sm:px-10">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {filteredPosts.map((post) => (
                         <BlogCard key={post.slug} post={post} />
                     ))}
@@ -133,7 +133,7 @@ export default function Blog() {
             </section>
 
             {/* Reusable Newsletter Callout */}
-            <section className="border-t border-border/50 py-16 sm:py-24 px-6 sm:px-10 bg-card/20">
+            <section className="border-t border-border/50 bg-card/20 px-6 py-16 sm:px-10 sm:py-24">
                 <NewsletterBox />
             </section>
         </PublicLayout>

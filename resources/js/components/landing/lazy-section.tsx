@@ -19,7 +19,12 @@ export default function LazySection({
             className={className}
             style={{
                 contentVisibility: 'auto',
-                containIntrinsicSize: typeof minHeight === 'number' ? `${minHeight}px` : (minHeight !== 'auto' ? minHeight : '600px'),
+                containIntrinsicSize:
+                    typeof minHeight === 'number'
+                        ? `${minHeight}px`
+                        : minHeight !== 'auto'
+                          ? minHeight
+                          : '600px',
                 width: '100%',
             }}
         >

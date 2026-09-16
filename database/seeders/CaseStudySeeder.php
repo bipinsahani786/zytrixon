@@ -108,12 +108,9 @@ class CaseStudySeeder extends Seeder
         ];
 
         foreach ($caseStudies as $study) {
-            $serviceSlug = $serviceMap[$study['slug']] ?? null;
-            if ($serviceSlug) {
-                $service = Service::where('slug', $serviceSlug)->first();
-                if ($service) {
-                    $study['service_id'] = $service->id;
-                }
+            $service = Service::where('slug', $serviceMap[$study['slug']])->first();
+            if ($service) {
+                $study['service_id'] = $service->id;
             }
 
             CaseStudy::updateOrCreate(

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Symfony\Component\HttpFoundation\Response;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -48,16 +49,14 @@ class HandleInertiaRequests extends Middleware
     /**
      * Handle the incoming request and prevent stale proxy/browser caching of HTML.
      */
-    public function handle(Request $request, \Closure $next)
+    public function handle(Request $request, \Closure $next): Response
     {
         $response = parent::handle($request, $next);
 
-        if ($response instanceof \Symfony\Component\HttpFoundation\Response) {
-            $response->headers->set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0');
-            $response->headers->set('Pragma', 'no-cache');
-            $response->headers->set('Expires', '0');
-            $response->headers->set('X-LiteSpeed-Cache-Control', 'no-cache, no-store');
-        }
+        $response->headers->set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0');
+        $response->headers->set('Pragma', 'no-cache');
+        $response->headers->set('Expires', '0');
+        $response->headers->set('X-LiteSpeed-Cache-Control', 'no-cache, no-store');
 
         return $response;
     }

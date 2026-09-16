@@ -27,24 +27,26 @@ export default function MetricGrid({
 
     return (
         <div
-            className={`grid ${colClasses} gap-6 bg-card text-card-foreground border border-border rounded-2xl p-6 sm:p-8 shadow-sm backdrop-blur-md ${className}`}
+            className={`grid ${colClasses} gap-6 rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm backdrop-blur-md sm:p-8 ${className}`}
         >
             {metrics.map((item, idx) => (
                 <div
                     key={idx}
-                    className="flex flex-col items-center text-center p-2"
+                    className="flex flex-col items-center p-2 text-center"
                 >
-                    <div className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground flex items-baseline">
+                    <div className="flex items-baseline font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                         <span>{item.value}</span>
                         {item.suffix && (
-                            <span className="text-primary ml-0.5">{item.suffix}</span>
+                            <span className="ml-0.5 text-primary">
+                                {item.suffix}
+                            </span>
                         )}
                     </div>
-                    <div className="text-xs sm:text-sm font-heading font-semibold uppercase tracking-wider text-muted-foreground mt-2">
+                    <div className="mt-2 font-heading text-xs font-semibold tracking-wider text-muted-foreground uppercase sm:text-sm">
                         {item.label}
                     </div>
                     {item.description && (
-                        <p className="text-xs text-muted-foreground mt-1 max-w-[200px]">
+                        <p className="mt-1 max-w-[200px] text-xs text-muted-foreground">
                             {item.description}
                         </p>
                     )}

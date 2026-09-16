@@ -71,17 +71,17 @@ export default function FooterCTA() {
     return (
         <section
             ref={sectionRef}
-            className="bg-background text-foreground py-28 sm:py-36 px-6 sm:px-12 text-center border-t border-border transition-colors duration-300"
+            className="border-t border-border bg-background px-6 py-28 text-center text-foreground transition-colors duration-300 sm:px-12 sm:py-36"
         >
             <h2
                 ref={headlineRef}
-                className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground max-w-3xl mx-auto leading-tight"
+                className="mx-auto max-w-3xl font-heading text-4xl leading-tight font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl"
             >
                 Let's Build Something{' '}
                 <span className="text-primary">Extraordinary</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-muted-foreground max-w-lg mx-auto mt-6 leading-relaxed">
+            <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Ready to transform your idea into reality? Let's start the
                 conversation.
             </p>
@@ -94,11 +94,11 @@ export default function FooterCTA() {
                 <Link
                     ref={btnRef}
                     href="/contact"
-                    className="group inline-flex items-center gap-3 px-8 sm:px-12 py-4 sm:py-5 rounded-full bg-primary text-primary-foreground font-heading font-bold text-sm sm:text-base uppercase tracking-wider shadow-[0_0_30px_var(--accent-cyan-glow)] hover:shadow-[0_0_50px_var(--accent-cyan-glow)] hover:scale-105 active:scale-95 transition-all duration-300"
+                    className="group inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 font-heading text-sm font-bold tracking-wider text-primary-foreground uppercase shadow-[0_0_30px_var(--accent-cyan-glow)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_var(--accent-cyan-glow)] active:scale-95 sm:px-12 sm:py-5 sm:text-base"
                 >
                     <span>Start a Project</span>
                     <svg
-                        className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                        className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"

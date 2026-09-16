@@ -43,8 +43,12 @@ export default function CaseStudyDetails({
     seo,
 }: CaseStudyDetailsProps) {
     const parseResults = (results: string[] | string | null): string[] => {
-        if (!results) return [];
-        if (Array.isArray(results)) return results;
+        if (!results) {
+return [];
+}
+        if (Array.isArray(results)) {
+return results;
+}
         try {
             return JSON.parse(results);
         } catch {

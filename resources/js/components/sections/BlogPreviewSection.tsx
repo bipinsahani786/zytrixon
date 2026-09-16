@@ -40,15 +40,15 @@ export default function BlogPreviewSection({ service }: any) {
     ];
 
     return (
-        <section className="zy-section bg-background border-t border-border/50 py-20 px-6 sm:px-10">
-            <div className="max-w-7xl mx-auto">
+        <section className="zy-section border-t border-border/50 bg-background px-6 py-20 sm:px-10">
+            <div className="mx-auto max-w-7xl">
                 <SectionHeader
                     badge="LATEST INSIGHTS"
                     title="Industry News & Blogs"
                     subtitle="Expert perspectives, architectural guides, and digital engineering updates from our tech leads."
                 />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {dummyBlogs.map((blog, i) => (
                         <BlogCard key={i} post={blog} />
                     ))}

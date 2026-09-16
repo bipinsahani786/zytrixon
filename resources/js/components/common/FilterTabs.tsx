@@ -29,10 +29,10 @@ export default function FilterTabs({
                         role="tab"
                         aria-selected={isActive}
                         onClick={() => onTabChange(tab)}
-                        className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-heading font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
+                        className={`cursor-pointer rounded-full px-4 py-2 font-heading text-xs font-semibold tracking-wide transition-all duration-200 sm:px-5 sm:py-2.5 sm:text-sm ${
                             isActive
-                                ? 'bg-primary text-primary-foreground shadow-[0_0_20px_var(--accent-cyan-glow)] scale-105'
-                                : 'bg-card/70 text-muted-foreground border border-border hover:border-primary/40 hover:text-foreground hover:bg-muted/40'
+                                ? 'scale-105 bg-primary text-primary-foreground shadow-[0_0_20px_var(--accent-cyan-glow)]'
+                                : 'border border-border bg-card/70 text-muted-foreground hover:border-primary/40 hover:bg-muted/40 hover:text-foreground'
                         }`}
                     >
                         {tab}

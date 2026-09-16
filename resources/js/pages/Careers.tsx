@@ -55,34 +55,34 @@ export default function Careers() {
             />
 
             {/* Job Openings Section */}
-            <section className="max-w-7xl mx-auto px-6 sm:px-10 py-20">
+            <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10">
                 <SectionHeader
                     badge="JOIN OUR TEAM"
                     title="Open Positions"
                     subtitle="Explore our current engineering, design, and AI openings and find where you fit in."
                 />
 
-                <div className="flex flex-col gap-5 max-w-4xl mx-auto">
+                <div className="mx-auto flex max-w-4xl flex-col gap-5">
                     {JOBS.map((job) => (
                         <div
                             key={job.id}
-                            className="group flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-6 sm:p-8 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                            className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg sm:flex-row sm:items-center sm:p-8"
                         >
                             <div>
-                                <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-200 mb-3">
+                                <h3 className="mb-3 font-heading text-xl font-bold text-foreground transition-colors duration-200 group-hover:text-primary sm:text-2xl">
                                     {job.title}
                                 </h3>
-                                <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-muted-foreground">
+                                <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground sm:text-sm">
                                     <span className="inline-flex items-center gap-1.5">
-                                        <Briefcase className="w-4 h-4 text-primary" />
+                                        <Briefcase className="h-4 w-4 text-primary" />
                                         {job.department}
                                     </span>
                                     <span className="inline-flex items-center gap-1.5">
-                                        <MapPin className="w-4 h-4 text-primary" />
+                                        <MapPin className="h-4 w-4 text-primary" />
                                         {job.location}
                                     </span>
                                     <span className="inline-flex items-center gap-1.5">
-                                        <Clock className="w-4 h-4 text-primary" />
+                                        <Clock className="h-4 w-4 text-primary" />
                                         {job.type}
                                     </span>
                                 </div>
@@ -90,10 +90,10 @@ export default function Careers() {
 
                             <a
                                 href={`mailto:zytrixon@gmail.com?subject=Application for ${encodeURIComponent(job.title)}`}
-                                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-heading font-bold text-xs sm:text-sm uppercase tracking-wider shadow-sm hover:shadow-[0_0_20px_var(--accent-cyan-glow)] hover:scale-105 active:scale-95 transition-all duration-200 shrink-0 self-start sm:self-center"
+                                className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-primary px-6 py-3 font-heading text-xs font-bold tracking-wider text-primary-foreground uppercase shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-[0_0_20px_var(--accent-cyan-glow)] active:scale-95 sm:self-center sm:text-sm"
                             >
                                 <span>Apply Now</span>
-                                <ArrowUpRight className="w-4 h-4" />
+                                <ArrowUpRight className="h-4 w-4" />
                             </a>
                         </div>
                     ))}
