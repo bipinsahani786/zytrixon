@@ -20,13 +20,6 @@ const TEAM = [
         image: '/assets/team/saurav.png',
         color: '#ec4899',
     },
-    {
-        name: 'Anup Kumar',
-        role: 'Chief Marketing Officer',
-        bio: 'Crafting brand narratives and leading digital marketing to expand our market reach.',
-        image: '/assets/team/anup.png',
-        color: '#f59e0b',
-    },
 ];
 
 export default function TeamSection() {
@@ -106,9 +99,10 @@ export default function TeamSection() {
                 style={{
                     display: 'grid',
                     gridTemplateColumns:
-                        'repeat(auto-fill, minmax(320px, 1fr))',
+                        'repeat(auto-fit, minmax(280px, 400px))',
+                    justifyContent: 'center',
                     gap: 40,
-                    maxWidth: 1200,
+                    maxWidth: 900,
                     margin: '0 auto',
                 }}
             >
