@@ -87,9 +87,9 @@
                         'availableLanguage' => ['English', 'Hindi']
                     ],
                     'sameAs' => [
-                        'https://www.facebook.com/zytrixon',
-                        'https://www.instagram.com/zytrixon',
-                        'https://www.linkedin.com/company/zytrixon',
+                        'https://www.facebook.com/share/1Jdf9MjT4H/',
+                        'https://www.instagram.com/zytrixontech_com',
+                        'https://www.linkedin.com/company/zytrixon/',
                         'https://twitter.com/zytrixon'
                     ],
                     'priceRange' => '$$',

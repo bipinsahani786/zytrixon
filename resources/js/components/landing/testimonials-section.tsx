@@ -1,29 +1,41 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
+import { useTheme } from '@/components/landing/theme-provider';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TESTIMONIALS = [
+interface Testimonial {
+    quote: string;
+    author: string;
+    company: string;
+    accentColor: string;
+}
+
+const TESTIMONIALS: Testimonial[] = [
     {
-        quote: 'Zytrixon understands business logic, not just code. The best software team in Bihar. They delivered our School Management System ahead of schedule.',
-        author: 'Rahul Kumar',
-        role: 'CEO, TechEdu',
+        quote: 'Zytrixon engineered a secure, confidential digital portal and encrypted client management system for our agency. Their zero-trust architecture and flawless execution ensured absolute data security and discretion. Outstanding technology partners.',
+        author: 'Pawan Tyagi',
+        company: 'Smart India Detective',
+        accentColor: '#D4AF37', // Gold
     },
     {
-        quote: 'Our sales increased by 200% after they revamped our e-commerce site. The team was professional, responsive, and truly cared about our success.',
-        author: 'Sneha Singh',
-        role: 'Founder, DressUp',
+        quote: 'Scaling our infrastructure operations required enterprise-level precision. Zytrixon delivered an end-to-end digital tracking and project management platform that streamlined our site workflows by 150%. Unmatched reliability and technical excellence.',
+        author: 'Sandeep Tyagi',
+        company: 'S.K. Infratech',
+        accentColor: '#F97316', // Orange
     },
     {
-        quote: 'Professional, Timely, and Creative. The IoT dashboard is working flawlessly. Their engineering team handles complexity with ease.',
-        author: 'Amit Raj',
-        role: 'Manager, SmartFactory',
+        quote: 'From brand presence to high-concurrency commerce architecture, Zytrixon transformed Thread Ax into a modern digital powerhouse. Their team builds with speed, aesthetic perfection, and rock-solid performance.',
+        author: 'Prince Chaudhary',
+        company: 'Thread Ax',
+        accentColor: '#00F0FF', // Cyan
     },
     {
-        quote: 'From concept to deployment, Zytrixon was a true technology partner. The affiliate marketing app they built exceeded every expectation.',
-        author: 'Vikash Gupta',
-        role: 'Founder, EarnMax',
+        quote: 'Our retail and hyper-local delivery operations reached new heights with the fast, intuitive online ordering system Zytrixon created. Daily customer orders grew exponentially with zero downtime. Truly the best software team.',
+        author: '',
+        company: 'Mithila Grocery',
+        accentColor: '#10B981', // Emerald green
     },
 ];
 
@@ -32,6 +44,15 @@ export default function TestimonialsSection() {
     const quoteRef = useRef<HTMLParagraphElement>(null);
     const authorRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
+    const { theme } = useTheme();
+    const isLight = theme === 'light';
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const activeIsLight = mounted && isLight;
 
     useEffect(() => {
         if (!sectionRef.current) {
@@ -64,11 +85,11 @@ export default function TestimonialsSection() {
         return () => ctx.revert();
     }, []);
 
-    // Auto-play
+    // Auto-play interval
     useEffect(() => {
         const interval = setInterval(() => {
             handleSlideChange((activeIndex + 1) % TESTIMONIALS.length);
-        }, 6000);
+        }, 6500);
 
         return () => clearInterval(interval);
     }, [activeIndex]);
@@ -81,150 +102,210 @@ export default function TestimonialsSection() {
         // Fade out
         gsap.to([quoteRef.current, authorRef.current], {
             opacity: 0,
-            y: 10,
-            duration: 0.3,
+            y: 12,
+            duration: 0.25,
+            ease: 'power2.in',
             onComplete: () => {
                 setActiveIndex(newIndex);
                 // Fade in
                 gsap.fromTo(
                     [quoteRef.current, authorRef.current],
-                    { opacity: 0, y: -10 },
+                    { opacity: 0, y: -12 },
                     {
                         opacity: 1,
                         y: 0,
-                        duration: 0.5,
+                        duration: 0.45,
                         ease: 'power2.out',
-                        stagger: 0.1,
+                        stagger: 0.08,
                     },
                 );
             },
         });
     };
 
+    const current = TESTIMONIALS[activeIndex];
+
     return (
         <section
             ref={sectionRef}
             className="zy-section"
             style={{
-                background: 'var(--zy-black)',
+                background: activeIsLight ? '#f8fafc' : 'var(--zy-black)',
                 minHeight: '80vh',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
+                paddingTop: '80px',
+                paddingBottom: '80px',
+                transition: 'background-color 0.3s ease',
             }}
         >
             <div
                 className="zy-section-header"
-                style={{ textAlign: 'center', marginBottom: '60px' }}
+                style={{ textAlign: 'center', marginBottom: '50px' }}
             >
                 <span className="zy-section-label">Testimonials</span>
-                <h2 className="zy-section-title">What Our Clients Say</h2>
+                <h2
+                    className="zy-section-title"
+                    style={{
+                        color: activeIsLight ? '#0f172a' : 'var(--zy-white)',
+                    }}
+                >
+                    What Our Clients Say
+                </h2>
+                <p
+                    className="zy-section-subtitle"
+                    style={{
+                        margin: '12px auto 0',
+                        fontSize: '15px',
+                        color: activeIsLight ? '#64748b' : 'var(--zy-gray-text)',
+                    }}
+                >
+                    Real feedback from leaders driving business growth with Zytrixon Tech.
+                </p>
             </div>
 
             <div
                 style={{
-                    maxWidth: '900px',
+                    maxWidth: '920px',
                     margin: '0 auto',
                     textAlign: 'center',
                     position: 'relative',
-                    padding: '0 20px',
+                    padding: '0 24px',
+                    width: '100%',
                 }}
             >
                 {/* Huge stylized quote mark */}
                 <div
                     style={{
                         position: 'absolute',
-                        top: '-60px',
+                        top: '-70px',
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        fontSize: '180px',
+                        fontSize: '200px',
                         lineHeight: 1,
                         fontFamily: 'serif',
-                        color: 'rgba(255,255,255,0.03)',
+                        color: activeIsLight
+                            ? 'rgba(0, 0, 0, 0.04)'
+                            : 'rgba(255, 255, 255, 0.03)',
                         zIndex: 0,
                         pointerEvents: 'none',
+                        userSelect: 'none',
                     }}
                 >
-                    "
+                    &ldquo;
                 </div>
 
                 <div
                     style={{
                         position: 'relative',
                         zIndex: 1,
-                        minHeight: '200px',
+                        minHeight: '220px',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
                     }}
                 >
+                    {/* Testimonial Quote */}
                     <p
                         ref={quoteRef}
                         style={{
-                            fontSize: 'clamp(20px, 3vw, 32px)',
-                            lineHeight: 1.6,
-                            color: 'var(--zy-white)',
-                            fontWeight: 300,
-                            marginBottom: '40px',
-                            fontFamily: 'var(--font-heading)',
+                            fontSize: 'clamp(16px, 2.2vw, 21px)',
+                            lineHeight: 1.75,
+                            color: activeIsLight ? '#334155' : 'rgba(255, 255, 255, 0.92)',
+                            fontWeight: 400,
+                            maxWidth: '820px',
+                            margin: '0 auto 32px',
+                            fontFamily: 'var(--font-sans)',
+                            letterSpacing: '-0.01em',
                         }}
                     >
-                        "{TESTIMONIALS[activeIndex].quote}"
+                        &ldquo;{current.quote}&rdquo;
                     </p>
 
-                    <div ref={authorRef}>
+                    {/* Author & Company Meta */}
+                    <div
+                        ref={authorRef}
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: '6px',
+                            marginTop: '4px',
+                        }}
+                    >
+                        {/* Person Name in stylish italic font */}
+                        {current.author ? (
+                            <div
+                                style={{
+                                    fontFamily: 'var(--font-heading)',
+                                    fontSize: 'clamp(22px, 3vw, 28px)',
+                                    fontWeight: 800,
+                                    fontStyle: 'italic',
+                                    letterSpacing: '-0.01em',
+                                    color: activeIsLight ? '#0f172a' : '#ffffff',
+                                    textTransform: 'capitalize',
+                                }}
+                            >
+                                {current.author}
+                            </div>
+                        ) : null}
+
+                        {/* Company Name in stylish italic font with color accent */}
                         <div
                             style={{
                                 fontFamily: 'var(--font-heading)',
-                                fontSize: '18px',
+                                fontSize: current.author
+                                    ? 'clamp(15px, 2vw, 18px)'
+                                    : 'clamp(24px, 3.5vw, 30px)',
                                 fontWeight: 700,
-                                color: 'var(--zy-white)',
-                                marginBottom: '8px',
-                                letterSpacing: '0.02em',
+                                fontStyle: 'italic',
+                                letterSpacing: '0.04em',
+                                textTransform: current.author ? 'none' : 'capitalize',
+                                color: current.accentColor,
+                                textShadow: activeIsLight
+                                    ? 'none'
+                                    : `0 0 25px ${current.accentColor}44`,
                             }}
                         >
-                            {TESTIMONIALS[activeIndex].author}
-                        </div>
-                        <div
-                            style={{
-                                fontSize: '14px',
-                                color: 'var(--zy-gray-text)',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.1em',
-                                fontWeight: 600,
-                            }}
-                        >
-                            {TESTIMONIALS[activeIndex].role}
+                            {current.company}
                         </div>
                     </div>
                 </div>
 
-                {/* Progress Dots */}
+                {/* Navigation Dots */}
                 <div
                     style={{
                         display: 'flex',
                         justifyContent: 'center',
+                        alignItems: 'center',
                         gap: '12px',
-                        marginTop: '60px',
+                        marginTop: '50px',
                     }}
                 >
-                    {TESTIMONIALS.map((_, i) => (
+                    {TESTIMONIALS.map((t, i) => (
                         <button
                             key={i}
                             onClick={() => handleSlideChange(i)}
-                            aria-label={`Go to testimonial ${i + 1}`}
+                            aria-label={`Go to testimonial for ${t.company}`}
                             style={{
-                                width: activeIndex === i ? '32px' : '8px',
-                                height: '8px',
-                                borderRadius: '4px',
+                                width: activeIndex === i ? '36px' : '10px',
+                                height: '10px',
+                                borderRadius: '5px',
                                 background:
                                     activeIndex === i
-                                        ? 'var(--zy-white)'
-                                        : 'rgba(255,255,255,0.2)',
+                                        ? t.accentColor
+                                        : activeIsLight
+                                          ? 'rgba(0,0,0,0.15)'
+                                          : 'rgba(255,255,255,0.2)',
                                 border: 'none',
                                 cursor: 'pointer',
                                 padding: 0,
-                                transition: 'all 0.3s var(--zy-ease)',
+                                transition: 'all 0.35s var(--zy-ease)',
+                                boxShadow:
+                                    activeIndex === i && !activeIsLight
+                                        ? `0 0 12px ${t.accentColor}66`
+                                        : 'none',
                             }}
                         />
                     ))}

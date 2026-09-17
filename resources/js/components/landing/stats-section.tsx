@@ -5,9 +5,9 @@ import { useEffect, useRef } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-    { value: 50, suffix: '+', label: 'Projects Done' },
+    { value: 25, suffix: '+', label: 'Projects Done' },
     { value: 98, suffix: '%', label: 'Success Rate' },
-    { value: 20, suffix: '+', label: 'Expert Engineers' },
+    { value: 10, suffix: '+', label: 'Expert Engineers' },
     { value: 5, suffix: '+', label: 'Countries Served' },
 ];
 
