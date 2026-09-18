@@ -157,10 +157,14 @@ export default function PortfolioPreview({
                                             transition: 'color 0.3s ease',
                                         }}
                                         onMouseEnter={(e) => {
-                                            (e.currentTarget as HTMLElement).style.color = project.accentColor;
+                                            (
+                                                e.currentTarget as HTMLElement
+                                            ).style.color = project.accentColor;
                                         }}
                                         onMouseLeave={(e) => {
-                                            (e.currentTarget as HTMLElement).style.color = 'var(--zy-white)';
+                                            (
+                                                e.currentTarget as HTMLElement
+                                            ).style.color = 'var(--zy-white)';
                                         }}
                                     >
                                         {project.title}
@@ -186,40 +190,51 @@ export default function PortfolioPreview({
                                         marginBottom: '32px',
                                     }}
                                 >
-                                    {project.metrics.slice(0, 2).map((m, mIdx) => (
-                                        <div
-                                            key={mIdx}
-                                            style={{
-                                                background: 'rgba(255,255,255,0.04)',
-                                                border: '1px solid rgba(255,255,255,0.08)',
-                                                borderRadius: '12px',
-                                                padding: '10px 16px',
-                                            }}
-                                        >
+                                    {project.metrics
+                                        .slice(0, 2)
+                                        .map((m, mIdx) => (
                                             <div
+                                                key={mIdx}
                                                 style={{
-                                                    fontSize: '18px',
-                                                    fontWeight: 800,
-                                                    color: project.accentColor,
-                                                    fontFamily: 'var(--font-heading)',
+                                                    background:
+                                                        'rgba(255,255,255,0.04)',
+                                                    border: '1px solid rgba(255,255,255,0.08)',
+                                                    borderRadius: '12px',
+                                                    padding: '10px 16px',
                                                 }}
                                             >
-                                                {m.value}
+                                                <div
+                                                    style={{
+                                                        fontSize: '18px',
+                                                        fontWeight: 800,
+                                                        color: project.accentColor,
+                                                        fontFamily:
+                                                            'var(--font-heading)',
+                                                    }}
+                                                >
+                                                    {m.value}
+                                                </div>
+                                                <div
+                                                    style={{
+                                                        fontSize: '12px',
+                                                        color: 'var(--zy-gray-text)',
+                                                        marginTop: '2px',
+                                                    }}
+                                                >
+                                                    {m.label}
+                                                </div>
                                             </div>
-                                            <div
-                                                style={{
-                                                    fontSize: '12px',
-                                                    color: 'var(--zy-gray-text)',
-                                                    marginTop: '2px',
-                                                }}
-                                            >
-                                                {m.label}
-                                            </div>
-                                        </div>
-                                    ))}
+                                        ))}
                                 </div>
 
-                                <div style={{ display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' }}>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        gap: '14px',
+                                        alignItems: 'center',
+                                        flexWrap: 'wrap',
+                                    }}
+                                >
                                     <Link
                                         href={projectUrl}
                                         className="portfolio-btn"
@@ -251,7 +266,12 @@ export default function PortfolioPreview({
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                         >
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <line
+                                                x1="5"
+                                                y1="12"
+                                                x2="19"
+                                                y2="12"
+                                            ></line>
                                             <polyline points="12 5 19 12 12 19"></polyline>
                                         </svg>
                                     </Link>
@@ -270,10 +290,15 @@ export default function PortfolioPreview({
                                             transition: 'color 0.2s',
                                         }}
                                         onMouseEnter={(e) => {
-                                            (e.currentTarget as HTMLElement).style.color = '#FFFFFF';
+                                            (
+                                                e.currentTarget as HTMLElement
+                                            ).style.color = '#FFFFFF';
                                         }}
                                         onMouseLeave={(e) => {
-                                            (e.currentTarget as HTMLElement).style.color = 'var(--zy-gray-text)';
+                                            (
+                                                e.currentTarget as HTMLElement
+                                            ).style.color =
+                                                'var(--zy-gray-text)';
                                         }}
                                     >
                                         Live Demo ↗

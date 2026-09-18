@@ -23,8 +23,8 @@ class CaseStudyController extends Controller
             'slug' => $slug,
             'caseStudy' => $caseStudy,
             'seo' => [
-                'title' => ($caseStudy?->title ?? ucwords(str_replace('-', ' ', $slug))) . ' | Zytrixon Tech',
-                'description' => $caseStudy?->solution ?? 'Explore our enterprise software case study and live demo delivered by Zytrixon Tech.',
+                'title' => ($caseStudy->title ?? ucwords(str_replace('-', ' ', $slug))).' | Zytrixon Tech',
+                'description' => $caseStudy->solution ?? 'Explore our enterprise software case study and live demo delivered by Zytrixon Tech.',
             ],
         ]);
     }

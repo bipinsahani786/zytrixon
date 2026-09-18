@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ProjectItem, ProjectScreenshot } from '@/lib/projects-data';
+import type { ProjectItem, ProjectScreenshot } from '@/lib/projects-data';
 
 interface ProjectGalleryProps {
     project: ProjectItem;
@@ -7,14 +7,20 @@ interface ProjectGalleryProps {
 
 export default function ProjectGallery({ project }: ProjectGalleryProps) {
     const [selectedCategory, setSelectedCategory] = useState<string>('All');
-    const [lightboxImage, setLightboxImage] = useState<ProjectScreenshot | null>(null);
+    const [lightboxImage, setLightboxImage] =
+        useState<ProjectScreenshot | null>(null);
 
-    const categories = ['All', ...Array.from(new Set(project.screenshots.map((s) => s.category)))];
+    const categories = [
+        'All',
+        ...Array.from(new Set(project.screenshots.map((s) => s.category))),
+    ];
 
     const filteredScreenshots =
         selectedCategory === 'All'
             ? project.screenshots
-            : project.screenshots.filter((s) => s.category === selectedCategory);
+            : project.screenshots.filter(
+                  (s) => s.category === selectedCategory,
+              );
 
     // Escape listener for Lightbox
     useEffect(() => {
@@ -28,7 +34,13 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
     }, []);
 
     return (
-        <section style={{ padding: '90px var(--zy-section-pad-x, 24px)', maxWidth: '1200px', margin: '0 auto' }}>
+        <section
+            style={{
+                padding: '90px var(--zy-section-pad-x, 24px)',
+                maxWidth: '1200px',
+                margin: '0 auto',
+            }}
+        >
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                 <span
                     style={{
@@ -43,7 +55,8 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 </span>
                 <h2
                     style={{
-                        fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                        fontFamily:
+                            'var(--font-heading, Space Grotesk, sans-serif)',
                         fontSize: 'clamp(28px, 4vw, 42px)',
                         fontWeight: 800,
                         marginTop: '10px',
@@ -52,12 +65,27 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 >
                     Explore Every Screen & Workflow
                 </h2>
-                <p style={{ color: '#888888', fontSize: '16px', maxWidth: '600px', margin: '10px auto 30px' }}>
-                    Click on any screenshot to view the full ultra-high resolution interface.
+                <p
+                    style={{
+                        color: '#888888',
+                        fontSize: '16px',
+                        maxWidth: '600px',
+                        margin: '10px auto 30px',
+                    }}
+                >
+                    Click on any screenshot to view the full ultra-high
+                    resolution interface.
                 </p>
 
                 {/* Category Filter Tabs */}
-                <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexWrap: 'wrap',
+                        gap: '10px',
+                    }}
+                >
                     {categories.map((cat) => (
                         <button
                             key={cat}
@@ -76,7 +104,10 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                                     selectedCategory === cat
                                         ? `${project.accentColor}20`
                                         : 'rgba(255,255,255,0.04)',
-                                color: selectedCategory === cat ? project.accentColor : '#888888',
+                                color:
+                                    selectedCategory === cat
+                                        ? project.accentColor
+                                        : '#888888',
                                 transition: 'all 0.2s ease',
                             }}
                         >
@@ -108,19 +139,33 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                             boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-6px)';
-                            e.currentTarget.style.borderColor = project.accentColor;
+                            e.currentTarget.style.transform =
+                                'translateY(-6px)';
+                            e.currentTarget.style.borderColor =
+                                project.accentColor;
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                            e.currentTarget.style.borderColor =
+                                'rgba(255,255,255,0.08)';
                         }}
                     >
-                        <div style={{ width: '100%', height: '240px', overflow: 'hidden', position: 'relative' }}>
+                        <div
+                            style={{
+                                width: '100%',
+                                height: '240px',
+                                overflow: 'hidden',
+                                position: 'relative',
+                            }}
+                        >
                             <img
                                 src={ss.image}
                                 alt={ss.title}
-                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                }}
                             />
                             <div
                                 style={{
@@ -156,10 +201,23 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                         </div>
 
                         <div style={{ padding: '22px' }}>
-                            <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#ffffff', marginBottom: '8px' }}>
+                            <h3
+                                style={{
+                                    fontSize: '17px',
+                                    fontWeight: 700,
+                                    color: '#ffffff',
+                                    marginBottom: '8px',
+                                }}
+                            >
                                 {ss.title}
                             </h3>
-                            <p style={{ fontSize: '13px', color: '#888888', lineHeight: 1.6 }}>
+                            <p
+                                style={{
+                                    fontSize: '13px',
+                                    color: '#888888',
+                                    lineHeight: 1.6,
+                                }}
+                            >
                                 {ss.description}
                             </p>
                         </div>
@@ -221,16 +279,42 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                         <img
                             src={lightboxImage.image}
                             alt={lightboxImage.title}
-                            style={{ width: '100%', maxHeight: '72vh', objectFit: 'contain', background: '#000000' }}
+                            style={{
+                                width: '100%',
+                                maxHeight: '72vh',
+                                objectFit: 'contain',
+                                background: '#000000',
+                            }}
                         />
                         <div style={{ padding: '24px 30px' }}>
-                            <div style={{ fontSize: '11px', textTransform: 'uppercase', color: project.accentColor, fontWeight: 700, letterSpacing: '0.1em' }}>
+                            <div
+                                style={{
+                                    fontSize: '11px',
+                                    textTransform: 'uppercase',
+                                    color: project.accentColor,
+                                    fontWeight: 700,
+                                    letterSpacing: '0.1em',
+                                }}
+                            >
                                 {lightboxImage.category} View
                             </div>
-                            <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#ffffff', marginTop: '4px' }}>
+                            <h3
+                                style={{
+                                    fontSize: '20px',
+                                    fontWeight: 700,
+                                    color: '#ffffff',
+                                    marginTop: '4px',
+                                }}
+                            >
                                 {lightboxImage.title}
                             </h3>
-                            <p style={{ fontSize: '14px', color: '#999999', marginTop: '6px' }}>
+                            <p
+                                style={{
+                                    fontSize: '14px',
+                                    color: '#999999',
+                                    marginTop: '6px',
+                                }}
+                            >
                                 {lightboxImage.description}
                             </p>
                         </div>

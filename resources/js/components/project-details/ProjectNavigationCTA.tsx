@@ -1,17 +1,26 @@
 import React from 'react';
 import { Link } from '@inertiajs/react';
-import { ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
 
 interface ProjectNavigationCTAProps {
     project: ProjectItem;
     otherProject: ProjectItem;
 }
 
-export default function ProjectNavigationCTA({ project, otherProject }: ProjectNavigationCTAProps) {
+export default function ProjectNavigationCTA({
+    project,
+    otherProject,
+}: ProjectNavigationCTAProps) {
     return (
         <>
             {/* Live Experience Callout Banner */}
-            <section style={{ padding: '0 var(--zy-section-pad-x, 24px) 90px', maxWidth: '1200px', margin: '0 auto' }}>
+            <section
+                style={{
+                    padding: '0 var(--zy-section-pad-x, 24px) 90px',
+                    maxWidth: '1200px',
+                    margin: '0 auto',
+                }}
+            >
                 <div
                     style={{
                         background: `radial-gradient(circle at 80% 50%, ${project.accentColor}18 0%, rgba(15,15,18,0.95) 100%)`,
@@ -40,7 +49,8 @@ export default function ProjectNavigationCTA({ project, otherProject }: ProjectN
                         </span>
                         <h3
                             style={{
-                                fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                                fontFamily:
+                                    'var(--font-heading, Space Grotesk, sans-serif)',
                                 fontSize: 'clamp(24px, 3.5vw, 36px)',
                                 fontWeight: 800,
                                 color: '#ffffff',
@@ -49,8 +59,16 @@ export default function ProjectNavigationCTA({ project, otherProject }: ProjectN
                         >
                             Test {project.shortTitle} in Your Browser
                         </h3>
-                        <p style={{ color: '#999999', fontSize: '15px', marginTop: '8px', maxWidth: '640px' }}>
-                            Explore live responsive dashboards, biometric sync feeds, and payment test flows directly.
+                        <p
+                            style={{
+                                color: '#999999',
+                                fontSize: '15px',
+                                marginTop: '8px',
+                                maxWidth: '640px',
+                            }}
+                        >
+                            Explore live responsive dashboards, biometric sync
+                            feeds, and payment test flows directly.
                         </p>
                     </div>
 
@@ -80,7 +98,13 @@ export default function ProjectNavigationCTA({ project, otherProject }: ProjectN
             </section>
 
             {/* Next Project Switcher Navigation */}
-            <section style={{ padding: '0 var(--zy-section-pad-x, 24px) 100px', maxWidth: '1200px', margin: '0 auto' }}>
+            <section
+                style={{
+                    padding: '0 var(--zy-section-pad-x, 24px) 100px',
+                    maxWidth: '1200px',
+                    margin: '0 auto',
+                }}
+            >
                 <div
                     style={{
                         borderTop: '1px solid rgba(255, 255, 255, 0.08)',
@@ -122,8 +146,13 @@ export default function ProjectNavigationCTA({ project, otherProject }: ProjectN
                             transition: 'all 0.3s ease',
                         }}
                     >
-                        <span>Next Case Study: <strong>{otherProject.shortTitle}</strong></span>
-                        <span style={{ color: otherProject.accentColor }}>→</span>
+                        <span>
+                            Next Case Study:{' '}
+                            <strong>{otherProject.shortTitle}</strong>
+                        </span>
+                        <span style={{ color: otherProject.accentColor }}>
+                            →
+                        </span>
                     </Link>
                 </div>
             </section>

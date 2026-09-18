@@ -158,10 +158,13 @@ export default function TestimonialsSection() {
                     style={{
                         margin: '12px auto 0',
                         fontSize: '15px',
-                        color: activeIsLight ? '#64748b' : 'var(--zy-gray-text)',
+                        color: activeIsLight
+                            ? '#64748b'
+                            : 'var(--zy-gray-text)',
                     }}
                 >
-                    Real feedback from leaders driving business growth with Zytrixon Tech.
+                    Real feedback from leaders driving business growth with
+                    Zytrixon Tech.
                 </p>
             </div>
 
@@ -212,7 +215,9 @@ export default function TestimonialsSection() {
                         style={{
                             fontSize: 'clamp(16px, 2.2vw, 21px)',
                             lineHeight: 1.75,
-                            color: activeIsLight ? '#334155' : 'rgba(255, 255, 255, 0.92)',
+                            color: activeIsLight
+                                ? '#334155'
+                                : 'rgba(255, 255, 255, 0.92)',
                             fontWeight: 400,
                             maxWidth: '820px',
                             margin: '0 auto 32px',
@@ -243,7 +248,9 @@ export default function TestimonialsSection() {
                                     fontWeight: 800,
                                     fontStyle: 'italic',
                                     letterSpacing: '-0.01em',
-                                    color: activeIsLight ? '#0f172a' : '#ffffff',
+                                    color: activeIsLight
+                                        ? '#0f172a'
+                                        : '#ffffff',
                                     textTransform: 'capitalize',
                                 }}
                             >
@@ -261,7 +268,9 @@ export default function TestimonialsSection() {
                                 fontWeight: 700,
                                 fontStyle: 'italic',
                                 letterSpacing: '0.04em',
-                                textTransform: current.author ? 'none' : 'capitalize',
+                                textTransform: current.author
+                                    ? 'none'
+                                    : 'capitalize',
                                 color: current.accentColor,
                                 textShadow: activeIsLight
                                     ? 'none'

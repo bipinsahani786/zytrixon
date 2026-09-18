@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from '@inertiajs/react';
-import { ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
 import { useTheme } from '@/components/landing/theme-provider';
 
 interface ProjectHeroEditorialProps {
     project: ProjectItem;
 }
 
-export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialProps) {
+export default function ProjectHeroEditorial({
+    project,
+}: ProjectHeroEditorialProps) {
     const { theme } = useTheme();
     const isLight = theme === 'light';
 
@@ -30,7 +32,14 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                 transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
-            <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            <div
+                style={{
+                    maxWidth: '1280px',
+                    margin: '0 auto',
+                    position: 'relative',
+                    zIndex: 1,
+                }}
+            >
                 {/* Top Meta Bar */}
                 <div
                     style={{
@@ -42,12 +51,37 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                         marginBottom: '20px',
                     }}
                 >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: isLight ? '#666666' : '#777777' }}>
-                        <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '10px',
+                            fontSize: '13px',
+                            color: isLight ? '#666666' : '#777777',
+                        }}
+                    >
+                        <Link
+                            href="/"
+                            style={{ color: 'inherit', textDecoration: 'none' }}
+                        >
+                            Home
+                        </Link>
                         <span>/</span>
-                        <Link href="/portfolio" style={{ color: 'inherit', textDecoration: 'none' }}>Portfolio</Link>
+                        <Link
+                            href="/portfolio"
+                            style={{ color: 'inherit', textDecoration: 'none' }}
+                        >
+                            Portfolio
+                        </Link>
                         <span>/</span>
-                        <span style={{ color: isLight ? '#000000' : '#ffffff', fontWeight: 600 }}>{project.shortTitle}</span>
+                        <span
+                            style={{
+                                color: isLight ? '#000000' : '#ffffff',
+                                fontWeight: 600,
+                            }}
+                        >
+                            {project.shortTitle}
+                        </span>
                     </div>
 
                     <div
@@ -55,8 +89,12 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '8px',
-                            background: isLight ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.04)',
-                            border: isLight ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(255, 255, 255, 0.1)',
+                            background: isLight
+                                ? 'rgba(0, 0, 0, 0.04)'
+                                : 'rgba(255, 255, 255, 0.04)',
+                            border: isLight
+                                ? '1px solid rgba(0, 0, 0, 0.1)'
+                                : '1px solid rgba(255, 255, 255, 0.1)',
                             borderRadius: '30px',
                             padding: '6px 14px',
                             fontSize: '12px',
@@ -81,7 +119,8 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                 <div
                     style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                        gridTemplateColumns:
+                            'repeat(auto-fit, minmax(320px, 1fr))',
                         gap: '50px',
                         alignItems: 'center',
                     }}
@@ -109,7 +148,8 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
 
                         <h1
                             style={{
-                                fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                                fontFamily:
+                                    'var(--font-heading, Space Grotesk, sans-serif)',
                                 fontSize: 'clamp(32px, 4.8vw, 56px)',
                                 fontWeight: 800,
                                 lineHeight: 1.1,
@@ -139,32 +179,119 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                                 gridTemplateColumns: 'repeat(2, 1fr)',
                                 gap: '14px',
                                 padding: '20px',
-                                background: isLight ? '#f5f5f7' : 'rgba(255, 255, 255, 0.03)',
+                                background: isLight
+                                    ? '#f5f5f7'
+                                    : 'rgba(255, 255, 255, 0.03)',
                                 borderRadius: '16px',
-                                border: isLight ? '1px solid #e0e0e2' : '1px solid rgba(255, 255, 255, 0.06)',
+                                border: isLight
+                                    ? '1px solid #e0e0e2'
+                                    : '1px solid rgba(255, 255, 255, 0.06)',
                                 marginBottom: '36px',
                             }}
                         >
                             <div>
-                                <div style={{ fontSize: '11px', textTransform: 'uppercase', color: isLight ? '#777777' : '#666666', letterSpacing: '0.08em', fontWeight: 700 }}>Client</div>
-                                <div style={{ fontSize: '14px', fontWeight: 600, color: isLight ? '#111111' : '#ffffff', marginTop: '3px' }}>{project.client}</div>
+                                <div
+                                    style={{
+                                        fontSize: '11px',
+                                        textTransform: 'uppercase',
+                                        color: isLight ? '#777777' : '#666666',
+                                        letterSpacing: '0.08em',
+                                        fontWeight: 700,
+                                    }}
+                                >
+                                    Client
+                                </div>
+                                <div
+                                    style={{
+                                        fontSize: '14px',
+                                        fontWeight: 600,
+                                        color: isLight ? '#111111' : '#ffffff',
+                                        marginTop: '3px',
+                                    }}
+                                >
+                                    {project.client}
+                                </div>
                             </div>
                             <div>
-                                <div style={{ fontSize: '11px', textTransform: 'uppercase', color: isLight ? '#777777' : '#666666', letterSpacing: '0.08em', fontWeight: 700 }}>Industry</div>
-                                <div style={{ fontSize: '14px', fontWeight: 600, color: isLight ? '#111111' : '#ffffff', marginTop: '3px' }}>{project.industry}</div>
+                                <div
+                                    style={{
+                                        fontSize: '11px',
+                                        textTransform: 'uppercase',
+                                        color: isLight ? '#777777' : '#666666',
+                                        letterSpacing: '0.08em',
+                                        fontWeight: 700,
+                                    }}
+                                >
+                                    Industry
+                                </div>
+                                <div
+                                    style={{
+                                        fontSize: '14px',
+                                        fontWeight: 600,
+                                        color: isLight ? '#111111' : '#ffffff',
+                                        marginTop: '3px',
+                                    }}
+                                >
+                                    {project.industry}
+                                </div>
                             </div>
                             <div>
-                                <div style={{ fontSize: '11px', textTransform: 'uppercase', color: isLight ? '#777777' : '#666666', letterSpacing: '0.08em', fontWeight: 700 }}>Timeline</div>
-                                <div style={{ fontSize: '14px', fontWeight: 600, color: isLight ? '#111111' : '#ffffff', marginTop: '3px' }}>{project.duration}</div>
+                                <div
+                                    style={{
+                                        fontSize: '11px',
+                                        textTransform: 'uppercase',
+                                        color: isLight ? '#777777' : '#666666',
+                                        letterSpacing: '0.08em',
+                                        fontWeight: 700,
+                                    }}
+                                >
+                                    Timeline
+                                </div>
+                                <div
+                                    style={{
+                                        fontSize: '14px',
+                                        fontWeight: 600,
+                                        color: isLight ? '#111111' : '#ffffff',
+                                        marginTop: '3px',
+                                    }}
+                                >
+                                    {project.duration}
+                                </div>
                             </div>
                             <div>
-                                <div style={{ fontSize: '11px', textTransform: 'uppercase', color: isLight ? '#777777' : '#666666', letterSpacing: '0.08em', fontWeight: 700 }}>Architecture</div>
-                                <div style={{ fontSize: '14px', fontWeight: 600, color: project.accentColor, marginTop: '3px' }}>Microservices & Cloud</div>
+                                <div
+                                    style={{
+                                        fontSize: '11px',
+                                        textTransform: 'uppercase',
+                                        color: isLight ? '#777777' : '#666666',
+                                        letterSpacing: '0.08em',
+                                        fontWeight: 700,
+                                    }}
+                                >
+                                    Architecture
+                                </div>
+                                <div
+                                    style={{
+                                        fontSize: '14px',
+                                        fontWeight: 600,
+                                        color: project.accentColor,
+                                        marginTop: '3px',
+                                    }}
+                                >
+                                    Microservices & Cloud
+                                </div>
                             </div>
                         </div>
 
                         {/* Action Buttons */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '14px',
+                                flexWrap: 'wrap',
+                            }}
+                        >
                             <a
                                 href={project.liveUrl}
                                 target="_blank"
@@ -185,7 +312,14 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                                 }}
                             >
                                 <span>Launch Live Prototype</span>
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2.5"
+                                >
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                                     <polyline points="15 3 21 3 21 9" />
                                     <line x1="10" y1="14" x2="21" y2="3" />
@@ -198,17 +332,26 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '8px',
-                                    background: isLight ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
+                                    background: isLight
+                                        ? 'rgba(0, 0, 0, 0.05)'
+                                        : 'rgba(255, 255, 255, 0.05)',
                                     color: isLight ? '#000000' : '#ffffff',
                                     padding: '15px 26px',
                                     borderRadius: '40px',
                                     fontWeight: 600,
                                     fontSize: '14px',
                                     textDecoration: 'none',
-                                    border: isLight ? '1px solid rgba(0, 0, 0, 0.12)' : '1px solid rgba(255, 255, 255, 0.12)',
+                                    border: isLight
+                                        ? '1px solid rgba(0, 0, 0, 0.12)'
+                                        : '1px solid rgba(255, 255, 255, 0.12)',
                                 }}
                             >
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
                                     <polygon points="5 3 19 12 5 21 5 3" />
                                 </svg>
                                 <span>Watch Film</span>
@@ -234,7 +377,9 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                             style={{
                                 background: isLight ? '#f0f0f2' : '#111114',
                                 borderRadius: '18px',
-                                border: isLight ? '1px solid rgba(0, 0, 0, 0.12)' : '1px solid rgba(255, 255, 255, 0.12)',
+                                border: isLight
+                                    ? '1px solid rgba(0, 0, 0, 0.12)'
+                                    : '1px solid rgba(255, 255, 255, 0.12)',
                                 boxShadow: isLight
                                     ? '0 20px 50px rgba(0,0,0,0.12)'
                                     : '0 25px 60px rgba(0,0,0,0.85)',
@@ -250,19 +395,47 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                                     justifyContent: 'space-between',
                                     padding: '10px 16px',
                                     background: isLight ? '#e4e4e7' : '#18181b',
-                                    borderBottom: isLight ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid rgba(255, 255, 255, 0.06)',
+                                    borderBottom: isLight
+                                        ? '1px solid rgba(0, 0, 0, 0.08)'
+                                        : '1px solid rgba(255, 255, 255, 0.06)',
                                 }}
                             >
                                 <div style={{ display: 'flex', gap: '6px' }}>
-                                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56', display: 'inline-block' }} />
-                                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e', display: 'inline-block' }} />
-                                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f', display: 'inline-block' }} />
+                                    <span
+                                        style={{
+                                            width: '10px',
+                                            height: '10px',
+                                            borderRadius: '50%',
+                                            background: '#ff5f56',
+                                            display: 'inline-block',
+                                        }}
+                                    />
+                                    <span
+                                        style={{
+                                            width: '10px',
+                                            height: '10px',
+                                            borderRadius: '50%',
+                                            background: '#ffbd2e',
+                                            display: 'inline-block',
+                                        }}
+                                    />
+                                    <span
+                                        style={{
+                                            width: '10px',
+                                            height: '10px',
+                                            borderRadius: '50%',
+                                            background: '#27c93f',
+                                            display: 'inline-block',
+                                        }}
+                                    />
                                 </div>
                                 <div
                                     style={{
                                         fontSize: '11px',
                                         color: isLight ? '#444444' : '#777777',
-                                        background: isLight ? '#ffffff' : '#09090b',
+                                        background: isLight
+                                            ? '#ffffff'
+                                            : '#09090b',
                                         padding: '4px 14px',
                                         borderRadius: '6px',
                                         maxWidth: '260px',
@@ -271,19 +444,34 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         whiteSpace: 'nowrap',
-                                        border: isLight ? '1px solid #d4d4d8' : 'none',
+                                        border: isLight
+                                            ? '1px solid #d4d4d8'
+                                            : 'none',
                                     }}
                                 >
                                     🔒 {project.liveUrl}
                                 </div>
-                                <div style={{ fontSize: '10px', color: project.accentColor, fontWeight: 700 }}>LIVE</div>
+                                <div
+                                    style={{
+                                        fontSize: '10px',
+                                        color: project.accentColor,
+                                        fontWeight: 700,
+                                    }}
+                                >
+                                    LIVE
+                                </div>
                             </div>
 
                             {/* Hero Desktop Image */}
                             <img
                                 src={project.heroImage}
                                 alt={project.title}
-                                style={{ width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' }}
+                                style={{
+                                    width: '100%',
+                                    maxHeight: '420px',
+                                    objectFit: 'cover',
+                                    display: 'block',
+                                }}
                             />
                         </div>
 
@@ -297,15 +485,23 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                                 background: isLight ? '#ffffff' : '#0a0a0c',
                                 borderRadius: '24px',
                                 padding: '8px',
-                                border: isLight ? '2px solid rgba(0, 0, 0, 0.12)' : '2px solid rgba(255, 255, 255, 0.16)',
+                                border: isLight
+                                    ? '2px solid rgba(0, 0, 0, 0.12)'
+                                    : '2px solid rgba(255, 255, 255, 0.16)',
                                 boxShadow: isLight
                                     ? '0 15px 40px rgba(0,0,0,0.15)'
                                     : '0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.5)',
                                 transform: 'rotate(-3deg)',
                                 transition: 'transform 0.3s ease',
                             }}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'rotate(0deg) scale(1.05)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'rotate(-3deg) scale(1)')}
+                            onMouseEnter={(e) =>
+                                (e.currentTarget.style.transform =
+                                    'rotate(0deg) scale(1.05)')
+                            }
+                            onMouseLeave={(e) =>
+                                (e.currentTarget.style.transform =
+                                    'rotate(-3deg) scale(1)')
+                            }
                         >
                             {/* Phone Notch */}
                             <div
@@ -317,11 +513,21 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                                     margin: '4px auto 8px',
                                 }}
                             />
-                            <div style={{ borderRadius: '16px', overflow: 'hidden' }}>
+                            <div
+                                style={{
+                                    borderRadius: '16px',
+                                    overflow: 'hidden',
+                                }}
+                            >
                                 <img
                                     src={project.mobileImage}
                                     alt="Mobile companion app"
-                                    style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }}
+                                    style={{
+                                        width: '100%',
+                                        height: '240px',
+                                        objectFit: 'cover',
+                                        display: 'block',
+                                    }}
                                 />
                             </div>
                         </div>
@@ -332,21 +538,44 @@ export default function ProjectHeroEditorial({ project }: ProjectHeroEditorialPr
                                 position: 'absolute',
                                 top: '24px',
                                 left: '-15px',
-                                background: isLight ? 'rgba(255, 255, 255, 0.95)' : 'rgba(10, 10, 12, 0.9)',
+                                background: isLight
+                                    ? 'rgba(255, 255, 255, 0.95)'
+                                    : 'rgba(10, 10, 12, 0.9)',
                                 backdropFilter: 'blur(16px)',
-                                border: isLight ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(255, 255, 255, 0.12)',
+                                border: isLight
+                                    ? '1px solid rgba(0, 0, 0, 0.1)'
+                                    : '1px solid rgba(255, 255, 255, 0.12)',
                                 borderRadius: '12px',
                                 padding: '10px 16px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '10px',
-                                boxShadow: isLight ? '0 10px 30px rgba(0,0,0,0.1)' : '0 10px 30px rgba(0,0,0,0.6)',
+                                boxShadow: isLight
+                                    ? '0 10px 30px rgba(0,0,0,0.1)'
+                                    : '0 10px 30px rgba(0,0,0,0.6)',
                             }}
                         >
                             <span style={{ fontSize: '18px' }}>⚡</span>
                             <div>
-                                <div style={{ fontSize: '10px', color: isLight ? '#666' : '#888', textTransform: 'uppercase', fontWeight: 700 }}>Latency</div>
-                                <div style={{ fontSize: '13px', fontWeight: 700, color: isLight ? '#000' : '#fff' }}>&lt;45ms P99</div>
+                                <div
+                                    style={{
+                                        fontSize: '10px',
+                                        color: isLight ? '#666' : '#888',
+                                        textTransform: 'uppercase',
+                                        fontWeight: 700,
+                                    }}
+                                >
+                                    Latency
+                                </div>
+                                <div
+                                    style={{
+                                        fontSize: '13px',
+                                        fontWeight: 700,
+                                        color: isLight ? '#000' : '#fff',
+                                    }}
+                                >
+                                    &lt;45ms P99
+                                </div>
                             </div>
                         </div>
                     </div>

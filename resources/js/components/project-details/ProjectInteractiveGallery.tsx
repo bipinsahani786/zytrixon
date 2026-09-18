@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { ProjectItem, ProjectScreenshot } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
+import { ProjectScreenshot } from '@/lib/projects-data';
 import { useTheme } from '@/components/landing/theme-provider';
 
 interface ProjectInteractiveGalleryProps {
     project: ProjectItem;
 }
 
-export default function ProjectInteractiveGallery({ project }: ProjectInteractiveGalleryProps) {
+export default function ProjectInteractiveGallery({
+    project,
+}: ProjectInteractiveGalleryProps) {
     const { theme } = useTheme();
     const isLight = theme === 'light';
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);
 
-    const activeScreen = project.screenshots[activeIndex] || project.screenshots[0];
+    const activeScreen =
+        project.screenshots[activeIndex] || project.screenshots[0];
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -31,7 +35,9 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
             style={{
                 padding: '100px var(--zy-section-pad-x, 24px)',
                 background: isLight ? '#f8f9fa' : '#060608',
-                borderBottom: isLight ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid rgba(255, 255, 255, 0.06)',
+                borderBottom: isLight
+                    ? '1px solid rgba(0, 0, 0, 0.08)'
+                    : '1px solid rgba(255, 255, 255, 0.06)',
                 transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
@@ -54,7 +60,8 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                     </span>
                     <h2
                         style={{
-                            fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                            fontFamily:
+                                'var(--font-heading, Space Grotesk, sans-serif)',
                             fontSize: 'clamp(28px, 4vw, 44px)',
                             fontWeight: 800,
                             marginTop: '16px',
@@ -63,8 +70,16 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                     >
                         Explore Application Workflows
                     </h2>
-                    <p style={{ color: isLight ? '#666666' : '#888888', fontSize: '16px', maxWidth: '640px', margin: '12px auto 0' }}>
-                        Select any view to inspect its architectural purpose, UI workflow, and high-resolution layout.
+                    <p
+                        style={{
+                            color: isLight ? '#666666' : '#888888',
+                            fontSize: '16px',
+                            maxWidth: '640px',
+                            margin: '12px auto 0',
+                        }}
+                    >
+                        Select any view to inspect its architectural purpose, UI
+                        workflow, and high-resolution layout.
                     </p>
                 </div>
 
@@ -72,7 +87,8 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                 <div
                     style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+                        gridTemplateColumns:
+                            'repeat(auto-fit, minmax(340px, 1fr))',
                         gap: '36px',
                         alignItems: 'center',
                     }}
@@ -84,17 +100,34 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                             style={{
                                 background: isLight ? '#ffffff' : '#0e0e12',
                                 borderRadius: '22px',
-                                border: isLight ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(255, 255, 255, 0.12)',
+                                border: isLight
+                                    ? '1px solid rgba(0, 0, 0, 0.1)'
+                                    : '1px solid rgba(255, 255, 255, 0.12)',
                                 overflow: 'hidden',
-                                boxShadow: isLight ? '0 20px 50px rgba(0,0,0,0.06)' : '0 25px 70px rgba(0,0,0,0.85)',
+                                boxShadow: isLight
+                                    ? '0 20px 50px rgba(0,0,0,0.06)'
+                                    : '0 25px 70px rgba(0,0,0,0.85)',
                                 cursor: 'pointer',
                                 position: 'relative',
                                 transition: 'all 0.3s ease',
                             }}
-                            onMouseEnter={(e) => (e.currentTarget.style.borderColor = project.accentColor)}
-                            onMouseLeave={(e) => (e.currentTarget.style.borderColor = isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.12)')}
+                            onMouseEnter={(e) =>
+                                (e.currentTarget.style.borderColor =
+                                    project.accentColor)
+                            }
+                            onMouseLeave={(e) =>
+                                (e.currentTarget.style.borderColor = isLight
+                                    ? 'rgba(0, 0, 0, 0.1)'
+                                    : 'rgba(255, 255, 255, 0.12)')
+                            }
                         >
-                            <div style={{ position: 'relative', overflow: 'hidden', height: '420px' }}>
+                            <div
+                                style={{
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    height: '420px',
+                                }}
+                            >
                                 <img
                                     src={activeScreen.image}
                                     alt={activeScreen.title}
@@ -145,11 +178,33 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                                 </span>
                             </div>
 
-                            <div style={{ padding: '24px 28px', background: isLight ? '#ffffff' : '#0e0e12', borderTop: isLight ? '1px solid rgba(0,0,0,0.06)' : 'none' }}>
-                                <h3 style={{ fontSize: '18px', fontWeight: 700, color: isLight ? '#111111' : '#ffffff', marginBottom: '6px' }}>
+                            <div
+                                style={{
+                                    padding: '24px 28px',
+                                    background: isLight ? '#ffffff' : '#0e0e12',
+                                    borderTop: isLight
+                                        ? '1px solid rgba(0,0,0,0.06)'
+                                        : 'none',
+                                }}
+                            >
+                                <h3
+                                    style={{
+                                        fontSize: '18px',
+                                        fontWeight: 700,
+                                        color: isLight ? '#111111' : '#ffffff',
+                                        marginBottom: '6px',
+                                    }}
+                                >
                                     {activeScreen.title}
                                 </h3>
-                                <p style={{ fontSize: '14px', color: isLight ? '#666666' : '#888888', lineHeight: 1.6, margin: 0 }}>
+                                <p
+                                    style={{
+                                        fontSize: '14px',
+                                        color: isLight ? '#666666' : '#888888',
+                                        lineHeight: 1.6,
+                                        margin: 0,
+                                    }}
+                                >
                                     {activeScreen.description}
                                 </p>
                             </div>
@@ -157,7 +212,13 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                     </div>
 
                     {/* Right: Interactive Screen Selector List */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '16px',
+                        }}
+                    >
                         {project.screenshots.map((ss, idx) => {
                             const isSelected = activeIndex === idx;
                             return (
@@ -171,23 +232,37 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                                         padding: '18px 22px',
                                         borderRadius: '18px',
                                         background: isSelected
-                                            ? (isLight ? `linear-gradient(135deg, ${project.accentColor}18 0%, rgba(255,255,255,0.95) 100%)` : `linear-gradient(135deg, ${project.accentColor}15 0%, rgba(18,18,22,0.9) 100%)`)
-                                            : (isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.03)'),
+                                            ? isLight
+                                                ? `linear-gradient(135deg, ${project.accentColor}18 0%, rgba(255,255,255,0.95) 100%)`
+                                                : `linear-gradient(135deg, ${project.accentColor}15 0%, rgba(18,18,22,0.9) 100%)`
+                                            : isLight
+                                              ? '#ffffff'
+                                              : 'rgba(255, 255, 255, 0.03)',
                                         border: isSelected
                                             ? `1px solid ${project.accentColor}60`
-                                            : (isLight ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid rgba(255, 255, 255, 0.06)'),
-                                        boxShadow: isLight ? '0 4px 15px rgba(0,0,0,0.03)' : 'none',
+                                            : isLight
+                                              ? '1px solid rgba(0, 0, 0, 0.08)'
+                                              : '1px solid rgba(255, 255, 255, 0.06)',
+                                        boxShadow: isLight
+                                            ? '0 4px 15px rgba(0,0,0,0.03)'
+                                            : 'none',
                                         cursor: 'pointer',
                                         transition: 'all 0.25s ease',
                                     }}
                                     onMouseEnter={(e) => {
                                         if (!isSelected) {
-                                            e.currentTarget.style.background = isLight ? '#f4f4f7' : 'rgba(255, 255, 255, 0.06)';
+                                            e.currentTarget.style.background =
+                                                isLight
+                                                    ? '#f4f4f7'
+                                                    : 'rgba(255, 255, 255, 0.06)';
                                         }
                                     }}
                                     onMouseLeave={(e) => {
                                         if (!isSelected) {
-                                            e.currentTarget.style.background = isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.03)';
+                                            e.currentTarget.style.background =
+                                                isLight
+                                                    ? '#ffffff'
+                                                    : 'rgba(255, 255, 255, 0.03)';
                                         }
                                     }}
                                 >
@@ -201,26 +276,70 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                                             flexShrink: 0,
                                             border: isSelected
                                                 ? `1px solid ${project.accentColor}`
-                                                : (isLight ? '1px solid rgba(0,0,0,0.1)' : '1px solid rgba(255,255,255,0.1)'),
+                                                : isLight
+                                                  ? '1px solid rgba(0,0,0,0.1)'
+                                                  : '1px solid rgba(255,255,255,0.1)',
                                         }}
                                     >
                                         <img
                                             src={ss.image}
                                             alt={ss.title}
-                                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover',
+                                            }}
                                         />
                                     </div>
 
                                     <div style={{ flex: 1 }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                            <span style={{ fontSize: '11px', color: isSelected ? project.accentColor : (isLight ? '#777777' : '#666666'), fontWeight: 800, textTransform: 'uppercase' }}>
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px',
+                                            }}
+                                        >
+                                            <span
+                                                style={{
+                                                    fontSize: '11px',
+                                                    color: isSelected
+                                                        ? project.accentColor
+                                                        : isLight
+                                                          ? '#777777'
+                                                          : '#666666',
+                                                    fontWeight: 800,
+                                                    textTransform: 'uppercase',
+                                                }}
+                                            >
                                                 {ss.category}
                                             </span>
                                         </div>
-                                        <h4 style={{ fontSize: '15px', fontWeight: 700, color: isLight ? '#111111' : '#ffffff', marginTop: '2px', marginBottom: '2px' }}>
+                                        <h4
+                                            style={{
+                                                fontSize: '15px',
+                                                fontWeight: 700,
+                                                color: isLight
+                                                    ? '#111111'
+                                                    : '#ffffff',
+                                                marginTop: '2px',
+                                                marginBottom: '2px',
+                                            }}
+                                        >
                                             {ss.title}
                                         </h4>
-                                        <div style={{ fontSize: '12px', color: isLight ? '#666666' : '#777777', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '320px' }}>
+                                        <div
+                                            style={{
+                                                fontSize: '12px',
+                                                color: isLight
+                                                    ? '#666666'
+                                                    : '#777777',
+                                                overflow: 'hidden',
+                                                textOverflow: 'ellipsis',
+                                                whiteSpace: 'nowrap',
+                                                maxWidth: '320px',
+                                            }}
+                                        >
                                             {ss.description}
                                         </div>
                                     </div>
@@ -233,8 +352,16 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            background: isSelected ? project.accentColor : (isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.08)'),
-                                            color: isSelected ? '#000000' : (isLight ? '#555555' : '#888888'),
+                                            background: isSelected
+                                                ? project.accentColor
+                                                : isLight
+                                                  ? 'rgba(0,0,0,0.06)'
+                                                  : 'rgba(255,255,255,0.08)',
+                                            color: isSelected
+                                                ? '#000000'
+                                                : isLight
+                                                  ? '#555555'
+                                                  : '#888888',
                                             fontSize: '11px',
                                             fontWeight: 800,
                                         }}
@@ -271,7 +398,9 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                             background: isLight ? '#ffffff' : '#111114',
                             borderRadius: '20px',
                             overflow: 'hidden',
-                            border: isLight ? '1px solid rgba(0, 0, 0, 0.15)' : '1px solid rgba(255, 255, 255, 0.15)',
+                            border: isLight
+                                ? '1px solid rgba(0, 0, 0, 0.15)'
+                                : '1px solid rgba(255, 255, 255, 0.15)',
                             position: 'relative',
                         }}
                         onClick={(e) => e.stopPropagation()}
@@ -298,16 +427,41 @@ export default function ProjectInteractiveGallery({ project }: ProjectInteractiv
                         <img
                             src={activeScreen.image}
                             alt={activeScreen.title}
-                            style={{ width: '100%', maxHeight: '72vh', objectFit: 'contain', background: '#000000' }}
+                            style={{
+                                width: '100%',
+                                maxHeight: '72vh',
+                                objectFit: 'contain',
+                                background: '#000000',
+                            }}
                         />
                         <div style={{ padding: '24px 30px' }}>
-                            <span style={{ fontSize: '11px', color: project.accentColor, fontWeight: 800, textTransform: 'uppercase' }}>
+                            <span
+                                style={{
+                                    fontSize: '11px',
+                                    color: project.accentColor,
+                                    fontWeight: 800,
+                                    textTransform: 'uppercase',
+                                }}
+                            >
                                 {activeScreen.category}
                             </span>
-                            <h3 style={{ fontSize: '20px', fontWeight: 700, color: isLight ? '#111111' : '#ffffff', marginTop: '4px' }}>
+                            <h3
+                                style={{
+                                    fontSize: '20px',
+                                    fontWeight: 700,
+                                    color: isLight ? '#111111' : '#ffffff',
+                                    marginTop: '4px',
+                                }}
+                            >
                                 {activeScreen.title}
                             </h3>
-                            <p style={{ fontSize: '14px', color: isLight ? '#666666' : '#999999', marginTop: '6px' }}>
+                            <p
+                                style={{
+                                    fontSize: '14px',
+                                    color: isLight ? '#666666' : '#999999',
+                                    marginTop: '6px',
+                                }}
+                            >
                                 {activeScreen.description}
                             </p>
                         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
 import { useTheme } from '@/components/landing/theme-provider';
 
 interface ProjectSubNavProps {
@@ -21,7 +21,13 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
                 setScrolled(false);
             }
 
-            const sections = ['overview', 'transformation', 'theatre', 'gallery', 'architecture'];
+            const sections = [
+                'overview',
+                'transformation',
+                'theatre',
+                'gallery',
+                'architecture',
+            ];
             for (const sectionId of sections) {
                 const el = document.getElementById(sectionId);
                 if (el) {
@@ -38,7 +44,9 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    if (!scrolled) return null;
+    if (!scrolled) {
+        return null;
+    }
 
     const navItems = [
         { id: 'overview', label: '01 Overview' },
@@ -61,11 +69,15 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
                 alignItems: 'center',
                 gap: '6px',
                 padding: '8px 14px',
-                background: isLight ? 'rgba(255, 255, 255, 0.92)' : 'rgba(10, 10, 12, 0.88)',
+                background: isLight
+                    ? 'rgba(255, 255, 255, 0.92)'
+                    : 'rgba(10, 10, 12, 0.88)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
                 borderRadius: '40px',
-                border: isLight ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(255, 255, 255, 0.12)',
+                border: isLight
+                    ? '1px solid rgba(0, 0, 0, 0.1)'
+                    : '1px solid rgba(255, 255, 255, 0.12)',
                 boxShadow: isLight
                     ? '0 15px 40px rgba(0,0,0,0.12), 0 0 20px rgba(0,0,0,0.06)'
                     : '0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.6)',
@@ -93,7 +105,9 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
                                 : isLight
                                   ? '#555555'
                                   : '#888888',
-                            background: isActive ? project.accentColor : 'transparent',
+                            background: isActive
+                                ? project.accentColor
+                                : 'transparent',
                             transition: 'all 0.25s ease',
                         }}
                     >
@@ -106,7 +120,9 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
                 style={{
                     width: '1px',
                     height: '18px',
-                    background: isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.15)',
+                    background: isLight
+                        ? 'rgba(0,0,0,0.12)'
+                        : 'rgba(255,255,255,0.15)',
                     margin: '0 4px',
                 }}
             />
@@ -125,8 +141,12 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
                     fontWeight: 700,
                     textDecoration: 'none',
                     color: isLight ? '#000000' : '#ffffff',
-                    background: isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.08)',
-                    border: isLight ? '1px solid rgba(0,0,0,0.1)' : '1px solid rgba(255,255,255,0.15)',
+                    background: isLight
+                        ? 'rgba(0,0,0,0.06)'
+                        : 'rgba(255,255,255,0.08)',
+                    border: isLight
+                        ? '1px solid rgba(0,0,0,0.1)'
+                        : '1px solid rgba(255,255,255,0.15)',
                     transition: 'all 0.2s ease',
                 }}
             >

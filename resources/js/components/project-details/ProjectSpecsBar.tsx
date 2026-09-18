@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
 
 interface ProjectSpecsBarProps {
     project: ProjectItem;
@@ -24,20 +24,96 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
                 }}
             >
                 <div>
-                    <div style={{ fontSize: '11px', textTransform: 'uppercase', color: '#888888', letterSpacing: '0.12em', fontWeight: 700 }}>Client Organization</div>
-                    <div style={{ fontSize: '16px', fontWeight: 700, color: '#ffffff', marginTop: '6px' }}>{project.client}</div>
+                    <div
+                        style={{
+                            fontSize: '11px',
+                            textTransform: 'uppercase',
+                            color: '#888888',
+                            letterSpacing: '0.12em',
+                            fontWeight: 700,
+                        }}
+                    >
+                        Client Organization
+                    </div>
+                    <div
+                        style={{
+                            fontSize: '16px',
+                            fontWeight: 700,
+                            color: '#ffffff',
+                            marginTop: '6px',
+                        }}
+                    >
+                        {project.client}
+                    </div>
                 </div>
                 <div>
-                    <div style={{ fontSize: '11px', textTransform: 'uppercase', color: '#888888', letterSpacing: '0.12em', fontWeight: 700 }}>Industry Vertical</div>
-                    <div style={{ fontSize: '16px', fontWeight: 700, color: '#ffffff', marginTop: '6px' }}>{project.industry}</div>
+                    <div
+                        style={{
+                            fontSize: '11px',
+                            textTransform: 'uppercase',
+                            color: '#888888',
+                            letterSpacing: '0.12em',
+                            fontWeight: 700,
+                        }}
+                    >
+                        Industry Vertical
+                    </div>
+                    <div
+                        style={{
+                            fontSize: '16px',
+                            fontWeight: 700,
+                            color: '#ffffff',
+                            marginTop: '6px',
+                        }}
+                    >
+                        {project.industry}
+                    </div>
                 </div>
                 <div>
-                    <div style={{ fontSize: '11px', textTransform: 'uppercase', color: '#888888', letterSpacing: '0.12em', fontWeight: 700 }}>Timeline & Delivery</div>
-                    <div style={{ fontSize: '16px', fontWeight: 700, color: '#ffffff', marginTop: '6px' }}>{project.duration} ({project.year})</div>
+                    <div
+                        style={{
+                            fontSize: '11px',
+                            textTransform: 'uppercase',
+                            color: '#888888',
+                            letterSpacing: '0.12em',
+                            fontWeight: 700,
+                        }}
+                    >
+                        Timeline & Delivery
+                    </div>
+                    <div
+                        style={{
+                            fontSize: '16px',
+                            fontWeight: 700,
+                            color: '#ffffff',
+                            marginTop: '6px',
+                        }}
+                    >
+                        {project.duration} ({project.year})
+                    </div>
                 </div>
                 <div>
-                    <div style={{ fontSize: '11px', textTransform: 'uppercase', color: '#888888', letterSpacing: '0.12em', fontWeight: 700 }}>Delivered Services</div>
-                    <div style={{ fontSize: '16px', fontWeight: 700, color: project.accentColor, marginTop: '6px' }}>Full-Stack & Cloud System</div>
+                    <div
+                        style={{
+                            fontSize: '11px',
+                            textTransform: 'uppercase',
+                            color: '#888888',
+                            letterSpacing: '0.12em',
+                            fontWeight: 700,
+                        }}
+                    >
+                        Delivered Services
+                    </div>
+                    <div
+                        style={{
+                            fontSize: '16px',
+                            fontWeight: 700,
+                            color: project.accentColor,
+                            marginTop: '6px',
+                        }}
+                    >
+                        Full-Stack & Cloud System
+                    </div>
                 </div>
             </div>
         </section>

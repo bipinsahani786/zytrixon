@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@inertiajs/react';
-import { ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
 
 interface ProjectHeroProps {
     project: ProjectItem;
@@ -36,7 +36,14 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                 }}
             />
 
-            <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            <div
+                style={{
+                    maxWidth: '1200px',
+                    margin: '0 auto',
+                    position: 'relative',
+                    zIndex: 1,
+                }}
+            >
                 {/* Breadcrumbs & Status Indicator */}
                 <div
                     style={{
@@ -58,11 +65,23 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             color: '#888888',
                         }}
                     >
-                        <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
+                        <Link
+                            href="/"
+                            style={{ color: 'inherit', textDecoration: 'none' }}
+                        >
+                            Home
+                        </Link>
                         <span>/</span>
-                        <Link href="/portfolio" style={{ color: 'inherit', textDecoration: 'none' }}>Portfolio</Link>
+                        <Link
+                            href="/portfolio"
+                            style={{ color: 'inherit', textDecoration: 'none' }}
+                        >
+                            Portfolio
+                        </Link>
                         <span>/</span>
-                        <span style={{ color: '#ffffff', fontWeight: 600 }}>{project.shortTitle}</span>
+                        <span style={{ color: '#ffffff', fontWeight: 600 }}>
+                            {project.shortTitle}
+                        </span>
                     </nav>
 
                     <div
@@ -116,7 +135,8 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                 {/* Main Title */}
                 <h1
                     style={{
-                        fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                        fontFamily:
+                            'var(--font-heading, Space Grotesk, sans-serif)',
                         fontSize: 'clamp(32px, 5vw, 60px)',
                         fontWeight: 800,
                         lineHeight: 1.12,
@@ -143,7 +163,15 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                 </p>
 
                 {/* Action CTAs */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '50px' }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px',
+                        flexWrap: 'wrap',
+                        marginBottom: '50px',
+                    }}
+                >
                     <a
                         href={project.liveUrl}
                         target="_blank"
@@ -164,7 +192,14 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                         }}
                     >
                         <span>Launch Live Project</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                        >
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                             <polyline points="15 3 21 3 21 9" />
                             <line x1="10" y1="14" x2="21" y2="3" />
@@ -188,7 +223,12 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             transition: 'all 0.3s ease',
                         }}
                     >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
                             <polygon points="5 3 19 12 5 21 5 3" />
                         </svg>
                         <span>Watch Video Demo</span>
@@ -233,10 +273,37 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                         }}
                     >
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f56' }} />
-                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }} />
-                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }} />
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: '12px',
+                                    height: '12px',
+                                    borderRadius: '50%',
+                                    background: '#ff5f56',
+                                }}
+                            />
+                            <div
+                                style={{
+                                    width: '12px',
+                                    height: '12px',
+                                    borderRadius: '50%',
+                                    background: '#ffbd2e',
+                                }}
+                            />
+                            <div
+                                style={{
+                                    width: '12px',
+                                    height: '12px',
+                                    borderRadius: '50%',
+                                    background: '#27c93f',
+                                }}
+                            />
                         </div>
 
                         <div
@@ -255,14 +322,36 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                                 justifyContent: 'center',
                             }}
                         >
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#10b981"
+                                strokeWidth="2.5"
+                            >
+                                <rect
+                                    x="3"
+                                    y="11"
+                                    width="18"
+                                    height="11"
+                                    rx="2"
+                                    ry="2"
+                                />
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                             </svg>
-                            <span style={{ color: '#cccccc' }}>{project.liveUrl}</span>
+                            <span style={{ color: '#cccccc' }}>
+                                {project.liveUrl}
+                            </span>
                         </div>
 
-                        <div style={{ fontSize: '11px', fontWeight: 600, color: project.accentColor }}>
+                        <div
+                            style={{
+                                fontSize: '11px',
+                                fontWeight: 600,
+                                color: project.accentColor,
+                            }}
+                        >
                             Live Production
                         </div>
                     </div>
@@ -313,8 +402,25 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                                 ⚡
                             </div>
                             <div>
-                                <div style={{ fontSize: '11px', color: '#888888', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Performance SLA</div>
-                                <div style={{ fontSize: '14px', fontWeight: 700, color: '#ffffff' }}>Sub-45ms P99 API Response</div>
+                                <div
+                                    style={{
+                                        fontSize: '11px',
+                                        color: '#888888',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.08em',
+                                    }}
+                                >
+                                    Performance SLA
+                                </div>
+                                <div
+                                    style={{
+                                        fontSize: '14px',
+                                        fontWeight: 700,
+                                        color: '#ffffff',
+                                    }}
+                                >
+                                    Sub-45ms P99 API Response
+                                </div>
                             </div>
                         </div>
                     </div>

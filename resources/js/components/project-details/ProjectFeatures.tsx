@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
 
 interface ProjectFeaturesProps {
     project: ProjectItem;
@@ -7,7 +7,13 @@ interface ProjectFeaturesProps {
 
 export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
     return (
-        <section style={{ padding: '90px var(--zy-section-pad-x, 24px)', maxWidth: '1200px', margin: '0 auto' }}>
+        <section
+            style={{
+                padding: '90px var(--zy-section-pad-x, 24px)',
+                maxWidth: '1200px',
+                margin: '0 auto',
+            }}
+        >
             <div style={{ textAlign: 'center', marginBottom: '50px' }}>
                 <span
                     style={{
@@ -22,7 +28,8 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                 </span>
                 <h2
                     style={{
-                        fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                        fontFamily:
+                            'var(--font-heading, Space Grotesk, sans-serif)',
                         fontSize: 'clamp(28px, 4vw, 42px)',
                         fontWeight: 800,
                         marginTop: '10px',
@@ -51,11 +58,14 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                             transition: 'all 0.3s ease',
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.borderColor = project.accentColor;
-                            e.currentTarget.style.transform = 'translateY(-4px)';
+                            e.currentTarget.style.borderColor =
+                                project.accentColor;
+                            e.currentTarget.style.transform =
+                                'translateY(-4px)';
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                            e.currentTarget.style.borderColor =
+                                'rgba(255, 255, 255, 0.08)';
                             e.currentTarget.style.transform = 'translateY(0)';
                         }}
                     >
@@ -75,10 +85,23 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                         >
                             {feat.icon}
                         </div>
-                        <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#ffffff', marginBottom: '10px' }}>
+                        <h3
+                            style={{
+                                fontSize: '18px',
+                                fontWeight: 700,
+                                color: '#ffffff',
+                                marginBottom: '10px',
+                            }}
+                        >
                             {feat.title}
                         </h3>
-                        <p style={{ fontSize: '14px', color: '#888888', lineHeight: 1.6 }}>
+                        <p
+                            style={{
+                                fontSize: '14px',
+                                color: '#888888',
+                                lineHeight: 1.6,
+                            }}
+                        >
                             {feat.desc}
                         </p>
                     </div>

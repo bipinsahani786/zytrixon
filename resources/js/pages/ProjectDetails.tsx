@@ -7,7 +7,8 @@ import FooterCTA from '@/components/landing/footer-cta';
 import CustomCursor from '@/components/landing/custom-cursor';
 import LazySection from '@/components/landing/lazy-section';
 import SeoHead from '@/components/seo/SeoHead';
-import { DUMMY_PROJECTS, getProjectBySlug, ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
+import { DUMMY_PROJECTS, getProjectBySlug } from '@/lib/projects-data';
 
 // Modular Project Details Components (Editorial Tech Cinema Architecture)
 import ProjectHeroEditorial from '@/components/project-details/ProjectHeroEditorial';
@@ -84,7 +85,10 @@ function ProjectDetailsInner({ project }: { project: ProjectItem }) {
     );
 }
 
-export default function ProjectDetails({ project: initialProject, slug }: ProjectDetailsProps) {
+export default function ProjectDetails({
+    project: initialProject,
+    slug,
+}: ProjectDetailsProps) {
     // Resolve project data
     const project: ProjectItem =
         initialProject ||

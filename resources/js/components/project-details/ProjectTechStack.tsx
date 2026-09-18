@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
 
 interface ProjectTechStackProps {
     project: ProjectItem;
@@ -7,7 +7,14 @@ interface ProjectTechStackProps {
 
 export default function ProjectTechStack({ project }: ProjectTechStackProps) {
     return (
-        <section style={{ padding: '90px var(--zy-section-pad-x, 24px)', maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
+        <section
+            style={{
+                padding: '90px var(--zy-section-pad-x, 24px)',
+                maxWidth: '1200px',
+                margin: '0 auto',
+                textAlign: 'center',
+            }}
+        >
             <span
                 style={{
                     fontSize: '12px',
@@ -21,7 +28,8 @@ export default function ProjectTechStack({ project }: ProjectTechStackProps) {
             </span>
             <h2
                 style={{
-                    fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                    fontFamily:
+                        'var(--font-heading, Space Grotesk, sans-serif)',
                     fontSize: 'clamp(28px, 4vw, 40px)',
                     fontWeight: 800,
                     marginTop: '10px',
@@ -32,7 +40,16 @@ export default function ProjectTechStack({ project }: ProjectTechStackProps) {
                 Built With World-Class Stacks
             </h2>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', maxWidth: '960px', margin: '0 auto' }}>
+            <div
+                style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: '14px',
+                    maxWidth: '960px',
+                    margin: '0 auto',
+                }}
+            >
                 {project.techStack.map((tech, i) => (
                     <div
                         key={i}
@@ -50,16 +67,20 @@ export default function ProjectTechStack({ project }: ProjectTechStackProps) {
                             transition: 'all 0.2s ease',
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.borderColor = project.accentColor;
+                            e.currentTarget.style.borderColor =
+                                project.accentColor;
                             e.currentTarget.style.background = `${project.accentColor}12`;
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                            e.currentTarget.style.borderColor =
+                                'rgba(255, 255, 255, 0.08)';
                             e.currentTarget.style.background = '#111114';
                         }}
                     >
                         <span>{tech.name}</span>
-                        <span style={{ color: '#666666', fontSize: '12px' }}>• {tech.category}</span>
+                        <span style={{ color: '#666666', fontSize: '12px' }}>
+                            • {tech.category}
+                        </span>
                     </div>
                 ))}
             </div>

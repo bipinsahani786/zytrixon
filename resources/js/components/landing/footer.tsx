@@ -110,8 +110,16 @@ export default function Footer() {
                                 key={social.label}
                                 href={social.href}
                                 aria-label={social.label}
-                                target={social.href.startsWith('http') ? '_blank' : undefined}
-                                rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                target={
+                                    social.href.startsWith('http')
+                                        ? '_blank'
+                                        : undefined
+                                }
+                                rel={
+                                    social.href.startsWith('http')
+                                        ? 'noopener noreferrer'
+                                        : undefined
+                                }
                                 style={{
                                     width: 40,
                                     height: 40,

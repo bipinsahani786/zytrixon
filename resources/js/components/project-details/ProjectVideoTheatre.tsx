@@ -1,11 +1,13 @@
 import React from 'react';
-import { ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
 
 interface ProjectVideoTheatreProps {
     project: ProjectItem;
 }
 
-export default function ProjectVideoTheatre({ project }: ProjectVideoTheatreProps) {
+export default function ProjectVideoTheatre({
+    project,
+}: ProjectVideoTheatreProps) {
     return (
         <section
             id="video-theatre"
@@ -32,7 +34,15 @@ export default function ProjectVideoTheatre({ project }: ProjectVideoTheatreProp
                 }}
             />
 
-            <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
+            <div
+                style={{
+                    maxWidth: '1100px',
+                    margin: '0 auto',
+                    position: 'relative',
+                    zIndex: 1,
+                    textAlign: 'center',
+                }}
+            >
                 <span
                     style={{
                         fontSize: '12px',
@@ -46,7 +56,8 @@ export default function ProjectVideoTheatre({ project }: ProjectVideoTheatreProp
                 </span>
                 <h2
                     style={{
-                        fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                        fontFamily:
+                            'var(--font-heading, Space Grotesk, sans-serif)',
                         fontSize: 'clamp(28px, 4vw, 42px)',
                         fontWeight: 800,
                         marginTop: '10px',
@@ -56,8 +67,16 @@ export default function ProjectVideoTheatre({ project }: ProjectVideoTheatreProp
                 >
                     Watch The Platform In Action
                 </h2>
-                <p style={{ color: '#888888', fontSize: '16px', maxWidth: '600px', margin: '0 auto 40px' }}>
-                    Full end-to-end user experience, navigation speed, data filtering, and responsive mobile interaction.
+                <p
+                    style={{
+                        color: '#888888',
+                        fontSize: '16px',
+                        maxWidth: '600px',
+                        margin: '0 auto 40px',
+                    }}
+                >
+                    Full end-to-end user experience, navigation speed, data
+                    filtering, and responsive mobile interaction.
                 </p>
 
                 {/* Video Player Frame */}

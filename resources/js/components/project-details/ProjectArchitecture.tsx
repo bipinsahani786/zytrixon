@@ -1,11 +1,13 @@
 import React from 'react';
-import { ProjectItem } from '@/lib/projects-data';
+import type { ProjectItem } from '@/lib/projects-data';
 
 interface ProjectArchitectureProps {
     project: ProjectItem;
 }
 
-export default function ProjectArchitecture({ project }: ProjectArchitectureProps) {
+export default function ProjectArchitecture({
+    project,
+}: ProjectArchitectureProps) {
     return (
         <section
             id="architecture"
@@ -31,7 +33,8 @@ export default function ProjectArchitecture({ project }: ProjectArchitectureProp
                     </span>
                     <h2
                         style={{
-                            fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                            fontFamily:
+                                'var(--font-heading, Space Grotesk, sans-serif)',
                             fontSize: 'clamp(28px, 4vw, 42px)',
                             fontWeight: 800,
                             marginTop: '10px',
@@ -45,7 +48,8 @@ export default function ProjectArchitecture({ project }: ProjectArchitectureProp
                 <div
                     style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                        gridTemplateColumns:
+                            'repeat(auto-fit, minmax(260px, 1fr))',
                         gap: '20px',
                     }}
                 >
@@ -74,13 +78,33 @@ export default function ProjectArchitecture({ project }: ProjectArchitectureProp
                             >
                                 Step {node.step}
                             </div>
-                            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#ffffff', marginBottom: '6px' }}>
+                            <h3
+                                style={{
+                                    fontSize: '18px',
+                                    fontWeight: 700,
+                                    color: '#ffffff',
+                                    marginBottom: '6px',
+                                }}
+                            >
                                 {node.title}
                             </h3>
-                            <div style={{ fontSize: '12px', color: project.accentColor, fontWeight: 600, marginBottom: '12px' }}>
+                            <div
+                                style={{
+                                    fontSize: '12px',
+                                    color: project.accentColor,
+                                    fontWeight: 600,
+                                    marginBottom: '12px',
+                                }}
+                            >
                                 {node.tech}
                             </div>
-                            <p style={{ fontSize: '13px', color: '#888888', lineHeight: 1.6 }}>
+                            <p
+                                style={{
+                                    fontSize: '13px',
+                                    color: '#888888',
+                                    lineHeight: 1.6,
+                                }}
+                            >
                                 {node.detail}
                             </p>
                         </div>
