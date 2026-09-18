@@ -32,6 +32,8 @@ createInertiaApp({
                     name === 'LocationDetails' ||
                     name === 'About' ||
                     name === 'Portfolio' ||
+                    name === 'ProjectDetails' ||
+                    name === 'CaseStudyDetails' ||
                     name === 'Contact' ||
                     name === 'Team' ||
                     name === 'Blog' ||

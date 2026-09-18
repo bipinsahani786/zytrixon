@@ -41,11 +41,7 @@ const CLIENTS: ClientItem[] = [
 ];
 
 // 3 repetitions of 4 clients gives 12 items for seamless infinite marquee coverage
-const REPEATED_CLIENTS = [
-    ...CLIENTS,
-    ...CLIENTS,
-    ...CLIENTS,
-];
+const REPEATED_CLIENTS = [...CLIENTS, ...CLIENTS, ...CLIENTS];
 
 export default function ClientsSection() {
     const { theme } = useTheme();
@@ -88,10 +84,13 @@ export default function ClientsSection() {
                     style={{
                         margin: '12px auto 0',
                         fontSize: '15px',
-                        color: activeIsLight ? '#64748b' : 'var(--zy-gray-text)',
+                        color: activeIsLight
+                            ? '#64748b'
+                            : 'var(--zy-gray-text)',
                     }}
                 >
-                    Empowering industry leaders across technology, investigation, and infrastructure.
+                    Empowering industry leaders across technology,
+                    investigation, and infrastructure.
                 </p>
             </div>
 
@@ -160,13 +159,18 @@ export default function ClientsSection() {
                                         ? '0 4px 20px rgba(0, 0, 0, 0.04)'
                                         : '0 8px 24px rgba(0, 0, 0, 0.4)',
                                     minHeight: '74px',
-                                    transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                                    transition:
+                                        'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                                     flexShrink: 0,
                                 }}
                                 title={client.name}
                             >
                                 <img
-                                    src={activeIsLight ? client.lightLogo : client.darkLogo}
+                                    src={
+                                        activeIsLight
+                                            ? client.lightLogo
+                                            : client.darkLogo
+                                    }
                                     alt={client.alt}
                                     style={{
                                         height: `${client.height}px`,
@@ -210,13 +214,18 @@ export default function ClientsSection() {
                                         ? '0 4px 20px rgba(0, 0, 0, 0.04)'
                                         : '0 8px 24px rgba(0, 0, 0, 0.4)',
                                     minHeight: '74px',
-                                    transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                                    transition:
+                                        'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                                     flexShrink: 0,
                                 }}
                                 title={client.name}
                             >
                                 <img
-                                    src={activeIsLight ? client.lightLogo : client.darkLogo}
+                                    src={
+                                        activeIsLight
+                                            ? client.lightLogo
+                                            : client.darkLogo
+                                    }
                                     alt={client.alt}
                                     style={{
                                         height: `${client.height}px`,

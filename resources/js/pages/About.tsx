@@ -7,6 +7,7 @@ import InnerPageHero from '@/components/landing/inner-page-hero';
 import Navbar from '@/components/landing/navbar';
 import LazySection from '@/components/landing/lazy-section';
 
+import ClientsSection from '@/components/landing/clients-section';
 import TeamSection from '@/components/landing/team-section';
 import TechStackSection from '@/components/landing/tech-stack-section';
 import TestimonialsSection from '@/components/landing/testimonials-section';
@@ -52,6 +53,9 @@ export default function About() {
                 </LazySection>
                 <LazySection>
                     <TechStackSection />
+                </LazySection>
+                <LazySection>
+                    <ClientsSection />
                 </LazySection>
                 <LazySection>
                     <TestimonialsSection />
