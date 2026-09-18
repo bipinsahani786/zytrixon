@@ -1,0 +1,1 @@
+import e from"./ProjectDetails-BOs8MHEo.js";var t=e;e.layout=null;export{t as default};

@@ -25,6 +25,11 @@ Route::inertia('/portfolio', 'Portfolio', [
     'seo' => ['title' => 'Our Portfolio & Case Studies | Zytrixon Tech', 'description' => 'Explore our portfolio of successful web development, app development, and SEO projects at Zytrixon Tech.'],
 ])->name('portfolio');
 
+Route::get('/portfolio/{slug}', [CaseStudyController::class, 'show'])->name('portfolio.show');
+Route::get('/projects/{slug}', function ($slug) {
+    return redirect()->route('portfolio.show', ['slug' => $slug]);
+});
+
 Route::inertia('/contact', 'Contact', [
     'seo' => ['title' => 'Contact Us | Zytrixon Tech', 'description' => 'Get in touch with Zytrixon Tech for premium web development, app development, and digital marketing services.'],
 ])->name('contact');

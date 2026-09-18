@@ -1,38 +1,10 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from '@inertiajs/react';
+import { DUMMY_PROJECTS } from '@/lib/projects-data';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const PROJECTS = [
-    {
-        title: 'School Management System',
-        category: 'Web Application • Next.js',
-        description:
-            'A complete ERP for modern schools. Features include advanced student data management, real-time attendance tracking, seamless fee processing, exam grading algorithms, and a dedicated parent portal. Built with Next.js for blazing fast performance.',
-        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&q=80',
-        link: '#',
-        color: '#4ecdc4',
-    },
-    {
-        title: 'Affiliate Marketing App',
-        category: 'Mobile App • React Native',
-        description:
-            'A cross-platform mobile ecosystem for global affiliate marketers. Includes real-time multi-tier commission tracking, dynamic referral chain visualization, and integrated multi-currency payment gateways.',
-        image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1000&q=80',
-        link: '#',
-        color: '#ff6b6b',
-    },
-    {
-        title: 'IoT Smart Factory Dashboard',
-        category: 'IoT • Real-time Analytics',
-        description:
-            'Mission-critical live monitoring dashboard for industrial automation. Features real-time sensor data visualization, AI-driven predictive maintenance alerts, and remote machine calibration.',
-        image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80',
-        link: '#',
-        color: '#feca57',
-    },
-];
 
 export default function PortfolioPreview({
     hideHeader = false,
@@ -115,12 +87,13 @@ export default function PortfolioPreview({
                     margin: '0 auto',
                 }}
             >
-                {PROJECTS.map((project, i) => {
+                {DUMMY_PROJECTS.map((project, i) => {
                     const isEven = i % 2 === 0;
+                    const projectUrl = `/portfolio/${project.slug}`;
 
                     return (
                         <div
-                            key={i}
+                            key={project.id}
                             ref={(el) => {
                                 itemsRef.current[i] = el;
                             }}
@@ -140,7 +113,7 @@ export default function PortfolioPreview({
                             {/* Text Content */}
                             <div
                                 style={{
-                                    flex: isMobile ? '1' : '0 0 40%',
+                                    flex: isMobile ? '1' : '0 0 45%',
                                     zIndex: 2,
                                 }}
                             >
@@ -150,7 +123,7 @@ export default function PortfolioPreview({
                                         fontWeight: 700,
                                         letterSpacing: '0.15em',
                                         textTransform: 'uppercase',
-                                        color: project.color,
+                                        color: project.accentColor,
                                         marginBottom: '16px',
                                         display: 'flex',
                                         alignItems: 'center',
@@ -161,7 +134,7 @@ export default function PortfolioPreview({
                                         style={{
                                             width: '30px',
                                             height: '1px',
-                                            background: project.color,
+                                            background: project.accentColor,
                                         }}
                                     ></div>
                                     {project.category}
@@ -169,68 +142,143 @@ export default function PortfolioPreview({
                                 <h3
                                     style={{
                                         fontFamily: 'var(--font-heading)',
-                                        fontSize: isMobile ? '32px' : '42px',
+                                        fontSize: isMobile ? '30px' : '38px',
                                         fontWeight: 800,
                                         color: 'var(--zy-white)',
-                                        marginBottom: '24px',
+                                        marginBottom: '18px',
                                         lineHeight: 1.2,
                                     }}
                                 >
-                                    {project.title}
+                                    <Link
+                                        href={projectUrl}
+                                        style={{
+                                            color: 'inherit',
+                                            textDecoration: 'none',
+                                            transition: 'color 0.3s ease',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            (e.currentTarget as HTMLElement).style.color = project.accentColor;
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            (e.currentTarget as HTMLElement).style.color = 'var(--zy-white)';
+                                        }}
+                                    >
+                                        {project.title}
+                                    </Link>
                                 </h3>
                                 <p
                                     style={{
-                                        fontSize: '16px',
+                                        fontSize: '15px',
                                         color: 'var(--zy-gray-text)',
-                                        lineHeight: 1.8,
-                                        marginBottom: '36px',
+                                        lineHeight: 1.75,
+                                        marginBottom: '28px',
                                     }}
                                 >
-                                    {project.description}
+                                    {project.summary}
                                 </p>
 
-                                <a
-                                    href={project.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="portfolio-btn"
+                                {/* Metric preview chips */}
+                                <div
                                     style={{
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        gap: '10px',
-                                        padding: '14px 28px',
-                                        background: 'transparent',
-                                        border: `1px solid ${project.color}`,
-                                        borderRadius: '30px',
-                                        color: project.color,
-                                        fontSize: '13px',
-                                        fontWeight: 600,
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '0.05em',
-                                        textDecoration: 'none',
-                                        transition: 'all 0.3s ease',
+                                        display: 'flex',
+                                        gap: '14px',
+                                        flexWrap: 'wrap',
+                                        marginBottom: '32px',
                                     }}
                                 >
-                                    Explore Project
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
+                                    {project.metrics.slice(0, 2).map((m, mIdx) => (
+                                        <div
+                                            key={mIdx}
+                                            style={{
+                                                background: 'rgba(255,255,255,0.04)',
+                                                border: '1px solid rgba(255,255,255,0.08)',
+                                                borderRadius: '12px',
+                                                padding: '10px 16px',
+                                            }}
+                                        >
+                                            <div
+                                                style={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 800,
+                                                    color: project.accentColor,
+                                                    fontFamily: 'var(--font-heading)',
+                                                }}
+                                            >
+                                                {m.value}
+                                            </div>
+                                            <div
+                                                style={{
+                                                    fontSize: '12px',
+                                                    color: 'var(--zy-gray-text)',
+                                                    marginTop: '2px',
+                                                }}
+                                            >
+                                                {m.label}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div style={{ display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' }}>
+                                    <Link
+                                        href={projectUrl}
+                                        className="portfolio-btn"
+                                        style={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '10px',
+                                            padding: '14px 28px',
+                                            background: 'transparent',
+                                            border: `1px solid ${project.accentColor}`,
+                                            borderRadius: '30px',
+                                            color: project.accentColor,
+                                            fontSize: '13px',
+                                            fontWeight: 600,
+                                            textTransform: 'uppercase',
+                                            letterSpacing: '0.05em',
+                                            textDecoration: 'none',
+                                            transition: 'all 0.3s ease',
+                                        }}
                                     >
-                                        <line
-                                            x1="5"
-                                            y1="12"
-                                            x2="19"
-                                            y2="12"
-                                        ></line>
-                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                    </svg>
-                                </a>
+                                        View Case Study & Video
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </Link>
+
+                                    <a
+                                        href={project.liveUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            fontSize: '13px',
+                                            color: 'var(--zy-gray-text)',
+                                            textDecoration: 'none',
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '6px',
+                                            transition: 'color 0.2s',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            (e.currentTarget as HTMLElement).style.color = '#FFFFFF';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            (e.currentTarget as HTMLElement).style.color = 'var(--zy-gray-text)';
+                                        }}
+                                    >
+                                        Live Demo ↗
+                                    </a>
+                                </div>
                             </div>
 
                             {/* Image Showcase */}
@@ -241,16 +289,14 @@ export default function PortfolioPreview({
                                     perspective: '1000px',
                                 }}
                             >
-                                <a
-                                    href={project.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <Link
+                                    href={projectUrl}
                                     className="portfolio-image-wrapper zy-card"
                                     style={{
                                         display: 'block',
                                         position: 'relative',
                                         width: '100%',
-                                        height: isMobile ? '300px' : '500px',
+                                        height: isMobile ? '300px' : '480px',
                                         borderRadius: '20px',
                                         overflow: 'hidden',
                                         transform: isMobile
@@ -260,22 +306,54 @@ export default function PortfolioPreview({
                                               : 'rotateY(5deg) rotateX(5deg)',
                                         transition:
                                             'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                                        boxShadow: `0 30px 60px -20px rgba(0,0,0,0.8), 0 0 40px -10px ${project.color}33`,
+                                        boxShadow: `0 30px 60px -20px rgba(0,0,0,0.8), 0 0 40px -10px ${project.accentColor}33`,
                                     }}
                                 >
                                     <div
                                         className="portfolio-bg"
                                         style={{
                                             position: 'absolute',
-                                            inset: '-10px', // Extra space for parallax/zoom
-                                            backgroundImage: `url(${project.image})`,
+                                            inset: '-10px',
+                                            backgroundImage: `url(${project.heroImage})`,
                                             backgroundSize: 'cover',
                                             backgroundPosition: 'center',
-                                            filter: 'grayscale(100%) opacity(0.8)',
+                                            filter: 'grayscale(60%) opacity(0.85)',
                                             transition:
                                                 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.8s ease',
                                         }}
                                     />
+
+                                    {/* Video / Play indicator pill */}
+                                    <div
+                                        style={{
+                                            position: 'absolute',
+                                            bottom: '24px',
+                                            left: '24px',
+                                            background: 'rgba(0,0,0,0.75)',
+                                            backdropFilter: 'blur(12px)',
+                                            border: '1px solid rgba(255,255,255,0.15)',
+                                            borderRadius: '30px',
+                                            padding: '8px 16px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px',
+                                            fontSize: '12px',
+                                            fontWeight: 600,
+                                            color: '#ffffff',
+                                            zIndex: 3,
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                width: '8px',
+                                                height: '8px',
+                                                borderRadius: '50%',
+                                                background: project.accentColor,
+                                                boxShadow: `0 0 8px ${project.accentColor}`,
+                                            }}
+                                        />
+                                        Watch Video Demo & Screenshots
+                                    </div>
 
                                     {/* Glass Overlay on Hover */}
                                     <div
@@ -289,7 +367,7 @@ export default function PortfolioPreview({
                                             transition: 'opacity 0.6s ease',
                                         }}
                                     />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     );

@@ -1,17 +1,17 @@
 import { Link, createInertiaApp, router, usePage } from "@inertiajs/react";
 import createServer from "@inertiajs/react/server";
 import ReactDOMServer from "react-dom/server";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import * as React$1 from "react";
 import { Fragment, useCallback, useSyncExternalStore } from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { cva } from "class-variance-authority";
-import { BookOpen, ChevronRight, ChevronsUpDown, FolderGit2, LayoutGrid, LogOut, PanelLeftCloseIcon, PanelLeftOpenIcon, Settings, XIcon } from "lucide-react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { Slot } from "@radix-ui/react-slot";
+import { cva } from "class-variance-authority";
+import { BookOpen, ChevronRight, ChevronsUpDown, FolderGit2, LayoutGrid, LogOut, PanelLeftCloseIcon, PanelLeftOpenIcon, Settings, XIcon } from "lucide-react";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
-import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 //#region node_modules/laravel-vite-plugin/inertia-helpers/index.js
@@ -30,6 +30,36 @@ function cn(...inputs) {
 }
 function toUrl(url) {
 	return typeof url === "string" ? url : url.url;
+}
+//#endregion
+//#region resources/js/components/ui/tooltip.tsx
+function TooltipProvider({ delayDuration = 0, ...props }) {
+	return /* @__PURE__ */ jsx(TooltipPrimitive.Provider, {
+		"data-slot": "tooltip-provider",
+		delayDuration,
+		...props
+	});
+}
+function Tooltip({ ...props }) {
+	return /* @__PURE__ */ jsx(TooltipPrimitive.Root, {
+		"data-slot": "tooltip",
+		...props
+	});
+}
+function TooltipTrigger({ ...props }) {
+	return /* @__PURE__ */ jsx(TooltipPrimitive.Trigger, {
+		"data-slot": "tooltip-trigger",
+		...props
+	});
+}
+function TooltipContent({ className, sideOffset = 4, children, ...props }) {
+	return /* @__PURE__ */ jsx(TooltipPrimitive.Portal, { children: /* @__PURE__ */ jsxs(TooltipPrimitive.Content, {
+		"data-slot": "tooltip-content",
+		sideOffset,
+		className: cn("bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-w-sm rounded-md px-3 py-1.5 text-xs", className),
+		...props,
+		children: [children, /* @__PURE__ */ jsx(TooltipPrimitive.Arrow, { className: "bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" })]
+	}) });
 }
 //#endregion
 //#region resources/js/components/ui/button.tsx
@@ -142,36 +172,6 @@ function SheetDescription({ className, ...props }) {
 		className: cn("text-muted-foreground text-sm", className),
 		...props
 	});
-}
-//#endregion
-//#region resources/js/components/ui/tooltip.tsx
-function TooltipProvider({ delayDuration = 0, ...props }) {
-	return /* @__PURE__ */ jsx(TooltipPrimitive.Provider, {
-		"data-slot": "tooltip-provider",
-		delayDuration,
-		...props
-	});
-}
-function Tooltip({ ...props }) {
-	return /* @__PURE__ */ jsx(TooltipPrimitive.Root, {
-		"data-slot": "tooltip",
-		...props
-	});
-}
-function TooltipTrigger({ ...props }) {
-	return /* @__PURE__ */ jsx(TooltipPrimitive.Trigger, {
-		"data-slot": "tooltip-trigger",
-		...props
-	});
-}
-function TooltipContent({ className, sideOffset = 4, children, ...props }) {
-	return /* @__PURE__ */ jsx(TooltipPrimitive.Portal, { children: /* @__PURE__ */ jsxs(TooltipPrimitive.Content, {
-		"data-slot": "tooltip-content",
-		sideOffset,
-		className: cn("bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-w-sm rounded-md px-3 py-1.5 text-xs", className),
-		...props,
-		children: [children, /* @__PURE__ */ jsx(TooltipPrimitive.Arrow, { className: "bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" })]
-	}) });
 }
 //#endregion
 //#region resources/js/hooks/use-mobile.tsx
@@ -1927,7 +1927,7 @@ function NavUser() {
 	const { auth } = usePage().props;
 	const { state } = useSidebar();
 	const isMobile = useIsMobile();
-	if (!auth.user) return null;
+	if (!auth?.user) return null;
 	return /* @__PURE__ */ jsx(SidebarMenu, { children: /* @__PURE__ */ jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxs(DropdownMenu, { children: [/* @__PURE__ */ jsx(DropdownMenuTrigger, {
 		asChild: true,
 		children: /* @__PURE__ */ jsxs(SidebarMenuButton, {
@@ -2348,37 +2348,39 @@ var renderPage = (page) => createInertiaApp({
 	title: (title) => title ? `${title} - ${appName}` : appName,
 	resolve: async (name) => {
 		const pageModule = await resolvePageComponent(`./pages/${name}.tsx`, /* #__PURE__ */ Object.assign({
-			"./pages/About.tsx": () => import("./assets/About-EMr_loYd.js"),
-			"./pages/Blog.tsx": () => import("./assets/Blog-CEzOfjqy.js"),
-			"./pages/BlogDetails.tsx": () => import("./assets/BlogDetails-BtUfY9q8.js"),
-			"./pages/Careers.tsx": () => import("./assets/Careers-C6W4qkej.js"),
-			"./pages/Contact.tsx": () => import("./assets/Contact-CbqGG83j.js"),
-			"./pages/Error.tsx": () => import("./assets/Error-B_F3RkLq.js"),
-			"./pages/LocationDetails.tsx": () => import("./assets/LocationDetails-DV-Ic_Dq.js"),
-			"./pages/LocationsIndex.tsx": () => import("./assets/LocationsIndex-DHI2NLBW.js"),
-			"./pages/Portfolio.tsx": () => import("./assets/Portfolio-C4-m7MXZ.js"),
-			"./pages/PrivacyPolicy.tsx": () => import("./assets/PrivacyPolicy-BlhZfOdN.js"),
-			"./pages/Process.tsx": () => import("./assets/Process-DGc9NHD8.js"),
-			"./pages/ServiceSeoPage.tsx": () => import("./assets/ServiceSeoPage-4ELO9Rsa.js"),
-			"./pages/ServicesIndex.tsx": () => import("./assets/ServicesIndex-BZQdC3Sk.js"),
-			"./pages/Team.tsx": () => import("./assets/Team-sjlPf3D7.js"),
-			"./pages/TermsConditions.tsx": () => import("./assets/TermsConditions-Cj4JNmGN.js"),
-			"./pages/auth/confirm-password.tsx": () => import("./assets/confirm-password-D7Iwok1j.js"),
-			"./pages/auth/forgot-password.tsx": () => import("./assets/forgot-password-B4GwspS5.js"),
-			"./pages/auth/login.tsx": () => import("./assets/login-CTwpim-Q.js"),
-			"./pages/auth/register.tsx": () => import("./assets/register-DeTBbfjm.js"),
-			"./pages/auth/reset-password.tsx": () => import("./assets/reset-password-B0H8FOI6.js"),
-			"./pages/auth/two-factor-challenge.tsx": () => import("./assets/two-factor-challenge-BFBKEvlN.js"),
-			"./pages/auth/verify-email.tsx": () => import("./assets/verify-email-Dj8S5ALp.js"),
+			"./pages/About.tsx": () => import("./assets/About--5Pk9xV5.js"),
+			"./pages/Blog.tsx": () => import("./assets/Blog-D3LQ7h7O.js"),
+			"./pages/BlogDetails.tsx": () => import("./assets/BlogDetails-BP12olJN.js"),
+			"./pages/Careers.tsx": () => import("./assets/Careers-DI78rUPd.js"),
+			"./pages/CaseStudyDetails.tsx": () => import("./assets/CaseStudyDetails-Bg7jBQ1Q.js"),
+			"./pages/Contact.tsx": () => import("./assets/Contact-B8GX36k4.js"),
+			"./pages/Error.tsx": () => import("./assets/Error-Czj4h1Ha.js"),
+			"./pages/LocationDetails.tsx": () => import("./assets/LocationDetails-CbxuUBjK.js"),
+			"./pages/LocationsIndex.tsx": () => import("./assets/LocationsIndex-BY6ddVu_.js"),
+			"./pages/Portfolio.tsx": () => import("./assets/Portfolio-DD1WHzdq.js"),
+			"./pages/PrivacyPolicy.tsx": () => import("./assets/PrivacyPolicy-DtRVO0DV.js"),
+			"./pages/Process.tsx": () => import("./assets/Process-vfVXzjLP.js"),
+			"./pages/ProjectDetails.tsx": () => import("./assets/ProjectDetails-i32Z_BJA.js"),
+			"./pages/ServiceSeoPage.tsx": () => import("./assets/ServiceSeoPage-GrldVouE.js"),
+			"./pages/ServicesIndex.tsx": () => import("./assets/ServicesIndex-BMYoJS8t.js"),
+			"./pages/Team.tsx": () => import("./assets/Team-DGHIIINf.js"),
+			"./pages/TermsConditions.tsx": () => import("./assets/TermsConditions-FnFdOy3y.js"),
+			"./pages/auth/confirm-password.tsx": () => import("./assets/confirm-password-mAEUDtyn.js"),
+			"./pages/auth/forgot-password.tsx": () => import("./assets/forgot-password-DxTFQNZ5.js"),
+			"./pages/auth/login.tsx": () => import("./assets/login-DNCQfWJ_.js"),
+			"./pages/auth/register.tsx": () => import("./assets/register-DacS1al0.js"),
+			"./pages/auth/reset-password.tsx": () => import("./assets/reset-password-B4ywBSQz.js"),
+			"./pages/auth/two-factor-challenge.tsx": () => import("./assets/two-factor-challenge-DzsUG1cs.js"),
+			"./pages/auth/verify-email.tsx": () => import("./assets/verify-email-BcS_LJZx.js"),
 			"./pages/dashboard.tsx": () => import("./assets/dashboard-CJ37-haH.js"),
-			"./pages/settings/appearance.tsx": () => import("./assets/appearance-BjKuk9Fp.js"),
-			"./pages/settings/profile.tsx": () => import("./assets/profile-5wsAMLq3.js"),
-			"./pages/settings/security.tsx": () => import("./assets/security-Dhlp1mM0.js"),
-			"./pages/welcome.tsx": () => import("./assets/welcome-CwjmURq_.js")
+			"./pages/settings/appearance.tsx": () => import("./assets/appearance-J06yOClH.js"),
+			"./pages/settings/profile.tsx": () => import("./assets/profile-Bj6JC4ab.js"),
+			"./pages/settings/security.tsx": () => import("./assets/security-DL-WyZ4N.js"),
+			"./pages/welcome.tsx": () => import("./assets/welcome-BlREehBS.js")
 		}));
 		const defaultExport = pageModule.default;
 		if (defaultExport && defaultExport.layout === void 0) switch (true) {
-			case name === "welcome" || name === "ServiceSeoPage" || name === "ServicesIndex" || name === "LocationsIndex" || name === "LocationDetails" || name === "About" || name === "Portfolio" || name === "Contact" || name === "Team" || name === "Blog" || name === "Careers" || name === "Process" || name === "BlogDetails" || name === "PrivacyPolicy" || name === "TermsConditions":
+			case name === "welcome" || name === "ServiceSeoPage" || name === "ServicesIndex" || name === "LocationsIndex" || name === "LocationDetails" || name === "About" || name === "Portfolio" || name === "ProjectDetails" || name === "CaseStudyDetails" || name === "Contact" || name === "Team" || name === "Blog" || name === "Careers" || name === "Process" || name === "BlogDetails" || name === "PrivacyPolicy" || name === "TermsConditions":
 				defaultExport.layout = null;
 				break;
 			case name.startsWith("auth/"):
@@ -2398,7 +2400,7 @@ var renderPage = (page) => createInertiaApp({
 		children: /* @__PURE__ */ jsx(App, { ...props })
 	})
 });
-createServer(renderPage, process.env.PORT || 13714);
+createServer(renderPage, process.env.PORT ? parseInt(process.env.PORT) : 13714);
 //#endregion
 export { dashboard as a, register as c, Separator as d, renderPage as default, Input as f, edit$2 as i, applyUrlDefaults as l, cn as m, edit$1 as n, login as o, Button as p, Heading as r, logout as s, edit as t, queryParams as u };
 
