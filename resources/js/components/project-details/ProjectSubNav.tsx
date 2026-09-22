@@ -9,8 +9,12 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('overview');
 
-    const hasVideo = Boolean(project.videoUrl && project.videoUrl.trim() !== '');
-    const hasGallery = Boolean(project.screenshots && project.screenshots.length > 0);
+    const hasVideo = Boolean(
+        project.videoUrl && project.videoUrl.trim() !== '',
+    );
+    const hasGallery = Boolean(
+        project.screenshots && project.screenshots.length > 0,
+    );
 
     // Dynamically build navigation pills based on actual rendered sections
     const navItems: { id: string; label: string }[] = [];

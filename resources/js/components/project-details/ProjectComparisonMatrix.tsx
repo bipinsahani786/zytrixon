@@ -8,7 +8,6 @@ interface ProjectComparisonMatrixProps {
 export default function ProjectComparisonMatrix({
     project,
 }: ProjectComparisonMatrixProps) {
-
     return (
         <section
             id="transformation"

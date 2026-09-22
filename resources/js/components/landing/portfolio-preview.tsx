@@ -29,25 +29,31 @@ export default function PortfolioPreview({
     ];
 
     const filteredProjects = DUMMY_PROJECTS.filter((p) => {
-        if (activeFilter === 'All') return true;
-        if (activeFilter === 'Real Estate')
+        if (activeFilter === 'All') {
+            return true;
+        }
+        if (activeFilter === 'Real Estate') {
             return p.industry.toLowerCase().includes('real estate');
-        if (activeFilter === 'Security')
+        }
+        if (activeFilter === 'Security') {
             return (
                 p.industry.toLowerCase().includes('security') ||
                 p.industry.toLowerCase().includes('investigation')
             );
-        if (activeFilter === 'E-Commerce')
+        }
+        if (activeFilter === 'E-Commerce') {
             return (
                 p.industry.toLowerCase().includes('commerce') ||
                 p.industry.toLowerCase().includes('fashion')
             );
-        if (activeFilter === 'HealthTech')
+        }
+        if (activeFilter === 'HealthTech') {
             return (
                 p.industry.toLowerCase().includes('health') ||
                 p.industry.toLowerCase().includes('pathology') ||
                 p.industry.toLowerCase().includes('diagnostics')
             );
+        }
         return true;
     });
 
@@ -306,7 +312,8 @@ export default function PortfolioPreview({
                                     onMouseLeave={(e) => {
                                         (
                                             e.currentTarget as HTMLElement
-                                        ).style.color = 'var(--zy-text-primary)';
+                                        ).style.color =
+                                            'var(--zy-text-primary)';
                                     }}
                                 >
                                     {project.shortTitle}
@@ -410,7 +417,12 @@ export default function PortfolioPreview({
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                     >
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <line
+                                            x1="5"
+                                            y1="12"
+                                            x2="19"
+                                            y2="12"
+                                        ></line>
                                         <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
                                 </Link>

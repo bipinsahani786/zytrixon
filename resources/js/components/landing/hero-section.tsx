@@ -470,8 +470,8 @@ export default function HeroSection() {
                                 (
                                     e.currentTarget as HTMLElement
                                 ).style.borderColor = activeIsLight
-                                        ? '#000'
-                                        : '#FFFFFF';
+                                    ? '#000'
+                                    : '#FFFFFF';
                                 (
                                     e.currentTarget as HTMLElement
                                 ).style.background = 'rgba(128,128,128,0.1)';

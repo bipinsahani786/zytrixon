@@ -42,10 +42,10 @@ export default function SeoHead({ seo, service, location }: any) {
             telephone: '+91-7049711475',
             offers: service
                 ? {
-                    '@type': 'Offer',
-                    name: service.title,
-                    description: service.description,
-                }
+                      '@type': 'Offer',
+                      name: service.title,
+                      description: service.description,
+                  }
                 : undefined,
         },
     ];

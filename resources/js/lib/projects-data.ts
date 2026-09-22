@@ -240,12 +240,15 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
         duration: '3 Months',
         accentColor: '#D4AF37',
         secondaryColor: '#00F0FF',
-        heroImage: '/assets/projects/smart-india-detective/hero-secret-investigation.png',
-        mobileImage: '/assets/projects/smart-india-detective/hero-secret-investigation.png',
+        heroImage:
+            '/assets/projects/smart-india-detective/hero-secret-investigation.png',
+        mobileImage:
+            '/assets/projects/smart-india-detective/hero-secret-investigation.png',
         liveUrl: 'http://smartindiadetective.in/',
         githubUrl: 'https://github.com/zytrixontech/smart-india-preview',
         videoUrl: '/assets/videos/smart-india-video.mp4',
-        videoPoster: '/assets/projects/smart-india-detective/hero-secret-investigation.png',
+        videoPoster:
+            '/assets/projects/smart-india-detective/hero-secret-investigation.png',
         summary:
             'Smart India Detective is a leading private investigation agency with pan-India operations. Zytrixon architected an end-to-end zero-trust digital infrastructure, offering encrypted evidence submission, confidential inquiry routing, and secure client reporting with automated tamper-proofing.',
         challenge:
@@ -556,8 +559,14 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
             { name: 'TailwindCSS', category: 'Modern Design System' },
             { name: 'Laravel API', category: 'Core LIS Engine' },
             { name: 'HL7 & ASTM Protocols', category: 'Analyzer Interfacing' },
-            { name: 'WhatsApp Business API', category: 'Automated Report Delivery' },
-            { name: 'PostgreSQL Enterprise', category: 'Encrypted Health Data' },
+            {
+                name: 'WhatsApp Business API',
+                category: 'Automated Report Delivery',
+            },
+            {
+                name: 'PostgreSQL Enterprise',
+                category: 'Encrypted Health Data',
+            },
         ],
         screenshots: [
             {

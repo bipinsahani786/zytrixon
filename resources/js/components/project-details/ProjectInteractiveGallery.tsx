@@ -9,16 +9,8 @@ interface ProjectInteractiveGalleryProps {
 export default function ProjectInteractiveGallery({
     project,
 }: ProjectInteractiveGalleryProps) {
-    if (!project.screenshots || project.screenshots.length === 0) {
-        return null;
-    }
-
     const [activeIndex, setActiveIndex] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);
-
-    const isSingle = project.screenshots.length === 1;
-    const activeScreen =
-        project.screenshots[activeIndex] || project.screenshots[0];
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -29,6 +21,14 @@ export default function ProjectInteractiveGallery({
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
+
+    const screenshots = project.screenshots || [];
+    if (screenshots.length === 0) {
+        return null;
+    }
+
+    const isSingle = screenshots.length === 1;
+    const activeScreen = screenshots[activeIndex] || screenshots[0];
 
     return (
         <section
@@ -168,7 +168,8 @@ export default function ProjectInteractiveGallery({
                                 style={{
                                     padding: '24px 28px',
                                     background: 'var(--zy-surface-1)',
-                                    borderTop: '1px solid var(--zy-border-subtle)',
+                                    borderTop:
+                                        '1px solid var(--zy-border-subtle)',
                                 }}
                             >
                                 <h3
@@ -204,254 +205,256 @@ export default function ProjectInteractiveGallery({
                             alignItems: 'center',
                         }}
                     >
-                    {/* Featured Screen Stage */}
-                    <div>
-                        <div
-                            onClick={() => setLightboxOpen(true)}
-                            style={{
-                                background: 'var(--zy-surface-1)',
-                                borderRadius: '22px',
-                                border: '1px solid var(--zy-border-subtle)',
-                                overflow: 'hidden',
-                                boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
-                                cursor: 'pointer',
-                                position: 'relative',
-                                transition: 'all 0.3s ease',
-                            }}
-                            onMouseEnter={(e) =>
-                                (e.currentTarget.style.borderColor =
-                                    project.accentColor)
-                            }
-                            onMouseLeave={(e) =>
-                                (e.currentTarget.style.borderColor =
-                                    'var(--zy-border-subtle)')
-                            }
-                        >
+                        {/* Featured Screen Stage */}
+                        <div>
                             <div
+                                onClick={() => setLightboxOpen(true)}
                                 style={{
-                                    position: 'relative',
-                                    overflow: 'hidden',
-                                    height: '420px',
-                                }}
-                            >
-                                <img
-                                    src={activeScreen.image}
-                                    alt={activeScreen.title}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                        display: 'block',
-                                        transition: 'transform 0.4s ease',
-                                    }}
-                                />
-
-                                {/* Expand Pill */}
-                                <div
-                                    style={{
-                                        position: 'absolute',
-                                        top: '16px',
-                                        right: '16px',
-                                        background: 'rgba(0,0,0,0.75)',
-                                        backdropFilter: 'blur(8px)',
-                                        color: '#ffffff',
-                                        padding: '6px 14px',
-                                        borderRadius: '20px',
-                                        fontSize: '11px',
-                                        fontWeight: 700,
-                                        border: '1px solid rgba(255,255,255,0.15)',
-                                    }}
-                                >
-                                    🔍 Click to Enlarge
-                                </div>
-
-                                <span
-                                    style={{
-                                        position: 'absolute',
-                                        bottom: '16px',
-                                        left: '16px',
-                                        background: 'rgba(0,0,0,0.85)',
-                                        color: project.accentColor,
-                                        padding: '6px 14px',
-                                        borderRadius: '8px',
-                                        fontSize: '11px',
-                                        fontWeight: 800,
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '0.08em',
-                                    }}
-                                >
-                                    {activeScreen.category}
-                                </span>
-                            </div>
-
-                            <div
-                                style={{
-                                    padding: '24px 28px',
                                     background: 'var(--zy-surface-1)',
-                                    borderTop: '1px solid var(--zy-border-subtle)',
+                                    borderRadius: '22px',
+                                    border: '1px solid var(--zy-border-subtle)',
+                                    overflow: 'hidden',
+                                    boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
+                                    cursor: 'pointer',
+                                    position: 'relative',
+                                    transition: 'all 0.3s ease',
                                 }}
+                                onMouseEnter={(e) =>
+                                    (e.currentTarget.style.borderColor =
+                                        project.accentColor)
+                                }
+                                onMouseLeave={(e) =>
+                                    (e.currentTarget.style.borderColor =
+                                        'var(--zy-border-subtle)')
+                                }
                             >
-                                <h3
-                                    style={{
-                                        fontSize: '18px',
-                                        fontWeight: 700,
-                                        color: 'var(--zy-text-primary)',
-                                        marginBottom: '6px',
-                                    }}
-                                >
-                                    {activeScreen.title}
-                                </h3>
-                                <p
-                                    style={{
-                                        fontSize: '14px',
-                                        color: 'var(--zy-text-secondary)',
-                                        lineHeight: 1.6,
-                                        margin: 0,
-                                    }}
-                                >
-                                    {activeScreen.description}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right: Interactive Screen Selector List */}
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '16px',
-                        }}
-                    >
-                        {project.screenshots.map((ss, idx) => {
-                            const isSelected = activeIndex === idx;
-                            return (
                                 <div
-                                    key={idx}
-                                    onClick={() => setActiveIndex(idx)}
                                     style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '20px',
-                                        padding: '18px 22px',
-                                        borderRadius: '18px',
-                                        background: isSelected
-                                            ? 'var(--zy-card-bg-hover)'
-                                            : 'var(--zy-card-bg)',
-                                        border: isSelected
-                                            ? `1px solid ${project.accentColor}`
-                                            : '1px solid var(--zy-border-subtle)',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.25s ease',
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        if (!isSelected) {
-                                            e.currentTarget.style.background =
-                                                'var(--zy-card-bg-hover)';
-                                        }
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        if (!isSelected) {
-                                            e.currentTarget.style.background =
-                                                'var(--zy-card-bg)';
-                                        }
+                                        position: 'relative',
+                                        overflow: 'hidden',
+                                        height: '420px',
                                     }}
                                 >
-                                    {/* Thumbnail Preview */}
+                                    <img
+                                        src={activeScreen.image}
+                                        alt={activeScreen.title}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                            display: 'block',
+                                            transition: 'transform 0.4s ease',
+                                        }}
+                                    />
+
+                                    {/* Expand Pill */}
                                     <div
                                         style={{
-                                            width: '68px',
-                                            height: '48px',
+                                            position: 'absolute',
+                                            top: '16px',
+                                            right: '16px',
+                                            background: 'rgba(0,0,0,0.75)',
+                                            backdropFilter: 'blur(8px)',
+                                            color: '#ffffff',
+                                            padding: '6px 14px',
+                                            borderRadius: '20px',
+                                            fontSize: '11px',
+                                            fontWeight: 700,
+                                            border: '1px solid rgba(255,255,255,0.15)',
+                                        }}
+                                    >
+                                        🔍 Click to Enlarge
+                                    </div>
+
+                                    <span
+                                        style={{
+                                            position: 'absolute',
+                                            bottom: '16px',
+                                            left: '16px',
+                                            background: 'rgba(0,0,0,0.85)',
+                                            color: project.accentColor,
+                                            padding: '6px 14px',
                                             borderRadius: '8px',
-                                            overflow: 'hidden',
-                                            flexShrink: 0,
+                                            fontSize: '11px',
+                                            fontWeight: 800,
+                                            textTransform: 'uppercase',
+                                            letterSpacing: '0.08em',
+                                        }}
+                                    >
+                                        {activeScreen.category}
+                                    </span>
+                                </div>
+
+                                <div
+                                    style={{
+                                        padding: '24px 28px',
+                                        background: 'var(--zy-surface-1)',
+                                        borderTop:
+                                            '1px solid var(--zy-border-subtle)',
+                                    }}
+                                >
+                                    <h3
+                                        style={{
+                                            fontSize: '18px',
+                                            fontWeight: 700,
+                                            color: 'var(--zy-text-primary)',
+                                            marginBottom: '6px',
+                                        }}
+                                    >
+                                        {activeScreen.title}
+                                    </h3>
+                                    <p
+                                        style={{
+                                            fontSize: '14px',
+                                            color: 'var(--zy-text-secondary)',
+                                            lineHeight: 1.6,
+                                            margin: 0,
+                                        }}
+                                    >
+                                        {activeScreen.description}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right: Interactive Screen Selector List */}
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '16px',
+                            }}
+                        >
+                            {project.screenshots.map((ss, idx) => {
+                                const isSelected = activeIndex === idx;
+                                return (
+                                    <div
+                                        key={idx}
+                                        onClick={() => setActiveIndex(idx)}
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '20px',
+                                            padding: '18px 22px',
+                                            borderRadius: '18px',
+                                            background: isSelected
+                                                ? 'var(--zy-card-bg-hover)'
+                                                : 'var(--zy-card-bg)',
                                             border: isSelected
                                                 ? `1px solid ${project.accentColor}`
                                                 : '1px solid var(--zy-border-subtle)',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.25s ease',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            if (!isSelected) {
+                                                e.currentTarget.style.background =
+                                                    'var(--zy-card-bg-hover)';
+                                            }
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            if (!isSelected) {
+                                                e.currentTarget.style.background =
+                                                    'var(--zy-card-bg)';
+                                            }
                                         }}
                                     >
-                                        <img
-                                            src={ss.image}
-                                            alt={ss.title}
-                                            style={{
-                                                width: '100%',
-                                                height: '100%',
-                                                objectFit: 'cover',
-                                            }}
-                                        />
-                                    </div>
-
-                                    <div style={{ flex: 1 }}>
+                                        {/* Thumbnail Preview */}
                                         <div
                                             style={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '8px',
+                                                width: '68px',
+                                                height: '48px',
+                                                borderRadius: '8px',
+                                                overflow: 'hidden',
+                                                flexShrink: 0,
+                                                border: isSelected
+                                                    ? `1px solid ${project.accentColor}`
+                                                    : '1px solid var(--zy-border-subtle)',
                                             }}
                                         >
-                                            <span
+                                            <img
+                                                src={ss.image}
+                                                alt={ss.title}
                                                 style={{
-                                                    fontSize: '11px',
-                                                    color: isSelected
-                                                        ? project.accentColor
-                                                        : 'var(--zy-text-muted)',
-                                                    fontWeight: 800,
-                                                    textTransform: 'uppercase',
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                }}
+                                            />
+                                        </div>
+
+                                        <div style={{ flex: 1 }}>
+                                            <div
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '8px',
                                                 }}
                                             >
-                                                {ss.category}
-                                            </span>
+                                                <span
+                                                    style={{
+                                                        fontSize: '11px',
+                                                        color: isSelected
+                                                            ? project.accentColor
+                                                            : 'var(--zy-text-muted)',
+                                                        fontWeight: 800,
+                                                        textTransform:
+                                                            'uppercase',
+                                                    }}
+                                                >
+                                                    {ss.category}
+                                                </span>
+                                            </div>
+                                            <h4
+                                                style={{
+                                                    fontSize: '15px',
+                                                    fontWeight: 700,
+                                                    color: 'var(--zy-text-primary)',
+                                                    marginTop: '2px',
+                                                    marginBottom: '2px',
+                                                }}
+                                            >
+                                                {ss.title}
+                                            </h4>
+                                            <div
+                                                style={{
+                                                    fontSize: '12px',
+                                                    color: 'var(--zy-text-secondary)',
+                                                    overflow: 'hidden',
+                                                    textOverflow: 'ellipsis',
+                                                    whiteSpace: 'nowrap',
+                                                    maxWidth: '320px',
+                                                }}
+                                            >
+                                                {ss.description}
+                                            </div>
                                         </div>
-                                        <h4
-                                            style={{
-                                                fontSize: '15px',
-                                                fontWeight: 700,
-                                                color: 'var(--zy-text-primary)',
-                                                marginTop: '2px',
-                                                marginBottom: '2px',
-                                            }}
-                                        >
-                                            {ss.title}
-                                        </h4>
+
                                         <div
                                             style={{
-                                                fontSize: '12px',
-                                                color: 'var(--zy-text-secondary)',
-                                                overflow: 'hidden',
-                                                textOverflow: 'ellipsis',
-                                                whiteSpace: 'nowrap',
-                                                maxWidth: '320px',
+                                                width: '24px',
+                                                height: '24px',
+                                                borderRadius: '50%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                background: isSelected
+                                                    ? project.accentColor
+                                                    : 'var(--zy-surface-2)',
+                                                color: isSelected
+                                                    ? '#000000'
+                                                    : 'var(--zy-text-secondary)',
+                                                fontSize: '11px',
+                                                fontWeight: 800,
                                             }}
                                         >
-                                            {ss.description}
+                                            {idx + 1}
                                         </div>
                                     </div>
-
-                                    <div
-                                        style={{
-                                            width: '24px',
-                                            height: '24px',
-                                            borderRadius: '50%',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            background: isSelected
-                                                ? project.accentColor
-                                                : 'var(--zy-surface-2)',
-                                            color: isSelected
-                                                ? '#000000'
-                                                : 'var(--zy-text-secondary)',
-                                            fontSize: '11px',
-                                            fontWeight: 800,
-                                        }}
-                                    >
-                                        {idx + 1}
-                                    </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
+                        </div>
                     </div>
-                </div>
                 )}
             </div>
 

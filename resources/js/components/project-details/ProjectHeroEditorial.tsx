@@ -371,7 +371,8 @@ export default function ProjectHeroEditorial({
                                     justifyContent: 'space-between',
                                     padding: '10px 16px',
                                     background: 'var(--zy-surface-2)',
-                                    borderBottom: '1px solid var(--zy-border-subtle)',
+                                    borderBottom:
+                                        '1px solid var(--zy-border-subtle)',
                                 }}
                             >
                                 <div style={{ display: 'flex', gap: '6px' }}>

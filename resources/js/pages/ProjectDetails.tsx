@@ -23,8 +23,12 @@ interface ProjectDetailsProps {
 }
 
 function ProjectDetailsInner({ project }: { project: ProjectItem }) {
-    const hasVideo = Boolean(project.videoUrl && project.videoUrl.trim() !== '');
-    const hasScreenshots = Boolean(project.screenshots && project.screenshots.length > 0);
+    const hasVideo = Boolean(
+        project.videoUrl && project.videoUrl.trim() !== '',
+    );
+    const hasScreenshots = Boolean(
+        project.screenshots && project.screenshots.length > 0,
+    );
 
     return (
         <>
