@@ -1,7 +1,6 @@
 import React from 'react';
 import type { ProjectItem } from '@/lib/projects-data';
 import GradientCard from '@/components/ui/GradientCard';
-import { useTheme } from '@/components/landing/theme-provider';
 
 interface ProjectImpactBannerProps {
     project: ProjectItem;
@@ -10,17 +9,12 @@ interface ProjectImpactBannerProps {
 export default function ProjectImpactBanner({
     project,
 }: ProjectImpactBannerProps) {
-    const { theme } = useTheme();
-    const isLight = theme === 'light';
-
     return (
         <section
             style={{
                 padding: '90px var(--zy-section-pad-x, 24px)',
-                background: isLight ? '#ffffff' : '#070709',
-                borderBottom: isLight
-                    ? '1px solid rgba(0, 0, 0, 0.08)'
-                    : '1px solid rgba(255, 255, 255, 0.06)',
+                background: 'var(--zy-bg)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
                 transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
@@ -29,13 +23,9 @@ export default function ProjectImpactBanner({
                 <div
                     style={{
                         padding: '40px 36px',
-                        background: isLight
-                            ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.04) 100%)'
-                            : 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                        background: 'var(--zy-card-bg)',
                         borderRadius: '20px',
-                        border: isLight
-                            ? '1px solid rgba(0, 0, 0, 0.08)'
-                            : '1px solid rgba(255, 255, 255, 0.08)',
+                        border: '1px solid var(--zy-border-subtle)',
                         marginBottom: '40px',
                         position: 'relative',
                     }}
@@ -57,7 +47,7 @@ export default function ProjectImpactBanner({
                             fontSize: 'clamp(20px, 2.5vw, 28px)',
                             fontWeight: 600,
                             lineHeight: 1.45,
-                            color: isLight ? '#111111' : '#ffffff',
+                            color: 'var(--zy-text-primary)',
                             margin: 0,
                             maxWidth: '1000px',
                         }}
@@ -68,7 +58,7 @@ export default function ProjectImpactBanner({
                         style={{
                             marginTop: '20px',
                             fontSize: '13px',
-                            color: isLight ? '#666666' : '#777777',
+                            color: 'var(--zy-text-secondary)',
                             textTransform: 'uppercase',
                             letterSpacing: '0.1em',
                         }}
@@ -114,7 +104,7 @@ export default function ProjectImpactBanner({
                                     style={{
                                         fontSize: '15px',
                                         fontWeight: 700,
-                                        color: isLight ? '#111111' : '#ffffff',
+                                        color: 'var(--zy-text-primary)',
                                         marginBottom: '6px',
                                     }}
                                 >
@@ -123,7 +113,7 @@ export default function ProjectImpactBanner({
                                 <div
                                     style={{
                                         fontSize: '12px',
-                                        color: isLight ? '#555555' : '#888888',
+                                        color: 'var(--zy-text-secondary)',
                                         lineHeight: 1.5,
                                     }}
                                 >

@@ -81,6 +81,21 @@
     --zy-gray-card: #0c0c0c;
     --zy-gray-light: #aaaaaa;
 
+    /* Semantic Surface & Theme Tokens */
+    --zy-bg: #000000;
+    --zy-surface-1: #070709;
+    --zy-surface-2: #0e0e12;
+    --zy-surface-3: #18181b;
+    --zy-card-bg: rgba(255, 255, 255, 0.025);
+    --zy-card-bg-hover: rgba(255, 255, 255, 0.05);
+    --zy-border-subtle: rgba(255, 255, 255, 0.08);
+    --zy-border-hover: rgba(255, 255, 255, 0.2);
+    --zy-text-primary: #ffffff;
+    --zy-text-secondary: #888888;
+    --zy-text-muted: #666666;
+    --zy-glass-bg: rgba(0, 0, 0, 0.8);
+    --zy-glass-border: rgba(255, 255, 255, 0.12);
+
     /* Spacing */
     --zy-section-pad-y: 120px;
     --zy-section-pad-x: clamp(24px, 5vw, 120px);
@@ -566,6 +581,21 @@ body.light {
     --zy-gray-border: #e0e0e0;
     --zy-gray-card: #f7f7f7;
     --zy-gray-light: #555555;
+
+    /* Semantic Surface & Theme Tokens for Light Mode */
+    --zy-bg: #ffffff;
+    --zy-surface-1: #f8fafc;
+    --zy-surface-2: #f1f5f9;
+    --zy-surface-3: #e2e8f0;
+    --zy-card-bg: #ffffff;
+    --zy-card-bg-hover: #f8fafc;
+    --zy-border-subtle: rgba(0, 0, 0, 0.08);
+    --zy-border-hover: rgba(0, 0, 0, 0.2);
+    --zy-text-primary: #0a0a0a;
+    --zy-text-secondary: #64748b;
+    --zy-text-muted: #94a3b8;
+    --zy-glass-bg: rgba(255, 255, 255, 0.9);
+    --zy-glass-border: rgba(0, 0, 0, 0.1);
 
     --background: #ffffff;
     --foreground: #0a0a0a;

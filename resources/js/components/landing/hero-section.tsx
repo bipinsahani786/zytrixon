@@ -407,7 +407,7 @@ export default function HeroSection() {
                                     : 'var(--zy-white)',
                             }}
                         >
-                            Samastipur to the World
+                            Patna to the World
                         </strong>{' '}
                         — Zytrixon Tech builds enterprise-grade Web, Mobile, and
                         IoT solutions that transform businesses into global
@@ -470,8 +470,8 @@ export default function HeroSection() {
                                 (
                                     e.currentTarget as HTMLElement
                                 ).style.borderColor = activeIsLight
-                                    ? '#000'
-                                    : '#FFFFFF';
+                                        ? '#000'
+                                        : '#FFFFFF';
                                 (
                                     e.currentTarget as HTMLElement
                                 ).style.background = 'rgba(128,128,128,0.1)';

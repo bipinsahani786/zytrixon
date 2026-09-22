@@ -63,9 +63,7 @@ export default function GlobalFootprint() {
                 style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}
             >
                 <span className="zy-section-label">Global Reach</span>
-                <h2 className="zy-section-title">
-                    From Samastipur to the World
-                </h2>
+                <h2 className="zy-section-title">From Patna to the World</h2>
                 <p
                     className="zy-section-subtitle"
                     style={{ margin: '20px auto 0' }}

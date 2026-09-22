@@ -12,20 +12,20 @@ const FOOTER_LINKS = {
     ],
     locations: [
         {
-            label: 'Web Development in Samastipur',
-            href: '/services/web-development/in/samastipur',
+            label: 'Web Development in Patna',
+            href: '/services/web-development/in/patna',
         },
         {
-            label: 'App Development in Samastipur',
-            href: '/services/app-development/in/samastipur',
+            label: 'App Development in Patna',
+            href: '/services/app-development/in/patna',
         },
         {
-            label: 'AI & Automation in Samastipur',
-            href: '/services/ai-automation/in/samastipur',
+            label: 'AI & Automation in Patna',
+            href: '/services/ai-automation/in/patna',
         },
         {
-            label: 'Digital Marketing in Samastipur',
-            href: '/services/seo-digital-marketing/in/samastipur',
+            label: 'Digital Marketing in Patna',
+            href: '/services/seo-digital-marketing/in/patna',
         },
         {
             label: 'Custom Software in Bihar',
@@ -100,7 +100,7 @@ export default function Footer() {
                     >
                         Building robust software solutions for tomorrow's
                         challenges. Enterprise-grade Web, Mobile, and IoT
-                        solutions from Samastipur, Bihar.
+                        solutions from Patna, India.
                     </p>
 
                     {/* Social icons */}
@@ -190,7 +190,7 @@ export default function Footer() {
                             color: 'var(--zy-white)',
                         }}
                     >
-                        Services in Bihar
+                        Services in Patna
                     </div>
                     {FOOTER_LINKS.locations.map((link) => (
                         <Link

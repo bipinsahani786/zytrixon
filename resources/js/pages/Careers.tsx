@@ -53,7 +53,7 @@ export default function Careers() {
                 seo={{
                     title: 'Careers | Zytrixon Tech',
                     description:
-                        'Join our team at Zytrixon Tech and build the future of software development in Samastipur, Bihar.',
+                        'Join our team at Zytrixon Tech and build the future of software development in Patna.',
                 }}
             />
 

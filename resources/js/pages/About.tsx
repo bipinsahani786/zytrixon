@@ -25,7 +25,7 @@ export default function About() {
                 seo={{
                     title: 'About Us | Zytrixon Tech',
                     description:
-                        'Learn about Zytrixon Tech, our mission, vision, and the team driving digital innovation from Samastipur to the world.',
+                        'Learn about Zytrixon Tech, our mission, vision, and the team driving digital innovation from Patna to the world.',
                 }}
             />
 

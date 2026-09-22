@@ -1,6 +1,5 @@
 import React from 'react';
 import type { ProjectItem } from '@/lib/projects-data';
-import { useTheme } from '@/components/landing/theme-provider';
 
 interface ProjectCinemaTheatreProps {
     project: ProjectItem;
@@ -9,18 +8,17 @@ interface ProjectCinemaTheatreProps {
 export default function ProjectCinemaTheatre({
     project,
 }: ProjectCinemaTheatreProps) {
-    const { theme } = useTheme();
-    const isLight = theme === 'light';
+    if (!project.videoUrl || project.videoUrl.trim() === '') {
+        return null;
+    }
 
     return (
         <section
             id="theatre"
             style={{
                 padding: '110px var(--zy-section-pad-x, 24px)',
-                background: isLight ? '#ffffff' : '#040406',
-                borderBottom: isLight
-                    ? '1px solid rgba(0, 0, 0, 0.08)'
-                    : '1px solid rgba(255, 255, 255, 0.06)',
+                background: 'var(--zy-bg)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
                 position: 'relative',
                 overflow: 'hidden',
                 transition: 'background 0.3s ease, border-color 0.3s ease',
@@ -35,9 +33,7 @@ export default function ProjectCinemaTheatre({
                     transform: 'translate(-50%, -50%)',
                     width: '900px',
                     height: '500px',
-                    background: isLight
-                        ? `radial-gradient(circle, ${project.accentColor}15 0%, rgba(255,255,255,0) 70%)`
-                        : `radial-gradient(circle, ${project.accentColor}25 0%, rgba(0,0,0,0) 70%)`,
+                    background: `radial-gradient(circle, ${project.accentColor}20 0%, transparent 70%)`,
                     filter: 'blur(100px)',
                     pointerEvents: 'none',
                 }}
@@ -74,14 +70,14 @@ export default function ProjectCinemaTheatre({
                             fontSize: 'clamp(28px, 4vw, 44px)',
                             fontWeight: 800,
                             marginTop: '16px',
-                            color: isLight ? '#0a0a0a' : '#ffffff',
+                            color: 'var(--zy-text-primary)',
                         }}
                     >
                         Video Demonstration
                     </h2>
                     <p
                         style={{
-                            color: isLight ? '#666666' : '#888888',
+                            color: 'var(--zy-text-secondary)',
                             fontSize: '16px',
                             maxWidth: '600px',
                             margin: '12px auto 0',
@@ -95,15 +91,11 @@ export default function ProjectCinemaTheatre({
                 {/* Theatre Cinema Stage */}
                 <div
                     style={{
-                        background: isLight ? '#f4f4f7' : '#0a0a0d',
+                        background: 'var(--zy-surface-1)',
                         borderRadius: '24px',
-                        border: isLight
-                            ? '1px solid rgba(0, 0, 0, 0.12)'
-                            : '1px solid rgba(255, 255, 255, 0.12)',
+                        border: '1px solid var(--zy-border-subtle)',
                         overflow: 'hidden',
-                        boxShadow: isLight
-                            ? `0 25px 60px rgba(0,0,0,0.08), 0 0 50px ${project.accentColor}15`
-                            : `0 35px 100px rgba(0,0,0,0.95), 0 0 80px ${project.accentColor}18`,
+                        boxShadow: '0 25px 60px rgba(0,0,0,0.2)',
                     }}
                 >
                     {/* Cinema Bar */}
@@ -113,10 +105,8 @@ export default function ProjectCinemaTheatre({
                             alignItems: 'center',
                             justifyContent: 'space-between',
                             padding: '12px 24px',
-                            background: isLight ? '#eaeaf0' : '#121216',
-                            borderBottom: isLight
-                                ? '1px solid rgba(0, 0, 0, 0.08)'
-                                : '1px solid rgba(255, 255, 255, 0.08)',
+                            background: 'var(--zy-surface-2)',
+                            borderBottom: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         <div
@@ -154,7 +144,7 @@ export default function ProjectCinemaTheatre({
                                 style={{
                                     marginLeft: '12px',
                                     fontSize: '12px',
-                                    color: isLight ? '#444444' : '#888888',
+                                    color: 'var(--zy-text-muted)',
                                     fontWeight: 600,
                                 }}
                             >
@@ -195,10 +185,8 @@ export default function ProjectCinemaTheatre({
                             flexWrap: 'wrap',
                             gap: '16px',
                             padding: '20px 28px',
-                            background: isLight ? '#eaeaf0' : '#121216',
-                            borderTop: isLight
-                                ? '1px solid rgba(0, 0, 0, 0.08)'
-                                : 'none',
+                            background: 'var(--zy-surface-2)',
+                            borderTop: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         <div
@@ -211,12 +199,12 @@ export default function ProjectCinemaTheatre({
                             <div
                                 style={{
                                     fontSize: '13px',
-                                    color: isLight ? '#444444' : '#cccccc',
+                                    color: 'var(--zy-text-secondary)',
                                 }}
                             >
                                 <strong
                                     style={{
-                                        color: isLight ? '#111111' : '#ffffff',
+                                        color: 'var(--zy-text-primary)',
                                     }}
                                 >
                                     Tech Highlights:
@@ -235,21 +223,14 @@ export default function ProjectCinemaTheatre({
                                 alignItems: 'center',
                                 gap: '8px',
                                 color: project.accentColor,
-                                background: isLight
-                                    ? '#ffffff'
-                                    : `${project.accentColor}15`,
-                                border: isLight
-                                    ? `1px solid ${project.accentColor}60`
-                                    : `1px solid ${project.accentColor}35`,
+                                background: 'var(--zy-surface-1)',
+                                border: `1px solid ${project.accentColor}50`,
                                 padding: '10px 22px',
                                 borderRadius: '30px',
                                 fontSize: '13px',
                                 fontWeight: 700,
                                 textDecoration: 'none',
                                 transition: 'all 0.2s ease',
-                                boxShadow: isLight
-                                    ? '0 2px 8px rgba(0,0,0,0.06)'
-                                    : 'none',
                             }}
                         >
                             <span>Open Live Web Application</span>

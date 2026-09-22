@@ -1,5 +1,4 @@
-import React from 'react';
-import { ThemeProvider, useTheme } from '@/components/landing/theme-provider';
+import { ThemeProvider } from '@/components/landing/theme-provider';
 import TopBar from '@/components/landing/top-bar';
 import Navbar from '@/components/landing/navbar';
 import Footer from '@/components/landing/footer';
@@ -14,7 +13,6 @@ import { DUMMY_PROJECTS, getProjectBySlug } from '@/lib/projects-data';
 import ProjectHeroEditorial from '@/components/project-details/ProjectHeroEditorial';
 import ProjectSubNav from '@/components/project-details/ProjectSubNav';
 import ProjectImpactBanner from '@/components/project-details/ProjectImpactBanner';
-import ProjectComparisonMatrix from '@/components/project-details/ProjectComparisonMatrix';
 import ProjectCinemaTheatre from '@/components/project-details/ProjectCinemaTheatre';
 import ProjectInteractiveGallery from '@/components/project-details/ProjectInteractiveGallery';
 import ProjectBlueprintFlow from '@/components/project-details/ProjectBlueprintFlow';
@@ -25,8 +23,8 @@ interface ProjectDetailsProps {
 }
 
 function ProjectDetailsInner({ project }: { project: ProjectItem }) {
-    const { theme } = useTheme();
-    const isLight = theme === 'light';
+    const hasVideo = Boolean(project.videoUrl && project.videoUrl.trim() !== '');
+    const hasScreenshots = Boolean(project.screenshots && project.screenshots.length > 0);
 
     return (
         <>
@@ -39,8 +37,8 @@ function ProjectDetailsInner({ project }: { project: ProjectItem }) {
 
             <main
                 style={{
-                    background: isLight ? '#f9fafb' : '#040406',
-                    color: isLight ? '#0a0a0a' : '#ffffff',
+                    background: 'var(--zy-bg)',
+                    color: 'var(--zy-text-primary)',
                     minHeight: '100vh',
                     overflowX: 'hidden',
                     transition: 'background 0.3s ease, color 0.3s ease',
@@ -54,22 +52,21 @@ function ProjectDetailsInner({ project }: { project: ProjectItem }) {
                     <ProjectImpactBanner project={project} />
                 </LazySection>
 
-                {/* 3. Before vs After Architectural Transformation Matrix */}
-                <LazySection minHeight="450px">
-                    <ProjectComparisonMatrix project={project} />
-                </LazySection>
+                {/* 3. Cinema Video Theatre (Full-Width Immersive Walkthrough) - Only if project has video */}
+                {hasVideo && (
+                    <LazySection minHeight="550px">
+                        <ProjectCinemaTheatre project={project} />
+                    </LazySection>
+                )}
 
-                {/* 4. Cinema Video Theatre (Full-Width Immersive Walkthrough) */}
-                <LazySection minHeight="550px">
-                    <ProjectCinemaTheatre project={project} />
-                </LazySection>
+                {/* 4. Split Interactive Screen Explorer & Lightbox - Only if project has screenshots */}
+                {hasScreenshots && (
+                    <LazySection minHeight="550px">
+                        <ProjectInteractiveGallery project={project} />
+                    </LazySection>
+                )}
 
-                {/* 5. Split Interactive Screen Explorer & Lightbox */}
-                <LazySection minHeight="550px">
-                    <ProjectInteractiveGallery project={project} />
-                </LazySection>
-
-                {/* 6. System Blueprint Pipeline & Tech Stack Matrix */}
+                {/* 5. System Blueprint Pipeline & Tech Stack Matrix */}
                 <LazySection minHeight="400px">
                     <ProjectBlueprintFlow project={project} />
                 </LazySection>
