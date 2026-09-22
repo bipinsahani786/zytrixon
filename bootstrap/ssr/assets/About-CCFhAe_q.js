@@ -1,0 +1,48 @@
+import { a as ThemeProvider, n as CustomCursor, r as Navbar, t as Footer } from "./footer-CTOChFY-.js";
+import { t as AboutSection } from "./about-section-Cvtt4JCG.js";
+import { t as ContactSection } from "./contact-section-BzabE3fP.js";
+import { n as CoreValuesSection, t as TestimonialsSection } from "./testimonials-section-jqVHwfFJ.js";
+import { t as FAQSection } from "./faq-section-CLhR0o1L.js";
+import { t as GlobalFootprint } from "./global-footprint-CQTMLu9j.js";
+import { t as InnerPageHero } from "./inner-page-hero-sujxAeHL.js";
+import { t as LazySection } from "./lazy-section-Bm1gTwLP.js";
+import { t as ClientsSection } from "./clients-section-BWWQjAl6.js";
+import { t as TeamSection } from "./team-section-DQLsMvSU.js";
+import { t as TechStackSection } from "./tech-stack-section-BPwa5sIn.js";
+import { t as FooterCTA } from "./footer-cta-CxW1r1Xr.js";
+import { t as TopBar } from "./top-bar-C3HAjSYy.js";
+import { t as SeoHead } from "./SeoHead-ypAe3bNq.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region resources/js/pages/About.tsx
+function About() {
+	return /* @__PURE__ */ jsxs(ThemeProvider, { children: [
+		/* @__PURE__ */ jsx(SeoHead, { seo: {
+			title: "About Us | Zytrixon Tech",
+			description: "Learn about Zytrixon Tech, our mission, vision, and the team driving digital innovation from Patna to the world."
+		} }),
+		/* @__PURE__ */ jsx(CustomCursor, {}),
+		/* @__PURE__ */ jsx(TopBar, {}),
+		/* @__PURE__ */ jsx(Navbar, {}),
+		/* @__PURE__ */ jsxs("main", { children: [
+			/* @__PURE__ */ jsx(InnerPageHero, {
+				title: "Our Story",
+				subtitle: "We are a team of passionate engineers and designers building enterprise-grade solutions."
+			}),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(AboutSection, {}) }),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(CoreValuesSection, {}) }),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(TeamSection, {}) }),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(GlobalFootprint, {}) }),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(TechStackSection, {}) }),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(ClientsSection, {}) }),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(TestimonialsSection, {}) }),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(FAQSection, {}) }),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(FooterCTA, {}) }),
+			/* @__PURE__ */ jsx(LazySection, { children: /* @__PURE__ */ jsx(ContactSection, {}) })
+		] }),
+		/* @__PURE__ */ jsx(Footer, {})
+	] });
+}
+//#endregion
+export { About as default };
+
+//# sourceMappingURL=About-CCFhAe_q.js.map

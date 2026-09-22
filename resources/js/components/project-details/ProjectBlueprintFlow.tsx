@@ -1,6 +1,5 @@
 import React from 'react';
 import type { ProjectItem } from '@/lib/projects-data';
-import { useTheme } from '@/components/landing/theme-provider';
 
 interface ProjectBlueprintFlowProps {
     project: ProjectItem;
@@ -9,18 +8,13 @@ interface ProjectBlueprintFlowProps {
 export default function ProjectBlueprintFlow({
     project,
 }: ProjectBlueprintFlowProps) {
-    const { theme } = useTheme();
-    const isLight = theme === 'light';
-
     return (
         <section
             id="architecture"
             style={{
                 padding: '100px var(--zy-section-pad-x, 24px)',
-                background: isLight ? '#ffffff' : '#040406',
-                borderBottom: isLight
-                    ? '1px solid rgba(0, 0, 0, 0.08)'
-                    : '1px solid rgba(255, 255, 255, 0.06)',
+                background: 'var(--zy-bg)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
                 transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
@@ -48,14 +42,14 @@ export default function ProjectBlueprintFlow({
                             fontSize: 'clamp(28px, 4vw, 44px)',
                             fontWeight: 800,
                             marginTop: '16px',
-                            color: isLight ? '#0a0a0a' : '#ffffff',
+                            color: 'var(--zy-text-primary)',
                         }}
                     >
                         Cloud Architecture & Flow
                     </h2>
                     <p
                         style={{
-                            color: isLight ? '#666666' : '#888888',
+                            color: 'var(--zy-text-secondary)',
                             fontSize: '16px',
                             maxWidth: '640px',
                             margin: '12px auto 0',
@@ -80,16 +74,11 @@ export default function ProjectBlueprintFlow({
                         <div
                             key={i}
                             style={{
-                                background: isLight ? '#ffffff' : '#0a0a0d',
-                                border: isLight
-                                    ? '1px solid rgba(0, 0, 0, 0.08)'
-                                    : '1px solid rgba(255, 255, 255, 0.08)',
+                                background: 'var(--zy-surface-1)',
+                                border: '1px solid var(--zy-border-subtle)',
                                 borderRadius: '20px',
                                 padding: '32px 26px',
                                 position: 'relative',
-                                boxShadow: isLight
-                                    ? '0 10px 30px rgba(0,0,0,0.04)'
-                                    : 'none',
                                 transition: 'all 0.3s ease',
                             }}
                             onMouseEnter={(e) => {
@@ -99,9 +88,8 @@ export default function ProjectBlueprintFlow({
                                     'translateY(-4px)';
                             }}
                             onMouseLeave={(e) => {
-                                e.currentTarget.style.borderColor = isLight
-                                    ? 'rgba(0, 0, 0, 0.08)'
-                                    : 'rgba(255, 255, 255, 0.08)';
+                                e.currentTarget.style.borderColor =
+                                    'var(--zy-border-subtle)';
                                 e.currentTarget.style.transform =
                                     'translateY(0)';
                             }}
@@ -127,7 +115,7 @@ export default function ProjectBlueprintFlow({
                                 style={{
                                     fontSize: '18px',
                                     fontWeight: 700,
-                                    color: isLight ? '#111111' : '#ffffff',
+                                    color: 'var(--zy-text-primary)',
                                     marginBottom: '8px',
                                 }}
                             >
@@ -146,7 +134,7 @@ export default function ProjectBlueprintFlow({
                             <p
                                 style={{
                                     fontSize: '13px',
-                                    color: isLight ? '#666666' : '#888888',
+                                    color: 'var(--zy-text-secondary)',
                                     lineHeight: 1.6,
                                     margin: 0,
                                 }}
@@ -161,13 +149,9 @@ export default function ProjectBlueprintFlow({
                 <div
                     style={{
                         padding: '40px',
-                        background: isLight
-                            ? 'linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.04) 100%)'
-                            : 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)',
+                        background: 'var(--zy-card-bg)',
                         borderRadius: '24px',
-                        border: isLight
-                            ? '1px solid rgba(0, 0, 0, 0.08)'
-                            : '1px solid rgba(255, 255, 255, 0.08)',
+                        border: '1px solid var(--zy-border-subtle)',
                         textAlign: 'center',
                     }}
                 >
@@ -175,7 +159,7 @@ export default function ProjectBlueprintFlow({
                         style={{
                             fontSize: '13px',
                             textTransform: 'uppercase',
-                            color: isLight ? '#555555' : '#777777',
+                            color: 'var(--zy-text-muted)',
                             letterSpacing: '0.1em',
                             fontWeight: 700,
                             marginBottom: '24px',
@@ -196,18 +180,13 @@ export default function ProjectBlueprintFlow({
                             <div
                                 key={i}
                                 style={{
-                                    background: isLight ? '#ffffff' : '#111115',
-                                    border: isLight
-                                        ? '1px solid rgba(0, 0, 0, 0.08)'
-                                        : '1px solid rgba(255, 255, 255, 0.08)',
+                                    background: 'var(--zy-surface-1)',
+                                    border: '1px solid var(--zy-border-subtle)',
                                     borderRadius: '30px',
                                     padding: '10px 20px',
                                     fontSize: '13px',
                                     fontWeight: 600,
-                                    color: isLight ? '#111111' : '#ffffff',
-                                    boxShadow: isLight
-                                        ? '0 2px 8px rgba(0,0,0,0.04)'
-                                        : 'none',
+                                    color: 'var(--zy-text-primary)',
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '8px',
@@ -216,7 +195,7 @@ export default function ProjectBlueprintFlow({
                                 <span>{tech.name}</span>
                                 <span
                                     style={{
-                                        color: isLight ? '#777777' : '#666666',
+                                        color: 'var(--zy-text-muted)',
                                         fontSize: '11px',
                                     }}
                                 >

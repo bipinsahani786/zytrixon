@@ -62,9 +62,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.tsx'])
         @php
             $seo = $page['props']['seo'] ?? null;
-            $title = $seo['title'] ?? 'Zytrixon Tech | Top Web Development Agency in Samastipur, Bihar';
-            $description = $seo['description'] ?? 'Zytrixon Tech offers premium web & app development, and SEO services in Samastipur, Bihar & across India. We deliver scalable, high-performance digital solutions.';
-            $keywords = $seo['keywords'] ?? 'web development samastipur, software company in samastipur, app development bihar, zytrixon tech, best it company bihar';
+            $title = $seo['title'] ?? 'Zytrixon Tech | Top Web Development Agency in Patna Bihar';
+            $description = $seo['description'] ?? 'Zytrixon Tech offers premium web & app development, and SEO services in Patna & across India. We deliver scalable, high-performance digital solutions.';
+            $keywords = $seo['keywords'] ?? 'web development patna, software company in patna, app development bihar, zytrixon tech, best it company patna';
             $canonical = $seo['canonical'] ?? url()->current();
             $image = $seo['image'] ?? url('/favicon.svg');
             $schema = $seo['schema'] ?? [

@@ -75,7 +75,7 @@ export default function Welcome() {
                     <ProcessSection />
                 </LazySection>
                 <LazySection>
-                    <PortfolioPreview />
+                    <PortfolioPreview limit={3} />
                 </LazySection>
                 <LazySection>
                     <TechStackSection />

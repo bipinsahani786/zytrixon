@@ -33,19 +33,19 @@
     "/build/assets/input-error-B7Zt7zmb.js"
   ],
   "resources/js/components/landing/about-section.tsx": [
-    "/build/assets/about-section-Bh72tnsZ.js"
+    "/build/assets/about-section-Cvtt4JCG.js"
   ],
   "resources/js/components/landing/clients-section.tsx": [
-    "/build/assets/clients-section-CqHPMYmN.js"
+    "/build/assets/clients-section-BWWQjAl6.js"
   ],
   "resources/js/components/landing/contact-section.tsx": [
-    "/build/assets/contact-section-DJmMSti7.js"
+    "/build/assets/contact-section-BzabE3fP.js"
   ],
   "resources/js/components/landing/core-values-section.tsx": [
-    "/build/assets/testimonials-section-BqNAgB6C.js"
+    "/build/assets/testimonials-section-jqVHwfFJ.js"
   ],
   "resources/js/components/landing/custom-cursor.tsx": [
-    "/build/assets/footer-CezFkQSw.js"
+    "/build/assets/footer-CTOChFY-.js"
   ],
   "resources/js/components/landing/faq-section.tsx": [
     "/build/assets/faq-section-CLhR0o1L.js"
@@ -54,79 +54,79 @@
     "/build/assets/footer-cta-CxW1r1Xr.js"
   ],
   "resources/js/components/landing/footer.tsx": [
-    "/build/assets/footer-CezFkQSw.js"
+    "/build/assets/footer-CTOChFY-.js"
   ],
   "resources/js/components/landing/global-footprint.tsx": [
-    "/build/assets/global-footprint-DWz_t9KM.js"
+    "/build/assets/global-footprint-CQTMLu9j.js"
   ],
   "resources/js/components/landing/global-watermark.tsx": [
-    "/build/assets/footer-CezFkQSw.js"
+    "/build/assets/footer-CTOChFY-.js"
   ],
   "resources/js/components/landing/grain-overlay.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/hero-section.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/industries-section.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/inner-page-hero.tsx": [
-    "/build/assets/inner-page-hero-B1F7LECr.js"
+    "/build/assets/inner-page-hero-sujxAeHL.js"
   ],
   "resources/js/components/landing/iot-device-mesh.tsx": [
-    "/build/assets/iot-device-mesh-20UnD9ge.js"
+    "/build/assets/iot-device-mesh-BXmfDesB.js"
   ],
   "resources/js/components/landing/lazy-section.tsx": [
     "/build/assets/lazy-section-Bm1gTwLP.js"
   ],
   "resources/js/components/landing/marquee-strip.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/navbar.tsx": [
-    "/build/assets/footer-CezFkQSw.js"
+    "/build/assets/footer-CTOChFY-.js"
   ],
   "resources/js/components/landing/playground-ai.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/playground-custom.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/playground-iot.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/playground-marketing.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/playground-mobile.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/playground-webapp.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/portfolio-preview.tsx": [
-    "/build/assets/portfolio-preview-CVMz-9vZ.js"
+    "/build/assets/portfolio-preview-NQF98k9d.js"
   ],
   "resources/js/components/landing/process-section.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/services-section.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/stats-section.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/components/landing/team-section.tsx": [
-    "/build/assets/team-section-SAjgooed.js"
+    "/build/assets/team-section-DQLsMvSU.js"
   ],
   "resources/js/components/landing/tech-stack-section.tsx": [
-    "/build/assets/tech-stack-section-DK0jeBxR.js"
+    "/build/assets/tech-stack-section-BPwa5sIn.js"
   ],
   "resources/js/components/landing/testimonials-section.tsx": [
-    "/build/assets/testimonials-section-BqNAgB6C.js"
+    "/build/assets/testimonials-section-jqVHwfFJ.js"
   ],
   "resources/js/components/landing/theme-provider.tsx": [
-    "/build/assets/footer-CezFkQSw.js"
+    "/build/assets/footer-CTOChFY-.js"
   ],
   "resources/js/components/landing/top-bar.tsx": [
     "/build/assets/top-bar-C3HAjSYy.js"
@@ -156,85 +156,82 @@
     "/build/assets/password-input-CSddIxsW.js"
   ],
   "resources/js/components/project-details/ProjectBlueprintFlow.tsx": [
-    "/build/assets/ProjectDetails-i32Z_BJA.js"
+    "/build/assets/ProjectDetails-N50UWTtH.js"
   ],
   "resources/js/components/project-details/ProjectCinemaTheatre.tsx": [
-    "/build/assets/ProjectDetails-i32Z_BJA.js"
-  ],
-  "resources/js/components/project-details/ProjectComparisonMatrix.tsx": [
-    "/build/assets/ProjectDetails-i32Z_BJA.js"
+    "/build/assets/ProjectDetails-N50UWTtH.js"
   ],
   "resources/js/components/project-details/ProjectHeroEditorial.tsx": [
-    "/build/assets/ProjectDetails-i32Z_BJA.js"
+    "/build/assets/ProjectDetails-N50UWTtH.js"
   ],
   "resources/js/components/project-details/ProjectImpactBanner.tsx": [
-    "/build/assets/ProjectDetails-i32Z_BJA.js"
+    "/build/assets/ProjectDetails-N50UWTtH.js"
   ],
   "resources/js/components/project-details/ProjectInteractiveGallery.tsx": [
-    "/build/assets/ProjectDetails-i32Z_BJA.js"
+    "/build/assets/ProjectDetails-N50UWTtH.js"
   ],
   "resources/js/components/project-details/ProjectSubNav.tsx": [
-    "/build/assets/ProjectDetails-i32Z_BJA.js"
+    "/build/assets/ProjectDetails-N50UWTtH.js"
   ],
   "resources/js/components/sections/BlogPreviewSection.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/CaseStudiesList.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/DevelopmentMethodology.tsx": [
-    "/build/assets/SecurityStandards-DmM_nAtS.js"
+    "/build/assets/SecurityStandards-Bk0gTnwj.js"
   ],
   "resources/js/components/sections/FaqAccordion.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/HeroDynamic.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/IndustryUseCases.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/IntegrationCapabilities.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/LearningExperience.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/MigrationStrategy.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/PostLaunchSupport.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/PricingMatrix.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/ProcessTimeline.tsx": [
-    "/build/assets/SecurityStandards-DmM_nAtS.js"
+    "/build/assets/SecurityStandards-Bk0gTnwj.js"
   ],
   "resources/js/components/sections/QAAndTesting.tsx": [
-    "/build/assets/SecurityStandards-DmM_nAtS.js"
+    "/build/assets/SecurityStandards-Bk0gTnwj.js"
   ],
   "resources/js/components/sections/SecurityStandards.tsx": [
-    "/build/assets/SecurityStandards-DmM_nAtS.js"
+    "/build/assets/SecurityStandards-Bk0gTnwj.js"
   ],
   "resources/js/components/sections/ServiceEstimator.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/ServicePlayground.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/ServiceStats.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/TechnicalArchitecture.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/sections/ValueProposition.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/components/seo/SeoHead.tsx": [
-    "/build/assets/SeoHead-IK9k69Ru.js"
+    "/build/assets/SeoHead-ypAe3bNq.js"
   ],
   "resources/js/components/text-link.tsx": [
     "/build/assets/text-link-D7SOoxZN.js"
@@ -246,7 +243,7 @@
     "/build/assets/security-DL-WyZ4N.js"
   ],
   "resources/js/components/ui/GradientCard.tsx": [
-    "/build/assets/GradientCard-DK2CyX8m.js"
+    "/build/assets/GradientCard-44MI0y-Q.js"
   ],
   "resources/js/components/ui/alert.tsx": [
     "/build/assets/security-DL-WyZ4N.js"
@@ -272,7 +269,7 @@
     "/build/assets/label-DU-ZaSIn.js"
   ],
   "resources/js/components/ui/logo.tsx": [
-    "/build/assets/footer-CezFkQSw.js"
+    "/build/assets/footer-CTOChFY-.js"
   ],
   "resources/js/components/ui/placeholder-pattern.tsx": [
     "/build/assets/dashboard-CJ37-haH.js"
@@ -296,12 +293,12 @@
   "resources/js/hooks/use-current-url.ts": [],
   "resources/js/hooks/use-initials.tsx": [],
   "resources/js/hooks/use-media-query.ts": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/hooks/use-mobile-navigation.ts": [],
   "resources/js/hooks/use-mobile.tsx": [],
   "resources/js/hooks/use-mouse-position.ts": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/hooks/use-two-factor-auth.ts": [
     "/build/assets/use-two-factor-auth-D7-5703a.js"
@@ -312,62 +309,62 @@
   "resources/js/layouts/auth/auth-simple-layout.tsx": [],
   "resources/js/layouts/settings/layout.tsx": [],
   "resources/js/lib/projects-data.ts": [
-    "/build/assets/projects-data-BfoY1Czx.js"
+    "/build/assets/projects-data-CqkEO0q8.js"
   ],
   "resources/js/lib/service-data.ts": [
-    "/build/assets/SecurityStandards-DmM_nAtS.js"
+    "/build/assets/SecurityStandards-Bk0gTnwj.js"
   ],
   "resources/js/lib/utils.ts": [],
   "resources/js/pages/About.tsx": [
-    "/build/assets/About--5Pk9xV5.js"
+    "/build/assets/About-CCFhAe_q.js"
   ],
   "resources/js/pages/Blog.tsx": [
-    "/build/assets/Blog-D3LQ7h7O.js"
+    "/build/assets/Blog-VM_qoJdx.js"
   ],
   "resources/js/pages/BlogDetails.tsx": [
-    "/build/assets/BlogDetails-BP12olJN.js"
+    "/build/assets/BlogDetails-BpYOZK4J.js"
   ],
   "resources/js/pages/Careers.tsx": [
-    "/build/assets/Careers-DI78rUPd.js"
+    "/build/assets/Careers-CuQm2uSI.js"
   ],
   "resources/js/pages/CaseStudyDetails.tsx": [
-    "/build/assets/CaseStudyDetails-Bg7jBQ1Q.js"
+    "/build/assets/CaseStudyDetails-BTiTjtNx.js"
   ],
   "resources/js/pages/Contact.tsx": [
-    "/build/assets/Contact-B8GX36k4.js"
+    "/build/assets/Contact-CGVIk8q1.js"
   ],
   "resources/js/pages/Error.tsx": [
-    "/build/assets/Error-Czj4h1Ha.js"
+    "/build/assets/Error-rVQYUyHB.js"
   ],
   "resources/js/pages/LocationDetails.tsx": [
-    "/build/assets/LocationDetails-CbxuUBjK.js"
+    "/build/assets/LocationDetails-C2jBLblp.js"
   ],
   "resources/js/pages/LocationsIndex.tsx": [
-    "/build/assets/LocationsIndex-BY6ddVu_.js"
+    "/build/assets/LocationsIndex-Dx_X0txL.js"
   ],
   "resources/js/pages/Portfolio.tsx": [
-    "/build/assets/Portfolio-DD1WHzdq.js"
+    "/build/assets/Portfolio-WVcmhJlJ.js"
   ],
   "resources/js/pages/PrivacyPolicy.tsx": [
-    "/build/assets/PrivacyPolicy-DtRVO0DV.js"
+    "/build/assets/PrivacyPolicy-EN5zbyO0.js"
   ],
   "resources/js/pages/Process.tsx": [
-    "/build/assets/Process-vfVXzjLP.js"
+    "/build/assets/Process-DDvpgAH4.js"
   ],
   "resources/js/pages/ProjectDetails.tsx": [
-    "/build/assets/ProjectDetails-i32Z_BJA.js"
+    "/build/assets/ProjectDetails-N50UWTtH.js"
   ],
   "resources/js/pages/ServiceSeoPage.tsx": [
-    "/build/assets/ServiceSeoPage-GrldVouE.js"
+    "/build/assets/ServiceSeoPage-Ceb_GSs0.js"
   ],
   "resources/js/pages/ServicesIndex.tsx": [
-    "/build/assets/ServicesIndex-BMYoJS8t.js"
+    "/build/assets/ServicesIndex-CuyWHOVj.js"
   ],
   "resources/js/pages/Team.tsx": [
-    "/build/assets/Team-DGHIIINf.js"
+    "/build/assets/Team-C4Xepd_R.js"
   ],
   "resources/js/pages/TermsConditions.tsx": [
-    "/build/assets/TermsConditions-FnFdOy3y.js"
+    "/build/assets/TermsConditions-jm0Q_HZE.js"
   ],
   "resources/js/pages/auth/confirm-password.tsx": [
     "/build/assets/confirm-password-mAEUDtyn.js"
@@ -403,7 +400,7 @@
     "/build/assets/security-DL-WyZ4N.js"
   ],
   "resources/js/pages/welcome.tsx": [
-    "/build/assets/welcome-BlREehBS.js"
+    "/build/assets/welcome-CgCkP8lf.js"
   ],
   "resources/js/routes/appearance/index.ts": [],
   "resources/js/routes/index.ts": [],

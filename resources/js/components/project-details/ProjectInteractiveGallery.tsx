@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { ProjectItem } from '@/lib/projects-data';
 import { ProjectScreenshot } from '@/lib/projects-data';
-import { useTheme } from '@/components/landing/theme-provider';
 
 interface ProjectInteractiveGalleryProps {
     project: ProjectItem;
@@ -10,14 +9,8 @@ interface ProjectInteractiveGalleryProps {
 export default function ProjectInteractiveGallery({
     project,
 }: ProjectInteractiveGalleryProps) {
-    const { theme } = useTheme();
-    const isLight = theme === 'light';
-
     const [activeIndex, setActiveIndex] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);
-
-    const activeScreen =
-        project.screenshots[activeIndex] || project.screenshots[0];
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -29,15 +22,21 @@ export default function ProjectInteractiveGallery({
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
+    const screenshots = project.screenshots || [];
+    if (screenshots.length === 0) {
+        return null;
+    }
+
+    const isSingle = screenshots.length === 1;
+    const activeScreen = screenshots[activeIndex] || screenshots[0];
+
     return (
         <section
             id="gallery"
             style={{
                 padding: '100px var(--zy-section-pad-x, 24px)',
-                background: isLight ? '#f8f9fa' : '#060608',
-                borderBottom: isLight
-                    ? '1px solid rgba(0, 0, 0, 0.08)'
-                    : '1px solid rgba(255, 255, 255, 0.06)',
+                background: 'var(--zy-bg)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
                 transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
@@ -65,14 +64,14 @@ export default function ProjectInteractiveGallery({
                             fontSize: 'clamp(28px, 4vw, 44px)',
                             fontWeight: 800,
                             marginTop: '16px',
-                            color: isLight ? '#0a0a0a' : '#ffffff',
+                            color: 'var(--zy-text-primary)',
                         }}
                     >
                         Explore Application Workflows
                     </h2>
                     <p
                         style={{
-                            color: isLight ? '#666666' : '#888888',
+                            color: 'var(--zy-text-secondary)',
                             fontSize: '16px',
                             maxWidth: '640px',
                             margin: '12px auto 0',
@@ -83,30 +82,17 @@ export default function ProjectInteractiveGallery({
                     </p>
                 </div>
 
-                {/* Split Explorer: Featured Screen (Left) + Screen Selector (Right) */}
-                <div
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns:
-                            'repeat(auto-fit, minmax(340px, 1fr))',
-                        gap: '36px',
-                        alignItems: 'center',
-                    }}
-                >
-                    {/* Featured Screen Stage */}
-                    <div>
+                {/* Single or Split Explorer */}
+                {isSingle ? (
+                    <div style={{ maxWidth: '980px', margin: '0 auto' }}>
                         <div
                             onClick={() => setLightboxOpen(true)}
                             style={{
-                                background: isLight ? '#ffffff' : '#0e0e12',
+                                background: 'var(--zy-surface-1)',
                                 borderRadius: '22px',
-                                border: isLight
-                                    ? '1px solid rgba(0, 0, 0, 0.1)'
-                                    : '1px solid rgba(255, 255, 255, 0.12)',
+                                border: '1px solid var(--zy-border-subtle)',
                                 overflow: 'hidden',
-                                boxShadow: isLight
-                                    ? '0 20px 50px rgba(0,0,0,0.06)'
-                                    : '0 25px 70px rgba(0,0,0,0.85)',
+                                boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
                                 cursor: 'pointer',
                                 position: 'relative',
                                 transition: 'all 0.3s ease',
@@ -116,16 +102,15 @@ export default function ProjectInteractiveGallery({
                                     project.accentColor)
                             }
                             onMouseLeave={(e) =>
-                                (e.currentTarget.style.borderColor = isLight
-                                    ? 'rgba(0, 0, 0, 0.1)'
-                                    : 'rgba(255, 255, 255, 0.12)')
+                                (e.currentTarget.style.borderColor =
+                                    'var(--zy-border-subtle)')
                             }
                         >
                             <div
                                 style={{
                                     position: 'relative',
                                     overflow: 'hidden',
-                                    height: '420px',
+                                    maxHeight: '560px',
                                 }}
                             >
                                 <img
@@ -133,7 +118,8 @@ export default function ProjectInteractiveGallery({
                                     alt={activeScreen.title}
                                     style={{
                                         width: '100%',
-                                        height: '100%',
+                                        height: 'auto',
+                                        maxHeight: '560px',
                                         objectFit: 'cover',
                                         display: 'block',
                                         transition: 'transform 0.4s ease',
@@ -181,17 +167,16 @@ export default function ProjectInteractiveGallery({
                             <div
                                 style={{
                                     padding: '24px 28px',
-                                    background: isLight ? '#ffffff' : '#0e0e12',
-                                    borderTop: isLight
-                                        ? '1px solid rgba(0,0,0,0.06)'
-                                        : 'none',
+                                    background: 'var(--zy-surface-1)',
+                                    borderTop:
+                                        '1px solid var(--zy-border-subtle)',
                                 }}
                             >
                                 <h3
                                     style={{
                                         fontSize: '18px',
                                         fontWeight: 700,
-                                        color: isLight ? '#111111' : '#ffffff',
+                                        color: 'var(--zy-text-primary)',
                                         marginBottom: '6px',
                                     }}
                                 >
@@ -200,7 +185,7 @@ export default function ProjectInteractiveGallery({
                                 <p
                                     style={{
                                         fontSize: '14px',
-                                        color: isLight ? '#666666' : '#888888',
+                                        color: 'var(--zy-text-secondary)',
                                         lineHeight: 1.6,
                                         margin: 0,
                                     }}
@@ -210,169 +195,267 @@ export default function ProjectInteractiveGallery({
                             </div>
                         </div>
                     </div>
-
-                    {/* Right: Interactive Screen Selector List */}
+                ) : (
                     <div
                         style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '16px',
+                            display: 'grid',
+                            gridTemplateColumns:
+                                'repeat(auto-fit, minmax(340px, 1fr))',
+                            gap: '36px',
+                            alignItems: 'center',
                         }}
                     >
-                        {project.screenshots.map((ss, idx) => {
-                            const isSelected = activeIndex === idx;
-                            return (
+                        {/* Featured Screen Stage */}
+                        <div>
+                            <div
+                                onClick={() => setLightboxOpen(true)}
+                                style={{
+                                    background: 'var(--zy-surface-1)',
+                                    borderRadius: '22px',
+                                    border: '1px solid var(--zy-border-subtle)',
+                                    overflow: 'hidden',
+                                    boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
+                                    cursor: 'pointer',
+                                    position: 'relative',
+                                    transition: 'all 0.3s ease',
+                                }}
+                                onMouseEnter={(e) =>
+                                    (e.currentTarget.style.borderColor =
+                                        project.accentColor)
+                                }
+                                onMouseLeave={(e) =>
+                                    (e.currentTarget.style.borderColor =
+                                        'var(--zy-border-subtle)')
+                                }
+                            >
                                 <div
-                                    key={idx}
-                                    onClick={() => setActiveIndex(idx)}
                                     style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '20px',
-                                        padding: '18px 22px',
-                                        borderRadius: '18px',
-                                        background: isSelected
-                                            ? isLight
-                                                ? `linear-gradient(135deg, ${project.accentColor}18 0%, rgba(255,255,255,0.95) 100%)`
-                                                : `linear-gradient(135deg, ${project.accentColor}15 0%, rgba(18,18,22,0.9) 100%)`
-                                            : isLight
-                                              ? '#ffffff'
-                                              : 'rgba(255, 255, 255, 0.03)',
-                                        border: isSelected
-                                            ? `1px solid ${project.accentColor}60`
-                                            : isLight
-                                              ? '1px solid rgba(0, 0, 0, 0.08)'
-                                              : '1px solid rgba(255, 255, 255, 0.06)',
-                                        boxShadow: isLight
-                                            ? '0 4px 15px rgba(0,0,0,0.03)'
-                                            : 'none',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.25s ease',
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        if (!isSelected) {
-                                            e.currentTarget.style.background =
-                                                isLight
-                                                    ? '#f4f4f7'
-                                                    : 'rgba(255, 255, 255, 0.06)';
-                                        }
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        if (!isSelected) {
-                                            e.currentTarget.style.background =
-                                                isLight
-                                                    ? '#ffffff'
-                                                    : 'rgba(255, 255, 255, 0.03)';
-                                        }
+                                        position: 'relative',
+                                        overflow: 'hidden',
+                                        height: '420px',
                                     }}
                                 >
-                                    {/* Thumbnail Preview */}
+                                    <img
+                                        src={activeScreen.image}
+                                        alt={activeScreen.title}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                            display: 'block',
+                                            transition: 'transform 0.4s ease',
+                                        }}
+                                    />
+
+                                    {/* Expand Pill */}
                                     <div
                                         style={{
-                                            width: '68px',
-                                            height: '48px',
-                                            borderRadius: '8px',
-                                            overflow: 'hidden',
-                                            flexShrink: 0,
-                                            border: isSelected
-                                                ? `1px solid ${project.accentColor}`
-                                                : isLight
-                                                  ? '1px solid rgba(0,0,0,0.1)'
-                                                  : '1px solid rgba(255,255,255,0.1)',
+                                            position: 'absolute',
+                                            top: '16px',
+                                            right: '16px',
+                                            background: 'rgba(0,0,0,0.75)',
+                                            backdropFilter: 'blur(8px)',
+                                            color: '#ffffff',
+                                            padding: '6px 14px',
+                                            borderRadius: '20px',
+                                            fontSize: '11px',
+                                            fontWeight: 700,
+                                            border: '1px solid rgba(255,255,255,0.15)',
                                         }}
                                     >
-                                        <img
-                                            src={ss.image}
-                                            alt={ss.title}
-                                            style={{
-                                                width: '100%',
-                                                height: '100%',
-                                                objectFit: 'cover',
-                                            }}
-                                        />
+                                        🔍 Click to Enlarge
                                     </div>
 
-                                    <div style={{ flex: 1 }}>
-                                        <div
-                                            style={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '8px',
-                                            }}
-                                        >
-                                            <span
-                                                style={{
-                                                    fontSize: '11px',
-                                                    color: isSelected
-                                                        ? project.accentColor
-                                                        : isLight
-                                                          ? '#777777'
-                                                          : '#666666',
-                                                    fontWeight: 800,
-                                                    textTransform: 'uppercase',
-                                                }}
-                                            >
-                                                {ss.category}
-                                            </span>
-                                        </div>
-                                        <h4
-                                            style={{
-                                                fontSize: '15px',
-                                                fontWeight: 700,
-                                                color: isLight
-                                                    ? '#111111'
-                                                    : '#ffffff',
-                                                marginTop: '2px',
-                                                marginBottom: '2px',
-                                            }}
-                                        >
-                                            {ss.title}
-                                        </h4>
-                                        <div
-                                            style={{
-                                                fontSize: '12px',
-                                                color: isLight
-                                                    ? '#666666'
-                                                    : '#777777',
-                                                overflow: 'hidden',
-                                                textOverflow: 'ellipsis',
-                                                whiteSpace: 'nowrap',
-                                                maxWidth: '320px',
-                                            }}
-                                        >
-                                            {ss.description}
-                                        </div>
-                                    </div>
-
-                                    <div
+                                    <span
                                         style={{
-                                            width: '24px',
-                                            height: '24px',
-                                            borderRadius: '50%',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            background: isSelected
-                                                ? project.accentColor
-                                                : isLight
-                                                  ? 'rgba(0,0,0,0.06)'
-                                                  : 'rgba(255,255,255,0.08)',
-                                            color: isSelected
-                                                ? '#000000'
-                                                : isLight
-                                                  ? '#555555'
-                                                  : '#888888',
+                                            position: 'absolute',
+                                            bottom: '16px',
+                                            left: '16px',
+                                            background: 'rgba(0,0,0,0.85)',
+                                            color: project.accentColor,
+                                            padding: '6px 14px',
+                                            borderRadius: '8px',
                                             fontSize: '11px',
                                             fontWeight: 800,
+                                            textTransform: 'uppercase',
+                                            letterSpacing: '0.08em',
                                         }}
                                     >
-                                        {idx + 1}
-                                    </div>
+                                        {activeScreen.category}
+                                    </span>
                                 </div>
-                            );
-                        })}
+
+                                <div
+                                    style={{
+                                        padding: '24px 28px',
+                                        background: 'var(--zy-surface-1)',
+                                        borderTop:
+                                            '1px solid var(--zy-border-subtle)',
+                                    }}
+                                >
+                                    <h3
+                                        style={{
+                                            fontSize: '18px',
+                                            fontWeight: 700,
+                                            color: 'var(--zy-text-primary)',
+                                            marginBottom: '6px',
+                                        }}
+                                    >
+                                        {activeScreen.title}
+                                    </h3>
+                                    <p
+                                        style={{
+                                            fontSize: '14px',
+                                            color: 'var(--zy-text-secondary)',
+                                            lineHeight: 1.6,
+                                            margin: 0,
+                                        }}
+                                    >
+                                        {activeScreen.description}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right: Interactive Screen Selector List */}
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '16px',
+                            }}
+                        >
+                            {project.screenshots.map((ss, idx) => {
+                                const isSelected = activeIndex === idx;
+                                return (
+                                    <div
+                                        key={idx}
+                                        onClick={() => setActiveIndex(idx)}
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '20px',
+                                            padding: '18px 22px',
+                                            borderRadius: '18px',
+                                            background: isSelected
+                                                ? 'var(--zy-card-bg-hover)'
+                                                : 'var(--zy-card-bg)',
+                                            border: isSelected
+                                                ? `1px solid ${project.accentColor}`
+                                                : '1px solid var(--zy-border-subtle)',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.25s ease',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            if (!isSelected) {
+                                                e.currentTarget.style.background =
+                                                    'var(--zy-card-bg-hover)';
+                                            }
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            if (!isSelected) {
+                                                e.currentTarget.style.background =
+                                                    'var(--zy-card-bg)';
+                                            }
+                                        }}
+                                    >
+                                        {/* Thumbnail Preview */}
+                                        <div
+                                            style={{
+                                                width: '68px',
+                                                height: '48px',
+                                                borderRadius: '8px',
+                                                overflow: 'hidden',
+                                                flexShrink: 0,
+                                                border: isSelected
+                                                    ? `1px solid ${project.accentColor}`
+                                                    : '1px solid var(--zy-border-subtle)',
+                                            }}
+                                        >
+                                            <img
+                                                src={ss.image}
+                                                alt={ss.title}
+                                                style={{
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                }}
+                                            />
+                                        </div>
+
+                                        <div style={{ flex: 1 }}>
+                                            <div
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '8px',
+                                                }}
+                                            >
+                                                <span
+                                                    style={{
+                                                        fontSize: '11px',
+                                                        color: isSelected
+                                                            ? project.accentColor
+                                                            : 'var(--zy-text-muted)',
+                                                        fontWeight: 800,
+                                                        textTransform:
+                                                            'uppercase',
+                                                    }}
+                                                >
+                                                    {ss.category}
+                                                </span>
+                                            </div>
+                                            <h4
+                                                style={{
+                                                    fontSize: '15px',
+                                                    fontWeight: 700,
+                                                    color: 'var(--zy-text-primary)',
+                                                    marginTop: '2px',
+                                                    marginBottom: '2px',
+                                                }}
+                                            >
+                                                {ss.title}
+                                            </h4>
+                                            <div
+                                                style={{
+                                                    fontSize: '12px',
+                                                    color: 'var(--zy-text-secondary)',
+                                                    overflow: 'hidden',
+                                                    textOverflow: 'ellipsis',
+                                                    whiteSpace: 'nowrap',
+                                                    maxWidth: '320px',
+                                                }}
+                                            >
+                                                {ss.description}
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style={{
+                                                width: '24px',
+                                                height: '24px',
+                                                borderRadius: '50%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                background: isSelected
+                                                    ? project.accentColor
+                                                    : 'var(--zy-surface-2)',
+                                                color: isSelected
+                                                    ? '#000000'
+                                                    : 'var(--zy-text-secondary)',
+                                                fontSize: '11px',
+                                                fontWeight: 800,
+                                            }}
+                                        >
+                                            {idx + 1}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
 
             {/* Lightbox Modal */}
@@ -395,12 +478,10 @@ export default function ProjectInteractiveGallery({
                         style={{
                             maxWidth: '1100px',
                             width: '100%',
-                            background: isLight ? '#ffffff' : '#111114',
+                            background: 'var(--zy-surface-1)',
                             borderRadius: '20px',
                             overflow: 'hidden',
-                            border: isLight
-                                ? '1px solid rgba(0, 0, 0, 0.15)'
-                                : '1px solid rgba(255, 255, 255, 0.15)',
+                            border: '1px solid var(--zy-border-subtle)',
                             position: 'relative',
                         }}
                         onClick={(e) => e.stopPropagation()}
@@ -449,7 +530,7 @@ export default function ProjectInteractiveGallery({
                                 style={{
                                     fontSize: '20px',
                                     fontWeight: 700,
-                                    color: isLight ? '#111111' : '#ffffff',
+                                    color: 'var(--zy-text-primary)',
                                     marginTop: '4px',
                                 }}
                             >
@@ -458,7 +539,7 @@ export default function ProjectInteractiveGallery({
                             <p
                                 style={{
                                     fontSize: '14px',
-                                    color: isLight ? '#666666' : '#999999',
+                                    color: 'var(--zy-text-secondary)',
                                     marginTop: '6px',
                                 }}
                             >

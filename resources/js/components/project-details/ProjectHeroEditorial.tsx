@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from '@inertiajs/react';
 import type { ProjectItem } from '@/lib/projects-data';
-import { useTheme } from '@/components/landing/theme-provider';
 
 interface ProjectHeroEditorialProps {
     project: ProjectItem;
@@ -10,9 +9,6 @@ interface ProjectHeroEditorialProps {
 export default function ProjectHeroEditorial({
     project,
 }: ProjectHeroEditorialProps) {
-    const { theme } = useTheme();
-    const isLight = theme === 'light';
-
     return (
         <section
             id="overview"
@@ -23,12 +19,8 @@ export default function ProjectHeroEditorial({
                 paddingLeft: 'var(--zy-section-pad-x, 24px)',
                 paddingRight: 'var(--zy-section-pad-x, 24px)',
                 overflow: 'hidden',
-                background: isLight
-                    ? `radial-gradient(ellipse 80% 50% at 50% -10%, ${project.accentColor}18 0%, rgba(255,255,255,0) 80%), #ffffff`
-                    : `radial-gradient(ellipse 80% 50% at 50% -10%, ${project.accentColor}20 0%, rgba(5,5,5,0) 80%), #050505`,
-                borderBottom: isLight
-                    ? '1px solid rgba(0, 0, 0, 0.08)'
-                    : '1px solid rgba(255, 255, 255, 0.06)',
+                background: `radial-gradient(ellipse 80% 50% at 50% -10%, ${project.accentColor}18 0%, transparent 80%), var(--zy-bg)`,
+                borderBottom: '1px solid var(--zy-border-subtle)',
                 transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
@@ -57,7 +49,7 @@ export default function ProjectHeroEditorial({
                             alignItems: 'center',
                             gap: '10px',
                             fontSize: '13px',
-                            color: isLight ? '#666666' : '#777777',
+                            color: 'var(--zy-text-secondary)',
                         }}
                     >
                         <Link
@@ -76,7 +68,7 @@ export default function ProjectHeroEditorial({
                         <span>/</span>
                         <span
                             style={{
-                                color: isLight ? '#000000' : '#ffffff',
+                                color: 'var(--zy-text-primary)',
                                 fontWeight: 600,
                             }}
                         >
@@ -89,17 +81,13 @@ export default function ProjectHeroEditorial({
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '8px',
-                            background: isLight
-                                ? 'rgba(0, 0, 0, 0.04)'
-                                : 'rgba(255, 255, 255, 0.04)',
-                            border: isLight
-                                ? '1px solid rgba(0, 0, 0, 0.1)'
-                                : '1px solid rgba(255, 255, 255, 0.1)',
+                            background: 'var(--zy-surface-1)',
+                            border: '1px solid var(--zy-border-subtle)',
                             borderRadius: '30px',
                             padding: '6px 14px',
                             fontSize: '12px',
                             fontWeight: 600,
-                            color: isLight ? '#222222' : '#e0e0e0',
+                            color: 'var(--zy-text-primary)',
                         }}
                     >
                         <span
@@ -153,7 +141,7 @@ export default function ProjectHeroEditorial({
                                 fontSize: 'clamp(32px, 4.8vw, 56px)',
                                 fontWeight: 800,
                                 lineHeight: 1.1,
-                                color: isLight ? '#0a0a0a' : '#ffffff',
+                                color: 'var(--zy-text-primary)',
                                 letterSpacing: '-0.03em',
                                 marginBottom: '22px',
                             }}
@@ -164,7 +152,7 @@ export default function ProjectHeroEditorial({
                         <p
                             style={{
                                 fontSize: 'clamp(15px, 1.8vw, 18px)',
-                                color: isLight ? '#555555' : '#9a9a9a',
+                                color: 'var(--zy-text-secondary)',
                                 lineHeight: 1.65,
                                 marginBottom: '32px',
                             }}
@@ -179,13 +167,9 @@ export default function ProjectHeroEditorial({
                                 gridTemplateColumns: 'repeat(2, 1fr)',
                                 gap: '14px',
                                 padding: '20px',
-                                background: isLight
-                                    ? '#f5f5f7'
-                                    : 'rgba(255, 255, 255, 0.03)',
+                                background: 'var(--zy-surface-1)',
                                 borderRadius: '16px',
-                                border: isLight
-                                    ? '1px solid #e0e0e2'
-                                    : '1px solid rgba(255, 255, 255, 0.06)',
+                                border: '1px solid var(--zy-border-subtle)',
                                 marginBottom: '36px',
                             }}
                         >
@@ -194,7 +178,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '11px',
                                         textTransform: 'uppercase',
-                                        color: isLight ? '#777777' : '#666666',
+                                        color: 'var(--zy-text-muted)',
                                         letterSpacing: '0.08em',
                                         fontWeight: 700,
                                     }}
@@ -205,7 +189,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '14px',
                                         fontWeight: 600,
-                                        color: isLight ? '#111111' : '#ffffff',
+                                        color: 'var(--zy-text-primary)',
                                         marginTop: '3px',
                                     }}
                                 >
@@ -217,7 +201,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '11px',
                                         textTransform: 'uppercase',
-                                        color: isLight ? '#777777' : '#666666',
+                                        color: 'var(--zy-text-muted)',
                                         letterSpacing: '0.08em',
                                         fontWeight: 700,
                                     }}
@@ -228,7 +212,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '14px',
                                         fontWeight: 600,
-                                        color: isLight ? '#111111' : '#ffffff',
+                                        color: 'var(--zy-text-primary)',
                                         marginTop: '3px',
                                     }}
                                 >
@@ -240,7 +224,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '11px',
                                         textTransform: 'uppercase',
-                                        color: isLight ? '#777777' : '#666666',
+                                        color: 'var(--zy-text-muted)',
                                         letterSpacing: '0.08em',
                                         fontWeight: 700,
                                     }}
@@ -251,7 +235,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '14px',
                                         fontWeight: 600,
-                                        color: isLight ? '#111111' : '#ffffff',
+                                        color: 'var(--zy-text-primary)',
                                         marginTop: '3px',
                                     }}
                                 >
@@ -263,7 +247,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '11px',
                                         textTransform: 'uppercase',
-                                        color: isLight ? '#777777' : '#666666',
+                                        color: 'var(--zy-text-muted)',
                                         letterSpacing: '0.08em',
                                         fontWeight: 700,
                                     }}
@@ -332,18 +316,14 @@ export default function ProjectHeroEditorial({
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '8px',
-                                    background: isLight
-                                        ? 'rgba(0, 0, 0, 0.05)'
-                                        : 'rgba(255, 255, 255, 0.05)',
-                                    color: isLight ? '#000000' : '#ffffff',
+                                    background: 'var(--zy-surface-2)',
+                                    color: 'var(--zy-text-primary)',
                                     padding: '15px 26px',
                                     borderRadius: '40px',
                                     fontWeight: 600,
                                     fontSize: '14px',
                                     textDecoration: 'none',
-                                    border: isLight
-                                        ? '1px solid rgba(0, 0, 0, 0.12)'
-                                        : '1px solid rgba(255, 255, 255, 0.12)',
+                                    border: '1px solid var(--zy-border-subtle)',
                                 }}
                             >
                                 <svg
@@ -375,14 +355,10 @@ export default function ProjectHeroEditorial({
                         {/* Desktop Browser Frame */}
                         <div
                             style={{
-                                background: isLight ? '#f0f0f2' : '#111114',
+                                background: 'var(--zy-surface-1)',
                                 borderRadius: '18px',
-                                border: isLight
-                                    ? '1px solid rgba(0, 0, 0, 0.12)'
-                                    : '1px solid rgba(255, 255, 255, 0.12)',
-                                boxShadow: isLight
-                                    ? '0 20px 50px rgba(0,0,0,0.12)'
-                                    : '0 25px 60px rgba(0,0,0,0.85)',
+                                border: '1px solid var(--zy-border-subtle)',
+                                boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
                                 overflow: 'hidden',
                                 position: 'relative',
                             }}
@@ -394,10 +370,9 @@ export default function ProjectHeroEditorial({
                                     alignItems: 'center',
                                     justifyContent: 'space-between',
                                     padding: '10px 16px',
-                                    background: isLight ? '#e4e4e7' : '#18181b',
-                                    borderBottom: isLight
-                                        ? '1px solid rgba(0, 0, 0, 0.08)'
-                                        : '1px solid rgba(255, 255, 255, 0.06)',
+                                    background: 'var(--zy-surface-2)',
+                                    borderBottom:
+                                        '1px solid var(--zy-border-subtle)',
                                 }}
                             >
                                 <div style={{ display: 'flex', gap: '6px' }}>
@@ -432,10 +407,8 @@ export default function ProjectHeroEditorial({
                                 <div
                                     style={{
                                         fontSize: '11px',
-                                        color: isLight ? '#444444' : '#777777',
-                                        background: isLight
-                                            ? '#ffffff'
-                                            : '#09090b',
+                                        color: 'var(--zy-text-secondary)',
+                                        background: 'var(--zy-bg)',
                                         padding: '4px 14px',
                                         borderRadius: '6px',
                                         maxWidth: '260px',
@@ -444,9 +417,7 @@ export default function ProjectHeroEditorial({
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         whiteSpace: 'nowrap',
-                                        border: isLight
-                                            ? '1px solid #d4d4d8'
-                                            : 'none',
+                                        border: '1px solid var(--zy-border-subtle)',
                                     }}
                                 >
                                     🔒 {project.liveUrl}
@@ -482,15 +453,11 @@ export default function ProjectHeroEditorial({
                                 right: '-15px',
                                 bottom: '-35px',
                                 width: '190px',
-                                background: isLight ? '#ffffff' : '#0a0a0c',
+                                background: 'var(--zy-surface-1)',
                                 borderRadius: '24px',
                                 padding: '8px',
-                                border: isLight
-                                    ? '2px solid rgba(0, 0, 0, 0.12)'
-                                    : '2px solid rgba(255, 255, 255, 0.16)',
-                                boxShadow: isLight
-                                    ? '0 15px 40px rgba(0,0,0,0.15)'
-                                    : '0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.5)',
+                                border: '2px solid var(--zy-border-subtle)',
+                                boxShadow: '0 15px 40px rgba(0,0,0,0.2)',
                                 transform: 'rotate(-3deg)',
                                 transition: 'transform 0.3s ease',
                             }}
@@ -508,7 +475,7 @@ export default function ProjectHeroEditorial({
                                 style={{
                                     width: '60px',
                                     height: '5px',
-                                    background: isLight ? '#ccc' : '#222',
+                                    background: 'var(--zy-border-subtle)',
                                     borderRadius: '10px',
                                     margin: '4px auto 8px',
                                 }}
@@ -538,21 +505,15 @@ export default function ProjectHeroEditorial({
                                 position: 'absolute',
                                 top: '24px',
                                 left: '-15px',
-                                background: isLight
-                                    ? 'rgba(255, 255, 255, 0.95)'
-                                    : 'rgba(10, 10, 12, 0.9)',
+                                background: 'var(--zy-glass-bg)',
                                 backdropFilter: 'blur(16px)',
-                                border: isLight
-                                    ? '1px solid rgba(0, 0, 0, 0.1)'
-                                    : '1px solid rgba(255, 255, 255, 0.12)',
+                                border: '1px solid var(--zy-glass-border)',
                                 borderRadius: '12px',
                                 padding: '10px 16px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '10px',
-                                boxShadow: isLight
-                                    ? '0 10px 30px rgba(0,0,0,0.1)'
-                                    : '0 10px 30px rgba(0,0,0,0.6)',
+                                boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
                             }}
                         >
                             <span style={{ fontSize: '18px' }}>⚡</span>
@@ -560,7 +521,7 @@ export default function ProjectHeroEditorial({
                                 <div
                                     style={{
                                         fontSize: '10px',
-                                        color: isLight ? '#666' : '#888',
+                                        color: 'var(--zy-text-muted)',
                                         textTransform: 'uppercase',
                                         fontWeight: 700,
                                     }}
@@ -571,7 +532,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '13px',
                                         fontWeight: 700,
-                                        color: isLight ? '#000' : '#fff',
+                                        color: 'var(--zy-text-primary)',
                                     }}
                                 >
                                     &lt;45ms P99
