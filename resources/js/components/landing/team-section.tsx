@@ -99,10 +99,10 @@ export default function TeamSection() {
                 style={{
                     display: 'grid',
                     gridTemplateColumns:
-                        'repeat(auto-fit, minmax(280px, 400px))',
+                        'repeat(auto-fit, minmax(300px, 420px))',
                     justifyContent: 'center',
-                    gap: 40,
-                    maxWidth: 900,
+                    gap: 36,
+                    maxWidth: 920,
                     margin: '0 auto',
                 }}
             >
@@ -111,8 +111,8 @@ export default function TeamSection() {
                         key={member.name}
                         className="team-card zy-card"
                         style={{
-                            padding: 32,
-                            textAlign: 'center',
+                            padding: 0,
+                            textAlign: 'left',
                             transition: 'all 0.4s var(--zy-ease)',
                             cursor: 'default',
                             opacity: 0,
@@ -120,26 +120,27 @@ export default function TeamSection() {
                             flexDirection: 'column',
                             background: activeIsLight
                                 ? '#ffffff'
-                                : 'var(--zy-black)',
+                                : 'var(--zy-gray-card)',
                             border: activeIsLight
                                 ? '1px solid #e5e7eb'
-                                : 'none',
+                                : '1px solid rgba(255, 255, 255, 0.08)',
                             boxShadow: activeIsLight
                                 ? '0 10px 30px rgba(0,0,0,0.03)'
-                                : 'none',
-                            borderRadius: '16px',
+                                : '0 10px 30px rgba(0,0,0,0.3)',
+                            borderRadius: '24px',
+                            overflow: 'hidden',
                         }}
                     >
-                        {/* Image Avatar */}
+                        {/* Photo Stage - Full Image Display Without Hiding */}
                         <div
                             style={{
                                 width: '100%',
-                                aspectRatio: '1',
-                                borderRadius: '12px',
-                                margin: '0 auto 24px',
-                                overflow: 'hidden',
+                                aspectRatio: '4 / 5',
                                 position: 'relative',
-                                background: 'var(--zy-gray-dark)',
+                                overflow: 'hidden',
+                                background: activeIsLight
+                                    ? '#f1f5f9'
+                                    : '#0a0a0c',
                             }}
                         >
                             <img
@@ -151,87 +152,139 @@ export default function TeamSection() {
                                     width: '100%',
                                     height: '100%',
                                     objectFit: 'cover',
-                                    filter: 'grayscale(100%)',
+                                    objectPosition: 'top center',
+                                    filter: 'none',
+                                    display: 'block',
                                     transition:
-                                        'filter 0.5s var(--zy-ease), transform 0.5s var(--zy-ease)',
+                                        'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)',
                                 }}
                             />
 
-                            {/* Slide-up Bio on Hover */}
+                            {/* Subtle Bottom Accent Gradient Bar */}
                             <div
-                                className="team-bio"
                                 style={{
                                     position: 'absolute',
                                     bottom: 0,
                                     left: 0,
                                     width: '100%',
-                                    padding: '24px',
-                                    background: activeIsLight
-                                        ? 'rgba(255, 255, 255, 0.95)'
-                                        : 'rgba(10, 10, 10, 0.95)',
-                                    backdropFilter: 'blur(5px)',
-                                    transform: 'translateY(100%)',
-                                    transition: 'transform 0.4s var(--zy-ease)',
-                                    borderTop: `2px solid ${member.color}`,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    height: '100%',
-                                }}
-                            >
-                                <p
-                                    style={{
-                                        fontSize: 15,
-                                        color: activeIsLight
-                                            ? '#4b5563'
-                                            : 'var(--zy-gray-text)',
-                                        lineHeight: 1.6,
-                                        margin: 0,
-                                    }}
-                                >
-                                    {member.bio}
-                                </p>
-                            </div>
-
-                            {/* Accent line (default state) */}
-                            <div
-                                className="team-accent"
-                                style={{
-                                    position: 'absolute',
-                                    bottom: 0,
-                                    left: 0,
-                                    width: '100%',
-                                    height: 4,
-                                    background: member.color,
-                                    transition: 'opacity 0.4s var(--zy-ease)',
+                                    height: 3,
+                                    background: `linear-gradient(90deg, ${member.color}, transparent)`,
                                 }}
                             />
                         </div>
 
-                        <h4
-                            style={{
-                                fontFamily: 'var(--font-heading)',
-                                fontSize: 22,
-                                fontWeight: 700,
-                                color: activeIsLight
-                                    ? '#000'
-                                    : 'var(--zy-white)',
-                                marginBottom: 8,
-                            }}
-                        >
-                            {member.name}
-                        </h4>
+                        {/* Bio & Details Below Photo */}
                         <div
                             style={{
-                                fontSize: 14,
-                                fontWeight: 600,
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.05em',
-                                color: member.color,
-                                marginBottom: 0,
+                                padding: '28px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                flex: 1,
                             }}
                         >
-                            {member.role}
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    marginBottom: '10px',
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        fontSize: '12px',
+                                        fontWeight: 700,
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.08em',
+                                        color: member.color,
+                                        background: activeIsLight
+                                            ? 'rgba(99, 102, 241, 0.08)'
+                                            : 'rgba(255, 255, 255, 0.06)',
+                                        padding: '4px 10px',
+                                        borderRadius: '6px',
+                                    }}
+                                >
+                                    {member.role}
+                                </span>
+                                <span
+                                    style={{
+                                        fontSize: '11px',
+                                        fontFamily: 'monospace',
+                                        color: activeIsLight
+                                            ? '#94a3b8'
+                                            : 'rgba(255, 255, 255, 0.4)',
+                                        textTransform: 'uppercase',
+                                    }}
+                                >
+                                    Leadership
+                                </span>
+                            </div>
+
+                            <h3
+                                style={{
+                                    fontFamily: 'var(--font-heading)',
+                                    fontSize: '24px',
+                                    fontWeight: 800,
+                                    color: activeIsLight
+                                        ? '#0f172a'
+                                        : 'var(--zy-white)',
+                                    margin: '0 0 10px 0',
+                                    letterSpacing: '-0.02em',
+                                }}
+                            >
+                                {member.name}
+                            </h3>
+
+                            <p
+                                style={{
+                                    fontSize: '14px',
+                                    color: activeIsLight
+                                        ? '#64748b'
+                                        : 'var(--zy-gray-text)',
+                                    lineHeight: 1.65,
+                                    margin: '0 0 20px 0',
+                                    flex: 1,
+                                }}
+                            >
+                                {member.bio}
+                            </p>
+
+                            <div
+                                style={{
+                                    borderTop: `1px solid ${
+                                        activeIsLight
+                                            ? '#f1f5f9'
+                                            : 'rgba(255, 255, 255, 0.06)'
+                                    }`,
+                                    paddingTop: '16px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        fontSize: '12px',
+                                        fontWeight: 600,
+                                        color: activeIsLight
+                                            ? '#475569'
+                                            : 'rgba(255, 255, 255, 0.7)',
+                                    }}
+                                >
+                                    {member.name === 'Bipin Sahani'
+                                        ? 'Architecture & Cloud Vision'
+                                        : 'Global Ops & Scale Strategy'}
+                                </span>
+                                <div
+                                    style={{
+                                        width: 8,
+                                        height: 8,
+                                        borderRadius: '50%',
+                                        background: member.color,
+                                        boxShadow: `0 0 8px ${member.color}`,
+                                    }}
+                                />
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -239,18 +292,18 @@ export default function TeamSection() {
 
             <style>{`
                 .team-card:hover {
-                    transform: translateY(-10px);
-                    box-shadow: ${activeIsLight ? '0 20px 40px rgba(0,0,0,0.1)' : '0 20px 40px rgba(0,0,0,0.4)'} !important;
+                    transform: translateY(-8px);
+                    box-shadow: ${
+                        activeIsLight
+                            ? '0 24px 48px rgba(0, 0, 0, 0.08)'
+                            : '0 24px 48px rgba(0, 0, 0, 0.5)'
+                    } !important;
+                    border-color: ${
+                        activeIsLight ? '#cbd5e1' : 'rgba(255, 255, 255, 0.18)'
+                    } !important;
                 }
                 .team-card:hover .team-img {
-                    filter: grayscale(0%) !important;
-                    transform: scale(1.05);
-                }
-                .team-card:hover .team-bio {
-                    transform: translateY(0) !important;
-                }
-                .team-card:hover .team-accent {
-                    opacity: 0;
+                    transform: scale(1.03);
                 }
             `}</style>
         </section>

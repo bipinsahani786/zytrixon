@@ -168,7 +168,7 @@ export default function PrivacyPolicy() {
                         <br />
                         <strong>Phone:</strong> +91 70497 11475
                         <br />
-                        <strong>Address:</strong> Samastipur, Bihar - 848101
+                        <strong>Address:</strong> Patna, Bihar - 800001
                     </p>
                 </div>
             </main>

@@ -294,9 +294,9 @@ export default function Footer() {
                             marginTop: '12px',
                         }}
                     >
-                        Samastipur, Bihar
+                        Patna, Bihar
                         <br />
-                        India 848101
+                        India 800001
                     </p>
                 </div>
             </div>

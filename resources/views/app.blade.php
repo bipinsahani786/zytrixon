@@ -62,9 +62,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.tsx'])
         @php
             $seo = $page['props']['seo'] ?? null;
-            $title = $seo['title'] ?? 'Zytrixon Tech | Top Web Development Agency in Patna Bihar';
-            $description = $seo['description'] ?? 'Zytrixon Tech offers premium web & app development, and SEO services in Patna & across India. We deliver scalable, high-performance digital solutions.';
-            $keywords = $seo['keywords'] ?? 'web development patna, software company in patna, app development bihar, zytrixon tech, best it company patna';
+            $title = $seo['title'] ?? 'Zytrixon Tech | Best Software Company in Patna, Bihar & Global IT Solutions';
+            $description = $seo['description'] ?? 'Zytrixon Tech is a top-rated software company in Patna, Bihar delivering enterprise Web Development, Mobile Apps, AI, and IoT solutions globally.';
+            $keywords = $seo['keywords'] ?? 'software company in patna, web development patna, best it company patna, app development bihar, zytrixon tech, best it company bihar';
             $canonical = $seo['canonical'] ?? url()->current();
             $image = $seo['image'] ?? url('/favicon.svg');
             $schema = $seo['schema'] ?? [
@@ -80,10 +80,10 @@
                     'foundingDate' => '2024',
                     'address' => [
                         '@type' => 'PostalAddress',
-                        'streetAddress' => 'Samastipur',
-                        'addressLocality' => 'Samastipur',
+                        'streetAddress' => 'Patna',
+                        'addressLocality' => 'Patna',
                         'addressRegion' => 'Bihar',
-                        'postalCode' => '848101',
+                        'postalCode' => '800001',
                         'addressCountry' => 'IN'
                     ],
                     'contactPoint' => [
@@ -122,10 +122,10 @@
                     'description' => $description,
                     'address' => [
                         '@type' => 'PostalAddress',
-                        'streetAddress' => 'Samastipur',
-                        'addressLocality' => 'Samastipur',
+                        'streetAddress' => 'Patna',
+                        'addressLocality' => 'Patna',
                         'addressRegion' => 'Bihar',
-                        'postalCode' => '848101',
+                        'postalCode' => '800001',
                         'addressCountry' => 'IN'
                     ],
                     'priceRange' => '$$',

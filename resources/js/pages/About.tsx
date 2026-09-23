@@ -1,31 +1,41 @@
-import AboutSection from '@/components/landing/about-section';
-import ContactSection from '@/components/landing/contact-section';
-import CoreValuesSection from '@/components/landing/core-values-section';
-import FAQSection from '@/components/landing/faq-section';
-import GlobalFootprint from '@/components/landing/global-footprint';
-import InnerPageHero from '@/components/landing/inner-page-hero';
+import React from 'react';
 import Navbar from '@/components/landing/navbar';
-import LazySection from '@/components/landing/lazy-section';
-
-import ClientsSection from '@/components/landing/clients-section';
-import TeamSection from '@/components/landing/team-section';
-import TechStackSection from '@/components/landing/tech-stack-section';
-import TestimonialsSection from '@/components/landing/testimonials-section';
-import CustomCursor from '@/components/landing/custom-cursor';
-import FooterCTA from '@/components/landing/footer-cta';
-import Footer from '@/components/landing/footer';
-import { ThemeProvider } from '@/components/landing/theme-provider';
 import TopBar from '@/components/landing/top-bar';
+import Footer from '@/components/landing/footer';
+import CustomCursor from '@/components/landing/custom-cursor';
+import LazySection from '@/components/landing/lazy-section';
+import { ThemeProvider } from '@/components/landing/theme-provider';
 import SeoHead from '@/components/seo/SeoHead';
+
+// 19 Curated Architectural Sections
+import AboutHeroEditorial from '@/components/about/AboutHeroEditorial';
+import AboutExecutiveHUD from '@/components/about/AboutExecutiveHUD';
+import AboutOriginStory from '@/components/about/AboutOriginStory';
+import AboutMissionVision from '@/components/about/AboutMissionVision';
+import AboutPrinciplesManifesto from '@/components/about/AboutPrinciplesManifesto';
+import AboutLeadershipDossier from '@/components/about/AboutLeadershipDossier';
+import AboutMilestonesChronology from '@/components/about/AboutMilestonesChronology';
+import AboutTechConviction from '@/components/about/AboutTechConviction';
+import AboutDeliveryLifecycle from '@/components/about/AboutDeliveryLifecycle';
+import AboutSecurityGovernance from '@/components/about/AboutSecurityGovernance';
+import AboutInnovationLab from '@/components/about/AboutInnovationLab';
+import AboutGlobalPresence from '@/components/about/AboutGlobalPresence';
+import AboutClientTrust from '@/components/about/AboutClientTrust';
+import AboutCultureTalent from '@/components/about/AboutCultureTalent';
+import AboutSocialImpact from '@/components/about/AboutSocialImpact';
+import AboutRecognitionAwards from '@/components/about/AboutRecognitionAwards';
+import AboutEngagementModels from '@/components/about/AboutEngagementModels';
+import AboutFAQComprehensive from '@/components/about/AboutFAQComprehensive';
+import AboutExecutiveCTA from '@/components/about/AboutExecutiveCTA';
 
 export default function About() {
     return (
         <ThemeProvider>
             <SeoHead
                 seo={{
-                    title: 'About Us | Zytrixon Tech',
+                    title: 'About Zytrixon | Architectural Engineering Studio',
                     description:
-                        'Learn about Zytrixon Tech, our mission, vision, and the team driving digital innovation from Patna to the world.',
+                        'Discover Zytrixon Technologies: Our origin in Patna, engineering manifesto, leadership dossier, technology convictions, and mission to engineer planetary-scale digital dominance.',
                 }}
             />
 
@@ -34,40 +44,97 @@ export default function About() {
             <Navbar />
 
             <main>
-                <InnerPageHero
-                    title="Our Story"
-                    subtitle="We are a team of passionate engineers and designers building enterprise-grade solutions."
-                />
+                {/* 01. Hero Editorial (Immediate render for LCP) */}
+                <AboutHeroEditorial />
 
+                {/* 02. Executive Telemetry HUD */}
                 <LazySection>
-                    <AboutSection />
+                    <AboutExecutiveHUD />
                 </LazySection>
+
+                {/* 03. Origin Narrative */}
                 <LazySection>
-                    <CoreValuesSection />
+                    <AboutOriginStory />
                 </LazySection>
+
+                {/* 04. Mission & Vision Dual Monolith */}
                 <LazySection>
-                    <TeamSection />
+                    <AboutMissionVision />
                 </LazySection>
+
+                {/* 05. Engineering Manifesto */}
                 <LazySection>
-                    <GlobalFootprint />
+                    <AboutPrinciplesManifesto />
                 </LazySection>
+
+                {/* 06. Leadership Dossier */}
                 <LazySection>
-                    <TechStackSection />
+                    <AboutLeadershipDossier />
                 </LazySection>
+
+                {/* 07. Chronology & Growth Milestones */}
                 <LazySection>
-                    <ClientsSection />
+                    <AboutMilestonesChronology />
                 </LazySection>
+
+                {/* 08. Technology Conviction Matrix */}
                 <LazySection>
-                    <TestimonialsSection />
+                    <AboutTechConviction />
                 </LazySection>
+
+                {/* 09. 6-Stage Delivery Lifecycle */}
                 <LazySection>
-                    <FAQSection />
+                    <AboutDeliveryLifecycle />
                 </LazySection>
+
+                {/* 10. Security & Zero-Trust Governance */}
                 <LazySection>
-                    <FooterCTA />
+                    <AboutSecurityGovernance />
                 </LazySection>
+
+                {/* 11. Innovation & R&D Lab */}
                 <LazySection>
-                    <ContactSection />
+                    <AboutInnovationLab />
+                </LazySection>
+
+                {/* 12. Global Footprint & Dual Hubs */}
+                <LazySection>
+                    <AboutGlobalPresence />
+                </LazySection>
+
+                {/* 13. Client Trust & Partnership Retention */}
+                <LazySection>
+                    <AboutClientTrust />
+                </LazySection>
+
+                {/* 14. Culture & Engineering Talent Cadence */}
+                <LazySection>
+                    <AboutCultureTalent />
+                </LazySection>
+
+                {/* 15. Regional Catalyst & Social Impact */}
+                <LazySection>
+                    <AboutSocialImpact />
+                </LazySection>
+
+                {/* 16. Benchmarks & Verified Recognition */}
+                <LazySection>
+                    <AboutRecognitionAwards />
+                </LazySection>
+
+                {/* 17. Transparent Engagement Architecture */}
+                <LazySection>
+                    <AboutEngagementModels />
+                </LazySection>
+
+                {/* 18. Technical & Strategic FAQ */}
+                <LazySection>
+                    <AboutFAQComprehensive />
+                </LazySection>
+
+                {/* 19. Executive Closing CTA */}
+                <LazySection>
+                    <AboutExecutiveCTA />
                 </LazySection>
             </main>
 

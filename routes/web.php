@@ -7,7 +7,13 @@ use App\Models\Location;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 
-Route::inertia('/', 'welcome')->name('home');
+Route::inertia('/', 'welcome', [
+    'seo' => [
+        'title' => 'Zytrixon Tech | Best Software Company in Patna, Bihar & Global IT Solutions',
+        'description' => 'Zytrixon Tech is a top-rated software company in Patna, Bihar delivering enterprise Web Development, Mobile Apps, AI, and IoT solutions globally.',
+        'keywords' => 'software company in patna, web development patna, best it company patna, app development bihar, zytrixon tech, it company bihar',
+    ],
+])->name('home');
 
 // Programmatic SEO Routes
 Route::get('/services', [SeoController::class, 'index'])->name('services.index');
