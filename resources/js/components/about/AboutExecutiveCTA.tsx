@@ -366,7 +366,7 @@ export default function AboutExecutiveCTA() {
                                 color: 'var(--zy-text-secondary)',
                             }}
                         >
-                            COORDINATES: 25.5941° N, 85.1376° E &bull; EST. 2022
+                            COORDINATES: 25.5941° N, 85.1376° E &bull; EST. 2026
                         </div>
                     </div>
                 </div>

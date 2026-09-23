@@ -14,13 +14,13 @@ function Abstract3D({ color }: { color: string }) {
     });
 
     return (
-        <mesh ref={meshRef} scale={1.8}>
+        <mesh ref={meshRef} position={[0, 0.4, 0]} scale={2.2}>
             <torusKnotGeometry args={[1, 0.3, 128, 32]} />
             <meshStandardMaterial
                 color={color}
                 wireframe={true}
                 transparent={true}
-                opacity={0.25}
+                opacity={0.28}
             />
         </mesh>
     );
@@ -41,16 +41,19 @@ export default function HeroDynamic({
     return (
         <section
             style={{
-                padding: '120px 24px 80px',
+                paddingTop: '16px',
+                paddingBottom: '50px',
+                paddingLeft: '24px',
+                paddingRight: '24px',
                 background: isLight ? '#f9fafb' : 'var(--zy-black)',
                 borderBottom: `1px solid ${isLight ? '#e5e7eb' : 'rgba(255,255,255,0.05)'}`,
                 textAlign: 'center',
                 position: 'relative',
                 overflow: 'hidden',
-                minHeight: '75vh',
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
+                justifyContent: 'flex-start',
             }}
         >
             {/* 3D Background */}
@@ -59,11 +62,11 @@ export default function HeroDynamic({
                     position: 'absolute',
                     inset: 0,
                     zIndex: 0,
-                    opacity: isLight ? 0.3 : 1,
+                    opacity: isLight ? 0.35 : 1,
                 }}
             >
                 <Canvas
-                    camera={{ position: [0, 0, 5], fov: 45 }}
+                    camera={{ position: [0, 0, 4.2], fov: 45 }}
                     dpr={[1, 1.5]}
                 >
                     <ambientLight intensity={1} />
@@ -97,7 +100,7 @@ export default function HeroDynamic({
                         display: 'flex',
                         justifyContent: 'center',
                         gap: 12,
-                        marginBottom: 32,
+                        marginBottom: 16,
                     }}
                 >
                     <span

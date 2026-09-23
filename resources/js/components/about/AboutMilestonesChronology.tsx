@@ -7,53 +7,32 @@ export default function AboutMilestonesChronology() {
 
     const milestones = [
         {
-            year: 'Q1 2022',
+            year: 'Q1 2026',
             title: 'Genesis in Patna, Bihar',
             summary:
-                'Zytrixon founded with an initial focus on distributed web APIs and micro-frontend architectures for Indian startups.',
+                'Zytrixon established with a dedicated engineering center in Patna, Bihar, pioneering mission-critical distributed web APIs, cloud backends, and micro-frontend architectures for enterprise partners.',
             badge: 'FOUNDING PHASE',
         },
         {
-            year: 'Q3 2022',
-            title: 'First International Architecture Audit',
+            year: 'Q2 2026',
+            title: 'High-Concurrency Commerce & HealthTech Overhaul',
             summary:
-                'Commissioned by a Middle East logistics firm to audit high-throughput vehicle telematics pipelines, reducing memory leaks by 80%.',
-            badge: 'GLOBAL OUTREACH',
+                'Engineered sub-second headless commerce storefronts with atomic Redis reservation, and deployed ASTM/HL7 compliant automated clinical diagnostic reporting gateways.',
+            badge: 'CORE ENGINE DEPLOYMENT',
         },
         {
-            year: 'Q2 2023',
-            title: 'Thread Ax Headless Commerce Launch',
+            year: 'Q3 2026',
+            title: 'Zero-Trust Security & Real Estate Telemetry',
             summary:
-                'Engineered sub-second Next.js storefront with atomic Redis flash sale checkout, handling over 25,000 simultaneous shoppers.',
-            badge: 'CONCURRENCY RECORD',
+                'Architected zero-knowledge evidence submission suites and direct-to-owner property acquisition engines with transparent RERA verification.',
+            badge: 'ENTERPRISE GOVERNANCE',
         },
         {
-            year: 'Q4 2023',
-            title: 'Smart India Detective Intelligence Portal',
+            year: 'Q4 2026',
+            title: 'Autonomous Edge AI & Cognitive Telemetry Grid',
             summary:
-                'Architected zero-knowledge evidence submission suite and encrypted case vaults for India’s premier private investigation network.',
-            badge: 'ZERO-TRUST SECURITY',
-        },
-        {
-            year: 'Q2 2024',
-            title: 'ZytrixonLabs Pathology LIS 2.0',
-            summary:
-                'Built bidirectional ASTM/HL7 medical analyzer gateway, processing over 500k diagnostic reports with automated WhatsApp delivery.',
-            badge: 'HEALTHTECH MILESTONE',
-        },
-        {
-            year: 'Q4 2024',
-            title: 'NCR Operations & Land Portal Launch',
-            summary:
-                'Partnered with S.K. Infratech to launch direct-to-owner property acquisition engine with transparent RERA verification badges.',
-            badge: 'ENTERPRISE REAL ESTATE',
-        },
-        {
-            year: '2025 - 2026',
-            title: 'Edge AI Agents & Distributed Telemetry',
-            summary:
-                'Expanding into autonomous multi-tenant agent orchestration and edge computing pipelines serving clients across 3 continents.',
-            badge: 'NEXT HORIZON',
+                'Expanding into autonomous multi-tenant agent orchestration and low-latency edge computing pipelines serving institutional clients across 3 continents.',
+            badge: 'GLOBAL EXPANSION',
         },
     ];
 

@@ -50,7 +50,7 @@ export default function ServiceSeoPage({
             <CustomCursor />
             <Navbar />
 
-            <main style={{ paddingTop: '80px', background: 'var(--zy-black)' }}>
+            <main style={{ paddingTop: '0px', background: 'var(--zy-black)' }}>
                 {/* 1. Dynamic Hero Section */}
                 <HeroDynamic
                     service={service}

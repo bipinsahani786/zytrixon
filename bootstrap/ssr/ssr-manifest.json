@@ -13,61 +13,52 @@
     "/build/assets/security-DL-WyZ4N.js"
   ],
   "resources/js/components/about/AboutClientTrust.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
-  ],
-  "resources/js/components/about/AboutCultureTalent.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutDeliveryLifecycle.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
-  ],
-  "resources/js/components/about/AboutEngagementModels.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutExecutiveCTA.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutExecutiveHUD.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutFAQComprehensive.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutGlobalPresence.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
-  ],
-  "resources/js/components/about/AboutHeroEditorial.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutInnovationLab.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutLeadershipDossier.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutMilestonesChronology.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutMissionVision.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutOriginStory.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutPrinciplesManifesto.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutRecognitionAwards.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutSecurityGovernance.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutSocialImpact.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/about/AboutTechConviction.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/components/alert-error.tsx": [
     "/build/assets/security-DL-WyZ4N.js"
@@ -90,7 +81,7 @@
     "/build/assets/input-error-B7Zt7zmb.js"
   ],
   "resources/js/components/landing/about-section.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/clients-section.tsx": [
     "/build/assets/clients-section-BsyOTN2Z.js"
@@ -120,16 +111,16 @@
     "/build/assets/custom-cursor-s6CGr8GY.js"
   ],
   "resources/js/components/landing/grain-overlay.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/hero-section.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/industries-section.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/inner-page-hero.tsx": [
-    "/build/assets/inner-page-hero-D6wbl6wA.js"
+    "/build/assets/inner-page-hero-RSnAV5b5.js"
   ],
   "resources/js/components/landing/iot-device-mesh.tsx": [
     "/build/assets/iot-device-mesh-d75KsCv_.js"
@@ -138,40 +129,40 @@
     "/build/assets/lazy-section-Bm1gTwLP.js"
   ],
   "resources/js/components/landing/marquee-strip.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/navbar.tsx": [
     "/build/assets/custom-cursor-s6CGr8GY.js"
   ],
   "resources/js/components/landing/playground-ai.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/playground-custom.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/playground-iot.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/playground-marketing.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/playground-mobile.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/playground-webapp.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/portfolio-preview.tsx": [
-    "/build/assets/portfolio-preview-DQl6fHoU.js"
+    "/build/assets/portfolio-preview-BGJKPNYD.js"
   ],
   "resources/js/components/landing/process-section.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/services-section.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/stats-section.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/components/landing/team-section.tsx": [
     "/build/assets/team-section-C5m0NtiY.js"
@@ -213,22 +204,22 @@
     "/build/assets/password-input-CSddIxsW.js"
   ],
   "resources/js/components/project-details/ProjectBlueprintFlow.tsx": [
-    "/build/assets/ProjectDetails-Cf6xny4I.js"
+    "/build/assets/ProjectDetails-0mhO3LFS.js"
   ],
   "resources/js/components/project-details/ProjectCinemaTheatre.tsx": [
-    "/build/assets/ProjectDetails-Cf6xny4I.js"
+    "/build/assets/ProjectDetails-0mhO3LFS.js"
   ],
   "resources/js/components/project-details/ProjectHeroEditorial.tsx": [
-    "/build/assets/ProjectDetails-Cf6xny4I.js"
+    "/build/assets/ProjectDetails-0mhO3LFS.js"
   ],
   "resources/js/components/project-details/ProjectImpactBanner.tsx": [
-    "/build/assets/ProjectDetails-Cf6xny4I.js"
+    "/build/assets/ProjectDetails-0mhO3LFS.js"
   ],
   "resources/js/components/project-details/ProjectInteractiveGallery.tsx": [
-    "/build/assets/ProjectDetails-Cf6xny4I.js"
+    "/build/assets/ProjectDetails-0mhO3LFS.js"
   ],
   "resources/js/components/project-details/ProjectSubNav.tsx": [
-    "/build/assets/ProjectDetails-Cf6xny4I.js"
+    "/build/assets/ProjectDetails-0mhO3LFS.js"
   ],
   "resources/js/components/sections/BlogPreviewSection.tsx": [
     "/build/assets/ServiceSeoPage-B5ET6ZoE.js"
@@ -350,12 +341,12 @@
   "resources/js/hooks/use-current-url.ts": [],
   "resources/js/hooks/use-initials.tsx": [],
   "resources/js/hooks/use-media-query.ts": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/hooks/use-mobile-navigation.ts": [],
   "resources/js/hooks/use-mobile.tsx": [],
   "resources/js/hooks/use-mouse-position.ts": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/hooks/use-two-factor-auth.ts": [
     "/build/assets/use-two-factor-auth-D7-5703a.js"
@@ -366,59 +357,59 @@
   "resources/js/layouts/auth/auth-simple-layout.tsx": [],
   "resources/js/layouts/settings/layout.tsx": [],
   "resources/js/lib/projects-data.ts": [
-    "/build/assets/projects-data-CqkEO0q8.js"
+    "/build/assets/projects-data-DNZMmEOX.js"
   ],
   "resources/js/lib/service-data.ts": [
     "/build/assets/SecurityStandards-Bg9JXg8M.js"
   ],
   "resources/js/lib/utils.ts": [],
   "resources/js/pages/About.tsx": [
-    "/build/assets/About-BFIcxDxU.js"
+    "/build/assets/About-8WcowzwL.js"
   ],
   "resources/js/pages/Blog.tsx": [
-    "/build/assets/Blog-_hg-GqWs.js"
+    "/build/assets/Blog-hD-z6xFv.js"
   ],
   "resources/js/pages/BlogDetails.tsx": [
     "/build/assets/BlogDetails-DisaV2GV.js"
   ],
   "resources/js/pages/Careers.tsx": [
-    "/build/assets/Careers-Bo4y3sJ8.js"
+    "/build/assets/Careers-DxN7Hk6W.js"
   ],
   "resources/js/pages/CaseStudyDetails.tsx": [
-    "/build/assets/CaseStudyDetails-DmfVDe4_.js"
+    "/build/assets/CaseStudyDetails-CCQqGgN1.js"
   ],
   "resources/js/pages/Contact.tsx": [
-    "/build/assets/Contact-C4xcWRSP.js"
+    "/build/assets/Contact-BjzJWzQp.js"
   ],
   "resources/js/pages/Error.tsx": [
     "/build/assets/Error-BGyeejlR.js"
   ],
   "resources/js/pages/LocationDetails.tsx": [
-    "/build/assets/LocationDetails-BzFUNb9U.js"
+    "/build/assets/LocationDetails-DJ6KixQK.js"
   ],
   "resources/js/pages/LocationsIndex.tsx": [
-    "/build/assets/LocationsIndex-ClRIR3iP.js"
+    "/build/assets/LocationsIndex-BcjF-0rf.js"
   ],
   "resources/js/pages/Portfolio.tsx": [
-    "/build/assets/Portfolio-DjUuvdRH.js"
+    "/build/assets/Portfolio-C0xoKoCV.js"
   ],
   "resources/js/pages/PrivacyPolicy.tsx": [
     "/build/assets/PrivacyPolicy-C2MqLR_a.js"
   ],
   "resources/js/pages/Process.tsx": [
-    "/build/assets/Process-C4rA8-2w.js"
+    "/build/assets/Process-DhfzYHMd.js"
   ],
   "resources/js/pages/ProjectDetails.tsx": [
-    "/build/assets/ProjectDetails-Cf6xny4I.js"
+    "/build/assets/ProjectDetails-0mhO3LFS.js"
   ],
   "resources/js/pages/ServiceSeoPage.tsx": [
     "/build/assets/ServiceSeoPage-B5ET6ZoE.js"
   ],
   "resources/js/pages/ServicesIndex.tsx": [
-    "/build/assets/ServicesIndex-B_j4-vJ-.js"
+    "/build/assets/ServicesIndex-CT63K_Gd.js"
   ],
   "resources/js/pages/Team.tsx": [
-    "/build/assets/Team-ByTS0pHg.js"
+    "/build/assets/Team-qWHn8fsD.js"
   ],
   "resources/js/pages/TermsConditions.tsx": [
     "/build/assets/TermsConditions-D6MOGL0m.js"
@@ -457,7 +448,7 @@
     "/build/assets/security-DL-WyZ4N.js"
   ],
   "resources/js/pages/welcome.tsx": [
-    "/build/assets/welcome-ILGhuh-E.js"
+    "/build/assets/welcome-D5o4Ga9R.js"
   ],
   "resources/js/routes/appearance/index.ts": [],
   "resources/js/routes/index.ts": [],

@@ -262,7 +262,8 @@ export default function ProjectHeroEditorial({
                                         marginTop: '3px',
                                     }}
                                 >
-                                    Microservices & Cloud
+                                    {project.architecture ??
+                                        'Laravel 11 Architecture'}
                                 </div>
                             </div>
                         </div>
