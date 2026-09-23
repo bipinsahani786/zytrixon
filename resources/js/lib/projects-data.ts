@@ -62,6 +62,7 @@ export interface ProjectItem {
         pass: string;
         role: string;
     };
+    architecture?: string;
     architectureFlow: ProjectArchitectureNode[];
 }
 
@@ -78,6 +79,7 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
         industry: 'Real Estate & Construction Infrastructure',
         year: '2025 - 2026',
         duration: '3 Months',
+        architecture: 'Laravel & Cloudflare CDN',
         accentColor: '#F97316',
         secondaryColor: '#D4AF37',
         heroImage: '/assets/projects/sk-infratech/hero-invest-right.jpg',
@@ -238,6 +240,7 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
         industry: 'Corporate Security & Private Investigation',
         year: '2025 - 2026',
         duration: '3 Months',
+        architecture: 'Laravel Zero-Trust Security',
         accentColor: '#D4AF37',
         secondaryColor: '#00F0FF',
         heroImage:
@@ -365,23 +368,24 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
         slug: 'thread-ax',
         title: 'Thread Ax — High-Concurrency D2C Fashion & Apparel Platform',
         shortTitle: 'Thread Ax',
-        category: 'Headless Commerce • Next.js & Edge Fulfillment',
+        category: 'Full-Stack Commerce • Laravel & Edge Fulfillment',
         tagline:
             'Modern headless storefront delivering sub-second checkout, automated warehouse fulfillment, and dynamic inventory sync.',
         client: 'Thread Ax (Prince Chaudhary)',
         industry: 'Fashion, Apparel & D2C E-Commerce',
         year: '2025 - 2026',
-        duration: '4 Months',
+        duration: '15 Days',
+        architecture: 'Laravel 11 Architecture',
         accentColor: '#00F0FF',
         secondaryColor: '#8B5CF6',
         heroImage: '/assets/projects/threadax/hero-new-drop.png',
         mobileImage: '/assets/projects/threadax/hero-new-drop.png',
         liveUrl: 'https://threadax.co.in/',
         githubUrl: 'https://github.com/zytrixontech/threadax-preview',
-        videoUrl: '/assets/videos/threadax-video.mp4',
-        videoPoster: '/assets/projects/threadax/hero-new-drop.png',
+        videoUrl: '',
+        videoPoster: '',
         summary:
-            'Thread Ax is a fast-growing contemporary fashion and streetwear label. Zytrixon built a high-performance headless e-commerce ecosystem capable of handling viral flash sales, automated warehouse dispatch, and sub-second checkout experiences.',
+            'Thread Ax is a fast-growing contemporary fashion and streetwear label. Zytrixon built a high-performance Laravel e-commerce ecosystem capable of handling viral flash sales, automated warehouse dispatch, and sub-second checkout experiences.',
         challenge:
             'During festive flash drops and Instagram influencer campaigns, Thread Ax suffered from cart abandonments, database lock contention, and inventory overselling.',
         challengePoints: [
@@ -391,7 +395,7 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
             'Fragmented courier integration resulting in manual tracking updates.',
         ],
         solution:
-            'Zytrixon re-engineered the platform using Next.js 15 App Router, Redis atomic inventory locks, and automated Shiprocket / Delhivery fulfillment webhooks.',
+            'Zytrixon re-engineered the platform using a robust Laravel 11 architecture, Redis atomic inventory locks, and automated Shiprocket / Delhivery fulfillment webhooks.',
         solutionPoints: [
             'Sub-second page rendering with static product page ISR at edge nodes.',
             'Atomic Redis inventory reservation preventing race conditions and overselling.',
@@ -421,12 +425,15 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
             },
         ],
         techStack: [
-            { name: 'Next.js 15', category: 'Headless Storefront' },
-            { name: 'React 19', category: 'Dynamic UI' },
+            { name: 'Laravel 11', category: 'Core Backend Framework' },
+            { name: 'React 19 & Next.js', category: 'Storefront UI' },
             { name: 'TypeScript', category: 'Type Safety' },
             { name: 'TailwindCSS', category: 'Styling' },
-            { name: 'Laravel Commerce API', category: 'Cart & Order Engine' },
-            { name: 'Redis Cache & Queues', category: 'Flash Sale Locks' },
+            {
+                name: 'Laravel Horizon & Redis',
+                category: 'Queue & Cache Engine',
+            },
+            { name: 'MySQL Enterprise', category: 'Transactional DB' },
             { name: 'Razorpay & Cashfree', category: 'Instant Checkout' },
             { name: 'Shiprocket API', category: 'Logistics Sync' },
         ],
@@ -469,26 +476,26 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
         architectureFlow: [
             {
                 step: '01',
-                title: 'Edge CDN & Image Optimization',
-                tech: 'Vercel & Cloudflare',
-                detail: 'Next-gen AVIF/WebP image compression served directly from nearest edge locations.',
+                title: 'Edge CDN & Asset Delivery',
+                tech: 'Cloudflare Edge CDN',
+                detail: 'High-speed edge routing and image compression for fast mobile catalog browsing.',
             },
             {
                 step: '02',
-                title: 'Headless Storefront',
-                tech: 'Next.js 15 Server Components',
-                detail: 'Instant navigation and server-rendered SEO metadata for fashion catalogs.',
+                title: 'High-Concurrency Core API',
+                tech: 'Laravel 11 Enterprise API',
+                detail: 'Modular Laravel architecture managing products, cart sessions, payment webhooks, and customer auth.',
             },
             {
                 step: '03',
-                title: 'Cart & Inventory Engine',
-                tech: 'Redis Clusters',
-                detail: 'Atomic operations guarantee inventory integrity during 10,000+ RPS drops.',
+                title: 'Cart & Inventory Reservation',
+                tech: 'Laravel Horizon + Redis',
+                detail: 'Atomic operations guarantee inventory integrity during viral 10,000+ RPS drops.',
             },
             {
                 step: '04',
-                title: 'Order & Warehouse Pipeline',
-                tech: 'Laravel + Shiprocket API',
+                title: 'Automated Logistics Webhooks',
+                tech: 'Laravel Queues + Shiprocket',
                 detail: 'Automated dispatch notifications, invoice generation, and courier tracking.',
             },
         ],
@@ -505,6 +512,7 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
         industry: 'HealthTech, Clinical Diagnostics & Laboratory Software',
         year: '2025 - 2026',
         duration: '6 Months',
+        architecture: 'Cloud LIS Distributed Engine',
         accentColor: '#6366F1',
         secondaryColor: '#10B981',
         heroImage: '/assets/projects/zytrixon-labs/hero-pathology-lis.png',

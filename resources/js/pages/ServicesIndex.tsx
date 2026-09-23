@@ -180,6 +180,8 @@ export default function ServicesIndex({ services }: { services: any[] }) {
                 <InnerPageHero
                     title="What We Build"
                     subtitle="Enterprise-grade digital solutions designed to scale and dominate the market."
+                    paddingTop="24px"
+                    paddingBottom="40px"
                 />
 
                 <div

@@ -8,7 +8,7 @@ export default function AboutOriginStory() {
 
     const chapters = [
         {
-            year: '2022',
+            year: 'Q1 2026',
             title: 'The Spark in Bihar',
             subtitle: 'Challenging the Outsourcing Status Quo',
             narrative:
@@ -17,7 +17,7 @@ export default function AboutOriginStory() {
                 'Founded with zero outside capital, 100% engineering conviction.',
         },
         {
-            year: '2023',
+            year: 'Q2 2026',
             title: 'The Viral Concurrency Trial',
             subtitle: 'Handling 25,000+ Concurrent Flash Sales',
             narrative:
@@ -26,7 +26,7 @@ export default function AboutOriginStory() {
                 'Zero overselling incidents across major national campaign launches.',
         },
         {
-            year: '2024',
+            year: 'Q3 2026',
             title: 'Clinical Diagnostics & HealthTech',
             subtitle: 'LIS 2.0 Architectural Overhaul',
             narrative:
@@ -35,7 +35,7 @@ export default function AboutOriginStory() {
                 'Over 500,000 diagnostic samples processed with zero data discrepancy.',
         },
         {
-            year: '2025 - 2026',
+            year: 'Q4 2026',
             title: 'Global Infrastructure & Dual Hubs',
             subtitle: 'NCR Expansion & International Mandates',
             narrative:

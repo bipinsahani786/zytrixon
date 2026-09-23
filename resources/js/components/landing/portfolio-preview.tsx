@@ -181,10 +181,10 @@ export default function PortfolioPreview({
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                borderRadius: '24px',
+                                borderRadius: '20px',
                                 background: 'var(--zy-card-bg)',
                                 border: '1px solid var(--zy-border-subtle)',
-                                padding: '20px',
+                                padding: '14px',
                                 position: 'relative',
                                 overflow: 'hidden',
                                 transition:
@@ -193,7 +193,7 @@ export default function PortfolioPreview({
                                 opacity: 0,
                             }}
                         >
-                            {/* Card Image Showcase - Aspect ratio 2.08:1 fits 1024x490 screenshots completely full without cut */}
+                            {/* Card Image Showcase - Dominant image showcase area */}
                             <Link
                                 href={projectUrl}
                                 className="portfolio-thumb-wrapper"
@@ -201,12 +201,12 @@ export default function PortfolioPreview({
                                     display: 'block',
                                     position: 'relative',
                                     width: '100%',
-                                    aspectRatio: '2.08 / 1',
-                                    borderRadius: '16px',
+                                    aspectRatio: '16 / 10.5',
+                                    borderRadius: '12px',
                                     overflow: 'hidden',
                                     background: 'var(--zy-surface-1)',
                                     border: '1px solid var(--zy-border-subtle)',
-                                    marginBottom: '18px',
+                                    marginBottom: '12px',
                                     textDecoration: 'none',
                                 }}
                             >
@@ -230,103 +230,119 @@ export default function PortfolioPreview({
                                         position: 'absolute',
                                         inset: 0,
                                         background:
-                                            'linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.5) 100%)',
+                                            'linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.55) 100%)',
                                         pointerEvents: 'none',
                                     }}
                                 />
-                                {/* Client / Year Badge */}
+                                {/* Client Badge */}
                                 <div
                                     style={{
                                         position: 'absolute',
-                                        bottom: '10px',
-                                        left: '10px',
+                                        bottom: '8px',
+                                        left: '8px',
                                         background: 'var(--zy-glass-bg)',
                                         backdropFilter: 'blur(8px)',
                                         border: '1px solid var(--zy-glass-border)',
                                         borderRadius: '20px',
-                                        padding: '3px 10px',
+                                        padding: '2px 8px',
                                         display: 'flex',
                                         alignItems: 'center',
-                                        gap: '6px',
-                                        fontSize: '11px',
+                                        gap: '5px',
+                                        fontSize: '10px',
                                         fontWeight: 600,
                                         color: 'var(--zy-text-primary)',
                                     }}
                                 >
                                     <span
                                         style={{
-                                            width: '6px',
-                                            height: '6px',
+                                            width: '5px',
+                                            height: '5px',
                                             borderRadius: '50%',
-                                            background: project.accentColor,
-                                            boxShadow: `0 0 8px ${project.accentColor}`,
+                                            background:
+                                                'var(--zy-text-secondary)',
                                         }}
                                     />
                                     {project.client.split('(')[0].trim()}
                                 </div>
                             </Link>
 
-                            {/* Category Badge */}
-                            <div style={{ marginBottom: '10px' }}>
+                            {/* Compact Category & Metric Row */}
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    gap: '6px',
+                                    marginBottom: '6px',
+                                }}
+                            >
                                 <span
                                     style={{
-                                        fontSize: '11px',
+                                        fontSize: '10px',
                                         fontWeight: 700,
-                                        letterSpacing: '0.1em',
+                                        letterSpacing: '0.08em',
                                         textTransform: 'uppercase',
-                                        color: project.accentColor,
-                                        background: `${project.accentColor}18`,
-                                        border: `1px solid ${project.accentColor}33`,
-                                        padding: '3px 10px',
-                                        borderRadius: '10px',
+                                        color: 'var(--zy-text-secondary)',
+                                        background: 'var(--zy-surface-2)',
+                                        border: '1px solid var(--zy-border-subtle)',
+                                        padding: '2px 7px',
+                                        borderRadius: '5px',
                                         display: 'inline-block',
                                     }}
                                 >
                                     {project.category.split('•')[0].trim()}
                                 </span>
+                                {project.metrics &&
+                                    project.metrics.length > 0 && (
+                                        <span
+                                            style={{
+                                                fontSize: '10.5px',
+                                                fontWeight: 700,
+                                                color: 'var(--zy-text-primary)',
+                                                background:
+                                                    'var(--zy-surface-2)',
+                                                border: '1px solid var(--zy-border-subtle)',
+                                                borderRadius: '5px',
+                                                padding: '2px 7px',
+                                            }}
+                                        >
+                                            {project.metrics[0].value}{' '}
+                                            {project.metrics[0].label}
+                                        </span>
+                                    )}
                             </div>
 
-                            {/* Project Title */}
+                            {/* Project Title (Compact) */}
                             <h3
                                 style={{
                                     fontFamily: 'var(--font-heading)',
-                                    fontSize: '20px',
+                                    fontSize: '17px',
                                     fontWeight: 800,
                                     color: 'var(--zy-text-primary)',
-                                    marginBottom: '8px',
-                                    lineHeight: 1.3,
+                                    marginBottom: '4px',
+                                    lineHeight: 1.25,
                                 }}
                             >
                                 <Link
                                     href={projectUrl}
+                                    className="portfolio-title-link"
                                     style={{
-                                        color: 'inherit',
+                                        color: 'var(--zy-text-primary)',
                                         textDecoration: 'none',
                                         transition: 'color 0.2s ease',
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        (
-                                            e.currentTarget as HTMLElement
-                                        ).style.color = project.accentColor;
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        (
-                                            e.currentTarget as HTMLElement
-                                        ).style.color =
-                                            'var(--zy-text-primary)';
                                     }}
                                 >
                                     {project.shortTitle}
                                 </Link>
                             </h3>
 
-                            {/* Concise Tagline (Less Content) */}
+                            {/* Concise Tagline (Compact) */}
                             <p
                                 style={{
-                                    fontSize: '13.5px',
+                                    fontSize: '12.5px',
                                     color: 'var(--zy-text-secondary)',
-                                    lineHeight: 1.55,
-                                    marginBottom: '16px',
+                                    lineHeight: 1.45,
+                                    marginBottom: '12px',
                                     display: '-webkit-box',
                                     WebkitLineClamp: 2,
                                     WebkitBoxOrient: 'vertical',
@@ -336,45 +352,6 @@ export default function PortfolioPreview({
                                 {project.tagline}
                             </p>
 
-                            {/* Key Highlight Metric Badge */}
-                            {project.metrics && project.metrics.length > 0 && (
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        gap: '8px',
-                                        flexWrap: 'wrap',
-                                        marginBottom: '20px',
-                                    }}
-                                >
-                                    {project.metrics
-                                        .slice(0, 2)
-                                        .map((m, mIdx) => (
-                                            <span
-                                                key={mIdx}
-                                                style={{
-                                                    background:
-                                                        'var(--zy-surface-2)',
-                                                    border: '1px solid var(--zy-border-subtle)',
-                                                    borderRadius: '8px',
-                                                    padding: '3px 9px',
-                                                    fontSize: '11.5px',
-                                                    color: 'var(--zy-text-secondary)',
-                                                }}
-                                            >
-                                                <strong
-                                                    style={{
-                                                        color: project.accentColor,
-                                                        fontWeight: 700,
-                                                    }}
-                                                >
-                                                    {m.value}
-                                                </strong>{' '}
-                                                {m.label}
-                                            </span>
-                                        ))}
-                                </div>
-                            )}
-
                             {/* Bottom Row Aligned: More Details & Live Demo */}
                             <div
                                 style={{
@@ -382,8 +359,8 @@ export default function PortfolioPreview({
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'space-between',
-                                    gap: '12px',
-                                    paddingTop: '16px',
+                                    gap: '10px',
+                                    paddingTop: '10px',
                                     borderTop:
                                         '1px solid var(--zy-border-subtle)',
                                 }}
@@ -394,13 +371,13 @@ export default function PortfolioPreview({
                                     style={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
-                                        gap: '8px',
-                                        padding: '9px 18px',
-                                        borderRadius: '30px',
-                                        background: 'transparent',
-                                        border: `1px solid ${project.accentColor}`,
-                                        color: project.accentColor,
-                                        fontSize: '12.5px',
+                                        gap: '5px',
+                                        padding: '6px 14px',
+                                        borderRadius: '20px',
+                                        background: 'var(--zy-surface-2)',
+                                        border: '1px solid var(--zy-border-subtle)',
+                                        color: 'var(--zy-text-primary)',
+                                        fontSize: '11.5px',
                                         fontWeight: 600,
                                         textDecoration: 'none',
                                         transition: 'all 0.25s ease',
@@ -408,12 +385,12 @@ export default function PortfolioPreview({
                                 >
                                     More Details
                                     <svg
-                                        width="14"
-                                        height="14"
+                                        width="11"
+                                        height="11"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
-                                        strokeWidth="2"
+                                        strokeWidth="2.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                     >
@@ -433,12 +410,13 @@ export default function PortfolioPreview({
                                     rel="noopener noreferrer"
                                     className="portfolio-live-link"
                                     style={{
-                                        fontSize: '13px',
+                                        fontSize: '11.5px',
                                         fontWeight: 600,
                                         textDecoration: 'none',
                                         display: 'inline-flex',
                                         alignItems: 'center',
-                                        gap: '4px',
+                                        gap: '3px',
+                                        color: 'var(--zy-text-secondary)',
                                         transition: 'color 0.2s ease',
                                     }}
                                 >
@@ -509,6 +487,9 @@ export default function PortfolioPreview({
                 }
                 .portfolio-card:hover .portfolio-thumb-img {
                     transform: scale(1.04);
+                }
+                .portfolio-title-link:hover {
+                    color: var(--zy-text-secondary) !important;
                 }
                 .portfolio-btn-compact:hover {
                     background: var(--zy-text-primary) !important;

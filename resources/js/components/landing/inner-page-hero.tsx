@@ -5,9 +5,18 @@ import { useTheme } from '@/components/landing/theme-provider';
 interface InnerPageHeroProps {
     title: string;
     subtitle: string;
+    paddingTop?: string | number;
+    paddingBottom?: string | number;
+    className?: string;
 }
 
-export default function InnerPageHero({ title, subtitle }: InnerPageHeroProps) {
+export default function InnerPageHero({
+    title,
+    subtitle,
+    paddingTop,
+    paddingBottom,
+    className,
+}: InnerPageHeroProps) {
     const sectionRef = useRef<HTMLElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
     const { theme } = useTheme();
@@ -41,9 +50,13 @@ export default function InnerPageHero({ title, subtitle }: InnerPageHeroProps) {
     return (
         <section
             ref={sectionRef}
+            className={className}
             style={{
                 position: 'relative',
-                padding: '180px var(--zy-section-pad-x) 80px',
+                paddingTop: paddingTop ?? '24px',
+                paddingBottom: paddingBottom ?? '48px',
+                paddingLeft: 'var(--zy-section-pad-x)',
+                paddingRight: 'var(--zy-section-pad-x)',
                 background: isLight ? '#FFFFFF' : 'var(--zy-black)',
                 color: isLight ? '#000' : 'var(--zy-white)',
                 textAlign: 'center',

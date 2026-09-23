@@ -7,8 +7,8 @@ import LazySection from '@/components/landing/lazy-section';
 import { ThemeProvider } from '@/components/landing/theme-provider';
 import SeoHead from '@/components/seo/SeoHead';
 
-// 19 Curated Architectural Sections
-import AboutHeroEditorial from '@/components/about/AboutHeroEditorial';
+// Architectural Sections
+import InnerPageHero from '@/components/landing/inner-page-hero';
 import AboutExecutiveHUD from '@/components/about/AboutExecutiveHUD';
 import AboutOriginStory from '@/components/about/AboutOriginStory';
 import AboutMissionVision from '@/components/about/AboutMissionVision';
@@ -21,10 +21,8 @@ import AboutSecurityGovernance from '@/components/about/AboutSecurityGovernance'
 import AboutInnovationLab from '@/components/about/AboutInnovationLab';
 import AboutGlobalPresence from '@/components/about/AboutGlobalPresence';
 import AboutClientTrust from '@/components/about/AboutClientTrust';
-import AboutCultureTalent from '@/components/about/AboutCultureTalent';
 import AboutSocialImpact from '@/components/about/AboutSocialImpact';
 import AboutRecognitionAwards from '@/components/about/AboutRecognitionAwards';
-import AboutEngagementModels from '@/components/about/AboutEngagementModels';
 import AboutFAQComprehensive from '@/components/about/AboutFAQComprehensive';
 import AboutExecutiveCTA from '@/components/about/AboutExecutiveCTA';
 
@@ -44,8 +42,11 @@ export default function About() {
             <Navbar />
 
             <main>
-                {/* 01. Hero Editorial (Immediate render for LCP) */}
-                <AboutHeroEditorial />
+                {/* 01. Hero Section (Same style as team page) */}
+                <InnerPageHero
+                    title="Architects of Digital Dominance"
+                    subtitle="Forged in Patna. Trusted by ambitious enterprises worldwide to design, build, and scale mission-critical digital infrastructure."
+                />
 
                 {/* 02. Executive Telemetry HUD */}
                 <LazySection>
@@ -107,32 +108,22 @@ export default function About() {
                     <AboutClientTrust />
                 </LazySection>
 
-                {/* 14. Culture & Engineering Talent Cadence */}
-                <LazySection>
-                    <AboutCultureTalent />
-                </LazySection>
-
-                {/* 15. Regional Catalyst & Social Impact */}
+                {/* 14. Regional Catalyst & Social Impact */}
                 <LazySection>
                     <AboutSocialImpact />
                 </LazySection>
 
-                {/* 16. Benchmarks & Verified Recognition */}
+                {/* 15. Benchmarks & Verified Recognition */}
                 <LazySection>
                     <AboutRecognitionAwards />
                 </LazySection>
 
-                {/* 17. Transparent Engagement Architecture */}
-                <LazySection>
-                    <AboutEngagementModels />
-                </LazySection>
-
-                {/* 18. Technical & Strategic FAQ */}
+                {/* 16. Technical & Strategic FAQ */}
                 <LazySection>
                     <AboutFAQComprehensive />
                 </LazySection>
 
-                {/* 19. Executive Closing CTA */}
+                {/* 17. Executive Closing CTA */}
                 <LazySection>
                     <AboutExecutiveCTA />
                 </LazySection>
