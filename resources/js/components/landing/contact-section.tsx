@@ -326,7 +326,7 @@ export default function ContactSection() {
                                         fontWeight: 600,
                                     }}
                                 >
-                                    Samastipur, Bihar - 848101
+                                    Patna, Bihar - 800001
                                 </div>
                             </div>
                         </div>
@@ -349,7 +349,7 @@ export default function ContactSection() {
                         }}
                     >
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57434.6934448557!2d85.7423985!3d25.8634125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed90dd8423235d%3A0x6b41cb91eb44d8b9!2sSamastipur%2C%20Bihar!5e0!3m2!1sen!2sin!4v1"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115132.8610723485!2d85.0730022!3d25.6081756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58dce680e00f%3A0x6b41cb91eb44d8b9!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1"
                             width="100%"
                             height="220"
                             style={{ border: 0 }}
