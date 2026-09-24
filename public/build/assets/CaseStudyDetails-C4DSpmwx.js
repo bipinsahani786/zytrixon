@@ -1,1 +1,0 @@
-import e from"./ProjectDetails-DtNu5mz9.js";var t=e;e.layout=null;export{t as default};

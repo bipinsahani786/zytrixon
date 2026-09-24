@@ -8,12 +8,15 @@ interface ProjectFeaturesProps {
 export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
     return (
         <section
+            id="features"
             style={{
                 padding: '90px var(--zy-section-pad-x, 24px)',
-                maxWidth: '1200px',
-                margin: '0 auto',
+                background: 'var(--zy-bg)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
+                transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
+            <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '50px' }}>
                 <span
                     style={{
@@ -111,6 +114,7 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                         </p>
                     </div>
                 ))}
+            </div>
             </div>
         </section>
     );

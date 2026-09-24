@@ -13,6 +13,8 @@ import { DUMMY_PROJECTS, getProjectBySlug } from '@/lib/projects-data';
 import ProjectHeroEditorial from '@/components/project-details/ProjectHeroEditorial';
 import ProjectSubNav from '@/components/project-details/ProjectSubNav';
 import ProjectImpactBanner from '@/components/project-details/ProjectImpactBanner';
+import ProjectFeatures from '@/components/project-details/ProjectFeatures';
+import ProjectChallengeSolution from '@/components/project-details/ProjectChallengeSolution';
 import ProjectCinemaTheatre from '@/components/project-details/ProjectCinemaTheatre';
 import ProjectInteractiveGallery from '@/components/project-details/ProjectInteractiveGallery';
 import ProjectBlueprintFlow from '@/components/project-details/ProjectBlueprintFlow';
@@ -28,6 +30,12 @@ function ProjectDetailsInner({ project }: { project: ProjectItem }) {
     );
     const hasScreenshots = Boolean(
         project.screenshots && project.screenshots.length > 0,
+    );
+    const hasFeatures = Boolean(
+        project.features && project.features.length > 0,
+    );
+    const hasStory = Boolean(
+        project.challengePoints && project.challengePoints.length > 0,
     );
 
     return (
@@ -56,21 +64,35 @@ function ProjectDetailsInner({ project }: { project: ProjectItem }) {
                     <ProjectImpactBanner project={project} />
                 </LazySection>
 
-                {/* 3. Cinema Video Theatre (Full-Width Immersive Walkthrough) - Only if project has video */}
+                {/* 3. Core System Capabilities / Advantages */}
+                {hasFeatures && (
+                    <LazySection minHeight="400px">
+                        <ProjectFeatures project={project} />
+                    </LazySection>
+                )}
+
+                {/* 4. Engineering & Business Transformation Story */}
+                {hasStory && (
+                    <LazySection minHeight="450px">
+                        <ProjectChallengeSolution project={project} />
+                    </LazySection>
+                )}
+
+                {/* 5. Cinema Video Theatre (Full-Width Immersive Walkthrough) - Only if project has video */}
                 {hasVideo && (
                     <LazySection minHeight="550px">
                         <ProjectCinemaTheatre project={project} />
                     </LazySection>
                 )}
 
-                {/* 4. Split Interactive Screen Explorer & Lightbox - Only if project has screenshots */}
+                {/* 6. Split Interactive Screen Explorer & Lightbox - Only if project has screenshots */}
                 {hasScreenshots && (
                     <LazySection minHeight="550px">
                         <ProjectInteractiveGallery project={project} />
                     </LazySection>
                 )}
 
-                {/* 5. System Blueprint Pipeline & Tech Stack Matrix */}
+                {/* 7. System Blueprint Pipeline & Tech Stack Matrix */}
                 <LazySection minHeight="400px">
                     <ProjectBlueprintFlow project={project} />
                 </LazySection>

@@ -25,6 +25,20 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
         label: `${String(stepNumber++).padStart(2, '0')} Overview`,
     });
 
+    if (project.features && project.features.length > 0) {
+        navItems.push({
+            id: 'features',
+            label: `${String(stepNumber++).padStart(2, '0')} Capabilities`,
+        });
+    }
+
+    if (project.challengePoints && project.challengePoints.length > 0) {
+        navItems.push({
+            id: 'story',
+            label: `${String(stepNumber++).padStart(2, '0')} Story`,
+        });
+    }
+
     if (hasVideo) {
         navItems.push({
             id: 'theatre',

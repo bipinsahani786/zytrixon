@@ -10,14 +10,15 @@ export default function ProjectChallengeSolution({
 }: ProjectChallengeSolutionProps) {
     return (
         <section
+            id="story"
             style={{
                 padding: '90px var(--zy-section-pad-x, 24px)',
                 background: 'var(--zy-bg)',
-                borderTop: '1px solid var(--zy-border-subtle)',
                 borderBottom: '1px solid var(--zy-border-subtle)',
+                transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
                 <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                     <span
                         style={{

@@ -111,7 +111,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                                 color:
                                     selectedCategory === cat
                                         ? 'var(--zy-bg)'
-                                        : 'var(--zy-text-secondary)',
+                                        : 'var(--zy-text-primary)',
                                 transition: 'all 0.2s ease',
                             }}
                         >
@@ -260,25 +260,31 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                     >
                         <button
                             onClick={() => setLightboxImage(null)}
+                            className="zy-modal-close-btn"
                             style={{
                                 position: 'absolute',
                                 top: '16px',
                                 right: '16px',
-                                background: 'rgba(0,0,0,0.7)',
-                                border: '1px solid rgba(255,255,255,0.2)',
-                                color: '#ffffff',
-                                width: '40px',
-                                height: '40px',
-                                borderRadius: '50%',
-                                fontSize: '18px',
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
                                 zIndex: 10,
                             }}
+                            aria-label="Close modal (Esc)"
+                            title="Close (Esc)"
                         >
-                            ✕
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M12.5 3.5L3.5 12.5M3.5 3.5L12.5 12.5"
+                                    stroke="currentColor"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
                         </button>
                         <img
                             src={lightboxImage.image}
