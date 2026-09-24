@@ -8,20 +8,27 @@ interface ProjectFeaturesProps {
 export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
     return (
         <section
+            id="features"
             style={{
                 padding: '90px var(--zy-section-pad-x, 24px)',
-                maxWidth: '1200px',
-                margin: '0 auto',
+                background: 'var(--zy-bg)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
+                transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
+            <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '50px' }}>
                 <span
                     style={{
-                        fontSize: '12px',
-                        fontWeight: 700,
+                        fontSize: '11px',
+                        fontWeight: 800,
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: project.accentColor,
+                        color: 'var(--zy-text-secondary)',
+                        background: 'var(--zy-surface-2)',
+                        padding: '4px 14px',
+                        borderRadius: '20px',
+                        border: '1px solid var(--zy-border-subtle)',
                     }}
                 >
                     Feature Breakdown
@@ -32,8 +39,8 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                             'var(--font-heading, Space Grotesk, sans-serif)',
                         fontSize: 'clamp(28px, 4vw, 42px)',
                         fontWeight: 800,
-                        marginTop: '10px',
-                        color: '#ffffff',
+                        marginTop: '16px',
+                        color: 'var(--zy-text-primary)',
                     }}
                 >
                     Core System Capabilities
@@ -51,21 +58,21 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                     <div
                         key={i}
                         style={{
-                            background: '#0d0d0f',
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            background: 'var(--zy-surface-1)',
+                            border: '1px solid var(--zy-border-subtle)',
                             borderRadius: '18px',
                             padding: '30px 24px',
                             transition: 'all 0.3s ease',
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.borderColor =
-                                project.accentColor;
+                                'var(--zy-border-hover)';
                             e.currentTarget.style.transform =
                                 'translateY(-4px)';
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.borderColor =
-                                'rgba(255, 255, 255, 0.08)';
+                                'var(--zy-border-subtle)';
                             e.currentTarget.style.transform = 'translateY(0)';
                         }}
                     >
@@ -74,8 +81,9 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                                 width: '46px',
                                 height: '46px',
                                 borderRadius: '12px',
-                                background: `${project.accentColor}15`,
-                                color: project.accentColor,
+                                background: 'var(--zy-surface-2)',
+                                color: 'var(--zy-text-primary)',
+                                border: '1px solid var(--zy-border-subtle)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -89,7 +97,7 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                             style={{
                                 fontSize: '18px',
                                 fontWeight: 700,
-                                color: '#ffffff',
+                                color: 'var(--zy-text-primary)',
                                 marginBottom: '10px',
                             }}
                         >
@@ -98,7 +106,7 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                         <p
                             style={{
                                 fontSize: '14px',
-                                color: '#888888',
+                                color: 'var(--zy-text-secondary)',
                                 lineHeight: 1.6,
                             }}
                         >
@@ -106,6 +114,7 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                         </p>
                     </div>
                 ))}
+            </div>
             </div>
         </section>
     );

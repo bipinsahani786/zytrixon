@@ -26,11 +26,11 @@ export default function ProjectBlueprintFlow({
                             fontWeight: 800,
                             letterSpacing: '0.15em',
                             textTransform: 'uppercase',
-                            color: project.accentColor,
-                            background: `${project.accentColor}12`,
+                            color: 'var(--zy-text-secondary)',
+                            background: 'var(--zy-surface-2)',
                             padding: '4px 14px',
                             borderRadius: '20px',
-                            border: `1px solid ${project.accentColor}30`,
+                            border: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         System Blueprint
@@ -83,7 +83,7 @@ export default function ProjectBlueprintFlow({
                             }}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.borderColor =
-                                    project.accentColor;
+                                    'var(--zy-border-hover)';
                                 e.currentTarget.style.transform =
                                     'translateY(-4px)';
                             }}
@@ -102,8 +102,9 @@ export default function ProjectBlueprintFlow({
                                     width: '32px',
                                     height: '32px',
                                     borderRadius: '8px',
-                                    background: `${project.accentColor}20`,
-                                    color: project.accentColor,
+                                    background: 'var(--zy-surface-2)',
+                                    color: 'var(--zy-text-primary)',
+                                    border: '1px solid var(--zy-border-subtle)',
                                     fontSize: '13px',
                                     fontWeight: 800,
                                     marginBottom: '18px',
@@ -125,7 +126,7 @@ export default function ProjectBlueprintFlow({
                                 style={{
                                     fontSize: '13px',
                                     fontWeight: 600,
-                                    color: project.accentColor,
+                                    color: 'var(--zy-text-secondary)',
                                     marginBottom: '12px',
                                 }}
                             >

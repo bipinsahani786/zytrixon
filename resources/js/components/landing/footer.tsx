@@ -104,7 +104,7 @@ export default function Footer() {
                     </p>
 
                     {/* Social icons */}
-                    <div style={{ display: 'flex', gap: '16px' }}>
+                    <div style={{ display: 'flex', gap: '12px' }}>
                         {SOCIALS.map((social) => (
                             <a
                                 key={social.label}
@@ -120,34 +120,7 @@ export default function Footer() {
                                         ? 'noopener noreferrer'
                                         : undefined
                                 }
-                                style={{
-                                    width: 40,
-                                    height: 40,
-                                    borderRadius: '50%',
-                                    border: '1px solid #333',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    color: 'var(--zy-gray-text)',
-                                    textDecoration: 'none',
-                                    transition: 'all 0.3s var(--zy-ease)',
-                                }}
-                                onMouseEnter={(e) => {
-                                    (
-                                        e.currentTarget as HTMLElement
-                                    ).style.borderColor = '#FFFFFF';
-                                    (
-                                        e.currentTarget as HTMLElement
-                                    ).style.color = '#FFFFFF';
-                                }}
-                                onMouseLeave={(e) => {
-                                    (
-                                        e.currentTarget as HTMLElement
-                                    ).style.borderColor = '#333';
-                                    (
-                                        e.currentTarget as HTMLElement
-                                    ).style.color = '#888';
-                                }}
+                                className="footer-social-btn"
                             >
                                 {social.icon}
                             </a>
@@ -203,11 +176,9 @@ export default function Footer() {
                     ))}
                     <Link
                         href="/locations"
-                        className="footer-link"
+                        className="footer-link footer-link-highlight"
                         style={{
-                            color: '#3b82f6',
                             marginTop: '8px',
-                            fontWeight: 600,
                         }}
                     >
                         View All Locations &rarr;
@@ -312,8 +283,7 @@ export default function Footer() {
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="footer-link"
-                                style={{ marginBottom: 0 }}
+                                className="footer-bottom-link"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -323,8 +293,7 @@ export default function Footer() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="footer-link"
-                                style={{ marginBottom: 0 }}
+                                className="footer-bottom-link"
                             >
                                 {link.label}
                             </Link>

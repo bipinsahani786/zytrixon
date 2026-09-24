@@ -10,8 +10,8 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
         <section
             style={{
                 padding: '28px var(--zy-section-pad-x, 24px)',
-                background: '#09090b',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                background: 'var(--zy-bg)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
             }}
         >
             <div
@@ -28,7 +28,7 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
                         style={{
                             fontSize: '11px',
                             textTransform: 'uppercase',
-                            color: '#888888',
+                            color: 'var(--zy-text-muted)',
                             letterSpacing: '0.12em',
                             fontWeight: 700,
                         }}
@@ -39,7 +39,7 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
                         style={{
                             fontSize: '16px',
                             fontWeight: 700,
-                            color: '#ffffff',
+                            color: 'var(--zy-text-primary)',
                             marginTop: '6px',
                         }}
                     >
@@ -51,7 +51,7 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
                         style={{
                             fontSize: '11px',
                             textTransform: 'uppercase',
-                            color: '#888888',
+                            color: 'var(--zy-text-muted)',
                             letterSpacing: '0.12em',
                             fontWeight: 700,
                         }}
@@ -62,7 +62,7 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
                         style={{
                             fontSize: '16px',
                             fontWeight: 700,
-                            color: '#ffffff',
+                            color: 'var(--zy-text-primary)',
                             marginTop: '6px',
                         }}
                     >
@@ -74,7 +74,7 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
                         style={{
                             fontSize: '11px',
                             textTransform: 'uppercase',
-                            color: '#888888',
+                            color: 'var(--zy-text-muted)',
                             letterSpacing: '0.12em',
                             fontWeight: 700,
                         }}
@@ -85,7 +85,7 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
                         style={{
                             fontSize: '16px',
                             fontWeight: 700,
-                            color: '#ffffff',
+                            color: 'var(--zy-text-primary)',
                             marginTop: '6px',
                         }}
                     >
@@ -97,7 +97,7 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
                         style={{
                             fontSize: '11px',
                             textTransform: 'uppercase',
-                            color: '#888888',
+                            color: 'var(--zy-text-muted)',
                             letterSpacing: '0.12em',
                             fontWeight: 700,
                         }}
@@ -108,7 +108,7 @@ export default function ProjectSpecsBar({ project }: ProjectSpecsBarProps) {
                         style={{
                             fontSize: '16px',
                             fontWeight: 700,
-                            color: project.accentColor,
+                            color: 'var(--zy-text-primary)',
                             marginTop: '6px',
                         }}
                     >

@@ -23,8 +23,8 @@ export default function ProjectNavigationCTA({
             >
                 <div
                     style={{
-                        background: `radial-gradient(circle at 80% 50%, ${project.accentColor}18 0%, rgba(15,15,18,0.95) 100%)`,
-                        border: `1px solid ${project.accentColor}35`,
+                        background: 'var(--zy-surface-1)',
+                        border: '1px solid var(--zy-border-subtle)',
                         borderRadius: '24px',
                         padding: '50px 44px',
                         display: 'flex',
@@ -32,17 +32,21 @@ export default function ProjectNavigationCTA({
                         alignItems: 'center',
                         justifyContent: 'space-between',
                         gap: '30px',
-                        boxShadow: `0 20px 60px rgba(0,0,0,0.8), 0 0 50px ${project.accentColor}10`,
+                        boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
                     }}
                 >
                     <div>
                         <span
                             style={{
-                                fontSize: '12px',
-                                fontWeight: 700,
+                                fontSize: '11px',
+                                fontWeight: 800,
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.12em',
-                                color: project.accentColor,
+                                color: 'var(--zy-text-secondary)',
+                                background: 'var(--zy-surface-2)',
+                                padding: '4px 14px',
+                                borderRadius: '20px',
+                                border: '1px solid var(--zy-border-subtle)',
                             }}
                         >
                             Experience It Live
@@ -53,15 +57,15 @@ export default function ProjectNavigationCTA({
                                     'var(--font-heading, Space Grotesk, sans-serif)',
                                 fontSize: 'clamp(24px, 3.5vw, 36px)',
                                 fontWeight: 800,
-                                color: '#ffffff',
-                                marginTop: '8px',
+                                color: 'var(--zy-text-primary)',
+                                marginTop: '16px',
                             }}
                         >
                             Test {project.shortTitle} in Your Browser
                         </h3>
                         <p
                             style={{
-                                color: '#999999',
+                                color: 'var(--zy-text-secondary)',
                                 fontSize: '15px',
                                 marginTop: '8px',
                                 maxWidth: '640px',
@@ -80,15 +84,15 @@ export default function ProjectNavigationCTA({
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '10px',
-                            background: project.accentColor,
-                            color: '#000000',
+                            background: 'var(--zy-text-primary)',
+                            color: 'var(--zy-bg)',
                             padding: '16px 36px',
                             borderRadius: '40px',
                             fontWeight: 700,
                             fontSize: '15px',
                             textDecoration: 'none',
                             transition: 'all 0.3s ease',
-                            boxShadow: `0 8px 30px ${project.accentColor}40`,
+                            boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
                             whiteSpace: 'nowrap',
                         }}
                     >
@@ -107,7 +111,7 @@ export default function ProjectNavigationCTA({
             >
                 <div
                     style={{
-                        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                        borderTop: '1px solid var(--zy-border-subtle)',
                         paddingTop: '50px',
                         display: 'flex',
                         justifyContent: 'space-between',
@@ -119,7 +123,7 @@ export default function ProjectNavigationCTA({
                     <Link
                         href="/portfolio"
                         style={{
-                            color: '#888888',
+                            color: 'var(--zy-text-secondary)',
                             textDecoration: 'none',
                             fontSize: '14px',
                             fontWeight: 600,
@@ -135,11 +139,11 @@ export default function ProjectNavigationCTA({
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '12px',
-                            background: 'rgba(255, 255, 255, 0.04)',
-                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            background: 'var(--zy-surface-1)',
+                            border: '1px solid var(--zy-border-subtle)',
                             padding: '14px 28px',
                             borderRadius: '30px',
-                            color: '#ffffff',
+                            color: 'var(--zy-text-primary)',
                             textDecoration: 'none',
                             fontSize: '14px',
                             fontWeight: 700,
@@ -150,7 +154,7 @@ export default function ProjectNavigationCTA({
                             Next Case Study:{' '}
                             <strong>{otherProject.shortTitle}</strong>
                         </span>
-                        <span style={{ color: otherProject.accentColor }}>
+                        <span style={{ color: 'var(--zy-text-primary)' }}>
                             →
                         </span>
                     </Link>

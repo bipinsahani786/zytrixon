@@ -11,6 +11,8 @@ export default function ProjectInteractiveGallery({
 }: ProjectInteractiveGalleryProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [isTallImage, setIsTallImage] = useState(false);
+    const [naturalWidth, setNaturalWidth] = useState(1100);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -21,6 +23,11 @@ export default function ProjectInteractiveGallery({
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
+
+    useEffect(() => {
+        setIsTallImage(false);
+        setNaturalWidth(1100);
+    }, [activeIndex]);
 
     const screenshots = project.screenshots || [];
     if (screenshots.length === 0) {
@@ -48,11 +55,11 @@ export default function ProjectInteractiveGallery({
                             fontWeight: 800,
                             letterSpacing: '0.15em',
                             textTransform: 'uppercase',
-                            color: project.accentColor,
-                            background: `${project.accentColor}12`,
+                            color: 'var(--zy-text-secondary)',
+                            background: 'var(--zy-surface-2)',
                             padding: '4px 14px',
                             borderRadius: '20px',
-                            border: `1px solid ${project.accentColor}30`,
+                            border: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         Interface Explorer
@@ -99,7 +106,7 @@ export default function ProjectInteractiveGallery({
                             }}
                             onMouseEnter={(e) =>
                                 (e.currentTarget.style.borderColor =
-                                    project.accentColor)
+                                    'var(--zy-border-hover)')
                             }
                             onMouseLeave={(e) =>
                                 (e.currentTarget.style.borderColor =
@@ -121,6 +128,7 @@ export default function ProjectInteractiveGallery({
                                         height: 'auto',
                                         maxHeight: '560px',
                                         objectFit: 'cover',
+                                        objectPosition: 'top',
                                         display: 'block',
                                         transition: 'transform 0.4s ease',
                                     }}
@@ -142,7 +150,7 @@ export default function ProjectInteractiveGallery({
                                         border: '1px solid rgba(255,255,255,0.15)',
                                     }}
                                 >
-                                    🔍 Click to Enlarge
+                                    🔍 View Full Layout
                                 </div>
 
                                 <span
@@ -151,13 +159,15 @@ export default function ProjectInteractiveGallery({
                                         bottom: '16px',
                                         left: '16px',
                                         background: 'rgba(0,0,0,0.85)',
-                                        color: project.accentColor,
+                                        backdropFilter: 'blur(8px)',
+                                        color: '#ffffff',
                                         padding: '6px 14px',
                                         borderRadius: '8px',
                                         fontSize: '11px',
                                         fontWeight: 800,
                                         textTransform: 'uppercase',
                                         letterSpacing: '0.08em',
+                                        border: '1px solid rgba(255,255,255,0.18)',
                                     }}
                                 >
                                     {activeScreen.category}
@@ -221,7 +231,7 @@ export default function ProjectInteractiveGallery({
                                 }}
                                 onMouseEnter={(e) =>
                                     (e.currentTarget.style.borderColor =
-                                        project.accentColor)
+                                        'var(--zy-border-hover)')
                                 }
                                 onMouseLeave={(e) =>
                                     (e.currentTarget.style.borderColor =
@@ -242,6 +252,7 @@ export default function ProjectInteractiveGallery({
                                             width: '100%',
                                             height: '100%',
                                             objectFit: 'cover',
+                                            objectPosition: 'top',
                                             display: 'block',
                                             transition: 'transform 0.4s ease',
                                         }}
@@ -263,7 +274,7 @@ export default function ProjectInteractiveGallery({
                                             border: '1px solid rgba(255,255,255,0.15)',
                                         }}
                                     >
-                                        🔍 Click to Enlarge
+                                        🔍 View Full Layout
                                     </div>
 
                                     <span
@@ -272,13 +283,15 @@ export default function ProjectInteractiveGallery({
                                             bottom: '16px',
                                             left: '16px',
                                             background: 'rgba(0,0,0,0.85)',
-                                            color: project.accentColor,
+                                            backdropFilter: 'blur(8px)',
+                                            color: '#ffffff',
                                             padding: '6px 14px',
                                             borderRadius: '8px',
                                             fontSize: '11px',
                                             fontWeight: 800,
                                             textTransform: 'uppercase',
                                             letterSpacing: '0.08em',
+                                            border: '1px solid rgba(255,255,255,0.18)',
                                         }}
                                     >
                                         {activeScreen.category}
@@ -341,7 +354,7 @@ export default function ProjectInteractiveGallery({
                                                 ? 'var(--zy-card-bg-hover)'
                                                 : 'var(--zy-card-bg)',
                                             border: isSelected
-                                                ? `1px solid ${project.accentColor}`
+                                                ? '1px solid var(--zy-text-primary)'
                                                 : '1px solid var(--zy-border-subtle)',
                                             cursor: 'pointer',
                                             transition: 'all 0.25s ease',
@@ -368,7 +381,7 @@ export default function ProjectInteractiveGallery({
                                                 overflow: 'hidden',
                                                 flexShrink: 0,
                                                 border: isSelected
-                                                    ? `1px solid ${project.accentColor}`
+                                                    ? '1px solid var(--zy-text-primary)'
                                                     : '1px solid var(--zy-border-subtle)',
                                             }}
                                         >
@@ -379,6 +392,7 @@ export default function ProjectInteractiveGallery({
                                                     width: '100%',
                                                     height: '100%',
                                                     objectFit: 'cover',
+                                                    objectPosition: 'top',
                                                 }}
                                             />
                                         </div>
@@ -395,7 +409,7 @@ export default function ProjectInteractiveGallery({
                                                     style={{
                                                         fontSize: '11px',
                                                         color: isSelected
-                                                            ? project.accentColor
+                                                            ? 'var(--zy-text-primary)'
                                                             : 'var(--zy-text-muted)',
                                                         fontWeight: 800,
                                                         textTransform:
@@ -439,10 +453,10 @@ export default function ProjectInteractiveGallery({
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
                                                 background: isSelected
-                                                    ? project.accentColor
+                                                    ? 'var(--zy-text-primary)'
                                                     : 'var(--zy-surface-2)',
                                                 color: isSelected
-                                                    ? '#000000'
+                                                    ? 'var(--zy-bg)'
                                                     : 'var(--zy-text-secondary)',
                                                 fontSize: '11px',
                                                 fontWeight: 800,
@@ -465,87 +479,195 @@ export default function ProjectInteractiveGallery({
                         position: 'fixed',
                         inset: 0,
                         zIndex: 999999,
-                        background: 'rgba(0, 0, 0, 0.95)',
+                        background: 'rgba(0, 0, 0, 0.94)',
                         backdropFilter: 'blur(16px)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        padding: '24px',
+                        padding: '16px',
                     }}
                     onClick={() => setLightboxOpen(false)}
                 >
+                    {/* Viewport Top-Right Floating Close Button */}
+                    <button
+                        onClick={() => setLightboxOpen(false)}
+                        className="zy-lightbox-screen-close"
+                        aria-label="Close modal (Esc)"
+                        title="Close (Esc)"
+                    >
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M12.5 3.5L3.5 12.5M3.5 3.5L12.5 12.5"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                    </button>
+
                     <div
                         style={{
-                            maxWidth: '1100px',
+                            maxWidth:
+                                naturalWidth < 600
+                                    ? 'min(92vw, 440px)'
+                                    : 'min(94vw, 1140px)',
                             width: '100%',
+                            maxHeight: '94vh',
+                            display: 'flex',
+                            flexDirection: 'column',
                             background: 'var(--zy-surface-1)',
-                            borderRadius: '20px',
+                            borderRadius: '22px',
                             overflow: 'hidden',
                             border: '1px solid var(--zy-border-subtle)',
+                            boxShadow: '0 25px 70px rgba(0,0,0,0.6)',
                             position: 'relative',
+                            transition: 'max-width 0.3s ease',
                         }}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <button
-                            onClick={() => setLightboxOpen(false)}
+                        {/* Header bar */}
+                        <div
                             style={{
-                                position: 'absolute',
-                                top: '16px',
-                                right: '16px',
-                                background: 'rgba(0,0,0,0.7)',
-                                border: '1px solid rgba(255,255,255,0.2)',
-                                color: '#ffffff',
-                                width: '38px',
-                                height: '38px',
-                                borderRadius: '50%',
-                                fontSize: '16px',
-                                cursor: 'pointer',
-                                zIndex: 10,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                padding: '14px 22px',
+                                borderBottom: '1px solid var(--zy-border-subtle)',
+                                background: 'var(--zy-surface-2)',
+                                flexShrink: 0,
+                                gap: '16px',
                             }}
                         >
-                            ✕
-                        </button>
-                        <img
-                            src={activeScreen.image}
-                            alt={activeScreen.title}
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                                <span
+                                    style={{
+                                        fontSize: '11px',
+                                        color: 'var(--zy-text-secondary)',
+                                        fontWeight: 800,
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.06em',
+                                    }}
+                                >
+                                    {activeScreen.category}
+                                </span>
+                                <h3
+                                    style={{
+                                        fontSize: '16px',
+                                        fontWeight: 700,
+                                        color: 'var(--zy-text-primary)',
+                                        margin: '2px 0 0 0',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        whiteSpace: 'nowrap',
+                                    }}
+                                >
+                                    {activeScreen.title}
+                                </h3>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    flexShrink: 0,
+                                }}
+                            >
+                                <a
+                                    href={activeScreen.fullImage || activeScreen.image}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="zy-modal-action-btn"
+                                >
+                                    Open Full Size ↗
+                                </a>
+                                <button
+                                    onClick={() => setLightboxOpen(false)}
+                                    className="zy-modal-close-btn"
+                                    aria-label="Close modal (Esc)"
+                                    title="Close (Esc)"
+                                >
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 16 16"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M12.5 3.5L3.5 12.5M3.5 3.5L12.5 12.5"
+                                            stroke="currentColor"
+                                            strokeWidth="2.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Scrollable image view */}
+                        <div
                             style={{
-                                width: '100%',
-                                maxHeight: '72vh',
-                                objectFit: 'contain',
-                                background: '#000000',
+                                flex: 1,
+                                overflowY: 'auto',
+                                maxHeight: 'calc(94vh - 120px)',
+                                background: '#08080a',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'flex-start',
+                                padding: '24px 16px',
                             }}
-                        />
-                        <div style={{ padding: '24px 30px' }}>
-                            <span
-                                style={{
-                                    fontSize: '11px',
-                                    color: project.accentColor,
-                                    fontWeight: 800,
-                                    textTransform: 'uppercase',
+                        >
+                            <img
+                                src={activeScreen.fullImage || activeScreen.image}
+                                alt={activeScreen.title}
+                                onLoad={(e) => {
+                                    const img = e.currentTarget;
+                                    setIsTallImage(
+                                        img.naturalHeight > img.naturalWidth * 1.3
+                                    );
+                                    setNaturalWidth(img.naturalWidth);
                                 }}
-                            >
-                                {activeScreen.category}
-                            </span>
-                            <h3
                                 style={{
-                                    fontSize: '20px',
-                                    fontWeight: 700,
-                                    color: 'var(--zy-text-primary)',
-                                    marginTop: '4px',
+                                    width: isTallImage ? '100%' : 'auto',
+                                    maxWidth:
+                                        naturalWidth < 600
+                                            ? `${naturalWidth}px`
+                                            : '100%',
+                                    maxHeight: isTallImage ? 'none' : '76vh',
+                                    height: 'auto',
+                                    display: 'block',
+                                    margin: '0 auto',
+                                    borderRadius: '8px',
+                                    boxShadow: '0 10px 40px rgba(0,0,0,0.6)',
                                 }}
-                            >
-                                {activeScreen.title}
-                            </h3>
-                            <p
+                            />
+                        </div>
+
+                        {/* Footer description */}
+                        {activeScreen.description && (
+                            <div
                                 style={{
-                                    fontSize: '14px',
+                                    padding: '14px 22px',
+                                    borderTop: '1px solid var(--zy-border-subtle)',
+                                    background: 'var(--zy-surface-1)',
+                                    fontSize: '13px',
                                     color: 'var(--zy-text-secondary)',
-                                    marginTop: '6px',
+                                    lineHeight: 1.5,
+                                    flexShrink: 0,
                                 }}
                             >
                                 {activeScreen.description}
-                            </p>
-                        </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

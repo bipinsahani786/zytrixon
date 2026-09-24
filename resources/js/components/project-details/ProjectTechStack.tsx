@@ -17,11 +17,15 @@ export default function ProjectTechStack({ project }: ProjectTechStackProps) {
         >
             <span
                 style={{
-                    fontSize: '12px',
-                    fontWeight: 700,
+                    fontSize: '11px',
+                    fontWeight: 800,
                     letterSpacing: '0.15em',
                     textTransform: 'uppercase',
-                    color: project.accentColor,
+                    color: 'var(--zy-text-secondary)',
+                    background: 'var(--zy-surface-2)',
+                    padding: '4px 14px',
+                    borderRadius: '20px',
+                    border: '1px solid var(--zy-border-subtle)',
                 }}
             >
                 Tools & Technologies
@@ -32,9 +36,9 @@ export default function ProjectTechStack({ project }: ProjectTechStackProps) {
                         'var(--font-heading, Space Grotesk, sans-serif)',
                     fontSize: 'clamp(28px, 4vw, 40px)',
                     fontWeight: 800,
-                    marginTop: '10px',
+                    marginTop: '16px',
                     marginBottom: '36px',
-                    color: '#ffffff',
+                    color: 'var(--zy-text-primary)',
                 }}
             >
                 Built With World-Class Stacks
@@ -54,13 +58,13 @@ export default function ProjectTechStack({ project }: ProjectTechStackProps) {
                     <div
                         key={i}
                         style={{
-                            background: '#111114',
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            background: 'var(--zy-surface-1)',
+                            border: '1px solid var(--zy-border-subtle)',
                             borderRadius: '30px',
                             padding: '12px 24px',
                             fontSize: '14px',
                             fontWeight: 600,
-                            color: '#ffffff',
+                            color: 'var(--zy-text-primary)',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '8px',
@@ -68,17 +72,19 @@ export default function ProjectTechStack({ project }: ProjectTechStackProps) {
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.borderColor =
-                                project.accentColor;
-                            e.currentTarget.style.background = `${project.accentColor}12`;
+                                'var(--zy-border-hover)';
+                            e.currentTarget.style.background =
+                                'var(--zy-surface-2)';
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.borderColor =
-                                'rgba(255, 255, 255, 0.08)';
-                            e.currentTarget.style.background = '#111114';
+                                'var(--zy-border-subtle)';
+                            e.currentTarget.style.background =
+                                'var(--zy-surface-1)';
                         }}
                     >
                         <span>{tech.name}</span>
-                        <span style={{ color: '#666666', fontSize: '12px' }}>
+                        <span style={{ color: 'var(--zy-text-secondary)', fontSize: '12px' }}>
                             • {tech.category}
                         </span>
                     </div>

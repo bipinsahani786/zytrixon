@@ -13,9 +13,9 @@ export default function ProjectVideoTheatre({
             id="video-theatre"
             style={{
                 padding: '100px var(--zy-section-pad-x, 24px)',
-                background: '#08080a',
-                borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                background: 'var(--zy-bg)',
+                borderTop: '1px solid var(--zy-border-subtle)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
                 position: 'relative',
             }}
         >
@@ -28,7 +28,8 @@ export default function ProjectVideoTheatre({
                     transform: 'translate(-50%, -50%)',
                     width: '80%',
                     height: '60%',
-                    background: `radial-gradient(circle, ${project.accentColor}18 0%, rgba(0,0,0,0) 70%)`,
+                    background:
+                        'radial-gradient(circle, var(--zy-card-bg-hover) 0%, rgba(0,0,0,0) 70%)',
                     filter: 'blur(90px)',
                     pointerEvents: 'none',
                 }}
@@ -45,11 +46,15 @@ export default function ProjectVideoTheatre({
             >
                 <span
                     style={{
-                        fontSize: '12px',
-                        fontWeight: 700,
+                        fontSize: '11px',
+                        fontWeight: 800,
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: project.accentColor,
+                        color: 'var(--zy-text-secondary)',
+                        background: 'var(--zy-surface-2)',
+                        padding: '4px 14px',
+                        borderRadius: '20px',
+                        border: '1px solid var(--zy-border-subtle)',
                     }}
                 >
                     High-Definition Video Demo
@@ -60,16 +65,16 @@ export default function ProjectVideoTheatre({
                             'var(--font-heading, Space Grotesk, sans-serif)',
                         fontSize: 'clamp(28px, 4vw, 42px)',
                         fontWeight: 800,
-                        marginTop: '10px',
+                        marginTop: '16px',
                         marginBottom: '14px',
-                        color: '#ffffff',
+                        color: 'var(--zy-text-primary)',
                     }}
                 >
                     Watch The Platform In Action
                 </h2>
                 <p
                     style={{
-                        color: '#888888',
+                        color: 'var(--zy-text-secondary)',
                         fontSize: '16px',
                         maxWidth: '600px',
                         margin: '0 auto 40px',
@@ -84,9 +89,9 @@ export default function ProjectVideoTheatre({
                     style={{
                         borderRadius: '24px',
                         overflow: 'hidden',
-                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        border: '1px solid var(--zy-border-subtle)',
                         background: '#000000',
-                        boxShadow: `0 30px 90px rgba(0,0,0,0.9), 0 0 50px ${project.accentColor}15`,
+                        boxShadow: '0 30px 90px rgba(0,0,0,0.4)',
                     }}
                 >
                     <video
@@ -113,14 +118,14 @@ export default function ProjectVideoTheatre({
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '8px',
-                            color: project.accentColor,
-                            fontSize: '15px',
+                            color: 'var(--zy-text-primary)',
+                            fontSize: '14px',
                             fontWeight: 700,
                             textDecoration: 'none',
-                            padding: '10px 24px',
+                            padding: '12px 28px',
                             borderRadius: '30px',
-                            background: `${project.accentColor}14`,
-                            border: `1px solid ${project.accentColor}30`,
+                            background: 'var(--zy-surface-1)',
+                            border: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         Experience Live Demo Directly in Your Browser ↗

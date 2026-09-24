@@ -1,0 +1,1 @@
+import e from"./ProjectDetails-BABLyOfF.js";var t=e;e.layout=null;export{t as default};

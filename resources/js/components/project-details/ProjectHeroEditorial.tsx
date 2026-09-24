@@ -15,11 +15,12 @@ export default function ProjectHeroEditorial({
             style={{
                 position: 'relative',
                 paddingTop: '80px',
-                paddingBottom: '60px',
+                paddingBottom: '85px',
                 paddingLeft: 'var(--zy-section-pad-x, 24px)',
                 paddingRight: 'var(--zy-section-pad-x, 24px)',
                 overflow: 'hidden',
-                background: `radial-gradient(ellipse 80% 50% at 50% -10%, ${project.accentColor}18 0%, transparent 80%), var(--zy-bg)`,
+                background:
+                    'radial-gradient(ellipse 80% 50% at 50% -10%, var(--zy-surface-2) 0%, transparent 80%), var(--zy-bg)',
                 borderBottom: '1px solid var(--zy-border-subtle)',
                 transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
@@ -75,32 +76,6 @@ export default function ProjectHeroEditorial({
                             {project.shortTitle}
                         </span>
                     </div>
-
-                    <div
-                        style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            background: 'var(--zy-surface-1)',
-                            border: '1px solid var(--zy-border-subtle)',
-                            borderRadius: '30px',
-                            padding: '6px 14px',
-                            fontSize: '12px',
-                            fontWeight: 600,
-                            color: 'var(--zy-text-primary)',
-                        }}
-                    >
-                        <span
-                            style={{
-                                width: '7px',
-                                height: '7px',
-                                borderRadius: '50%',
-                                background: '#10b981',
-                                boxShadow: '0 0 8px #10b981',
-                            }}
-                        />
-                        <span>Enterprise Production • {project.year}</span>
-                    </div>
                 </div>
 
                 {/* Editorial Split Hero Grid */}
@@ -123,9 +98,9 @@ export default function ProjectHeroEditorial({
                                     fontWeight: 800,
                                     letterSpacing: '0.14em',
                                     textTransform: 'uppercase',
-                                    color: project.accentColor,
-                                    background: `${project.accentColor}15`,
-                                    border: `1px solid ${project.accentColor}35`,
+                                    color: 'var(--zy-text-secondary)',
+                                    background: 'var(--zy-surface-2)',
+                                    border: '1px solid var(--zy-border-subtle)',
                                     padding: '5px 14px',
                                     borderRadius: '6px',
                                 }}
@@ -258,7 +233,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '14px',
                                         fontWeight: 600,
-                                        color: project.accentColor,
+                                        color: 'var(--zy-text-primary)',
                                         marginTop: '3px',
                                     }}
                                 >
@@ -285,15 +260,15 @@ export default function ProjectHeroEditorial({
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '10px',
-                                    background: project.accentColor,
-                                    color: '#000000',
+                                    background: 'var(--zy-text-primary)',
+                                    color: 'var(--zy-bg)',
                                     padding: '15px 32px',
                                     borderRadius: '40px',
                                     fontWeight: 700,
                                     fontSize: '14px',
                                     textDecoration: 'none',
                                     transition: 'all 0.3s ease',
-                                    boxShadow: `0 8px 25px ${project.accentColor}35`,
+                                    boxShadow: '0 8px 25px rgba(0,0,0,0.18)',
                                 }}
                             >
                                 <span>Launch Live Prototype</span>
@@ -347,7 +322,8 @@ export default function ProjectHeroEditorial({
                             style={{
                                 position: 'absolute',
                                 inset: '-20px',
-                                background: `radial-gradient(circle, ${project.accentColor}20 0%, rgba(0,0,0,0) 70%)`,
+                                background:
+                                    'radial-gradient(circle, var(--zy-card-bg-hover) 0%, rgba(0,0,0,0) 70%)',
                                 filter: 'blur(50px)',
                                 pointerEvents: 'none',
                             }}
@@ -426,7 +402,7 @@ export default function ProjectHeroEditorial({
                                 <div
                                     style={{
                                         fontSize: '10px',
-                                        color: project.accentColor,
+                                        color: 'var(--zy-text-primary)',
                                         fontWeight: 700,
                                     }}
                                 >
@@ -451,24 +427,25 @@ export default function ProjectHeroEditorial({
                         <div
                             style={{
                                 position: 'absolute',
-                                right: '-15px',
-                                bottom: '-35px',
-                                width: '190px',
+                                right: '-20px',
+                                bottom: '-45px',
+                                width: '215px',
                                 background: 'var(--zy-surface-1)',
-                                borderRadius: '24px',
+                                borderRadius: '28px',
                                 padding: '8px',
                                 border: '2px solid var(--zy-border-subtle)',
-                                boxShadow: '0 15px 40px rgba(0,0,0,0.2)',
-                                transform: 'rotate(-3deg)',
+                                boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
+                                transform: 'rotate(-2.5deg)',
                                 transition: 'transform 0.3s ease',
+                                zIndex: 3,
                             }}
                             onMouseEnter={(e) =>
                                 (e.currentTarget.style.transform =
-                                    'rotate(0deg) scale(1.05)')
+                                    'rotate(0deg) scale(1.03)')
                             }
                             onMouseLeave={(e) =>
                                 (e.currentTarget.style.transform =
-                                    'rotate(-3deg) scale(1)')
+                                    'rotate(-2.5deg) scale(1)')
                             }
                         >
                             {/* Phone Notch */}
@@ -483,8 +460,9 @@ export default function ProjectHeroEditorial({
                             />
                             <div
                                 style={{
-                                    borderRadius: '16px',
+                                    borderRadius: '18px',
                                     overflow: 'hidden',
+                                    background: '#000000',
                                 }}
                             >
                                 <img
@@ -492,52 +470,12 @@ export default function ProjectHeroEditorial({
                                     alt="Mobile companion app"
                                     style={{
                                         width: '100%',
-                                        height: '240px',
-                                        objectFit: 'cover',
+                                        height: 'auto',
+                                        maxHeight: '445px',
+                                        objectFit: 'contain',
                                         display: 'block',
                                     }}
                                 />
-                            </div>
-                        </div>
-
-                        {/* Floating Metric Badge */}
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '24px',
-                                left: '-15px',
-                                background: 'var(--zy-glass-bg)',
-                                backdropFilter: 'blur(16px)',
-                                border: '1px solid var(--zy-glass-border)',
-                                borderRadius: '12px',
-                                padding: '10px 16px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '10px',
-                                boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                            }}
-                        >
-                            <span style={{ fontSize: '18px' }}>⚡</span>
-                            <div>
-                                <div
-                                    style={{
-                                        fontSize: '10px',
-                                        color: 'var(--zy-text-muted)',
-                                        textTransform: 'uppercase',
-                                        fontWeight: 700,
-                                    }}
-                                >
-                                    Latency
-                                </div>
-                                <div
-                                    style={{
-                                        fontSize: '13px',
-                                        fontWeight: 700,
-                                        color: 'var(--zy-text-primary)',
-                                    }}
-                                >
-                                    &lt;45ms P99
-                                </div>
                             </div>
                         </div>
                     </div>

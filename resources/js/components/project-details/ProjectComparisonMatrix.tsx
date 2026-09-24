@@ -26,11 +26,11 @@ export default function ProjectComparisonMatrix({
                             fontWeight: 800,
                             letterSpacing: '0.15em',
                             textTransform: 'uppercase',
-                            color: project.accentColor,
-                            background: `${project.accentColor}12`,
+                            color: 'var(--zy-text-secondary)',
+                            background: 'var(--zy-surface-2)',
                             padding: '4px 14px',
                             borderRadius: '20px',
-                            border: `1px solid ${project.accentColor}30`,
+                            border: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         Before vs After
@@ -95,7 +95,7 @@ export default function ProjectComparisonMatrix({
                                         fontWeight: 800,
                                         textTransform: 'uppercase',
                                         letterSpacing: '0.1em',
-                                        color: '#ef4444',
+                                        color: 'var(--zy-text-secondary)',
                                     }}
                                 >
                                     Legacy System (Before)
@@ -140,13 +140,13 @@ export default function ProjectComparisonMatrix({
                                         gap: '12px',
                                         padding: '12px 14px',
                                         borderRadius: '12px',
-                                        background: 'rgba(239, 68, 68, 0.06)',
-                                        border: '1px solid rgba(239, 68, 68, 0.15)',
+                                        background: 'var(--zy-surface-2)',
+                                        border: '1px solid var(--zy-border-subtle)',
                                     }}
                                 >
                                     <span
                                         style={{
-                                            color: '#ef4444',
+                                            color: 'var(--zy-text-secondary)',
                                             fontWeight: 800,
                                             fontSize: '13px',
                                             marginTop: '1px',
@@ -172,10 +172,10 @@ export default function ProjectComparisonMatrix({
                     <div
                         style={{
                             background: 'var(--zy-surface-1)',
-                            border: `1px solid ${project.accentColor}40`,
+                            border: '1px solid var(--zy-border-subtle)',
                             borderRadius: '24px',
                             padding: '40px 32px',
-                            boxShadow: `0 15px 40px ${project.accentColor}12`,
+                            boxShadow: '0 15px 40px rgba(0,0,0,0.1)',
                         }}
                     >
                         <div
@@ -194,7 +194,7 @@ export default function ProjectComparisonMatrix({
                                         fontWeight: 800,
                                         textTransform: 'uppercase',
                                         letterSpacing: '0.1em',
-                                        color: project.accentColor,
+                                        color: 'var(--zy-text-primary)',
                                     }}
                                 >
                                     Zytrixon Cloud (After)
@@ -239,13 +239,13 @@ export default function ProjectComparisonMatrix({
                                         gap: '12px',
                                         padding: '12px 14px',
                                         borderRadius: '12px',
-                                        background: `${project.accentColor}10`,
-                                        border: `1px solid ${project.accentColor}30`,
+                                        background: 'var(--zy-surface-2)',
+                                        border: '1px solid var(--zy-border-subtle)',
                                     }}
                                 >
                                     <span
                                         style={{
-                                            color: project.accentColor,
+                                            color: 'var(--zy-text-primary)',
                                             fontWeight: 800,
                                             fontSize: '13px',
                                             marginTop: '1px',

@@ -16,8 +16,9 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                 paddingLeft: 'var(--zy-section-pad-x, 24px)',
                 paddingRight: 'var(--zy-section-pad-x, 24px)',
                 overflow: 'hidden',
-                background: `radial-gradient(circle at 50% 0%, ${project.accentColor}18 0%, rgba(5,5,5,0) 70%), #050505`,
-                borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                background:
+                    'radial-gradient(ellipse 80% 50% at 50% -10%, var(--zy-surface-2) 0%, transparent 80%), var(--zy-bg)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
             }}
         >
             {/* Ambient Glow Orb */}
@@ -29,7 +30,8 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                     transform: 'translateX(-50%)',
                     width: '700px',
                     height: '400px',
-                    background: `radial-gradient(circle, ${project.accentColor}25 0%, rgba(0,0,0,0) 70%)`,
+                    background:
+                        'radial-gradient(circle, var(--zy-card-bg-hover) 0%, rgba(0,0,0,0) 70%)',
                     filter: 'blur(80px)',
                     pointerEvents: 'none',
                     zIndex: 0,
@@ -62,7 +64,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             alignItems: 'center',
                             gap: '8px',
                             fontSize: '13px',
-                            color: '#888888',
+                            color: 'var(--zy-text-secondary)',
                         }}
                     >
                         <Link
@@ -79,37 +81,10 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             Portfolio
                         </Link>
                         <span>/</span>
-                        <span style={{ color: '#ffffff', fontWeight: 600 }}>
+                        <span style={{ color: 'var(--zy-text-primary)', fontWeight: 600 }}>
                             {project.shortTitle}
                         </span>
                     </nav>
-
-                    <div
-                        style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            padding: '6px 14px',
-                            borderRadius: '20px',
-                            background: 'rgba(255,255,255,0.04)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            fontSize: '12px',
-                            fontWeight: 600,
-                            color: '#ffffff',
-                        }}
-                    >
-                        <span
-                            style={{
-                                width: '8px',
-                                height: '8px',
-                                borderRadius: '50%',
-                                background: '#10b981',
-                                boxShadow: '0 0 10px #10b981',
-                                display: 'inline-block',
-                            }}
-                        />
-                        Live Enterprise Deployment
-                    </div>
                 </div>
 
                 {/* Category Tag */}
@@ -117,15 +92,15 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                     <span
                         style={{
                             display: 'inline-block',
-                            fontSize: '12px',
-                            fontWeight: 700,
+                            fontSize: '11px',
+                            fontWeight: 800,
                             letterSpacing: '0.12em',
                             textTransform: 'uppercase',
-                            color: project.accentColor,
-                            background: `${project.accentColor}14`,
-                            border: `1px solid ${project.accentColor}35`,
-                            padding: '6px 18px',
-                            borderRadius: '30px',
+                            color: 'var(--zy-text-secondary)',
+                            background: 'var(--zy-surface-2)',
+                            border: '1px solid var(--zy-border-subtle)',
+                            padding: '4px 14px',
+                            borderRadius: '20px',
                         }}
                     >
                         {project.category}
@@ -140,7 +115,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                         fontSize: 'clamp(32px, 5vw, 60px)',
                         fontWeight: 800,
                         lineHeight: 1.12,
-                        color: '#ffffff',
+                        color: 'var(--zy-text-primary)',
                         maxWidth: '1000px',
                         marginBottom: '24px',
                         letterSpacing: '-0.02em',
@@ -153,7 +128,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                 <p
                     style={{
                         fontSize: 'clamp(16px, 2vw, 20px)',
-                        color: '#a0a0a0',
+                        color: 'var(--zy-text-secondary)',
                         lineHeight: 1.6,
                         maxWidth: '820px',
                         marginBottom: '40px',
@@ -180,15 +155,15 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '10px',
-                            background: project.accentColor,
-                            color: '#000000',
+                            background: 'var(--zy-text-primary)',
+                            color: 'var(--zy-bg)',
                             padding: '16px 36px',
                             borderRadius: '40px',
                             fontWeight: 700,
                             fontSize: '15px',
                             textDecoration: 'none',
                             transition: 'all 0.3s ease',
-                            boxShadow: `0 8px 30px ${project.accentColor}40`,
+                            boxShadow: '0 8px 30px rgba(0,0,0,0.2)',
                         }}
                     >
                         <span>Launch Live Project</span>
@@ -212,14 +187,14 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '10px',
-                            background: 'rgba(255, 255, 255, 0.06)',
-                            color: '#ffffff',
+                            background: 'var(--zy-surface-1)',
+                            color: 'var(--zy-text-primary)',
                             padding: '16px 30px',
                             borderRadius: '40px',
                             fontWeight: 600,
                             fontSize: '15px',
                             textDecoration: 'none',
-                            border: '1px solid rgba(255, 255, 255, 0.12)',
+                            border: '1px solid var(--zy-border-subtle)',
                             transition: 'all 0.3s ease',
                         }}
                     >
@@ -240,7 +215,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '8px',
-                            color: '#888888',
+                            color: 'var(--zy-text-secondary)',
                             padding: '16px 20px',
                             fontSize: '14px',
                             fontWeight: 600,
@@ -254,10 +229,10 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                 {/* Mac Desktop Browser Chrome Mockup */}
                 <div
                     style={{
-                        background: '#0f0f10',
+                        background: 'var(--zy-surface-1)',
                         borderRadius: '20px',
-                        border: '1px solid rgba(255, 255, 255, 0.12)',
-                        boxShadow: `0 30px 80px rgba(0,0,0,0.9), 0 0 60px ${project.accentColor}15`,
+                        border: '1px solid var(--zy-border-subtle)',
+                        boxShadow: '0 30px 80px rgba(0,0,0,0.3)',
                         overflow: 'hidden',
                         position: 'relative',
                     }}
@@ -269,8 +244,8 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             alignItems: 'center',
                             justifyContent: 'space-between',
                             padding: '12px 20px',
-                            background: '#171719',
-                            borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                            background: 'var(--zy-surface-2)',
+                            borderBottom: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         <div
@@ -311,12 +286,12 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '8px',
-                                background: '#09090a',
+                                background: 'var(--zy-bg)',
                                 padding: '6px 20px',
                                 borderRadius: '8px',
                                 fontSize: '12px',
-                                color: '#888888',
-                                border: '1px solid rgba(255,255,255,0.06)',
+                                color: 'var(--zy-text-secondary)',
+                                border: '1px solid var(--zy-border-subtle)',
                                 maxWidth: '460px',
                                 width: '100%',
                                 justifyContent: 'center',
@@ -340,7 +315,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                                 />
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                             </svg>
-                            <span style={{ color: '#cccccc' }}>
+                            <span style={{ color: 'var(--zy-text-primary)' }}>
                                 {project.liveUrl}
                             </span>
                         </div>
@@ -348,8 +323,8 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                         <div
                             style={{
                                 fontSize: '11px',
-                                fontWeight: 600,
-                                color: project.accentColor,
+                                fontWeight: 700,
+                                color: 'var(--zy-text-primary)',
                             }}
                         >
                             Live Production
@@ -368,61 +343,6 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                                 display: 'block',
                             }}
                         />
-
-                        {/* Floating SLA Badge */}
-                        <div
-                            style={{
-                                position: 'absolute',
-                                bottom: '24px',
-                                left: '24px',
-                                background: 'rgba(10, 10, 10, 0.85)',
-                                backdropFilter: 'blur(16px)',
-                                border: '1px solid rgba(255, 255, 255, 0.12)',
-                                borderRadius: '14px',
-                                padding: '14px 22px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '14px',
-                                boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
-                            }}
-                        >
-                            <div
-                                style={{
-                                    width: '40px',
-                                    height: '40px',
-                                    borderRadius: '10px',
-                                    background: `${project.accentColor}25`,
-                                    color: project.accentColor,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontSize: '18px',
-                                }}
-                            >
-                                ⚡
-                            </div>
-                            <div>
-                                <div
-                                    style={{
-                                        fontSize: '11px',
-                                        color: '#888888',
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '0.08em',
-                                    }}
-                                >
-                                    Performance SLA
-                                </div>
-                                <div
-                                    style={{
-                                        fontSize: '14px',
-                                        fontWeight: 700,
-                                        color: '#ffffff',
-                                    }}
-                                >
-                                    Sub-45ms P99 API Response
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

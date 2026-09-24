@@ -10,22 +10,27 @@ export default function ProjectChallengeSolution({
 }: ProjectChallengeSolutionProps) {
     return (
         <section
+            id="story"
             style={{
                 padding: '90px var(--zy-section-pad-x, 24px)',
-                background: '#09090c',
-                borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                background: 'var(--zy-bg)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
+                transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
         >
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
                 <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                     <span
                         style={{
-                            fontSize: '12px',
-                            fontWeight: 700,
+                            fontSize: '11px',
+                            fontWeight: 800,
                             letterSpacing: '0.15em',
                             textTransform: 'uppercase',
-                            color: project.accentColor,
+                            color: 'var(--zy-text-secondary)',
+                            background: 'var(--zy-surface-2)',
+                            padding: '4px 14px',
+                            borderRadius: '20px',
+                            border: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         Engineering Story
@@ -36,15 +41,15 @@ export default function ProjectChallengeSolution({
                                 'var(--font-heading, Space Grotesk, sans-serif)',
                             fontSize: 'clamp(28px, 4vw, 42px)',
                             fontWeight: 800,
-                            marginTop: '10px',
-                            color: '#ffffff',
+                            marginTop: '16px',
+                            color: 'var(--zy-text-primary)',
                         }}
                     >
                         Challenge & Custom Solution
                     </h2>
                     <p
                         style={{
-                            color: '#888888',
+                            color: 'var(--zy-text-secondary)',
                             fontSize: '16px',
                             maxWidth: '680px',
                             margin: '12px auto 0',
@@ -66,8 +71,8 @@ export default function ProjectChallengeSolution({
                     {/* The Challenge Card */}
                     <div
                         style={{
-                            background: 'rgba(255, 75, 75, 0.03)',
-                            border: '1px solid rgba(255, 75, 75, 0.2)',
+                            background: 'var(--zy-surface-1)',
+                            border: '1px solid var(--zy-border-subtle)',
                             borderRadius: '24px',
                             padding: '40px 32px',
                         }}
@@ -77,11 +82,11 @@ export default function ProjectChallengeSolution({
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: '8px',
-                                fontSize: '12px',
-                                fontWeight: 700,
+                                fontSize: '11px',
+                                fontWeight: 800,
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.1em',
-                                color: '#ff6b6b',
+                                color: 'var(--zy-text-secondary)',
                                 marginBottom: '16px',
                             }}
                         >
@@ -91,7 +96,7 @@ export default function ProjectChallengeSolution({
                             style={{
                                 fontSize: '20px',
                                 fontWeight: 700,
-                                color: '#ffffff',
+                                color: 'var(--zy-text-primary)',
                                 marginBottom: '16px',
                             }}
                         >
@@ -100,7 +105,7 @@ export default function ProjectChallengeSolution({
                         <p
                             style={{
                                 fontSize: '15px',
-                                color: '#999999',
+                                color: 'var(--zy-text-secondary)',
                                 lineHeight: 1.7,
                                 marginBottom: '24px',
                             }}
@@ -125,9 +130,9 @@ export default function ProjectChallengeSolution({
                                 >
                                     <span
                                         style={{
-                                            color: '#ff6b6b',
-                                            background:
-                                                'rgba(255, 75, 75, 0.12)',
+                                            color: 'var(--zy-text-secondary)',
+                                            background: 'var(--zy-surface-2)',
+                                            border: '1px solid var(--zy-border-subtle)',
                                             width: '22px',
                                             height: '22px',
                                             borderRadius: '50%',
@@ -145,7 +150,7 @@ export default function ProjectChallengeSolution({
                                     <span
                                         style={{
                                             fontSize: '14px',
-                                            color: '#cccccc',
+                                            color: 'var(--zy-text-secondary)',
                                             lineHeight: 1.6,
                                         }}
                                     >
@@ -159,11 +164,11 @@ export default function ProjectChallengeSolution({
                     {/* The Solution Card */}
                     <div
                         style={{
-                            background: `linear-gradient(180deg, ${project.accentColor}08 0%, rgba(10,10,12,0.8) 100%)`,
-                            border: `1px solid ${project.accentColor}35`,
+                            background: 'var(--zy-surface-1)',
+                            border: '1px solid var(--zy-border-subtle)',
                             borderRadius: '24px',
                             padding: '40px 32px',
-                            boxShadow: `0 10px 40px ${project.accentColor}10`,
+                            boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
                         }}
                     >
                         <div
@@ -171,11 +176,11 @@ export default function ProjectChallengeSolution({
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: '8px',
-                                fontSize: '12px',
-                                fontWeight: 700,
+                                fontSize: '11px',
+                                fontWeight: 800,
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.1em',
-                                color: project.accentColor,
+                                color: 'var(--zy-text-primary)',
                                 marginBottom: '16px',
                             }}
                         >
@@ -185,7 +190,7 @@ export default function ProjectChallengeSolution({
                             style={{
                                 fontSize: '20px',
                                 fontWeight: 700,
-                                color: '#ffffff',
+                                color: 'var(--zy-text-primary)',
                                 marginBottom: '16px',
                             }}
                         >
@@ -194,7 +199,7 @@ export default function ProjectChallengeSolution({
                         <p
                             style={{
                                 fontSize: '15px',
-                                color: '#999999',
+                                color: 'var(--zy-text-secondary)',
                                 lineHeight: 1.7,
                                 marginBottom: '24px',
                             }}
@@ -219,8 +224,9 @@ export default function ProjectChallengeSolution({
                                 >
                                     <span
                                         style={{
-                                            color: project.accentColor,
-                                            background: `${project.accentColor}20`,
+                                            color: 'var(--zy-text-primary)',
+                                            background: 'var(--zy-surface-2)',
+                                            border: '1px solid var(--zy-border-subtle)',
                                             width: '22px',
                                             height: '22px',
                                             borderRadius: '50%',
@@ -238,7 +244,7 @@ export default function ProjectChallengeSolution({
                                     <span
                                         style={{
                                             fontSize: '14px',
-                                            color: '#ffffff',
+                                            color: 'var(--zy-text-primary)',
                                             lineHeight: 1.6,
                                         }}
                                     >

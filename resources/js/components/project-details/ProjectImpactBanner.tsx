@@ -33,7 +33,7 @@ export default function ProjectImpactBanner({
                     <div
                         style={{
                             fontSize: '32px',
-                            color: project.accentColor,
+                            color: 'var(--zy-text-primary)',
                             lineHeight: 1,
                             marginBottom: '12px',
                         }}
@@ -64,7 +64,12 @@ export default function ProjectImpactBanner({
                         }}
                     >
                         Executive Project Summary •{' '}
-                        <span style={{ color: project.accentColor }}>
+                        <span
+                            style={{
+                                color: 'var(--zy-text-primary)',
+                                fontWeight: 600,
+                            }}
+                        >
                             {project.client}
                         </span>
                     </div>
@@ -80,7 +85,7 @@ export default function ProjectImpactBanner({
                     }}
                 >
                     {project.metrics.map((metric, i) => (
-                        <GradientCard key={i} themeColor={project.accentColor}>
+                        <GradientCard key={i}>
                             <div
                                 style={{
                                     padding: '30px 24px',
@@ -93,7 +98,7 @@ export default function ProjectImpactBanner({
                                             'var(--font-heading, Space Grotesk, sans-serif)',
                                         fontSize: 'clamp(34px, 3.8vw, 46px)',
                                         fontWeight: 800,
-                                        color: project.accentColor,
+                                        color: 'var(--zy-text-primary)',
                                         letterSpacing: '-0.02em',
                                         marginBottom: '6px',
                                     }}

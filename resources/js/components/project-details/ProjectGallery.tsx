@@ -44,11 +44,15 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                 <span
                     style={{
-                        fontSize: '12px',
-                        fontWeight: 700,
+                        fontSize: '11px',
+                        fontWeight: 800,
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: project.accentColor,
+                        color: 'var(--zy-text-secondary)',
+                        background: 'var(--zy-surface-2)',
+                        padding: '4px 14px',
+                        borderRadius: '20px',
+                        border: '1px solid var(--zy-border-subtle)',
                     }}
                 >
                     Interface Screenshots
@@ -59,15 +63,15 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                             'var(--font-heading, Space Grotesk, sans-serif)',
                         fontSize: 'clamp(28px, 4vw, 42px)',
                         fontWeight: 800,
-                        marginTop: '10px',
-                        color: '#ffffff',
+                        marginTop: '16px',
+                        color: 'var(--zy-text-primary)',
                     }}
                 >
                     Explore Every Screen & Workflow
                 </h2>
                 <p
                     style={{
-                        color: '#888888',
+                        color: 'var(--zy-text-secondary)',
                         fontSize: '16px',
                         maxWidth: '600px',
                         margin: '10px auto 30px',
@@ -98,16 +102,16 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                                 cursor: 'pointer',
                                 border:
                                     selectedCategory === cat
-                                        ? `1px solid ${project.accentColor}`
-                                        : '1px solid rgba(255,255,255,0.08)',
+                                        ? '1px solid var(--zy-text-primary)'
+                                        : '1px solid var(--zy-border-subtle)',
                                 background:
                                     selectedCategory === cat
-                                        ? `${project.accentColor}20`
-                                        : 'rgba(255,255,255,0.04)',
+                                        ? 'var(--zy-text-primary)'
+                                        : 'var(--zy-surface-1)',
                                 color:
                                     selectedCategory === cat
-                                        ? project.accentColor
-                                        : '#888888',
+                                        ? 'var(--zy-bg)'
+                                        : 'var(--zy-text-primary)',
                                 transition: 'all 0.2s ease',
                             }}
                         >
@@ -130,24 +134,24 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                         key={idx}
                         onClick={() => setLightboxImage(ss)}
                         style={{
-                            background: '#0e0e11',
+                            background: 'var(--zy-surface-1)',
                             borderRadius: '18px',
                             overflow: 'hidden',
-                            border: '1px solid rgba(255,255,255,0.08)',
+                            border: '1px solid var(--zy-border-subtle)',
                             cursor: 'pointer',
                             transition: 'all 0.3s ease',
-                            boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                            boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform =
                                 'translateY(-6px)';
                             e.currentTarget.style.borderColor =
-                                project.accentColor;
+                                'var(--zy-border-hover)';
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.transform = 'translateY(0)';
                             e.currentTarget.style.borderColor =
-                                'rgba(255,255,255,0.08)';
+                                'var(--zy-border-subtle)';
                         }}
                     >
                         <div
@@ -188,7 +192,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                                     bottom: '12px',
                                     left: '12px',
                                     background: 'rgba(0,0,0,0.85)',
-                                    color: project.accentColor,
+                                    color: 'var(--zy-text-primary)',
                                     padding: '4px 10px',
                                     borderRadius: '6px',
                                     fontSize: '11px',
@@ -205,7 +209,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                                 style={{
                                     fontSize: '17px',
                                     fontWeight: 700,
-                                    color: '#ffffff',
+                                    color: 'var(--zy-text-primary)',
                                     marginBottom: '8px',
                                 }}
                             >
@@ -214,7 +218,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                             <p
                                 style={{
                                     fontSize: '13px',
-                                    color: '#888888',
+                                    color: 'var(--zy-text-secondary)',
                                     lineHeight: 1.6,
                                 }}
                             >
@@ -245,36 +249,42 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                         style={{
                             maxWidth: '1080px',
                             width: '100%',
-                            background: '#111114',
+                            background: 'var(--zy-surface-1)',
                             borderRadius: '20px',
                             overflow: 'hidden',
-                            border: '1px solid rgba(255, 255, 255, 0.15)',
-                            boxShadow: '0 25px 80px rgba(0,0,0,0.9)',
+                            border: '1px solid var(--zy-border-subtle)',
+                            boxShadow: '0 25px 80px rgba(0,0,0,0.8)',
                             position: 'relative',
                         }}
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
                             onClick={() => setLightboxImage(null)}
+                            className="zy-modal-close-btn"
                             style={{
                                 position: 'absolute',
                                 top: '16px',
                                 right: '16px',
-                                background: 'rgba(0,0,0,0.7)',
-                                border: '1px solid rgba(255,255,255,0.2)',
-                                color: '#ffffff',
-                                width: '40px',
-                                height: '40px',
-                                borderRadius: '50%',
-                                fontSize: '18px',
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
                                 zIndex: 10,
                             }}
+                            aria-label="Close modal (Esc)"
+                            title="Close (Esc)"
                         >
-                            ✕
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M12.5 3.5L3.5 12.5M3.5 3.5L12.5 12.5"
+                                    stroke="currentColor"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
                         </button>
                         <img
                             src={lightboxImage.image}
@@ -291,7 +301,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                                 style={{
                                     fontSize: '11px',
                                     textTransform: 'uppercase',
-                                    color: project.accentColor,
+                                    color: 'var(--zy-text-secondary)',
                                     fontWeight: 700,
                                     letterSpacing: '0.1em',
                                 }}
@@ -302,7 +312,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                                 style={{
                                     fontSize: '20px',
                                     fontWeight: 700,
-                                    color: '#ffffff',
+                                    color: 'var(--zy-text-primary)',
                                     marginTop: '4px',
                                 }}
                             >
@@ -311,7 +321,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                             <p
                                 style={{
                                     fontSize: '14px',
-                                    color: '#999999',
+                                    color: 'var(--zy-text-secondary)',
                                     marginTop: '6px',
                                 }}
                             >
