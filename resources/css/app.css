@@ -1342,6 +1342,12 @@ body.light .mobile-footer-contacts a:hover {
     margin-bottom: 64px;
 }
 
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .footer-heading {
     font-family: var(--font-heading);
     font-size: 13px;
@@ -1353,7 +1359,8 @@ body.light .mobile-footer-contacts a:hover {
 }
 
 .footer-link {
-    display: inline-block;
+    display: block;
+    width: fit-content;
     font-size: 14px;
     color: #a1a1aa;
     text-decoration: none;
