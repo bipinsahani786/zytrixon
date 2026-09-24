@@ -1,0 +1,1 @@
+import e from"./ProjectDetails-GbLIhwc-.js";var t=e;e.layout=null;export{t as default};

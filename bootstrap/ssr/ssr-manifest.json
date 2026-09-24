@@ -13,52 +13,52 @@
     "/build/assets/security-DL-WyZ4N.js"
   ],
   "resources/js/components/about/AboutClientTrust.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutDeliveryLifecycle.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutExecutiveCTA.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutExecutiveHUD.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutFAQComprehensive.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutGlobalPresence.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutInnovationLab.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutLeadershipDossier.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutMilestonesChronology.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutMissionVision.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutOriginStory.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutPrinciplesManifesto.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutRecognitionAwards.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutSecurityGovernance.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutSocialImpact.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/about/AboutTechConviction.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/components/alert-error.tsx": [
     "/build/assets/security-DL-WyZ4N.js"
@@ -81,7 +81,7 @@
     "/build/assets/input-error-B7Zt7zmb.js"
   ],
   "resources/js/components/landing/about-section.tsx": [
-    "/build/assets/welcome-BWO8bgUN.js"
+    "/build/assets/welcome-CHI5JeOq.js"
   ],
   "resources/js/components/landing/clients-section.tsx": [
     "/build/assets/clients-section-DaoPppG6.js"
@@ -270,19 +270,19 @@
     "/build/assets/SecurityStandards-DW_-ORQH.js"
   ],
   "resources/js/components/sections/ServiceEstimator.tsx": [
-    "/build/assets/ServiceSeoPage-BQNkypvb.js"
+    "/build/assets/ServiceSeoPage-DplSNCdu.js"
   ],
   "resources/js/components/sections/ServicePlayground.tsx": [
-    "/build/assets/ServiceSeoPage-BQNkypvb.js"
+    "/build/assets/ServiceSeoPage-DplSNCdu.js"
   ],
   "resources/js/components/sections/ServiceStats.tsx": [
-    "/build/assets/ServiceSeoPage-BQNkypvb.js"
+    "/build/assets/ServiceSeoPage-DplSNCdu.js"
   ],
   "resources/js/components/sections/TechnicalArchitecture.tsx": [
-    "/build/assets/ServiceSeoPage-BQNkypvb.js"
+    "/build/assets/ServiceSeoPage-DplSNCdu.js"
   ],
   "resources/js/components/sections/ValueProposition.tsx": [
-    "/build/assets/ServiceSeoPage-BQNkypvb.js"
+    "/build/assets/ServiceSeoPage-DplSNCdu.js"
   ],
   "resources/js/components/seo/SeoHead.tsx": [
     "/build/assets/SeoHead-ypAe3bNq.js"
@@ -347,12 +347,12 @@
   "resources/js/hooks/use-current-url.ts": [],
   "resources/js/hooks/use-initials.tsx": [],
   "resources/js/hooks/use-media-query.ts": [
-    "/build/assets/welcome-BWO8bgUN.js"
+    "/build/assets/welcome-CHI5JeOq.js"
   ],
   "resources/js/hooks/use-mobile-navigation.ts": [],
   "resources/js/hooks/use-mobile.tsx": [],
   "resources/js/hooks/use-mouse-position.ts": [
-    "/build/assets/welcome-BWO8bgUN.js"
+    "/build/assets/welcome-CHI5JeOq.js"
   ],
   "resources/js/hooks/use-two-factor-auth.ts": [
     "/build/assets/use-two-factor-auth-D7-5703a.js"
@@ -363,59 +363,59 @@
   "resources/js/layouts/auth/auth-simple-layout.tsx": [],
   "resources/js/layouts/settings/layout.tsx": [],
   "resources/js/lib/projects-data.ts": [
-    "/build/assets/projects-data-DIuqLfyV.js"
+    "/build/assets/projects-data-B4c2Adyp.js"
   ],
   "resources/js/lib/service-data.ts": [
     "/build/assets/SecurityStandards-DW_-ORQH.js"
   ],
   "resources/js/lib/utils.ts": [],
   "resources/js/pages/About.tsx": [
-    "/build/assets/About-DOJxoH4Y.js"
+    "/build/assets/About-CKvMlY3F.js"
   ],
   "resources/js/pages/Blog.tsx": [
-    "/build/assets/Blog-L-rfHhKp.js"
+    "/build/assets/Blog-BSCTtADK.js"
   ],
   "resources/js/pages/BlogDetails.tsx": [
     "/build/assets/BlogDetails-CYn9K8G-.js"
   ],
   "resources/js/pages/Careers.tsx": [
-    "/build/assets/Careers-D9HMDmjB.js"
+    "/build/assets/Careers-Bjr9HOHc.js"
   ],
   "resources/js/pages/CaseStudyDetails.tsx": [
-    "/build/assets/CaseStudyDetails-DqOq_wyC.js"
+    "/build/assets/CaseStudyDetails--Hu3OpKH.js"
   ],
   "resources/js/pages/Contact.tsx": [
-    "/build/assets/Contact-Hzrbt8yq.js"
+    "/build/assets/Contact-M3LDZZJL.js"
   ],
   "resources/js/pages/Error.tsx": [
     "/build/assets/Error-BTXrvTym.js"
   ],
   "resources/js/pages/LocationDetails.tsx": [
-    "/build/assets/LocationDetails-o07N0EMr.js"
+    "/build/assets/LocationDetails-BEe4sz2l.js"
   ],
   "resources/js/pages/LocationsIndex.tsx": [
-    "/build/assets/LocationsIndex-1U5fRPeQ.js"
+    "/build/assets/LocationsIndex-DhwJr-pC.js"
   ],
   "resources/js/pages/Portfolio.tsx": [
-    "/build/assets/Portfolio-BOA0DKx4.js"
+    "/build/assets/Portfolio-ChdOjPuN.js"
   ],
   "resources/js/pages/PrivacyPolicy.tsx": [
     "/build/assets/PrivacyPolicy-BzsY8W9t.js"
   ],
   "resources/js/pages/Process.tsx": [
-    "/build/assets/Process-Bxqr7lQY.js"
+    "/build/assets/Process-DSP81MLv.js"
   ],
   "resources/js/pages/ProjectDetails.tsx": [
-    "/build/assets/ProjectDetails-BwxUHcpm.js"
+    "/build/assets/ProjectDetails-CKqe8cFU.js"
   ],
   "resources/js/pages/ServiceSeoPage.tsx": [
-    "/build/assets/ServiceSeoPage-BQNkypvb.js"
+    "/build/assets/ServiceSeoPage-DplSNCdu.js"
   ],
   "resources/js/pages/ServicesIndex.tsx": [
-    "/build/assets/ServicesIndex-CdA9ljfD.js"
+    "/build/assets/ServicesIndex-CoB2y3JX.js"
   ],
   "resources/js/pages/Team.tsx": [
-    "/build/assets/Team-RPGZDs5e.js"
+    "/build/assets/Team-CSx10W27.js"
   ],
   "resources/js/pages/TermsConditions.tsx": [
     "/build/assets/TermsConditions-DChq8o8z.js"
@@ -454,7 +454,7 @@
     "/build/assets/security-DL-WyZ4N.js"
   ],
   "resources/js/pages/welcome.tsx": [
-    "/build/assets/welcome-BWO8bgUN.js"
+    "/build/assets/welcome-CHI5JeOq.js"
   ],
   "resources/js/routes/appearance/index.ts": [],
   "resources/js/routes/index.ts": [],
