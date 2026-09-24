@@ -81,7 +81,7 @@ export default function Footer() {
         <footer className="site-footer">
             <div className="footer-grid">
                 {/* Company Info */}
-                <div>
+                <div className="footer-col">
                     <Link
                         href="/"
                         aria-label="Zytrixon Home"
@@ -129,7 +129,7 @@ export default function Footer() {
                 </div>
 
                 {/* Services */}
-                <div>
+                <div className="footer-col">
                     <div
                         className="footer-heading"
                         style={{
@@ -153,7 +153,7 @@ export default function Footer() {
                 </div>
 
                 {/* Locations */}
-                <div>
+                <div className="footer-col">
                     <div
                         className="footer-heading"
                         style={{
@@ -178,7 +178,7 @@ export default function Footer() {
                         href="/locations"
                         className="footer-link footer-link-highlight"
                         style={{
-                            marginTop: '8px',
+                            marginTop: '4px',
                         }}
                     >
                         View All Locations &rarr;
@@ -186,7 +186,7 @@ export default function Footer() {
                 </div>
 
                 {/* Company */}
-                <div>
+                <div className="footer-col">
                     <div
                         className="footer-heading"
                         style={{
@@ -277,7 +277,7 @@ export default function Footer() {
                     © {new Date().getFullYear()} Zytrixon Tech. All rights
                     reserved.
                 </span>
-                <div style={{ display: 'flex', gap: '24px' }}>
+                <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
                     {FOOTER_LINKS.legal.map((link) =>
                         link.href.endsWith('.xml') ? (
                             <a
