@@ -112,10 +112,10 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
                             letterSpacing: '0.04em',
                             textDecoration: 'none',
                             color: isActive
-                                ? '#000000'
+                                ? 'var(--zy-bg)'
                                 : 'var(--zy-text-secondary)',
                             background: isActive
-                                ? project.accentColor
+                                ? 'var(--zy-text-primary)'
                                 : 'transparent',
                             transition: 'all 0.25s ease',
                         }}
@@ -154,7 +154,7 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
                 }}
             >
                 <span>Live Demo</span>
-                <span style={{ color: project.accentColor }}>↗</span>
+                <span style={{ color: 'var(--zy-text-primary)' }}>↗</span>
             </a>
         </nav>
     );

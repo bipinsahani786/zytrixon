@@ -48,11 +48,11 @@ export default function ProjectInteractiveGallery({
                             fontWeight: 800,
                             letterSpacing: '0.15em',
                             textTransform: 'uppercase',
-                            color: project.accentColor,
-                            background: `${project.accentColor}12`,
+                            color: 'var(--zy-text-secondary)',
+                            background: 'var(--zy-surface-2)',
                             padding: '4px 14px',
                             borderRadius: '20px',
-                            border: `1px solid ${project.accentColor}30`,
+                            border: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         Interface Explorer
@@ -99,7 +99,7 @@ export default function ProjectInteractiveGallery({
                             }}
                             onMouseEnter={(e) =>
                                 (e.currentTarget.style.borderColor =
-                                    project.accentColor)
+                                    'var(--zy-border-hover)')
                             }
                             onMouseLeave={(e) =>
                                 (e.currentTarget.style.borderColor =
@@ -151,7 +151,7 @@ export default function ProjectInteractiveGallery({
                                         bottom: '16px',
                                         left: '16px',
                                         background: 'rgba(0,0,0,0.85)',
-                                        color: project.accentColor,
+                                        color: 'var(--zy-text-primary)',
                                         padding: '6px 14px',
                                         borderRadius: '8px',
                                         fontSize: '11px',
@@ -221,7 +221,7 @@ export default function ProjectInteractiveGallery({
                                 }}
                                 onMouseEnter={(e) =>
                                     (e.currentTarget.style.borderColor =
-                                        project.accentColor)
+                                        'var(--zy-border-hover)')
                                 }
                                 onMouseLeave={(e) =>
                                     (e.currentTarget.style.borderColor =
@@ -272,7 +272,7 @@ export default function ProjectInteractiveGallery({
                                             bottom: '16px',
                                             left: '16px',
                                             background: 'rgba(0,0,0,0.85)',
-                                            color: project.accentColor,
+                                            color: 'var(--zy-text-primary)',
                                             padding: '6px 14px',
                                             borderRadius: '8px',
                                             fontSize: '11px',
@@ -341,7 +341,7 @@ export default function ProjectInteractiveGallery({
                                                 ? 'var(--zy-card-bg-hover)'
                                                 : 'var(--zy-card-bg)',
                                             border: isSelected
-                                                ? `1px solid ${project.accentColor}`
+                                                ? '1px solid var(--zy-text-primary)'
                                                 : '1px solid var(--zy-border-subtle)',
                                             cursor: 'pointer',
                                             transition: 'all 0.25s ease',
@@ -368,7 +368,7 @@ export default function ProjectInteractiveGallery({
                                                 overflow: 'hidden',
                                                 flexShrink: 0,
                                                 border: isSelected
-                                                    ? `1px solid ${project.accentColor}`
+                                                    ? '1px solid var(--zy-text-primary)'
                                                     : '1px solid var(--zy-border-subtle)',
                                             }}
                                         >
@@ -395,7 +395,7 @@ export default function ProjectInteractiveGallery({
                                                     style={{
                                                         fontSize: '11px',
                                                         color: isSelected
-                                                            ? project.accentColor
+                                                            ? 'var(--zy-text-primary)'
                                                             : 'var(--zy-text-muted)',
                                                         fontWeight: 800,
                                                         textTransform:
@@ -439,10 +439,10 @@ export default function ProjectInteractiveGallery({
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
                                                 background: isSelected
-                                                    ? project.accentColor
+                                                    ? 'var(--zy-text-primary)'
                                                     : 'var(--zy-surface-2)',
                                                 color: isSelected
-                                                    ? '#000000'
+                                                    ? 'var(--zy-bg)'
                                                     : 'var(--zy-text-secondary)',
                                                 fontSize: '11px',
                                                 fontWeight: 800,
@@ -519,7 +519,7 @@ export default function ProjectInteractiveGallery({
                             <span
                                 style={{
                                     fontSize: '11px',
-                                    color: project.accentColor,
+                                    color: 'var(--zy-text-secondary)',
                                     fontWeight: 800,
                                     textTransform: 'uppercase',
                                 }}

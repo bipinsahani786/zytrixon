@@ -13,20 +13,24 @@ export default function ProjectArchitecture({
             id="architecture"
             style={{
                 padding: '90px var(--zy-section-pad-x, 24px)',
-                background: '#09090c',
-                borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                background: 'var(--zy-bg)',
+                borderTop: '1px solid var(--zy-border-subtle)',
+                borderBottom: '1px solid var(--zy-border-subtle)',
             }}
         >
             <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                 <div style={{ textAlign: 'center', marginBottom: '50px' }}>
                     <span
                         style={{
-                            fontSize: '12px',
-                            fontWeight: 700,
+                            fontSize: '11px',
+                            fontWeight: 800,
                             letterSpacing: '0.15em',
                             textTransform: 'uppercase',
-                            color: project.accentColor,
+                            color: 'var(--zy-text-secondary)',
+                            background: 'var(--zy-surface-2)',
+                            padding: '4px 14px',
+                            borderRadius: '20px',
+                            border: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         Technical Architecture
@@ -37,8 +41,8 @@ export default function ProjectArchitecture({
                                 'var(--font-heading, Space Grotesk, sans-serif)',
                             fontSize: 'clamp(28px, 4vw, 42px)',
                             fontWeight: 800,
-                            marginTop: '10px',
-                            color: '#ffffff',
+                            marginTop: '16px',
+                            color: 'var(--zy-text-primary)',
                         }}
                     >
                         How The System Operates
@@ -57,8 +61,8 @@ export default function ProjectArchitecture({
                         <div
                             key={i}
                             style={{
-                                background: '#111114',
-                                border: '1px solid rgba(255, 255, 255, 0.08)',
+                                background: 'var(--zy-surface-1)',
+                                border: '1px solid var(--zy-border-subtle)',
                                 borderRadius: '18px',
                                 padding: '28px 24px',
                                 position: 'relative',
@@ -68,8 +72,9 @@ export default function ProjectArchitecture({
                                 style={{
                                     fontSize: '12px',
                                     fontWeight: 800,
-                                    color: project.accentColor,
-                                    background: `${project.accentColor}18`,
+                                    color: 'var(--zy-text-primary)',
+                                    background: 'var(--zy-surface-2)',
+                                    border: '1px solid var(--zy-border-subtle)',
                                     padding: '4px 10px',
                                     borderRadius: '6px',
                                     display: 'inline-block',
@@ -82,7 +87,7 @@ export default function ProjectArchitecture({
                                 style={{
                                     fontSize: '18px',
                                     fontWeight: 700,
-                                    color: '#ffffff',
+                                    color: 'var(--zy-text-primary)',
                                     marginBottom: '6px',
                                 }}
                             >
@@ -91,7 +96,7 @@ export default function ProjectArchitecture({
                             <div
                                 style={{
                                     fontSize: '12px',
-                                    color: project.accentColor,
+                                    color: 'var(--zy-text-secondary)',
                                     fontWeight: 600,
                                     marginBottom: '12px',
                                 }}
@@ -101,7 +106,7 @@ export default function ProjectArchitecture({
                             <p
                                 style={{
                                     fontSize: '13px',
-                                    color: '#888888',
+                                    color: 'var(--zy-text-secondary)',
                                     lineHeight: 1.6,
                                 }}
                             >

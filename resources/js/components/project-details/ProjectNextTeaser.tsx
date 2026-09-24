@@ -26,12 +26,8 @@ export default function ProjectNextTeaser({
             {/* Live Prototype Sandbox Card */}
             <div
                 style={{
-                    background: isLight
-                        ? `radial-gradient(ellipse at 80% 50%, ${project.accentColor}25 0%, #ffffff 100%)`
-                        : `radial-gradient(ellipse at 80% 50%, ${project.accentColor}22 0%, rgba(14,14,18,0.95) 100%)`,
-                    border: isLight
-                        ? `1px solid ${project.accentColor}50`
-                        : `1px solid ${project.accentColor}40`,
+                    background: 'var(--zy-surface-1)',
+                    border: '1px solid var(--zy-border-subtle)',
                     borderRadius: '26px',
                     padding: '56px 44px',
                     display: 'flex',
@@ -39,9 +35,7 @@ export default function ProjectNextTeaser({
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '30px',
-                    boxShadow: isLight
-                        ? `0 20px 60px rgba(0,0,0,0.06), 0 0 50px ${project.accentColor}18`
-                        : `0 25px 80px rgba(0,0,0,0.9), 0 0 60px ${project.accentColor}12`,
+                    boxShadow: '0 20px 60px rgba(0,0,0,0.15)',
                     marginBottom: '70px',
                     position: 'relative',
                     overflow: 'hidden',
@@ -54,7 +48,11 @@ export default function ProjectNextTeaser({
                             fontWeight: 800,
                             letterSpacing: '0.12em',
                             textTransform: 'uppercase',
-                            color: project.accentColor,
+                            color: 'var(--zy-text-secondary)',
+                            background: 'var(--zy-surface-2)',
+                            padding: '4px 14px',
+                            borderRadius: '20px',
+                            border: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         Live Interactive Sandbox
@@ -65,8 +63,8 @@ export default function ProjectNextTeaser({
                                 'var(--font-heading, Space Grotesk, sans-serif)',
                             fontSize: 'clamp(26px, 3.8vw, 38px)',
                             fontWeight: 800,
-                            color: isLight ? '#0a0a0a' : '#ffffff',
-                            marginTop: '10px',
+                            color: 'var(--zy-text-primary)',
+                            marginTop: '16px',
                             letterSpacing: '-0.02em',
                         }}
                     >
@@ -74,7 +72,7 @@ export default function ProjectNextTeaser({
                     </h3>
                     <p
                         style={{
-                            color: isLight ? '#555555' : '#a0a0a0',
+                            color: 'var(--zy-text-secondary)',
                             fontSize: '15px',
                             marginTop: '10px',
                             lineHeight: 1.6,
@@ -102,15 +100,15 @@ export default function ProjectNextTeaser({
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '10px',
-                            background: project.accentColor,
-                            color: '#000000',
+                            background: 'var(--zy-text-primary)',
+                            color: 'var(--zy-bg)',
                             padding: '16px 36px',
                             borderRadius: '40px',
                             fontWeight: 700,
                             fontSize: '15px',
                             textDecoration: 'none',
                             transition: 'all 0.3s ease',
-                            boxShadow: `0 8px 30px ${project.accentColor}50`,
+                            boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
                             whiteSpace: 'nowrap',
                         }}
                     >
@@ -123,9 +121,7 @@ export default function ProjectNextTeaser({
             {/* Next Case Study Magnet Card */}
             <div
                 style={{
-                    borderTop: isLight
-                        ? '1px solid rgba(0, 0, 0, 0.08)'
-                        : '1px solid rgba(255, 255, 255, 0.08)',
+                    borderTop: '1px solid var(--zy-border-subtle)',
                     paddingTop: '60px',
                 }}
             >
@@ -140,7 +136,7 @@ export default function ProjectNextTeaser({
                     <Link
                         href="/portfolio"
                         style={{
-                            color: isLight ? '#555555' : '#777777',
+                            color: 'var(--zy-text-secondary)',
                             fontSize: '13px',
                             fontWeight: 700,
                             textTransform: 'uppercase',
@@ -149,14 +145,12 @@ export default function ProjectNextTeaser({
                             transition: 'color 0.2s ease',
                         }}
                         onMouseEnter={(e) =>
-                            (e.currentTarget.style.color = isLight
-                                ? '#000000'
-                                : '#ffffff')
+                            (e.currentTarget.style.color =
+                                'var(--zy-text-primary)')
                         }
                         onMouseLeave={(e) =>
-                            (e.currentTarget.style.color = isLight
-                                ? '#555555'
-                                : '#777777')
+                            (e.currentTarget.style.color =
+                                'var(--zy-text-secondary)')
                         }
                     >
                         ← Return to All Projects
@@ -165,7 +159,7 @@ export default function ProjectNextTeaser({
                     <span
                         style={{
                             fontSize: '12px',
-                            color: isLight ? '#777777' : '#666666',
+                            color: 'var(--zy-text-secondary)',
                             textTransform: 'uppercase',
                             letterSpacing: '0.1em',
                         }}
@@ -179,33 +173,24 @@ export default function ProjectNextTeaser({
                     style={{
                         display: 'block',
                         textDecoration: 'none',
-                        background: isLight
-                            ? 'linear-gradient(135deg, #ffffff 0%, #f4f4f7 100%)'
-                            : 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(15,15,18,0.9) 100%)',
-                        border: isLight
-                            ? '1px solid rgba(0, 0, 0, 0.08)'
-                            : '1px solid rgba(255, 255, 255, 0.1)',
+                        background: 'var(--zy-surface-1)',
+                        border: '1px solid var(--zy-border-subtle)',
                         borderRadius: '24px',
                         padding: '40px',
-                        boxShadow: isLight
-                            ? '0 10px 30px rgba(0,0,0,0.04)'
-                            : 'none',
                         transition: 'all 0.35s ease',
                     }}
                     onMouseEnter={(e) => {
                         e.currentTarget.style.borderColor =
-                            otherProject.accentColor;
+                            'var(--zy-border-hover)';
                         e.currentTarget.style.transform = 'translateY(-4px)';
-                        e.currentTarget.style.boxShadow = `0 20px 50px ${otherProject.accentColor}20`;
+                        e.currentTarget.style.boxShadow =
+                            '0 20px 50px rgba(0,0,0,0.1)';
                     }}
                     onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = isLight
-                            ? '1px solid rgba(0, 0, 0, 0.08)'
-                            : 'rgba(255, 255, 255, 0.1)';
+                        e.currentTarget.style.borderColor =
+                            'var(--zy-border-subtle)';
                         e.currentTarget.style.transform = 'translateY(0)';
-                        e.currentTarget.style.boxShadow = isLight
-                            ? '0 10px 30px rgba(0,0,0,0.04)'
-                            : 'none';
+                        e.currentTarget.style.boxShadow = 'none';
                     }}
                 >
                     <div
@@ -225,7 +210,7 @@ export default function ProjectNextTeaser({
                                     fontWeight: 800,
                                     textTransform: 'uppercase',
                                     letterSpacing: '0.12em',
-                                    color: otherProject.accentColor,
+                                    color: 'var(--zy-text-secondary)',
                                     marginBottom: '8px',
                                 }}
                             >
@@ -237,7 +222,7 @@ export default function ProjectNextTeaser({
                                         'var(--font-heading, Space Grotesk, sans-serif)',
                                     fontSize: 'clamp(24px, 3.5vw, 36px)',
                                     fontWeight: 800,
-                                    color: isLight ? '#0a0a0a' : '#ffffff',
+                                    color: 'var(--zy-text-primary)',
                                     margin: 0,
                                 }}
                             >
@@ -245,7 +230,7 @@ export default function ProjectNextTeaser({
                             </h2>
                             <p
                                 style={{
-                                    color: isLight ? '#555555' : '#888888',
+                                    color: 'var(--zy-text-secondary)',
                                     fontSize: '14px',
                                     marginTop: '6px',
                                     maxWidth: '600px',
@@ -260,8 +245,9 @@ export default function ProjectNextTeaser({
                                 width: '56px',
                                 height: '56px',
                                 borderRadius: '50%',
-                                background: `${otherProject.accentColor}20`,
-                                color: otherProject.accentColor,
+                                background: 'var(--zy-surface-2)',
+                                color: 'var(--zy-text-primary)',
+                                border: '1px solid var(--zy-border-subtle)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',

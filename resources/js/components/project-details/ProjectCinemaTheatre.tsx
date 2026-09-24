@@ -33,7 +33,8 @@ export default function ProjectCinemaTheatre({
                     transform: 'translate(-50%, -50%)',
                     width: '900px',
                     height: '500px',
-                    background: `radial-gradient(circle, ${project.accentColor}20 0%, transparent 70%)`,
+                    background:
+                        'radial-gradient(circle, var(--zy-card-bg-hover) 0%, transparent 70%)',
                     filter: 'blur(100px)',
                     pointerEvents: 'none',
                 }}
@@ -54,11 +55,11 @@ export default function ProjectCinemaTheatre({
                             fontWeight: 800,
                             letterSpacing: '0.15em',
                             textTransform: 'uppercase',
-                            color: project.accentColor,
-                            background: `${project.accentColor}12`,
+                            color: 'var(--zy-text-secondary)',
+                            background: 'var(--zy-surface-2)',
                             padding: '4px 14px',
                             borderRadius: '20px',
-                            border: `1px solid ${project.accentColor}30`,
+                            border: '1px solid var(--zy-border-subtle)',
                         }}
                     >
                         4K Walkthrough
@@ -154,7 +155,7 @@ export default function ProjectCinemaTheatre({
                         <div
                             style={{
                                 fontSize: '11px',
-                                color: project.accentColor,
+                                color: 'var(--zy-text-secondary)',
                                 fontWeight: 700,
                             }}
                         >
@@ -222,9 +223,9 @@ export default function ProjectCinemaTheatre({
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: '8px',
-                                color: project.accentColor,
+                                color: 'var(--zy-text-primary)',
                                 background: 'var(--zy-surface-1)',
-                                border: `1px solid ${project.accentColor}50`,
+                                border: '1px solid var(--zy-border-subtle)',
                                 padding: '10px 22px',
                                 borderRadius: '30px',
                                 fontSize: '13px',

@@ -19,7 +19,8 @@ export default function ProjectHeroEditorial({
                 paddingLeft: 'var(--zy-section-pad-x, 24px)',
                 paddingRight: 'var(--zy-section-pad-x, 24px)',
                 overflow: 'hidden',
-                background: `radial-gradient(ellipse 80% 50% at 50% -10%, ${project.accentColor}18 0%, transparent 80%), var(--zy-bg)`,
+                background:
+                    'radial-gradient(ellipse 80% 50% at 50% -10%, var(--zy-surface-2) 0%, transparent 80%), var(--zy-bg)',
                 borderBottom: '1px solid var(--zy-border-subtle)',
                 transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
@@ -123,9 +124,9 @@ export default function ProjectHeroEditorial({
                                     fontWeight: 800,
                                     letterSpacing: '0.14em',
                                     textTransform: 'uppercase',
-                                    color: project.accentColor,
-                                    background: `${project.accentColor}15`,
-                                    border: `1px solid ${project.accentColor}35`,
+                                    color: 'var(--zy-text-secondary)',
+                                    background: 'var(--zy-surface-2)',
+                                    border: '1px solid var(--zy-border-subtle)',
                                     padding: '5px 14px',
                                     borderRadius: '6px',
                                 }}
@@ -258,7 +259,7 @@ export default function ProjectHeroEditorial({
                                     style={{
                                         fontSize: '14px',
                                         fontWeight: 600,
-                                        color: project.accentColor,
+                                        color: 'var(--zy-text-primary)',
                                         marginTop: '3px',
                                     }}
                                 >
@@ -285,15 +286,15 @@ export default function ProjectHeroEditorial({
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '10px',
-                                    background: project.accentColor,
-                                    color: '#000000',
+                                    background: 'var(--zy-text-primary)',
+                                    color: 'var(--zy-bg)',
                                     padding: '15px 32px',
                                     borderRadius: '40px',
                                     fontWeight: 700,
                                     fontSize: '14px',
                                     textDecoration: 'none',
                                     transition: 'all 0.3s ease',
-                                    boxShadow: `0 8px 25px ${project.accentColor}35`,
+                                    boxShadow: '0 8px 25px rgba(0,0,0,0.18)',
                                 }}
                             >
                                 <span>Launch Live Prototype</span>
@@ -347,7 +348,8 @@ export default function ProjectHeroEditorial({
                             style={{
                                 position: 'absolute',
                                 inset: '-20px',
-                                background: `radial-gradient(circle, ${project.accentColor}20 0%, rgba(0,0,0,0) 70%)`,
+                                background:
+                                    'radial-gradient(circle, var(--zy-card-bg-hover) 0%, rgba(0,0,0,0) 70%)',
                                 filter: 'blur(50px)',
                                 pointerEvents: 'none',
                             }}
@@ -426,7 +428,7 @@ export default function ProjectHeroEditorial({
                                 <div
                                     style={{
                                         fontSize: '10px',
-                                        color: project.accentColor,
+                                        color: 'var(--zy-text-primary)',
                                         fontWeight: 700,
                                     }}
                                 >

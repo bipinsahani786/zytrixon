@@ -18,11 +18,15 @@ export default function ProjectMetrics({ project }: ProjectMetricsProps) {
             <div style={{ textAlign: 'center', marginBottom: '50px' }}>
                 <span
                     style={{
-                        fontSize: '12px',
-                        fontWeight: 700,
+                        fontSize: '11px',
+                        fontWeight: 800,
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: project.accentColor,
+                        color: 'var(--zy-text-secondary)',
+                        background: 'var(--zy-surface-2)',
+                        padding: '4px 14px',
+                        borderRadius: '20px',
+                        border: '1px solid var(--zy-border-subtle)',
                     }}
                 >
                     Verifiable Results
@@ -33,15 +37,15 @@ export default function ProjectMetrics({ project }: ProjectMetricsProps) {
                             'var(--font-heading, Space Grotesk, sans-serif)',
                         fontSize: 'clamp(28px, 4vw, 42px)',
                         fontWeight: 800,
-                        marginTop: '10px',
-                        color: '#ffffff',
+                        marginTop: '16px',
+                        color: 'var(--zy-text-primary)',
                     }}
                 >
                     Measurable Business Impact
                 </h2>
                 <p
                     style={{
-                        color: '#888888',
+                        color: 'var(--zy-text-secondary)',
                         fontSize: '16px',
                         maxWidth: '620px',
                         margin: '12px auto 0',
@@ -60,7 +64,7 @@ export default function ProjectMetrics({ project }: ProjectMetricsProps) {
                 }}
             >
                 {project.metrics.map((metric, idx) => (
-                    <GradientCard key={idx} themeColor={project.accentColor}>
+                    <GradientCard key={idx}>
                         <div
                             style={{ padding: '34px 26px', textAlign: 'left' }}
                         >
@@ -70,7 +74,7 @@ export default function ProjectMetrics({ project }: ProjectMetricsProps) {
                                         'var(--font-heading, Space Grotesk, sans-serif)',
                                     fontSize: 'clamp(36px, 4vw, 46px)',
                                     fontWeight: 800,
-                                    color: project.accentColor,
+                                    color: 'var(--zy-text-primary)',
                                     marginBottom: '10px',
                                     letterSpacing: '-0.02em',
                                 }}
@@ -81,7 +85,7 @@ export default function ProjectMetrics({ project }: ProjectMetricsProps) {
                                 style={{
                                     fontSize: '16px',
                                     fontWeight: 700,
-                                    color: '#ffffff',
+                                    color: 'var(--zy-text-primary)',
                                     marginBottom: '8px',
                                 }}
                             >
@@ -90,7 +94,7 @@ export default function ProjectMetrics({ project }: ProjectMetricsProps) {
                             <div
                                 style={{
                                     fontSize: '13px',
-                                    color: '#888888',
+                                    color: 'var(--zy-text-secondary)',
                                     lineHeight: 1.6,
                                 }}
                             >

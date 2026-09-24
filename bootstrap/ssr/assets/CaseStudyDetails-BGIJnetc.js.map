@@ -1,0 +1,1 @@
+{"version":3,"file":"CaseStudyDetails-BGIJnetc.js","names":[],"sources":["../../../resources/js/pages/CaseStudyDetails.tsx"],"sourcesContent":["import ProjectDetails from './ProjectDetails';\n\nexport default ProjectDetails;\n\n// Ensure CaseStudyDetails never receives a sidebar layout\n(ProjectDetails as any).layout = null;\n"],"mappings":";;AAEA,IAAA,2BAAe;AAGf,eAAwB,SAAS"}
