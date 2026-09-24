@@ -81,7 +81,7 @@
     "/build/assets/input-error-B7Zt7zmb.js"
   ],
   "resources/js/components/landing/about-section.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/clients-section.tsx": [
     "/build/assets/clients-section-BsyOTN2Z.js"
@@ -111,13 +111,13 @@
     "/build/assets/custom-cursor-s6CGr8GY.js"
   ],
   "resources/js/components/landing/grain-overlay.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/hero-section.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/industries-section.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/inner-page-hero.tsx": [
     "/build/assets/inner-page-hero-ltrNwVtl.js"
@@ -129,40 +129,40 @@
     "/build/assets/lazy-section-Bm1gTwLP.js"
   ],
   "resources/js/components/landing/marquee-strip.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/navbar.tsx": [
     "/build/assets/custom-cursor-s6CGr8GY.js"
   ],
   "resources/js/components/landing/playground-ai.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/playground-custom.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/playground-iot.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/playground-marketing.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/playground-mobile.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/playground-webapp.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/portfolio-preview.tsx": [
-    "/build/assets/portfolio-preview-CW8_Tqlh.js"
+    "/build/assets/portfolio-preview-BRUMOBDp.js"
   ],
   "resources/js/components/landing/process-section.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/services-section.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/stats-section.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/components/landing/team-section.tsx": [
     "/build/assets/team-section-C5m0NtiY.js"
@@ -204,22 +204,22 @@
     "/build/assets/password-input-CSddIxsW.js"
   ],
   "resources/js/components/project-details/ProjectBlueprintFlow.tsx": [
-    "/build/assets/ProjectDetails-Ca5Fz_oJ.js"
+    "/build/assets/ProjectDetails-CIgTCT8g.js"
   ],
   "resources/js/components/project-details/ProjectCinemaTheatre.tsx": [
-    "/build/assets/ProjectDetails-Ca5Fz_oJ.js"
+    "/build/assets/ProjectDetails-CIgTCT8g.js"
   ],
   "resources/js/components/project-details/ProjectHeroEditorial.tsx": [
-    "/build/assets/ProjectDetails-Ca5Fz_oJ.js"
+    "/build/assets/ProjectDetails-CIgTCT8g.js"
   ],
   "resources/js/components/project-details/ProjectImpactBanner.tsx": [
-    "/build/assets/ProjectDetails-Ca5Fz_oJ.js"
+    "/build/assets/ProjectDetails-CIgTCT8g.js"
   ],
   "resources/js/components/project-details/ProjectInteractiveGallery.tsx": [
-    "/build/assets/ProjectDetails-Ca5Fz_oJ.js"
+    "/build/assets/ProjectDetails-CIgTCT8g.js"
   ],
   "resources/js/components/project-details/ProjectSubNav.tsx": [
-    "/build/assets/ProjectDetails-Ca5Fz_oJ.js"
+    "/build/assets/ProjectDetails-CIgTCT8g.js"
   ],
   "resources/js/components/sections/BlogPreviewSection.tsx": [
     "/build/assets/ServiceSeoPage-DplSNCdu.js"
@@ -341,12 +341,12 @@
   "resources/js/hooks/use-current-url.ts": [],
   "resources/js/hooks/use-initials.tsx": [],
   "resources/js/hooks/use-media-query.ts": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/hooks/use-mobile-navigation.ts": [],
   "resources/js/hooks/use-mobile.tsx": [],
   "resources/js/hooks/use-mouse-position.ts": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/hooks/use-two-factor-auth.ts": [
     "/build/assets/use-two-factor-auth-D7-5703a.js"
@@ -357,7 +357,7 @@
   "resources/js/layouts/auth/auth-simple-layout.tsx": [],
   "resources/js/layouts/settings/layout.tsx": [],
   "resources/js/lib/projects-data.ts": [
-    "/build/assets/projects-data-B4c2Adyp.js"
+    "/build/assets/projects-data-DzuIp4T9.js"
   ],
   "resources/js/lib/service-data.ts": [
     "/build/assets/SecurityStandards-Bg9JXg8M.js"
@@ -376,7 +376,7 @@
     "/build/assets/Careers-Bjr9HOHc.js"
   ],
   "resources/js/pages/CaseStudyDetails.tsx": [
-    "/build/assets/CaseStudyDetails-BGIJnetc.js"
+    "/build/assets/CaseStudyDetails-DtVNBcTW.js"
   ],
   "resources/js/pages/Contact.tsx": [
     "/build/assets/Contact-M3LDZZJL.js"
@@ -391,7 +391,7 @@
     "/build/assets/LocationsIndex-DhwJr-pC.js"
   ],
   "resources/js/pages/Portfolio.tsx": [
-    "/build/assets/Portfolio-ChdOjPuN.js"
+    "/build/assets/Portfolio-B9B9CYf8.js"
   ],
   "resources/js/pages/PrivacyPolicy.tsx": [
     "/build/assets/PrivacyPolicy-C2MqLR_a.js"
@@ -400,7 +400,7 @@
     "/build/assets/Process-DSP81MLv.js"
   ],
   "resources/js/pages/ProjectDetails.tsx": [
-    "/build/assets/ProjectDetails-Ca5Fz_oJ.js"
+    "/build/assets/ProjectDetails-CIgTCT8g.js"
   ],
   "resources/js/pages/ServiceSeoPage.tsx": [
     "/build/assets/ServiceSeoPage-DplSNCdu.js"
@@ -448,7 +448,7 @@
     "/build/assets/security-DL-WyZ4N.js"
   ],
   "resources/js/pages/welcome.tsx": [
-    "/build/assets/welcome-CHI5JeOq.js"
+    "/build/assets/welcome-CuKoN2qQ.js"
   ],
   "resources/js/routes/appearance/index.ts": [],
   "resources/js/routes/index.ts": [],

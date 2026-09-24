@@ -2352,15 +2352,15 @@ var renderPage = (page) => createInertiaApp({
 			"./pages/Blog.tsx": () => import("./assets/Blog-BSCTtADK.js"),
 			"./pages/BlogDetails.tsx": () => import("./assets/BlogDetails-DisaV2GV.js"),
 			"./pages/Careers.tsx": () => import("./assets/Careers-Bjr9HOHc.js"),
-			"./pages/CaseStudyDetails.tsx": () => import("./assets/CaseStudyDetails-BGIJnetc.js"),
+			"./pages/CaseStudyDetails.tsx": () => import("./assets/CaseStudyDetails-DtVNBcTW.js"),
 			"./pages/Contact.tsx": () => import("./assets/Contact-M3LDZZJL.js"),
 			"./pages/Error.tsx": () => import("./assets/Error-BGyeejlR.js"),
 			"./pages/LocationDetails.tsx": () => import("./assets/LocationDetails-BEe4sz2l.js"),
 			"./pages/LocationsIndex.tsx": () => import("./assets/LocationsIndex-DhwJr-pC.js"),
-			"./pages/Portfolio.tsx": () => import("./assets/Portfolio-ChdOjPuN.js"),
+			"./pages/Portfolio.tsx": () => import("./assets/Portfolio-B9B9CYf8.js"),
 			"./pages/PrivacyPolicy.tsx": () => import("./assets/PrivacyPolicy-C2MqLR_a.js"),
 			"./pages/Process.tsx": () => import("./assets/Process-DSP81MLv.js"),
-			"./pages/ProjectDetails.tsx": () => import("./assets/ProjectDetails-Ca5Fz_oJ.js"),
+			"./pages/ProjectDetails.tsx": () => import("./assets/ProjectDetails-CIgTCT8g.js"),
 			"./pages/ServiceSeoPage.tsx": () => import("./assets/ServiceSeoPage-DplSNCdu.js"),
 			"./pages/ServicesIndex.tsx": () => import("./assets/ServicesIndex-CoB2y3JX.js"),
 			"./pages/Team.tsx": () => import("./assets/Team-CSx10W27.js"),
@@ -2376,7 +2376,7 @@ var renderPage = (page) => createInertiaApp({
 			"./pages/settings/appearance.tsx": () => import("./assets/appearance-J06yOClH.js"),
 			"./pages/settings/profile.tsx": () => import("./assets/profile-Bj6JC4ab.js"),
 			"./pages/settings/security.tsx": () => import("./assets/security-DL-WyZ4N.js"),
-			"./pages/welcome.tsx": () => import("./assets/welcome-CHI5JeOq.js")
+			"./pages/welcome.tsx": () => import("./assets/welcome-CuKoN2qQ.js")
 		}));
 		const defaultExport = pageModule.default;
 		if (defaultExport && defaultExport.layout === void 0) switch (true) {

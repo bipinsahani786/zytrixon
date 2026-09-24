@@ -211,7 +211,7 @@ export default function ProjectCinemaTheatre({
                                     Tech Highlights:
                                 </strong>{' '}
                                 Real-time WebSockets, Sharded Data Grid,
-                                Sub-45ms Latency
+                                High-Throughput Cloud Engine
                             </div>
                         </div>
 

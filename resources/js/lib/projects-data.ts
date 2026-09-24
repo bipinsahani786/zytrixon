@@ -83,7 +83,7 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
         accentColor: '#F97316',
         secondaryColor: '#D4AF37',
         heroImage: '/assets/projects/sk-infratech/hero-invest-right.jpg',
-        mobileImage: '/assets/projects/sk-infratech/property-deals.jpg',
+        mobileImage: '/assets/projects/sk-infratech/sk-infratech-mobile.png',
         liveUrl: 'https://skinfrareal.com/',
         githubUrl: 'https://github.com/zytrixontech/sk-infratech-preview',
         videoUrl: '/assets/videos/sk-infratech-video.mp4',

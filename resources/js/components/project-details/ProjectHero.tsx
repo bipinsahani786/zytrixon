@@ -85,33 +85,6 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             {project.shortTitle}
                         </span>
                     </nav>
-
-                    <div
-                        style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            padding: '6px 14px',
-                            borderRadius: '20px',
-                            background: 'var(--zy-surface-1)',
-                            border: '1px solid var(--zy-border-subtle)',
-                            fontSize: '12px',
-                            fontWeight: 600,
-                            color: 'var(--zy-text-primary)',
-                        }}
-                    >
-                        <span
-                            style={{
-                                width: '8px',
-                                height: '8px',
-                                borderRadius: '50%',
-                                background: '#10b981',
-                                boxShadow: '0 0 10px #10b981',
-                                display: 'inline-block',
-                            }}
-                        />
-                        Live Enterprise Deployment
-                    </div>
                 </div>
 
                 {/* Category Tag */}
@@ -370,62 +343,6 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                                 display: 'block',
                             }}
                         />
-
-                        {/* Floating SLA Badge */}
-                        <div
-                            style={{
-                                position: 'absolute',
-                                bottom: '24px',
-                                left: '24px',
-                                background: 'var(--zy-glass-bg)',
-                                backdropFilter: 'blur(16px)',
-                                border: '1px solid var(--zy-glass-border)',
-                                borderRadius: '14px',
-                                padding: '14px 22px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '14px',
-                                boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                            }}
-                        >
-                            <div
-                                style={{
-                                    width: '40px',
-                                    height: '40px',
-                                    borderRadius: '10px',
-                                    background: 'var(--zy-surface-2)',
-                                    color: 'var(--zy-text-primary)',
-                                    border: '1px solid var(--zy-border-subtle)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontSize: '18px',
-                                }}
-                            >
-                                ⚡
-                            </div>
-                            <div>
-                                <div
-                                    style={{
-                                        fontSize: '11px',
-                                        color: 'var(--zy-text-muted)',
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '0.08em',
-                                    }}
-                                >
-                                    Performance SLA
-                                </div>
-                                <div
-                                    style={{
-                                        fontSize: '14px',
-                                        fontWeight: 700,
-                                        color: 'var(--zy-text-primary)',
-                                    }}
-                                >
-                                    Sub-45ms P99 API Response
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
