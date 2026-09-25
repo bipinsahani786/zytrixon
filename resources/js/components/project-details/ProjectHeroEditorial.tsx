@@ -488,12 +488,12 @@ export default function ProjectHeroEditorial({
                                 zIndex: 3,
                             }}
                             onMouseEnter={(e) =>
-                                (e.currentTarget.style.transform =
-                                    'rotate(0deg) scale(1.03)')
+                            (e.currentTarget.style.transform =
+                                'rotate(0deg) scale(1.03)')
                             }
                             onMouseLeave={(e) =>
-                                (e.currentTarget.style.transform =
-                                    'rotate(-2.5deg) scale(1)')
+                            (e.currentTarget.style.transform =
+                                'rotate(-2.5deg) scale(1)')
                             }
                         >
                             {/* Phone Notch */}

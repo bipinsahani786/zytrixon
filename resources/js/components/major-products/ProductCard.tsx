@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from '@inertiajs/react';
 import { useTheme } from '@/components/landing/theme-provider';
 
 export interface ProductCardProps {
@@ -12,6 +13,7 @@ export interface ProductCardProps {
 }
 
 export default function ProductCard({
+    id,
     title,
     description,
     badge,
@@ -43,7 +45,8 @@ export default function ProductCard({
             }}
         >
             {/* Big Image Showcase Area — Aspect ratio matched to 1024x479 for minimal vertical height */}
-            <div
+            <Link
+                href={`/products/${id}`}
                 className="product-thumb-wrapper"
                 style={{
                     position: 'relative',
@@ -57,6 +60,7 @@ export default function ProductCard({
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    textDecoration: 'none',
                 }}
             >
                 {!imageError && image ? (
@@ -106,7 +110,7 @@ export default function ProductCard({
                         </span>
                     </div>
                 )}
-            </div>
+            </Link>
 
             {/* Content Area — Compact & Space-Efficient */}
             <div
@@ -126,7 +130,8 @@ export default function ProductCard({
                         marginBottom: '6px',
                     }}
                 >
-                    <h3
+                    <Link
+                        href={`/products/${id}`}
                         style={{
                             fontFamily: 'var(--font-heading)',
                             fontSize: '17px',
@@ -135,10 +140,11 @@ export default function ProductCard({
                             lineHeight: 1.2,
                             letterSpacing: '-0.01em',
                             margin: 0,
+                            textDecoration: 'none',
                         }}
                     >
                         {title}
-                    </h3>
+                    </Link>
 
                     <span
                         style={{
@@ -200,10 +206,8 @@ export default function ProductCard({
                         gap: '8px',
                     }}
                 >
-                    <a
-                        href={waLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Link
+                        href={`/products/${id}`}
                         className="product-demo-btn"
                         style={{
                             display: 'inline-flex',
@@ -220,7 +224,7 @@ export default function ProductCard({
                             transition: 'all 0.25s ease',
                         }}
                     >
-                        <span>Schedule Demo</span>
+                        <span>View Details</span>
                         <svg
                             width="11"
                             height="11"
@@ -234,10 +238,12 @@ export default function ProductCard({
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
-                    </a>
+                    </Link>
 
                     <a
-                        href="/contact"
+                        href={waLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style={{
                             fontSize: '11.5px',
                             fontWeight: 600,
@@ -246,7 +252,7 @@ export default function ProductCard({
                             transition: 'color 0.2s ease',
                         }}
                     >
-                        Inquire Now ↗
+                        Live Demo ↗
                     </a>
                 </div>
             </div>

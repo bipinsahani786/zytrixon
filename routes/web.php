@@ -33,7 +33,48 @@ Route::inertia('/portfolio', 'Portfolio', [
 
 Route::get('/portfolio/{slug}', [CaseStudyController::class, 'show'])->name('portfolio.show');
 Route::get('/projects/{slug}', function ($slug) {
+    if (in_array($slug, ['mobile-crm', 'grocery-mart'])) {
+        return redirect()->route('products.show', ['slug' => $slug]);
+    }
+
     return redirect()->route('portfolio.show', ['slug' => $slug]);
+});
+
+Route::get('/products/{slug}', function (string $slug) {
+    $product = match ($slug) {
+        'mobile-crm' => [
+            'title' => 'Mobile CRM — Intelligent Retail Store Billing & Party Ledger Platform',
+            'desc' => 'Manage Your Retail Store Intelligently — Unified party billing, custom GST invoicing, party ledger payments, and customer accounts.',
+            'image' => '/assets/products/mobile-crm.png',
+        ],
+        'grocery-mart' => [
+            'title' => 'Grocery Mart — Intelligent Retail Dashboard & Supermarket Cloud POS',
+            'desc' => 'The intelligent retail dashboard. Access real-time billing logs, analytics, and stock records with SSL encryption and high-speed checkout.',
+            'image' => '/assets/products/grocery-mart.png',
+        ],
+        default => [
+            'title' => ucwords(str_replace('-', ' ', $slug)),
+            'desc' => 'Explore our enterprise proprietary products delivered by Zytrixon Tech.',
+            'image' => '/favicon.svg',
+        ],
+    };
+
+    return inertia('ProductDetails', [
+        'slug' => $slug,
+        'seo' => [
+            'title' => $product['title'].' | Zytrixon Tech Products',
+            'description' => $product['desc'],
+            'image' => url($product['image']),
+        ],
+    ]);
+})->name('products.show');
+
+Route::get('/mobile-crm', function () {
+    return redirect()->route('products.show', ['slug' => 'mobile-crm']);
+});
+
+Route::get('/grocery-mart', function () {
+    return redirect()->route('products.show', ['slug' => 'grocery-mart']);
 });
 
 Route::inertia('/contact', 'Contact', [

@@ -99,9 +99,12 @@ export default function SeoHead({ seo, service, location }: any) {
             <meta name="twitter:description" content={description} />
 
             {/* JSON-LD for AI Agents and Google SEO */}
-            <script type="application/ld+json">
-                {JSON.stringify(schemaOrgJSONLD)}
-            </script>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(schemaOrgJSONLD),
+                }}
+            />
         </Head>
     );
 }
