@@ -19,6 +19,7 @@ import AboutTechConviction from '@/components/about/AboutTechConviction';
 import AboutDeliveryLifecycle from '@/components/about/AboutDeliveryLifecycle';
 import AboutSecurityGovernance from '@/components/about/AboutSecurityGovernance';
 import AboutInnovationLab from '@/components/about/AboutInnovationLab';
+import MajorProductsSection from '@/components/major-products/MajorProductsSection';
 import AboutGlobalPresence from '@/components/about/AboutGlobalPresence';
 import AboutClientTrust from '@/components/about/AboutClientTrust';
 import AboutSocialImpact from '@/components/about/AboutSocialImpact';
@@ -96,6 +97,11 @@ export default function About() {
                 {/* 11. Innovation & R&D Lab */}
                 <LazySection>
                     <AboutInnovationLab />
+                </LazySection>
+
+                {/* 11b. Proprietary Platforms // Our Major Products */}
+                <LazySection>
+                    <MajorProductsSection />
                 </LazySection>
 
                 {/* 12. Global Footprint & Dual Hubs */}
