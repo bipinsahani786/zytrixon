@@ -81,7 +81,12 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
                             Portfolio
                         </Link>
                         <span>/</span>
-                        <span style={{ color: 'var(--zy-text-primary)', fontWeight: 600 }}>
+                        <span
+                            style={{
+                                color: 'var(--zy-text-primary)',
+                                fontWeight: 600,
+                            }}
+                        >
                             {project.shortTitle}
                         </span>
                     </nav>

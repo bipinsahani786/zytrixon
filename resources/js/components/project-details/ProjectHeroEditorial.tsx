@@ -252,6 +252,40 @@ export default function ProjectHeroEditorial({
                                 flexWrap: 'wrap',
                             }}
                         >
+                            {project.playStoreUrl ? (
+                                <a
+                                    href={project.playStoreUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '10px',
+                                        background:
+                                            'linear-gradient(135deg, #059669 0%, #10B981 100%)',
+                                        color: '#ffffff',
+                                        padding: '15px 30px',
+                                        borderRadius: '40px',
+                                        fontWeight: 700,
+                                        fontSize: '14px',
+                                        textDecoration: 'none',
+                                        transition: 'all 0.3s ease',
+                                        boxShadow:
+                                            '0 8px 25px rgba(16,185,129,0.35)',
+                                    }}
+                                >
+                                    <svg
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M3.609 1.814L13.793 12 3.61 22.186c-.368-.31-.61-.795-.61-1.393V3.207c0-.598.242-1.083.61-1.393zm11.59 11.59l2.42 2.42-12.784 7.378 10.364-9.798zm0-2.808L4.835.798l12.784 7.378-2.42 2.42zm1.414 1.404l3.523 2.034c.828.478.828 1.258 0 1.736l-3.523 2.034-2.12-2.12 2.12-2.12z" />
+                                    </svg>
+                                    <span>Get on Google Play</span>
+                                </a>
+                            ) : null}
+
                             <a
                                 href={project.liveUrl}
                                 target="_blank"
@@ -260,18 +294,29 @@ export default function ProjectHeroEditorial({
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '10px',
-                                    background: 'var(--zy-text-primary)',
-                                    color: 'var(--zy-bg)',
+                                    background: project.playStoreUrl
+                                        ? 'var(--zy-surface-2)'
+                                        : 'var(--zy-text-primary)',
+                                    color: project.playStoreUrl
+                                        ? 'var(--zy-text-primary)'
+                                        : 'var(--zy-bg)',
                                     padding: '15px 32px',
                                     borderRadius: '40px',
                                     fontWeight: 700,
                                     fontSize: '14px',
                                     textDecoration: 'none',
                                     transition: 'all 0.3s ease',
+                                    border: project.playStoreUrl
+                                        ? '1px solid var(--zy-border-subtle)'
+                                        : 'none',
                                     boxShadow: '0 8px 25px rgba(0,0,0,0.18)',
                                 }}
                             >
-                                <span>Launch Live Prototype</span>
+                                <span>
+                                    {project.playStoreUrl
+                                        ? 'Visit Website'
+                                        : 'Launch Live Prototype'}
+                                </span>
                                 <svg
                                     width="15"
                                     height="15"
@@ -286,32 +331,35 @@ export default function ProjectHeroEditorial({
                                 </svg>
                             </a>
 
-                            <a
-                                href="#theatre"
-                                style={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    gap: '8px',
-                                    background: 'var(--zy-surface-2)',
-                                    color: 'var(--zy-text-primary)',
-                                    padding: '15px 26px',
-                                    borderRadius: '40px',
-                                    fontWeight: 600,
-                                    fontSize: '14px',
-                                    textDecoration: 'none',
-                                    border: '1px solid var(--zy-border-subtle)',
-                                }}
-                            >
-                                <svg
-                                    width="15"
-                                    height="15"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <polygon points="5 3 19 12 5 21 5 3" />
-                                </svg>
-                                <span>Watch Film</span>
-                            </a>
+                            {project.videoUrl &&
+                                project.videoUrl.trim() !== '' && (
+                                    <a
+                                        href="#theatre"
+                                        style={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '8px',
+                                            background: 'var(--zy-surface-2)',
+                                            color: 'var(--zy-text-primary)',
+                                            padding: '15px 26px',
+                                            borderRadius: '40px',
+                                            fontWeight: 600,
+                                            fontSize: '14px',
+                                            textDecoration: 'none',
+                                            border: '1px solid var(--zy-border-subtle)',
+                                        }}
+                                    >
+                                        <svg
+                                            width="15"
+                                            height="15"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                        >
+                                            <polygon points="5 3 19 12 5 21 5 3" />
+                                        </svg>
+                                        <span>Watch Film</span>
+                                    </a>
+                                )}
                         </div>
                     </div>
 
@@ -416,8 +464,8 @@ export default function ProjectHeroEditorial({
                                 alt={project.title}
                                 style={{
                                     width: '100%',
-                                    maxHeight: '420px',
-                                    objectFit: 'cover',
+                                    height: 'auto',
+                                    objectFit: 'contain',
                                     display: 'block',
                                 }}
                             />

@@ -84,7 +84,12 @@ export default function ProjectTechStack({ project }: ProjectTechStackProps) {
                         }}
                     >
                         <span>{tech.name}</span>
-                        <span style={{ color: 'var(--zy-text-secondary)', fontSize: '12px' }}>
+                        <span
+                            style={{
+                                color: 'var(--zy-text-secondary)',
+                                fontSize: '12px',
+                            }}
+                        >
                             • {tech.category}
                         </span>
                     </div>

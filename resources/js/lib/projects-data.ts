@@ -46,6 +46,7 @@ export interface ProjectItem {
     heroImage: string;
     mobileImage: string;
     liveUrl: string;
+    playStoreUrl?: string;
     githubUrl?: string;
     videoUrl?: string;
     videoPoster?: string;
@@ -68,6 +69,621 @@ export interface ProjectItem {
 }
 
 export const DUMMY_PROJECTS: ProjectItem[] = [
+    {
+        id: 'hostel-erp',
+        slug: 'hostel-erp',
+        title: 'HostelERP — Campus & Hostel Facility Management Software',
+        shortTitle: 'HostelERP',
+        category:
+            'Campus & Hostel ERP • Room Allocation, Billing & Student Portals',
+        tagline:
+            'Hostel ERP software made simple! Easily manage rooms, students, and facilities in one place. Save time, reduce errors, and run your hostel efficiently.',
+        client: 'HostelERP (HostelMate)',
+        industry: 'Education Technology & Hostel Management Software',
+        year: '2025 - 2026',
+        duration: '1 Month',
+        architecture: 'Cloud ERP Architecture with Student & Admin Portals',
+        accentColor: '#4338CA',
+        secondaryColor: '#EAB308',
+        heroImage: '/assets/projects/hostel-erp/hostel-hero-landscape.png',
+        mobileImage: '/assets/projects/hostel-erp/hostel-mobile.png',
+        liveUrl: 'https://hostelerp.zytrixontech.com/',
+        videoUrl: '',
+        videoPoster: '/assets/projects/hostel-erp/hostel-hero-landscape.png',
+        summary:
+            'HostelERP is a comprehensive campus and hostel management software suite engineered to automate resident room allocation, student records, fee collection, and maintenance workflows. Serving universities, colleges, and private student residencies, it centralizes resident check-ins, automated billing cycles, room occupancy analytics, and digital grievance resolution into an intuitive unified dashboard.',
+        challenge:
+            'Hostel wardens and campus administrators struggle with manual register books, lost paper complaints, delayed fee reconciliations, double-allocated rooms during semester intakes, and zero real-time visibility into bed occupancy or maintenance turnaround.',
+        challengePoints: [
+            'Manual Room Allocation Delays: Paper-based room assignments during peak admission intake causing confusion, double-bookings, and long student wait times.',
+            'Fee Collection Bottlenecks: Unreconciled manual fee slips leading to recurring payment delays and administrative accounting overhead.',
+            'Untracked Maintenance Complaints: Paper maintenance registers resulting in unresolved room repairs, plumbing issues, and frustrated residents.',
+            'Absence of Unified Occupancy Metrics: Wardens lacking instant digital visibility into current vacancy, revenue per block, and student check-ins.',
+        ],
+        solution:
+            'Zytrixon developed an all-in-one cloud ERP system featuring an automated room allocation matrix, digital student profiles with attendance logs, automated fee billing with instant invoice generation, and a responsive student ticketing portal.',
+        solutionPoints: [
+            'Automated Room & Bed Matrix: Visual room occupancy dashboard with real-time status tracking across single, double, and dorm rooms.',
+            'Digital Student Portals & Attendance: Comprehensive resident profiles, attendance tracking, and automated guardian notifications.',
+            'Automated Fee Billing & Invoicing: Scheduled monthly and semester billing cycles reducing collection delays by 70% with online payment tracking.',
+            'Maintenance Request Routing: Real-time ticket dispatch for room repairs, electrician/plumber logs, and SLA resolution tracking.',
+        ],
+        metrics: [
+            {
+                value: '70%',
+                label: 'Fewer Payment Delays',
+                desc: 'Automated billing system and payment reminders cut payment delays drastically.',
+            },
+            {
+                value: '85%',
+                label: 'Room Occupancy',
+                desc: 'Optimized bed utilization and live vacancy tracking across all wings.',
+            },
+            {
+                value: '92%',
+                label: 'Maintenance Efficiency',
+                desc: 'Rapid resolution of student complaints and facility repair tickets.',
+            },
+            {
+                value: '24/7',
+                label: 'Student Portal Access',
+                desc: 'Dedicated self-service portal for check-ins, fee dues, and service requests.',
+            },
+        ],
+        techStack: [
+            { name: 'PHP / Laravel', category: 'Backend Engine' },
+            { name: 'TailwindCSS', category: 'Design System & UI' },
+            { name: 'MySQL', category: 'Database & Records' },
+            { name: 'REST APIs', category: 'Student Portal Integration' },
+        ],
+        screenshots: [
+            {
+                title: 'HostelERP Full Platform Architecture & Management Suite',
+                category: 'Dashboard',
+                image: '/assets/projects/hostel-erp/screencapture-hostelerp-zytrixontech-2026-09-25-14_39_44.png',
+                description:
+                    'High-resolution full-page overview of the HostelERP platform, covering operational dashboard statistics, room and student management modules, automated fee billing, client feedback, and flexible pricing tiers.',
+            },
+        ],
+        features: [
+            {
+                title: 'Room & Bed Management',
+                desc: 'Efficiently manage room allocations, track live vacancies, and schedule maintenance with real-time updates.',
+                icon: '🏢',
+            },
+            {
+                title: 'Student Management & Profiles',
+                desc: 'Maintain comprehensive digital student profiles, track attendance, and manage student complaints all in one place.',
+                icon: '🎓',
+            },
+            {
+                title: 'Automated Billing & Invoices',
+                desc: 'Automate recurring hostel billing cycles, track pending fee balances, and generate printable receipts instantly.',
+                icon: '💳',
+            },
+            {
+                title: 'Maintenance Ticket Dispatch',
+                desc: 'Students log room repairs online while facility staff track resolution progress and maintenance efficiency.',
+                icon: '🔧',
+            },
+            {
+                title: 'Reports & Revenue Analytics',
+                desc: 'Detailed occupancy analytics, monthly collection breakdown, and warden administrative dashboards.',
+                icon: '📊',
+            },
+            {
+                title: 'Multi-Tier Pricing & Scaling',
+                desc: 'Flexible plans supporting Basic (up to 50 residents), Professional (150 residents), and Enterprise (unlimited).',
+                icon: '⚡',
+            },
+        ],
+        demoCredentials: {
+            email: 'warden@hostelmate.com',
+            pass: 'Hostel#Admin2026',
+            role: 'Chief Hostel Warden / Administrator',
+        },
+        architectureFlow: [
+            {
+                step: '01',
+                title: 'Student Admission & KYC',
+                tech: 'Student Registry Engine',
+                detail: 'Admin registers resident, uploads student ID & documents, and verifies hostel eligibility.',
+            },
+            {
+                step: '02',
+                title: 'Visual Room Allocation',
+                tech: 'Bed Allocation Matrix',
+                detail: 'One-click assignment of room and bed numbers with automatic vacancy index updates.',
+            },
+            {
+                step: '03',
+                title: 'Automated Invoicing & Dues',
+                tech: 'Billing Automation',
+                detail: 'System generates scheduled hostel fee dues, meal charges, and sends payment reminders.',
+            },
+            {
+                step: '04',
+                title: 'Facility & Attendance Ops',
+                tech: 'Maintenance & Attendance Tracker',
+                detail: 'Real-time daily roll-call check-in and instantaneous routing of maintenance repair tickets.',
+            },
+        ],
+    },
+    {
+        id: 'glowsuite',
+        slug: 'glowsuite',
+        title: 'GlowSuite — Luxury Salon, Spa, Token-Based Booking & Bridal Rentals',
+        shortTitle: 'GlowSuite',
+        category:
+            'Luxury Salon & Spa SaaS • Token Booking, Rentals & E-Commerce',
+        tagline:
+            'Where Beauty Meets Luxury — Experience luxury treatments, expert styling, and our seamless token-based booking system designed for your convenience.',
+        client: 'GlowSuite Luxury Salon & Spa',
+        industry: 'Beauty, Wellness, Salon Management & Bridal Rentals',
+        year: '2025 - 2026',
+        duration: '1 Month',
+        architecture: 'Laravel 11 & Alpine.js Architecture',
+        accentColor: '#2D6A4F',
+        secondaryColor: '#95D5B2',
+        heroImage: '/assets/projects/glowsuite/glowsuite-hero-landscape.png',
+        mobileImage: '/assets/projects/glowsuite/glowsuite-mobile.png',
+        liveUrl: 'https://beauty.zytrixontech.com/',
+        videoUrl: '',
+        videoPoster: '/assets/projects/glowsuite/glowsuite-hero-landscape.png',
+        summary:
+            'GlowSuite is an integrated luxury salon and wellness web suite operating across 5 flagship branches with over 2,800 happy clients. Engineered to eliminate physical waiting lines, GlowSuite combines a real-time token-based appointment queue with signature hair and skin services, pre-curated bridal packages, an online beauty cosmeceuticals shop, designer Kundan & Polki jewellery rentals, and multi-day outstation event crew dispatch.',
+        challenge:
+            'Premium salons face major operational friction: chaotic weekend queues with frustrated walk-ins, untracked appointment cancellations, manual bridal consultation follow-ups, fragmented retail product checkout, and complex deposit/return management for high-value bridal jewellery rentals.',
+        challengePoints: [
+            'Waiting Room Bottlenecks & No-Shows: Lack of live queue visibility leading to crowded waiting areas and unpredictable service turnaround.',
+            'Complex Multi-Day Wedding & Bridal Bookings: Difficulty managing crew travel, outstation destination dates, and 30% advance deposit collections.',
+            'High-Value Jewellery Rental Tracking: Handling authentic Polki and Kundan bridal jewelry rentals with refundable security deposits and condition audits.',
+            "Siloed Retail & In-Salon Treatments: Inability for clients to seamlessly purchase aftercare products (e.g. L'Oréal Keratin shampoo, Moroccan Argan oil) alongside appointment bookings.",
+        ],
+        solution:
+            'Zytrixon engineered an all-in-one salon experience platform powered by Laravel 11 and Alpine.js. The solution introduces a transparent 4-step token queue ("Book Slot -> Get Token -> Track Live -> Arrive"), an e-commerce cart for professional hair and skincare lines, a designer jewellery rental vault with automated deposit calculations, and an interactive outstation event quote calculator.',
+        solutionPoints: [
+            'Live Token-Based Booking Engine: Clients pick their desired service, receive an instant digital token number, and track live salon queue status before arriving.',
+            'Curated Bridal & Signature Packages: Instant discovery and booking for packages like Bridal Bliss (₹25,999), Glow Up Weekend (₹4,999), and Party Ready (₹6,999).',
+            'Designer Jewellery Rental Vault: Browse authentic Kundan, Polki, and Temple gold sets with transparent daily rental rates and automated refundable security deposits.',
+            'Multi-Day Outstation Crew Dispatch: Dynamic calculator for wedding gala events with date spanning, venue address capture, and upfront 30% advance reservations.',
+            'Integrated Beauty Store: Full cart and checkout experience for premium salon products including keratin treatments, Moroccan argan oil, and vitamin C serums.',
+        ],
+        metrics: [
+            {
+                value: '2,800+',
+                label: 'Happy Clients',
+                desc: 'Satisfied clients served across 5 flagship salon & spa branches.',
+            },
+            {
+                value: '4.9★',
+                label: 'Client Rating',
+                desc: 'Exceptional client satisfaction across hair, makeup & bridal care.',
+            },
+            {
+                value: 'Zero',
+                label: 'Wait-Time Friction',
+                desc: 'Transparent 4-step digital token booking eliminating lobby congestion.',
+            },
+            {
+                value: '100%',
+                label: 'Security Refund',
+                desc: 'Guaranteed refundable deposit processing for designer bridal jewellery.',
+            },
+        ],
+        techStack: [
+            { name: 'Laravel 11', category: 'Backend Engine' },
+            { name: 'Alpine.js', category: 'Reactive UI & State' },
+            { name: 'TailwindCSS', category: 'Design System & Theming' },
+            { name: 'MySQL', category: 'Database & Relational Ledgers' },
+        ],
+        screenshots: [
+            {
+                title: 'GlowSuite Full Luxury Platform & Live Token Booking Architecture',
+                category: 'Dashboard',
+                image: '/assets/projects/glowsuite/screencapture-beauty-zytrixontech-2026-09-25-14_23_31.png',
+                description:
+                    'High-resolution full-page capture of the GlowSuite luxury salon suite, showcasing live token booking, signature salon services, bridal packages, designer jewellery rentals, and beauty shop.',
+            },
+        ],
+        features: [
+            {
+                title: 'Live Token System',
+                desc: 'No more waiting in salon lobbies. Book a slot, receive a digital token, and track live queue progress before arriving.',
+                icon: '🎫',
+            },
+            {
+                title: 'Signature Treatments',
+                desc: "Precision haircuts (₹599), Global Hair Color (₹3,999), and Brazilian Keratin Smoothening (₹5,999) with premium L'Oréal & Schwarzkopf products.",
+                icon: '💇‍♀️',
+            },
+            {
+                title: 'Bridal & Party Packages',
+                desc: 'Comprehensive beauty bundles including Bridal Bliss (₹25,999), Party Ready (₹6,999), and Glow Up Weekend (₹4,999).',
+                icon: '✨',
+            },
+            {
+                title: 'Designer Jewellery Rentals',
+                desc: 'Rent authentic Kundan, Polki diamond choker, and Temple gold sets for weddings with full refundable security deposit protection.',
+                icon: '💎',
+            },
+            {
+                title: 'Multi-Day Event Crew Dispatch',
+                desc: 'Book traveling squads of master artists for weddings and outstation destination galas with custom multi-day quote estimation.',
+                icon: '👑',
+            },
+            {
+                title: 'Curated Beauty Store',
+                desc: 'Shop favorite in-salon hair and skincare essentials like Moroccan Argan Oil and Vitamin C Serum with seamless cart checkout.',
+                icon: '🛍️',
+            },
+        ],
+        demoCredentials: {
+            email: 'guest@glowsuite.com',
+            pass: 'Glow#Luxury2026',
+            role: 'Salon Client / Appointment Admin',
+        },
+        architectureFlow: [
+            {
+                step: '01',
+                title: 'Service & Slot Selection',
+                tech: 'Alpine.js Reactive UI',
+                detail: 'Client selects treatment (hair, spa, bridal), picks branch, and chooses preferred timing.',
+            },
+            {
+                step: '02',
+                title: 'Token Queue Allocation',
+                tech: 'Laravel Booking Engine',
+                detail: 'System assigns a real-time digital token number linked to the salon stylist roster.',
+            },
+            {
+                step: '03',
+                title: 'Live Queue Tracking',
+                tech: 'Dynamic Status Polling',
+                detail: 'Client tracks queue position in real-time, arriving at the branch precisely when their turn is up.',
+            },
+            {
+                step: '04',
+                title: 'Checkout & Aftercare Shop',
+                tech: 'E-Commerce Cart',
+                detail: 'Integrated settlement with service receipt, loyalty points accrual, and home care product dispatch.',
+            },
+        ],
+    },
+    {
+        id: 'jmd-trucks',
+        slug: 'jmd-trucks',
+        title: 'JMD Truck Management — Fleet Intelligence & Logistics Billing Platform',
+        shortTitle: 'JMD Truck Management',
+        category: 'Fleet Logistics • Dispatch, Driver Wallets & Bilty Billing',
+        tagline:
+            'Fleet Intelligence — Smart Logistics. Automate dispatch, driver fuel/toll wallets, and multi-party bilty billing to maximize your fleet profit.',
+        client: 'JMD Truck Management',
+        industry: 'Fleet Logistics & Transport Network Management',
+        year: '2025 - 2026',
+        duration: '20 Days',
+        architecture: 'Laravel 11 High-Speed Architecture',
+        accentColor: '#4F46E5',
+        secondaryColor: '#06B6D4',
+        heroImage: '/assets/projects/jmd-trucks/jmd-hero-landscape.png',
+        mobileImage: '/assets/projects/jmd-trucks/jmd-mobile.png',
+        liveUrl: 'https://truckdriving.zytrixontech.com/',
+        videoUrl: '',
+        videoPoster: '/assets/projects/jmd-trucks/jmd-hero-landscape.png',
+        summary:
+            'JMD Truck Management is a next-generation logistics and fleet intelligence platform engineered for transport business owners. Built to eliminate paper bilty friction, it unifies live trip dispatch, digital driver fuel/toll wallets, automated LR generation, multi-party ledger settlements, and real-time per-trip profit margin analytics into a streamlined command center.',
+        challenge:
+            'Transport fleet owners face heavy operational chaos: late-night cash advance calls from drivers for fuel and tolls, lost paper receipts, dispute-prone multi-broker bilty invoicing, delayed POD verification, and zero clear visibility into actual trip-wise profit margins.',
+        challengePoints: [
+            'Driver Cash Requests & Toll Leakage: Constant 2 AM calls for fuel advances, lack of expense tracking, and missing cash receipts.',
+            'Complex Multi-Party Bilty Billing: Handling trips with multiple brokers, consignors, and automated ledger entries without invoice delays.',
+            'POD & Settlement Bottlenecks: Delayed proof-of-delivery submissions dragging out freight payment recovery by weeks.',
+            'Hidden Route Losses: Fleet owners unable to compare vehicle mileage, route tolls, and driver efficiency to identify true trip profitability.',
+        ],
+        solution:
+            'Zytrixon architected a comprehensive Laravel-powered fleet intelligence portal enabling one-click trip creation, instant digital driver wallet disbursements, real-time receipt uploads, automated POD multi-party bilty generation, and live dispatch command visibility.',
+        solutionPoints: [
+            'Digital Driver Wallets: Issue initial advances directly to driver wallets for fuel, tolls, and maintenance with instant balance & expense tracking.',
+            'Multi-Party Bilty Billing: Automated generation of accurate, GST-compliant invoices and ledger entries across multiple brokers upon delivery.',
+            'Live Dispatch Command Center: Complete operational visibility over active trips, delay alerts, vehicle telematics, and status tracking.',
+            'Trip Profit Analytics: Granular margin calculation factoring driver advances, fuel receipts, toll logs, and broker commissions.',
+        ],
+        metrics: [
+            {
+                value: '10k+',
+                label: 'Active Trucks',
+                desc: 'Powering fleet operations across high-density Indian transport corridors.',
+            },
+            {
+                value: '₹50Cr+',
+                label: 'Processed Monthly',
+                desc: 'Secure monthly logistics freight and driver wallet transactions.',
+            },
+            {
+                value: '99.9%',
+                label: 'Data Accuracy',
+                desc: 'Zero bilty error rate with automated multi-party ledger generation.',
+            },
+            {
+                value: '20 Days',
+                label: 'Rapid Delivery',
+                desc: 'Engineered and deployed in record time using Laravel architecture.',
+            },
+        ],
+        techStack: [
+            { name: 'Laravel 11', category: 'Backend Engine' },
+            { name: 'MySQL Enterprise', category: 'Database & Ledgers' },
+            { name: 'Blade & TailwindCSS', category: 'Frontend UI' },
+            { name: 'Redis Cache', category: 'High-Concurrency Queue' },
+        ],
+        screenshots: [
+            {
+                title: 'Fleet Intelligence & Smart Logistics Full Platform',
+                category: 'Dashboard',
+                image: '/assets/projects/jmd-trucks/long1.png',
+                description:
+                    'Complete high-resolution layout of the JMD Truck Management platform from trip dispatch and digital driver wallets to multi-party bilty settlement.',
+            },
+        ],
+        features: [
+            {
+                title: 'Digital Driver Wallets',
+                desc: 'Give drivers a digital wallet for fuels, tolls, and maintenance. Track balances & expenses instantly with zero late-night friction.',
+                icon: '💳',
+            },
+            {
+                title: 'Trip Profit Center',
+                desc: 'Deep analytics for every trip. Compare routes, drivers, and vehicles to find your true net profit margins.',
+                icon: '📈',
+            },
+            {
+                title: 'Multi-Party Bilty Billing',
+                desc: 'Complex bilty handling made easy. Manage multiple parties and brokers with automated ledger entries per trip.',
+                icon: '📑',
+            },
+            {
+                title: 'Live Command Center',
+                desc: 'Complete visibility over active trips, delay warnings, pending invoices, and system status across your entire fleet.',
+                icon: '🚚',
+            },
+        ],
+        demoCredentials: {
+            email: 'support@jmdtrucks.com',
+            pass: 'JMD#Fleet2026',
+            role: 'Fleet Operations Director',
+        },
+        architectureFlow: [
+            {
+                step: '01',
+                title: 'Trip Creation & LR',
+                tech: 'Laravel Core',
+                detail: 'Enter LR details, assign truck & driver, and issue initial advance to driver wallet.',
+            },
+            {
+                step: '02',
+                title: 'On-Route Expense Tracking',
+                tech: 'REST Webhook API',
+                detail: 'Drivers upload fuel and toll receipts in real-time, deducting directly from digital balance.',
+            },
+            {
+                step: '03',
+                title: 'POD Verification & Bilty',
+                tech: 'Automated Billing Engine',
+                detail: 'Proof-of-delivery instant capture triggers multi-party invoice generation.',
+            },
+            {
+                step: '04',
+                title: 'Ledger Settlement & Profit',
+                tech: 'Financial Analytics',
+                detail: 'Automatic ledger balance reconciliation and per-trip net margin calculation.',
+            },
+        ],
+    },
+    {
+        id: 'billixa-bill',
+        slug: 'billixa-bill',
+        title: 'BillixaBill Restaurant POS Software & Android App — QR Menu, KOT & Cloud Billing',
+        shortTitle: 'BillixaBill',
+        category: 'Restaurant POS & Android App • QR Menus, KOT & Billing',
+        tagline:
+            "Take Control of Your Restaurant — India's simple restaurant POS software with contactless QR code menus, KOT, table management, billing, and Razorpay/Stripe payment integration.",
+        client: 'BillixaBill',
+        industry: 'Restaurant POS Software & Android Mobile Solutions',
+        year: '2025 - 2026',
+        duration: '1.5 Months',
+        architecture: 'Laravel 11, Livewire & Android Cloud POS',
+        accentColor: '#2563EB',
+        secondaryColor: '#10B981',
+        heroImage: '/assets/projects/billixa-bill/billixa-hero-landscape.png',
+        mobileImage: '/assets/projects/billixa-bill/billixa-mobile.png',
+        liveUrl: 'https://billixabill.com/',
+        playStoreUrl:
+            'https://play.google.com/store/apps/details?id=com.rajan1.billixabill',
+        videoUrl: '',
+        videoPoster: '/assets/projects/billixa-bill/billixa-hero-landscape.png',
+        summary:
+            'BillixaBill is an all-in-one restaurant POS software and Android mobile application engineered for food outlets, cafes, and multi-table dining establishments. Powered by a robust Laravel cloud backend and native Android app on Google Play, BillixaBill unifies contactless QR menu ordering, kitchen order tickets (KOT), interactive floor plans, staff role management, inventory tracking, and payment gateways into a high-speed operating system.',
+        challenge:
+            'Restaurant and cafe owners face daily operational bottlenecks: misplaced handwritten paper KOTs, delayed table turnover during peak rush hours, cashier billing confusion, untracked inventory spoilage, and lack of unified mobile visibility into daily sales.',
+        challengePoints: [
+            'Lost & Delayed KOTs: Paper slips getting lost between waitstaff and kitchen stations leading to customer order complaints.',
+            'Table & Floor Plan Chaos: Inability to track table availability, active dining orders, and reservations across multiple dining floors.',
+            'Manual Invoicing & Checkout Queues: Slow bill calculation and manual payment handling creating cashier counter delays.',
+            'Ingredient & Inventory Spoilage: Lack of automated stock deductions leading to unexpected item shortages during rush hours.',
+        ],
+        solution:
+            'Zytrixon developed a full-stack Laravel-powered POS ecosystem integrated with a native Android mobile application. It features automated digital KOT dispatch, contactless table QR code ordering, interactive floor plan grids, integrated Razorpay/Stripe payments, and cloud inventory synchronization.',
+        solutionPoints: [
+            'Android Mobile POS: Waitstaff take table orders on mobile with sub-second KOT generation dispatched directly to the kitchen.',
+            'Customer QR Ordering: Guests scan table QR codes to view live menus, place orders, and pay without waiting for physical menus.',
+            'Multi-Role Portal Access: Dedicated interfaces for Restaurant Admin, Waitstaff Floor App, and Customer Ordering.',
+            'Automated Tax & Receipt Printing: Instant GST-compliant bill generation with thermal printer support and UPI payment QR codes.',
+        ],
+        metrics: [
+            {
+                value: 'Laravel 11',
+                label: 'Cloud Engine',
+                desc: 'High-speed Laravel backend powering real-time web & mobile sync.',
+            },
+            {
+                value: 'Android App',
+                label: 'Play Store Live',
+                desc: 'Native Android application available on Google Play Store.',
+            },
+            {
+                value: '7 Days',
+                label: 'Free Trial',
+                desc: 'Zero-risk trial onboarding for restaurants and food businesses.',
+            },
+            {
+                value: '< 2 Sec',
+                label: 'KOT Dispatch',
+                desc: 'Real-time kitchen order ticket transmission from mobile to kitchen.',
+            },
+        ],
+        techStack: [
+            { name: 'Laravel 11', category: 'Backend Engine' },
+            { name: 'Livewire 3', category: 'Reactive UI Components' },
+            { name: 'Android Native', category: 'Mobile App / Google Play' },
+            {
+                name: 'Blade & TailwindCSS',
+                category: 'Restaurant Admin Portal',
+            },
+            { name: 'Razorpay & Stripe', category: 'Payment Integration' },
+            { name: 'MySQL Enterprise', category: 'Database & Orders' },
+        ],
+        screenshots: [
+            {
+                title: 'Orders, Menus & Table Management',
+                category: 'Mobile App',
+                image: '/assets/projects/billixa-bill/Screenshot 2026-09-25 134758.png',
+                description:
+                    'Easily manage orders, menus, and tables in one centralized mobile dashboard.',
+            },
+            {
+                title: 'Food Catalog & Waiter Order Taking',
+                category: 'Mobile App',
+                image: '/assets/projects/billixa-bill/Screenshot 2026-09-25 134827.png',
+                description:
+                    'Search food items, veg/non-veg filtering, instant order additions and call-waiter assistance.',
+            },
+            {
+                title: 'Menu Categories & QR Bill Payment',
+                category: 'Mobile App',
+                image: '/assets/projects/billixa-bill/Screenshot 2026-09-25 132700.png',
+                description:
+                    'Structured menu categories (Breakfast, Drinks, Lunch, Dinner) with dynamic QR code bill payment.',
+            },
+            {
+                title: 'Digital Receipts & Contactless Payment',
+                category: 'Mobile App',
+                image: '/assets/projects/billixa-bill/Screenshot 2026-09-25 134834.png',
+                description:
+                    'Generate digital itemized receipts with instant UPI QR scans for contactless customer settlements.',
+            },
+            {
+                title: 'Sales Analytics & Restaurant Settings',
+                category: 'Mobile App',
+                image: '/assets/projects/billixa-bill/Screenshot 2026-09-25 134843.png',
+                description:
+                    'Track real-time restaurant revenue, tax breakdown, cash vs digital payment splits from anywhere.',
+            },
+            {
+                title: 'Quick Onboarding & Revenue Dashboard',
+                category: 'Mobile App',
+                image: '/assets/projects/billixa-bill/Screenshot 2026-09-25 134807.png',
+                description:
+                    'Simple restaurant account setup with live daily sales tracking and dark mode toggle.',
+            },
+            {
+                title: 'Mobile Navigation & POS Modules',
+                category: 'Mobile App',
+                image: '/assets/projects/billixa-bill/Screenshot 2026-09-25 134817.png',
+                description:
+                    'Full sidebar access to KOT, Tables, Reservations, Staff management, Reports, and Settings.',
+            },
+            {
+                title: 'Restaurant POS Software Overview',
+                category: 'Mobile App',
+                image: '/assets/projects/billixa-bill/Screenshot 2026-09-25 132728.png',
+                description:
+                    'Complete overview of the Billixa Bill POS ecosystem designed for simplicity and speed.',
+            },
+        ],
+        features: [
+            {
+                title: 'QR Code Menu Ordering',
+                desc: 'Contactless ordering made easy. Customers scan table QR to browse dishes and place orders without waiting.',
+                icon: '📱',
+            },
+            {
+                title: 'Digital KOT System',
+                desc: 'Efficient kitchen workflow routing orders instantly from tables to kitchen display screens and printers.',
+                icon: '🍳',
+            },
+            {
+                title: 'POS Billing & Thermal Print',
+                desc: 'Complete billing solution with automated GST tax calculation, split bills, and thermal receipt printing.',
+                icon: '🧾',
+            },
+            {
+                title: 'Interactive Floor Plans',
+                desc: 'Design custom restaurant floor layouts and monitor occupied, vacant, or reserved tables in real time.',
+                icon: '🪑',
+            },
+            {
+                title: 'Staff & Waiter Management',
+                desc: 'Separate logins with granular access permissions for cashiers, waitstaff, managers, and admins.',
+                icon: '👥',
+            },
+            {
+                title: 'Inventory & Stock Control',
+                desc: 'Track ingredients smartly, monitor stock levels in real time, and eliminate kitchen waste.',
+                icon: '📦',
+            },
+            {
+                title: 'Payment Gateway Integration',
+                desc: 'Integrated Stripe, Razorpay, and instant UPI QR payments for frictionless customer settlements.',
+                icon: '💳',
+            },
+            {
+                title: 'Reports & Business Analytics',
+                desc: 'Data-driven business decisions with live daily sales, payment splits, and tax performance reports.',
+                icon: '📈',
+            },
+        ],
+        demoCredentials: {
+            email: 'app.billixabill@gmail.com',
+            pass: '123456',
+            role: 'Restaurant Admin (Live Demo)',
+        },
+        architectureFlow: [
+            {
+                step: '01',
+                title: 'Order Capture',
+                tech: 'Android POS & QR Web',
+                detail: 'Guests scan table QR code or waitstaff enters order via handheld Android POS application.',
+            },
+            {
+                step: '02',
+                title: 'Laravel Real-Time KOT Dispatch',
+                tech: 'Laravel 11 & Livewire',
+                detail: 'Order instantly syncs to kitchen display systems and thermal printers in under 2 seconds.',
+            },
+            {
+                step: '03',
+                title: 'Floor Grid & Stock Ledger',
+                tech: 'MySQL Database',
+                detail: 'Live table status updates automatically while ingredient inventory auto-deducts in real time.',
+            },
+            {
+                step: '04',
+                title: 'Billing & Digital Settlement',
+                tech: 'Razorpay & Stripe API',
+                detail: 'GST-compliant bill generated with instant UPI/card payment confirmation and sales ledger update.',
+            },
+        ],
+    },
     {
         id: 'sk-infratech',
         slug: 'sk-infratech',
@@ -100,7 +716,7 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
             'Fragmented Inquiries & Slow Site Visits: Absence of immediate digital booking, RERA documentation, and direct director connect.',
         ],
         solution:
-            'Zytrixon engineered a high-speed direct-inventory portal supporting S.K. Infratech\'s Direct Investment Model: direct owner property showcases, in-house triple-check legal verification, instant buy-back liquidity workflows, and automated site-visit dispatch.',
+            "Zytrixon engineered a high-speed direct-inventory portal supporting S.K. Infratech's Direct Investment Model: direct owner property showcases, in-house triple-check legal verification, instant buy-back liquidity workflows, and automated site-visit dispatch.",
         solutionPoints: [
             'Direct Ownership Model: Properties acquired with internal capital before listing, guaranteeing ₹0 commission and direct developer savings.',
             'Triple-Check Legal System: 3-lawyer in-house verification of 30-year title chains and immediate direct registry.',

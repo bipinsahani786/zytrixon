@@ -242,17 +242,22 @@ export default function ProjectInteractiveGallery({
                                     style={{
                                         position: 'relative',
                                         overflow: 'hidden',
-                                        height: '420px',
+                                        height: '480px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        background: 'var(--zy-surface-2)',
                                     }}
                                 >
                                     <img
                                         src={activeScreen.image}
                                         alt={activeScreen.title}
                                         style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            objectPosition: 'top',
+                                            maxWidth: '100%',
+                                            maxHeight: '100%',
+                                            width: 'auto',
+                                            height: 'auto',
+                                            objectFit: 'contain',
                                             display: 'block',
                                             transition: 'transform 0.4s ease',
                                         }}
@@ -335,7 +340,10 @@ export default function ProjectInteractiveGallery({
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                gap: '16px',
+                                gap: '14px',
+                                maxHeight: '560px',
+                                overflowY: 'auto',
+                                paddingRight: '8px',
                             }}
                         >
                             {project.screenshots.map((ss, idx) => {
@@ -375,11 +383,16 @@ export default function ProjectInteractiveGallery({
                                         {/* Thumbnail Preview */}
                                         <div
                                             style={{
-                                                width: '68px',
-                                                height: '48px',
+                                                width: '54px',
+                                                height: '60px',
                                                 borderRadius: '8px',
                                                 overflow: 'hidden',
                                                 flexShrink: 0,
+                                                background:
+                                                    'var(--zy-surface-2)',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
                                                 border: isSelected
                                                     ? '1px solid var(--zy-text-primary)'
                                                     : '1px solid var(--zy-border-subtle)',
@@ -389,10 +402,9 @@ export default function ProjectInteractiveGallery({
                                                 src={ss.image}
                                                 alt={ss.title}
                                                 style={{
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    objectFit: 'cover',
-                                                    objectPosition: 'top',
+                                                    maxWidth: '100%',
+                                                    maxHeight: '100%',
+                                                    objectFit: 'contain',
                                                 }}
                                             />
                                         </div>
@@ -539,7 +551,8 @@ export default function ProjectInteractiveGallery({
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
                                 padding: '14px 22px',
-                                borderBottom: '1px solid var(--zy-border-subtle)',
+                                borderBottom:
+                                    '1px solid var(--zy-border-subtle)',
                                 background: 'var(--zy-surface-2)',
                                 flexShrink: 0,
                                 gap: '16px',
@@ -581,7 +594,10 @@ export default function ProjectInteractiveGallery({
                                 }}
                             >
                                 <a
-                                    href={activeScreen.fullImage || activeScreen.image}
+                                    href={
+                                        activeScreen.fullImage ||
+                                        activeScreen.image
+                                    }
                                     target="_blank"
                                     rel="noreferrer"
                                     className="zy-modal-action-btn"
@@ -627,12 +643,15 @@ export default function ProjectInteractiveGallery({
                             }}
                         >
                             <img
-                                src={activeScreen.fullImage || activeScreen.image}
+                                src={
+                                    activeScreen.fullImage || activeScreen.image
+                                }
                                 alt={activeScreen.title}
                                 onLoad={(e) => {
                                     const img = e.currentTarget;
                                     setIsTallImage(
-                                        img.naturalHeight > img.naturalWidth * 1.3
+                                        img.naturalHeight >
+                                            img.naturalWidth * 1.3,
                                     );
                                     setNaturalWidth(img.naturalWidth);
                                 }}
@@ -657,7 +676,8 @@ export default function ProjectInteractiveGallery({
                             <div
                                 style={{
                                     padding: '14px 22px',
-                                    borderTop: '1px solid var(--zy-border-subtle)',
+                                    borderTop:
+                                        '1px solid var(--zy-border-subtle)',
                                     background: 'var(--zy-surface-1)',
                                     fontSize: '13px',
                                     color: 'var(--zy-text-secondary)',
