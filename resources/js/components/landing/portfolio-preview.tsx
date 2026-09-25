@@ -22,6 +22,10 @@ export default function PortfolioPreview({
 
     const categories = [
         'All',
+        'Logistics',
+        'Mobile Apps',
+        'EdTech & ERP',
+        'Beauty & Wellness',
         'Real Estate',
         'Security',
         'E-Commerce',
@@ -31,6 +35,41 @@ export default function PortfolioPreview({
     const filteredProjects = DUMMY_PROJECTS.filter((p) => {
         if (activeFilter === 'All') {
             return true;
+        }
+        if (activeFilter === 'Logistics') {
+            return (
+                p.category.toLowerCase().includes('logistics') ||
+                p.category.toLowerCase().includes('truck') ||
+                p.category.toLowerCase().includes('fleet') ||
+                p.industry.toLowerCase().includes('logistics') ||
+                p.industry.toLowerCase().includes('transport')
+            );
+        }
+        if (activeFilter === 'Mobile Apps') {
+            return (
+                p.category.toLowerCase().includes('app') ||
+                p.category.toLowerCase().includes('mobile') ||
+                p.industry.toLowerCase().includes('mobile') ||
+                p.industry.toLowerCase().includes('app')
+            );
+        }
+        if (activeFilter === 'EdTech & ERP') {
+            return (
+                p.category.toLowerCase().includes('hostel') ||
+                p.category.toLowerCase().includes('erp') ||
+                p.industry.toLowerCase().includes('education') ||
+                p.industry.toLowerCase().includes('hostel') ||
+                p.industry.toLowerCase().includes('erp')
+            );
+        }
+        if (activeFilter === 'Beauty & Wellness') {
+            return (
+                p.category.toLowerCase().includes('beauty') ||
+                p.category.toLowerCase().includes('salon') ||
+                p.category.toLowerCase().includes('spa') ||
+                p.industry.toLowerCase().includes('beauty') ||
+                p.industry.toLowerCase().includes('wellness')
+            );
         }
         if (activeFilter === 'Real Estate') {
             return p.industry.toLowerCase().includes('real estate');
@@ -44,7 +83,8 @@ export default function PortfolioPreview({
         if (activeFilter === 'E-Commerce') {
             return (
                 p.industry.toLowerCase().includes('commerce') ||
-                p.industry.toLowerCase().includes('fashion')
+                p.industry.toLowerCase().includes('fashion') ||
+                p.category.toLowerCase().includes('rentals')
             );
         }
         if (activeFilter === 'HealthTech') {
@@ -198,13 +238,17 @@ export default function PortfolioPreview({
                                 href={projectUrl}
                                 className="portfolio-thumb-wrapper"
                                 style={{
-                                    display: 'block',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
                                     position: 'relative',
                                     width: '100%',
-                                    aspectRatio: '16 / 10.5',
+                                    aspectRatio: '16 / 10',
                                     borderRadius: '12px',
                                     overflow: 'hidden',
-                                    background: 'var(--zy-surface-1)',
+                                    background: isLight
+                                        ? '#f8fafc'
+                                        : 'var(--zy-surface-1)',
                                     border: '1px solid var(--zy-border-subtle)',
                                     marginBottom: '12px',
                                     textDecoration: 'none',
@@ -217,21 +261,11 @@ export default function PortfolioPreview({
                                     style={{
                                         width: '100%',
                                         height: '100%',
-                                        objectFit: 'cover',
-                                        objectPosition: 'top center',
+                                        objectFit: 'contain',
+                                        objectPosition: 'center',
                                         display: 'block',
                                         transition:
                                             'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-                                    }}
-                                />
-                                <div
-                                    className="portfolio-thumb-overlay"
-                                    style={{
-                                        position: 'absolute',
-                                        inset: 0,
-                                        background:
-                                            'linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.55) 100%)',
-                                        pointerEvents: 'none',
                                     }}
                                 />
                                 {/* Client Badge */}
@@ -404,24 +438,55 @@ export default function PortfolioPreview({
                                     </svg>
                                 </Link>
 
-                                <a
-                                    href={project.liveUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="portfolio-live-link"
+                                <div
                                     style={{
-                                        fontSize: '11.5px',
-                                        fontWeight: 600,
-                                        textDecoration: 'none',
-                                        display: 'inline-flex',
+                                        display: 'flex',
                                         alignItems: 'center',
-                                        gap: '3px',
-                                        color: 'var(--zy-text-secondary)',
-                                        transition: 'color 0.2s ease',
+                                        gap: '10px',
                                     }}
                                 >
-                                    Live Demo ↗
-                                </a>
+                                    {project.playStoreUrl && (
+                                        <a
+                                            href={project.playStoreUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="portfolio-live-link"
+                                            style={{
+                                                fontSize: '11.5px',
+                                                fontWeight: 600,
+                                                textDecoration: 'none',
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: '3px',
+                                                color: '#10B981',
+                                                transition: 'color 0.2s ease',
+                                            }}
+                                        >
+                                            Play Store ↗
+                                        </a>
+                                    )}
+
+                                    <a
+                                        href={project.liveUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="portfolio-live-link"
+                                        style={{
+                                            fontSize: '11.5px',
+                                            fontWeight: 600,
+                                            textDecoration: 'none',
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '3px',
+                                            color: 'var(--zy-text-secondary)',
+                                            transition: 'color 0.2s ease',
+                                        }}
+                                    >
+                                        {project.playStoreUrl
+                                            ? 'Website ↗'
+                                            : 'Live Demo ↗'}
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     );
