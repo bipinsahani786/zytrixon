@@ -10,9 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 export default function PortfolioPreview({
     hideHeader = false,
     limit,
+    title = "Projects We're Proud Of",
+    subtitle = 'Real results for real businesses — from concept to launch and beyond.',
+    label = 'Selected Work',
 }: {
     hideHeader?: boolean;
     limit?: number;
+    title?: string;
+    subtitle?: string;
+    label?: string;
 }) {
     const { theme } = useTheme();
     const isLight = theme === 'light';
@@ -142,17 +148,16 @@ export default function PortfolioPreview({
                     className="zy-section-header"
                     style={{ textAlign: 'center', marginBottom: '60px' }}
                 >
-                    <span className="zy-section-label">Selected Work</span>
-                    <h2 className="zy-section-title">
-                        Projects We're Proud Of
-                    </h2>
-                    <p
-                        className="zy-section-subtitle"
-                        style={{ margin: '16px auto 0' }}
-                    >
-                        Real results for real businesses — from concept to
-                        launch and beyond.
-                    </p>
+                    <span className="zy-section-label">{label}</span>
+                    <h2 className="zy-section-title">{title}</h2>
+                    {subtitle && (
+                        <p
+                            className="zy-section-subtitle"
+                            style={{ margin: '16px auto 0' }}
+                        >
+                            {subtitle}
+                        </p>
+                    )}
                 </div>
             )}
 

@@ -9,6 +9,7 @@ import InnerPageHero from '@/components/landing/inner-page-hero';
 import LazySection from '@/components/landing/lazy-section';
 import Navbar from '@/components/landing/navbar';
 import PortfolioPreview from '@/components/landing/portfolio-preview';
+import MajorProductsSection from '@/components/major-products/MajorProductsSection';
 import TechStackSection from '@/components/landing/tech-stack-section';
 import TestimonialsSection from '@/components/landing/testimonials-section';
 import { ThemeProvider } from '@/components/landing/theme-provider';
@@ -37,7 +38,16 @@ export default function Portfolio() {
                 />
 
                 <LazySection>
-                    <PortfolioPreview hideHeader={true} />
+                    <MajorProductsSection />
+                </LazySection>
+
+                <LazySection>
+                    <PortfolioPreview
+                        hideHeader={false}
+                        title="Our Works"
+                        subtitle="Explore our comprehensive engineering case studies and live client production platforms."
+                        label="Selected Projects"
+                    />
                 </LazySection>
                 <LazySection>
                     <TechStackSection />

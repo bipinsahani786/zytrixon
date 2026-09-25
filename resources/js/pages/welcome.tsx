@@ -6,6 +6,7 @@ import ServicesSection from '@/components/landing/services-section';
 import IndustriesSection from '@/components/landing/industries-section';
 import ProcessSection from '@/components/landing/process-section';
 import PortfolioPreview from '@/components/landing/portfolio-preview';
+import MajorProductsSection from '@/components/major-products/MajorProductsSection';
 import TechStackSection from '@/components/landing/tech-stack-section';
 import TeamSection from '@/components/landing/team-section';
 import ClientsSection from '@/components/landing/clients-section';
@@ -75,7 +76,10 @@ export default function Welcome() {
                     <ProcessSection />
                 </LazySection>
                 <LazySection>
-                    <PortfolioPreview limit={3} />
+                    <PortfolioPreview limit={6} />
+                </LazySection>
+                <LazySection>
+                    <MajorProductsSection />
                 </LazySection>
                 <LazySection>
                     <TechStackSection />
