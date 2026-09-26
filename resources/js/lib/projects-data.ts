@@ -45,6 +45,7 @@ export interface ProjectItem {
     secondaryColor: string;
     heroImage: string;
     mobileImage: string;
+    secondMobileImage?: string;
     liveUrl: string;
     playStoreUrl?: string;
     githubUrl?: string;

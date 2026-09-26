@@ -6,297 +6,567 @@ export const PRODUCTS_DATA: ProjectItem[] = [
     {
         id: 'mobile-crm',
         slug: 'mobile-crm',
-        title: 'Mobile CRM — Intelligent Retail Store Billing & Party Ledger Platform',
+        title: 'Mobile CRM — Complete Operating System for Mobile & Electronics Retailers',
         shortTitle: 'Mobile CRM',
-        category: 'Proprietary IP • Billing, Retail CRM & Party Ledger',
+        category: 'Proprietary IP • Next-Gen Retail ERP & POS',
         tagline:
-            'Manage Your Retail Store Intelligently — Unified party billing, custom GST invoicing, party ledger payments, and customer accounts.',
+            'From IMEI-level serial tracking and one-tap GST billing to supplier credit ledgers and automated staff payroll — run your entire single or multi-outlet retail business effortlessly.',
         client: 'Zytrixon Proprietary Suite',
-        industry: 'Retail Technology & Enterprise Ledger Management',
-        year: '2025 - 2026',
+        industry: 'Mobile & Electronics Retailers, Single & Multi-Outlet Stores',
+        year: '2026',
         duration: 'Enterprise Ready',
-        architecture: 'Cloud Retail Ledger & Edge POS Terminal Architecture',
+        architecture:
+            'Multi-Tenant Laravel 12 API, React 19 & Row-Level Isolated Ledger Architecture',
         accentColor: '#0EA5E9',
         secondaryColor: '#38BDF8',
-        heroImage: '/assets/products/mobile-crm-landscape.png',
-        mobileImage: '/assets/products/mobile-crm-mobile.png',
+        heroImage: '/assets/products/mobile-crm/Screenshot 2026-09-26 162520.png',
+        mobileImage: '/assets/products/mobile-crm/Screenshot 2026-09-26 181933.png',
         liveUrl:
             'https://wa.me/917049711475?text=Hi%20Zytrixon%2C%20I%20would%20like%20to%20schedule%20an%20enterprise%20demo%20for%20Mobile%20CRM.',
         videoUrl: '',
-        videoPoster: '/assets/products/mobile-crm-landscape.png',
+        videoPoster:
+            '/assets/products/mobile-crm/Screenshot 2026-09-26 162520.png',
         summary:
-            'Mobile CRM is an intelligent retail management platform designed to unify daily business collections, custom billing invoices, party ledger payments, and customer credit accounts inside a clean, modern ecosystem. Engineered with secure cloud access, real-time transaction reconciliation, and offline-first mobile readiness.',
+            'Mobile CRM is an end-to-end retail operating system engineered specifically for mobile phone and electronics retailers. Built with React 19, TypeScript, and a robust Laravel 12 REST API, it unifies dual-track inventory (unique IMEI tracking for smartphones & batch quantities for accessories), 3-second counter POS billing with dynamic on-receipt UPI QR, distributor udhar ledgers, customer EMI finance tracking, and automated staff attendance & sales commission payroll.',
         challenge:
-            'Retailers and distributors frequently face fragmented bookkeeping, uncollected party debts, chaotic manual invoicing during rush hours, and lack of real-time visibility into daily profit margins and cash flow balances.',
+            'Mobile and electronics retailers deal with unique operational bottlenecks: tracking high-value phones by individual IMEI vs bulk accessories, managing supplier credit (udhar) with delayed balance reconciliations, tracking customer EMI installments across third-party financiers, and calculating staff sales commissions manually.',
         challengePoints: [
-            'Fragmented Party Ledgers: Suppliers and buyers credit balance tracking split between paper bahi-khata notebooks and disconnected spreadsheets.',
-            'Peak Hour Invoice Delays: Slow billing queues causing lost sales and frustrated walk-in customers.',
-            'Delayed Payment Recovery: No automated ledger statements or WhatsApp balance reminders to overdue credit accounts.',
-            'Reconciliation Gaps: Daily cash drawer, UPI, and bank collections drifting apart with zero automated audit trails.',
+            'IMEI vs Bulk Tracking Chaos: Losing track of unique smartphone serial numbers and warranty replacements while mixing them up with bulk accessories.',
+            'Unreconciled Supplier Udhar: Distributor and supplier balances drifting apart due to paper ledger entries and missing invoice references.',
+            'Consumer EMI & Loan Disputes: Difficulty tracking customer installment schedules, down payments, and overdue payouts from third-party financiers (Bajaj, Home Credit, TVS).',
+            'Manual Staff Payroll & Commissions: Complex spreadsheet calculations for shop floor sales incentives and attendance deductions leading to payroll errors.',
         ],
         solution:
-            'Zytrixon engineered a unified cloud retail OS with sub-second invoice calculations, double-entry automated party ledgers, automated WhatsApp payment statements, and live multi-counter cash flow telemetry.',
+            'Zytrixon architected Mobile CRM as a unified operating system featuring dual-track inventory, 3-second counter POS checkout with dynamic UPI QR, live supplier credit ledgers, an integrated EMI finance engine, and automated staff commission payroll.',
         solutionPoints: [
-            'Unified Party Ledger Engine: Real-time debit/credit reconciliation for all parties and suppliers with instant receipt logs.',
-            'Sub-Second GST Invoicing: Fast barcode scanning, custom tax configurations, and one-tap thermal Bluetooth receipt printing.',
-            'Customer Accounts & Credit Alerts: Customer purchase logs, credit limits, and automated WhatsApp payment reminders.',
-            'Live Business Collections Telemetry: Real-time daily dashboard tracking cash, UPI, bank splits, and profit margins.',
+            'Dual-Track Inventory (IMEI & Quantity): Serialized smartphone tracking by unique IMEI paired with batch and quantity tracking for accessories and spare parts.',
+            '3-Second POS & GST Invoicing: Rapid barcode/IMEI scan counter checkout supporting Cash, Dynamic UPI QR, Cards, and Split Payments.',
+            'Supplier & Udhar Ledger: Real-time running debit/credit ledgers for every distributor with one-tap payment entries and balance recalculations.',
+            'EMI & Consumer Finance Engine: Integrated financier tracking (Bajaj Finserv, Home Credit, TVS Credit) with automated tenure schedules and overdue recovery alerts.',
+            'Automated Staff Payroll & Incentives: Daily attendance tracking, per-sale incentive calculation, and one-click salary slip generation.',
+            'Quotations, Pre-Bookings & Repair Jobs: Collect token advances for upcoming flagship launches and manage device repair status workflows.',
         ],
         metrics: [
             {
+                value: 'Sub-150ms',
+                label: 'API Response Latency',
+                desc: 'Ultra-fast API queries via optimized database indexes for smooth rush-hour checkouts.',
+            },
+            {
                 value: '100%',
-                label: 'GST Ledger Compliant',
-                desc: 'Automated tax reports, party wise credit ledger & input tax reconciliation.',
+                label: 'IMEI Traceability',
+                desc: 'Dual-entry inventory movements ledger preventing internal shop shrinkage.',
             },
             {
-                value: '< 1.2s',
-                label: 'Invoice Speed',
-                desc: 'Sub-second invoice calculation, barcode item additions & thermal receipt generation.',
+                value: 'Multi-Tenant',
+                label: 'Global Data Isolation',
+                desc: 'Row-level tenant isolation with global scoping ensuring bank-grade business security.',
             },
             {
-                value: '256-Bit',
-                label: 'SSL Encrypted',
-                desc: 'Bank-grade encrypted database safeguarding retailer financials and party balances.',
-            },
-            {
-                value: 'Zero',
-                label: 'Accounting Drift',
-                desc: 'Double-entry auto ledger balancing with zero manual calculation errors.',
+                value: '3-Second',
+                label: 'Counter Checkout',
+                desc: 'Instant barcode/IMEI scan, split payments, and dynamic UPI QR on thermal receipts.',
             },
         ],
         features: [
             {
-                title: 'Unified Party Ledger',
-                desc: 'Track debit/credit balances, payments received, and pending balances across all suppliers and parties in real time.',
+                title: 'Dual-Track Inventory (IMEI & Quantity)',
+                desc: 'Track high-value smartphones by unique IMEI & Serial Number while managing accessories, cables, and parts by Batch & Quantity with live stock movement logs.',
+                icon: '📱',
+            },
+            {
+                title: 'High-Speed POS & GST Invoicing',
+                desc: '3-second counter checkout with barcode/IMEI scanning, split payments, dynamic UPI QR on receipts, and instant thermal (58mm/80mm) or A4 PDF invoices.',
+                icon: '⚡',
+            },
+            {
+                title: 'Supplier & Udhar (Credit) Ledger',
+                desc: 'Real-time running debit/credit statements for every distributor, purchase bill attachment logs, and one-tap partial or full payment reconciliations.',
                 icon: '📒',
             },
             {
-                title: 'Custom Retail Invoicing',
-                desc: 'Generate professional GST invoices with itemized tax calculations, barcode scanning, and instant thermal printing.',
-                icon: '🧾',
+                title: 'EMI & Consumer Finance Engine',
+                desc: 'Track in-store and third-party finance (Bajaj Finserv, Home Credit, TVS Credit) with automated tenure schedules, down payments, and overdue recovery.',
+                icon: '💳',
             },
             {
-                title: 'Customer Account Records',
-                desc: 'Manage customer purchasing histories, credit limits, contact profiles, and automatic payment reminders via WhatsApp.',
+                title: 'Staff Attendance & Automated Payroll',
+                desc: 'Track daily attendance, calculate per-sale commissions on top of base salary automatically, and generate one-click detailed salary vouchers.',
                 icon: '👥',
             },
             {
-                title: 'Real-Time Business Collections',
-                desc: 'Instant daily collections overview with cash vs UPI breakdowns, profit margin tracking, and bank deposit reconciliations.',
-                icon: '💳',
+                title: 'Quotations, Pre-Bookings & Repair Jobs',
+                desc: 'Convert price inquiries into sales with instant quotes, collect token advances for upcoming flagship launches, and track device repair jobs.',
+                icon: '🛠️',
             },
         ],
         techStack: [
-            { name: 'React Native', category: 'Handheld Mobile Terminal' },
-            { name: 'Laravel 11', category: 'Cloud API & Ledger Engine' },
             {
-                name: 'MySQL Enterprise',
-                category: 'Financial Records & ACID Transactions',
+                name: 'React 19 & TypeScript',
+                category: 'Client Core & Vite Bundling',
             },
-            { name: 'WebSockets', category: 'Real-Time Multi-Counter Sync' },
-            { name: 'Dynamic UPI QR', category: 'Instant Payment Settlement' },
             {
-                name: 'Thermal Bluetooth API',
-                category: 'Hardware Printing Bridge',
+                name: 'Laravel 12 API',
+                category: 'Backend RESTful Architecture',
+            },
+            {
+                name: 'MySQL / PostgreSQL',
+                category: 'Multi-Tenant ACID Relational DB',
+            },
+            {
+                name: 'Prisma ORM',
+                category: 'Type-Safe Data Modeling & Schema',
+            },
+            {
+                name: 'TanStack Query v5',
+                category: 'Server Cache & Optimistic UI',
+            },
+            {
+                name: 'Tailwind CSS v4',
+                category: 'Design System & Responsive POS UI',
+            },
+            {
+                name: 'Docker',
+                category: 'Containerization & Microservices Deployment',
             },
         ],
         screenshots: [
             {
                 title: 'Mobile CRM Retail Operations Dashboard',
-                category: 'Dashboard',
-                image: '/assets/products/mobile-crm-landscape.png',
+                category: 'Command Center',
+                image: '/assets/products/mobile-crm/Screenshot 2026-09-26 162520.png',
                 description:
-                    'Comprehensive store management overview featuring business overview, sales, revenue, profit & loss, and supplier accounting.',
+                    'Comprehensive store management overview featuring business overview, sales velocity, revenue, profit & loss statements, and multi-counter audit tracking.',
             },
             {
-                title: 'Mobile CRM Handheld POS View',
-                category: 'Mobile App',
-                image: '/assets/products/mobile-crm-mobile.png',
+                title: 'High-Speed Cloud POS & Direct Counter Billing',
+                category: 'POS Terminal',
+                image: '/assets/products/mobile-crm/Screenshot 2026-09-26 234003.png',
                 description:
-                    'Responsive mobile POS interface for rapid on-the-floor billing, invoices, and real-time ledger sync.',
+                    'Rapid retail checkout interface with live barcode scanning, direct catalog lookup, instant cart calculations, and sub-second payment finalization.',
+            },
+            {
+                title: 'Live Invoices Registry & Sales Revenue Ledger',
+                category: 'Invoicing & Audit',
+                image: '/assets/products/mobile-crm/Screenshot 2026-09-26 234043.png',
+                description:
+                    'Audit sales registry tracking invoice status, payment modes (UPI, Cash), item profit margins, guarantor downpayments, and instant WhatsApp bill sharing.',
+            },
+            {
+                title: 'Device Advance Bookings & Pre-Orders',
+                category: 'Pre-Orders & Booking',
+                image: '/assets/products/mobile-crm/Screenshot 2026-09-26 234105.png',
+                description:
+                    'Customer advance booking tracking with target fulfillment dates, downpayment receipts, and one-click conversion to finalized GST tax invoices.',
+            },
+            {
+                title: 'Staff Management, Permissions & Payroll Matrix',
+                category: 'Staff & HR Operations',
+                image: '/assets/products/mobile-crm/Screenshot 2026-09-26 234121.png',
+                description:
+                    'Multi-tier staff administration configuring monthly compensation, commission structures, role permissions, and active operational status.',
+            },
+            {
+                title: 'Staff Attendance & Geofenced Self Check-In',
+                category: 'Attendance & Operations',
+                image: '/assets/products/mobile-crm/Screenshot 2026-09-26 234146.png',
+                description:
+                    'Monthly staff attendance grid with location geofence boundary validation, shift presence records, pending approval queues, and manual status overrides.',
             },
         ],
         architectureFlow: [
             {
                 step: '01',
                 title: 'Edge Terminal Input',
-                tech: 'Handheld POS & Barcode',
-                detail: 'Rapid item scan and customer lookup on mobile or tablet.',
+                tech: 'React POS Web App & Scanner',
+                detail:
+                    'Rapid item scan and customer lookup on web, desktop, and mobile devices.',
             },
             {
                 step: '02',
                 title: 'Ledger Engine Verification',
-                tech: 'ACID Double-Entry Core',
-                detail: 'Validates credit limits, tax items, and party ledger entries.',
+                tech: 'Prisma ORM & PostgreSQL Core',
+                detail:
+                    'Validates credit limits, tax items, and ACID double-entry ledger records.',
             },
             {
                 step: '03',
                 title: 'Payment Settlement',
-                tech: 'Dynamic UPI & Cash Drawer',
-                detail: 'Reconciles payment tender with sub-second receipt generation.',
+                tech: 'Multi-Tender Cash & UPI Engine',
+                detail:
+                    'Reconciles payment tender with sub-second receipt generation.',
             },
             {
                 step: '04',
                 title: 'Encrypted Cloud Sync',
-                tech: 'Secure WebSocket Bridge',
-                detail: 'Multi-device real-time sync with encrypted cloud backups.',
+                tech: 'Docker Containerized Cloud Sync',
+                detail:
+                    'Containerized deployment ensuring high-availability sync and encrypted backups.',
             },
         ],
     },
     {
         id: 'grocery-mart',
         slug: 'grocery-mart',
-        title: 'Grocery Mart — Intelligent Retail Dashboard & Supermarket Cloud POS',
+        title: 'Grocery Mart — Multi-Platform Quick-Commerce & Supermarket OS',
         shortTitle: 'Grocery Mart',
-        category: 'Proprietary IP • Retail & Supermarket Operating System',
+        category: 'Proprietary IP • Multi-Platform Quick-Commerce OS',
         tagline:
-            'The intelligent retail dashboard. Access real-time billing logs, analytics, and stock records with SSL encryption and high-speed checkout.',
+            'Customer Mobile App (10-15 Min Delivery), Dark-Store Picker & Rider App, Super Admin Master Catalog & Store Manager Margin Engine.',
         client: 'Zytrixon Proprietary Suite',
-        industry: 'Supermarkets, Department Stores & FMCG Retail',
-        year: '2025 - 2026',
+        industry: 'Quick-Commerce, Dark Stores, Supermarkets & Omnichannel FMCG',
+        year: '2026',
         duration: 'Enterprise Ready',
         architecture:
-            'Distributed Hybrid POS & Multi-Lane Cloud Supermarket Core',
+            'Node.js + Prisma + PostgreSQL + Redis with Multi-Platform Expo & React 19 Clients',
         accentColor: '#207393',
         secondaryColor: '#38BDF8',
-        heroImage: '/assets/products/grocery-mart-landscape.png',
-        mobileImage: '/assets/products/grocery-mart-mobile.png',
+        heroImage: '/assets/products/grocery-mart/Screenshot 2026-09-26 182031.png',
+        mobileImage: '/assets/products/grocery-mart/image.png',
+        secondMobileImage:
+            '/assets/products/grocery-mart/WhatsApp Image 2026-09-27 at 1.42.06 AM.jpeg',
         liveUrl:
             'https://wa.me/917049711475?text=Hi%20Zytrixon%2C%20I%20would%20like%20to%20schedule%20an%20enterprise%20demo%20for%20Grocery%20Mart.',
         videoUrl: '',
-        videoPoster: '/assets/products/grocery-mart-landscape.png',
+        videoPoster: '',
         summary:
-            'Grocery Mart is a high-velocity retail and supermarket operating system engineered for rapid barcode checkout, real-time inventory tracking, multi-counter cash registers, and deep analytics. Built for grocery chains, department stores, and supermarkets with instant invoice printing and stock telemetry.',
+            'Grocery Mart is an enterprise multi-platform quick-commerce and retail grocery ecosystem designed for sub-15 minute hyperlocal delivery, dark-store warehouse picking, and supermarket store management. Architected across a high-conversion React Native Customer App (Expo SDK 57), an ultra-fast Dark-Store Picker & Delivery Partner App with camera barcode scanning and FEFO validation, and a React 19 Web Management Suite with Super Admin Master Catalog and Store Manager Inventory & Margin Engine backed by Node.js, Prisma, PostgreSQL, and Redis.',
         challenge:
-            'Supermarkets and grocery chains face long customer checkout queues during peak rush hours, frequent barcode scanning hiccups, stock-out discrepancies between shelves and warehouse inventory, and cashier discrepancy tracking.',
+            'Quick-commerce and modern supermarket operations struggle with multi-channel friction: picking errors in dark stores without rack routing, expired batch dispatches, blind spot profit margins between cost price (CP) and selling price (SP), cart abandonment during checkout rushes, and manual barcode label printing.',
         challengePoints: [
-            'Checkout Queue Bottlenecks: Slow POS billing software creating long lines and cart abandonment during evening rushes.',
-            'Stock Out Inaccuracies: Manual inventory counts leading to out-of-stock items on supermarket shelves.',
-            'Multi-Lane Counter Desync: Inability to track individual cashier registers, cash drawers, and split tenders in real time.',
-            'Internet Outage Vulnerability: Traditional cloud-only POS systems halting all checkout registers when connectivity flickers.',
+            'Dark-Store Picking Inaccuracies: Pickers searching through hundreds of bins manually without digital aisle/rack/shelf coordinates, leading to delayed 10-minute dispatch SLAs.',
+            'FEFO Expiry & Batch Losses: Dispatching newer stock while older perishable batches expire on dark-store shelves due to missing First-Expiry-First-Out batch enforcement.',
+            'Gross Margin & Pricing Blindspots: Store managers struggling to compute real-time gross margins across thousands of SKUs with volatile supplier cost prices and GST rates.',
+            'Cart Drop-off & Variant Confusion: Customers abandoning carts due to unclear pack sizes (500ml vs 1L), missing nutritional info, or lack of hyperlocal delivery ETAs.',
         ],
         solution:
-            'Zytrixon engineered a hybrid offline-first supermarket POS with millisecond barcode lookups, automated batch inventory deductions, live multi-lane telemetry, and thermal receipt printing.',
+            'Zytrixon architected an end-to-end unified quick-commerce operating system comprising a high-conversion Customer Mobile App, a high-speed Dark-Store Picker App with continuous camera scanning, and a React 19 Web Management Suite featuring Master Catalog taxation, dynamic margin calculations, and thermal barcode label printing.',
         solutionPoints: [
-            'High-Velocity Barcode Checkout: Sub-second item scanning reducing queue times by 65% with weight-scale integrations.',
-            'Automated Inventory Telemetry: Live stock deductions with low-threshold alerts and batch expiry reminders.',
-            'Multi-Counter Cashier Audit: Granular role permissions, split tender support, and cashier shift balance reconciliation.',
-            'Resilient Hybrid Offline POS: Local SQLite caching ensuring registers run smoothly even during internet drops.',
+            'Customer Mobile App (10-15 Min Hyperlocal Delivery): Multi-angle image carousels, dietary badges (🟢 Veg/🔴 Non-Veg), transparent unit economics, instant pack variant selector, and dynamic quantity stepper.',
+            'Delivery Partner & Dark-Store Picker App: Digital warehouse rack/bin routing (Aisle, Rack, Shelf), camera barcode & SKU verification, chilled storage alerts, and FEFO expiry checks.',
+            'Super Admin Master Catalog: Centralized HSN tax codes (GST 5% CGST/SGST split), category taxonomy, image uploads, and omnichannel switches (App, POS, 10-min delivery).',
+            'Store Pricing & Gross Margin Calculator: Real-time gross margin indicator ((SP - CP) / SP * 100), store-level price overrides, and 7-day sales velocity replenishment forecasting.',
+            'Multi-Batch & Inventory Tracking: Live available vs reserved stock, low-stock threshold alerts, and batch table linking expiry dates with supplier purchase orders.',
+            'Thermal Barcode Label Printing: Built-in JsBarcode engine supporting standard 50x25mm and 38x25mm thermal sticker printing for pre-packed produce and staples.',
         ],
         metrics: [
             {
-                value: '< 1.5s',
-                label: 'Barcode Checkout',
-                desc: 'Ultra-fast barcode scanning and checkout reducing queue wait times by 65%.',
+                value: '10-15 Min',
+                label: 'Hyperlocal Delivery',
+                desc: 'Real-time dark-store routing and instant dispatch SLA.',
             },
             {
                 value: '99.9%',
-                label: 'Stock Accuracy',
-                desc: 'Real-time automated inventory deduction upon barcode scan with zero shelf discrepancies.',
+                label: 'Picking Accuracy',
+                desc: 'Camera barcode verification preventing wrong SKU packaging.',
             },
             {
-                value: 'High Speed',
-                label: 'Cloud & Offline POS',
-                desc: 'Hybrid local caching ensuring counters never halt during internet outages.',
+                value: '100% FEFO',
+                label: 'Batch Compliance',
+                desc: 'Mandatory older batch validation eliminating dark-store spillage.',
             },
             {
-                value: 'SSL Encrypted',
-                label: 'Secure Cloud Core',
-                desc: 'Protected cashier logins, role-based auditing, and tamper-proof billing records.',
+                value: 'Real-Time',
+                label: 'Gross Margin Telemetry',
+                desc: 'Automatic profit margin calculations across all omnichannel channels.',
             },
         ],
         features: [
             {
-                title: 'Real-Time Billing Logs',
-                desc: 'Live transaction logging with cashier audit trails, split tenders, discounts, and instant thermal receipt printing.',
-                icon: '🧾',
+                title: '🛒 Customer Mobile App (/app)',
+                desc: 'React Native (v0.86) & Expo SDK 57 with high-conversion PDP, dietary indicators, live 10-15 min ETA pill, pack variants, and sticky cart stepper.',
+                icon: '🛒',
             },
             {
-                title: 'Intelligent Stock Records',
-                desc: 'Automated inventory deduction upon barcode scan, low stock alert thresholds, and batch expiry tracking.',
-                icon: '📦',
+                title: '🛵 Delivery Partner & Picker App (/partner-app)',
+                desc: 'Warehouse Aisle/Rack/Shelf routing, continuous camera barcode scanning, FEFO expiry checklist, and temperature handling alerts.',
+                icon: '🛵',
             },
             {
-                title: 'Sales & Profit Analytics',
-                desc: 'Live telemetry dashboard covering top-selling SKUs, category profit margins, peak hour footfall, and tax summaries.',
-                icon: '📈',
+                title: '🖥️ Super Admin Master Catalog',
+                desc: 'Centralized taxonomy, HSN codes, GST 5% automatic tax splitting, image management, and omnichannel visibility toggles.',
+                icon: '🖥️',
             },
             {
-                title: 'High-Speed POS Terminal',
-                desc: 'Lightweight, responsive terminal interface compatible with touch screens, barcode guns, weighing scales, and cash drawers.',
+                title: '📈 Store Margin & Batch Calculator',
+                desc: 'Cost price (CP), selling price (SP), gross margin percentage calculator, store overrides, and replenishment runway forecasting.',
+                icon: '📊',
+            },
+            {
+                title: '🖨️ Thermal Barcode Label Printing',
+                desc: 'Integrated JsBarcode engine generating thermal barcode labels (50x25mm / 38x25mm) for pre-packed staples and fresh produce.',
+                icon: '🖨️',
+            },
+            {
+                title: '🗄️ Node.js + Prisma + PostgreSQL + Redis',
+                desc: 'Sub-millisecond REST APIs (/api/v1/catalog & /api/v1/store/inventory) with Redis cache and ACID relational integrity.',
                 icon: '⚡',
             },
         ],
         techStack: [
             {
-                name: 'Next.js 15 & React',
-                category: 'High-Velocity Cashier Terminal',
+                name: 'React Native (v0.86) & Expo SDK 57',
+                category: 'Customer & Picker Mobile Apps',
             },
             {
-                name: 'Laravel 11 / Node Engine',
-                category: 'Enterprise Retail Engine',
+                name: 'React 19 & Vite 8',
+                category: 'Web Management Suite',
             },
             {
-                name: 'MySQL Enterprise',
-                category: 'High-Throughput Inventory Core',
+                name: 'Tailwind CSS v4 & twrnc',
+                category: 'Omnichannel Design System',
+            },
+            {
+                name: 'Node.js & Express REST Core',
+                category: 'Backend Microservices',
+            },
+            {
+                name: 'PostgreSQL & Prisma ORM',
+                category: 'ACID Relational Core',
             },
             {
                 name: 'Redis Cache',
                 category: 'Sub-Millisecond Barcode Lookups',
             },
             {
-                name: 'Thermal ESC/POS Bridge',
-                category: 'Hardware Receipt Integration',
+                name: 'TanStack React Query v5 & Zustand',
+                category: 'Server Sync & Client State',
             },
-            { name: 'Dynamic UPI QR', category: 'Countertop Instant Payments' },
+            {
+                name: 'Recharts & JsBarcode',
+                category: 'Velocity Analytics & Thermal Labels',
+            },
+            {
+                name: 'Docker & Socket.IO',
+                category: 'Containerization & Live Pick Events',
+            },
         ],
         screenshots: [
             {
-                title: 'Grocery Mart Command Center & Terminal',
-                category: 'Dashboard',
-                image: '/assets/products/grocery-mart-landscape.png',
+                title: 'Grocery Mart Customer Mobile App',
+                category: 'Customer App',
+                image: '/assets/products/grocery-mart/image.png',
                 description:
-                    'Intelligent supermarket dashboard showing operational terminal, POS shortcuts, revenue velocity, and live activity logs.',
+                    'High-conversion customer ordering mobile app interface featuring fresh grocery catalog, sub-15 minute hyperlocal delivery, and seamless checkout.',
             },
             {
-                title: 'Supermarket Analytics & Staff KPI Matrix',
-                category: 'Analytics',
-                image: '/assets/products/grocery-mart-analytics.png',
+                title: 'Grocery Mart Delivery Partner & Rider App',
+                category: 'Partner App',
+                image: '/assets/products/grocery-mart/WhatsApp Image 2026-09-27 at 1.42.06 AM.jpeg',
                 description:
-                    'Real-time gross margins, average cart size, checkout void rates, and associate speed efficiency radar comparisons.',
+                    'Dedicated delivery partner and rider portal for order pickup, dark-store bin navigation, and fast doorstep delivery routing.',
             },
             {
-                title: 'Grocery Mart Mobile POS Interface',
-                category: 'Mobile App',
-                image: '/assets/products/grocery-mart-mobile.png',
+                title: 'Operational Terminal & Command Center Dashboard',
+                category: 'Store Command',
+                image: '/assets/products/grocery-mart/Screenshot 2026-09-26 182031.png',
                 description:
-                    'Handheld barcode scanning, live order queue, and mobile cashier checkout terminal.',
+                    'Live operational terminal for Sahil Grocery Shop (Sector 62, Noida) showing POS billing, live orders queue, TV kiosk screen, revenue tracking (₹5,98,900), and 99.8% SLA dispatch metrics.',
+            },
+            {
+                title: 'Real-Time Store Analytics & Staff KPI Matrix',
+                category: 'Analytics & KPIs',
+                image: '/assets/products/grocery-mart/Screenshot 2026-09-26 182946.png',
+                description:
+                    'Store analytics intelligence showcasing average cart size (₹482), gross margin telemetry (18.4%), staff handling speeds, and associate performance radar.',
             },
         ],
         architectureFlow: [
             {
                 step: '01',
-                title: 'Barcode & Scale Sensing',
-                tech: 'Optical Scanner & Scale',
-                detail: 'Item barcode capture and automated weight computation in 200ms.',
+                title: 'Catalog & Store Sync',
+                tech: 'Node.js + Prisma ORM',
+                detail:
+                    'Centralized master catalog with HSN codes, GST rates, and multi-store inventory mapping.',
             },
             {
                 step: '02',
-                title: 'In-Memory Cache Lookup',
+                title: 'In-Memory Cache & Stock Lock',
                 tech: 'Redis Distributed Cache',
-                detail: 'Sub-millisecond SKU price calculation, batch verification, and promotion rules.',
+                detail:
+                    'Sub-millisecond inventory reservation when customer adds items to cart.',
             },
             {
                 step: '03',
-                title: 'Split Tender Settlement',
-                tech: 'UPI, Card & Cash Reconcile',
-                detail: 'Instant payment authorization and physical thermal receipt dispensing.',
+                title: 'Dark-Store Bin Navigation',
+                tech: 'Picker App + Socket.IO',
+                detail:
+                    'Real-time order routing with Aisle/Rack/Shelf coordinates and camera barcode verification.',
             },
             {
                 step: '04',
-                title: 'Real-time Stock Deduction',
-                tech: 'Event-Driven Message Queue',
-                detail: 'Warehouse and shelf inventory counts update globally across all branches.',
+                title: 'Hyperlocal Rider Dispatch',
+                tech: 'Delivery App + GPS Telemetry',
+                detail:
+                    'Continuous FEFO batch validation and automated 10-15 minute doorstep delivery.',
+            },
+        ],
+    },
+    {
+        id: 'grain-saas',
+        slug: 'grain-saas',
+        title: 'Grain SaaS — Premium Grain Trading, Lot-wise Inventory & Mandi Management Platform',
+        shortTitle: 'Grain SaaS',
+        category: 'Proprietary IP • Agricultural Commodity & Mandi Trading OS',
+        tagline:
+            'The future of grain trading. Manage lot-wise inventory, automate broker commissions, and handle integrated party ledgers built specifically for agricultural merchants.',
+        client: 'Zytrixon Proprietary Suite',
+        industry: 'Agricultural Wholesale, Mandi Merchants & Grain Trading',
+        year: '2025 - 2026',
+        duration: 'Enterprise Ready',
+        architecture:
+            'Multi-Tenant Grain Ledger & Distributed Lot Inventory Architecture',
+        accentColor: '#D4A373',
+        secondaryColor: '#2A9D8F',
+        heroImage: '/assets/products/grain-saas/grain-saas-hero-pc.png',
+        mobileImage: '/assets/products/grain-saas/grain-saas-hero-mobile.png',
+        liveUrl: 'https://grain.zytrixon.com/',
+        videoUrl: '',
+        videoPoster: '/assets/products/grain-saas/grain-saas-hero-pc.png',
+        summary:
+            'Grain SaaS is an enterprise agricultural commodity and Mandi trading platform engineered for grain merchants, commission agents (Kachha & Pucca Arhtiya), and warehouse operators. Built to replace fragmented paper bahi-khata and complex spreadsheets, Grain SaaS unifies lot-wise stock control, automated broker commission calculations, live double-entry party ledgers, and multi-godown transfers into a high-speed cloud workspace.',
+        challenge:
+            'Agricultural wholesale trading involves complex calculations: fluctuating quintal-to-ton conversion rates, stock spillage and moisture shrinkage, multi-tier broker commission rules, and dispute-prone paper ledgers between farmers, buyers, and commission agents across Mandis.',
+        challengePoints: [
+            'Lot-Level Shrinkage & Loss: Inability to track individual purchase lots leading to untracked warehouse shrinkage, spillage, and stock degradation.',
+            'Manual Broker Commission Errors: Complex commission calculations (Fixed, Percentage, and Per Quintal) creating payout disputes and delayed settlements.',
+            'Double-Entry Ledger Mismatches: Manual bahi-khata entries leading to reconciliation discrepancies between buyer credit accounts and seller advances.',
+            'Multi-Godown Tracking Chaos: Stock distributed across multiple cold storages and warehouses with zero real-time visibility into lot locations.',
+        ],
+        solution:
+            'Zytrixon architected an end-to-end grain trading operating system featuring automated purchase lot generation, dynamic broker commission engines, real-time double-entry party accounting, and one-click GST invoice printing.',
+        solutionPoints: [
+            'Lot-Wise Inventory Control: Track exact quintals, bags, and moisture grade per purchase lot with automated stock deduction during sales.',
+            'Automated Broker Commission Engine: Configure rules per broker (Fixed, %, or Per Quintal) with dedicated commission ledgers and one-click payouts.',
+            'Integrated Party Ledgers: Every purchase, sale, receipt, and payment automatically updates ledger balances with instant PDF/Excel exports.',
+            'Multi-Godown & Storage Management: Real-time stock visibility across distributed warehouses and cold storages with instant inter-godown transfers.',
+            'Multi-Unit Trade Engine: Native trade conversion across Quintals, Tons, and custom Bag Weights (50kg, 100kg).',
+        ],
+        metrics: [
+            {
+                value: '500+',
+                label: 'Mandi Traders',
+                desc: 'Trusted by agricultural merchants, commission agents, and wholesale grain traders.',
+            },
+            {
+                value: '₹5B+',
+                label: 'Volume Managed',
+                desc: 'Handling massive commodity trade volumes with zero ledger mismatch.',
+            },
+            {
+                value: '50k+',
+                label: 'Invoices Generated',
+                desc: 'Instant GST-compliant tax invoices and customized Mandi bills of supply.',
+            },
+            {
+                value: '100%',
+                label: 'Lot Visibility',
+                desc: 'Real-time lot-level tracking across all godowns, eliminating inventory shrinkage.',
+            },
+        ],
+        features: [
+            {
+                title: 'Lot-Wise Inventory Control',
+                desc: 'Track individual purchase lots with exact bags and quintal weight. Deduct stock from specific lots during sales to prevent shrinkage.',
+                icon: '🌾',
+            },
+            {
+                title: 'Automated Broker Commissions',
+                desc: 'Support for Fixed, Percentage, and Per Quintal commission rules with dedicated broker ledgers and instant payout tracking.',
+                icon: '🤝',
+            },
+            {
+                title: 'Live Party Ledgers',
+                desc: 'Automatic double-entry bookkeeping for purchases, sales, receipts, and payments with opening/closing balances and PDF statements.',
+                icon: '📒',
+            },
+            {
+                title: 'Multi-Godown Management',
+                desc: 'Track stock across multiple warehouses or cold storages with seamless stock transfers and location-wise inventory reports.',
+                icon: '🏢',
+            },
+            {
+                title: 'Professional GST Invoicing',
+                desc: 'Generate compliant tax invoices and bills of supply instantly with customizable letterhead graphics for pre-printed stationery.',
+                icon: '🧾',
+            },
+            {
+                title: 'Multi-Unit Trade Conversion',
+                desc: 'Purchase in Tons, sell in Quintals. Native unit conversions with custom bag weight definitions (50kg, 100kg) globally.',
+                icon: '⚖️',
+            },
+        ],
+        techStack: [
+            {
+                name: 'Laravel 11 Core',
+                category: 'Backend Engine & Multi-Tenancy',
+            },
+            {
+                name: 'MySQL Enterprise',
+                category: 'ACID Relational Ledger Database',
+            },
+            {
+                name: 'Bootstrap & Duralux Admin',
+                category: 'Enterprise Dashboard UI',
+            },
+            {
+                name: 'Redis Cache',
+                category: 'Sub-Millisecond Ledger Queries',
+            },
+            {
+                name: 'AES-256 Encryption',
+                category: 'Financial Security & Data Shield',
+            },
+        ],
+        screenshots: [
+            {
+                title: 'Grain SaaS Trading Command Center & Live Analytics',
+                category: 'Trading Dashboard',
+                image: '/assets/products/grain-saas/grain-saas-dashboard.png',
+                description:
+                    'Unified merchant workspace monitoring live purchases, sales dispatch logs, current stock units, total payables (₹101,300), sales vs purchases velocity graph, and grain-wise inventory distribution.',
+            },
+            {
+                title: 'Grain SaaS Official Web Platform & Merchant Portal',
+                category: 'Platform Architecture',
+                image: '/assets/products/grain-saas/grain-saas-hero-pc.png',
+                description:
+                    'Cloud-based grain trading operating system engineered for commission agents, Mandi merchants, and agricultural wholesale enterprises.',
+            },
+        ],
+        demoCredentials: {
+            email: 'trader@grainsaas.com',
+            pass: 'Grain#Trader2026',
+            role: 'Mandi Merchant / Commission Agent',
+        },
+        architectureFlow: [
+            {
+                step: '01',
+                title: 'Arrival & Lot Creation',
+                tech: 'Procurement Engine',
+                detail:
+                    'Log incoming grain arrivals, deduct shortage/wastage, and generate purchase lots.',
+            },
+            {
+                step: '02',
+                title: 'Godown Stock Allocation',
+                tech: 'Multi-Warehouse Mesh',
+                detail:
+                    'Assign lot to specific godown and track bag count and quintal weight in real-time.',
+            },
+            {
+                step: '03',
+                title: 'Sales Dispatch & Broker Rules',
+                tech: 'Commission Automation',
+                detail:
+                    'Sell from designated lots while system automatically calculates broker commissions.',
+            },
+            {
+                step: '04',
+                title: 'Ledger Reconciliation & Invoicing',
+                tech: 'Double-Entry Core',
+                detail:
+                    'Instant ledger balance update, payment receipt generation, and GST tax invoice print.',
             },
         ],
     },

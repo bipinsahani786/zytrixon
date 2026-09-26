@@ -3,9 +3,15 @@ import type { ProjectItem } from '@/lib/projects-data';
 
 interface ProjectSubNavProps {
     project: ProjectItem;
+    hideStory?: boolean;
+    workEasyMode?: boolean;
 }
 
-export default function ProjectSubNav({ project }: ProjectSubNavProps) {
+export default function ProjectSubNav({
+    project,
+    hideStory = false,
+    workEasyMode = false,
+}: ProjectSubNavProps) {
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('overview');
 
@@ -32,21 +38,39 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
         });
     }
 
-    if (project.challengePoints && project.challengePoints.length > 0) {
+    if (
+        !hideStory &&
+        project.challengePoints &&
+        project.challengePoints.length > 0
+    ) {
         navItems.push({
             id: 'story',
             label: `${String(stepNumber++).padStart(2, '0')} Story`,
         });
+    } else if (
+        workEasyMode &&
+        project.solutionPoints &&
+        project.solutionPoints.length > 0
+    ) {
+        navItems.push({
+            id: 'work-easy',
+            label: `${String(stepNumber++).padStart(2, '0')} Work Made Easy`,
+        });
     }
 
-    if (hasVideo) {
+    if (hasVideo && project.id !== 'grocery-mart') {
         navItems.push({
             id: 'theatre',
             label: `${String(stepNumber++).padStart(2, '0')} Demo Theatre`,
         });
     }
 
-    if (hasGallery) {
+    if (project.id === 'grocery-mart') {
+        navItems.push({
+            id: 'platforms',
+            label: `${String(stepNumber++).padStart(2, '0')} Multi-Platform`,
+        });
+    } else if (hasGallery) {
         navItems.push({
             id: 'gallery',
             label: `${String(stepNumber++).padStart(2, '0')} Screenshots`,

@@ -31,9 +31,16 @@ Route::inertia('/portfolio', 'Portfolio', [
     'seo' => ['title' => 'Our Portfolio & Case Studies | Zytrixon Tech', 'description' => 'Explore our portfolio of successful web development, app development, and SEO projects at Zytrixon Tech.'],
 ])->name('portfolio');
 
-Route::get('/portfolio/{slug}', [CaseStudyController::class, 'show'])->name('portfolio.show');
+Route::get('/portfolio/{slug}', function (string $slug) {
+    if (in_array($slug, ['mobile-crm', 'grocery-mart', 'grain-saas'])) {
+        return redirect()->route('products.show', ['slug' => $slug]);
+    }
+
+    return app(CaseStudyController::class)->show($slug);
+})->name('portfolio.show');
+
 Route::get('/projects/{slug}', function ($slug) {
-    if (in_array($slug, ['mobile-crm', 'grocery-mart'])) {
+    if (in_array($slug, ['mobile-crm', 'grocery-mart', 'grain-saas'])) {
         return redirect()->route('products.show', ['slug' => $slug]);
     }
 
@@ -43,14 +50,19 @@ Route::get('/projects/{slug}', function ($slug) {
 Route::get('/products/{slug}', function (string $slug) {
     $product = match ($slug) {
         'mobile-crm' => [
-            'title' => 'Mobile CRM — Intelligent Retail Store Billing & Party Ledger Platform',
-            'desc' => 'Manage Your Retail Store Intelligently — Unified party billing, custom GST invoicing, party ledger payments, and customer accounts.',
-            'image' => '/assets/products/mobile-crm.png',
+            'title' => 'Mobile CRM — Complete Operating System for Mobile & Electronics Retailers',
+            'desc' => 'From IMEI-level serial tracking and one-tap GST billing to supplier credit ledgers and automated staff payroll — run your entire single or multi-outlet retail business effortlessly.',
+            'image' => '/assets/products/mobile-crm/Screenshot 2026-09-26 162520.png',
         ],
         'grocery-mart' => [
-            'title' => 'Grocery Mart — Intelligent Retail Dashboard & Supermarket Cloud POS',
-            'desc' => 'The intelligent retail dashboard. Access real-time billing logs, analytics, and stock records with SSL encryption and high-speed checkout.',
-            'image' => '/assets/products/grocery-mart.png',
+            'title' => 'Grocery Mart — Multi-Platform Quick-Commerce & Supermarket OS',
+            'desc' => 'Unified Quick-Commerce Ecosystem: React Native Customer App (10-15 min delivery), Dark-Store Picker & Rider App, Super Admin Master Catalog, and Store Manager Inventory & Margin Engine.',
+            'image' => '/assets/products/grocery-mart/Screenshot 2026-09-26 182031.png',
+        ],
+        'grain-saas' => [
+            'title' => 'Grain SaaS — Premium Grain Trading, Lot-wise Inventory & Mandi Management Platform',
+            'desc' => 'Manage lot-wise inventory, track purchase lots, automate broker commissions, and handle integrated party ledgers seamlessly in one platform built specifically for agricultural merchants.',
+            'image' => '/assets/products/grain-saas/grain-saas-dashboard.png',
         ],
         default => [
             'title' => ucwords(str_replace('-', ' ', $slug)),
@@ -75,6 +87,10 @@ Route::get('/mobile-crm', function () {
 
 Route::get('/grocery-mart', function () {
     return redirect()->route('products.show', ['slug' => 'grocery-mart']);
+});
+
+Route::get('/grain-saas', function () {
+    return redirect()->route('products.show', ['slug' => 'grain-saas']);
 });
 
 Route::inertia('/contact', 'Contact', [
@@ -127,6 +143,7 @@ Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('
 Route::get('/sitemap.xml', function () {
     $urls = [
         '/', '/services', '/portfolio', '/team', '/about', '/blog', '/contact', '/process', '/careers', '/privacy-policy', '/terms-and-conditions', '/case-studies',
+        '/products/mobile-crm', '/products/grocery-mart', '/products/grain-saas',
     ];
 
     try {

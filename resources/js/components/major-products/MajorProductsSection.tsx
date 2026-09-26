@@ -24,9 +24,10 @@ export default function MajorProductsSection({
             id: 'mobile-crm',
             title: 'Mobile CRM',
             description:
-                'Track business collections, custom billing invoices, party ledger payments, and customer accounts inside a clean, modern ecosystem.',
-            badge: 'Billing & Retail CRM',
-            image: '/assets/products/mobile-crm-landscape.png',
+                'Dual-track IMEI & accessory inventory, 3-second POS with dynamic UPI QR, supplier udhar ledgers, and automated staff payroll.',
+            badge: 'Next-Gen Retail ERP & POS',
+            image:
+                '/assets/products/mobile-crm/Screenshot 2026-09-26 162520.png',
             accentColor: '#0EA5E9',
             inquiryMessage:
                 'Hi Zytrixon, I would like to schedule a demo for the Mobile CRM product.',
@@ -35,12 +36,24 @@ export default function MajorProductsSection({
             id: 'grocery-mart',
             title: 'Grocery Mart',
             description:
-                'The intelligent retail dashboard. Access real-time billing logs, analytics, and stock records.',
-            badge: 'Retail & Billing OS',
-            image: '/assets/products/grocery-mart-analytics.png',
+                'Multi-Platform Quick-Commerce: Customer App (10-min delivery), Dark-Store Picker App & Web Management Suite (Master Catalog & Store Margins).',
+            badge: '📱 2 Apps + 🖥️ Web',
+            image: '/assets/products/grocery-mart/Screenshot 2026-09-26 182031.png',
             accentColor: '#207393',
             inquiryMessage:
                 'Hi Zytrixon, I would like to schedule a demo for the Grocery Mart platform.',
+            platformBadges: ['🛒 Customer App', '🛵 Picker App', '🖥️ Web Panel'],
+        },
+        {
+            id: 'grain-saas',
+            title: 'Grain SaaS',
+            description:
+                'Lot-wise inventory control, automated broker commissions, and live double-entry party ledgers built for agricultural wholesale merchants.',
+            badge: 'Grain Trading & Mandi OS',
+            image: '/assets/products/grain-saas/grain-saas-dashboard.png',
+            accentColor: '#D4A373',
+            inquiryMessage:
+                'Hi Zytrixon, I would like to schedule a demo for the Grain SaaS platform.',
         },
     ];
 
@@ -145,11 +158,18 @@ export default function MajorProductsSection({
             <style>{`
                 .major-products-grid {
                     display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 28px;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 24px;
                 }
 
-                @media (max-width: 860px) {
+                @media (max-width: 1024px) {
+                    .major-products-grid {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                        gap: 22px !important;
+                    }
+                }
+
+                @media (max-width: 680px) {
                     .major-products-grid {
                         grid-template-columns: 1fr !important;
                         gap: 20px !important;

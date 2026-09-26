@@ -15,9 +15,10 @@ import ProjectHeroEditorial from '@/components/project-details/ProjectHeroEditor
 import ProjectSubNav from '@/components/project-details/ProjectSubNav';
 import ProjectImpactBanner from '@/components/project-details/ProjectImpactBanner';
 import ProjectFeatures from '@/components/project-details/ProjectFeatures';
-import ProjectChallengeSolution from '@/components/project-details/ProjectChallengeSolution';
+import ProductWorkEasySection from '@/components/product-details/ProductWorkEasySection';
 import ProjectCinemaTheatre from '@/components/project-details/ProjectCinemaTheatre';
 import ProductScreenshots from '@/components/product-details/ProductScreenshots';
+import GroceryMartPlatformsSection from '@/components/product-details/GroceryMartPlatformsSection';
 import ProjectBlueprintFlow from '@/components/project-details/ProjectBlueprintFlow';
 
 interface ProductDetailsProps {
@@ -35,8 +36,8 @@ function ProductDetailsInner({ product }: { product: ProjectItem }) {
     const hasFeatures = Boolean(
         product.features && product.features.length > 0,
     );
-    const hasStory = Boolean(
-        product.challengePoints && product.challengePoints.length > 0,
+    const hasWorkEasy = Boolean(
+        product.solutionPoints && product.solutionPoints.length > 0,
     );
 
     return (
@@ -46,7 +47,7 @@ function ProductDetailsInner({ product }: { product: ProjectItem }) {
             <Navbar />
 
             {/* Floating In-Page Dock Navigation Pill */}
-            <ProjectSubNav project={product} />
+            <ProjectSubNav project={product} hideStory={true} workEasyMode={true} />
 
             <main
                 style={{
@@ -72,25 +73,33 @@ function ProductDetailsInner({ product }: { product: ProjectItem }) {
                     </LazySection>
                 )}
 
-                {/* 4. Engineering & Business Transformation Story */}
-                {hasStory && (
+                {/* 4. How This Product Makes Your Work Easy (Operational Simplicity) */}
+                {hasWorkEasy && (
                     <LazySection minHeight="450px">
-                        <ProjectChallengeSolution project={product} />
+                        <ProductWorkEasySection project={product} />
                     </LazySection>
                 )}
 
                 {/* 5. Cinema Video Theatre (Full-Width Immersive Walkthrough) — Strictly only if video is added */}
-                {hasVideo && (
+                {hasVideo && product.id !== 'grocery-mart' && (
                     <LazySection minHeight="550px">
                         <ProjectCinemaTheatre project={product} />
                     </LazySection>
                 )}
 
-                {/* 6. Product Screenshots Slider with (...) Dots indicator and in-area clear viewing */}
+                {/* 6. Product Screenshots Slider / Multi-Platform Showcase */}
                 {hasScreenshots && (
-                    <LazySection minHeight="500px">
-                        <ProductScreenshots product={product} />
-                    </LazySection>
+                    <>
+                        {product.id === 'grocery-mart' ? (
+                            <LazySection minHeight="600px">
+                                <GroceryMartPlatformsSection project={product} />
+                            </LazySection>
+                        ) : (
+                            <LazySection minHeight="500px">
+                                <ProductScreenshots product={product} />
+                            </LazySection>
+                        )}
+                    </>
                 )}
 
                 {/* 7. System Blueprint Pipeline & Tech Stack Matrix */}
