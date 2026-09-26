@@ -18,12 +18,12 @@ export const PRODUCTS_DATA: ProjectItem[] = [
         architecture: 'Cloud Retail Ledger & Edge POS Terminal Architecture',
         accentColor: '#0EA5E9',
         secondaryColor: '#38BDF8',
-        heroImage: '/assets/products/mobile-crm.png',
-        mobileImage: '/assets/products/mobile-crm.png',
+        heroImage: '/assets/products/mobile-crm-landscape.png',
+        mobileImage: '/assets/products/mobile-crm-mobile.png',
         liveUrl:
             'https://wa.me/917049711475?text=Hi%20Zytrixon%2C%20I%20would%20like%20to%20schedule%20an%20enterprise%20demo%20for%20Mobile%20CRM.',
         videoUrl: '',
-        videoPoster: '/assets/products/mobile-crm.png',
+        videoPoster: '/assets/products/mobile-crm-landscape.png',
         summary:
             'Mobile CRM is an intelligent retail management platform designed to unify daily business collections, custom billing invoices, party ledger payments, and customer credit accounts inside a clean, modern ecosystem. Engineered with secure cloud access, real-time transaction reconciliation, and offline-first mobile readiness.',
         challenge:
@@ -89,18 +89,31 @@ export const PRODUCTS_DATA: ProjectItem[] = [
         techStack: [
             { name: 'React Native', category: 'Handheld Mobile Terminal' },
             { name: 'Laravel 11', category: 'Cloud API & Ledger Engine' },
-            { name: 'MySQL Enterprise', category: 'Financial Records & ACID Transactions' },
+            {
+                name: 'MySQL Enterprise',
+                category: 'Financial Records & ACID Transactions',
+            },
             { name: 'WebSockets', category: 'Real-Time Multi-Counter Sync' },
             { name: 'Dynamic UPI QR', category: 'Instant Payment Settlement' },
-            { name: 'Thermal Bluetooth API', category: 'Hardware Printing Bridge' },
+            {
+                name: 'Thermal Bluetooth API',
+                category: 'Hardware Printing Bridge',
+            },
         ],
         screenshots: [
             {
-                title: 'Mobile CRM Terminal Sign-in',
+                title: 'Mobile CRM Retail Operations Dashboard',
                 category: 'Dashboard',
-                image: '/assets/products/mobile-crm.png',
+                image: '/assets/products/mobile-crm-landscape.png',
                 description:
-                    'Secure identity terminal for retail store owners, cashier operators, and accountants.',
+                    'Comprehensive store management overview featuring business overview, sales, revenue, profit & loss, and supplier accounting.',
+            },
+            {
+                title: 'Mobile CRM Handheld POS View',
+                category: 'Mobile App',
+                image: '/assets/products/mobile-crm-mobile.png',
+                description:
+                    'Responsive mobile POS interface for rapid on-the-floor billing, invoices, and real-time ledger sync.',
             },
         ],
         architectureFlow: [
@@ -142,15 +155,16 @@ export const PRODUCTS_DATA: ProjectItem[] = [
         industry: 'Supermarkets, Department Stores & FMCG Retail',
         year: '2025 - 2026',
         duration: 'Enterprise Ready',
-        architecture: 'Distributed Hybrid POS & Multi-Lane Cloud Supermarket Core',
+        architecture:
+            'Distributed Hybrid POS & Multi-Lane Cloud Supermarket Core',
         accentColor: '#207393',
         secondaryColor: '#38BDF8',
-        heroImage: '/assets/products/grocery-mart.png',
-        mobileImage: '/assets/products/grocery-mart.png',
+        heroImage: '/assets/products/grocery-mart-landscape.png',
+        mobileImage: '/assets/products/grocery-mart-mobile.png',
         liveUrl:
             'https://wa.me/917049711475?text=Hi%20Zytrixon%2C%20I%20would%20like%20to%20schedule%20an%20enterprise%20demo%20for%20Grocery%20Mart.',
         videoUrl: '',
-        videoPoster: '/assets/products/grocery-mart.png',
+        videoPoster: '/assets/products/grocery-mart-landscape.png',
         summary:
             'Grocery Mart is a high-velocity retail and supermarket operating system engineered for rapid barcode checkout, real-time inventory tracking, multi-counter cash registers, and deep analytics. Built for grocery chains, department stores, and supermarkets with instant invoice printing and stock telemetry.',
         challenge:
@@ -214,20 +228,49 @@ export const PRODUCTS_DATA: ProjectItem[] = [
             },
         ],
         techStack: [
-            { name: 'Next.js 15 & React', category: 'High-Velocity Cashier Terminal' },
-            { name: 'Laravel 11 / Node Engine', category: 'Enterprise Retail Engine' },
-            { name: 'MySQL Enterprise', category: 'High-Throughput Inventory Core' },
-            { name: 'Redis Cache', category: 'Sub-Millisecond Barcode Lookups' },
-            { name: 'Thermal ESC/POS Bridge', category: 'Hardware Receipt Integration' },
+            {
+                name: 'Next.js 15 & React',
+                category: 'High-Velocity Cashier Terminal',
+            },
+            {
+                name: 'Laravel 11 / Node Engine',
+                category: 'Enterprise Retail Engine',
+            },
+            {
+                name: 'MySQL Enterprise',
+                category: 'High-Throughput Inventory Core',
+            },
+            {
+                name: 'Redis Cache',
+                category: 'Sub-Millisecond Barcode Lookups',
+            },
+            {
+                name: 'Thermal ESC/POS Bridge',
+                category: 'Hardware Receipt Integration',
+            },
             { name: 'Dynamic UPI QR', category: 'Countertop Instant Payments' },
         ],
         screenshots: [
             {
-                title: 'Grocery Mart Cloud Login & Terminal',
+                title: 'Grocery Mart Command Center & Terminal',
                 category: 'Dashboard',
-                image: '/assets/products/grocery-mart.png',
+                image: '/assets/products/grocery-mart-landscape.png',
                 description:
-                    'High-speed retail authentication portal with SSL encryption and real-time ledger access.',
+                    'Intelligent supermarket dashboard showing operational terminal, POS shortcuts, revenue velocity, and live activity logs.',
+            },
+            {
+                title: 'Supermarket Analytics & Staff KPI Matrix',
+                category: 'Analytics',
+                image: '/assets/products/grocery-mart-analytics.png',
+                description:
+                    'Real-time gross margins, average cart size, checkout void rates, and associate speed efficiency radar comparisons.',
+            },
+            {
+                title: 'Grocery Mart Mobile POS Interface',
+                category: 'Mobile App',
+                image: '/assets/products/grocery-mart-mobile.png',
+                description:
+                    'Handheld barcode scanning, live order queue, and mobile cashier checkout terminal.',
             },
         ],
         architectureFlow: [

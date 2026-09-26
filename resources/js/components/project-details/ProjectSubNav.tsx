@@ -88,88 +88,99 @@ export default function ProjectSubNav({ project }: ProjectSubNavProps) {
     }
 
     return (
-        <nav
-            aria-label="Case Study Navigation"
-            style={{
-                position: 'fixed',
-                bottom: '28px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                zIndex: 9999,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '8px 14px',
-                background: 'var(--zy-glass-bg)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                borderRadius: '40px',
-                border: '1px solid var(--zy-glass-border)',
-                boxShadow: '0 20px 45px rgba(0,0,0,0.3)',
-                maxWidth: '94vw',
-                overflowX: 'auto',
-                whiteSpace: 'nowrap',
-                transition: 'background 0.3s ease, border-color 0.3s ease',
-            }}
-        >
-            {navItems.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                    <a
-                        key={item.id}
-                        href={`#${item.id}`}
-                        style={{
-                            padding: '8px 16px',
-                            borderRadius: '30px',
-                            fontSize: '12px',
-                            fontWeight: 600,
-                            letterSpacing: '0.04em',
-                            textDecoration: 'none',
-                            color: isActive
-                                ? 'var(--zy-bg)'
-                                : 'var(--zy-text-secondary)',
-                            background: isActive
-                                ? 'var(--zy-text-primary)'
-                                : 'transparent',
-                            transition: 'all 0.25s ease',
-                        }}
-                    >
-                        {item.label}
-                    </a>
-                );
-            })}
-
-            <div
+        <>
+            <nav
+                className="project-subnav-dock"
+                aria-label="Case Study Navigation"
                 style={{
-                    width: '1px',
-                    height: '18px',
-                    background: 'var(--zy-border-subtle)',
-                    margin: '0 4px',
-                }}
-            />
-
-            <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                    display: 'inline-flex',
+                    position: 'fixed',
+                    bottom: '28px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    zIndex: 9999,
+                    display: 'flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '8px 18px',
-                    borderRadius: '30px',
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                    color: 'var(--zy-text-primary)',
-                    background: 'var(--zy-surface-2)',
-                    border: '1px solid var(--zy-border-subtle)',
-                    transition: 'all 0.2s ease',
+                    padding: '8px 14px',
+                    background: 'var(--zy-glass-bg)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    borderRadius: '40px',
+                    border: '1px solid var(--zy-glass-border)',
+                    boxShadow: '0 20px 45px rgba(0,0,0,0.3)',
+                    maxWidth: '94vw',
+                    overflowX: 'auto',
+                    whiteSpace: 'nowrap',
+                    transition: 'background 0.3s ease, border-color 0.3s ease',
                 }}
             >
-                <span>Live Demo</span>
-                <span style={{ color: 'var(--zy-text-primary)' }}>↗</span>
-            </a>
-        </nav>
+                {navItems.map((item) => {
+                    const isActive = activeSection === item.id;
+                    return (
+                        <a
+                            key={item.id}
+                            href={`#${item.id}`}
+                            style={{
+                                padding: '8px 16px',
+                                borderRadius: '30px',
+                                fontSize: '12px',
+                                fontWeight: 600,
+                                letterSpacing: '0.04em',
+                                textDecoration: 'none',
+                                color: isActive
+                                    ? 'var(--zy-bg)'
+                                    : 'var(--zy-text-secondary)',
+                                background: isActive
+                                    ? 'var(--zy-text-primary)'
+                                    : 'transparent',
+                                transition: 'all 0.25s ease',
+                            }}
+                        >
+                            {item.label}
+                        </a>
+                    );
+                })}
+
+                <div
+                    style={{
+                        width: '1px',
+                        height: '18px',
+                        background: 'var(--zy-border-subtle)',
+                        margin: '0 4px',
+                    }}
+                />
+
+                <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        padding: '8px 18px',
+                        borderRadius: '30px',
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                        color: 'var(--zy-text-primary)',
+                        background: 'var(--zy-surface-2)',
+                        border: '1px solid var(--zy-border-subtle)',
+                        transition: 'all 0.2s ease',
+                    }}
+                >
+                    <span>Live Demo</span>
+                    <span style={{ color: 'var(--zy-text-primary)' }}>↗</span>
+                </a>
+            </nav>
+
+            <style>{`
+                @media (max-width: 768px) {
+                    .project-subnav-dock {
+                        display: none !important;
+                    }
+                }
+            `}</style>
+        </>
     );
 }

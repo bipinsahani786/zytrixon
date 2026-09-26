@@ -18,7 +18,9 @@ export default function ProductScreenshots({
 
     // Track scroll position to update the dots indicator (...) below
     const handleScroll = () => {
-        if (!sliderRef.current) return;
+        if (!sliderRef.current) {
+            return;
+        }
         const scrollLeft = sliderRef.current.scrollLeft;
         const width = sliderRef.current.clientWidth;
         const newIndex = Math.round(scrollLeft / width);
@@ -32,7 +34,9 @@ export default function ProductScreenshots({
     };
 
     const scrollToIndex = (index: number) => {
-        if (!sliderRef.current) return;
+        if (!sliderRef.current) {
+            return;
+        }
         const width = sliderRef.current.clientWidth;
         sliderRef.current.scrollTo({
             left: index * width,
@@ -182,7 +186,9 @@ export default function ProductScreenshots({
                             <button
                                 type="button"
                                 onClick={scrollNext}
-                                disabled={activeIndex === screenshots.length - 1}
+                                disabled={
+                                    activeIndex === screenshots.length - 1
+                                }
                                 aria-label="Next screenshot"
                                 style={{
                                     width: '42px',

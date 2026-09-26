@@ -75,6 +75,104 @@ export default function ProjectImpactBanner({
                     </div>
                 </div>
 
+                {/* Verified Client Testimonial (if available for project) */}
+                {project.testimonial && (
+                    <div
+                        style={{
+                            padding: '34px 32px',
+                            background:
+                                'linear-gradient(135deg, rgba(37,99,235,0.06) 0%, var(--zy-surface-1) 100%)',
+                            borderRadius: '20px',
+                            border: '1px solid rgba(37,99,235,0.22)',
+                            marginBottom: '40px',
+                            position: 'relative',
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                marginBottom: '14px',
+                                color: '#F59E0B',
+                            }}
+                        >
+                            {'★'.repeat(5)}
+                            <span
+                                style={{
+                                    fontSize: '12px',
+                                    fontWeight: 700,
+                                    color: 'var(--zy-text-secondary)',
+                                    marginLeft: '8px',
+                                    letterSpacing: '0.08em',
+                                    textTransform: 'uppercase',
+                                }}
+                            >
+                                Verified Client Testimonial
+                            </span>
+                        </div>
+                        <blockquote
+                            style={{
+                                fontFamily:
+                                    'var(--font-heading, Space Grotesk, sans-serif)',
+                                fontSize: 'clamp(17px, 2vw, 22px)',
+                                fontWeight: 500,
+                                fontStyle: 'italic',
+                                lineHeight: 1.55,
+                                color: 'var(--zy-text-primary)',
+                                margin: '0 0 20px 0',
+                                maxWidth: '1050px',
+                            }}
+                        >
+                            &ldquo;{project.testimonial.quote}&rdquo;
+                        </blockquote>
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '12px',
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: '42px',
+                                    height: '42px',
+                                    borderRadius: '50%',
+                                    background:
+                                        'linear-gradient(135deg, #2563EB, #10B981)',
+                                    color: '#ffffff',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontWeight: 700,
+                                    fontSize: '16px',
+                                }}
+                            >
+                                {project.testimonial.author.charAt(0)}
+                            </div>
+                            <div>
+                                <div
+                                    style={{
+                                        fontSize: '15px',
+                                        fontWeight: 700,
+                                        color: 'var(--zy-text-primary)',
+                                    }}
+                                >
+                                    {project.testimonial.author}
+                                </div>
+                                <div
+                                    style={{
+                                        fontSize: '12px',
+                                        color: 'var(--zy-text-secondary)',
+                                    }}
+                                >
+                                    {project.testimonial.role}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 {/* 4 Large KPI Stats Grid */}
                 <div
                     style={{

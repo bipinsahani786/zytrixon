@@ -26,7 +26,7 @@ export default function MajorProductsSection({
             description:
                 'Track business collections, custom billing invoices, party ledger payments, and customer accounts inside a clean, modern ecosystem.',
             badge: 'Billing & Retail CRM',
-            image: '/assets/products/mobile-crm.png',
+            image: '/assets/products/mobile-crm-landscape.png',
             accentColor: '#0EA5E9',
             inquiryMessage:
                 'Hi Zytrixon, I would like to schedule a demo for the Mobile CRM product.',
@@ -37,7 +37,7 @@ export default function MajorProductsSection({
             description:
                 'The intelligent retail dashboard. Access real-time billing logs, analytics, and stock records.',
             badge: 'Retail & Billing OS',
-            image: '/assets/products/grocery-mart.png',
+            image: '/assets/products/grocery-mart-analytics.png',
             accentColor: '#207393',
             inquiryMessage:
                 'Hi Zytrixon, I would like to schedule a demo for the Grocery Mart platform.',
@@ -96,36 +96,6 @@ export default function MajorProductsSection({
                         padding: '0 20px',
                     }}
                 >
-                    <span
-                        className="zy-section-label"
-                        style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            padding: '5px 14px',
-                            borderRadius: '30px',
-                            background: 'var(--zy-surface-2)',
-                            border: '1px solid var(--zy-border-subtle)',
-                            fontSize: '11px',
-                            fontWeight: 700,
-                            letterSpacing: '0.08em',
-                            textTransform: 'uppercase',
-                            color: 'var(--zy-text-primary)',
-                            marginBottom: '14px',
-                        }}
-                    >
-                        <span
-                            style={{
-                                width: '6px',
-                                height: '6px',
-                                borderRadius: '50%',
-                                background: '#38BDF8',
-                                boxShadow: '0 0 8px #38BDF8',
-                            }}
-                        />
-                        Proprietary IP
-                    </span>
-
                     <h2
                         className="zy-section-title"
                         style={{
@@ -155,7 +125,7 @@ export default function MajorProductsSection({
                 </div>
             )}
 
-            {/* 2-Grid Layout for the 2 Products */}
+            {/* 2-Grid on Desktop, 1 Column One Below Other on Mobile */}
             <div
                 ref={gridRef}
                 className="major-products-grid"
@@ -163,9 +133,6 @@ export default function MajorProductsSection({
                     maxWidth: '1280px',
                     margin: '0 auto',
                     padding: '0 20px',
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '28px',
                     alignItems: 'stretch',
                 }}
             >
@@ -184,8 +151,8 @@ export default function MajorProductsSection({
 
                 @media (max-width: 860px) {
                     .major-products-grid {
-                        grid-template-columns: 1fr;
-                        gap: 20px;
+                        grid-template-columns: 1fr !important;
+                        gap: 20px !important;
                     }
                 }
 

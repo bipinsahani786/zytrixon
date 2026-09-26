@@ -40,6 +40,7 @@ export default function ProjectInteractiveGallery({
     return (
         <section
             id="gallery"
+            className="gallery-section"
             style={{
                 padding: '100px var(--zy-section-pad-x, 24px)',
                 background: 'var(--zy-bg)',
@@ -207,6 +208,7 @@ export default function ProjectInteractiveGallery({
                     </div>
                 ) : (
                     <div
+                        className="gallery-split-grid"
                         style={{
                             display: 'grid',
                             gridTemplateColumns:
@@ -239,6 +241,7 @@ export default function ProjectInteractiveGallery({
                                 }
                             >
                                 <div
+                                    className="gallery-stage-viewport"
                                     style={{
                                         position: 'relative',
                                         overflow: 'hidden',
@@ -304,6 +307,7 @@ export default function ProjectInteractiveGallery({
                                 </div>
 
                                 <div
+                                    className="gallery-stage-info"
                                     style={{
                                         padding: '24px 28px',
                                         background: 'var(--zy-surface-1)',
@@ -337,6 +341,7 @@ export default function ProjectInteractiveGallery({
 
                         {/* Right: Interactive Screen Selector List */}
                         <div
+                            className="gallery-selector-list"
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -352,6 +357,7 @@ export default function ProjectInteractiveGallery({
                                     <div
                                         key={idx}
                                         onClick={() => setActiveIndex(idx)}
+                                        className="gallery-selector-item"
                                         style={{
                                             display: 'flex',
                                             alignItems: 'center',
@@ -409,7 +415,10 @@ export default function ProjectInteractiveGallery({
                                             />
                                         </div>
 
-                                        <div style={{ flex: 1 }}>
+                                        <div
+                                            className="gallery-selector-content"
+                                            style={{ flex: 1, minWidth: 0 }}
+                                        >
                                             <div
                                                 style={{
                                                     display: 'flex',
@@ -438,6 +447,9 @@ export default function ProjectInteractiveGallery({
                                                     color: 'var(--zy-text-primary)',
                                                     marginTop: '2px',
                                                     marginBottom: '2px',
+                                                    whiteSpace: 'nowrap',
+                                                    overflow: 'hidden',
+                                                    textOverflow: 'ellipsis',
                                                 }}
                                             >
                                                 {ss.title}
@@ -449,7 +461,7 @@ export default function ProjectInteractiveGallery({
                                                     overflow: 'hidden',
                                                     textOverflow: 'ellipsis',
                                                     whiteSpace: 'nowrap',
-                                                    maxWidth: '320px',
+                                                    maxWidth: '100%',
                                                 }}
                                             >
                                                 {ss.description}
@@ -691,6 +703,54 @@ export default function ProjectInteractiveGallery({
                     </div>
                 </div>
             )}
+
+            <style>{`
+                @media (max-width: 768px) {
+                    .gallery-section {
+                        padding: 48px 16px !important;
+                        overflow: hidden !important;
+                    }
+                    .gallery-split-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 20px !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                    }
+                    .gallery-stage-viewport {
+                        height: 240px !important;
+                    }
+                    .gallery-stage-info {
+                        padding: 16px 18px !important;
+                    }
+                    .gallery-selector-list {
+                        max-height: none !important;
+                        padding-right: 0 !important;
+                        gap: 10px !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                        box-sizing: border-box !important;
+                    }
+                    .gallery-selector-item {
+                        padding: 12px 14px !important;
+                        gap: 12px !important;
+                        border-radius: 14px !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                        box-sizing: border-box !important;
+                    }
+                    .gallery-selector-content {
+                        min-width: 0 !important;
+                        flex: 1 !important;
+                    }
+                    .gallery-selector-content h4,
+                    .gallery-selector-content div {
+                        white-space: nowrap !important;
+                        overflow: hidden !important;
+                        text-overflow: ellipsis !important;
+                        max-width: 100% !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

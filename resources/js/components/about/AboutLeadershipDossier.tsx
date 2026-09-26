@@ -7,27 +7,27 @@ export default function AboutLeadershipDossier() {
 
     const leaders = [
         {
-            name: 'Bipin Sahani',
-            role: 'Founder & Chief Technology Officer',
-            domain: 'Enterprise Cloud Architecture & Distributed Systems',
-            image: '/assets/team/bipin-sahani.png',
-            quote: 'Great engineering is invisible. When a system can process thousands of orders per minute during a festival rush without dropping a single packet, that is the craft.',
+            name: 'Saurav Shandilya',
+            role: 'Founder & Head of Operations & Sales',
+            domain: 'Operations, Marketing & Commercial Growth',
+            image: '/assets/team/saurav.png',
+            quote: 'We built Zytrixon to bridge elite engineering with real commercial accountability. Every product must deliver measurable business growth and operational excellence for our partners.',
             credentials: [
-                'Full-stack distributed systems specialist',
-                'Architect of LIS 2.0 clinical diagnostic platform',
-                'Pioneer of zero-brokerage land acquisition systems',
+                'Leading global business operations & enterprise sales',
+                'Brand marketing, client acquisition & market expansion',
+                'Enterprise SLA governance and commercial execution',
             ],
         },
         {
-            name: 'Saurav Shandilya',
-            role: 'Co-founder & Chief Operating Officer',
-            domain: 'Strategic Expansion & Operational Governance',
-            image: '/assets/team/saurav.png',
-            quote: 'We built Zytrixon to bridge elite engineering with real commercial accountability. Every product must deliver measurable margin growth for our partners.',
+            name: 'Bipin Sahani',
+            role: 'Co-founder & Chief Technology Officer',
+            domain: 'Enterprise Cloud Architecture & Core Technology',
+            image: '/assets/team/bipin-sahani.png',
+            quote: 'Great engineering is invisible. When a system can process thousands of orders per minute during a festival rush without dropping a single packet, that is the craft.',
             credentials: [
-                'Global client relationships across India & MENA',
-                'Enterprise SLA governance and vendor compliance',
-                'Scalable delivery pipeline strategist',
+                'Full-stack architecture & distributed cloud infrastructure',
+                'Leading core technical development and mobile ecosystems',
+                'Engineering zero-downtime, high-concurrency systems',
             ],
         },
     ];

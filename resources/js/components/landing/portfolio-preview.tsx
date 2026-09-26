@@ -31,7 +31,6 @@ export default function PortfolioPreview({
         'Logistics',
         'Mobile Apps',
         'EdTech & ERP',
-        'Beauty & Wellness',
         'Real Estate',
         'Security',
         'E-Commerce',
@@ -43,62 +42,29 @@ export default function PortfolioPreview({
             return true;
         }
         if (activeFilter === 'Logistics') {
-            return (
-                p.category.toLowerCase().includes('logistics') ||
-                p.category.toLowerCase().includes('truck') ||
-                p.category.toLowerCase().includes('fleet') ||
-                p.industry.toLowerCase().includes('logistics') ||
-                p.industry.toLowerCase().includes('transport')
-            );
+            return p.id === 'jmd-trucks';
         }
         if (activeFilter === 'Mobile Apps') {
-            return (
-                p.category.toLowerCase().includes('app') ||
-                p.category.toLowerCase().includes('mobile') ||
-                p.industry.toLowerCase().includes('mobile') ||
-                p.industry.toLowerCase().includes('app')
-            );
+            return p.id === 'billixa-bill';
         }
         if (activeFilter === 'EdTech & ERP') {
-            return (
-                p.category.toLowerCase().includes('hostel') ||
-                p.category.toLowerCase().includes('erp') ||
-                p.industry.toLowerCase().includes('education') ||
-                p.industry.toLowerCase().includes('hostel') ||
-                p.industry.toLowerCase().includes('erp')
-            );
-        }
-        if (activeFilter === 'Beauty & Wellness') {
-            return (
-                p.category.toLowerCase().includes('beauty') ||
-                p.category.toLowerCase().includes('salon') ||
-                p.category.toLowerCase().includes('spa') ||
-                p.industry.toLowerCase().includes('beauty') ||
-                p.industry.toLowerCase().includes('wellness')
-            );
+            return p.id === 'hostel-erp';
         }
         if (activeFilter === 'Real Estate') {
-            return p.industry.toLowerCase().includes('real estate');
+            return p.id === 'sk-infratech';
         }
         if (activeFilter === 'Security') {
-            return (
-                p.industry.toLowerCase().includes('security') ||
-                p.industry.toLowerCase().includes('investigation')
-            );
+            return p.id === 'smart-india-detective';
         }
         if (activeFilter === 'E-Commerce') {
             return (
-                p.industry.toLowerCase().includes('commerce') ||
-                p.industry.toLowerCase().includes('fashion') ||
-                p.category.toLowerCase().includes('rentals')
+                p.id === 'thread-ax' ||
+                p.id === 'threadax' ||
+                p.id === 'glowsuite'
             );
         }
         if (activeFilter === 'HealthTech') {
-            return (
-                p.industry.toLowerCase().includes('health') ||
-                p.industry.toLowerCase().includes('pathology') ||
-                p.industry.toLowerCase().includes('diagnostics')
-            );
+            return p.id === 'zytrixon-labs';
         }
         return true;
     });
