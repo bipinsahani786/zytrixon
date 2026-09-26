@@ -10,6 +10,7 @@ export interface ProductCardProps {
     image: string;
     accentColor: string;
     inquiryMessage?: string;
+    platformBadges?: string[];
 }
 
 export default function ProductCard({
@@ -20,6 +21,7 @@ export default function ProductCard({
     image,
     accentColor,
     inquiryMessage = 'Hi Zytrixon, I would like to know more about this product.',
+    platformBadges,
 }: ProductCardProps) {
     const { theme } = useTheme();
     const isLight = theme === 'light';
@@ -63,6 +65,34 @@ export default function ProductCard({
                     textDecoration: 'none',
                 }}
             >
+                {/* Thumbnail Platform Highlight Tag */}
+                {platformBadges && platformBadges.length > 0 && (
+                    <div
+                        style={{
+                            position: 'absolute',
+                            top: '8px',
+                            left: '8px',
+                            background: 'rgba(15, 23, 42, 0.88)',
+                            backdropFilter: 'blur(8px)',
+                            border: `1px solid ${accentColor}88`,
+                            color: '#38BDF8',
+                            fontSize: '9.5px',
+                            fontWeight: 800,
+                            padding: '3px 8px',
+                            borderRadius: '6px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '5px',
+                            zIndex: 2,
+                            letterSpacing: '0.04em',
+                            boxShadow: '0 4px 12px rgba(0,0,0,0.35)',
+                        }}
+                    >
+                        <span>📱 2 Apps</span>
+                        <span style={{ opacity: 0.5 }}>+</span>
+                        <span>🖥️ Web</span>
+                    </div>
+                )}
                 {!imageError && image ? (
                     <img
                         src={image}
@@ -188,11 +218,41 @@ export default function ProductCard({
                         WebkitLineClamp: 2,
                         WebkitBoxOrient: 'vertical',
                         overflow: 'hidden',
-                        marginBottom: '10px',
+                        marginBottom: '8px',
                     }}
                 >
                     {description}
                 </p>
+
+                {/* Platform Badges Row */}
+                {platformBadges && platformBadges.length > 0 && (
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: '4px',
+                            marginBottom: '10px',
+                        }}
+                    >
+                        {platformBadges.map((pb, i) => (
+                            <span
+                                key={i}
+                                style={{
+                                    fontSize: '9.5px',
+                                    fontWeight: 700,
+                                    padding: '2px 7px',
+                                    borderRadius: '5px',
+                                    background: isLight ? 'rgba(0,0,0,0.04)' : 'var(--zy-surface-2)',
+                                    border: '1px solid var(--zy-border-subtle)',
+                                    color: 'var(--zy-text-primary)',
+                                    letterSpacing: '0.02em',
+                                }}
+                            >
+                                {pb}
+                            </span>
+                        ))}
+                    </div>
+                )}
 
                 {/* Compact Bottom Action Bar */}
                 <div

@@ -344,19 +344,56 @@ export default function ProductScreenshots({
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
+                                    padding:
+                                        ss.category?.toLowerCase().includes('app') ||
+                                        ss.image.includes('image.png') ||
+                                        ss.image.includes('WhatsApp Image')
+                                            ? '14px'
+                                            : '0',
                                 }}
                             >
-                                <img
-                                    src={ss.image}
-                                    alt={ss.title}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'contain',
-                                        objectPosition: 'center',
-                                        display: 'block',
-                                    }}
-                                />
+                                {ss.category?.toLowerCase().includes('app') ||
+                                ss.image.includes('image.png') ||
+                                ss.image.includes('WhatsApp Image') ? (
+                                    <div
+                                        style={{
+                                            height: '100%',
+                                            maxHeight: '480px',
+                                            borderRadius: '24px',
+                                            overflow: 'hidden',
+                                            border: '5px solid var(--zy-surface-2)',
+                                            boxShadow: '0 16px 40px rgba(0,0,0,0.3)',
+                                            background: '#000000',
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <img
+                                            src={ss.image}
+                                            alt={ss.title}
+                                            style={{
+                                                height: '100%',
+                                                width: 'auto',
+                                                maxHeight: '460px',
+                                                objectFit: 'contain',
+                                                display: 'block',
+                                            }}
+                                        />
+                                    </div>
+                                ) : (
+                                    <img
+                                        src={ss.image}
+                                        alt={ss.title}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'contain',
+                                            objectPosition: 'center',
+                                            display: 'block',
+                                        }}
+                                    />
+                                )}
                             </div>
 
                             {/* Caption / Description below image inside the card */}

@@ -91,6 +91,58 @@ export default function ProjectHeroEditorial({
                 >
                     {/* Left Column: Typography & Narrative */}
                     <div>
+                        {/* Multi-Platform Callout Pill for Grocery Mart */}
+                        {project.id === 'grocery-mart' ? (
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    marginBottom: '14px',
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '6px',
+                                        fontSize: '11px',
+                                        fontWeight: 800,
+                                        letterSpacing: '0.08em',
+                                        textTransform: 'uppercase',
+                                        color: '#38BDF8',
+                                        background: 'rgba(56, 189, 248, 0.12)',
+                                        border: '1px solid rgba(56, 189, 248, 0.35)',
+                                        padding: '5px 12px',
+                                        borderRadius: '20px',
+                                        boxShadow: '0 0 14px rgba(56, 189, 248, 0.15)',
+                                    }}
+                                >
+                                    <span>📱</span> 2 Mobile Apps (Customer + Picker)
+                                </span>
+                                <span
+                                    style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '6px',
+                                        fontSize: '11px',
+                                        fontWeight: 800,
+                                        letterSpacing: '0.08em',
+                                        textTransform: 'uppercase',
+                                        color: '#10B981',
+                                        background: 'rgba(16, 185, 129, 0.12)',
+                                        border: '1px solid rgba(16, 185, 129, 0.35)',
+                                        padding: '5px 12px',
+                                        borderRadius: '20px',
+                                        boxShadow: '0 0 14px rgba(16, 185, 129, 0.15)',
+                                    }}
+                                >
+                                    <span>🖥️</span> Web Management Suite (Admin & Store)
+                                </span>
+                            </div>
+                        ) : null}
+
                         <div style={{ marginBottom: '16px' }}>
                             <span
                                 style={{
@@ -447,64 +499,269 @@ export default function ProjectHeroEditorial({
                                     display: 'block',
                                 }}
                             />
+
+                            {/* Device Type Floating Badge for Desktop */}
+                            {project.id === 'grocery-mart' ? (
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                        bottom: '12px',
+                                        left: '12px',
+                                        background: 'rgba(15, 23, 42, 0.88)',
+                                        backdropFilter: 'blur(8px)',
+                                        border: '1px solid rgba(56, 189, 248, 0.4)',
+                                        color: '#38BDF8',
+                                        fontSize: '10.5px',
+                                        fontWeight: 800,
+                                        padding: '4px 10px',
+                                        borderRadius: '8px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '6px',
+                                        letterSpacing: '0.04em',
+                                        boxShadow: '0 4px 14px rgba(0,0,0,0.3)',
+                                    }}
+                                >
+                                    <span>🖥️</span>
+                                    <span>WEB MANAGEMENT PANEL (ADMIN & STORE)</span>
+                                </div>
+                            ) : null}
                         </div>
 
-                        {/* Overlapping Angled Mobile Device */}
-                        <div
-                            className="hero-editorial-mobile-frame"
-                            style={{
-                                position: 'absolute',
-                                right: '-20px',
-                                bottom: '-95px',
-                                width: '215px',
-                                background: 'var(--zy-surface-1)',
-                                borderRadius: '28px',
-                                padding: '8px',
-                                border: '2px solid var(--zy-border-subtle)',
-                                boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-                                transform: 'rotate(-2.5deg)',
-                                transition: 'transform 0.3s ease',
-                                zIndex: 3,
-                            }}
-                            onMouseEnter={(e) =>
-                                (e.currentTarget.style.transform =
-                                    'rotate(0deg) scale(1.03)')
-                            }
-                            onMouseLeave={(e) =>
-                                (e.currentTarget.style.transform =
-                                    'rotate(-2.5deg) scale(1)')
-                            }
-                        >
-                            {/* Phone Notch */}
+                        {/* Overlapping Angled Mobile Devices: Dual-Phone for Grocery Mart, Single Phone for others */}
+                        {project.id === 'grocery-mart' ? (
                             <div
+                                className="hero-editorial-dual-phones"
                                 style={{
-                                    width: '60px',
-                                    height: '5px',
-                                    background: 'var(--zy-border-subtle)',
-                                    borderRadius: '10px',
-                                    margin: '4px auto 8px',
-                                }}
-                            />
-                            <div
-                                style={{
-                                    borderRadius: '18px',
-                                    overflow: 'hidden',
-                                    background: '#000000',
+                                    position: 'absolute',
+                                    right: '-15px',
+                                    bottom: '-95px',
+                                    display: 'flex',
+                                    alignItems: 'flex-end',
+                                    zIndex: 3,
                                 }}
                             >
-                                <img
-                                    src={project.mobileImage}
-                                    alt="Mobile companion app"
+                                {/* Phone 1: Customer App */}
+                                <div
+                                    className="hero-editorial-phone-left"
                                     style={{
-                                        width: '100%',
-                                        height: 'auto',
-                                        maxHeight: '445px',
-                                        objectFit: 'contain',
-                                        display: 'block',
+                                        width: '185px',
+                                        background: 'var(--zy-surface-1)',
+                                        borderRadius: '26px',
+                                        padding: '7px',
+                                        border: '2px solid var(--zy-border-subtle)',
+                                        boxShadow:
+                                            '0 20px 50px rgba(0,0,0,0.3)',
+                                        transform: 'rotate(-4deg)',
+                                        transition: 'all 0.3s ease',
+                                        marginRight: '-45px',
+                                        zIndex: 3,
+                                        cursor: 'pointer',
+                                        position: 'relative',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.transform =
+                                            'rotate(-1deg) scale(1.06) translateY(-8px)';
+                                        e.currentTarget.style.zIndex = '6';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.transform =
+                                            'rotate(-4deg) scale(1) translateY(0)';
+                                        e.currentTarget.style.zIndex = '3';
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            position: 'absolute',
+                                            top: '-10px',
+                                            left: '50%',
+                                            transform: 'translateX(-50%)',
+                                            background: '#10B981',
+                                            color: '#ffffff',
+                                            fontSize: '8.5px',
+                                            fontWeight: 800,
+                                            padding: '2px 8px',
+                                            borderRadius: '10px',
+                                            whiteSpace: 'nowrap',
+                                            zIndex: 10,
+                                            boxShadow:
+                                                '0 4px 10px rgba(16, 185, 129, 0.4)',
+                                            letterSpacing: '0.03em',
+                                        }}
+                                    >
+                                        🛒 CUSTOMER APP
+                                    </div>
+                                    <div
+                                        style={{
+                                            width: '50px',
+                                            height: '4px',
+                                            background:
+                                                'var(--zy-border-subtle)',
+                                            borderRadius: '10px',
+                                            margin: '3px auto 6px',
+                                        }}
+                                    />
+                                    <div
+                                        style={{
+                                            borderRadius: '16px',
+                                            overflow: 'hidden',
+                                            background: '#000000',
+                                        }}
+                                    >
+                                        <img
+                                            src={project.mobileImage}
+                                            alt="Customer Mobile App"
+                                            style={{
+                                                width: '100%',
+                                                height: 'auto',
+                                                maxHeight: '385px',
+                                                objectFit: 'contain',
+                                                display: 'block',
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Phone 2: Delivery Partner App */}
+                                <div
+                                    className="hero-editorial-phone-right"
+                                    style={{
+                                        width: '195px',
+                                        background: 'var(--zy-surface-1)',
+                                        borderRadius: '26px',
+                                        padding: '7px',
+                                        border: '2px solid var(--zy-border-subtle)',
+                                        boxShadow:
+                                            '0 25px 60px rgba(0,0,0,0.35)',
+                                        transform: 'rotate(2deg)',
+                                        transition: 'all 0.3s ease',
+                                        zIndex: 4,
+                                        cursor: 'pointer',
+                                        position: 'relative',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.transform =
+                                            'rotate(0deg) scale(1.06) translateY(-8px)';
+                                        e.currentTarget.style.zIndex = '6';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.transform =
+                                            'rotate(2deg) scale(1) translateY(0)';
+                                        e.currentTarget.style.zIndex = '4';
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            position: 'absolute',
+                                            top: '-10px',
+                                            left: '50%',
+                                            transform: 'translateX(-50%)',
+                                            background: '#F59E0B',
+                                            color: '#ffffff',
+                                            fontSize: '8.5px',
+                                            fontWeight: 800,
+                                            padding: '2px 8px',
+                                            borderRadius: '10px',
+                                            whiteSpace: 'nowrap',
+                                            zIndex: 10,
+                                            boxShadow:
+                                                '0 4px 10px rgba(245, 158, 11, 0.4)',
+                                            letterSpacing: '0.03em',
+                                        }}
+                                    >
+                                        🛵 PARTNER & RIDER
+                                    </div>
+                                    <div
+                                        style={{
+                                            width: '50px',
+                                            height: '4px',
+                                            background:
+                                                'var(--zy-border-subtle)',
+                                            borderRadius: '10px',
+                                            margin: '3px auto 6px',
+                                        }}
+                                    />
+                                    <div
+                                        style={{
+                                            borderRadius: '16px',
+                                            overflow: 'hidden',
+                                            background: '#000000',
+                                        }}
+                                    >
+                                        <img
+                                            src={
+                                                project.secondMobileImage ||
+                                                '/assets/products/grocery-mart/WhatsApp Image 2026-09-27 at 1.42.06 AM.jpeg'
+                                            }
+                                            alt="Delivery Partner and Rider App"
+                                            style={{
+                                                width: '100%',
+                                                height: 'auto',
+                                                maxHeight: '395px',
+                                                objectFit: 'contain',
+                                                display: 'block',
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
+                            <div
+                                className="hero-editorial-mobile-frame"
+                                style={{
+                                    position: 'absolute',
+                                    right: '-20px',
+                                    bottom: '-95px',
+                                    width: '215px',
+                                    background: 'var(--zy-surface-1)',
+                                    borderRadius: '28px',
+                                    padding: '8px',
+                                    border: '2px solid var(--zy-border-subtle)',
+                                    boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
+                                    transform: 'rotate(-2.5deg)',
+                                    transition: 'transform 0.3s ease',
+                                    zIndex: 3,
+                                }}
+                                onMouseEnter={(e) =>
+                                    (e.currentTarget.style.transform =
+                                        'rotate(0deg) scale(1.03)')
+                                }
+                                onMouseLeave={(e) =>
+                                    (e.currentTarget.style.transform =
+                                        'rotate(-2.5deg) scale(1)')
+                                }
+                            >
+                                {/* Phone Notch */}
+                                <div
+                                    style={{
+                                        width: '60px',
+                                        height: '5px',
+                                        background: 'var(--zy-border-subtle)',
+                                        borderRadius: '10px',
+                                        margin: '4px auto 8px',
                                     }}
                                 />
+                                <div
+                                    style={{
+                                        borderRadius: '18px',
+                                        overflow: 'hidden',
+                                        background: '#000000',
+                                    }}
+                                >
+                                    <img
+                                        src={project.mobileImage}
+                                        alt="Mobile companion app"
+                                        style={{
+                                            width: '100%',
+                                            height: 'auto',
+                                            maxHeight: '445px',
+                                            objectFit: 'contain',
+                                            display: 'block',
+                                        }}
+                                    />
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>
@@ -514,8 +771,19 @@ export default function ProjectHeroEditorial({
                     .hero-editorial-mobile-frame {
                         bottom: -110px !important;
                     }
+                    .hero-editorial-dual-phones {
+                        bottom: -110px !important;
+                        right: 0px !important;
+                    }
+                    .hero-editorial-phone-left {
+                        width: 155px !important;
+                        margin-right: -35px !important;
+                    }
+                    .hero-editorial-phone-right {
+                        width: 165px !important;
+                    }
                     .hero-editorial-section {
-                        padding-bottom: 140px !important;
+                        padding-bottom: 145px !important;
                     }
                 }
                 @media (max-width: 640px) {
@@ -524,9 +792,21 @@ export default function ProjectHeroEditorial({
                         right: -5px !important;
                         width: 195px !important;
                     }
-                    .hero-editorial-section {
-                        padding-bottom: 155px !important;
+                    .hero-editorial-dual-phones {
+                        bottom: -125px !important;
+                        right: -5px !important;
                     }
+                    .hero-editorial-phone-left {
+                        width: 140px !important;
+                        margin-right: -30px !important;
+                    }
+                    .hero-editorial-phone-right {
+                        width: 150px !important;
+                    }
+                    .hero-editorial-section {
+                        padding-bottom: 160px !important;
+                    }
+                }
                     .hero-editorial-actions {
                         gap: 8px !important;
                     }

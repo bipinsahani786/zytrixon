@@ -1,7 +1,6 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
-* @see \App\Http\Controllers\CaseStudyController::show
- * @see app/Http/Controllers/CaseStudyController.php:17
+ * @see routes/web.php:34
  * @route '/portfolio/{slug}'
  */
 export const show = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -15,8 +14,7 @@ show.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \App\Http\Controllers\CaseStudyController::show
- * @see app/Http/Controllers/CaseStudyController.php:17
+ * @see routes/web.php:34
  * @route '/portfolio/{slug}'
  */
 show.url = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -43,8 +41,7 @@ show.url = (args: { slug: string | number } | [slug: string | number ] | string 
 }
 
 /**
-* @see \App\Http\Controllers\CaseStudyController::show
- * @see app/Http/Controllers/CaseStudyController.php:17
+ * @see routes/web.php:34
  * @route '/portfolio/{slug}'
  */
 show.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -52,8 +49,7 @@ show.get = (args: { slug: string | number } | [slug: string | number ] | string 
     method: 'get',
 })
 /**
-* @see \App\Http\Controllers\CaseStudyController::show
- * @see app/Http/Controllers/CaseStudyController.php:17
+ * @see routes/web.php:34
  * @route '/portfolio/{slug}'
  */
 show.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -62,8 +58,7 @@ show.head = (args: { slug: string | number } | [slug: string | number ] | string
 })
 
     /**
-* @see \App\Http\Controllers\CaseStudyController::show
- * @see app/Http/Controllers/CaseStudyController.php:17
+ * @see routes/web.php:34
  * @route '/portfolio/{slug}'
  */
     const showForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -72,8 +67,7 @@ show.head = (args: { slug: string | number } | [slug: string | number ] | string
     })
 
             /**
-* @see \App\Http\Controllers\CaseStudyController::show
- * @see app/Http/Controllers/CaseStudyController.php:17
+ * @see routes/web.php:34
  * @route '/portfolio/{slug}'
  */
         showForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -81,8 +75,7 @@ show.head = (args: { slug: string | number } | [slug: string | number ] | string
             method: 'get',
         })
             /**
-* @see \App\Http\Controllers\CaseStudyController::show
- * @see app/Http/Controllers/CaseStudyController.php:17
+ * @see routes/web.php:34
  * @route '/portfolio/{slug}'
  */
         showForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
