@@ -205,8 +205,8 @@ export default function AboutSocialImpact() {
                             color: 'var(--zy-text-muted)',
                         }}
                     >
-                        &mdash; Bipin Sahani, Founder &amp; Chief Architect,
-                        Zytrixon
+                        &mdash; Bipin Sahani, Co-founder &amp; Chief Technology
+                        Officer, Zytrixon
                     </div>
                 </div>
             </div>

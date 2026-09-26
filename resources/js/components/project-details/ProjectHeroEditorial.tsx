@@ -12,10 +12,11 @@ export default function ProjectHeroEditorial({
     return (
         <section
             id="overview"
+            className="hero-editorial-section"
             style={{
                 position: 'relative',
                 paddingTop: '80px',
-                paddingBottom: '85px',
+                paddingBottom: '120px',
                 paddingLeft: 'var(--zy-section-pad-x, 24px)',
                 paddingRight: 'var(--zy-section-pad-x, 24px)',
                 overflow: 'hidden',
@@ -146,6 +147,8 @@ export default function ProjectHeroEditorial({
                                 borderRadius: '16px',
                                 border: '1px solid var(--zy-border-subtle)',
                                 marginBottom: '36px',
+                                position: 'relative',
+                                zIndex: 4,
                             }}
                         >
                             <div>
@@ -235,6 +238,8 @@ export default function ProjectHeroEditorial({
                                         fontWeight: 600,
                                         color: 'var(--zy-text-primary)',
                                         marginTop: '3px',
+                                        lineHeight: 1.4,
+                                        wordBreak: 'break-word',
                                     }}
                                 >
                                     {project.architecture ??
@@ -245,6 +250,7 @@ export default function ProjectHeroEditorial({
 
                         {/* Action Buttons */}
                         <div
+                            className="hero-editorial-actions"
                             style={{
                                 display: 'flex',
                                 alignItems: 'center',
@@ -257,6 +263,7 @@ export default function ProjectHeroEditorial({
                                     href={project.playStoreUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    className="editorial-btn-play"
                                     style={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
@@ -290,6 +297,7 @@ export default function ProjectHeroEditorial({
                                 href={project.liveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                className="editorial-btn-launch"
                                 style={{
                                     display: 'inline-flex',
                                     alignItems: 'center',
@@ -330,36 +338,6 @@ export default function ProjectHeroEditorial({
                                     <line x1="10" y1="14" x2="21" y2="3" />
                                 </svg>
                             </a>
-
-                            {project.videoUrl &&
-                                project.videoUrl.trim() !== '' && (
-                                    <a
-                                        href="#theatre"
-                                        style={{
-                                            display: 'inline-flex',
-                                            alignItems: 'center',
-                                            gap: '8px',
-                                            background: 'var(--zy-surface-2)',
-                                            color: 'var(--zy-text-primary)',
-                                            padding: '15px 26px',
-                                            borderRadius: '40px',
-                                            fontWeight: 600,
-                                            fontSize: '14px',
-                                            textDecoration: 'none',
-                                            border: '1px solid var(--zy-border-subtle)',
-                                        }}
-                                    >
-                                        <svg
-                                            width="15"
-                                            height="15"
-                                            viewBox="0 0 24 24"
-                                            fill="currentColor"
-                                        >
-                                            <polygon points="5 3 19 12 5 21 5 3" />
-                                        </svg>
-                                        <span>Watch Film</span>
-                                    </a>
-                                )}
                         </div>
                     </div>
 
@@ -473,10 +451,11 @@ export default function ProjectHeroEditorial({
 
                         {/* Overlapping Angled Mobile Device */}
                         <div
+                            className="hero-editorial-mobile-frame"
                             style={{
                                 position: 'absolute',
                                 right: '-20px',
-                                bottom: '-45px',
+                                bottom: '-95px',
                                 width: '215px',
                                 background: 'var(--zy-surface-1)',
                                 borderRadius: '28px',
@@ -488,12 +467,12 @@ export default function ProjectHeroEditorial({
                                 zIndex: 3,
                             }}
                             onMouseEnter={(e) =>
-                            (e.currentTarget.style.transform =
-                                'rotate(0deg) scale(1.03)')
+                                (e.currentTarget.style.transform =
+                                    'rotate(0deg) scale(1.03)')
                             }
                             onMouseLeave={(e) =>
-                            (e.currentTarget.style.transform =
-                                'rotate(-2.5deg) scale(1)')
+                                (e.currentTarget.style.transform =
+                                    'rotate(-2.5deg) scale(1)')
                             }
                         >
                             {/* Phone Notch */}
@@ -529,6 +508,50 @@ export default function ProjectHeroEditorial({
                     </div>
                 </div>
             </div>
+
+            <style>{`
+                @media (max-width: 900px) {
+                    .hero-editorial-mobile-frame {
+                        bottom: -110px !important;
+                    }
+                    .hero-editorial-section {
+                        padding-bottom: 140px !important;
+                    }
+                }
+                @media (max-width: 640px) {
+                    .hero-editorial-mobile-frame {
+                        bottom: -125px !important;
+                        right: -5px !important;
+                        width: 195px !important;
+                    }
+                    .hero-editorial-section {
+                        padding-bottom: 155px !important;
+                    }
+                    .hero-editorial-actions {
+                        gap: 8px !important;
+                    }
+                    .editorial-btn-launch {
+                        padding: 9px 16px !important;
+                        font-size: 12px !important;
+                        gap: 6px !important;
+                        border-radius: 24px !important;
+                    }
+                    .editorial-btn-launch svg {
+                        width: 13px !important;
+                        height: 13px !important;
+                    }
+                    .editorial-btn-play {
+                        padding: 9px 14px !important;
+                        font-size: 12px !important;
+                        gap: 6px !important;
+                        border-radius: 24px !important;
+                    }
+                    .editorial-btn-play svg {
+                        width: 14px !important;
+                        height: 14px !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

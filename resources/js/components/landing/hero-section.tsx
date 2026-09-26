@@ -243,14 +243,15 @@ export default function HeroSection() {
     return (
         <section
             ref={sectionRef}
+            className="hero-section"
             style={{
                 position: 'relative',
-                minHeight: '100vh',
+                minHeight: 'calc(100vh - 110px)',
                 display: 'flex',
                 alignItems: 'center',
                 overflow: 'hidden',
                 background: activeIsLight ? '#FFFFFF' : 'var(--zy-black)',
-                padding: '120px var(--zy-section-pad-x) 80px',
+                padding: '40px var(--zy-section-pad-x) 60px',
             }}
         >
             {/* Background effects - Matrix removed as requested */}
@@ -416,6 +417,7 @@ export default function HeroSection() {
 
                     <div
                         ref={ctaRef}
+                        className="hero-cta-group"
                         style={{
                             display: 'flex',
                             gap: 16,
@@ -424,13 +426,14 @@ export default function HeroSection() {
                         }}
                     >
                         <div
+                            className="hero-btn-primary-wrap"
                             onMouseMove={handleBtnMouseMove}
                             onMouseLeave={handleBtnMouseLeave}
                         >
                             <Link
                                 ref={btnRef}
                                 href="/contact"
-                                className="magnetic-btn"
+                                className="magnetic-btn hero-btn-primary"
                                 style={{ padding: '18px 40px', fontSize: 14 }}
                             >
                                 Start Your Project
@@ -449,6 +452,7 @@ export default function HeroSection() {
                         </div>
                         <Link
                             href="/work"
+                            className="hero-btn-secondary"
                             style={{
                                 padding: '18px 32px',
                                 border: '1px solid #333',
@@ -545,8 +549,43 @@ export default function HeroSection() {
                 @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
                 @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
                 @media (max-width: 768px) {
-                    .hero-content-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-                    .hero-content-grid > div:last-child { height: 300px !important; }
+                    .hero-section {
+                        padding-top: 16px !important;
+                        padding-bottom: 32px !important;
+                        min-height: auto !important;
+                    }
+                    .hero-content-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+                    .hero-content-grid > div:last-child { height: 260px !important; }
+                }
+                @media (max-width: 640px) {
+                    .hero-cta-group {
+                        flex-direction: column !important;
+                        align-items: stretch !important;
+                        width: 100% !important;
+                        gap: 12px !important;
+                    }
+                    .hero-btn-primary-wrap {
+                        width: 100% !important;
+                        display: block !important;
+                    }
+                    .hero-btn-primary {
+                        width: 100% !important;
+                        display: flex !important;
+                        justify-content: center !important;
+                        align-items: center !important;
+                        box-sizing: border-box !important;
+                        padding: 16px 20px !important;
+                        text-align: center !important;
+                    }
+                    .hero-btn-secondary {
+                        width: 100% !important;
+                        display: flex !important;
+                        justify-content: center !important;
+                        align-items: center !important;
+                        box-sizing: border-box !important;
+                        padding: 16px 20px !important;
+                        text-align: center !important;
+                    }
                 }
             `}</style>
         </section>

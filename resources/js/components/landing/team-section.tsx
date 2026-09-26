@@ -7,18 +7,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TEAM = [
     {
-        name: 'Bipin Sahani',
-        role: 'Co-founder & CTO',
-        bio: 'Leading the technical vision and strategic growth with 2.5+ years of extensive full-stack experience.',
-        image: '/assets/team/bipin-sahani.png',
-        color: '#6366f1',
-    },
-    {
         name: 'Saurav Shandilya',
-        role: 'Co-founder & COO',
-        bio: 'Driving operations and business strategy to scale our solutions globally.',
+        role: 'Founder & Head of Operations & Sales',
+        bio: 'Driving global operations, strategic marketing, and client sales partnerships to scale enterprise digital solutions.',
         image: '/assets/team/saurav.png',
         color: '#ec4899',
+    },
+    {
+        name: 'Bipin Sahani',
+        role: 'Co-founder & CTO',
+        bio: 'Leading core technology architecture, software engineering, and innovation stack across cloud & mobile platforms.',
+        image: '/assets/team/bipin-sahani.png',
+        color: '#6366f1',
     },
 ];
 
@@ -272,8 +272,8 @@ export default function TeamSection() {
                                     }}
                                 >
                                     {member.name === 'Bipin Sahani'
-                                        ? 'Architecture & Cloud Vision'
-                                        : 'Global Ops & Scale Strategy'}
+                                        ? 'Technology & Architecture'
+                                        : 'Operations, Marketing & Sales'}
                                 </span>
                                 <div
                                     style={{

@@ -66,6 +66,11 @@ export interface ProjectItem {
     };
     architecture?: string;
     architectureFlow: ProjectArchitectureNode[];
+    testimonial?: {
+        quote: string;
+        author: string;
+        role: string;
+    };
 }
 
 export const DUMMY_PROJECTS: ProjectItem[] = [
@@ -219,7 +224,7 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
         tagline:
             'Where Beauty Meets Luxury — Experience luxury treatments, expert styling, and our seamless token-based booking system designed for your convenience.',
         client: 'GlowSuite Luxury Salon & Spa',
-        industry: 'Beauty, Wellness, Salon Management & Bridal Rentals',
+        industry: 'Luxury Salon Management, Bridal Rentals & E-Commerce',
         year: '2025 - 2026',
         duration: '1 Month',
         architecture: 'Laravel 11 & Alpine.js Architecture',
@@ -683,6 +688,11 @@ export const DUMMY_PROJECTS: ProjectItem[] = [
                 detail: 'GST-compliant bill generated with instant UPI/card payment confirmation and sales ledger update.',
             },
         ],
+        testimonial: {
+            quote: 'Zytrixon built our restaurant POS software and Android app with unmatched speed and finesse. From contactless QR code menus to real-time KOT kitchen dispatch and cloud billing, table turnaround improved by 40% in our first month. The best engineering team for modern hospitality.',
+            author: 'Rajan Kumar',
+            role: 'Founder & CEO, BillixaBill',
+        },
     },
     {
         id: 'sk-infratech',

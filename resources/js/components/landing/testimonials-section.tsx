@@ -32,6 +32,12 @@ const TESTIMONIALS: Testimonial[] = [
         accentColor: '#00F0FF', // Cyan
     },
     {
+        quote: 'Zytrixon built our restaurant POS software and Android app with unmatched speed and finesse. From contactless QR code menus to real-time KOT kitchen dispatch and cloud billing, table turnaround improved by 40% in our first month. The best engineering team for modern hospitality.',
+        author: 'Rajan Kumar',
+        company: 'BillixaBill (Restaurant POS)',
+        accentColor: '#2563EB', // Blue
+    },
+    {
         quote: 'Our retail and hyper-local delivery operations reached new heights with the fast, intuitive online ordering system Zytrixon created. Daily customer orders grew exponentially with zero downtime. Truly the best software team.',
         author: '',
         company: 'Mithila Grocery',
