@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Customer\CustomerDashboardController;
 use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\SeoController;
 use App\Models\CaseStudy;
 use App\Models\Location;
 use App\Models\Service;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'welcome', [
@@ -196,8 +200,41 @@ Route::get('/sitemap.xml', function () {
     return response($xml)->header('Content-Type', 'text/xml');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('dashboard', 'dashboard')->name('dashboard');
+// ============================================
+// ADMIN & PORTAL AUTHENTICATION
+// ============================================
+Route::get('/z-admin', [AdminAuthController::class, 'showLogin'])->name('admin.login');
+Route::post('/z-admin/login', [AdminAuthController::class, 'login'])->name('admin.login.store');
+Route::post('/z-admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+// Override default login/register
+Route::get('/login', function () {
+    return redirect()->route('admin.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return redirect()->route('admin.login')->with('error', 'Public registration is disabled. Please contact the administrator.');
+});
+
+// Dynamic role-based dispatcher for /dashboard
+Route::get('/dashboard', function () {
+    if (! Auth::check()) {
+        return redirect()->route('admin.login');
+    }
+
+    return Auth::user()->role === 'admin'
+        ? redirect()->route('admin.dashboard')
+        : redirect()->route('customer.dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+// Protected Admin Panel
+Route::middleware(['auth', 'admin'])->prefix('z-admin')->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+});
+
+// Protected Customer Portal
+Route::middleware(['auth'])->prefix('customer')->group(function () {
+    Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
 });
 
 require __DIR__.'/settings.php';
