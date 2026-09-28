@@ -61,13 +61,7 @@ export default function Careers() {
             <TopBar />
             <Navbar />
 
-            <main
-                style={{
-                    minHeight: '100vh',
-                    background: 'var(--zy-black)',
-                    overflowX: 'hidden',
-                }}
-            >
+            <main style={{ background: 'var(--zy-black)' }}>
                 <InnerPageHero
                     title="Build the Future With Us"
                     subtitle="We are looking for passionate, driven individuals who want to solve complex problems and build scalable enterprise solutions."
@@ -265,3 +259,5 @@ export default function Careers() {
         </ThemeProvider>
     );
 }
+
+Careers.layout = null;

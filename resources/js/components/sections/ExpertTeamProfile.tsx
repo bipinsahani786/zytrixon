@@ -2,7 +2,9 @@ import React from 'react';
 
 export default function ExpertTeamProfile({ service }: any) {
     const isApp = service?.slug === 'app-development';
-    const isSEO = service?.slug === 'seo-digital-marketing';
+    const isSEO =
+        service?.slug === 'seo-digital-marketing' ||
+        service?.slug === 'digital-marketing';
 
     const teamRoles = isApp
         ? [

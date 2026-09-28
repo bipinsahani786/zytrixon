@@ -33,13 +33,7 @@ export default function Process() {
             <TopBar />
             <Navbar />
 
-            <main
-                style={{
-                    minHeight: '100vh',
-                    background: 'var(--zy-black)',
-                    overflowX: 'hidden',
-                }}
-            >
+            <main style={{ background: 'var(--zy-black)' }}>
                 <InnerPageHero
                     title="Engineering Excellence"
                     subtitle="How we turn complex requirements into robust, scalable digital solutions through a proven methodology."
@@ -72,3 +66,5 @@ export default function Process() {
         </ThemeProvider>
     );
 }
+
+Process.layout = null;

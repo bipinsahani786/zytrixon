@@ -570,8 +570,207 @@ export const PRODUCTS_DATA: ProjectItem[] = [
             },
         ],
     },
+    {
+        id: 'review-booster',
+        slug: 'review-booster',
+        title: 'ReviewBooster — Turn Walk-in Customers into 5-Star Google Reviews with Smart AI & QR',
+        shortTitle: 'ReviewBooster',
+        category: 'Proprietary IP • AI Reputation Engine & Smart QR Hardware',
+        tagline:
+            'Turn walk-in customers into genuine 5-star Google reviews in 15 seconds. Physical QR counter standees + smart context-aware AI review assistant. 100% Google policy compliant.',
+        client: 'Zytrixon Proprietary Suite',
+        industry: 'Restaurants, Clinics, Salons, Retail & Multi-Location Franchises',
+        year: '2026',
+        duration: 'Enterprise Ready',
+        architecture:
+            'Context-Aware Natural Language Review Engine, Multi-Tenant Laravel 12 & Physical NFC/QR Touchpoints',
+        accentColor: '#059669',
+        secondaryColor: '#10B981',
+        heroImage: '/assets/products/review-booster/review-booster-hero.png',
+        mobileImage: '/assets/products/review-booster/review-booster-mobile.png',
+        liveUrl: 'https://aireview.zytrixon.com/',
+        videoUrl: '',
+        videoPoster: '/assets/products/review-booster/review-booster-hero.png',
+        summary:
+            'ReviewBooster is an omnichannel reputation growth platform engineered to turn physical walk-in customers into genuine 5-star Google Maps reviews in under 15 seconds. By pairing acrylic QR/NFC counter standees with an intelligent, context-aware AI review assistant, customers select their experience tags without facing blank text box paralysis. The platform features an automated Reputation Protection Shield that routes ratings under 4 stars to private management channels, native Hinglish and English dialect generation, and a multi-tenant franchise dashboard with real-time scan-to-review analytics.',
+        challenge:
+            'Over 93% of satisfied walk-in customers intend to leave a positive review, but abandon the process due to keyboard typing friction, awkward staff requests, and blank text box paralysis. Meanwhile, disgruntled customers go out of their way to post negative reviews on Google Maps, skewing public merchant ratings.',
+        challengePoints: [
+            'Blank Text Box Paralysis: Customers want to help, but do not know what to write on a phone keyboard while rushing out of a store.',
+            'Friction of App Downloads: Requiring logins, downloads, or SMS links causes massive drop-offs once customers leave premises.',
+            'Spam Filter & Bot Penalties: Using bot services or canned repetitive templates violates Google Business Profile policies and risks listing suspensions.',
+            'Unfiltered Public Negative Outbursts: Dissatisfied customers post 1-star reviews directly to Google before managers have any opportunity to resolve the issue internally.',
+        ],
+        solution:
+            'ReviewBooster creates an instant, zero-friction review funnel directly at checkout counters through physical QR/NFC touchpoints, browser-native AI draft assistance in Hinglish & English, and a private feedback filter.',
+        solutionPoints: [
+            'Physical QR & NFC Counter Standees: Premium acrylic table tents and POS counter plaques placed at the peak customer satisfaction moment.',
+            'Zero-App Browser Flow: Native mobile browser experience opens in under 0.8 seconds on any iOS or Android camera scan without downloads or account creation.',
+            'Context-Aware Smart AI Assistant: Customers tap 2–3 experience tags, and the AI crafts a unique, natural 2-sentence review in conversational Hinglish or English.',
+            'Reputation Protection Shield: Dissatisfied ratings (1–3 stars) are privately routed to the manager WhatsApp or email for internal resolution, keeping public Google ratings protected.',
+            '100% Google Safe Architecture: Every submission is customer-initiated, edited, and posted directly from their personal device and Google account.',
+            'Multi-Tenant Franchise & Agency Control: Centralized administration for single outlets or 500+ franchise locations with per-location review tags and reseller capabilities.',
+        ],
+        metrics: [
+            {
+                label: 'Review Volume Increase',
+                value: '5.4×',
+                desc: 'Average increase in monthly customer Google reviews within 60 days of counter standee deployment.',
+            },
+            {
+                label: 'Average Merchant Rating',
+                value: '4.86★',
+                desc: 'Maintained across 1,200+ active retail, dining, healthcare, and salon merchants.',
+            },
+            {
+                label: 'Scan-to-Post Speed',
+                value: '14 Sec',
+                desc: 'Ultra-fast customer flow from camera scan to Google Maps submission.',
+            },
+            {
+                label: 'Google Policy Compliance',
+                value: '100%',
+                desc: 'Strict white-hat architecture with customer-driven posting and zero bot injections.',
+            },
+        ],
+        features: [
+            {
+                title: 'Zero Customer Friction (4-Step Flow)',
+                desc: 'Scan counter QR -> Tap stars & experience tags -> AI crafts personalized draft -> 1-tap copy and deep link to Google Maps.',
+                icon: '⚡',
+            },
+            {
+                title: 'Context-Aware Smart AI Review Engine',
+                desc: 'Generates natural, human-sounding reviews with dynamic variations in English and conversational Hinglish tailored for Indian local businesses.',
+                icon: '🤖',
+            },
+            {
+                title: 'Private Feedback Reputation Shield',
+                desc: 'Ratings of 1 to 3 stars route gracefully to internal management feedback forms, giving you time to resolve issues before they reach Google.',
+                icon: '🛡️',
+            },
+            {
+                title: 'Physical QR & NFC Counter Standees',
+                desc: 'A6 clear acrylic table tents, NFC + QR counter plaques, and 10-table restaurant bundles engineered for high-footfall durability.',
+                icon: '🪧',
+            },
+            {
+                title: 'Multi-Tenant Franchise & Agency Suite',
+                desc: 'Manage 1 outlet or 500+ franchise branches with custom tags, outlet-level analytics, and white-label reseller controls.',
+                icon: '🏢',
+            },
+            {
+                title: 'Real-Time CTR & Scan Analytics',
+                desc: 'Track QR scan conversion rates, staff performance, customer sentiment trends, and monthly review velocity from a centralized dashboard.',
+                icon: '📊',
+            },
+        ],
+        techStack: [
+            {
+                name: 'Laravel 12 API',
+                category: 'Multi-Tenant Core & Backend Services',
+            },
+            {
+                name: 'Natural Language Processing Engine',
+                category: 'Proprietary Context-Aware AI Generation',
+            },
+            {
+                name: 'Alpine.js & Livewire',
+                category: 'High-Speed Client Reactive Interface',
+            },
+            {
+                name: 'NFC (NTAG213/215) & Dynamic QR',
+                category: 'Physical Counter Standee Hardware',
+            },
+            {
+                name: 'Google Places API',
+                category: 'Verified Listing Deep-Linking',
+            },
+            {
+                name: 'Tailwind CSS v4',
+                category: 'Emerald Design System & Mobile Tokens',
+            },
+            {
+                name: 'MySQL Multi-Tenant DB',
+                category: 'Row-Level Scoped Data Storage',
+            },
+        ],
+        screenshots: [
+            {
+                title: 'ReviewBooster Hero & Live AI Review Preview',
+                category: 'Dashboard',
+                image: '/assets/products/review-booster/review-booster-hero.png',
+                description:
+                    'Interactive AI review assistant showcase with 15-second customer scan-to-post flow and live Hinglish generation.',
+            },
+            {
+                title: 'Native Mobile Scan Experience & Tap Tags',
+                category: 'Mobile App',
+                image: '/assets/products/review-booster/review-booster-mobile.png',
+                description:
+                    'Zero-app browser flow for customers featuring star rating selection, tag chips, and 1-tap clipboard copying.',
+            },
+            {
+                title: 'System Architecture & Core Capabilities',
+                category: 'Workflow',
+                image: '/assets/products/review-booster/review-booster-features.png',
+                description:
+                    'Comprehensive breakdown of context-aware AI engine, anti-spam protections, and multi-tenant capabilities.',
+            },
+            {
+                title: 'Zero-Friction 4-Step Customer Journey',
+                category: 'Workflow',
+                image: '/assets/products/review-booster/review-booster-workflow.png',
+                description:
+                    'Visual blueprint showing camera scan, tag selection, AI generation, and instant Google Maps submission.',
+            },
+            {
+                title: 'Subscription Plans & Acrylic Hardware Packages',
+                category: 'Analytics',
+                image: '/assets/products/review-booster/review-booster-pricing.png',
+                description:
+                    'Transparent pricing tiers for single outlets, growing multi-location chains, and digital marketing agencies.',
+            },
+        ],
+        testimonial: {
+            quote:
+                'We jumped from 82 to 460 reviews in 60 days. Now #1 for biryani near me in Indiranagar. The Hinglish text is unbelievably natural!',
+            author: 'Sameer Khan',
+            role: 'Founder & Head Chef · The Biryani Court (Bangalore)',
+        },
+        architectureFlow: [
+            {
+                step: '01',
+                title: 'Counter Touchpoint Scan',
+                tech: 'NFC / Dynamic QR Code',
+                detail:
+                    'Customer scans acrylic standee or taps NFC plaque at checkout, loading the lightweight mobile page in <0.8s without app download.',
+            },
+            {
+                step: '02',
+                title: 'Sentiment & Tag Capture',
+                tech: 'Interactive Micro-UI',
+                detail:
+                    'Customer taps 5 stars and 2–3 specific service tags (e.g., Great Food, Quick Billing, Polite Staff).',
+            },
+            {
+                step: '03',
+                title: 'Contextual AI Generation',
+                tech: 'Proprietary NLP Engine',
+                detail:
+                    'System weaves selected tags into an authentic, human-sounding 2-sentence review in conversational English or Hinglish.',
+            },
+            {
+                step: '04',
+                title: '1-Tap Google Maps Submission',
+                tech: 'Universal Deep-Linking',
+                detail:
+                    'Draft copies to clipboard and automatically opens the merchant Google Maps review dialog for instant submission.',
+            },
+        ],
+    },
 ];
 
 export function getProductBySlug(slug: string): ProjectItem | undefined {
-    return PRODUCTS_DATA.find((p) => p.slug === slug || p.id === slug);
+    return PRODUCTS_DATA.find((p) => p.slug === slug || p.id === slug || (slug === 'ai-review' && (p.slug === 'review-booster' || p.id === 'review-booster')));
 }

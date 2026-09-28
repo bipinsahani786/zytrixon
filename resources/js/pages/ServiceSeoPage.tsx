@@ -41,7 +41,9 @@ export default function ServiceSeoPage({
     content_overrides,
     caseStudies,
 }: any) {
-    const isSEO = service?.slug === 'seo-digital-marketing';
+    const isSEO =
+        service?.slug === 'seo-digital-marketing' ||
+        service?.slug === 'digital-marketing';
     const isApp = service?.slug === 'app-development';
 
     return (

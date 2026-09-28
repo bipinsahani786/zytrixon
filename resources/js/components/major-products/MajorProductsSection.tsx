@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { useEffect, useRef } from 'react';
@@ -9,12 +10,20 @@ interface MajorProductsSectionProps {
     hideHeader?: boolean;
     title?: string;
     subtitle?: string;
+    limit?: number;
+    showViewAll?: boolean;
+    viewAllHref?: string;
+    viewAllText?: string;
 }
 
 export default function MajorProductsSection({
     hideHeader = false,
     title = 'Our Major Products',
     subtitle = 'Production-ready proprietary platforms engineered from the ground up for high-scale enterprise operations.',
+    limit,
+    showViewAll,
+    viewAllHref = '/portfolio#major-products',
+    viewAllText = 'View All Products',
 }: MajorProductsSectionProps) {
     const sectionRef = useRef<HTMLElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
@@ -55,7 +64,22 @@ export default function MajorProductsSection({
             inquiryMessage:
                 'Hi Zytrixon, I would like to schedule a demo for the Grain SaaS platform.',
         },
+        {
+            id: 'review-booster',
+            title: 'ReviewBooster',
+            description:
+                'Physical QR & NFC counter standees + context-aware Smart AI review assistant. Collect genuine 5-star Google reviews in 15 seconds.',
+            badge: 'Smart AI & QR Review OS',
+            image: '/assets/products/review-booster/review-booster-hero.png',
+            accentColor: '#059669',
+            liveUrl: 'https://aireview.zytrixon.com/',
+            inquiryMessage:
+                'Hi ReviewBooster, I want to know more about the QR Review System and Acrylic Standees.',
+            platformBadges: ['⭐ Smart AI Engine', '🪧 Acrylic Standees', '🛡️ Private Shield'],
+        },
     ];
+
+    const visibleProducts = typeof limit === 'number' ? products.slice(0, limit) : products;
 
     useEffect(() => {
         if (!sectionRef.current || !gridRef.current) {
@@ -84,7 +108,7 @@ export default function MajorProductsSection({
         }, sectionRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [visibleProducts.length]);
 
     return (
         <section
@@ -138,7 +162,7 @@ export default function MajorProductsSection({
                 </div>
             )}
 
-            {/* 2-Grid on Desktop, 1 Column One Below Other on Mobile */}
+            {/* Grid Container — 3-Column Grid on Desktop */}
             <div
                 ref={gridRef}
                 className="major-products-grid"
@@ -149,10 +173,45 @@ export default function MajorProductsSection({
                     alignItems: 'stretch',
                 }}
             >
-                {products.map((p) => (
+                {visibleProducts.map((p) => (
                     <ProductCard key={p.id} {...p} />
                 ))}
             </div>
+
+            {/* View All Products Button */}
+            {(showViewAll ?? Boolean(limit && products.length > limit)) && (
+                <div style={{ textAlign: 'center', marginTop: '54px' }}>
+                    <Link
+                        href={viewAllHref}
+                        className="magnetic-btn"
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            padding: '16px 36px',
+                            fontSize: '13.5px',
+                            fontWeight: 700,
+                            letterSpacing: '0.06em',
+                            textTransform: 'uppercase',
+                        }}
+                    >
+                        <span>{viewAllText}</span>
+                        <svg
+                            className="btn-arrow"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </Link>
+                </div>
+            )}
 
             {/* Micro-animations and responsive CSS */}
             <style>{`

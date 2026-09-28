@@ -209,7 +209,7 @@ export default function Navbar() {
                                             },
                                             {
                                                 title: 'Digital Marketing',
-                                                slug: 'digital-marketing',
+                                                slug: 'seo-digital-marketing',
                                             },
                                         ].map((svc) => (
                                             <Link

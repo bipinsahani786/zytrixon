@@ -40,9 +40,21 @@ class SeoController extends Controller
         ]);
     }
 
-    public function showServiceLocation(string $service_slug, ?string $location_slug = null): Response
+    public function showServiceLocation(string $service_slug, ?string $location_slug = null): Response|\Illuminate\Http\RedirectResponse
     {
-        $service = Service::where('slug', $service_slug)->firstOrFail();
+        // 301 permanent redirect legacy 'digital-marketing' to canonical 'seo-digital-marketing'
+        if ($service_slug === 'digital-marketing') {
+            return $location_slug
+                ? redirect()->route('service.location.show', ['service_slug' => 'seo-digital-marketing', 'location_slug' => $location_slug], 301)
+                : redirect()->route('service.show', ['service_slug' => 'seo-digital-marketing'], 301);
+        }
+
+        $slugCandidates = match ($service_slug) {
+            'seo-digital-marketing' => ['seo-digital-marketing', 'digital-marketing'],
+            default => [$service_slug],
+        };
+
+        $service = Service::whereIn('slug', $slugCandidates)->firstOrFail();
 
         $location = null;
         if ($location_slug) {

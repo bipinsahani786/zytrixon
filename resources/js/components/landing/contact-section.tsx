@@ -35,6 +35,7 @@ export default function ContactSection() {
         budget: '',
         message: '',
     });
+    const [agreed, setAgreed] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
     useEffect(() => {
@@ -65,6 +66,9 @@ export default function ContactSection() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        if (!agreed) {
+            return;
+        }
         // For now, redirect to WhatsApp with form data
         const text = `Hi! I'm ${formData.name}.\nService: ${formData.service}\nBudget: ${formData.budget}\nMessage: ${formData.message}\nEmail: ${formData.email}\nPhone: ${formData.phone}`;
         window.open(
@@ -640,6 +644,74 @@ export default function ContactSection() {
                                         }}
                                     />
                                 </FieldWrapper>
+                            </div>
+
+                            {/* Required Consent Checkbox */}
+                            <div style={{ marginBottom: 24 }}>
+                                <label
+                                    htmlFor="contact-consent"
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'flex-start',
+                                        gap: 12,
+                                        cursor: 'pointer',
+                                        fontSize: 13,
+                                        lineHeight: 1.5,
+                                        color: isLight ? '#555555' : 'var(--zy-gray-text)',
+                                        userSelect: 'none',
+                                    }}
+                                >
+                                    <input
+                                        id="contact-consent"
+                                        type="checkbox"
+                                        required
+                                        checked={agreed}
+                                        onChange={(e) => setAgreed(e.target.checked)}
+                                        style={{
+                                            width: 18,
+                                            height: 18,
+                                            minWidth: 18,
+                                            minHeight: 18,
+                                            marginTop: 2,
+                                            accentColor: isLight ? '#000000' : '#ffffff',
+                                            cursor: 'pointer',
+                                        }}
+                                    />
+                                    <span>
+                                        I agree to the{' '}
+                                        <a
+                                            href="/terms-and-conditions"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            style={{
+                                                color: isLight ? '#000000' : 'var(--zy-white)',
+                                                textDecoration: 'underline',
+                                                textUnderlineOffset: '3px',
+                                                fontWeight: 600,
+                                            }}
+                                        >
+                                            Terms & Conditions
+                                        </a>{' '}
+                                        and{' '}
+                                        <a
+                                            href="/privacy-policy"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            style={{
+                                                color: isLight ? '#000000' : 'var(--zy-white)',
+                                                textDecoration: 'underline',
+                                                textUnderlineOffset: '3px',
+                                                fontWeight: 600,
+                                            }}
+                                        >
+                                            Privacy Policy
+                                        </a>
+                                        , and consent to being contacted regarding my inquiry.{' '}
+                                        <span style={{ color: '#ef4444' }}>*</span>
+                                    </span>
+                                </label>
                             </div>
 
                             <button
