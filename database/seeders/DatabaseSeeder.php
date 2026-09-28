@@ -15,11 +15,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Demo Admin User
         User::updateOrCreate(
-            ['email' => 'test@example.com'],
+            ['email' => 'admin@zytrixon.com'],
             [
-                'name' => 'Test User',
-                'password' => bcrypt('password'),
+                'name' => 'Zytrixon Admin',
+                'password' => bcrypt('admin123'),
+                'role' => 'admin',
+                'email_verified_at' => now(),
+            ]
+        );
+
+        // Demo Customer User
+        User::updateOrCreate(
+            ['email' => 'customer@zytrixon.com'],
+            [
+                'name' => 'Demo Customer',
+                'password' => bcrypt('customer123'),
+                'role' => 'customer',
                 'email_verified_at' => now(),
             ]
         );

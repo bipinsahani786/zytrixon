@@ -43,7 +43,9 @@ createInertiaApp({
                     name === 'Process' ||
                     name === 'BlogDetails' ||
                     name === 'PrivacyPolicy' ||
-                    name === 'TermsConditions':
+                    name === 'TermsConditions' ||
+                    name.startsWith('Admin/') ||
+                    name.startsWith('Customer/'):
                     defaultExport.layout = null;
                     break;
                 case name.startsWith('auth/'):
