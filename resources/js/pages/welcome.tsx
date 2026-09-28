@@ -79,7 +79,7 @@ export default function Welcome() {
                     <PortfolioPreview limit={6} />
                 </LazySection>
                 <LazySection>
-                    <MajorProductsSection />
+                    <MajorProductsSection limit={3} />
                 </LazySection>
                 <LazySection>
                     <TechStackSection />

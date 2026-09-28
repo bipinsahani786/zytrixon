@@ -9,6 +9,7 @@ export interface ProductCardProps {
     badge: string;
     image: string;
     accentColor: string;
+    liveUrl?: string;
     inquiryMessage?: string;
     platformBadges?: string[];
 }
@@ -20,6 +21,7 @@ export default function ProductCard({
     badge,
     image,
     accentColor,
+    liveUrl,
     inquiryMessage = 'Hi Zytrixon, I would like to know more about this product.',
     platformBadges,
 }: ProductCardProps) {
@@ -28,6 +30,7 @@ export default function ProductCard({
     const [imageError, setImageError] = useState(false);
 
     const waLink = `https://wa.me/917049711475?text=${encodeURIComponent(inquiryMessage)}`;
+    const demoHref = liveUrl || waLink;
 
     return (
         <div
@@ -301,7 +304,7 @@ export default function ProductCard({
                     </Link>
 
                     <a
-                        href={waLink}
+                        href={demoHref}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{

@@ -29,13 +29,7 @@ export default function Team() {
             <TopBar />
             <Navbar />
 
-            <main
-                style={{
-                    minHeight: '100vh',
-                    background: 'var(--zy-black)',
-                    overflowX: 'hidden',
-                }}
-            >
+            <main style={{ background: 'var(--zy-black)' }}>
                 {/* 1. Hero Section */}
                 <InnerPageHero
                     title="The Minds Behind The Magic"
@@ -131,3 +125,5 @@ export default function Team() {
         </ThemeProvider>
     );
 }
+
+Team.layout = null;

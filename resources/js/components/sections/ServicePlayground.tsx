@@ -1064,7 +1064,8 @@ export default function ServicePlayground({
                     {serviceSlug === 'custom-software' && (
                         <CustomSoftwarePlayground />
                     )}
-                    {serviceSlug === 'digital-marketing' && (
+                    {(serviceSlug === 'digital-marketing' ||
+                        serviceSlug === 'seo-digital-marketing') && (
                         <DigitalMarketingPlayground />
                     )}
                 </div>

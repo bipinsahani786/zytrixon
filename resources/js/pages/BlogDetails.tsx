@@ -25,9 +25,7 @@ export default function BlogDetails() {
 
             <main
                 style={{
-                    minHeight: '100vh',
                     background: 'var(--zy-black)',
-                    overflowX: 'hidden',
                     paddingTop: 120,
                 }}
             >
@@ -474,3 +472,5 @@ export default function BlogDetails() {
         </ThemeProvider>
     );
 }
+
+BlogDetails.layout = null;

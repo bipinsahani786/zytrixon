@@ -188,6 +188,7 @@
 
     html {
         scroll-behavior: auto; /* Lenis handles smooth scroll */
+        overflow-x: clip;
     }
 
     body {
@@ -196,7 +197,7 @@
         font-family: var(--font-sans);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        overflow-x: hidden;
+        overflow-x: clip;
     }
 
     /* Hide default cursor when custom cursor is active */

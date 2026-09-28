@@ -5,13 +5,23 @@ import { useTheme } from '@/components/landing/theme-provider';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TEAM = [
+interface TeamMember {
+    name: string;
+    role: string;
+    bio: string;
+    image: string;
+    color: string;
+    department: string;
+}
+
+const TEAM: TeamMember[] = [
     {
         name: 'Saurav Shandilya',
         role: 'Founder & Head of Operations & Sales',
         bio: 'Driving global operations, strategic marketing, and client sales partnerships to scale enterprise digital solutions.',
         image: '/assets/team/saurav.png',
         color: '#ec4899',
+        department: 'Operations, Marketing & Sales',
     },
     {
         name: 'Bipin Sahani',
@@ -19,6 +29,15 @@ const TEAM = [
         bio: 'Leading core technology architecture, software engineering, and innovation stack across cloud & mobile platforms.',
         image: '/assets/team/bipin-sahani.png',
         color: '#6366f1',
+        department: 'Technology & Architecture',
+    },
+    {
+        name: 'Ayushi Agarwal',
+        role: 'Marketing Head',
+        bio: 'Spearheading global brand positioning, performance marketing, and digital growth campaigns to accelerate enterprise client acquisition.',
+        image: '/assets/team/Ayushie.jpeg',
+        color: '#06b6d4',
+        department: 'Brand Strategy & Marketing',
     },
 ];
 
@@ -99,10 +118,10 @@ export default function TeamSection() {
                 style={{
                     display: 'grid',
                     gridTemplateColumns:
-                        'repeat(auto-fit, minmax(300px, 420px))',
+                        'repeat(auto-fit, minmax(280px, 360px))',
                     justifyContent: 'center',
-                    gap: 36,
-                    maxWidth: 920,
+                    gap: 32,
+                    maxWidth: 1200,
                     margin: '0 auto',
                 }}
             >
@@ -271,9 +290,7 @@ export default function TeamSection() {
                                             : 'rgba(255, 255, 255, 0.7)',
                                     }}
                                 >
-                                    {member.name === 'Bipin Sahani'
-                                        ? 'Technology & Architecture'
-                                        : 'Operations, Marketing & Sales'}
+                                    {member.department}
                                 </span>
                                 <div
                                     style={{

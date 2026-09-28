@@ -32,23 +32,25 @@ Route::inertia('/portfolio', 'Portfolio', [
 ])->name('portfolio');
 
 Route::get('/portfolio/{slug}', function (string $slug) {
-    if (in_array($slug, ['mobile-crm', 'grocery-mart', 'grain-saas'])) {
-        return redirect()->route('products.show', ['slug' => $slug]);
+    if (in_array($slug, ['mobile-crm', 'grocery-mart', 'grain-saas', 'review-booster', 'ai-review'])) {
+        return redirect()->route('products.show', ['slug' => $slug === 'ai-review' ? 'review-booster' : $slug]);
     }
 
     return app(CaseStudyController::class)->show($slug);
 })->name('portfolio.show');
 
 Route::get('/projects/{slug}', function ($slug) {
-    if (in_array($slug, ['mobile-crm', 'grocery-mart', 'grain-saas'])) {
-        return redirect()->route('products.show', ['slug' => $slug]);
+    if (in_array($slug, ['mobile-crm', 'grocery-mart', 'grain-saas', 'review-booster', 'ai-review'])) {
+        return redirect()->route('products.show', ['slug' => $slug === 'ai-review' ? 'review-booster' : $slug]);
     }
 
     return redirect()->route('portfolio.show', ['slug' => $slug]);
 });
 
 Route::get('/products/{slug}', function (string $slug) {
-    $product = match ($slug) {
+    $canonicalSlug = $slug === 'ai-review' ? 'review-booster' : $slug;
+
+    $product = match ($canonicalSlug) {
         'mobile-crm' => [
             'title' => 'Mobile CRM — Complete Operating System for Mobile & Electronics Retailers',
             'desc' => 'From IMEI-level serial tracking and one-tap GST billing to supplier credit ledgers and automated staff payroll — run your entire single or multi-outlet retail business effortlessly.',
@@ -64,15 +66,20 @@ Route::get('/products/{slug}', function (string $slug) {
             'desc' => 'Manage lot-wise inventory, track purchase lots, automate broker commissions, and handle integrated party ledgers seamlessly in one platform built specifically for agricultural merchants.',
             'image' => '/assets/products/grain-saas/grain-saas-dashboard.png',
         ],
+        'review-booster' => [
+            'title' => 'ReviewBooster — Turn Walk-in Customers into 5-Star Google Reviews with Smart AI & QR',
+            'desc' => 'Collect genuine 5-star Google reviews in 15 seconds. Physical QR counter standees + smart context-aware AI review assistant. 100% Google policy compliant.',
+            'image' => '/assets/products/review-booster/review-booster-hero.png',
+        ],
         default => [
-            'title' => ucwords(str_replace('-', ' ', $slug)),
+            'title' => ucwords(str_replace('-', ' ', $canonicalSlug)),
             'desc' => 'Explore our enterprise proprietary products delivered by Zytrixon Tech.',
             'image' => '/favicon.svg',
         ],
     };
 
     return inertia('ProductDetails', [
-        'slug' => $slug,
+        'slug' => $canonicalSlug,
         'seo' => [
             'title' => $product['title'].' | Zytrixon Tech Products',
             'description' => $product['desc'],
@@ -91,6 +98,14 @@ Route::get('/grocery-mart', function () {
 
 Route::get('/grain-saas', function () {
     return redirect()->route('products.show', ['slug' => 'grain-saas']);
+});
+
+Route::get('/review-booster', function () {
+    return redirect()->route('products.show', ['slug' => 'review-booster']);
+});
+
+Route::get('/ai-review', function () {
+    return redirect()->route('products.show', ['slug' => 'review-booster']);
 });
 
 Route::inertia('/contact', 'Contact', [
@@ -143,7 +158,7 @@ Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('
 Route::get('/sitemap.xml', function () {
     $urls = [
         '/', '/services', '/portfolio', '/team', '/about', '/blog', '/contact', '/process', '/careers', '/privacy-policy', '/terms-and-conditions', '/case-studies',
-        '/products/mobile-crm', '/products/grocery-mart', '/products/grain-saas',
+        '/products/mobile-crm', '/products/grocery-mart', '/products/grain-saas', '/products/review-booster',
     ];
 
     try {

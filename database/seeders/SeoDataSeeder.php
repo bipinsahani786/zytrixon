@@ -21,7 +21,7 @@ class SeoDataSeeder extends Seeder
             ['title' => 'IoT Solutions', 'slug' => 'iot-solutions', 'description' => 'Smart devices, sensor networks, real-time dashboards — connecting the physical and digital world.', 'icon' => 'cpu'],
             ['title' => 'AI & Automation', 'slug' => 'ai-automation', 'description' => 'Custom AI models, workflow automation, and smart analytics to streamline your business operations.', 'icon' => 'bot'],
             ['title' => 'Custom Software', 'slug' => 'custom-software', 'description' => 'Tailor-made enterprise software, CRM, and ERP systems designed precisely for your needs.', 'icon' => 'monitor'],
-            ['title' => 'Digital Marketing', 'slug' => 'digital-marketing', 'description' => 'SEO, PPC, Social Media Marketing, and Analytics — data-driven strategies for growth.', 'icon' => 'trending-up'],
+            ['title' => 'Digital Marketing', 'slug' => 'seo-digital-marketing', 'description' => 'SEO, PPC, Social Media Marketing, and Analytics — data-driven strategies for growth.', 'icon' => 'trending-up'],
         ];
 
         $slugs = [];

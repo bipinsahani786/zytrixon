@@ -51,8 +51,6 @@ function ProjectDetailsInner({ project }: { project: ProjectItem }) {
                 style={{
                     background: 'var(--zy-bg)',
                     color: 'var(--zy-text-primary)',
-                    minHeight: '100vh',
-                    overflowX: 'hidden',
                     transition: 'background 0.3s ease, color 0.3s ease',
                 }}
             >

@@ -3,7 +3,9 @@ import React from 'react';
 import GradientCard from '@/components/ui/GradientCard';
 
 export default function BlogPreviewSection({ service }: any) {
-    const isSEO = service?.slug === 'seo-digital-marketing';
+    const isSEO =
+        service?.slug === 'seo-digital-marketing' ||
+        service?.slug === 'digital-marketing';
 
     const dummyBlogs = [
         {

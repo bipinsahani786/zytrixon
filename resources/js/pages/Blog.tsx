@@ -25,13 +25,7 @@ export default function Blog() {
             <TopBar />
             <Navbar />
 
-            <main
-                style={{
-                    minHeight: '100vh',
-                    background: 'var(--zy-black)',
-                    overflowX: 'hidden',
-                }}
-            >
+            <main style={{ background: 'var(--zy-black)' }}>
                 {/* 1. Hero Section */}
                 <InnerPageHero
                     title="Engineering Insights"
@@ -431,3 +425,5 @@ export default function Blog() {
         </ThemeProvider>
     );
 }
+
+Blog.layout = null;

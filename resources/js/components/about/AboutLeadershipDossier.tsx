@@ -30,6 +30,18 @@ export default function AboutLeadershipDossier() {
                 'Engineering zero-downtime, high-concurrency systems',
             ],
         },
+        {
+            name: 'Ayushi Agarwal',
+            role: 'Marketing Head',
+            domain: 'Global Brand Strategy & Performance Marketing',
+            image: '/assets/team/Ayushie.jpeg',
+            quote: 'Transformative technology deserves transformative storytelling. We build brand narratives and data-driven marketing engines that turn complex engineering into enterprise market leadership.',
+            credentials: [
+                'Leading brand positioning and global marketing strategy',
+                'Data-driven performance campaigns and client acquisition',
+                'Market research, public communications & digital growth',
+            ],
+        },
     ];
 
     return (
@@ -73,15 +85,15 @@ export default function AboutLeadershipDossier() {
                     </p>
                 </div>
 
-                {/* 2-Column Leadership Grid */}
+                {/* Leadership Grid */}
                 <div
                     style={{
                         display: 'grid',
                         gridTemplateColumns:
-                            'repeat(auto-fit, minmax(320px, 460px))',
+                            'repeat(auto-fit, minmax(320px, 380px))',
                         justifyContent: 'center',
-                        gap: '36px',
-                        maxWidth: '1000px',
+                        gap: '32px',
+                        maxWidth: '1240px',
                         margin: '0 auto',
                     }}
                 >
