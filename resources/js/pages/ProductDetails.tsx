@@ -47,7 +47,11 @@ function ProductDetailsInner({ product }: { product: ProjectItem }) {
             <Navbar />
 
             {/* Floating In-Page Dock Navigation Pill */}
-            <ProjectSubNav project={product} hideStory={true} workEasyMode={true} />
+            <ProjectSubNav
+                project={product}
+                hideStory={true}
+                workEasyMode={true}
+            />
 
             <main
                 style={{
@@ -90,7 +94,9 @@ function ProductDetailsInner({ product }: { product: ProjectItem }) {
                     <>
                         {product.id === 'grocery-mart' ? (
                             <LazySection minHeight="600px">
-                                <GroceryMartPlatformsSection project={product} />
+                                <GroceryMartPlatformsSection
+                                    project={product}
+                                />
                             </LazySection>
                         ) : (
                             <LazySection minHeight="500px">

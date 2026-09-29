@@ -2,14 +2,92 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 /**
 * @see \App\Http\Controllers\Admin\AuthController::showLogin
  * @see app/Http/Controllers/Admin/AuthController.php:18
- * @route '/z-admin'
+ * @route '/login'
  */
-export const showLogin = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: showLogin.url(options),
+const showLoginb6041c76e8e1cd791f8f89d035d48611 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showLoginb6041c76e8e1cd791f8f89d035d48611.url(options),
     method: 'get',
 })
 
-showLogin.definition = {
+showLoginb6041c76e8e1cd791f8f89d035d48611.definition = {
+    methods: ["get","head"],
+    url: '/login',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\Admin\AuthController::showLogin
+ * @see app/Http/Controllers/Admin/AuthController.php:18
+ * @route '/login'
+ */
+showLoginb6041c76e8e1cd791f8f89d035d48611.url = (options?: RouteQueryOptions) => {
+    return showLoginb6041c76e8e1cd791f8f89d035d48611.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Admin\AuthController::showLogin
+ * @see app/Http/Controllers/Admin/AuthController.php:18
+ * @route '/login'
+ */
+showLoginb6041c76e8e1cd791f8f89d035d48611.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showLoginb6041c76e8e1cd791f8f89d035d48611.url(options),
+    method: 'get',
+})
+/**
+* @see \App\Http\Controllers\Admin\AuthController::showLogin
+ * @see app/Http/Controllers/Admin/AuthController.php:18
+ * @route '/login'
+ */
+showLoginb6041c76e8e1cd791f8f89d035d48611.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: showLoginb6041c76e8e1cd791f8f89d035d48611.url(options),
+    method: 'head',
+})
+
+    /**
+* @see \App\Http\Controllers\Admin\AuthController::showLogin
+ * @see app/Http/Controllers/Admin/AuthController.php:18
+ * @route '/login'
+ */
+    const showLoginb6041c76e8e1cd791f8f89d035d48611Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: showLoginb6041c76e8e1cd791f8f89d035d48611.url(options),
+        method: 'get',
+    })
+
+            /**
+* @see \App\Http\Controllers\Admin\AuthController::showLogin
+ * @see app/Http/Controllers/Admin/AuthController.php:18
+ * @route '/login'
+ */
+        showLoginb6041c76e8e1cd791f8f89d035d48611Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: showLoginb6041c76e8e1cd791f8f89d035d48611.url(options),
+            method: 'get',
+        })
+            /**
+* @see \App\Http\Controllers\Admin\AuthController::showLogin
+ * @see app/Http/Controllers/Admin/AuthController.php:18
+ * @route '/login'
+ */
+        showLoginb6041c76e8e1cd791f8f89d035d48611Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: showLoginb6041c76e8e1cd791f8f89d035d48611.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    showLoginb6041c76e8e1cd791f8f89d035d48611.form = showLoginb6041c76e8e1cd791f8f89d035d48611Form
+    /**
+* @see \App\Http\Controllers\Admin\AuthController::showLogin
+ * @see app/Http/Controllers/Admin/AuthController.php:18
+ * @route '/z-admin'
+ */
+const showLogin071907bd01b1e611cfd628d3047ce83b = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showLogin071907bd01b1e611cfd628d3047ce83b.url(options),
+    method: 'get',
+})
+
+showLogin071907bd01b1e611cfd628d3047ce83b.definition = {
     methods: ["get","head"],
     url: '/z-admin',
 } satisfies RouteDefinition<["get","head"]>
@@ -19,8 +97,8 @@ showLogin.definition = {
  * @see app/Http/Controllers/Admin/AuthController.php:18
  * @route '/z-admin'
  */
-showLogin.url = (options?: RouteQueryOptions) => {
-    return showLogin.definition.url + queryParams(options)
+showLogin071907bd01b1e611cfd628d3047ce83b.url = (options?: RouteQueryOptions) => {
+    return showLogin071907bd01b1e611cfd628d3047ce83b.definition.url + queryParams(options)
 }
 
 /**
@@ -28,8 +106,8 @@ showLogin.url = (options?: RouteQueryOptions) => {
  * @see app/Http/Controllers/Admin/AuthController.php:18
  * @route '/z-admin'
  */
-showLogin.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: showLogin.url(options),
+showLogin071907bd01b1e611cfd628d3047ce83b.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showLogin071907bd01b1e611cfd628d3047ce83b.url(options),
     method: 'get',
 })
 /**
@@ -37,8 +115,8 @@ showLogin.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
  * @see app/Http/Controllers/Admin/AuthController.php:18
  * @route '/z-admin'
  */
-showLogin.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: showLogin.url(options),
+showLogin071907bd01b1e611cfd628d3047ce83b.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: showLogin071907bd01b1e611cfd628d3047ce83b.url(options),
     method: 'head',
 })
 
@@ -47,8 +125,8 @@ showLogin.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/Admin/AuthController.php:18
  * @route '/z-admin'
  */
-    const showLoginForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: showLogin.url(options),
+    const showLogin071907bd01b1e611cfd628d3047ce83bForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: showLogin071907bd01b1e611cfd628d3047ce83b.url(options),
         method: 'get',
     })
 
@@ -57,8 +135,8 @@ showLogin.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/Admin/AuthController.php:18
  * @route '/z-admin'
  */
-        showLoginForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: showLogin.url(options),
+        showLogin071907bd01b1e611cfd628d3047ce83bForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: showLogin071907bd01b1e611cfd628d3047ce83b.url(options),
             method: 'get',
         })
             /**
@@ -66,8 +144,8 @@ showLogin.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/Admin/AuthController.php:18
  * @route '/z-admin'
  */
-        showLoginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: showLogin.url({
+        showLogin071907bd01b1e611cfd628d3047ce83bForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: showLogin071907bd01b1e611cfd628d3047ce83b.url({
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
                             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -76,7 +154,18 @@ showLogin.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
     
-    showLogin.form = showLoginForm
+    showLogin071907bd01b1e611cfd628d3047ce83b.form = showLogin071907bd01b1e611cfd628d3047ce83bForm
+
+/**
+* Multiple routes resolve to \App\Http\Controllers\Admin\AuthController::showLogin, so this export is a
+* dictionary keyed by URI rather than a callable. Call a specific route with `showLogin['<uri>'](...)`,
+* or import the route by name from your generated `routes/` directory.
+*/
+export const showLogin = {
+    '/login': showLoginb6041c76e8e1cd791f8f89d035d48611,
+    '/z-admin': showLogin071907bd01b1e611cfd628d3047ce83b,
+}
+
 /**
 * @see \App\Http\Controllers\Admin\AuthController::login
  * @see app/Http/Controllers/Admin/AuthController.php:39

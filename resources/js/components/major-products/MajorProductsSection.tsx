@@ -35,8 +35,7 @@ export default function MajorProductsSection({
             description:
                 'Dual-track IMEI & accessory inventory, 3-second POS with dynamic UPI QR, supplier udhar ledgers, and automated staff payroll.',
             badge: 'Next-Gen Retail ERP & POS',
-            image:
-                '/assets/products/mobile-crm/Screenshot 2026-09-26 162520.png',
+            image: '/assets/products/mobile-crm/Screenshot 2026-09-26 162520.png',
             accentColor: '#0EA5E9',
             inquiryMessage:
                 'Hi Zytrixon, I would like to schedule a demo for the Mobile CRM product.',
@@ -51,7 +50,11 @@ export default function MajorProductsSection({
             accentColor: '#207393',
             inquiryMessage:
                 'Hi Zytrixon, I would like to schedule a demo for the Grocery Mart platform.',
-            platformBadges: ['🛒 Customer App', '🛵 Picker App', '🖥️ Web Panel'],
+            platformBadges: [
+                '🛒 Customer App',
+                '🛵 Picker App',
+                '🖥️ Web Panel',
+            ],
         },
         {
             id: 'grain-saas',
@@ -75,11 +78,16 @@ export default function MajorProductsSection({
             liveUrl: 'https://aireview.zytrixon.com/',
             inquiryMessage:
                 'Hi ReviewBooster, I want to know more about the QR Review System and Acrylic Standees.',
-            platformBadges: ['⭐ Smart AI Engine', '🪧 Acrylic Standees', '🛡️ Private Shield'],
+            platformBadges: [
+                '⭐ Smart AI Engine',
+                '🪧 Acrylic Standees',
+                '🛡️ Private Shield',
+            ],
         },
     ];
 
-    const visibleProducts = typeof limit === 'number' ? products.slice(0, limit) : products;
+    const visibleProducts =
+        typeof limit === 'number' ? products.slice(0, limit) : products;
 
     useEffect(() => {
         if (!sectionRef.current || !gridRef.current) {

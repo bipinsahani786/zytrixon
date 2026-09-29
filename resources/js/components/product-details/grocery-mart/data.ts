@@ -15,27 +15,64 @@ export const platformsData: Record<PlatformTab, PlatformData> = {
                 subtitle: 'Operational Terminal, Live Queue & TV Kiosk Display',
                 image: '/assets/products/grocery-mart/Screenshot 2026-09-26 182031.png',
                 desc: 'Centralized store operations terminal for Sahil Grocery Shop (Sector 62, Noida). Unifies counter POS billing, active orders queue, TV kiosk screen mode, daily revenue metrics (₹5,98,900), and 99.8% SLA dispatch monitoring.',
-                badges: ['Command Center', 'POS Billing', 'Orders Queue', 'TV Kiosk', '99.8% SLA'],
+                badges: [
+                    'Command Center',
+                    'POS Billing',
+                    'Orders Queue',
+                    'TV Kiosk',
+                    '99.8% SLA',
+                ],
                 specs: [
-                    { label: 'Store Location', value: 'Sahil Grocery Shop (Sector 62, Noida)' },
+                    {
+                        label: 'Store Location',
+                        value: 'Sahil Grocery Shop (Sector 62, Noida)',
+                    },
                     { label: 'Daily Revenue', value: '₹5,98,900.00' },
-                    { label: 'Orders Queue', value: 'Active Live Dispatch & Counter Queue' },
-                    { label: 'Display Modes', value: 'POS Terminal • TV Kiosk Mode • Rider Counter' },
-                    { label: 'SLA Adherence', value: '99.8% Sub-15 Min Dispatch SLA' },
+                    {
+                        label: 'Orders Queue',
+                        value: 'Active Live Dispatch & Counter Queue',
+                    },
+                    {
+                        label: 'Display Modes',
+                        value: 'POS Terminal • TV Kiosk Mode • Rider Counter',
+                    },
+                    {
+                        label: 'SLA Adherence',
+                        value: '99.8% Sub-15 Min Dispatch SLA',
+                    },
                 ],
             },
             {
                 title: 'Real-Time Store Analytics & Staff KPI Matrix',
-                subtitle: 'Margin Velocity, Staff Handling Speeds & Associate Radar',
+                subtitle:
+                    'Margin Velocity, Staff Handling Speeds & Associate Radar',
                 image: '/assets/products/grocery-mart/Screenshot 2026-09-26 182946.png',
                 desc: 'Granular retail telemetry tracking average cart size (₹482), gross margins (18.4%), staff item handling speeds, replenishment alerts, and associate performance radar.',
-                badges: ['Analytics Engine', 'Gross Margin (18.4%)', 'Cart Size (₹482)', 'Staff Radar', 'Velocity KPI'],
+                badges: [
+                    'Analytics Engine',
+                    'Gross Margin (18.4%)',
+                    'Cart Size (₹482)',
+                    'Staff Radar',
+                    'Velocity KPI',
+                ],
                 specs: [
-                    { label: 'Average Cart Size', value: '₹482.00 per Customer Order' },
+                    {
+                        label: 'Average Cart Size',
+                        value: '₹482.00 per Customer Order',
+                    },
                     { label: 'Gross Margin', value: '18.4% Real-Time Margin' },
-                    { label: 'Staff Handling Speed', value: 'Sub-90s Item Pick & Pack Velocity' },
-                    { label: 'Associate Radar', value: 'Accuracy, Speed, Punctuality & Attendance' },
-                    { label: 'Replenishment', value: 'Automated Dark-Store Stock Depletion Signals' },
+                    {
+                        label: 'Staff Handling Speed',
+                        value: 'Sub-90s Item Pick & Pack Velocity',
+                    },
+                    {
+                        label: 'Associate Radar',
+                        value: 'Accuracy, Speed, Punctuality & Attendance',
+                    },
+                    {
+                        label: 'Replenishment',
+                        value: 'Automated Dark-Store Stock Depletion Signals',
+                    },
                 ],
             },
         ],
@@ -83,13 +120,34 @@ export const platformsData: Record<PlatformTab, PlatformData> = {
                 subtitle: 'React Native (v0.86) & Expo SDK 57 Storefront',
                 image: '/assets/products/grocery-mart/image.png',
                 desc: 'Engineered for maximum retail conversion with instant pack-size variant switching, live delivery ETA calculation (sub-15 mins), transparent per-unit pricing, and one-tap dynamic cart quantity stepper.',
-                badges: ['React Native', 'Expo SDK 57', '10-15 Min ETA', 'Dynamic Stepper', 'Vegetarian Filter'],
+                badges: [
+                    'React Native',
+                    'Expo SDK 57',
+                    '10-15 Min ETA',
+                    'Dynamic Stepper',
+                    'Vegetarian Filter',
+                ],
                 specs: [
-                    { label: 'Technology', value: 'React Native • Expo SDK 57 • Reanimated' },
-                    { label: 'Delivery ETA', value: '10-15 Mins Hyperlocal Dispatch' },
-                    { label: 'Pack Selection', value: 'Instant Variant Switcher (500ml / 1L / Combos)' },
-                    { label: 'Cart UX', value: 'Sticky Bottom Stepper with Instant Haptics' },
-                    { label: 'Dietary Markers', value: '100% Vegetarian & Nutrition Badges' },
+                    {
+                        label: 'Technology',
+                        value: 'React Native • Expo SDK 57 • Reanimated',
+                    },
+                    {
+                        label: 'Delivery ETA',
+                        value: '10-15 Mins Hyperlocal Dispatch',
+                    },
+                    {
+                        label: 'Pack Selection',
+                        value: 'Instant Variant Switcher (500ml / 1L / Combos)',
+                    },
+                    {
+                        label: 'Cart UX',
+                        value: 'Sticky Bottom Stepper with Instant Haptics',
+                    },
+                    {
+                        label: 'Dietary Markers',
+                        value: '100% Vegetarian & Nutrition Badges',
+                    },
                 ],
             },
         ],
@@ -110,7 +168,8 @@ export const platformsData: Record<PlatformTab, PlatformData> = {
         icon: '🛵',
         name: 'Delivery & Picker App',
         shortLabel: 'Delivery App',
-        tagline: 'Dark-Store Warehouse Bin Navigation & Continuous Barcode Scanning',
+        tagline:
+            'Dark-Store Warehouse Bin Navigation & Continuous Barcode Scanning',
         color: '#F59E0B',
         accentGlow: 'rgba(245, 158, 11, 0.2)',
         images: [
@@ -119,13 +178,34 @@ export const platformsData: Record<PlatformTab, PlatformData> = {
                 subtitle: 'Aisle/Rack Bin Navigation & Camera Barcode Scanner',
                 image: '/assets/products/grocery-mart/WhatsApp Image 2026-09-27 at 1.42.06 AM.jpeg',
                 desc: 'High-contrast UI engineered for warehouse pickers and delivery riders. Guides associates to exact Aisle, Rack, and Shelf coordinates, enforces FEFO expiry validation, and prevents packing errors via continuous camera barcode scanning.',
-                badges: ['Warehouse Bin Nav', 'FEFO Expiry Check', 'Continuous Barcode', 'Cold Room Alerts', 'Rider Routing'],
+                badges: [
+                    'Warehouse Bin Nav',
+                    'FEFO Expiry Check',
+                    'Continuous Barcode',
+                    'Cold Room Alerts',
+                    'Rider Routing',
+                ],
                 specs: [
-                    { label: 'Warehouse Nav', value: 'Aisle 04 • Rack R-B02 • Shelf 2 Coordinates' },
-                    { label: 'Barcode Engine', value: 'Camera Continuous Scanner & SKU Validation' },
-                    { label: 'Batch Compliance', value: '100% Mandatory FEFO Expiry Inspection' },
-                    { label: 'Handling Flags', value: 'Chilled Storage (<4°C) & Fragile Pouch Alerts' },
-                    { label: 'Courier Portal', value: 'One-Tap Rider Pickup & GPS Route Optimization' },
+                    {
+                        label: 'Warehouse Nav',
+                        value: 'Aisle 04 • Rack R-B02 • Shelf 2 Coordinates',
+                    },
+                    {
+                        label: 'Barcode Engine',
+                        value: 'Camera Continuous Scanner & SKU Validation',
+                    },
+                    {
+                        label: 'Batch Compliance',
+                        value: '100% Mandatory FEFO Expiry Inspection',
+                    },
+                    {
+                        label: 'Handling Flags',
+                        value: 'Chilled Storage (<4°C) & Fragile Pouch Alerts',
+                    },
+                    {
+                        label: 'Courier Portal',
+                        value: 'One-Tap Rider Pickup & GPS Route Optimization',
+                    },
                 ],
             },
         ],

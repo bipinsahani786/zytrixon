@@ -1,57 +1,144 @@
-import React from 'react';
-import { LucideIcon } from 'lucide-react';
+import React, { useId } from 'react';
+import type { LucideIcon } from 'lucide-react';
 
 interface AdminStatCardProps {
     title: string;
     value: string | number;
-    subtitle: string;
+    subtitle?: string;
     icon: LucideIcon;
     badge?: string;
-    badgeVariant?: 'emerald' | 'blue' | 'purple' | 'amber';
+    badgeVariant?: 'emerald' | 'blue' | 'purple' | 'amber' | 'rose';
 }
 
 export default function AdminStatCard({
     title,
     value,
-    subtitle,
     icon: Icon,
-    badge,
     badgeVariant = 'emerald',
 }: AdminStatCardProps) {
-    const badgeColors = {
-        emerald: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-        blue: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-        purple: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
-        amber: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+    const patternId = useId().replace(/:/g, '');
+
+    const variantStyles = {
+        emerald: {
+            topLine: 'from-emerald-500 via-teal-400 to-emerald-600',
+            glow: 'bg-emerald-500/20',
+            iconBox:
+                'bg-emerald-500/10 text-emerald-500 border-emerald-500/30 group-hover:bg-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.15)]',
+            shapeBorder: 'border-emerald-500/20',
+            dotFill: '#10b981',
+        },
+        blue: {
+            topLine: 'from-blue-500 via-cyan-400 to-indigo-500',
+            glow: 'bg-blue-500/20',
+            iconBox:
+                'bg-blue-500/10 text-blue-500 border-blue-500/30 group-hover:bg-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.15)]',
+            shapeBorder: 'border-blue-500/20',
+            dotFill: '#3b82f6',
+        },
+        purple: {
+            topLine: 'from-purple-500 via-fuchsia-400 to-indigo-500',
+            glow: 'bg-purple-500/20',
+            iconBox:
+                'bg-purple-500/10 text-purple-400 border-purple-500/30 group-hover:bg-purple-500/20 shadow-[0_0_15px_rgba(168,85,247,0.15)]',
+            shapeBorder: 'border-purple-500/20',
+            dotFill: '#a855f7',
+        },
+        amber: {
+            topLine: 'from-amber-500 via-yellow-400 to-orange-500',
+            glow: 'bg-amber-500/20',
+            iconBox:
+                'bg-amber-500/10 text-amber-500 border-amber-500/30 group-hover:bg-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.15)]',
+            shapeBorder: 'border-amber-500/20',
+            dotFill: '#f59e0b',
+        },
+        rose: {
+            topLine: 'from-rose-500 via-pink-400 to-red-500',
+            glow: 'bg-rose-500/20',
+            iconBox:
+                'bg-rose-500/10 text-rose-500 border-rose-500/30 group-hover:bg-rose-500/20 shadow-[0_0_15px_rgba(244,63,94,0.15)]',
+            shapeBorder: 'border-rose-500/20',
+            dotFill: '#f43f5e',
+        },
     };
 
-    return (
-        <div className="relative rounded-xl border border-white/10 bg-[#0e0e12]/80 p-5 backdrop-blur-sm hover:border-white/20 transition-all group overflow-hidden">
-            {/* Top ambient highlight line */}
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-white/40 transition-all" />
+    const currentStyle = variantStyles[badgeVariant] || variantStyles.emerald;
 
-            <div className="flex items-start justify-between">
-                <div>
-                    <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider block font-mono">
+    return (
+        <div
+            className="group relative flex h-full min-h-[105px] flex-col justify-center overflow-hidden rounded-2xl border p-5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+            style={{
+                backgroundColor: 'var(--admin-card-bg)',
+                borderColor: 'var(--admin-border)',
+                color: 'var(--admin-text-primary)',
+            }}
+        >
+            {/* 1. Top Ambient Gradient Line */}
+            <div
+                className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${currentStyle.topLine} opacity-90 transition-all duration-300 group-hover:h-1.5`}
+            />
+
+            {/* 2. Geometric Dot Fill Pattern Inside Card */}
+            <svg
+                className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.07] transition-opacity duration-300 group-hover:opacity-[0.14] dark:opacity-[0.12]"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs>
+                    <pattern
+                        id={`grid-${patternId}`}
+                        width="14"
+                        height="14"
+                        patternUnits="userSpaceOnUse"
+                    >
+                        <circle
+                            cx="2"
+                            cy="2"
+                            r="1"
+                            fill={currentStyle.dotFill}
+                        />
+                    </pattern>
+                </defs>
+                <rect
+                    width="100%"
+                    height="100%"
+                    fill={`url(#grid-${patternId})`}
+                />
+            </svg>
+
+            {/* 3. Ambient Colorful Glow Orb */}
+            <div
+                className={`pointer-events-none absolute -top-8 -right-8 h-28 w-28 rounded-full opacity-20 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:opacity-40 ${currentStyle.glow}`}
+            />
+
+            {/* 4. Abstract Colorful Geometric Corner Shapes */}
+            <div
+                className={`pointer-events-none absolute -right-5 -bottom-5 h-20 w-20 rounded-2xl border ${currentStyle.shapeBorder} rotate-12 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-45`}
+            />
+            <div
+                className={`pointer-events-none absolute -right-2 -bottom-2 h-12 w-12 rounded-xl border ${currentStyle.shapeBorder} -rotate-6 transition-transform duration-500 group-hover:-rotate-12`}
+            />
+
+            {/* 5. Content Row: Title, Big Value & Colorful Icon Shape */}
+            <div className="relative z-10 flex items-center justify-between gap-4">
+                <div className="min-w-0 flex-1">
+                    <span
+                        className="block truncate font-mono text-[11px] font-semibold tracking-wider uppercase"
+                        style={{ color: 'var(--admin-text-muted)' }}
+                    >
                         {title}
                     </span>
-                    <div className="text-2xl font-bold text-white mt-1 font-heading">
+                    <div
+                        className="mt-1 font-heading text-3xl font-bold tracking-tight"
+                        style={{ color: 'var(--admin-text-primary)' }}
+                    >
                         {value}
                     </div>
                 </div>
 
-                <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-white group-hover:border-white/20 transition-all">
-                    <Icon className="w-5 h-5" />
+                <div
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border transition-all duration-300 group-hover:scale-105 ${currentStyle.iconBox}`}
+                >
+                    <Icon className="h-6 w-6" />
                 </div>
-            </div>
-
-            <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs">
-                <span className="text-neutral-500">{subtitle}</span>
-                {badge && (
-                    <span className={`px-2 py-0.5 rounded text-[10px] font-mono border ${badgeColors[badgeVariant]}`}>
-                        {badge}
-                    </span>
-                )}
             </div>
         </div>
     );

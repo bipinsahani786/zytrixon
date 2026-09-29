@@ -116,10 +116,12 @@ export default function ProjectHeroEditorial({
                                         border: '1px solid rgba(56, 189, 248, 0.35)',
                                         padding: '5px 12px',
                                         borderRadius: '20px',
-                                        boxShadow: '0 0 14px rgba(56, 189, 248, 0.15)',
+                                        boxShadow:
+                                            '0 0 14px rgba(56, 189, 248, 0.15)',
                                     }}
                                 >
-                                    <span>📱</span> 2 Mobile Apps (Customer + Picker)
+                                    <span>📱</span> 2 Mobile Apps (Customer +
+                                    Picker)
                                 </span>
                                 <span
                                     style={{
@@ -135,10 +137,12 @@ export default function ProjectHeroEditorial({
                                         border: '1px solid rgba(16, 185, 129, 0.35)',
                                         padding: '5px 12px',
                                         borderRadius: '20px',
-                                        boxShadow: '0 0 14px rgba(16, 185, 129, 0.15)',
+                                        boxShadow:
+                                            '0 0 14px rgba(16, 185, 129, 0.15)',
                                     }}
                                 >
-                                    <span>🖥️</span> Web Management Suite (Admin & Store)
+                                    <span>🖥️</span> Web Management Suite (Admin
+                                    & Store)
                                 </span>
                             </div>
                         ) : null}
@@ -523,7 +527,9 @@ export default function ProjectHeroEditorial({
                                     }}
                                 >
                                     <span>🖥️</span>
-                                    <span>WEB MANAGEMENT PANEL (ADMIN & STORE)</span>
+                                    <span>
+                                        WEB MANAGEMENT PANEL (ADMIN & STORE)
+                                    </span>
                                 </div>
                             ) : null}
                         </div>

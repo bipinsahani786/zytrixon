@@ -12,15 +12,18 @@ export const PRODUCTS_DATA: ProjectItem[] = [
         tagline:
             'From IMEI-level serial tracking and one-tap GST billing to supplier credit ledgers and automated staff payroll — run your entire single or multi-outlet retail business effortlessly.',
         client: 'Zytrixon Proprietary Suite',
-        industry: 'Mobile & Electronics Retailers, Single & Multi-Outlet Stores',
+        industry:
+            'Mobile & Electronics Retailers, Single & Multi-Outlet Stores',
         year: '2026',
         duration: 'Enterprise Ready',
         architecture:
             'Multi-Tenant Laravel 12 API, React 19 & Row-Level Isolated Ledger Architecture',
         accentColor: '#0EA5E9',
         secondaryColor: '#38BDF8',
-        heroImage: '/assets/products/mobile-crm/Screenshot 2026-09-26 162520.png',
-        mobileImage: '/assets/products/mobile-crm/Screenshot 2026-09-26 181933.png',
+        heroImage:
+            '/assets/products/mobile-crm/Screenshot 2026-09-26 162520.png',
+        mobileImage:
+            '/assets/products/mobile-crm/Screenshot 2026-09-26 181933.png',
         liveUrl:
             'https://wa.me/917049711475?text=Hi%20Zytrixon%2C%20I%20would%20like%20to%20schedule%20an%20enterprise%20demo%20for%20Mobile%20CRM.',
         videoUrl: '',
@@ -179,29 +182,25 @@ export const PRODUCTS_DATA: ProjectItem[] = [
                 step: '01',
                 title: 'Edge Terminal Input',
                 tech: 'React POS Web App & Scanner',
-                detail:
-                    'Rapid item scan and customer lookup on web, desktop, and mobile devices.',
+                detail: 'Rapid item scan and customer lookup on web, desktop, and mobile devices.',
             },
             {
                 step: '02',
                 title: 'Ledger Engine Verification',
                 tech: 'Prisma ORM & PostgreSQL Core',
-                detail:
-                    'Validates credit limits, tax items, and ACID double-entry ledger records.',
+                detail: 'Validates credit limits, tax items, and ACID double-entry ledger records.',
             },
             {
                 step: '03',
                 title: 'Payment Settlement',
                 tech: 'Multi-Tender Cash & UPI Engine',
-                detail:
-                    'Reconciles payment tender with sub-second receipt generation.',
+                detail: 'Reconciles payment tender with sub-second receipt generation.',
             },
             {
                 step: '04',
                 title: 'Encrypted Cloud Sync',
                 tech: 'Docker Containerized Cloud Sync',
-                detail:
-                    'Containerized deployment ensuring high-availability sync and encrypted backups.',
+                detail: 'Containerized deployment ensuring high-availability sync and encrypted backups.',
             },
         ],
     },
@@ -214,14 +213,16 @@ export const PRODUCTS_DATA: ProjectItem[] = [
         tagline:
             'Customer Mobile App (10-15 Min Delivery), Dark-Store Picker & Rider App, Super Admin Master Catalog & Store Manager Margin Engine.',
         client: 'Zytrixon Proprietary Suite',
-        industry: 'Quick-Commerce, Dark Stores, Supermarkets & Omnichannel FMCG',
+        industry:
+            'Quick-Commerce, Dark Stores, Supermarkets & Omnichannel FMCG',
         year: '2026',
         duration: 'Enterprise Ready',
         architecture:
             'Node.js + Prisma + PostgreSQL + Redis with Multi-Platform Expo & React 19 Clients',
         accentColor: '#207393',
         secondaryColor: '#38BDF8',
-        heroImage: '/assets/products/grocery-mart/Screenshot 2026-09-26 182031.png',
+        heroImage:
+            '/assets/products/grocery-mart/Screenshot 2026-09-26 182031.png',
         mobileImage: '/assets/products/grocery-mart/image.png',
         secondMobileImage:
             '/assets/products/grocery-mart/WhatsApp Image 2026-09-27 at 1.42.06 AM.jpeg',
@@ -376,29 +377,25 @@ export const PRODUCTS_DATA: ProjectItem[] = [
                 step: '01',
                 title: 'Catalog & Store Sync',
                 tech: 'Node.js + Prisma ORM',
-                detail:
-                    'Centralized master catalog with HSN codes, GST rates, and multi-store inventory mapping.',
+                detail: 'Centralized master catalog with HSN codes, GST rates, and multi-store inventory mapping.',
             },
             {
                 step: '02',
                 title: 'In-Memory Cache & Stock Lock',
                 tech: 'Redis Distributed Cache',
-                detail:
-                    'Sub-millisecond inventory reservation when customer adds items to cart.',
+                detail: 'Sub-millisecond inventory reservation when customer adds items to cart.',
             },
             {
                 step: '03',
                 title: 'Dark-Store Bin Navigation',
                 tech: 'Picker App + Socket.IO',
-                detail:
-                    'Real-time order routing with Aisle/Rack/Shelf coordinates and camera barcode verification.',
+                detail: 'Real-time order routing with Aisle/Rack/Shelf coordinates and camera barcode verification.',
             },
             {
                 step: '04',
                 title: 'Hyperlocal Rider Dispatch',
                 tech: 'Delivery App + GPS Telemetry',
-                detail:
-                    'Continuous FEFO batch validation and automated 10-15 minute doorstep delivery.',
+                detail: 'Continuous FEFO batch validation and automated 10-15 minute doorstep delivery.',
             },
         ],
     },
@@ -544,29 +541,25 @@ export const PRODUCTS_DATA: ProjectItem[] = [
                 step: '01',
                 title: 'Arrival & Lot Creation',
                 tech: 'Procurement Engine',
-                detail:
-                    'Log incoming grain arrivals, deduct shortage/wastage, and generate purchase lots.',
+                detail: 'Log incoming grain arrivals, deduct shortage/wastage, and generate purchase lots.',
             },
             {
                 step: '02',
                 title: 'Godown Stock Allocation',
                 tech: 'Multi-Warehouse Mesh',
-                detail:
-                    'Assign lot to specific godown and track bag count and quintal weight in real-time.',
+                detail: 'Assign lot to specific godown and track bag count and quintal weight in real-time.',
             },
             {
                 step: '03',
                 title: 'Sales Dispatch & Broker Rules',
                 tech: 'Commission Automation',
-                detail:
-                    'Sell from designated lots while system automatically calculates broker commissions.',
+                detail: 'Sell from designated lots while system automatically calculates broker commissions.',
             },
             {
                 step: '04',
                 title: 'Ledger Reconciliation & Invoicing',
                 tech: 'Double-Entry Core',
-                detail:
-                    'Instant ledger balance update, payment receipt generation, and GST tax invoice print.',
+                detail: 'Instant ledger balance update, payment receipt generation, and GST tax invoice print.',
             },
         ],
     },
@@ -579,7 +572,8 @@ export const PRODUCTS_DATA: ProjectItem[] = [
         tagline:
             'Turn walk-in customers into genuine 5-star Google reviews in 15 seconds. Physical QR counter standees + smart context-aware AI review assistant. 100% Google policy compliant.',
         client: 'Zytrixon Proprietary Suite',
-        industry: 'Restaurants, Clinics, Salons, Retail & Multi-Location Franchises',
+        industry:
+            'Restaurants, Clinics, Salons, Retail & Multi-Location Franchises',
         year: '2026',
         duration: 'Enterprise Ready',
         architecture:
@@ -587,7 +581,8 @@ export const PRODUCTS_DATA: ProjectItem[] = [
         accentColor: '#059669',
         secondaryColor: '#10B981',
         heroImage: '/assets/products/review-booster/review-booster-hero.png',
-        mobileImage: '/assets/products/review-booster/review-booster-mobile.png',
+        mobileImage:
+            '/assets/products/review-booster/review-booster-mobile.png',
         liveUrl: 'https://aireview.zytrixon.com/',
         videoUrl: '',
         videoPoster: '/assets/products/review-booster/review-booster-hero.png',
@@ -733,8 +728,7 @@ export const PRODUCTS_DATA: ProjectItem[] = [
             },
         ],
         testimonial: {
-            quote:
-                'We jumped from 82 to 460 reviews in 60 days. Now #1 for biryani near me in Indiranagar. The Hinglish text is unbelievably natural!',
+            quote: 'We jumped from 82 to 460 reviews in 60 days. Now #1 for biryani near me in Indiranagar. The Hinglish text is unbelievably natural!',
             author: 'Sameer Khan',
             role: 'Founder & Head Chef · The Biryani Court (Bangalore)',
         },
@@ -743,34 +737,36 @@ export const PRODUCTS_DATA: ProjectItem[] = [
                 step: '01',
                 title: 'Counter Touchpoint Scan',
                 tech: 'NFC / Dynamic QR Code',
-                detail:
-                    'Customer scans acrylic standee or taps NFC plaque at checkout, loading the lightweight mobile page in <0.8s without app download.',
+                detail: 'Customer scans acrylic standee or taps NFC plaque at checkout, loading the lightweight mobile page in <0.8s without app download.',
             },
             {
                 step: '02',
                 title: 'Sentiment & Tag Capture',
                 tech: 'Interactive Micro-UI',
-                detail:
-                    'Customer taps 5 stars and 2–3 specific service tags (e.g., Great Food, Quick Billing, Polite Staff).',
+                detail: 'Customer taps 5 stars and 2–3 specific service tags (e.g., Great Food, Quick Billing, Polite Staff).',
             },
             {
                 step: '03',
                 title: 'Contextual AI Generation',
                 tech: 'Proprietary NLP Engine',
-                detail:
-                    'System weaves selected tags into an authentic, human-sounding 2-sentence review in conversational English or Hinglish.',
+                detail: 'System weaves selected tags into an authentic, human-sounding 2-sentence review in conversational English or Hinglish.',
             },
             {
                 step: '04',
                 title: '1-Tap Google Maps Submission',
                 tech: 'Universal Deep-Linking',
-                detail:
-                    'Draft copies to clipboard and automatically opens the merchant Google Maps review dialog for instant submission.',
+                detail: 'Draft copies to clipboard and automatically opens the merchant Google Maps review dialog for instant submission.',
             },
         ],
     },
 ];
 
 export function getProductBySlug(slug: string): ProjectItem | undefined {
-    return PRODUCTS_DATA.find((p) => p.slug === slug || p.id === slug || (slug === 'ai-review' && (p.slug === 'review-booster' || p.id === 'review-booster')));
+    return PRODUCTS_DATA.find(
+        (p) =>
+            p.slug === slug ||
+            p.id === slug ||
+            (slug === 'ai-review' &&
+                (p.slug === 'review-booster' || p.id === 'review-booster')),
+    );
 }

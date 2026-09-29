@@ -1,12 +1,14 @@
-import SeoController from './SeoController'
-import CaseStudyController from './CaseStudyController'
 import Admin from './Admin'
+import SeoController from './SeoController'
+import ContactController from './ContactController'
+import CaseStudyController from './CaseStudyController'
 import Customer from './Customer'
 import Settings from './Settings'
 const Controllers = {
-    SeoController: Object.assign(SeoController, SeoController),
+    Admin: Object.assign(Admin, Admin),
+SeoController: Object.assign(SeoController, SeoController),
+ContactController: Object.assign(ContactController, ContactController),
 CaseStudyController: Object.assign(CaseStudyController, CaseStudyController),
-Admin: Object.assign(Admin, Admin),
 Customer: Object.assign(Customer, Customer),
 Settings: Object.assign(Settings, Settings),
 }

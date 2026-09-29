@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
-use App\Http\Controllers\Customer\CustomerDashboardController;
+use App\Http\Controllers\Admin\ContactEnquiryController;
 use App\Http\Controllers\CaseStudyController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Customer\CustomerDashboardController;
 use App\Http\Controllers\SeoController;
 use App\Models\CaseStudy;
 use App\Models\Location;
@@ -115,6 +118,7 @@ Route::get('/ai-review', function () {
 Route::inertia('/contact', 'Contact', [
     'seo' => ['title' => 'Contact Us | Zytrixon Tech', 'description' => 'Get in touch with Zytrixon Tech for premium web development, app development, and digital marketing services.'],
 ])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/work', function () {
     return redirect()->route('portfolio');
@@ -208,9 +212,7 @@ Route::post('/z-admin/login', [AdminAuthController::class, 'login'])->name('admi
 Route::post('/z-admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
 // Override default login/register
-Route::get('/login', function () {
-    return redirect()->route('admin.login');
-})->name('login');
+Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('login');
 
 Route::get('/register', function () {
     return redirect()->route('admin.login')->with('error', 'Public registration is disabled. Please contact the administrator.');
@@ -230,6 +232,20 @@ Route::get('/dashboard', function () {
 // Protected Admin Panel
 Route::middleware(['auth', 'admin'])->prefix('z-admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+    // Users Management
+    Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+    Route::post('/users', [AdminUserController::class, 'store'])->name('admin.users.store');
+    Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+
+    // Enquiries / Contacts Management
+    Route::get('/contacts', [ContactEnquiryController::class, 'index'])->name('admin.contacts.index');
+    Route::get('/enquiries', [ContactEnquiryController::class, 'index'])->name('admin.enquiries.index');
+    Route::post('/contacts', [ContactEnquiryController::class, 'store'])->name('admin.contacts.store');
+    Route::put('/contacts/{enquiry}', [ContactEnquiryController::class, 'update'])->name('admin.contacts.update');
+    Route::delete('/contacts/{enquiry}', [ContactEnquiryController::class, 'destroy'])->name('admin.contacts.destroy');
+    Route::post('/contacts/bulk-delete', [ContactEnquiryController::class, 'bulkDestroy'])->name('admin.contacts.bulk-delete');
 });
 
 // Protected Customer Portal

@@ -345,7 +345,9 @@ export default function ProductScreenshots({
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     padding:
-                                        ss.category?.toLowerCase().includes('app') ||
+                                        ss.category
+                                            ?.toLowerCase()
+                                            .includes('app') ||
                                         ss.image.includes('image.png') ||
                                         ss.image.includes('WhatsApp Image')
                                             ? '14px'
@@ -362,7 +364,8 @@ export default function ProductScreenshots({
                                             borderRadius: '24px',
                                             overflow: 'hidden',
                                             border: '5px solid var(--zy-surface-2)',
-                                            boxShadow: '0 16px 40px rgba(0,0,0,0.3)',
+                                            boxShadow:
+                                                '0 16px 40px rgba(0,0,0,0.3)',
                                             background: '#000000',
                                             display: 'inline-flex',
                                             alignItems: 'center',

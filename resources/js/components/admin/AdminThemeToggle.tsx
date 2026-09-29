@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from 'react';
 
-export default function AdminThemeToggle({ className = '' }: { className?: string }) {
+export default function AdminThemeToggle({
+    className = '',
+}: {
+    className?: string;
+}) {
     const [theme, setTheme] = useState<'dark' | 'light'>('dark');
     const [mounted, setMounted] = useState(false);
 
+    const applyTheme = (targetTheme: 'dark' | 'light') => {
+        const isLight = targetTheme === 'light';
+        document.documentElement.classList.toggle('light', isLight);
+        document.documentElement.classList.toggle('dark', !isLight);
+        document.body.classList.toggle('light', isLight);
+        document.body.classList.toggle('dark', !isLight);
+    };
+
     useEffect(() => {
         setMounted(true);
-        const storedTheme = (localStorage.getItem('zy-theme') as 'dark' | 'light') || 'dark';
+        const storedTheme =
+            (localStorage.getItem('zy-theme') as 'dark' | 'light') || 'dark';
         setTheme(storedTheme);
-        document.body.classList.toggle('light', storedTheme === 'light');
+        applyTheme(storedTheme);
     }, []);
 
     const toggleTheme = () => {
         const nextTheme = theme === 'dark' ? 'light' : 'dark';
         setTheme(nextTheme);
-        document.body.classList.toggle('light', nextTheme === 'light');
+        applyTheme(nextTheme);
         localStorage.setItem('zy-theme', nextTheme);
     };
 
@@ -24,13 +37,13 @@ export default function AdminThemeToggle({ className = '' }: { className?: strin
             onClick={toggleTheme}
             aria-label="Toggle theme"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
-            className={`theme-toggle-btn rounded-xl flex items-center justify-center cursor-pointer transition-all duration-300 ${className}`}
+            className={`flex cursor-pointer items-center justify-center rounded-xl transition-all duration-200 active:scale-95 ${className}`}
             style={{
                 width: 38,
                 height: 38,
-                backgroundColor: 'var(--zy-card-bg, rgba(255, 255, 255, 0.04))',
-                border: '1px solid var(--zy-gray-border, var(--zy-border-subtle, rgba(255, 255, 255, 0.1)))',
-                color: 'var(--zy-white, var(--zy-text-primary, #ffffff))',
+                backgroundColor: 'var(--admin-button-secondary-bg)',
+                border: '1px solid var(--admin-border)',
+                color: 'var(--admin-text-primary)',
             }}
         >
             {!mounted || theme === 'dark' ? (

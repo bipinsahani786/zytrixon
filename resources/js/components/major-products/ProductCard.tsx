@@ -245,7 +245,9 @@ export default function ProductCard({
                                     fontWeight: 700,
                                     padding: '2px 7px',
                                     borderRadius: '5px',
-                                    background: isLight ? 'rgba(0,0,0,0.04)' : 'var(--zy-surface-2)',
+                                    background: isLight
+                                        ? 'rgba(0,0,0,0.04)'
+                                        : 'var(--zy-surface-2)',
                                     border: '1px solid var(--zy-border-subtle)',
                                     color: 'var(--zy-text-primary)',
                                     letterSpacing: '0.02em',
