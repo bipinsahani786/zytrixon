@@ -523,8 +523,8 @@ team.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     
     team.form = teamForm
 /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+ * @see app/Http/Controllers/BlogController.php:15
  * @route '/blog'
  */
 export const blog = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -538,8 +538,8 @@ blog.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+ * @see app/Http/Controllers/BlogController.php:15
  * @route '/blog'
  */
 blog.url = (options?: RouteQueryOptions) => {
@@ -547,8 +547,8 @@ blog.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+ * @see app/Http/Controllers/BlogController.php:15
  * @route '/blog'
  */
 blog.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -556,8 +556,8 @@ blog.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     method: 'get',
 })
 /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+ * @see app/Http/Controllers/BlogController.php:15
  * @route '/blog'
  */
 blog.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -566,8 +566,8 @@ blog.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
     /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+ * @see app/Http/Controllers/BlogController.php:15
  * @route '/blog'
  */
     const blogForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -576,8 +576,8 @@ blog.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     })
 
             /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+ * @see app/Http/Controllers/BlogController.php:15
  * @route '/blog'
  */
         blogForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -585,8 +585,8 @@ blog.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
             /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+ * @see app/Http/Controllers/BlogController.php:15
  * @route '/blog'
  */
         blogForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -913,7 +913,7 @@ terms.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     
     terms.form = termsForm
 /**
- * @see routes/web.php:222
+ * @see routes/web.php:211
  * @route '/dashboard'
  */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -927,7 +927,7 @@ dashboard.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see routes/web.php:222
+ * @see routes/web.php:211
  * @route '/dashboard'
  */
 dashboard.url = (options?: RouteQueryOptions) => {
@@ -935,7 +935,7 @@ dashboard.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see routes/web.php:222
+ * @see routes/web.php:211
  * @route '/dashboard'
  */
 dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -943,7 +943,7 @@ dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     method: 'get',
 })
 /**
- * @see routes/web.php:222
+ * @see routes/web.php:211
  * @route '/dashboard'
  */
 dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -952,7 +952,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
     /**
- * @see routes/web.php:222
+ * @see routes/web.php:211
  * @route '/dashboard'
  */
     const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -961,7 +961,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     })
 
             /**
- * @see routes/web.php:222
+ * @see routes/web.php:211
  * @route '/dashboard'
  */
         dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -969,7 +969,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
             /**
- * @see routes/web.php:222
+ * @see routes/web.php:211
  * @route '/dashboard'
  */
         dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

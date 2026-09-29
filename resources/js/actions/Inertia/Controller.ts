@@ -392,84 +392,6 @@ Controllera5214f8c8bb514adcdb1a0ee38e347fe.head = (options?: RouteQueryOptions):
     /**
 * @see \Inertia\Controller::__invoke
  * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
- * @route '/blog'
- */
-const Controller0281689d11c3db12eb0f0bc21b3e4ed4 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: Controller0281689d11c3db12eb0f0bc21b3e4ed4.url(options),
-    method: 'get',
-})
-
-Controller0281689d11c3db12eb0f0bc21b3e4ed4.definition = {
-    methods: ["get","head"],
-    url: '/blog',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
- * @route '/blog'
- */
-Controller0281689d11c3db12eb0f0bc21b3e4ed4.url = (options?: RouteQueryOptions) => {
-    return Controller0281689d11c3db12eb0f0bc21b3e4ed4.definition.url + queryParams(options)
-}
-
-/**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
- * @route '/blog'
- */
-Controller0281689d11c3db12eb0f0bc21b3e4ed4.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: Controller0281689d11c3db12eb0f0bc21b3e4ed4.url(options),
-    method: 'get',
-})
-/**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
- * @route '/blog'
- */
-Controller0281689d11c3db12eb0f0bc21b3e4ed4.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: Controller0281689d11c3db12eb0f0bc21b3e4ed4.url(options),
-    method: 'head',
-})
-
-    /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
- * @route '/blog'
- */
-    const Controller0281689d11c3db12eb0f0bc21b3e4ed4Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: Controller0281689d11c3db12eb0f0bc21b3e4ed4.url(options),
-        method: 'get',
-    })
-
-            /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
- * @route '/blog'
- */
-        Controller0281689d11c3db12eb0f0bc21b3e4ed4Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: Controller0281689d11c3db12eb0f0bc21b3e4ed4.url(options),
-            method: 'get',
-        })
-            /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
- * @route '/blog'
- */
-        Controller0281689d11c3db12eb0f0bc21b3e4ed4Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: Controller0281689d11c3db12eb0f0bc21b3e4ed4.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    Controller0281689d11c3db12eb0f0bc21b3e4ed4.form = Controller0281689d11c3db12eb0f0bc21b3e4ed4Form
-    /**
-* @see \Inertia\Controller::__invoke
- * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
  * @route '/careers'
  */
 const Controller03d31eb80a178b8caec7a6c184c0169b = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -869,7 +791,6 @@ const Controller = {
     '/portfolio': Controller04f96a4b7a6a628af70dbdb6a16978b4,
     '/contact': Controller36402f3b102b68b92616e946647e00cf,
     '/team': Controllera5214f8c8bb514adcdb1a0ee38e347fe,
-    '/blog': Controller0281689d11c3db12eb0f0bc21b3e4ed4,
     '/careers': Controller03d31eb80a178b8caec7a6c184c0169b,
     '/process': Controller8ee05578d379a893ea5fb10445367080,
     '/privacy-policy': Controller546d1d979582dcab4cda77f98be026ca,

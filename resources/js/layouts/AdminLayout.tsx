@@ -27,12 +27,12 @@ export default function AdminLayout({
             document.documentElement.classList.remove('dark');
             document.body.classList.add('light');
             document.body.classList.remove('dark');
-        } else {
-            document.documentElement.classList.add('dark');
-            document.documentElement.classList.remove('light');
-            document.body.classList.add('dark');
-            document.body.classList.remove('light');
         }
+        // Mark document.body with admin-body class for custom thin scrollbar
+        document.body.classList.add('admin-body');
+        return () => {
+            document.body.classList.remove('admin-body');
+        };
     }, []);
 
     // Automatically close mobile sidebar on navigation
@@ -42,7 +42,7 @@ export default function AdminLayout({
 
     return (
         <div
-            className="min-h-screen font-sans transition-colors duration-200"
+            className="admin-panel min-h-screen font-sans transition-colors duration-200"
             style={{
                 backgroundColor: 'var(--admin-bg)',
                 color: 'var(--admin-text-primary)',

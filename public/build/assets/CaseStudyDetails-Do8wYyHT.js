@@ -1,1 +1,0 @@
-import e from"./ProjectDetails-C7lIoG1d.js";var t=e;e.layout=null;export{t as default};
