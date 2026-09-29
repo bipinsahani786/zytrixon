@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\ContactEnquiryController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Customer\CustomerDashboardController;
@@ -128,21 +130,8 @@ Route::inertia('/team', 'Team', [
     'seo' => ['title' => 'Our Team | Zytrixon Tech', 'description' => 'Meet the expert team of developers, designers, and strategists at Zytrixon Tech.'],
 ])->name('team');
 
-Route::inertia('/blog', 'Blog', [
-    'seo' => ['title' => 'Blog & Insights | Zytrixon Tech', 'description' => 'Read the latest insights on web development, software engineering, and digital marketing from Zytrixon Tech.'],
-])->name('blog');
-
-Route::get('/blog/{slug}', function ($slug) {
-    $title = ucwords(str_replace('-', ' ', $slug));
-
-    return inertia('BlogDetails', [
-        'slug' => $slug,
-        'seo' => [
-            'title' => $title.' | Zytrixon Tech Blog',
-            'description' => 'Read our latest blog post about '.$title.' at Zytrixon Tech.',
-        ],
-    ]);
-})->name('blog.details');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.details');
 
 Route::inertia('/careers', 'Careers', [
     'seo' => ['title' => 'Careers | Zytrixon Tech', 'description' => 'Join the Zytrixon Tech team. We are looking for passionate developers, designers, and marketers.'],
@@ -246,6 +235,15 @@ Route::middleware(['auth', 'admin'])->prefix('z-admin')->group(function () {
     Route::put('/contacts/{enquiry}', [ContactEnquiryController::class, 'update'])->name('admin.contacts.update');
     Route::delete('/contacts/{enquiry}', [ContactEnquiryController::class, 'destroy'])->name('admin.contacts.destroy');
     Route::post('/contacts/bulk-delete', [ContactEnquiryController::class, 'bulkDestroy'])->name('admin.contacts.bulk-delete');
+
+    // Blog Articles Management
+    Route::get('/blogs', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
+    Route::post('/blogs', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
+    Route::put('/blogs/{blog}', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
+    Route::delete('/blogs/{blog}', [AdminBlogController::class, 'destroy'])->name('admin.blogs.destroy');
+    Route::post('/blogs/bulk-delete', [AdminBlogController::class, 'bulkDestroy'])->name('admin.blogs.bulk-delete');
+    Route::post('/blogs/{blog}/toggle-featured', [AdminBlogController::class, 'toggleFeatured'])->name('admin.blogs.toggle-featured');
+    Route::post('/blogs/upload-image', [AdminBlogController::class, 'uploadImage'])->name('admin.blogs.upload-image');
 });
 
 // Protected Customer Portal

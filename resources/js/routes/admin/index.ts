@@ -3,6 +3,7 @@ import loginDf2c2a from './login'
 import users from './users'
 import contacts from './contacts'
 import enquiries from './enquiries'
+import blogs from './blogs'
 /**
 * @see \App\Http\Controllers\Admin\AuthController::login
  * @see app/Http/Controllers/Admin/AuthController.php:18
@@ -221,6 +222,7 @@ dashboard: Object.assign(dashboard, dashboard),
 users: Object.assign(users, users),
 contacts: Object.assign(contacts, contacts),
 enquiries: Object.assign(enquiries, enquiries),
+blogs: Object.assign(blogs, blogs),
 }
 
 export default admin

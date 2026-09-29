@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SeoDataSeeder::class,
             ContactEnquirySeeder::class,
+            BlogSeeder::class,
         ]);
     }
 }

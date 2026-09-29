@@ -1,6 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
- * @see routes/web.php:135
+* @see \App\Http\Controllers\BlogController::details
+ * @see app/Http/Controllers/BlogController.php:48
  * @route '/blog/{slug}'
  */
 export const details = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -14,7 +15,8 @@ details.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see routes/web.php:135
+* @see \App\Http\Controllers\BlogController::details
+ * @see app/Http/Controllers/BlogController.php:48
  * @route '/blog/{slug}'
  */
 details.url = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -41,7 +43,8 @@ details.url = (args: { slug: string | number } | [slug: string | number ] | stri
 }
 
 /**
- * @see routes/web.php:135
+* @see \App\Http\Controllers\BlogController::details
+ * @see app/Http/Controllers/BlogController.php:48
  * @route '/blog/{slug}'
  */
 details.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -49,7 +52,8 @@ details.get = (args: { slug: string | number } | [slug: string | number ] | stri
     method: 'get',
 })
 /**
- * @see routes/web.php:135
+* @see \App\Http\Controllers\BlogController::details
+ * @see app/Http/Controllers/BlogController.php:48
  * @route '/blog/{slug}'
  */
 details.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -58,7 +62,8 @@ details.head = (args: { slug: string | number } | [slug: string | number ] | str
 })
 
     /**
- * @see routes/web.php:135
+* @see \App\Http\Controllers\BlogController::details
+ * @see app/Http/Controllers/BlogController.php:48
  * @route '/blog/{slug}'
  */
     const detailsForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -67,7 +72,8 @@ details.head = (args: { slug: string | number } | [slug: string | number ] | str
     })
 
             /**
- * @see routes/web.php:135
+* @see \App\Http\Controllers\BlogController::details
+ * @see app/Http/Controllers/BlogController.php:48
  * @route '/blog/{slug}'
  */
         detailsForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -75,7 +81,8 @@ details.head = (args: { slug: string | number } | [slug: string | number ] | str
             method: 'get',
         })
             /**
- * @see routes/web.php:135
+* @see \App\Http\Controllers\BlogController::details
+ * @see app/Http/Controllers/BlogController.php:48
  * @route '/blog/{slug}'
  */
         detailsForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
