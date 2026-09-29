@@ -85,7 +85,13 @@ export default function PlatformVideoShowcase({
                 </div>
 
                 {/* Arrow Controls & Back Button */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                    }}
+                >
                     {totalVideos > 1 && (
                         <>
                             <button

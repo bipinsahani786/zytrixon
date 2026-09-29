@@ -57,6 +57,7 @@
         <link rel="manifest" href="{{ asset('site.webmanifest') }}">
         <meta name="msapplication-TileColor" content="#000000">
         <meta name="theme-color" content="#000000">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @viteReactRefresh
         @vite(['resources/css/app.css', 'resources/js/app.tsx'])

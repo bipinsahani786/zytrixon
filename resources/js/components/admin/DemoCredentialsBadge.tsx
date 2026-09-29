@@ -6,30 +6,35 @@ interface DemoCredentialsBadgeProps {
     currentEmail?: string;
 }
 
-export default function DemoCredentialsBadge({ onSelectRole, currentEmail }: DemoCredentialsBadgeProps) {
+export default function DemoCredentialsBadge({
+    onSelectRole,
+    currentEmail,
+}: DemoCredentialsBadgeProps) {
     const isAdmin = currentEmail === 'admin@zytrixon.com';
     const isCustomer = currentEmail === 'customer@zytrixon.com';
 
     return (
-        <div className="flex items-center justify-between gap-2 p-2 rounded-xl border transition-colors"
+        <div
+            className="flex items-center justify-between gap-2 rounded-xl border p-2 transition-colors"
             style={{
                 backgroundColor: 'var(--zy-surface-2, #0e0e12)',
-                borderColor: 'var(--zy-border-subtle, rgba(255, 255, 255, 0.08))',
+                borderColor:
+                    'var(--zy-border-subtle, rgba(255, 255, 255, 0.08))',
             }}
         >
             <span
-                className="text-[11px] font-mono px-2"
+                className="px-2 font-mono text-[11px]"
                 style={{ color: 'var(--zy-text-muted, #666666)' }}
             >
                 Quick Fill:
             </span>
 
-            <div className="flex items-center gap-1.5 flex-1 justify-end">
+            <div className="flex flex-1 items-center justify-end gap-1.5">
                 {/* Admin Pill */}
                 <button
                     type="button"
                     onClick={() => onSelectRole('admin')}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium cursor-pointer transition-all duration-200"
+                    className="flex cursor-pointer items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all duration-200"
                     style={{
                         backgroundColor: isAdmin
                             ? 'var(--zy-card-bg-hover, rgba(255, 255, 255, 0.12))'
@@ -38,10 +43,12 @@ export default function DemoCredentialsBadge({ onSelectRole, currentEmail }: Dem
                             ? 'var(--zy-text-primary, #ffffff)'
                             : 'var(--zy-border-subtle, rgba(255, 255, 255, 0.1))',
                         color: 'var(--zy-text-primary, #ffffff)',
-                        boxShadow: isAdmin ? '0 0 12px var(--zy-accent-glow, rgba(255,255,255,0.1))' : 'none',
+                        boxShadow: isAdmin
+                            ? '0 0 12px var(--zy-accent-glow, rgba(255,255,255,0.1))'
+                            : 'none',
                     }}
                 >
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
                     <span>Admin</span>
                 </button>
 
@@ -49,7 +56,7 @@ export default function DemoCredentialsBadge({ onSelectRole, currentEmail }: Dem
                 <button
                     type="button"
                     onClick={() => onSelectRole('customer')}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium cursor-pointer transition-all duration-200"
+                    className="flex cursor-pointer items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all duration-200"
                     style={{
                         backgroundColor: isCustomer
                             ? 'var(--zy-card-bg-hover, rgba(255, 255, 255, 0.12))'
@@ -58,10 +65,12 @@ export default function DemoCredentialsBadge({ onSelectRole, currentEmail }: Dem
                             ? 'var(--zy-text-primary, #ffffff)'
                             : 'var(--zy-border-subtle, rgba(255, 255, 255, 0.1))',
                         color: 'var(--zy-text-primary, #ffffff)',
-                        boxShadow: isCustomer ? '0 0 12px var(--zy-accent-glow, rgba(255,255,255,0.1))' : 'none',
+                        boxShadow: isCustomer
+                            ? '0 0 12px var(--zy-accent-glow, rgba(255,255,255,0.1))'
+                            : 'none',
                     }}
                 >
-                    <UserCheck className="w-3.5 h-3.5 text-blue-400" />
+                    <UserCheck className="h-3.5 w-3.5 text-blue-400" />
                     <span>Customer</span>
                 </button>
             </div>

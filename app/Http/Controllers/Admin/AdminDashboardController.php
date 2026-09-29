@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CaseStudy;
+use App\Models\ContactEnquiry;
 use App\Models\Location;
 use App\Models\Service;
 use App\Models\User;
@@ -25,6 +26,10 @@ class AdminDashboardController extends Controller
             'totalUsers' => User::count(),
             'adminCount' => User::where('role', 'admin')->count(),
             'customerCount' => User::where('role', 'customer')->count(),
+            'enquiriesCount' => ContactEnquiry::count(),
+            'newEnquiriesCount' => ContactEnquiry::where('status', ContactEnquiry::STATUS_NEW)->count(),
+            'contactedEnquiriesCount' => ContactEnquiry::where('status', ContactEnquiry::STATUS_CONTACTED)->count(),
+            'resolvedEnquiriesCount' => ContactEnquiry::where('status', ContactEnquiry::STATUS_RESOLVED)->count(),
             'dbDriver' => config('database.default'),
             'dbName' => DB::connection()->getDatabaseName(),
             'phpVersion' => PHP_VERSION,
@@ -32,10 +37,21 @@ class AdminDashboardController extends Controller
         ];
 
         $recentUsers = User::latest()->take(5)->get(['id', 'name', 'email', 'role', 'created_at']);
+        $recentEnquiries = ContactEnquiry::latest()->take(6)->get([
+            'id',
+            'name',
+            'email',
+            'phone',
+            'service',
+            'budget',
+            'status',
+            'created_at',
+        ]);
 
         return Inertia::render('Admin/Dashboard', [
             'stats' => $stats,
             'recentUsers' => $recentUsers,
+            'recentEnquiries' => $recentEnquiries,
         ]);
     }
 }

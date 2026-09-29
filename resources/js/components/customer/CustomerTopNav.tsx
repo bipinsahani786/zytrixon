@@ -12,18 +12,18 @@ export default function CustomerTopNav() {
     };
 
     return (
-        <header className="h-16 border-b border-white/10 bg-[#0a0a0d]/90 backdrop-blur-md px-6 flex items-center justify-between sticky top-0 z-20">
+        <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-white/10 bg-[#0a0a0d]/90 px-6 backdrop-blur-md">
             {/* Brand Logo */}
             <div className="flex items-center gap-3">
                 <a href="/" className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center p-1.5 backdrop-blur-sm">
-                        <Logo className="w-full h-full text-white fill-current" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/20 bg-white/10 p-1.5 backdrop-blur-sm">
+                        <Logo className="h-full w-full fill-current text-white" />
                     </div>
                     <div>
-                        <div className="font-heading font-bold text-sm text-white tracking-wider">
+                        <div className="font-heading text-sm font-bold tracking-wider text-white">
                             ZYTRIXON
                         </div>
-                        <div className="text-[10px] text-blue-400 font-mono -mt-0.5">
+                        <div className="-mt-0.5 font-mono text-[10px] text-blue-400">
                             Customer Portal
                         </div>
                     </div>
@@ -36,23 +36,23 @@ export default function CustomerTopNav() {
                     href="/"
                     target="_blank"
                     rel="noreferrer"
-                    className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.03] text-xs text-neutral-300 hover:text-white transition-all font-mono"
+                    className="hidden items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono text-xs text-neutral-300 transition-all hover:text-white sm:flex"
                 >
-                    <Globe className="w-3.5 h-3.5 text-neutral-400" />
+                    <Globe className="h-3.5 w-3.5 text-neutral-400" />
                     <span>Website</span>
                 </a>
 
-                <div className="h-4 w-px bg-white/10 hidden sm:block" />
+                <div className="hidden h-4 w-px bg-white/10 sm:block" />
 
                 <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-300 font-bold text-xs">
-                        <UserCheck className="w-4 h-4" />
+                    <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-blue-500/30 bg-blue-500/20 text-xs font-bold text-blue-300">
+                        <UserCheck className="h-4 w-4" />
                     </div>
-                    <div className="hidden md:block text-left">
-                        <div className="text-xs font-semibold text-white leading-none">
+                    <div className="hidden text-left md:block">
+                        <div className="text-xs leading-none font-semibold text-white">
                             {user?.name || 'Customer'}
                         </div>
-                        <div className="text-[10px] text-neutral-400 font-mono mt-0.5">
+                        <div className="mt-0.5 font-mono text-[10px] text-neutral-400">
                             {user?.email}
                         </div>
                     </div>
@@ -61,10 +61,10 @@ export default function CustomerTopNav() {
                 <button
                     type="button"
                     onClick={handleLogout}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all"
+                    className="flex items-center gap-1.5 rounded-lg border border-transparent px-3 py-1.5 text-xs font-medium text-red-400 transition-all hover:border-red-500/20 hover:bg-red-500/10 hover:text-red-300"
                     title="Sign Out"
                 >
-                    <LogOut className="w-3.5 h-3.5" />
+                    <LogOut className="h-3.5 w-3.5" />
                     <span className="hidden sm:inline">Sign Out</span>
                 </button>
             </div>

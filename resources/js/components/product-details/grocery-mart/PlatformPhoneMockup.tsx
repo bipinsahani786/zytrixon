@@ -84,7 +84,9 @@ export default function PlatformPhoneMockup({
                         color: color,
                     }}
                 >
-                    {isCustomer ? '🛒 Customer Shopping Engine' : '🛵 Dark-Store Dispatch'}
+                    {isCustomer
+                        ? '🛒 Customer Shopping Engine'
+                        : '🛵 Dark-Store Dispatch'}
                 </span>
                 <h4
                     style={{

@@ -6,6 +6,7 @@ use App\Models\CaseStudy;
 use App\Models\Location;
 use App\Models\SeoPage;
 use App\Models\Service;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -40,7 +41,7 @@ class SeoController extends Controller
         ]);
     }
 
-    public function showServiceLocation(string $service_slug, ?string $location_slug = null): Response|\Illuminate\Http\RedirectResponse
+    public function showServiceLocation(string $service_slug, ?string $location_slug = null): Response|RedirectResponse
     {
         // 301 permanent redirect legacy 'digital-marketing' to canonical 'seo-digital-marketing'
         if ($service_slug === 'digital-marketing') {

@@ -24,7 +24,7 @@ export default function Login({ status, error }: LoginProps) {
 
     return (
         <div
-            className="min-h-screen w-full relative overflow-hidden font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-300 flex flex-col justify-between"
+            className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden font-sans transition-colors duration-300 selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black"
             style={{
                 backgroundColor: 'var(--zy-bg, #ffffff)',
                 color: 'var(--zy-text-primary, #111111)',
@@ -36,7 +36,7 @@ export default function Login({ status, error }: LoginProps) {
                 BACKGROUND LAYER: Liquid Silk Image over full surface
                ======================================================== */}
             <div
-                className="absolute inset-0 w-full h-full pointer-events-none select-none z-0"
+                className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none"
                 style={{
                     backgroundImage: `url('/assets/aura-liquid-silk.jpg')`,
                     backgroundSize: 'cover',
@@ -44,8 +44,8 @@ export default function Login({ status, error }: LoginProps) {
                 }}
             >
                 {/* Deep obsidian contrast overlays for readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-black/20" />
             </div>
 
             {/* ========================================================
@@ -55,7 +55,7 @@ export default function Login({ status, error }: LoginProps) {
             <svg
                 viewBox="0 0 1000 1000"
                 preserveAspectRatio="none"
-                className="absolute inset-0 w-full h-full pointer-events-none fill-current z-10 hidden lg:block"
+                className="pointer-events-none absolute inset-0 z-10 hidden h-full w-full fill-current lg:block"
                 style={{ color: 'var(--zy-bg, #ffffff)' }}
             >
                 <path d="M 780,0 C 790,90 730,170 680,270 C 630,370 570,440 550,540 C 530,640 600,720 570,820 C 540,900 460,950 420,1000 L 1000,1000 L 1000,0 Z" />
@@ -65,7 +65,7 @@ export default function Login({ status, error }: LoginProps) {
             <svg
                 viewBox="0 0 1000 600"
                 preserveAspectRatio="none"
-                className="absolute inset-0 w-full h-full pointer-events-none fill-current z-10 lg:hidden"
+                className="pointer-events-none absolute inset-0 z-10 h-full w-full fill-current lg:hidden"
                 style={{ color: 'var(--zy-bg, #ffffff)' }}
             >
                 <path d="M 0,220 C 260,245 480,195 720,230 C 850,245 940,215 1000,220 L 1000,600 L 0,600 Z" />
@@ -74,24 +74,24 @@ export default function Login({ status, error }: LoginProps) {
             {/* ========================================================
                 UNIFIED TOP HEADER: Logo beside ZYTRIXON & Theme Toggle
                ======================================================== */}
-            <header className="relative z-30 w-full px-6 sm:px-12 lg:px-16 pt-7 sm:pt-9 pb-4 flex items-center justify-between shrink-0">
+            <header className="relative z-30 flex w-full shrink-0 items-center justify-between px-6 pt-7 pb-4 sm:px-12 sm:pt-9 lg:px-16">
                 {/* Brand Logo & Name side-by-side */}
                 <a
                     href="/"
-                    className="inline-flex items-center gap-3 sm:gap-3.5 group transition-opacity hover:opacity-90"
+                    className="group inline-flex items-center gap-3 transition-opacity hover:opacity-90 sm:gap-3.5"
                     title="Return to Zytrixon"
                 >
-                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center p-2 sm:p-2.5 shadow-lg transition-transform group-hover:scale-105">
-                        <Logo className="w-full h-full fill-current text-white" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/20 bg-white/10 p-2 shadow-lg backdrop-blur-md transition-transform group-hover:scale-105 sm:h-11 sm:w-11 sm:p-2.5">
+                        <Logo className="h-full w-full fill-current text-white" />
                     </div>
-                    <span className="font-serif font-bold text-2xl sm:text-3xl tracking-[0.2em] text-white uppercase drop-shadow-sm">
+                    <span className="font-serif text-2xl font-bold tracking-[0.2em] text-white uppercase drop-shadow-sm sm:text-3xl">
                         ZYTRIXON
                     </span>
                 </a>
 
                 {/* Theme Toggle Button */}
                 <div className="flex items-center gap-2">
-                    <AdminThemeToggle className="bg-white/15 dark:bg-white/5 border border-white/25 dark:border-white/10 text-white dark:text-white backdrop-blur-md shadow-md hover:bg-white/25" />
+                    <AdminThemeToggle className="border border-white/25 bg-white/15 text-white shadow-md backdrop-blur-md hover:bg-white/25 dark:border-white/10 dark:bg-white/5 dark:text-white" />
                 </div>
             </header>
 
@@ -99,13 +99,13 @@ export default function Login({ status, error }: LoginProps) {
                 MAIN CONTENT: Welcome Back on Left, Form on Right
                 Directly on the same surface with NO two-halves separation!
                ======================================================== */}
-            <main className="relative z-20 flex-1 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 py-6 sm:py-10 my-auto">
+            <main className="relative z-20 mx-auto my-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-between gap-10 px-6 py-6 sm:px-12 sm:py-10 lg:flex-row lg:gap-14 lg:px-16">
                 {/* Left Side: "Welcome Back. Access your dashboard." over the wave */}
-                <div className="w-full lg:max-w-md xl:max-w-lg text-white select-none pt-4 lg:pt-0">
-                    <h1 className="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight leading-[1.08] text-white drop-shadow-sm">
+                <div className="w-full pt-4 text-white select-none lg:max-w-md lg:pt-0 xl:max-w-lg">
+                    <h1 className="font-serif text-4xl leading-[1.08] font-bold tracking-tight text-white drop-shadow-sm sm:text-5xl lg:text-6xl xl:text-7xl">
                         Welcome Back.
                     </h1>
-                    <p className="text-base sm:text-lg lg:text-xl text-neutral-300 font-sans mt-3 font-normal tracking-wide drop-shadow-sm">
+                    <p className="mt-3 font-sans text-base font-normal tracking-wide text-neutral-300 drop-shadow-sm sm:text-lg lg:text-xl">
                         Access your dashboard.
                     </p>
                 </div>
@@ -115,7 +115,7 @@ export default function Login({ status, error }: LoginProps) {
                     {/* "Sign In" Title (Right-aligned) */}
                     <div className="mb-6">
                         <h2
-                            className="text-3xl sm:text-4xl font-bold tracking-tight font-sans text-right"
+                            className="text-right font-sans text-3xl font-bold tracking-tight sm:text-4xl"
                             style={{ color: 'var(--zy-text-primary, #111111)' }}
                         >
                             Sign In
@@ -137,8 +137,9 @@ export default function Login({ status, error }: LoginProps) {
             {/* ========================================================
                 PAGE FOOTER: Clean single copyright at bottom
                ======================================================== */}
-            <footer className="relative z-20 w-full px-6 sm:px-12 lg:px-16 py-6 text-xs text-neutral-400 font-sans tracking-wide shrink-0">
-                &copy; {new Date().getFullYear()} Zytrixon Tech. All rights reserved.
+            <footer className="relative z-20 w-full shrink-0 px-6 py-6 font-sans text-xs tracking-wide text-neutral-400 sm:px-12 lg:px-16">
+                &copy; {new Date().getFullYear()} Zytrixon Tech. All rights
+                reserved.
             </footer>
         </div>
     );

@@ -100,7 +100,11 @@ export default function ProductWorkEasySection({
                             margin: '0 auto',
                         }}
                     >
-                        How <span style={{ color: accentColor }}>{productName}</span> Makes Your Work Easy
+                        How{' '}
+                        <span style={{ color: accentColor }}>
+                            {productName}
+                        </span>{' '}
+                        Makes Your Work Easy
                     </h2>
 
                     <p
@@ -112,7 +116,10 @@ export default function ProductWorkEasySection({
                             lineHeight: 1.65,
                         }}
                     >
-                        Eliminate manual registers, confusing spreadsheets, and daily reconciliation friction. Experience a unified system where every operational task is fast, automated, and effortless.
+                        Eliminate manual registers, confusing spreadsheets, and
+                        daily reconciliation friction. Experience a unified
+                        system where every operational task is fast, automated,
+                        and effortless.
                     </p>
                 </div>
 
@@ -136,7 +143,8 @@ export default function ProductWorkEasySection({
                             display: 'flex',
                             flexDirection: 'column',
                             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.04)',
-                            transition: 'border-color 0.3s ease, transform 0.3s ease',
+                            transition:
+                                'border-color 0.3s ease, transform 0.3s ease',
                             position: 'relative',
                         }}
                     >
@@ -206,13 +214,15 @@ export default function ProductWorkEasySection({
                                             border: '1px solid var(--zy-border-subtle)',
                                             borderRadius: '16px',
                                             padding: '16px',
-                                            transition: 'border-color 0.2s ease, transform 0.2s ease',
+                                            transition:
+                                                'border-color 0.2s ease, transform 0.2s ease',
                                         }}
                                     >
                                         <span
                                             style={{
                                                 color: '#EF4444',
-                                                background: 'rgba(239, 68, 68, 0.1)',
+                                                background:
+                                                    'rgba(239, 68, 68, 0.1)',
                                                 border: '1px solid rgba(239, 68, 68, 0.25)',
                                                 width: '26px',
                                                 height: '26px',
@@ -228,7 +238,12 @@ export default function ProductWorkEasySection({
                                         >
                                             ✕
                                         </span>
-                                        <div style={{ fontSize: '14px', lineHeight: 1.6 }}>
+                                        <div
+                                            style={{
+                                                fontSize: '14px',
+                                                lineHeight: 1.6,
+                                            }}
+                                        >
                                             {title ? (
                                                 <strong
                                                     style={{
@@ -241,7 +256,11 @@ export default function ProductWorkEasySection({
                                                     {title}:
                                                 </strong>
                                             ) : null}
-                                            <span style={{ color: 'var(--zy-text-secondary)' }}>
+                                            <span
+                                                style={{
+                                                    color: 'var(--zy-text-secondary)',
+                                                }}
+                                            >
                                                 {desc}
                                             </span>
                                         </div>
@@ -343,14 +362,17 @@ export default function ProductWorkEasySection({
                                             border: `1px solid ${accentColor}25`,
                                             borderRadius: '16px',
                                             padding: '16px',
-                                            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)',
-                                            transition: 'border-color 0.2s ease, transform 0.2s ease',
+                                            boxShadow:
+                                                '0 2px 8px rgba(0, 0, 0, 0.02)',
+                                            transition:
+                                                'border-color 0.2s ease, transform 0.2s ease',
                                         }}
                                     >
                                         <span
                                             style={{
                                                 color: '#10B981',
-                                                background: 'rgba(16, 185, 129, 0.12)',
+                                                background:
+                                                    'rgba(16, 185, 129, 0.12)',
                                                 border: '1px solid rgba(16, 185, 129, 0.3)',
                                                 width: '26px',
                                                 height: '26px',
@@ -366,7 +388,12 @@ export default function ProductWorkEasySection({
                                         >
                                             ✓
                                         </span>
-                                        <div style={{ fontSize: '14px', lineHeight: 1.6 }}>
+                                        <div
+                                            style={{
+                                                fontSize: '14px',
+                                                lineHeight: 1.6,
+                                            }}
+                                        >
                                             {title ? (
                                                 <strong
                                                     style={{
@@ -379,7 +406,11 @@ export default function ProductWorkEasySection({
                                                     {title}:
                                                 </strong>
                                             ) : null}
-                                            <span style={{ color: 'var(--zy-text-secondary)' }}>
+                                            <span
+                                                style={{
+                                                    color: 'var(--zy-text-secondary)',
+                                                }}
+                                            >
                                                 {desc}
                                             </span>
                                         </div>

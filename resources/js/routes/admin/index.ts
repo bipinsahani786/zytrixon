@@ -1,5 +1,8 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 import loginDf2c2a from './login'
+import users from './users'
+import contacts from './contacts'
+import enquiries from './enquiries'
 /**
 * @see \App\Http\Controllers\Admin\AuthController::login
  * @see app/Http/Controllers/Admin/AuthController.php:18
@@ -135,7 +138,7 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     logout.form = logoutForm
 /**
 * @see \App\Http\Controllers\Admin\AdminDashboardController::dashboard
- * @see app/Http/Controllers/Admin/AdminDashboardController.php:19
+ * @see app/Http/Controllers/Admin/AdminDashboardController.php:20
  * @route '/z-admin/dashboard'
  */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -150,7 +153,7 @@ dashboard.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\AdminDashboardController::dashboard
- * @see app/Http/Controllers/Admin/AdminDashboardController.php:19
+ * @see app/Http/Controllers/Admin/AdminDashboardController.php:20
  * @route '/z-admin/dashboard'
  */
 dashboard.url = (options?: RouteQueryOptions) => {
@@ -159,7 +162,7 @@ dashboard.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Admin\AdminDashboardController::dashboard
- * @see app/Http/Controllers/Admin/AdminDashboardController.php:19
+ * @see app/Http/Controllers/Admin/AdminDashboardController.php:20
  * @route '/z-admin/dashboard'
  */
 dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -168,7 +171,7 @@ dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Admin\AdminDashboardController::dashboard
- * @see app/Http/Controllers/Admin/AdminDashboardController.php:19
+ * @see app/Http/Controllers/Admin/AdminDashboardController.php:20
  * @route '/z-admin/dashboard'
  */
 dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -178,7 +181,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Admin\AdminDashboardController::dashboard
- * @see app/Http/Controllers/Admin/AdminDashboardController.php:19
+ * @see app/Http/Controllers/Admin/AdminDashboardController.php:20
  * @route '/z-admin/dashboard'
  */
     const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -188,7 +191,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Admin\AdminDashboardController::dashboard
- * @see app/Http/Controllers/Admin/AdminDashboardController.php:19
+ * @see app/Http/Controllers/Admin/AdminDashboardController.php:20
  * @route '/z-admin/dashboard'
  */
         dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -197,7 +200,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Admin\AdminDashboardController::dashboard
- * @see app/Http/Controllers/Admin/AdminDashboardController.php:19
+ * @see app/Http/Controllers/Admin/AdminDashboardController.php:20
  * @route '/z-admin/dashboard'
  */
         dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -215,6 +218,9 @@ const admin = {
     login: Object.assign(login, loginDf2c2a),
 logout: Object.assign(logout, logout),
 dashboard: Object.assign(dashboard, dashboard),
+users: Object.assign(users, users),
+contacts: Object.assign(contacts, contacts),
+enquiries: Object.assign(enquiries, enquiries),
 }
 
 export default admin

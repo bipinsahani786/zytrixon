@@ -23,6 +23,41 @@ const BUDGET_OPTIONS = [
     'Not Sure',
 ];
 
+interface FieldWrapperProps {
+    children: React.ReactNode;
+    isLight: boolean;
+    hasError?: boolean;
+}
+
+function FieldWrapper({
+    children,
+    isLight,
+    hasError = false,
+}: FieldWrapperProps) {
+    return (
+        <div
+            className="zy-card"
+            style={{
+                padding: '2px',
+                borderRadius: '8px',
+                border: hasError ? '1px solid #ef4444' : undefined,
+                boxShadow: hasError
+                    ? '0 0 0 1px rgba(239, 68, 68, 0.4)'
+                    : undefined,
+            }}
+        >
+            <div
+                style={{
+                    background: isLight ? '#ffffff' : '#111111',
+                    borderRadius: '6px',
+                }}
+            >
+                {children}
+            </div>
+        </div>
+    );
+}
+
 export default function ContactSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const { theme } = useTheme();
@@ -37,6 +72,9 @@ export default function ContactSection() {
     });
     const [agreed, setAgreed] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
     useEffect(() => {
         if (!sectionRef.current) {
@@ -64,19 +102,82 @@ export default function ContactSection() {
         return () => ctx.revert();
     }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!agreed) {
+        if (!agreed || isSubmitting) {
             return;
         }
-        // For now, redirect to WhatsApp with form data
-        const text = `Hi! I'm ${formData.name}.\nService: ${formData.service}\nBudget: ${formData.budget}\nMessage: ${formData.message}\nEmail: ${formData.email}\nPhone: ${formData.phone}`;
-        window.open(
-            `https://wa.me/917049711475?text=${encodeURIComponent(text)}`,
-            '_blank',
-        );
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 4000);
+
+        setIsSubmitting(true);
+        setErrorMessage(null);
+        setFieldErrors({});
+
+        try {
+            const csrfToken =
+                document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute('content') || '';
+
+            const response = await fetch('/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            let data: any = null;
+            try {
+                data = await response.json();
+            } catch {
+                // Ignore non-json parsing errors
+            }
+
+            if (!response.ok) {
+                if (response.status === 422 && data?.errors) {
+                    const errors: Record<string, string> = {};
+                    Object.keys(data.errors).forEach((key) => {
+                        errors[key] = data.errors[key][0];
+                    });
+                    setFieldErrors(errors);
+                    setErrorMessage(
+                        data.message ||
+                            'Please verify the required fields and try again.',
+                    );
+                } else if (response.status === 419) {
+                    setErrorMessage(
+                        'Your session has timed out. Please refresh the page and try again.',
+                    );
+                } else {
+                    setErrorMessage(
+                        data?.message ||
+                            'Could not submit inquiry. Please try again.',
+                    );
+                }
+                setIsSubmitting(false);
+                return;
+            }
+
+            setSubmitted(true);
+            setFormData({
+                name: '',
+                phone: '',
+                email: '',
+                service: '',
+                budget: '',
+                message: '',
+            });
+            setAgreed(false);
+        } catch (err) {
+            setErrorMessage(
+                'Unable to process inquiry. Please check your details and try again.',
+            );
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const inputStyle: React.CSSProperties = {
@@ -84,28 +185,12 @@ export default function ContactSection() {
         background: 'transparent',
         border: 'none',
         padding: '12px 16px',
-        color: 'var(--zy-white)',
+        color: isLight ? '#0f172a' : 'var(--zy-white, #ffffff)',
         fontSize: 14,
         fontFamily: 'var(--font-sans)',
         outline: 'none',
         boxSizing: 'border-box',
     };
-
-    const FieldWrapper = ({ children }: { children: React.ReactNode }) => (
-        <div
-            className="zy-card"
-            style={{ padding: '2px', borderRadius: '8px' }}
-        >
-            <div
-                style={{
-                    background: isLight ? '#ffffff' : '#111',
-                    borderRadius: '6px',
-                }}
-            >
-                {children}
-            </div>
-        </div>
-    );
 
     return (
         <section
@@ -396,12 +481,25 @@ export default function ContactSection() {
                         <div
                             style={{
                                 textAlign: 'center',
-                                padding: '60px 20px',
+                                padding: '40px 16px',
                                 animation: 'fadeInUp 0.4s ease',
                             }}
                         >
-                            <div style={{ fontSize: 48, marginBottom: 16 }}>
-                                ✅
+                            <div
+                                style={{
+                                    width: 64,
+                                    height: 64,
+                                    margin: '0 auto 20px',
+                                    borderRadius: '50%',
+                                    background: 'rgba(16, 185, 129, 0.15)',
+                                    border: '1px solid rgba(16, 185, 129, 0.3)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: 28,
+                                }}
+                            >
+                                ✓
                             </div>
                             <h3
                                 style={{
@@ -412,19 +510,84 @@ export default function ContactSection() {
                                     marginBottom: 8,
                                 }}
                             >
-                                Message Sent!
+                                Enquiry Received!
                             </h3>
                             <p
                                 style={{
                                     color: 'var(--zy-gray-text)',
                                     fontSize: 14,
+                                    maxWidth: 420,
+                                    margin: '0 auto 24px',
+                                    lineHeight: 1.6,
                                 }}
                             >
-                                We'll get back to you within 2 hours.
+                                Your project details have been logged in our
+                                secure system. Our team will review them and
+                                reach out within 2 hours.
                             </p>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: 12,
+                                    maxWidth: 360,
+                                    margin: '0 auto',
+                                }}
+                            >
+                                <a
+                                    href="https://wa.me/917049711475?text=Hi%20Zytrixon%20Tech!%20I%20just%20submitted%20a%20project%20inquiry%20on%20your%20website%20and%20would%20love%20to%20connect."
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="magnetic-btn"
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px 20px',
+                                        fontSize: 13,
+                                        justifyContent: 'center',
+                                        textDecoration: 'none',
+                                        background: '#25D366',
+                                        color: '#ffffff',
+                                        border: 'none',
+                                    }}
+                                >
+                                    💬 Want Instant Reply? Chat on WhatsApp
+                                </a>
+
+                                <button
+                                    type="button"
+                                    onClick={() => setSubmitted(false)}
+                                    style={{
+                                        background: 'transparent',
+                                        border: '1px solid var(--zy-gray-border, rgba(255,255,255,0.15))',
+                                        color: 'var(--zy-white)',
+                                        padding: '10px 16px',
+                                        borderRadius: '8px',
+                                        fontSize: 13,
+                                        cursor: 'pointer',
+                                    }}
+                                >
+                                    Submit Another Enquiry
+                                </button>
+                            </div>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit}>
+                            {errorMessage && (
+                                <div
+                                    style={{
+                                        padding: '12px 16px',
+                                        marginBottom: 16,
+                                        borderRadius: '8px',
+                                        background: 'rgba(239, 68, 68, 0.1)',
+                                        border: '1px solid rgba(239, 68, 68, 0.25)',
+                                        color: '#f87171',
+                                        fontSize: 13,
+                                    }}
+                                >
+                                    {errorMessage}
+                                </div>
+                            )}
                             <div
                                 className="contact-form-row"
                                 style={{
@@ -447,7 +610,10 @@ export default function ContactSection() {
                                     >
                                         Full Name *
                                     </label>
-                                    <FieldWrapper>
+                                    <FieldWrapper
+                                        isLight={isLight}
+                                        hasError={Boolean(fieldErrors.name)}
+                                    >
                                         <input
                                             type="text"
                                             required
@@ -462,6 +628,18 @@ export default function ContactSection() {
                                             style={inputStyle}
                                         />
                                     </FieldWrapper>
+                                    {fieldErrors.name && (
+                                        <span
+                                            style={{
+                                                display: 'block',
+                                                color: '#ef4444',
+                                                fontSize: 11,
+                                                marginTop: 4,
+                                            }}
+                                        >
+                                            {fieldErrors.name}
+                                        </span>
+                                    )}
                                 </div>
                                 <div>
                                     <label
@@ -476,7 +654,10 @@ export default function ContactSection() {
                                     >
                                         Phone *
                                     </label>
-                                    <FieldWrapper>
+                                    <FieldWrapper
+                                        isLight={isLight}
+                                        hasError={Boolean(fieldErrors.phone)}
+                                    >
                                         <input
                                             type="tel"
                                             required
@@ -491,6 +672,18 @@ export default function ContactSection() {
                                             style={inputStyle}
                                         />
                                     </FieldWrapper>
+                                    {fieldErrors.phone && (
+                                        <span
+                                            style={{
+                                                display: 'block',
+                                                color: '#ef4444',
+                                                fontSize: 11,
+                                                marginTop: 4,
+                                            }}
+                                        >
+                                            {fieldErrors.phone}
+                                        </span>
+                                    )}
                                 </div>
                             </div>
 
@@ -507,7 +700,10 @@ export default function ContactSection() {
                                 >
                                     Email *
                                 </label>
-                                <FieldWrapper>
+                                <FieldWrapper
+                                    isLight={isLight}
+                                    hasError={Boolean(fieldErrors.email)}
+                                >
                                     <input
                                         type="email"
                                         required
@@ -522,6 +718,18 @@ export default function ContactSection() {
                                         style={inputStyle}
                                     />
                                 </FieldWrapper>
+                                {fieldErrors.email && (
+                                    <span
+                                        style={{
+                                            display: 'block',
+                                            color: '#ef4444',
+                                            fontSize: 11,
+                                            marginTop: 4,
+                                        }}
+                                    >
+                                        {fieldErrors.email}
+                                    </span>
+                                )}
                             </div>
 
                             <div
@@ -546,7 +754,7 @@ export default function ContactSection() {
                                     >
                                         Service Needed
                                     </label>
-                                    <FieldWrapper>
+                                    <FieldWrapper isLight={isLight}>
                                         <select
                                             value={formData.service}
                                             onChange={(e) =>
@@ -559,13 +767,39 @@ export default function ContactSection() {
                                                 ...inputStyle,
                                                 appearance: 'none',
                                                 cursor: 'pointer',
+                                                color: !formData.service
+                                                    ? isLight
+                                                        ? '#94a3b8'
+                                                        : '#64748b'
+                                                    : isLight
+                                                      ? '#0f172a'
+                                                      : 'var(--zy-white, #ffffff)',
                                             }}
                                         >
-                                            <option value="">
+                                            <option
+                                                value=""
+                                                style={{
+                                                    color: '#64748b',
+                                                    background: isLight
+                                                        ? '#ffffff'
+                                                        : '#111111',
+                                                }}
+                                            >
                                                 Select Service
                                             </option>
                                             {SERVICE_OPTIONS.map((s) => (
-                                                <option key={s} value={s}>
+                                                <option
+                                                    key={s}
+                                                    value={s}
+                                                    style={{
+                                                        color: isLight
+                                                            ? '#0f172a'
+                                                            : '#ffffff',
+                                                        background: isLight
+                                                            ? '#ffffff'
+                                                            : '#111111',
+                                                    }}
+                                                >
                                                     {s}
                                                 </option>
                                             ))}
@@ -585,7 +819,7 @@ export default function ContactSection() {
                                     >
                                         Budget Range
                                     </label>
-                                    <FieldWrapper>
+                                    <FieldWrapper isLight={isLight}>
                                         <select
                                             value={formData.budget}
                                             onChange={(e) =>
@@ -598,13 +832,39 @@ export default function ContactSection() {
                                                 ...inputStyle,
                                                 appearance: 'none',
                                                 cursor: 'pointer',
+                                                color: !formData.budget
+                                                    ? isLight
+                                                        ? '#94a3b8'
+                                                        : '#64748b'
+                                                    : isLight
+                                                      ? '#0f172a'
+                                                      : 'var(--zy-white, #ffffff)',
                                             }}
                                         >
-                                            <option value="">
+                                            <option
+                                                value=""
+                                                style={{
+                                                    color: '#64748b',
+                                                    background: isLight
+                                                        ? '#ffffff'
+                                                        : '#111111',
+                                                }}
+                                            >
                                                 Select Budget
                                             </option>
                                             {BUDGET_OPTIONS.map((b) => (
-                                                <option key={b} value={b}>
+                                                <option
+                                                    key={b}
+                                                    value={b}
+                                                    style={{
+                                                        color: isLight
+                                                            ? '#0f172a'
+                                                            : '#ffffff',
+                                                        background: isLight
+                                                            ? '#ffffff'
+                                                            : '#111111',
+                                                    }}
+                                                >
                                                     {b}
                                                 </option>
                                             ))}
@@ -626,7 +886,7 @@ export default function ContactSection() {
                                 >
                                     Project Details
                                 </label>
-                                <FieldWrapper>
+                                <FieldWrapper isLight={isLight}>
                                     <textarea
                                         value={formData.message}
                                         onChange={(e) =>
@@ -657,7 +917,9 @@ export default function ContactSection() {
                                         cursor: 'pointer',
                                         fontSize: 13,
                                         lineHeight: 1.5,
-                                        color: isLight ? '#555555' : 'var(--zy-gray-text)',
+                                        color: isLight
+                                            ? '#555555'
+                                            : 'var(--zy-gray-text)',
                                         userSelect: 'none',
                                     }}
                                 >
@@ -666,14 +928,18 @@ export default function ContactSection() {
                                         type="checkbox"
                                         required
                                         checked={agreed}
-                                        onChange={(e) => setAgreed(e.target.checked)}
+                                        onChange={(e) =>
+                                            setAgreed(e.target.checked)
+                                        }
                                         style={{
                                             width: 18,
                                             height: 18,
                                             minWidth: 18,
                                             minHeight: 18,
                                             marginTop: 2,
-                                            accentColor: isLight ? '#000000' : '#ffffff',
+                                            accentColor: isLight
+                                                ? '#000000'
+                                                : '#ffffff',
                                             cursor: 'pointer',
                                         }}
                                     />
@@ -685,7 +951,9 @@ export default function ContactSection() {
                                             rel="noopener noreferrer"
                                             onClick={(e) => e.stopPropagation()}
                                             style={{
-                                                color: isLight ? '#000000' : 'var(--zy-white)',
+                                                color: isLight
+                                                    ? '#000000'
+                                                    : 'var(--zy-white)',
                                                 textDecoration: 'underline',
                                                 textUnderlineOffset: '3px',
                                                 fontWeight: 600,
@@ -700,7 +968,9 @@ export default function ContactSection() {
                                             rel="noopener noreferrer"
                                             onClick={(e) => e.stopPropagation()}
                                             style={{
-                                                color: isLight ? '#000000' : 'var(--zy-white)',
+                                                color: isLight
+                                                    ? '#000000'
+                                                    : 'var(--zy-white)',
                                                 textDecoration: 'underline',
                                                 textUnderlineOffset: '3px',
                                                 fontWeight: 600,
@@ -708,34 +978,78 @@ export default function ContactSection() {
                                         >
                                             Privacy Policy
                                         </a>
-                                        , and consent to being contacted regarding my inquiry.{' '}
-                                        <span style={{ color: '#ef4444' }}>*</span>
+                                        , and consent to being contacted
+                                        regarding my inquiry.{' '}
+                                        <span style={{ color: '#ef4444' }}>
+                                            *
+                                        </span>
                                     </span>
                                 </label>
                             </div>
 
                             <button
                                 type="submit"
+                                disabled={isSubmitting}
                                 className="magnetic-btn"
                                 style={{
                                     width: '100%',
                                     padding: '16px',
                                     fontSize: 14,
                                     justifyContent: 'center',
+                                    opacity: isSubmitting ? 0.7 : 1,
+                                    cursor: isSubmitting
+                                        ? 'not-allowed'
+                                        : 'pointer',
                                 }}
                             >
-                                Send Message
-                                <svg
-                                    className="btn-arrow"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2.5"
-                                >
-                                    <path d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
+                                {isSubmitting ? (
+                                    <>
+                                        <svg
+                                            className="animate-spin"
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2.5"
+                                            style={{
+                                                animation:
+                                                    'spin 1s linear infinite',
+                                                marginRight: 8,
+                                            }}
+                                        >
+                                            <circle
+                                                cx="12"
+                                                cy="12"
+                                                r="10"
+                                                stroke="currentColor"
+                                                strokeWidth="4"
+                                                className="opacity-25"
+                                            />
+                                            <path
+                                                fill="currentColor"
+                                                d="M4 12a8 8 0 018-8v8H4z"
+                                                className="opacity-75"
+                                            />
+                                        </svg>
+                                        Submitting Enquiry...
+                                    </>
+                                ) : (
+                                    <>
+                                        Send Message
+                                        <svg
+                                            className="btn-arrow"
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2.5"
+                                        >
+                                            <path d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg>
+                                    </>
+                                )}
                             </button>
                         </form>
                     )}

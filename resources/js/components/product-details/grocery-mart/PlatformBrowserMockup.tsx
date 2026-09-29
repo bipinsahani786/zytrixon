@@ -80,7 +80,8 @@ export default function PlatformBrowserMockup({
                         textOverflow: 'ellipsis',
                     }}
                 >
-                    🔒 https://admin.grocerymart.zytrixon.com/terminal/sahil-grocery-noida-sec62
+                    🔒
+                    https://admin.grocerymart.zytrixon.com/terminal/sahil-grocery-noida-sec62
                 </div>
                 <div
                     style={{

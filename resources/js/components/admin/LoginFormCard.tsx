@@ -27,8 +27,8 @@ export default function LoginFormCard({
         <div className="w-full space-y-4">
             {/* Session Error Alert */}
             {sessionError && (
-                <div className="flex items-center gap-2.5 p-3 rounded-xl border text-xs font-medium text-rose-500 bg-rose-500/10 border-rose-500/20 backdrop-blur-sm animate-in fade-in slide-in-from-top-1">
-                    <AlertCircle className="w-4 h-4 shrink-0" />
+                <div className="flex animate-in items-center gap-2.5 rounded-xl border border-rose-500/20 bg-rose-500/10 p-3 text-xs font-medium text-rose-500 backdrop-blur-sm fade-in slide-in-from-top-1">
+                    <AlertCircle className="h-4 w-4 shrink-0" />
                     <span>{sessionError}</span>
                 </div>
             )}
@@ -37,8 +37,8 @@ export default function LoginFormCard({
                 {/* 1. Email Address Input */}
                 <div className="space-y-1">
                     <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-400 dark:text-neutral-500">
-                            <Mail className="w-5 h-5" />
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-neutral-400 dark:text-neutral-500">
+                            <Mail className="h-5 w-5" />
                         </div>
                         <input
                             id="email"
@@ -48,7 +48,7 @@ export default function LoginFormCard({
                             value={data.email}
                             onChange={(e) => setData('email', e.target.value)}
                             placeholder="Email Address"
-                            className="w-full pl-12 pr-4 py-3.5 rounded-xl text-sm font-sans transition-all duration-200 focus:outline-none shadow-sm"
+                            className="w-full rounded-xl py-3.5 pr-4 pl-12 font-sans text-sm shadow-sm transition-all duration-200 focus:outline-none"
                             style={{
                                 backgroundColor: 'var(--zy-card-bg, #ffffff)',
                                 color: 'var(--zy-text-primary, #111111)',
@@ -60,21 +60,24 @@ export default function LoginFormCard({
                             }}
                             onFocus={(e) => {
                                 if (!errors.email) {
-                                    e.currentTarget.style.borderColor = '#111111';
-                                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(0, 0, 0, 0.08)';
+                                    e.currentTarget.style.borderColor =
+                                        '#111111';
+                                    e.currentTarget.style.boxShadow =
+                                        '0 0 0 3px rgba(0, 0, 0, 0.08)';
                                 }
                             }}
                             onBlur={(e) => {
                                 if (!errors.email) {
-                                    e.currentTarget.style.borderColor = 'var(--zy-border-subtle, #e5e7eb)';
+                                    e.currentTarget.style.borderColor =
+                                        'var(--zy-border-subtle, #e5e7eb)';
                                     e.currentTarget.style.boxShadow = 'none';
                                 }
                             }}
                         />
                     </div>
                     {errors.email && (
-                        <p className="text-[11px] text-rose-500 font-medium flex items-center gap-1 mt-1 pl-1">
-                            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <p className="mt-1 flex items-center gap-1 pl-1 text-[11px] font-medium text-rose-500">
+                            <AlertCircle className="h-3.5 w-3.5 shrink-0" />
                             {errors.email}
                         </p>
                     )}
@@ -83,8 +86,8 @@ export default function LoginFormCard({
                 {/* 2. Password Input */}
                 <div className="space-y-1">
                     <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-400 dark:text-neutral-500">
-                            <Lock className="w-5 h-5" />
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-neutral-400 dark:text-neutral-500">
+                            <Lock className="h-5 w-5" />
                         </div>
                         <input
                             id="password"
@@ -92,9 +95,11 @@ export default function LoginFormCard({
                             required
                             autoComplete="current-password"
                             value={data.password}
-                            onChange={(e) => setData('password', e.target.value)}
+                            onChange={(e) =>
+                                setData('password', e.target.value)
+                            }
                             placeholder="Password"
-                            className="w-full pl-12 pr-12 py-3.5 rounded-xl text-sm font-sans transition-all duration-200 focus:outline-none shadow-sm"
+                            className="w-full rounded-xl py-3.5 pr-12 pl-12 font-sans text-sm shadow-sm transition-all duration-200 focus:outline-none"
                             style={{
                                 backgroundColor: 'var(--zy-card-bg, #ffffff)',
                                 color: 'var(--zy-text-primary, #111111)',
@@ -106,13 +111,16 @@ export default function LoginFormCard({
                             }}
                             onFocus={(e) => {
                                 if (!errors.password) {
-                                    e.currentTarget.style.borderColor = '#111111';
-                                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(0, 0, 0, 0.08)';
+                                    e.currentTarget.style.borderColor =
+                                        '#111111';
+                                    e.currentTarget.style.boxShadow =
+                                        '0 0 0 3px rgba(0, 0, 0, 0.08)';
                                 }
                             }}
                             onBlur={(e) => {
                                 if (!errors.password) {
-                                    e.currentTarget.style.borderColor = 'var(--zy-border-subtle, #e5e7eb)';
+                                    e.currentTarget.style.borderColor =
+                                        'var(--zy-border-subtle, #e5e7eb)';
                                     e.currentTarget.style.boxShadow = 'none';
                                 }
                             }}
@@ -120,16 +128,22 @@ export default function LoginFormCard({
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors"
+                            className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-4 text-neutral-400 transition-colors hover:text-neutral-700 dark:hover:text-neutral-200"
                             tabIndex={-1}
-                            title={showPassword ? 'Hide password' : 'Show password'}
+                            title={
+                                showPassword ? 'Hide password' : 'Show password'
+                            }
                         >
-                            {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            {showPassword ? (
+                                <EyeOff className="h-4 w-4" />
+                            ) : (
+                                <Eye className="h-4 w-4" />
+                            )}
                         </button>
                     </div>
                     {errors.password && (
-                        <p className="text-[11px] text-rose-500 font-medium flex items-center gap-1 mt-1 pl-1">
-                            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <p className="mt-1 flex items-center gap-1 pl-1 text-[11px] font-medium text-rose-500">
+                            <AlertCircle className="h-3.5 w-3.5 shrink-0" />
                             {errors.password}
                         </p>
                     )}
@@ -140,11 +154,11 @@ export default function LoginFormCard({
                     <button
                         type="submit"
                         disabled={processing}
-                        className="w-full py-3.5 px-4 rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg active:scale-[0.99] bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+                        className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-black px-4 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-neutral-800 hover:shadow-lg active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
                     >
                         {processing ? (
                             <>
-                                <Loader2 className="w-4 h-4 animate-spin" />
+                                <Loader2 className="h-4 w-4 animate-spin" />
                                 <span>Signing in...</span>
                             </>
                         ) : (

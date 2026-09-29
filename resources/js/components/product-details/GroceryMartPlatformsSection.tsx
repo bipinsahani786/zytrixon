@@ -49,7 +49,8 @@ export default function GroceryMartPlatformsSection({
         setCurrentVideoIndex((prev) => (prev < totalVideos - 1 ? prev + 1 : 0));
     };
 
-    const currentImage = platform.images[currentImageIndex] || platform.images[0];
+    const currentImage =
+        platform.images[currentImageIndex] || platform.images[0];
 
     // Ensure slide indices stay in bounds
     useEffect(() => {
@@ -127,7 +128,8 @@ export default function GroceryMartPlatformsSection({
 
                     <h2
                         style={{
-                            fontFamily: 'var(--font-heading, Space Grotesk, sans-serif)',
+                            fontFamily:
+                                'var(--font-heading, Space Grotesk, sans-serif)',
                             fontSize: 'clamp(28px, 4vw, 44px)',
                             fontWeight: 800,
                             color: 'var(--zy-text-primary)',
@@ -138,7 +140,12 @@ export default function GroceryMartPlatformsSection({
                         }}
                     >
                         3 Dedicated Interfaces for{' '}
-                        <span style={{ color: platform.color, transition: 'color 0.3s ease' }}>
+                        <span
+                            style={{
+                                color: platform.color,
+                                transition: 'color 0.3s ease',
+                            }}
+                        >
                             Web Panel, User App & Delivery App
                         </span>
                     </h2>
@@ -152,7 +159,10 @@ export default function GroceryMartPlatformsSection({
                             lineHeight: 1.65,
                         }}
                     >
-                        Explore each platform independently: view high-definition interface screenshots or switch to live operational video recordings with interactive slider controls.
+                        Explore each platform independently: view
+                        high-definition interface screenshots or switch to live
+                        operational video recordings with interactive slider
+                        controls.
                     </p>
                 </div>
 
@@ -187,8 +197,16 @@ export default function GroceryMartPlatformsSection({
                         }}
                     >
                         <div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                <span style={{ fontSize: '20px' }}>{platform.icon}</span>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                }}
+                            >
+                                <span style={{ fontSize: '20px' }}>
+                                    {platform.icon}
+                                </span>
                                 <h3
                                     style={{
                                         fontSize: 'clamp(20px, 2.5vw, 26px)',
@@ -210,7 +228,9 @@ export default function GroceryMartPlatformsSection({
                                         border: `1px solid ${platform.color}35`,
                                     }}
                                 >
-                                    {viewMode === 'images' ? '📸 UI Screenshots' : '🎬 Live Walkthrough'}
+                                    {viewMode === 'images'
+                                        ? '📸 UI Screenshots'
+                                        : '🎬 Live Walkthrough'}
                                 </span>
                             </div>
                             <p
@@ -345,7 +365,13 @@ export default function GroceryMartPlatformsSection({
                                 </div>
 
                                 {/* Slider Controls: Arrows & Quick Video Jump */}
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '10px',
+                                    }}
+                                >
                                     {totalImages > 1 && (
                                         <div
                                             style={{
@@ -355,7 +381,8 @@ export default function GroceryMartPlatformsSection({
                                                 marginRight: '6px',
                                             }}
                                         >
-                                            Screen {currentImageIndex + 1} of {totalImages}
+                                            Screen {currentImageIndex + 1} of{' '}
+                                            {totalImages}
                                         </div>
                                     )}
 
@@ -370,7 +397,8 @@ export default function GroceryMartPlatformsSection({
                                                     height: '42px',
                                                     borderRadius: '12px',
                                                     border: '1px solid var(--zy-border-subtle)',
-                                                    background: 'var(--zy-surface-2)',
+                                                    background:
+                                                        'var(--zy-surface-2)',
                                                     color: 'var(--zy-text-primary)',
                                                     cursor: 'pointer',
                                                     display: 'flex',
@@ -393,7 +421,8 @@ export default function GroceryMartPlatformsSection({
                                                     height: '42px',
                                                     borderRadius: '12px',
                                                     border: '1px solid var(--zy-border-subtle)',
-                                                    background: 'var(--zy-surface-2)',
+                                                    background:
+                                                        'var(--zy-surface-2)',
                                                     color: 'var(--zy-text-primary)',
                                                     cursor: 'pointer',
                                                     display: 'flex',
@@ -412,7 +441,9 @@ export default function GroceryMartPlatformsSection({
                                     {totalVideos > 0 && (
                                         <button
                                             type="button"
-                                            onClick={() => setViewMode('videos')}
+                                            onClick={() =>
+                                                setViewMode('videos')
+                                            }
                                             style={{
                                                 display: 'inline-flex',
                                                 alignItems: 'center',
@@ -468,7 +499,13 @@ export default function GroceryMartPlatformsSection({
                                     border: '1px solid var(--zy-border-subtle)',
                                 }}
                             >
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '8px',
+                                    }}
+                                >
                                     {currentImage.badges.map((b, i) => (
                                         <span
                                             key={i}
@@ -477,7 +514,8 @@ export default function GroceryMartPlatformsSection({
                                                 fontWeight: 700,
                                                 padding: '4px 10px',
                                                 borderRadius: '8px',
-                                                background: 'var(--zy-surface-1)',
+                                                background:
+                                                    'var(--zy-surface-1)',
                                                 border: '1px solid var(--zy-border-subtle)',
                                                 color: 'var(--zy-text-secondary)',
                                             }}
@@ -488,14 +526,25 @@ export default function GroceryMartPlatformsSection({
                                 </div>
 
                                 {totalImages > 1 && (
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px',
+                                        }}
+                                    >
                                         {platform.images.map((_, i) => (
                                             <button
                                                 key={i}
                                                 type="button"
-                                                onClick={() => setCurrentImageIndex(i)}
+                                                onClick={() =>
+                                                    setCurrentImageIndex(i)
+                                                }
                                                 style={{
-                                                    width: currentImageIndex === i ? '24px' : '8px',
+                                                    width:
+                                                        currentImageIndex === i
+                                                            ? '24px'
+                                                            : '8px',
                                                     height: '8px',
                                                     borderRadius: '4px',
                                                     background:
@@ -505,7 +554,8 @@ export default function GroceryMartPlatformsSection({
                                                     border: 'none',
                                                     padding: 0,
                                                     cursor: 'pointer',
-                                                    transition: 'all 0.25s ease',
+                                                    transition:
+                                                        'all 0.25s ease',
                                                 }}
                                                 aria-label={`Go to slide ${i + 1}`}
                                             />
