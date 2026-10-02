@@ -4,6 +4,7 @@ import users from './users'
 import contacts from './contacts'
 import enquiries from './enquiries'
 import blogs from './blogs'
+import seoPages from './seo-pages'
 /**
 * @see \App\Http\Controllers\Admin\AuthController::login
  * @see app/Http/Controllers/Admin/AuthController.php:18
@@ -223,6 +224,7 @@ users: Object.assign(users, users),
 contacts: Object.assign(contacts, contacts),
 enquiries: Object.assign(enquiries, enquiries),
 blogs: Object.assign(blogs, blogs),
+seoPages: Object.assign(seoPages, seoPages),
 }
 
 export default admin

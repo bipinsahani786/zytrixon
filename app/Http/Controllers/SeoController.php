@@ -68,25 +68,44 @@ class SeoController extends Controller
             $seoOverride = SeoPage::where('service_id', $service->id)
                 ->where('location_id', $location->id)
                 ->first();
+        } else {
+            $seoOverride = SeoPage::where('service_id', $service->id)
+                ->where('status', 'published')
+                ->first() ?? SeoPage::where('service_id', $service->id)->first();
         }
 
         // Construct dynamic H1 and Meta Data
-        $h1 = $seoOverride ? $seoOverride->h1 : ($service->title.($location ? ' in '.$location->name : ''));
-        $metaTitle = $seoOverride ? $seoOverride->meta_title : ('Best '.$service->title.' Company '.($location ? 'in '.$location->name : '').' | Zytrixon Tech');
-        $metaDescription = $seoOverride ? $seoOverride->meta_description : ('Looking for top-tier '.$service->title.' services '.($location ? 'in '.$location->name : '').'? Zytrixon Tech delivers scalable, enterprise-grade solutions.');
+        $h1 = ($seoOverride && !empty($seoOverride->h1) && $location)
+            ? $seoOverride->h1
+            : ($service->title . ($location ? ' in ' . $location->name : ''));
+
+        $metaTitle = ($seoOverride && !empty($seoOverride->meta_title) && $location)
+            ? $seoOverride->meta_title
+            : ('Best ' . $service->title . ' Company ' . ($location ? 'in ' . $location->name : '') . ' | Zytrixon Tech');
+
+        $metaDescription = ($seoOverride && !empty($seoOverride->meta_description))
+            ? $seoOverride->meta_description
+            : ('Looking for top-tier ' . $service->title . ' services ' . ($location ? 'in ' . $location->name : '') . '? Zytrixon Tech delivers scalable, enterprise-grade solutions.');
+
+        $heroDescription = ($seoOverride && !empty($seoOverride->hero_description))
+            ? $seoOverride->hero_description
+            : ($service->description ?? 'We engineer high-performance digital products and scalable software architectures.');
 
         $caseStudies = CaseStudy::latest()->take(3)->get();
 
         return Inertia::render('ServiceSeoPage', [
-            'service' => $service,
-            'location' => $location,
-            'seo' => [
-                'h1' => $h1,
-                'title' => $metaTitle,
+            'service'          => $service,
+            'location'         => $location,
+            'seo'              => [
+                'h1'          => $h1,
+                'title'       => $metaTitle,
                 'description' => $metaDescription,
             ],
-            'content_overrides' => $seoOverride ? $seoOverride->content_json : null,
-            'caseStudies' => $caseStudies,
+            'hero_description' => $heroDescription,
+            'sections'         => $seoOverride?->sections ?? [],
+            'template'         => $seoOverride?->template ?? 'grid',
+            'seoPage'          => $seoOverride,
+            'caseStudies'      => $caseStudies,
         ]);
     }
 }

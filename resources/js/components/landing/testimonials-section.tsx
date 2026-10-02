@@ -54,8 +54,16 @@ export default function TestimonialsSection() {
     const isLight = theme === 'light';
     const [mounted, setMounted] = useState(false);
 
+    const isMountedRef = useRef(true);
+
     useEffect(() => {
+        isMountedRef.current = true;
         setMounted(true);
+
+        return () => {
+            isMountedRef.current = false;
+            gsap.killTweensOf([quoteRef.current, authorRef.current]);
+        };
     }, []);
 
     const activeIsLight = mounted && isLight;
@@ -101,30 +109,40 @@ export default function TestimonialsSection() {
     }, [activeIndex]);
 
     const handleSlideChange = (newIndex: number) => {
-        if (newIndex === activeIndex) {
+        if (!isMountedRef.current || newIndex === activeIndex) {
+            return;
+        }
+
+        const outTargets = [quoteRef.current, authorRef.current].filter(Boolean);
+        if (outTargets.length === 0) {
+            setActiveIndex(newIndex);
             return;
         }
 
         // Fade out
-        gsap.to([quoteRef.current, authorRef.current], {
+        gsap.to(outTargets, {
             opacity: 0,
             y: 12,
             duration: 0.25,
             ease: 'power2.in',
             onComplete: () => {
+                if (!isMountedRef.current) return;
                 setActiveIndex(newIndex);
                 // Fade in
-                gsap.fromTo(
-                    [quoteRef.current, authorRef.current],
-                    { opacity: 0, y: -12 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.45,
-                        ease: 'power2.out',
-                        stagger: 0.08,
-                    },
-                );
+                const inTargets = [quoteRef.current, authorRef.current].filter(Boolean);
+                if (inTargets.length > 0) {
+                    gsap.fromTo(
+                        inTargets,
+                        { opacity: 0, y: -12 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.45,
+                            ease: 'power2.out',
+                            stagger: 0.08,
+                        },
+                    );
+                }
             },
         });
     };

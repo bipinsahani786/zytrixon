@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { LayoutDashboard, Users, Mail, Newspaper } from 'lucide-react';
+import { LayoutDashboard, Users, Mail, Newspaper, MapPin } from 'lucide-react';
 
 export interface AdminNavItem {
     id: string;
@@ -47,6 +47,14 @@ export const ADMIN_NAV_ITEMS: AdminNavItem[] = [
         icon: Newspaper,
         description: 'Publish Technical Insights & Rich HTML Content',
         matcher: (url: string) => url.startsWith('/z-admin/blogs'),
+    },
+    {
+        id: 'seo-pages',
+        label: 'SEO Location Pages',
+        href: '/z-admin/seo-pages',
+        icon: MapPin,
+        description: 'AI-Powered Location × Service SEO Pages',
+        matcher: (url: string) => url.startsWith('/z-admin/seo-pages'),
     },
 ];
 

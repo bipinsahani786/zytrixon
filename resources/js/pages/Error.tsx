@@ -24,8 +24,7 @@ export default function Error({ status }: { status: number }) {
 
     return (
         <ThemeProvider>
-            <Head>
-                <title>{title} | Zytrixon Tech</title>
+            <Head title={`${title} | Zytrixon Tech`}>
                 <meta name="description" content={description} />
             </Head>
 

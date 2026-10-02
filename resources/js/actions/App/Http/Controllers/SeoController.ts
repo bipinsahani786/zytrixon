@@ -444,6 +444,101 @@ showServiceLocation13ce03ebdeb54ae9f497a8c08b92bfaa.head = (args: { service_slug
         })
     
     showServiceLocation13ce03ebdeb54ae9f497a8c08b92bfaa.form = showServiceLocation13ce03ebdeb54ae9f497a8c08b92bfaaForm
+    /**
+* @see \App\Http\Controllers\SeoController::showServiceLocation
+ * @see app/Http/Controllers/SeoController.php:44
+ * @route '/services/{service_slug}/{location_slug}'
+ */
+const showServiceLocation2d76f3c4510588c49f9e21925530c0ee = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showServiceLocation2d76f3c4510588c49f9e21925530c0ee.url(args, options),
+    method: 'get',
+})
+
+showServiceLocation2d76f3c4510588c49f9e21925530c0ee.definition = {
+    methods: ["get","head"],
+    url: '/services/{service_slug}/{location_slug}',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\SeoController::showServiceLocation
+ * @see app/Http/Controllers/SeoController.php:44
+ * @route '/services/{service_slug}/{location_slug}'
+ */
+showServiceLocation2d76f3c4510588c49f9e21925530c0ee.url = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions) => {
+    if (Array.isArray(args)) {
+        args = {
+                    service_slug: args[0],
+                    location_slug: args[1],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        service_slug: args.service_slug,
+                                location_slug: args.location_slug,
+                }
+
+    return showServiceLocation2d76f3c4510588c49f9e21925530c0ee.definition.url
+            .replace('{service_slug}', parsedArgs.service_slug.toString())
+            .replace('{location_slug}', parsedArgs.location_slug.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\SeoController::showServiceLocation
+ * @see app/Http/Controllers/SeoController.php:44
+ * @route '/services/{service_slug}/{location_slug}'
+ */
+showServiceLocation2d76f3c4510588c49f9e21925530c0ee.get = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showServiceLocation2d76f3c4510588c49f9e21925530c0ee.url(args, options),
+    method: 'get',
+})
+/**
+* @see \App\Http\Controllers\SeoController::showServiceLocation
+ * @see app/Http/Controllers/SeoController.php:44
+ * @route '/services/{service_slug}/{location_slug}'
+ */
+showServiceLocation2d76f3c4510588c49f9e21925530c0ee.head = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: showServiceLocation2d76f3c4510588c49f9e21925530c0ee.url(args, options),
+    method: 'head',
+})
+
+    /**
+* @see \App\Http\Controllers\SeoController::showServiceLocation
+ * @see app/Http/Controllers/SeoController.php:44
+ * @route '/services/{service_slug}/{location_slug}'
+ */
+    const showServiceLocation2d76f3c4510588c49f9e21925530c0eeForm = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: showServiceLocation2d76f3c4510588c49f9e21925530c0ee.url(args, options),
+        method: 'get',
+    })
+
+            /**
+* @see \App\Http\Controllers\SeoController::showServiceLocation
+ * @see app/Http/Controllers/SeoController.php:44
+ * @route '/services/{service_slug}/{location_slug}'
+ */
+        showServiceLocation2d76f3c4510588c49f9e21925530c0eeForm.get = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: showServiceLocation2d76f3c4510588c49f9e21925530c0ee.url(args, options),
+            method: 'get',
+        })
+            /**
+* @see \App\Http\Controllers\SeoController::showServiceLocation
+ * @see app/Http/Controllers/SeoController.php:44
+ * @route '/services/{service_slug}/{location_slug}'
+ */
+        showServiceLocation2d76f3c4510588c49f9e21925530c0eeForm.head = (args: { service_slug: string | number, location_slug: string | number } | [service_slug: string | number, location_slug: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: showServiceLocation2d76f3c4510588c49f9e21925530c0ee.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    showServiceLocation2d76f3c4510588c49f9e21925530c0ee.form = showServiceLocation2d76f3c4510588c49f9e21925530c0eeForm
 
 /**
 * Multiple routes resolve to \App\Http\Controllers\SeoController::showServiceLocation, so this export is a
@@ -453,6 +548,7 @@ showServiceLocation13ce03ebdeb54ae9f497a8c08b92bfaa.head = (args: { service_slug
 export const showServiceLocation = {
     '/services/{service_slug}': showServiceLocationf6d09d9092eb835f4a0aff152ee549d3,
     '/services/{service_slug}/in/{location_slug}': showServiceLocation13ce03ebdeb54ae9f497a8c08b92bfaa,
+    '/services/{service_slug}/{location_slug}': showServiceLocation2d76f3c4510588c49f9e21925530c0ee,
 }
 
 const SeoController = { index, locationsIndex, showLocation, showServiceLocation }

@@ -2,7 +2,7 @@ import { Link, createInertiaApp, router, usePage } from "@inertiajs/react";
 import createServer from "@inertiajs/react/server";
 import ReactDOMServer from "react-dom/server";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import * as React$1 from "react";
+import * as React from "react";
 import { Fragment, useCallback, useSyncExternalStore } from "react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -200,31 +200,31 @@ var SIDEBAR_WIDTH = "16rem";
 var SIDEBAR_WIDTH_MOBILE = "18rem";
 var SIDEBAR_WIDTH_ICON = "3rem";
 var SIDEBAR_KEYBOARD_SHORTCUT = "b";
-var SidebarContext = React$1.createContext(null);
+var SidebarContext = React.createContext(null);
 function useSidebar() {
-	const context = React$1.useContext(SidebarContext);
+	const context = React.useContext(SidebarContext);
 	if (!context) throw new Error("useSidebar must be used within a SidebarProvider.");
 	return context;
 }
 function SidebarProvider({ defaultOpen = true, open: openProp, onOpenChange: setOpenProp, className, style, children, ...props }) {
 	const isMobile = useIsMobile();
-	const [openMobile, setOpenMobile] = React$1.useState(false);
-	const [_open, _setOpen] = React$1.useState(defaultOpen);
+	const [openMobile, setOpenMobile] = React.useState(false);
+	const [_open, _setOpen] = React.useState(defaultOpen);
 	const open = openProp ?? _open;
-	const setOpen = React$1.useCallback((value) => {
+	const setOpen = React.useCallback((value) => {
 		const openState = typeof value === "function" ? value(open) : value;
 		if (setOpenProp) setOpenProp(openState);
 		else _setOpen(openState);
 		document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
 	}, [setOpenProp, open]);
-	const toggleSidebar = React$1.useCallback(() => {
+	const toggleSidebar = React.useCallback(() => {
 		return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open);
 	}, [
 		isMobile,
 		setOpen,
 		setOpenMobile
 	]);
-	React$1.useEffect(() => {
+	React.useEffect(() => {
 		const handleKeyDown = (event) => {
 			if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
 				event.preventDefault();
@@ -235,7 +235,7 @@ function SidebarProvider({ defaultOpen = true, open: openProp, onOpenChange: set
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, [toggleSidebar]);
 	const state = open ? "expanded" : "collapsed";
-	const contextValue = React$1.useMemo(() => ({
+	const contextValue = React.useMemo(() => ({
 		state,
 		open,
 		setOpen,
@@ -736,8 +736,8 @@ var applyUrlDefaults = (existing) => {
 //#endregion
 //#region resources/js/routes/index.ts
 /**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
+* @see \App\Http\Controllers\Admin\AuthController::login
+* @see app/Http/Controllers/Admin/AuthController.php:18
 * @route '/login'
 */
 var login = (options) => ({
@@ -749,16 +749,16 @@ login.definition = {
 	url: "/login"
 };
 /**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
+* @see \App\Http\Controllers\Admin\AuthController::login
+* @see app/Http/Controllers/Admin/AuthController.php:18
 * @route '/login'
 */
 login.url = (options) => {
 	return login.definition.url + queryParams(options);
 };
 /**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
+* @see \App\Http\Controllers\Admin\AuthController::login
+* @see app/Http/Controllers/Admin/AuthController.php:18
 * @route '/login'
 */
 login.get = (options) => ({
@@ -766,8 +766,8 @@ login.get = (options) => ({
 	method: "get"
 });
 /**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
+* @see \App\Http\Controllers\Admin\AuthController::login
+* @see app/Http/Controllers/Admin/AuthController.php:18
 * @route '/login'
 */
 login.head = (options) => ({
@@ -775,8 +775,8 @@ login.head = (options) => ({
 	method: "head"
 });
 /**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
+* @see \App\Http\Controllers\Admin\AuthController::login
+* @see app/Http/Controllers/Admin/AuthController.php:18
 * @route '/login'
 */
 var loginForm = (options) => ({
@@ -784,8 +784,8 @@ var loginForm = (options) => ({
 	method: "get"
 });
 /**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
+* @see \App\Http\Controllers\Admin\AuthController::login
+* @see app/Http/Controllers/Admin/AuthController.php:18
 * @route '/login'
 */
 loginForm.get = (options) => ({
@@ -793,8 +793,8 @@ loginForm.get = (options) => ({
 	method: "get"
 });
 /**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
+* @see \App\Http\Controllers\Admin\AuthController::login
+* @see app/Http/Controllers/Admin/AuthController.php:18
 * @route '/login'
 */
 loginForm.head = (options) => ({
@@ -854,76 +854,6 @@ logoutForm.post = (options) => ({
 	method: "post"
 });
 logout.form = logoutForm;
-/**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-var register = (options) => ({
-	url: register.url(options),
-	method: "get"
-});
-register.definition = {
-	methods: ["get", "head"],
-	url: "/register"
-};
-/**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-register.url = (options) => {
-	return register.definition.url + queryParams(options);
-};
-/**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-register.get = (options) => ({
-	url: register.url(options),
-	method: "get"
-});
-/**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-register.head = (options) => ({
-	url: register.url(options),
-	method: "head"
-});
-/**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-var registerForm = (options) => ({
-	action: register.url(options),
-	method: "get"
-});
-/**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-registerForm.get = (options) => ({
-	action: register.url(options),
-	method: "get"
-});
-/**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-registerForm.head = (options) => ({
-	action: register.url({ [options?.mergeQuery ? "mergeQuery" : "query"]: {
-		_method: "HEAD",
-		...options?.query ?? options?.mergeQuery ?? {}
-	} }),
-	method: "get"
-});
-register.form = registerForm;
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
@@ -1275,8 +1205,8 @@ teamForm.head = (options) => ({
 });
 team.form = teamForm;
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+* @see app/Http/Controllers/BlogController.php:15
 * @route '/blog'
 */
 var blog = (options) => ({
@@ -1288,16 +1218,16 @@ blog.definition = {
 	url: "/blog"
 };
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+* @see app/Http/Controllers/BlogController.php:15
 * @route '/blog'
 */
 blog.url = (options) => {
 	return blog.definition.url + queryParams(options);
 };
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+* @see app/Http/Controllers/BlogController.php:15
 * @route '/blog'
 */
 blog.get = (options) => ({
@@ -1305,8 +1235,8 @@ blog.get = (options) => ({
 	method: "get"
 });
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+* @see app/Http/Controllers/BlogController.php:15
 * @route '/blog'
 */
 blog.head = (options) => ({
@@ -1314,8 +1244,8 @@ blog.head = (options) => ({
 	method: "head"
 });
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+* @see app/Http/Controllers/BlogController.php:15
 * @route '/blog'
 */
 var blogForm = (options) => ({
@@ -1323,8 +1253,8 @@ var blogForm = (options) => ({
 	method: "get"
 });
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+* @see app/Http/Controllers/BlogController.php:15
 * @route '/blog'
 */
 blogForm.get = (options) => ({
@@ -1332,8 +1262,8 @@ blogForm.get = (options) => ({
 	method: "get"
 });
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\BlogController::blog
+* @see app/Http/Controllers/BlogController.php:15
 * @route '/blog'
 */
 blogForm.head = (options) => ({
@@ -1625,8 +1555,7 @@ termsForm.head = (options) => ({
 });
 terms.form = termsForm;
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see routes/web.php:236
 * @route '/dashboard'
 */
 var dashboard = (options) => ({
@@ -1638,16 +1567,14 @@ dashboard.definition = {
 	url: "/dashboard"
 };
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see routes/web.php:236
 * @route '/dashboard'
 */
 dashboard.url = (options) => {
 	return dashboard.definition.url + queryParams(options);
 };
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see routes/web.php:236
 * @route '/dashboard'
 */
 dashboard.get = (options) => ({
@@ -1655,8 +1582,7 @@ dashboard.get = (options) => ({
 	method: "get"
 });
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see routes/web.php:236
 * @route '/dashboard'
 */
 dashboard.head = (options) => ({
@@ -1664,8 +1590,7 @@ dashboard.head = (options) => ({
 	method: "head"
 });
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see routes/web.php:236
 * @route '/dashboard'
 */
 var dashboardForm = (options) => ({
@@ -1673,8 +1598,7 @@ var dashboardForm = (options) => ({
 	method: "get"
 });
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see routes/web.php:236
 * @route '/dashboard'
 */
 dashboardForm.get = (options) => ({
@@ -1682,8 +1606,7 @@ dashboardForm.get = (options) => ({
 	method: "get"
 });
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see routes/web.php:236
 * @route '/dashboard'
 */
 dashboardForm.head = (options) => ({
@@ -2348,39 +2271,47 @@ var renderPage = (page) => createInertiaApp({
 	title: (title) => title ? `${title} - ${appName}` : appName,
 	resolve: async (name) => {
 		const pageModule = await resolvePageComponent(`./pages/${name}.tsx`, /* #__PURE__ */ Object.assign({
-			"./pages/About.tsx": () => import("./assets/About-i7gQsNDq.js"),
-			"./pages/Blog.tsx": () => import("./assets/Blog-Cp8Dijeu.js"),
-			"./pages/BlogDetails.tsx": () => import("./assets/BlogDetails-Bm9S4b_p.js"),
-			"./pages/Careers.tsx": () => import("./assets/Careers-CS69i2pc.js"),
-			"./pages/CaseStudyDetails.tsx": () => import("./assets/CaseStudyDetails-C1r1AQhN.js"),
-			"./pages/Contact.tsx": () => import("./assets/Contact-hsYAwWQQ.js"),
-			"./pages/Error.tsx": () => import("./assets/Error-BDB6QCN9.js"),
-			"./pages/LocationDetails.tsx": () => import("./assets/LocationDetails-Cbj4gp5k.js"),
-			"./pages/LocationsIndex.tsx": () => import("./assets/LocationsIndex-B1BmYdpW.js"),
-			"./pages/Portfolio.tsx": () => import("./assets/Portfolio-BazEcsmy.js"),
-			"./pages/PrivacyPolicy.tsx": () => import("./assets/PrivacyPolicy-Dgp1hn_Y.js"),
-			"./pages/Process.tsx": () => import("./assets/Process-BQAFTFdc.js"),
-			"./pages/ProjectDetails.tsx": () => import("./assets/ProjectDetails-C1dR6qN7.js"),
-			"./pages/ServiceSeoPage.tsx": () => import("./assets/ServiceSeoPage-CYi87Ggk.js"),
-			"./pages/ServicesIndex.tsx": () => import("./assets/ServicesIndex-CxFNJdRZ.js"),
-			"./pages/Team.tsx": () => import("./assets/Team-BfdzM3Zx.js"),
-			"./pages/TermsConditions.tsx": () => import("./assets/TermsConditions-CPA8pfKG.js"),
-			"./pages/auth/confirm-password.tsx": () => import("./assets/confirm-password-mAEUDtyn.js"),
-			"./pages/auth/forgot-password.tsx": () => import("./assets/forgot-password-DxTFQNZ5.js"),
-			"./pages/auth/login.tsx": () => import("./assets/login-DNCQfWJ_.js"),
-			"./pages/auth/register.tsx": () => import("./assets/register-DacS1al0.js"),
-			"./pages/auth/reset-password.tsx": () => import("./assets/reset-password-B4ywBSQz.js"),
-			"./pages/auth/two-factor-challenge.tsx": () => import("./assets/two-factor-challenge-DzsUG1cs.js"),
-			"./pages/auth/verify-email.tsx": () => import("./assets/verify-email-BcS_LJZx.js"),
+			"./pages/About.tsx": () => import("./assets/About-lOKKxb0v.js"),
+			"./pages/Admin/Blogs.tsx": () => import("./assets/Blogs-CcCz0bvG.js"),
+			"./pages/Admin/Contacts.tsx": () => import("./assets/Contacts-aPLR6KPx.js"),
+			"./pages/Admin/Dashboard.tsx": () => import("./assets/Dashboard-BHTJZc-O.js"),
+			"./pages/Admin/Login.tsx": () => import("./assets/Login-BOZNjkTi.js"),
+			"./pages/Admin/SeoPages.tsx": () => import("./assets/SeoPages-is9QBclY.js"),
+			"./pages/Admin/Users.tsx": () => import("./assets/Users-BR9DRuxn.js"),
+			"./pages/Blog.tsx": () => import("./assets/Blog-BZ_TzsVR.js"),
+			"./pages/BlogDetails.tsx": () => import("./assets/BlogDetails-CcXea5SY.js"),
+			"./pages/Careers.tsx": () => import("./assets/Careers-DCksHH3c.js"),
+			"./pages/CaseStudyDetails.tsx": () => import("./assets/CaseStudyDetails-DiO3MOq9.js"),
+			"./pages/Contact.tsx": () => import("./assets/Contact-C9Sa7WeA.js"),
+			"./pages/Customer/Dashboard.tsx": () => import("./assets/Dashboard-DRurXHMm.js"),
+			"./pages/Error.tsx": () => import("./assets/Error-Cw7tkVAB.js"),
+			"./pages/LocationDetails.tsx": () => import("./assets/LocationDetails-D0ZOjbFT.js"),
+			"./pages/LocationsIndex.tsx": () => import("./assets/LocationsIndex-grt89NrF.js"),
+			"./pages/Portfolio.tsx": () => import("./assets/Portfolio-DmYRnsTl.js"),
+			"./pages/PrivacyPolicy.tsx": () => import("./assets/PrivacyPolicy-E5mVV8BJ.js"),
+			"./pages/Process.tsx": () => import("./assets/Process-CkKEFU8y.js"),
+			"./pages/ProductDetails.tsx": () => import("./assets/ProductDetails-Bc08t-Zi.js"),
+			"./pages/ProjectDetails.tsx": () => import("./assets/ProjectDetails-DBzfegZb.js"),
+			"./pages/ServiceSeoPage.tsx": () => import("./assets/ServiceSeoPage-COXAW3gv.js"),
+			"./pages/ServicesIndex.tsx": () => import("./assets/ServicesIndex-DprCB88n.js"),
+			"./pages/Team.tsx": () => import("./assets/Team--gWi035y.js"),
+			"./pages/TermsConditions.tsx": () => import("./assets/TermsConditions-1YC8MkkZ.js"),
+			"./pages/auth/confirm-password.tsx": () => import("./assets/confirm-password-gf9uhHD4.js"),
+			"./pages/auth/forgot-password.tsx": () => import("./assets/forgot-password-BuzFM9fQ.js"),
+			"./pages/auth/login.tsx": () => import("./assets/login-BGSEAMOa.js"),
+			"./pages/auth/register.tsx": () => import("./assets/register-BHNFKWX9.js"),
+			"./pages/auth/reset-password.tsx": () => import("./assets/reset-password-B2egJOng.js"),
+			"./pages/auth/two-factor-challenge.tsx": () => import("./assets/two-factor-challenge-NJlV-qjw.js"),
+			"./pages/auth/verify-email.tsx": () => import("./assets/verify-email-BpZUcEB_.js"),
 			"./pages/dashboard.tsx": () => import("./assets/dashboard-CJ37-haH.js"),
-			"./pages/settings/appearance.tsx": () => import("./assets/appearance-J06yOClH.js"),
-			"./pages/settings/profile.tsx": () => import("./assets/profile-Bj6JC4ab.js"),
-			"./pages/settings/security.tsx": () => import("./assets/security-DL-WyZ4N.js"),
-			"./pages/welcome.tsx": () => import("./assets/welcome-CJoyDyt-.js")
+			"./pages/settings/appearance.tsx": () => import("./assets/appearance-BfQjs8D0.js"),
+			"./pages/settings/profile.tsx": () => import("./assets/profile-C-byU19c.js"),
+			"./pages/settings/security.tsx": () => import("./assets/security-BOOvLfe2.js"),
+			"./pages/welcome.tsx": () => import("./assets/welcome-BT37rjqm.js")
 		}));
 		const defaultExport = pageModule.default;
 		if (defaultExport && defaultExport.layout === void 0) switch (true) {
-			case name === "welcome" || name === "ServiceSeoPage" || name === "ServicesIndex" || name === "LocationsIndex" || name === "LocationDetails" || name === "About" || name === "Portfolio" || name === "ProjectDetails" || name === "CaseStudyDetails" || name === "Contact" || name === "Team" || name === "Blog" || name === "Careers" || name === "Process" || name === "BlogDetails" || name === "PrivacyPolicy" || name === "TermsConditions":
+			case name === "welcome" || name === "ServiceSeoPage" || name === "ServicesIndex" || name === "LocationsIndex" || name === "LocationDetails" || name === "About" || name === "Portfolio" || name === "ProjectDetails" || name === "CaseStudyDetails" || name === "Contact" || name === "Team" || name === "Blog" || name === "Careers" || name === "Process" || name === "BlogDetails" || name === "PrivacyPolicy" || name === "TermsConditions" || name.startsWith("Admin/") || name.startsWith("Customer/"):
 				defaultExport.layout = null;
 				break;
 			case name.startsWith("auth/"):
@@ -2402,6 +2333,6 @@ var renderPage = (page) => createInertiaApp({
 });
 createServer(renderPage, process.env.PORT ? parseInt(process.env.PORT) : 13714);
 //#endregion
-export { dashboard as a, register as c, Separator as d, renderPage as default, Input as f, edit$2 as i, applyUrlDefaults as l, cn as m, edit$1 as n, login as o, Button as p, Heading as r, logout as s, edit as t, queryParams as u };
+export { dashboard as a, applyUrlDefaults as c, Input as d, renderPage as default, Button as f, edit$2 as i, queryParams as l, edit$1 as n, login as o, cn as p, Heading as r, logout as s, edit as t, Separator as u };
 
 //# sourceMappingURL=ssr.js.map

@@ -176,6 +176,19 @@
         <x-inertia::head />
     </head>
     <body class="font-sans antialiased">
-        <x-inertia::app />
+        @php
+            $__inertiaSsrResponse = config('inertia.ssr.enabled', false)
+                ? app(\Inertia\Ssr\SsrState::class)->setPage($page)->dispatch()
+                : null;
+        @endphp
+
+        @if ($__inertiaSsrResponse)
+            {!! $__inertiaSsrResponse->body !!}
+        @else
+            <script data-page="app" type="application/json">{!! json_encode($page) !!}</script>
+            <div id="app">
+                @include('partials.seo-fallback', ['page' => $page])
+            </div>
+        @endif
     </body>
 </html>

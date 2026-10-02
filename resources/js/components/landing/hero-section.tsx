@@ -5,12 +5,10 @@ import {
     useRef,
     useCallback,
     useState,
-    Suspense,
-    lazy,
 } from 'react';
 import { useTheme } from '@/components/landing/theme-provider';
 import { useMediaQuery } from '@/hooks/use-media-query';
-import { useMousePosition } from '@/hooks/use-mouse-position';
+import FoundersHeroVisual from '@/components/landing/founders-hero-visual';
 
 export default function HeroSection() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -19,12 +17,7 @@ export default function HeroSection() {
     const ctaRef = useRef<HTMLDivElement>(null);
     const badgeRef = useRef<HTMLDivElement>(null);
     const btnRef = useRef<HTMLAnchorElement>(null);
-    const { x: mouseX, y: mouseY } = useMousePosition();
     const isLowPower = useMediaQuery('(max-width: 768px)');
-    const [show3D, setShow3D] = useState(false);
-    const [CanvasComponent, setCanvasComponent] = useState<any>(null);
-    const [IoTDeviceMeshComponent, setIoTDeviceMeshComponent] =
-        useState<any>(null);
     const { theme } = useTheme();
     const isLight = theme === 'light';
     const [mounted, setMounted] = useState(false);
@@ -97,60 +90,6 @@ export default function HeroSection() {
 
         return () => clearTimeout(timer);
     }, [typedText, isDeleting, loopNum, typingSpeed, typingStarted]);
-
-    const [load3D, setLoad3D] = useState(false);
-
-    useEffect(() => {
-        if (isBot) {
-            return;
-        }
-
-        let interactionLoaded = false;
-        const trigger3DLoad = () => {
-            if (interactionLoaded) {
-                return;
-            }
-
-            interactionLoaded = true;
-            setLoad3D(true);
-        };
-
-        window.addEventListener('mousemove', trigger3DLoad, { once: true });
-        window.addEventListener('scroll', trigger3DLoad, { once: true });
-        window.addEventListener('click', trigger3DLoad, { once: true });
-        window.addEventListener('touchstart', trigger3DLoad, { once: true });
-
-        // Fallback: load anyway after 4.5s if user does nothing
-        const fallbackTimer = setTimeout(trigger3DLoad, 4500);
-
-        return () => {
-            window.removeEventListener('mousemove', trigger3DLoad);
-            window.removeEventListener('scroll', trigger3DLoad);
-            window.removeEventListener('click', trigger3DLoad);
-            window.removeEventListener('touchstart', trigger3DLoad);
-            clearTimeout(fallbackTimer);
-        };
-    }, [isLowPower, isBot]);
-
-    useEffect(() => {
-        if (!load3D) {
-            return;
-        }
-
-        import('@react-three/fiber')
-            .then((fiber) => {
-                setCanvasComponent(() => fiber.Canvas);
-
-                return import('@/components/landing/iot-device-mesh');
-            })
-            .then((meshModule) => {
-                setIoTDeviceMeshComponent(() => meshModule.default);
-                setShow3D(true);
-            })
-            .catch((err) => {
-                console.error('Failed to load 3D components:', err);
-            });
-    }, [load3D]);
 
     useEffect(() => {
         if (!sectionRef.current || isBot) {
@@ -273,12 +212,12 @@ export default function HeroSection() {
             <div
                 className="hero-content-grid"
                 style={{
-                    maxWidth: 1200,
+                    maxWidth: 1280,
                     margin: '0 auto',
                     width: '100%',
                     display: 'grid',
-                    gridTemplateColumns: '1.1fr 0.9fr',
-                    gap: 60,
+                    gridTemplateColumns: '1.05fr 1fr',
+                    gap: 40,
                     alignItems: 'center',
                     position: 'relative',
                     zIndex: 1,
@@ -502,46 +441,18 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                {/* Right: 3D or Fallback */}
-                <div style={{ height: 500, position: 'relative' }}>
-                    {show3D && CanvasComponent && IoTDeviceMeshComponent ? (
-                        <Suspense fallback={<HeroFallback />}>
-                            <CanvasComponent
-                                camera={{ position: [0, 0, 5], fov: 45 }}
-                                style={{ borderRadius: 0 }}
-                                dpr={isLowPower ? [0.5, 1] : [1, 1.5]}
-                                performance={{ min: 0.5 }}
-                                gl={{
-                                    powerPreference: 'high-performance',
-                                    antialias: false,
-                                }}
-                            >
-                                <ambientLight
-                                    intensity={activeIsLight ? 0.8 : 0.3}
-                                />
-                                <pointLight
-                                    position={[5, 5, 5]}
-                                    intensity={activeIsLight ? 0.8 : 0.8}
-                                    color="#FFFFFF"
-                                />
-                                <pointLight
-                                    position={[-5, -5, 3]}
-                                    intensity={activeIsLight ? 0.4 : 0.4}
-                                    color="#ffffff"
-                                />
-                                <IoTDeviceMeshComponent
-                                    mouseX={
-                                        (mouseX / window.innerWidth) * 2 - 1
-                                    }
-                                    mouseY={
-                                        (mouseY / window.innerHeight) * 2 - 1
-                                    }
-                                />
-                            </CanvasComponent>
-                        </Suspense>
-                    ) : (
-                        <HeroFallback />
-                    )}
+                {/* Right: Founders Hero Visual */}
+                <div
+                    style={{
+                        minHeight: 480,
+                        position: 'relative',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '100%',
+                    }}
+                >
+                    <FoundersHeroVisual />
                 </div>
             </div>
 
@@ -555,7 +466,7 @@ export default function HeroSection() {
                         min-height: auto !important;
                     }
                     .hero-content-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-                    .hero-content-grid > div:last-child { height: 260px !important; }
+                    .hero-content-grid > div:last-child { height: auto !important; min-height: 400px !important; }
                 }
                 @media (max-width: 640px) {
                     .hero-cta-group {
@@ -589,32 +500,5 @@ export default function HeroSection() {
                 }
             `}</style>
         </section>
-    );
-}
-
-function HeroFallback() {
-    return (
-        <div
-            style={{
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'radial-gradient(circle at center, #0a0a0a, #000)',
-                position: 'relative',
-                overflow: 'hidden',
-            }}
-        >
-            <div
-                style={{
-                    position: 'absolute',
-                    inset: 0,
-                    backgroundImage:
-                        'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)',
-                    backgroundSize: '20px 20px',
-                }}
-            />
-        </div>
     );
 }

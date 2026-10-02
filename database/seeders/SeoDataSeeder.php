@@ -45,6 +45,24 @@ class SeoDataSeeder extends Seeder
             'Sheohar', 'Sitamarhi', 'Siwan', 'Supaul', 'Vaishali', 'West Champaran',
         ];
 
+        // Primary State: Bihar (Headquarters / Core focus)
+        $locations[] = [
+            'name' => 'Bihar',
+            'slug' => 'bihar',
+            'type' => 'state',
+            'state' => 'Bihar',
+            'country' => 'India',
+        ];
+
+        // Country: India
+        $locations[] = [
+            'name' => 'India',
+            'slug' => 'india',
+            'type' => 'country',
+            'state' => null,
+            'country' => 'India',
+        ];
+
         foreach ($biharDistricts as $district) {
             $locations[] = [
                 'name' => $district,

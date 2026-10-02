@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminSeoPageController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\ContactEnquiryController;
@@ -30,6 +31,7 @@ Route::get('/locations', [SeoController::class, 'locationsIndex'])->name('locati
 Route::get('/locations/{location_slug}', [SeoController::class, 'showLocation'])->name('locations.show');
 Route::get('/services/{service_slug}', [SeoController::class, 'showServiceLocation'])->name('service.show');
 Route::get('/services/{service_slug}/in/{location_slug}', [SeoController::class, 'showServiceLocation'])->name('service.location.show');
+Route::get('/services/{service_slug}/{location_slug}', [SeoController::class, 'showServiceLocation'])->name('service.location.direct');
 
 // New Static Pages
 Route::inertia('/about', 'About', [
@@ -154,7 +156,7 @@ Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('
 
 Route::get('/sitemap.xml', function () {
     $urls = [
-        '/', '/services', '/portfolio', '/team', '/about', '/blog', '/contact', '/process', '/careers', '/privacy-policy', '/terms-and-conditions', '/case-studies',
+        '/', '/services', '/portfolio', '/team', '/about', '/blog', '/contact', '/process', '/careers', '/privacy-policy', '/terms-and-conditions', '/case-studies', '/locations',
         '/products/mobile-crm', '/products/grocery-mart', '/products/grain-saas', '/products/review-booster',
     ];
 
@@ -166,16 +168,39 @@ Route::get('/sitemap.xml', function () {
             $urls[] = '/services/'.$service->slug;
             foreach ($locations as $location) {
                 $urls[] = '/services/'.$service->slug.'/in/'.$location->slug;
+                $urls[] = '/services/'.$service->slug.'/'.$location->slug;
             }
+        }
+
+        foreach ($locations as $loc) {
+            $urls[] = '/locations/'.$loc->slug;
         }
 
         $caseStudies = CaseStudy::all();
         foreach ($caseStudies as $cs) {
             $urls[] = '/case-studies/'.$cs->slug;
         }
-    } catch (Exception $e) {
+
+        // Add custom published SEO pages from Admin
+        $seoPages = \App\Models\SeoPage::where('is_published', true)->get();
+        foreach ($seoPages as $sp) {
+            $urls[] = '/'.ltrim($sp->slug, '/');
+        }
+
+        // Add published blogs
+        if (class_exists(\App\Models\Blog::class)) {
+            $blogs = \App\Models\Blog::all();
+            foreach ($blogs as $b) {
+                if (!empty($b->slug)) {
+                    $urls[] = '/blog/'.$b->slug;
+                }
+            }
+        }
+    } catch (\Throwable $e) {
         // Fallback if db isn't migrated yet
     }
+
+    $urls = array_values(array_unique($urls));
 
     $xml = '<?xml version="1.0" encoding="UTF-8"?>';
     $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
@@ -184,7 +209,7 @@ Route::get('/sitemap.xml', function () {
         $xml .= '<url>';
         $xml .= '<loc>'.url($url).'</loc>';
         $xml .= '<changefreq>weekly</changefreq>';
-        $xml .= '<priority>'.($url == '/' ? '1.0' : '0.8').'</priority>';
+        $xml .= '<priority>'.($url == '/' ? '1.0' : (str_starts_with($url, '/services') ? '0.9' : '0.8')).'</priority>';
         $xml .= '</url>';
     }
 
@@ -244,11 +269,22 @@ Route::middleware(['auth', 'admin'])->prefix('z-admin')->group(function () {
     Route::post('/blogs/bulk-delete', [AdminBlogController::class, 'bulkDestroy'])->name('admin.blogs.bulk-delete');
     Route::post('/blogs/{blog}/toggle-featured', [AdminBlogController::class, 'toggleFeatured'])->name('admin.blogs.toggle-featured');
     Route::post('/blogs/upload-image', [AdminBlogController::class, 'uploadImage'])->name('admin.blogs.upload-image');
+
+    // SEO Location Pages Management
+    Route::get('/seo-pages', [AdminSeoPageController::class, 'index'])->name('admin.seo-pages.index');
+    Route::post('/seo-pages', [AdminSeoPageController::class, 'store'])->name('admin.seo-pages.store');
+    Route::put('/seo-pages/{seoPage}', [AdminSeoPageController::class, 'update'])->name('admin.seo-pages.update');
+    Route::delete('/seo-pages/{seoPage}', [AdminSeoPageController::class, 'destroy'])->name('admin.seo-pages.destroy');
+    Route::post('/seo-pages/bulk-delete', [AdminSeoPageController::class, 'bulkDestroy'])->name('admin.seo-pages.bulk-delete');
+    Route::post('/seo-pages/ai-generate', [AdminSeoPageController::class, 'aiGenerate'])->name('admin.seo-pages.ai-generate');
+    Route::post('/seo-pages/humanize', [AdminSeoPageController::class, 'humanize'])->name('admin.seo-pages.humanize');
+    Route::post('/seo-pages/bulk-generate', [AdminSeoPageController::class, 'bulkGenerate'])->name('admin.seo-pages.bulk-generate');
 });
 
 // Protected Customer Portal
 Route::middleware(['auth'])->prefix('customer')->group(function () {
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
+
 });
 
 require __DIR__.'/settings.php';
